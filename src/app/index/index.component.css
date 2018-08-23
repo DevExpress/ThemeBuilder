@@ -1,0 +1,45 @@
+.blocks {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.blocks .block {
+    background-color: #fff;
+    width: 340px;
+    height: 260px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.blocks .block .block-image {
+    width: 100px;
+    height: 100px;
+}
+
+.blocks .block:hover {
+    background-color: #f05b41;
+    color: #fff;
+}
+
+.blocks .block:hover .block-image .st0,
+.blocks .block:hover .block-image .st1  {
+    fill: #fff;
+}
+
+.blocks .block:hover .block-image.icon-material .st1,
+.blocks .block:hover .block-image.icon-material .st2  {
+    fill:#f05b41;
+}
+
+.blocks .block:focus {
+    background-color: #d0442c;
+} 
+
+.blocks .block:first-child {
+    margin-right: 15px;
+}
+
+.blocks .block .block-title {
+    margin: 40px 0 30px;
+    font-size: 30px;
+}

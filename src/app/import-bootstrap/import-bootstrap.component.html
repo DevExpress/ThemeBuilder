@@ -1,0 +1,22 @@
+<div class="content">
+    <div class="title">Import Data
+      <span>Bootstrap Variables</span>
+    </div>
+    <dx-tabs class="tabs" [dataSource]="['Bootstrap 4', 'Bootstrap 3']" [selectedIndex]="0" width="560"></dx-tabs>
+
+    <dx-file-uploader width="260" [multiple]="false" accept="*" selectButtonText="Upload Less Variables" class="file-uploader">
+    </dx-file-uploader>
+    <div class="text">You can use colors defined in a custom theme in the current Generic theme if the initial theme is based on Bootstrap and
+      colors are defined in the "_variables.scss" file. Upload this file to apply colors defined in it.</div>
+    <div class="button apply">Apply</div>
+    <div class="back-button" [routerLink]="['/import']">
+      <svg class="back-arrow" viewBox="0 0 18 18">
+            <style type="text/css">
+                .st0{fill:#9C9C9C;}
+            </style>
+            <path class="st0" d="M13,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4l8-8c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L6.4,9l7.3,7.3
+                c0.4,0.4,0.4,1,0,1.4C13.5,17.9,13.3,18,13,18z"/>
+      </svg>
+      <span>Back to select data type</span>
+    </div>
+</div>

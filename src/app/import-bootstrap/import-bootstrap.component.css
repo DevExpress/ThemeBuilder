@@ -1,0 +1,18 @@
+.tabs {
+    margin: 40px auto 0;
+    height: 50px;
+    border-color: #d4d8da;
+    border-bottom-color: transparent;
+}
+
+.file-uploader { 
+    margin: 20px auto 0;
+}
+
+.text {
+    margin: 10px auto 45px;
+}
+
+.apply {
+    width: 270px;
+}

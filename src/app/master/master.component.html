@@ -1,0 +1,98 @@
+  
+  <div class="content" [ngClass]="isMaster ? 'master' : ''">
+    <div class="section left">
+      <div class="title" >
+        <div>
+          <svg [routerLink]="['/master/' + themeName]" class="back-arrow" viewBox="0 0 18 18">
+            <style type="text/css">
+              .st0{fill:#9C9C9C;}
+            </style>
+            <path class="st0" d="M13,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4l8-8c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L6.4,9l7.3,7.3
+              c0.4,0.4,0.4,1,0,1.4C13.5,17.9,13.3,18,13,18z"/>
+          </svg>
+        {{themeName | titlecase}} Theme
+          <span>Select color sheme</span>
+        </div>
+      </div>
+      <div class="themes-list"> 
+        <ul class="schemes" *ngFor="let side of [rightThemes, leftThemes]">
+          <li *ngFor="let theme of side" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"
+          [routerLink]="['/master/' + theme.name + '/' + theme.colorScheme]">
+            <span class="color-circle {{theme.text | lowercase}}"></span>
+            <span class="color-name">{{theme.text}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="back-button" [routerLink]="['/master']" >
+        <svg class="back-arrow" viewBox="0 0 18 18">
+            <style type="text/css">
+              .st0{fill:#9C9C9C;}
+            </style>
+            <path class="st0" d="M13,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4l8-8c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L6.4,9l7.3,7.3
+              c0.4,0.4,0.4,1,0,1.4C13.5,17.9,13.3,18,13,18z"/>
+        </svg>
+        <span>Back to select theme</span>
+      </div>
+      <div class="base-theming">
+        <ul >
+          <li>
+            <span>Base size</span>
+            <dx-select-box  width="140" height="35"
+                  [items]="['Normal', 'Compact']"
+                  value="Normal"
+              ></dx-select-box>
+          </li>
+          <li>
+              <span>Accent color</span>
+              <dx-color-box value="#03a9f4" width="140" height="35"></dx-color-box>
+          </li>
+          <li>
+              <span>Text color</span>
+              <dx-color-box value="#000000"  width="140" height="35"></dx-color-box>
+          </li>
+          <li>
+              <span>Border color</span> 
+              <dx-color-box value="#e0e0e0"  width="140" height="35"></dx-color-box>       
+          </li>
+          <li>
+              <span>Background color</span>
+              <dx-color-box value="#ffffff"  width="140" height="35"></dx-color-box>        
+          </li>
+        </ul>
+        <div class="button apply">Save css</div>
+        <div class="button advanced">Advanced Customized</div>
+      </div>
+    </div>
+    <div class="section right">
+      <div class="dx-viewport dinamyc-styles">
+      <!--app template with theme-->
+      <!--<dx-form id="form"
+        [formData]="employee" width="400">
+        <dxi-item itemType="group" cssClass="first-group" [colCount]="4">
+          <dxi-item>
+            <div class="form-avatar"></div>
+          </dxi-item>
+          <dxi-item itemType="group" [colSpan]="3">
+              <dxi-item dataField="FirstName"></dxi-item>
+              <dxi-item dataField="LastName"></dxi-item>
+              <dxi-item dataField="BirthDate" editorType="dxDateBox" [editorOptions]="{ width: '100%'}"></dxi-item>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" cssClass="second-group" [colCount]="2">
+          <dxi-item itemType="group">
+            <dxi-item dataField="Address"></dxi-item>
+            <dxi-item dataField="City"></dxi-item>
+            <dxi-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }"></dxi-item>
+          </dxi-item>
+          <dxi-item itemType="group">
+            <dxi-item dataField="State" editorType="dxSelectBox" [editorOptions]="{ items: states }"></dxi-item>
+            <dxi-item dataField="ZipCode"></dxi-item>
+            <dxi-item dataField="Mobile" [label]="{text: 'Phone'}" [editorOptions]="{ mask: '+1 (000) 000-0000'}"></dxi-item>
+          </dxi-item>
+          <dxi-item dataField="Notes" [colSpan]="2" editorType="dxTextArea" [editorOptions]="{ height: 140 }"></dxi-item>
+        </dxi-item>
+      </dx-form>
+      </div>-->
+  </div>
+</div>
