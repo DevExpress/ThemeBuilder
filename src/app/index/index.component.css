@@ -14,6 +14,7 @@
 .blocks .block .block-image {
     width: 100px;
     height: 100px;
+    display: inline-block;
 }
 
 .blocks .block:hover {
@@ -21,15 +22,6 @@
     color: #fff;
 }
 
-.blocks .block:hover .block-image .st0,
-.blocks .block:hover .block-image .st1  {
-    fill: #fff;
-}
-
-.blocks .block:hover .block-image.icon-material .st1,
-.blocks .block:hover .block-image.icon-material .st2  {
-    fill:#f05b41;
-}
 
 .blocks .block:focus {
     background-color: #d0442c;

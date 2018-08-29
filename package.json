@@ -25,10 +25,7 @@
     "zone.js": "~0.8.26",
     "devextreme": "^18.1.5",
     "devextreme-angular": "^18.1.5",
-    "bootstrap": "^4.1.2",
-    "less": "^2.6.1",
-    "minimalist": "^1.0.0",
-    "sass": "^1.10.3"
+    "less": "^2.6.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",

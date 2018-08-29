@@ -84,6 +84,21 @@ body {
     margin-top: -5px;
 }
 
+.title .back-arrow {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: -54px;
+    top: 23px;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+.master .title .back-arrow {
+    opacity: 1;
+}
+
 .text { 
     font-size: 16px;
     color: rgba(80, 80, 80, 255);
@@ -91,23 +106,58 @@ body {
     width: 500px;
 }
 
+.blocks .block:hover .block-image .st0,
+.blocks .block:hover .block-image .st1  {
+    fill: #fff;
+}
+
+.blocks .block:hover .block-image .icon-material .st1,
+.blocks .block:hover .block-image .icon-material .st2  {
+    fill:#f05b41;
+}
+
+.tabs.dx-tabpanel .dx-tab {
+    width: 280px;
+    height: 50px;
+}
+
+.tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
+    border-color: #d4d8da;
+    border-width: 2px;
+    border-top: 2px solid #d4d8da;
+    border-bottom: 0;
+}
+
 .tabs .dx-tab-selected {
-    background-color: transparent;
+    background-color: #f0f2f3;
     color: #f05b41;
 }
 
+.tabs.dx-tabpanel .dx-tab-selected:before {
+    border-bottom: 0;
+}
+
 .tabs .dx-tab.dx-state-focused:after {
-    border-bottom-color: transparent;
+    border-color: transparent;
 }
 
 .tabs .dx-tab-selected:after {
     border-color: #d4d8da;
     border-width: 2px;
     border-top: 2px solid #d4d8da;
+    height: 51px;
 }
 
-.tabs .dx-tab:not(.dx-tab-selected) {
+.tabs .dx-tab:not(.dx-tab-selected):not(.dx-state-hover) {
     background-color: #d4d8da;
+}
+
+.tabs.dx-tabpanel .dx-multiview-wrapper {
+    border: none;
+}
+
+.tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
+    border: none;
 }
 
 .file-uploader .dx-fileuploader-input-wrapper .dx-button {

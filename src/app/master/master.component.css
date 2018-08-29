@@ -9,6 +9,7 @@
 
 .master .section.left {
     position: relative;
+    min-width: 650px;
 }
 
 .master .section.right {
@@ -32,9 +33,6 @@
     margin: 0;  
 }
 
-.master .title .back-arrow {
-    opacity: 1;
-}
 
 .themes-list {
     width: 430px;
@@ -72,20 +70,9 @@
     margin: 0;
 }
 
-.title .back-arrow {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    left: -54px;
-    top: 23px;
-    opacity: 0;
-    transition: opacity 2s ease-out;
-}
-
 .schemes {
-    /*float: left;*/
     display: inline-block;
+    vertical-align: top;
     width: 180px;
     margin: 0 0 0 35px;
     transition: all 1s ease-out 0.5s;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './index.component.html',
@@ -10,12 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class IndexComponent {
     url: string;
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router) {
-
+    constructor(private route: ActivatedRoute) {
         this.route.url.subscribe(u => { 
-            this.url = u[0] ? u[0].path: "";
+            this.url = u[0] ? u[0].path : "";
         });
     }
 }
