@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import * as themes from 'devextreme-themebuilder/modules/themes.js';
 import { BuilderService } from './../builder.service';
 
@@ -33,7 +33,7 @@ export class MasterComponent {
         this.themes = themes.filter(t => t.name === this.themeName);
 
 
-        if (this.themeName == "material") {
+        if(this.themeName == "material") {
             this.rightThemes = this.themes.filter(t => t.text.includes("Light"));
             this.leftThemes = this.themes.filter(t => t.text.includes("Dark"));
         } else {
@@ -45,17 +45,17 @@ export class MasterComponent {
         }
 
 
-        // this.builderService.buildTheme(this.themeName, this.colorScheme, ".dinamyc-styles")
-        //   .then((result) => {
-        //     const head = document.getElementsByTagName("head")[0];
-        //     const style = document.createElement("style");
+        this.builderService.buildTheme(this.themeName, this.colorScheme, ".dinamyc-styles")
+            .then((result) => {
+                const head = document.getElementsByTagName("head")[0];
+                const style = document.createElement("style");
 
-        //     document.getElementById("dinamyc-styles") && document.getElementById("dinamyc-styles").remove()
+                document.getElementById("dinamyc-styles") && document.getElementById("dinamyc-styles").remove()
 
-        //     style.type = "text/css";
-        //     style.id = "dinamyc-styles"
-        //     style.appendChild(document.createTextNode(result.css));
-        //     head.appendChild(style);
-        //   })    
+                style.type = "text/css";
+                style.id = "dinamyc-styles"
+                style.appendChild(document.createTextNode(result.css));
+                head.appendChild(style);
+            })    
     }
 }

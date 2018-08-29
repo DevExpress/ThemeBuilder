@@ -9,7 +9,4 @@ import { fadeAnimation } from './animations';
     animations: [fadeAnimation]
 })
 
-export class AppComponent {
-
-}
-
+export class AppComponent { }

@@ -5,11 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './icon-material.component.html',
   styleUrls: ['./icon-material.component.css']
 })
-export class IconMaterialComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class IconMaterialComponent { }

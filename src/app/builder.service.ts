@@ -10,7 +10,7 @@ export class BuilderService {
 
     constructor(private http: HttpClient ) {
        this.loadLess = (fileName: string) => {
-            return  this.http.get("node_modules/devextreme-themebuilder/" + fileName, {responseType: "text"})
+            return  this.http.get(fileName, {responseType: "text"})
                         .toPromise();  
         };
         
@@ -26,6 +26,6 @@ export class BuilderService {
             metadataPromise: this.metadataPromise,
             themeName: themeName,
             colorScheme: colorScheme
-        })
+        });
     }
 }

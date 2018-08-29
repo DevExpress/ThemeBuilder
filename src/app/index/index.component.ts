@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
-  })
+})
 
 
 export class IndexComponent {
