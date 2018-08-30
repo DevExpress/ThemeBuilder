@@ -148,7 +148,7 @@ body {
     height: 51px;
 }
 
-.tabs .dx-tab:not(.dx-tab-selected):not(.dx-state-hover) {
+.tabs .dx-tab.dx-item:not(.dx-tab-selected) {
     background-color: #d4d8da;
 }
 

@@ -26,6 +26,21 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme-themebuilder/data/less",
                                 "output": "data/less"
+                            },
+                            {
+                                "glob": "_variables.scss",
+                                "input": "./node_modules/bootstrap/scss/",
+                                "output": "node_modules/bootstrap/scss/"
+                            },
+                            {
+                                "glob": "_functions.scss",
+                                "input": "./node_modules/bootstrap/scss/",
+                                "output": "node_modules/bootstrap/scss/"
+                            },
+                            {
+                                "glob": "dx.common.css",
+                                "input": "./node_modules/devextreme/dist/css",
+                                "output": "data/css"
                             }
                         ],
                         "styles": [
