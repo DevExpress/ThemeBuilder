@@ -58,11 +58,7 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    color: rgba(64, 64, 64, 255);    
-}
-
-.master.content {
-    display: block;
+    color: #404040;    
 }
 
 .title {
@@ -95,13 +91,9 @@ body {
     transition: opacity 2s ease-out;
 }
 
-.master .title .back-arrow {
-    opacity: 1;
-}
-
 .text { 
     font-size: 16px;
-    color: rgba(80, 80, 80, 255);
+    color: #505050;
     margin: 45px auto;
     width: 500px;
 }
@@ -124,7 +116,6 @@ body {
 .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
     border-color: #d4d8da;
     border-width: 2px;
-    border-top: 2px solid #d4d8da;
     border-bottom: 0;
 }
 
@@ -144,7 +135,7 @@ body {
 .tabs .dx-tab-selected:after {
     border-color: #d4d8da;
     border-width: 2px;
-    border-top: 2px solid #d4d8da;
+    border-top-style: solid;
     height: 51px;
 }
 
@@ -152,11 +143,8 @@ body {
     background-color: #d4d8da;
 }
 
-.tabs.dx-tabpanel .dx-multiview-wrapper {
-    border: none;
-}
-
-.tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
+.tabs.dx-tabpanel .dx-multiview-wrapper,
+.tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper  {
     border: none;
 }
 
@@ -196,7 +184,7 @@ body {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    fill: #9C9C9C;
+    fill: #9c9c9c;
     vertical-align: middle;
 }
 
@@ -226,6 +214,10 @@ body {
 .button.apply:active {
     background-color: #e2e4e5;
     color: #f05b41;
+}
+
+.master .title .back-arrow {
+    opacity: 1;
 }
 
 

@@ -1,3 +1,7 @@
+.master.content {
+    display: block;
+}
+
 .master .section {
     width: 50%;
     height: 100%;
@@ -33,30 +37,6 @@
     margin: 0;  
 }
 
-
-.themes-list {
-    width: 430px;
-    margin: 50px auto 0;
-    -webkit-transition: all 1s ease-out 0.5s;
-    -moz-transition: all 1s ease-out 0.5s;
-    -o-transition: all 1s ease-out 0.5s;
-    transition: all 1s ease-out 0.5s;
-}
-
-
-.master .schemes li {
-    border-radius: 27.5px;
-    padding: 5px 5px;
-    color: rgba(80, 80, 80, 255);
-    cursor: pointer;
-}
-
-
-.schemes .color-name {
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .master .themes-list {
     width: 180px;
     position: absolute;
@@ -70,6 +50,20 @@
     margin: 0;
 }
 
+.themes-list {
+    width: 430px;
+    margin: 50px auto 0;
+    -webkit-transition: all 1s ease-out 0.5s;
+    -moz-transition: all 1s ease-out 0.5s;
+    -o-transition: all 1s ease-out 0.5s;
+    transition: all 1s ease-out 0.5s;
+}
+
+.schemes .color-name {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .schemes {
     display: inline-block;
     vertical-align: top;
@@ -79,10 +73,10 @@
 }
 
 .schemes li {
-    border-radius: 27.5px;
+    border-radius: 28px;
     padding: 5px 5px;
     text-align: left;
-    color: rgba(80, 80, 80, 255);
+    color: #505050;
     cursor: pointer;
 }
 
@@ -91,7 +85,7 @@
 }
 
 .schemes li.active {
-    background-color: #e2e5e7
+    background-color: #e2e5e7;
 }
 
 .schemes .color-circle {
@@ -136,18 +130,8 @@
     background-color: #009688;
 }
 
-.schemes .color-circle.soft.blue {
+.schemes .color-circle.soft {
     background-color: #7ab8eb;
-    border-color: #fff;
-}
-
-.schemes .color-circle.soft.blue {
-    background-color: #7ab8eb;
-    border-color: #fff;
-}
-
-.schemes .color-circle.carmine {
-    background-color: #f05b41;
     border-color: #fff;
 }
 
@@ -166,11 +150,10 @@
     border-color: #17171f;
 }
 
-.schemes .color-circle.green.mist {
+.schemes .color-circle.green {
     background-color: #3cbab2;
     border-color: #f5f5f5;
 }
-
 
 .base-theming {
     width: 310px;
@@ -193,7 +176,7 @@
     content: "Base Theming";
     text-transform: uppercase;
     font-weight: bold;
-    color: rgba(156, 156, 156, 255);
+    color: #9c9c9c;
     position: absolute;
     transform: rotate(-90deg);
     top: 45%;
@@ -205,7 +188,7 @@
     width: 140px;
     height: 50px;
     margin-bottom: 18px;
-    color: rgba(156, 156, 156, 255);
+    color: #9c9c9c;
 }
 
 .base-theming li span {
@@ -229,14 +212,9 @@
     color: #fff;
 }
 
-.section.right {
-    display: none;
-}
-
-.base-theming {
-    display: none;
-}
-
+.section.right,
+.base-theming,
 .master .back-button {
     display: none;
 }
+

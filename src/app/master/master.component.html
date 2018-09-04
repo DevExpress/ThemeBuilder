@@ -28,19 +28,19 @@
                 </li>
                 <li>
                     <span>Accent color</span>
-                    <dx-color-box value="#03a9f4" width="140" height="35"></dx-color-box>
+                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseAccent | lowercase}}" width="140" height="35"></dx-color-box>
                 </li>
                 <li>
                     <span>Text color</span>
-                    <dx-color-box value="#000000" width="140" height="35"></dx-color-box>
+                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseTextColor}}" width="140" height="35"></dx-color-box>
                 </li>
                 <li>
-                    <span>Border color</span>
-                    <dx-color-box value="#e0e0e0" width="140" height="35"></dx-color-box>
+                    <span>Border radius</span>
+                    <dx-text-box *ngIf="baseConstants" value="{{baseConstants.baseBorderRadius}}" width="140" height="35"></dx-text-box>
                 </li>
                 <li>
                     <span>Background color</span>
-                    <dx-color-box value="#ffffff" width="140" height="35"></dx-color-box>
+                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseBg}}" width="140" height="35"></dx-color-box>
                 </li>
             </ul>
             <div class="button apply">Save css</div>
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="section right">
-        <div class="dx-viewport dinamyc-styles">
+        <div [ngClass]="dynamicStylesClass">
             <!--app template with theme-->
             <!--<dx-form id="form"
         [formData]="employee" width="400">
