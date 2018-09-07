@@ -1,0 +1,60 @@
+<div [ngSwitch]="url" class="content">
+    <ng-container *ngSwitchCase="''" >
+        <div class="title">ThemeBuilder 2.0</div>
+        <div class="text">1Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div class="blocks">
+            <div class="block" [routerLink]="['/master']">
+                <div class="block-title">Select a Theme</div>
+                <div class="block-image">
+                    <app-icon-themes></app-icon-themes>
+                </div>
+            </div>
+            <div class="block" [routerLink]="['/import']">
+                <div class="block-title">Import Data</div>
+                <div class="block-image">
+                    <app-icon-metadata></app-icon-metadata>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container  *ngSwitchCase="'import'">
+        <div class="title">Import Data</div>
+        <div class="text">3Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div class="blocks">
+            <div class="block" [routerLink]="['/']">
+                <div class="block-title">Import Metadata</div>
+                <div class="block-image">
+                    <app-icon-export></app-icon-export>
+                </div>
+            </div>
+            <div class="block" [routerLink]="['/import-bootstrap']">
+                <div class="block-title">Bootstrap Variables</div>
+                <div class="block-image">
+                    <app-icon-bootstrap></app-icon-bootstrap>
+                </div>
+            </div>
+        </div>    
+    </ng-container>
+    <ng-container *ngSwitchCase="'master'" >
+        <div class="title">Select a Theme</div>
+        <div class="text">2Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div class="blocks">
+            <div class="block" [routerLink]="['/master/generic']">
+                <div class="block-title">Generic</div>
+                <div class="block-image">
+                    <app-icon-generic></app-icon-generic>
+                </div>              
+            </div>
+            <div class="block" [routerLink]="['/master/material']">
+                <div class="block-title">Material Design</div>
+                <div class="block-image">
+                    <app-icon-material></app-icon-material> 
+                </div> 
+            </div>
+        </div>
+    </ng-container>
+    <div class="back-button" *ngIf="url !== ''" [routerLink]="['/']">
+        <app-icon-arrow></app-icon-arrow>
+        <span>Back to theme or import</span>
+    </div>
+</div>
