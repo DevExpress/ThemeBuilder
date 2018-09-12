@@ -23,6 +23,7 @@
         "zone.js": "~0.8.26",
         "devextreme": "~18.1.5",
         "devextreme-angular": "~18.1.5",
+        "devextreme-themebuilder": "^18.2.1-pre-18250",
         "less": "^2.6.1"
     },
     "devDependencies": {
