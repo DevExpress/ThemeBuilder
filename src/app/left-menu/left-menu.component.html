@@ -1,0 +1,8 @@
+<div class="left-menu">
+    <div *ngFor="let menuItem of menuData">
+        <b>{{ menuItem.groupName}}</b>
+        <div *ngFor="let property of menuItem.items">
+            {{ property.Name }}
+        </div>
+    </div>
+</div>

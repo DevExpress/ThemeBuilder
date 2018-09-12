@@ -29,6 +29,8 @@ import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.compo
 import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
+import { AdvancedComponent } from './advanced/advanced.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,9 @@ import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
         IconMetadataComponent,
         IconExportComponent,
         IconBootstrapComponent,
-        IconArrowComponent
+        IconArrowComponent,
+        AdvancedComponent,
+        LeftMenuComponent
     ],
     imports: [
         BrowserModule,
