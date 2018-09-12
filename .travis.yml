@@ -1,0 +1,28 @@
+dist: trusty
+sudo: required
+language: generic
+
+services:
+  - docker
+
+env:
+  matrix:
+    - TARGET=lint
+
+cache:
+  directories:
+    - node_modules
+
+script:
+
+  # clean bloated PATH to prevent conflicts
+  - export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
+  - >
+    docker run -t
+    -e HEADLESS=true
+    -e TARGET=$TARGET
+    -e CONSTEL=$CONSTEL
+    -v $TRAVIS_BUILD_DIR:/devextreme-themebuilder-app
+    docker.io/devexpress/devextreme-themebuilder-app-build:master
+    ./docker-ci.sh

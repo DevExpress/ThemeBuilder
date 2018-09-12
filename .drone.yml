@@ -1,0 +1,21 @@
+# https://github.com/drone/drone/
+
+clone:
+  git:
+    image: plugins/git
+    depth: 50
+
+pipeline:
+
+  build:
+    image: devexpress/devextreme-themebuilder-app-build:master
+    environment:
+      - HEADLESS=true
+    commands:
+      - ./drone-cache.sh restore
+      - ./docker-ci.sh
+      - ./drone-cache.sh rebuild
+
+matrix:
+  include:
+    - { TARGET: lint }
