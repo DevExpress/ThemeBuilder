@@ -3,7 +3,6 @@
 }
 
 .master .section {
-    width: 50%;
     height: 100%;
     text-align: left;
     padding-top: 100px;
@@ -13,11 +12,14 @@
 
 .master .section.left {
     position: relative;
-    min-width: 650px;
+    width: 750px;
 }
 
 .master .section.right {
     display: block;
+    position: absolute;
+    left: 750px;
+    right: 0;
 }
 
 .master .base-theming {

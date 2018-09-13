@@ -18,25 +18,24 @@ export class BuilderService {
 
     metadataPromise = new Promise(function(resolve) { resolve('{}'); });
 
-    buildTheme(themeName, colorScheme, swatchSelector) {
+    buildTheme(baseTheme, swatchSelector) {
         return builder.buildTheme({
             lessCompiler: lessCompiler(window, {}),
             swatchSelector: swatchSelector,
             reader: this.loadLess,
             metadataPromise: this.metadataPromise,
-            themeName: themeName,
-            colorScheme: colorScheme
+            baseTheme: baseTheme
         });
     }
 
     buildBaseConstants(result) {
         const metadata = result.compiledMetadata;
-        let baseConstants = {};
+        const baseConstants = {};
 
-        for(let metadataKey in metadata) {
+        for(const metadataKey in metadata) {
             if(baseParameters.indexOf(metadataKey) === -1) continue;
 
-            let metadataKeyParts =  metadataKey.split('-');
+            const metadataKeyParts =  metadataKey.split('-');
             let key = '';
 
             for(let i = 0; i < metadataKeyParts.length; i++) {
