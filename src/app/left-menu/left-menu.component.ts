@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import * as metadata from 'devextreme-themebuilder/data/metadata/dx-theme-builder-metadata';
 import * as MetadataLoader from 'devextreme-themebuilder/modules/metadata-loader';
 import * as MetadataRepository from 'devextreme-themebuilder/modules/metadata-repository';
 import * as themes from 'devextreme-themebuilder/modules/themes';
@@ -11,7 +10,11 @@ import { LeftMenuAlias, LeftMenuItem, MetaItem } from './left-menu.aliases';
     templateUrl: './left-menu.component.html',
     styleUrls: ['./left-menu.component.css']
 })
+
 export class LeftMenuComponent {
+
+    BASE_THEMING_NAME = 'Base Theming';
+    ORDER_REGEX = /^(\d+).\s/;
 
     constructor(private route: ActivatedRoute) {
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
@@ -26,7 +29,41 @@ export class LeftMenuComponent {
 
     menuData: Array<LeftMenuItem>;
 
+    menuClosed = true;
+    workArea: Array<MetaItem>;
+    workAreaName = this.BASE_THEMING_NAME;
+
+    openMenu() {
+        this.menuClosed = false;
+    }
+
+    openWorkArea(items: Array<MetaItem>, name: string) {
+        const workItems = items || [];
+
+        workItems.forEach(item => {
+            if(item.TypeValues) {
+                item.TypeValuesArray = item.TypeValues.split('|');
+            }
+        });
+
+        this.workArea = workItems.sort((item1, item2) => {
+            const orders = [item1, item2].map(value => Number.parseInt(value.Name.match(this.ORDER_REGEX)[1]));
+            return orders[0] - orders[1];
+        });
+
+        this.workAreaName = name || this.BASE_THEMING_NAME;
+        this.menuClosed = true;
+    }
+
+    getRealName(name) {
+        return name.replace(this.ORDER_REGEX, '');
+    }
+
     changeTheme(theme: string, colorScheme: string) {
+        // менюха будет только для отображения, при обновлении репозитория надо обновить данные в menuData
+        // и в this.workArea, если они не обновятся сами
+
+        // рпепозиторий сделать сервисом с возможностью подписки
         this.metadataPromise.then(() => {
             const groupedMetadata = this.metadataRepository.getData({
                 name: theme,
@@ -48,7 +85,7 @@ export class LeftMenuComponent {
                             widgetGroups[mainGroupKey] = [];
                         }
                         widgetGroups[mainGroupKey].push({
-                            Separator: true,
+                            GroupHeader: true,
                             Name: groupName
                         });
                         Array.prototype.push.apply(widgetGroups[mainGroupKey], groupedMetadata[groupKey]);

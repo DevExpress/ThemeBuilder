@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { AppRoutingModule } from './app-routing.module';
 
 import {
@@ -14,7 +15,8 @@ import {
     DxSelectBoxModule,
     DxNumberBoxModule,
     DxColorBoxModule,
-    DxFormModule
+    DxFormModule,
+    DxScrollViewModule
 } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
@@ -60,6 +62,7 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
         DxNumberBoxModule,
         DxColorBoxModule,
         DxButtonModule,
+        DxScrollViewModule,
         AppRoutingModule
     ],
     providers: [BuilderService],

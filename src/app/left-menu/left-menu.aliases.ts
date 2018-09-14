@@ -51,8 +51,8 @@ export class LeftMenuAlias {
         'list':                 { name: 'List', order: 1200 },
 
         'layouts':              { name: 'Layouts', order: 1300 },
-        'layouts.desktop':      { name: 'Desktop', order: 1310 },
-        'layouts.split':        { name: 'Split', order: 1320 },
+        'layouts.desktop':      { name: 'Desktop', order: 1310, widgetGroup: true },
+        'layouts.split':        { name: 'Split', order: 1320, widgetGroup: true },
 
         'navigations':          { name: 'Navigation', order: 1400 },
         'navigations.accordion': { name: 'Accordion', order: 1410 },
@@ -79,7 +79,11 @@ export class MetaItem {
     Key: string;
     Group: string;
     Value: string;
-    Separator: boolean;
+    GroupHeader: boolean;
+    IsLastSubGroupItem: boolean;
+    Type: string;
+    TypeValues: string;
+    TypeValuesArray: Array<string>;
 }
 
 export class LeftMenuItem {
