@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as MetadataLoader from 'devextreme-themebuilder/modules/metadata-loader';
 import * as MetadataRepository from 'devextreme-themebuilder/modules/metadata-repository';
@@ -11,25 +11,15 @@ import { LeftMenuAlias, LeftMenuItem, MetaItem } from './left-menu.aliases';
     styleUrls: ['./left-menu.component.css']
 })
 
-export class LeftMenuComponent {
+export class LeftMenuComponent implements OnChanges {
 
     BASE_THEMING_NAME = 'Base Theming';
     ORDER_REGEX = /^(\d+).\s/;
 
-    constructor(private route: ActivatedRoute) {
-        this.metadataRepository = new MetadataRepository(new MetadataLoader());
-        this.metadataPromise = this.metadataRepository.init(themes);
-        this.route.params.subscribe(params => {
-            this.theme = params['theme'];
-            this.colorScheme = params['color-scheme'];
-            this.changeTheme(this.theme, this.colorScheme).then(() => {
-                this.changeWidget(params['widget']);
-            });
-        });
-    }
-
-    theme: string;
-    colorScheme: string;
+    @Input('metaValues') metaValues: Array<any>;
+    @Input('theme') theme: string;
+    @Input('colorScheme') colorScheme: string;
+    widget: string;
 
     metadataPromise: Promise<any>;
     metadataRepository: MetadataRepository;
@@ -40,17 +30,23 @@ export class LeftMenuComponent {
     workArea: Array<MetaItem>;
     workAreaName = this.BASE_THEMING_NAME;
 
+    constructor(private route: ActivatedRoute) {
+        this.metadataRepository = new MetadataRepository(new MetadataLoader());
+        this.metadataPromise = this.metadataRepository.init(themes);
+        this.route.params.subscribe(params => {
+            this.widget = params['widget'];
+            this.changeWidget(this.widget);
+        });
+    }
+
     openMenu() {
         this.menuClosed = false;
     }
 
     changeWidget(widget: string) {
-        if(!this) { return; }
-        for(const item of this.menuData) {
-            if(item.groupKey === widget) {
-                this.openWorkArea(item.items, item.groupName);
-                break;
-            }
+        const item = this.menuData && this.menuData.find(value => value.groupKey === widget);
+        if(item) {
+            this.openWorkArea(item.items, item.groupName);
         }
     }
 
@@ -82,59 +78,82 @@ export class LeftMenuComponent {
 
         // рпепозиторий сделать сервисом с возможностью подписки
 
+        return this.metadataPromise.then(() => {
+            const groupedMetadata = this.metadataRepository.getData({
+                name: theme,
+                colorScheme: colorScheme
+            });
 
-        return new Promise(resolve => {
-            this.metadataPromise.then(() => {
-                const groupedMetadata = this.metadataRepository.getData({
-                    name: theme,
-                    colorScheme: colorScheme
-                });
+            const widgetGroups: any = {};
+            const itemArray: Array<LeftMenuItem> = [];
 
-                const widgetGroups: any = {};
-                const itemArray: Array<LeftMenuItem> = [];
+            for(const groupKey in groupedMetadata) {
+                if(groupedMetadata.hasOwnProperty(groupKey)) {
+                    const aliasInfo = LeftMenuAlias.getAlias(groupKey);
+                    const groupName = aliasInfo.name;
+                    if(!aliasInfo) { continue; }
 
-                for(const groupKey in groupedMetadata) {
-                    if(groupedMetadata.hasOwnProperty(groupKey)) {
-                        const aliasInfo = LeftMenuAlias.getAlias(groupKey);
-                        const groupName = aliasInfo.name;
-                        if(!aliasInfo) { continue; }
-
-                        if(aliasInfo.widgetGroup) {
-                            const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
-                            if(!widgetGroups[mainGroupKey]) {
-                                widgetGroups[mainGroupKey] = [];
-                            }
-                            widgetGroups[mainGroupKey].push({
-                                GroupHeader: true,
-                                Name: '0. ' + groupName,
-                                Items: groupedMetadata[groupKey]
-                            });
-                        } else {
-                            itemArray.push({
-                                order: aliasInfo.order,
-                                groupKey: groupKey,
-                                groupName: groupName,
-                                items: groupedMetadata[groupKey]
-                            });
+                    if(aliasInfo.widgetGroup) {
+                        const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
+                        if(!widgetGroups[mainGroupKey]) {
+                            widgetGroups[mainGroupKey] = [];
                         }
-                    }
-                }
-
-                for(const widgetGroupKey in widgetGroups) {
-                    if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
-                        const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
+                        widgetGroups[mainGroupKey].push({
+                            GroupHeader: true,
+                            Name: '0. ' + groupName,
+                            Items: groupedMetadata[groupKey]
+                        });
+                    } else {
                         itemArray.push({
                             order: aliasInfo.order,
-                            groupKey: widgetGroupKey,
-                            groupName: aliasInfo.name,
-                            items: widgetGroups[widgetGroupKey]
+                            groupKey: groupKey,
+                            groupName: groupName,
+                            items: groupedMetadata[groupKey]
                         });
                     }
                 }
+            }
 
-                this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
-                resolve();
-            });
+            for(const widgetGroupKey in widgetGroups) {
+                if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
+                    const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
+                    itemArray.push({
+                        order: aliasInfo.order,
+                        groupKey: widgetGroupKey,
+                        groupName: aliasInfo.name,
+                        items: widgetGroups[widgetGroupKey]
+                    });
+                }
+            }
+
+            this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
         });
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log('lm - changes');
+
+        if(changes.theme && changes.theme.currentValue || changes.colorScheme && changes.colorScheme.currentValue) {
+            const theme = changes.theme.currentValue;
+            const colorScheme = changes.colorScheme.currentValue;
+            this.changeTheme(theme, colorScheme).then(() => {
+                this.changeWidget(this.widget);
+            });
+        }
+
+        if(changes.metaValues && changes.metaValues.currentValue) {
+            const meta = changes.metaValues.currentValue;
+            for(const menuItem of this.menuData) {
+                for(const data of menuItem.items) {
+                    data.Value = meta[data.Key];
+
+                    if(data.Items && data.Items.length) {
+                        for(const nestedData of data.Items) {
+                            nestedData.Value = meta[nestedData.Key];
+                        }
+                    }
+                }
+            }
+        }
     }
 }
