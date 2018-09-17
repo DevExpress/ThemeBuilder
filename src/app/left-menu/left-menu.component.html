@@ -42,7 +42,7 @@
         </ng-template>
     </div>
     <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">
-            <div class="menu-item top" (click)="openWorkArea()">
+            <div class="menu-item top" [routerLink]="['/advanced', theme, colorScheme]">
                 All Widgets
                 <span class="arrow dx-icon-chevronright"></span>
             </div>
@@ -51,8 +51,7 @@
                 <dx-scroll-view>
                     <div
                         *ngFor="let menuItem of menuData"
-                        class="menu-item"
-                        (click)="openWorkArea(menuItem.items, menuItem.groupName)"
+                        class="menu-item" [routerLink]="['/advanced', theme, colorScheme, menuItem.groupKey]"
                     >
                         {{ menuItem.groupName }}
                     </div>

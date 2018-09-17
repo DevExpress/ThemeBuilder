@@ -20,9 +20,16 @@ export class LeftMenuComponent {
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
         this.metadataPromise = this.metadataRepository.init(themes);
         this.route.params.subscribe(params => {
-            this.changeTheme(params['theme'], params['color-scheme']);
+            this.theme = params['theme'];
+            this.colorScheme = params['color-scheme'];
+            this.changeTheme(this.theme, this.colorScheme).then(() => {
+                this.changeWidget(params['widget']);
+            });
         });
     }
+
+    theme: string;
+    colorScheme: string;
 
     metadataPromise: Promise<any>;
     metadataRepository: MetadataRepository;
@@ -33,12 +40,18 @@ export class LeftMenuComponent {
     workArea: Array<MetaItem>;
     workAreaName = this.BASE_THEMING_NAME;
 
-    show(i) {
-        console.log(i);
-    }
-
     openMenu() {
         this.menuClosed = false;
+    }
+
+    changeWidget(widget: string) {
+        if(!this) { return; }
+        for(const item of this.menuData) {
+            if(item.groupKey === widget) {
+                this.openWorkArea(item.items, item.groupName);
+                break;
+            }
+        }
     }
 
     openWorkArea(items: Array<MetaItem>, name: string) {
@@ -68,55 +81,60 @@ export class LeftMenuComponent {
         // и в this.workArea, если они не обновятся сами
 
         // рпепозиторий сделать сервисом с возможностью подписки
-        this.metadataPromise.then(() => {
-            const groupedMetadata = this.metadataRepository.getData({
-                name: theme,
-                colorScheme: colorScheme
-            });
 
-            const itemArray: Array<LeftMenuItem> = [];
-            const widgetGroups: any = {};
 
-            for(const groupKey in groupedMetadata) {
-                if(groupedMetadata.hasOwnProperty(groupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(groupKey);
-                    const groupName = aliasInfo.name;
-                    if(!aliasInfo) { continue; }
+        return new Promise(resolve => {
+            this.metadataPromise.then(() => {
+                const groupedMetadata = this.metadataRepository.getData({
+                    name: theme,
+                    colorScheme: colorScheme
+                });
 
-                    if(aliasInfo.widgetGroup) {
-                        const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
-                        if(!widgetGroups[mainGroupKey]) {
-                            widgetGroups[mainGroupKey] = [];
+                const widgetGroups: any = {};
+                const itemArray: Array<LeftMenuItem> = [];
+
+                for(const groupKey in groupedMetadata) {
+                    if(groupedMetadata.hasOwnProperty(groupKey)) {
+                        const aliasInfo = LeftMenuAlias.getAlias(groupKey);
+                        const groupName = aliasInfo.name;
+                        if(!aliasInfo) { continue; }
+
+                        if(aliasInfo.widgetGroup) {
+                            const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
+                            if(!widgetGroups[mainGroupKey]) {
+                                widgetGroups[mainGroupKey] = [];
+                            }
+                            widgetGroups[mainGroupKey].push({
+                                GroupHeader: true,
+                                Name: '0. ' + groupName,
+                                Items: groupedMetadata[groupKey]
+                            });
+                        } else {
+                            itemArray.push({
+                                order: aliasInfo.order,
+                                groupKey: groupKey,
+                                groupName: groupName,
+                                items: groupedMetadata[groupKey]
+                            });
                         }
-                        widgetGroups[mainGroupKey].push({
-                            GroupHeader: true,
-                            Name: '0. ' + groupName,
-                            Items: groupedMetadata[groupKey]
-                        });
-                    } else {
+                    }
+                }
+
+                for(const widgetGroupKey in widgetGroups) {
+                    if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
+                        const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
                         itemArray.push({
                             order: aliasInfo.order,
-                            groupKey: groupKey,
-                            groupName: groupName,
-                            items: groupedMetadata[groupKey]
+                            groupKey: widgetGroupKey,
+                            groupName: aliasInfo.name,
+                            items: widgetGroups[widgetGroupKey]
                         });
                     }
                 }
-            }
 
-            for(const widgetGroupKey in widgetGroups) {
-                if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
-                    itemArray.push({
-                        order: aliasInfo.order,
-                        groupKey: widgetGroupKey,
-                        groupName: aliasInfo.name,
-                        items: widgetGroups[widgetGroupKey]
-                    });
-                }
-            }
-
-            this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
+                this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
+                resolve();
+            });
         });
     }
 }
