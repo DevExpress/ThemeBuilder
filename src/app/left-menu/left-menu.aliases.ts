@@ -84,6 +84,7 @@ export class MetaItem {
     Type: string;
     TypeValues: string;
     TypeValuesArray: Array<string>;
+    Items: Array<MetaItem>;
 }
 
 export class LeftMenuItem {

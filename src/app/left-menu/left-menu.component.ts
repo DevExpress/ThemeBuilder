@@ -33,6 +33,10 @@ export class LeftMenuComponent {
     workArea: Array<MetaItem>;
     workAreaName = this.BASE_THEMING_NAME;
 
+    show(i) {
+        console.log(i);
+    }
+
     openMenu() {
         this.menuClosed = false;
     }
@@ -86,9 +90,9 @@ export class LeftMenuComponent {
                         }
                         widgetGroups[mainGroupKey].push({
                             GroupHeader: true,
-                            Name: groupName
+                            Name: '0. ' + groupName,
+                            Items: groupedMetadata[groupKey]
                         });
-                        Array.prototype.push.apply(widgetGroups[mainGroupKey], groupedMetadata[groupKey]);
                     } else {
                         itemArray.push({
                             order: aliasInfo.order,

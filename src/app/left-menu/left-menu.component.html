@@ -1,20 +1,27 @@
 <div class="left-menu">
     
     <div class="working-area">
-        <div class="name" (click)="openMenu()">{{ workAreaName }}</div>
+        <div class="name" (click)="openMenu()">
+            <span class="arrow dx-icon-chevronleft"></span>{{ workAreaName }}
+        </div>
         <div *ngIf="workArea && workArea.length; then workingArea; else baseSettings"></div>
         <ng-template #workingArea>
             <div class="scroll-container">
                 <dx-scroll-view>
                     <div *ngFor="let workItem of workArea" class="work-item">
-                        <div *ngIf="workItem.GroupHeader" class="group-header">{{ getRealName(workItem.Name) }}</div>
-                        <div *ngIf="!workItem.GroupHeader" class="property">
-                            <div class="header">{{ getRealName(workItem.Name) }}</div>
-                            <div class="widget">
-                                <dx-select-box *ngIf="workItem.Type === 'select'" [value]="workItem.Value" [items]="workItem.TypeValuesArray"></dx-select-box>
-                                <dx-text-box *ngIf="workItem.Type === 'text'" [value]="workItem.Value"></dx-text-box>
-                                <dx-color-box *ngIf="workItem.Type === 'color'" [value]="workItem.Value"></dx-color-box>
+                        <div *ngIf="workItem.GroupHeader" class="group" #group>
+                            <div class="group-header" (click)="group.classList.toggle('closed')">
+                                {{ getRealName(workItem.Name) }}
+                                <span class="arrow dx-icon-chevronup"></span>
                             </div>
+                            <div class="group-items">
+                                <ng-container *ngFor="let item of workItem.Items">
+                                    <ng-container *ngTemplateOutlet="propertyItem; context: item"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div *ngIf="!workItem.GroupHeader">
+                            <ng-container *ngTemplateOutlet="propertyItem; context: workItem"></ng-container>
                         </div>
                     </div>
                 </dx-scroll-view>
@@ -22,6 +29,16 @@
         </ng-template>
         <ng-template #baseSettings>
             Some base<div (click)="menuClosed = false;">1</div>
+        </ng-template>
+
+        <ng-template #propertyItem let-name="Name" let-type="Type" let-value="Value" let-array="TypeValuesArray" let-last="IsLastSubGroupItem">
+            <div class="property-header">{{ getRealName(name) }}</div>
+            <div class="property-widget">
+                <dx-select-box *ngIf="type === 'select'" [value]="value" [items]="array"></dx-select-box>
+                <dx-text-box *ngIf="type === 'text'" [value]="value"></dx-text-box>
+                <dx-color-box *ngIf="type === 'color'" [value]="value"></dx-color-box>
+            </div>
+            <div *ngIf="last" class="property-delimiter"></div>
         </ng-template>
     </div>
     <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">

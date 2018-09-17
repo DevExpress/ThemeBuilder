@@ -9,6 +9,11 @@
     width: 100%;
 }
 
+.arrow {
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .left-menu .dark-menu {
     position: absolute;
     top: 0;
@@ -53,12 +58,12 @@
 .left-menu .dark-menu .menu-item.top .arrow {
     float: right;
     line-height: 24px;
-    font-size: 12px;
 }
 
 .left-menu .working-area {
     width: 240px;
     background-color: #fafbfb;
+    height: 100%;
 }
 
 .left-menu .working-area .name {
@@ -69,27 +74,64 @@
     color: #505050;
     border-bottom: 1px solid #e3e7ea;
     font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
+    position: relative;
+}
+
+.left-menu .working-area .name .arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    left: 10px;
 }
 
 .left-menu .working-area .scroll-container {
     top: 44px;
     bottom: 0;
     width: 240px;
+    position: absolute;
 }
 
-.left-menu .working-area .work-item .group-header {
+.left-menu .working-area .work-item .group.closed .group-items {
+    display: none;
+}
+
+.left-menu .working-area .work-item .group .group-header {
     text-transform: uppercase;
     font-weight: bold;
+    padding: 20px 20px 0 0;
+    cursor: pointer;
+}
+
+.left-menu .working-area .work-item .group .group-header .arrow {
+    float: right;
+    line-height: 20px;
+    transition: transform 200ms;
+}
+
+.left-menu .working-area .work-item .group.closed .group-header .arrow {
+    transform: rotate(180deg);
 }
 
 .left-menu .working-area .work-item {
-    padding: 0 20px 0 30px;
+    padding-left:30px;
 }
 
-.left-menu .working-area .work-item .property {
+.left-menu .working-area .work-item:last-child {
+    padding-bottom: 20px;
 }
 
-.left-menu .working-area .work-item .property .header {
+.left-menu .working-area .work-item .property-header {
+    padding: 20px 20px 3px 0;
+}
+
+.left-menu .working-area .work-item .property-widget {
+    padding-right: 20px;
+}
+
+.left-menu .working-area .work-item .property-delimiter {
+    margin-top: 20px;
+    height: 1px;
+    background-color: #e3e7ea;
 }
 
 
