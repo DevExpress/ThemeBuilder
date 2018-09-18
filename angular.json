@@ -41,6 +41,21 @@
                                 "glob": "dx.common.css",
                                 "input": "./node_modules/devextreme/dist/css",
                                 "output": "data/css"
+                            },
+                            {
+                                "glob": "dx.light.css",
+                                "input": "./node_modules/devextreme/dist/css",
+                                "output": "data/css"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/devextreme/dist/css/icons",
+                                "output": "icons"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/devextreme/dist/css/fonts",
+                                "output": "fonts"
                             }
                         ],
                         "styles": [

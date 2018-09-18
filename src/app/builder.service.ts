@@ -35,9 +35,9 @@ export class BuilderService {
         const baseConstants = {};
 
         for(const metadataKey in metadata) {
-            if(baseParameters.indexOf(metadataKey) === -1) { continue; }
+            if(baseParameters.indexOf(metadataKey) === -1) continue;
 
-            const metadataKeyParts = metadataKey.split('-');
+            const metadataKeyParts =  metadataKey.split('-');
             let key = '';
 
             for(let i = 0; i < metadataKeyParts.length; i++) {

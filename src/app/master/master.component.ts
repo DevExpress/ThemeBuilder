@@ -51,7 +51,8 @@ export class MasterComponent {
                     const style = document.createElement('style');
                     const DYNAMIC_STYLES_ID = 'dynamic-styles';
 
-                    document.getElementById(DYNAMIC_STYLES_ID) && document.getElementById(DYNAMIC_STYLES_ID).remove();
+                    if(document.getElementById(DYNAMIC_STYLES_ID))
+                        document.getElementById(DYNAMIC_STYLES_ID).remove();
 
                     style.type = 'text/css';
                     style.id = DYNAMIC_STYLES_ID;
