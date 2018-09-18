@@ -50,12 +50,12 @@
                             {
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme/dist/css/icons",
-                                "output": "icons"
+                                "output": "data/css/icons"
                             },
                             {
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme/dist/css/fonts",
-                                "output": "fonts"
+                                "output": "data/css/fonts"
                             }
                         ],
                         "styles": [

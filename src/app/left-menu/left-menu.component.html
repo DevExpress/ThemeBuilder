@@ -42,7 +42,7 @@
         </ng-template>
     </div>
     <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">
-            <div class="menu-item top" [routerLink]="['/advanced', theme, colorScheme]">
+            <div class="menu-item top" [routerLink]="['/advanced', theme, colorScheme]" (click)="menuClosed = true;">
                 All Widgets
                 <span class="arrow dx-icon-chevronright"></span>
             </div>
@@ -52,6 +52,7 @@
                     <div
                         *ngFor="let menuItem of menuData"
                         class="menu-item" [routerLink]="['/advanced', theme, colorScheme, menuItem.groupKey]"
+                        (click)="menuClosed = true;"
                     >
                         {{ menuItem.groupName }}
                     </div>
