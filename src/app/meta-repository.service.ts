@@ -38,9 +38,9 @@ export class MetadataRepositoryService {
         return this.metadataPromise.then(() => {
             const result = [];
             const themeData = this.metadataRepository.getData(theme);
-            for(const t in themeData) {
-                if(themeData.hasOwnProperty(t)) {
-                    const groups = themeData[t];
+            for(const themeName in themeData) {
+                if(themeData.hasOwnProperty(themeName)) {
+                    const groups = themeData[themeName];
                     groups.forEach(item => {
                         if(item.IsModified) {
                             result.push({ key: item.Key, value: item.Value });

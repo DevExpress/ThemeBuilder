@@ -11,8 +11,8 @@ import { MetadataRepositoryService } from '../meta-repository.service';
 
 export class LeftMenuComponent implements OnChanges {
 
-    BASE_THEMING_NAME = 'Base Theming';
-    ORDER_REGEX = /^(\d+).\s/;
+    private BASE_THEMING_NAME = 'Base Theming';
+    private ORDER_REGEX = /^(\d+).\s/;
 
     @Output() variableChange = new EventEmitter<any>();
     @Input('metaValues') metaValues: Array<any>;
