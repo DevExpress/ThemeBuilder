@@ -45,7 +45,7 @@ export class MasterComponent {
         }
 
         if(this.isMaster) {
-            this.builderService.buildTheme(this.themeName, this.colorScheme, false)
+            this.builderService.buildTheme(this.themeName, this.colorScheme, false, null)
                 .then((result) => {
                     const head = document.getElementsByTagName('head')[0];
                     const style = document.createElement('style');

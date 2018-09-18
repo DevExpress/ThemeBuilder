@@ -33,6 +33,7 @@ import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.co
 import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { MetadataRepositoryService } from './meta-repository.service';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,7 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
         DxScrollViewModule,
         AppRoutingModule
     ],
-    providers: [BuilderService],
+    providers: [BuilderService, MetadataRepositoryService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

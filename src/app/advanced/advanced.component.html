@@ -1,7 +1,4 @@
 <div class="advanced">
-    <app-left-menu [metaValues]="meta" [theme]="theme" [colorScheme]="colorScheme"></app-left-menu>
+    <app-left-menu [metaValues]="meta" [theme]="theme" [colorScheme]="colorScheme" (variableChange)="variableChange($event)"></app-left-menu>
     <div class="preview"></div>
-
-
-    <div [routerLink]="['/advanced/material/blue-light/datagrid']">12313</div>
 </div>
