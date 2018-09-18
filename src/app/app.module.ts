@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { AppRoutingModule } from './app-routing.module';
 
 import {
@@ -14,7 +15,8 @@ import {
     DxSelectBoxModule,
     DxNumberBoxModule,
     DxColorBoxModule,
-    DxFormModule
+    DxFormModule,
+    DxScrollViewModule
 } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
@@ -29,6 +31,9 @@ import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.compo
 import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
+import { AdvancedComponent } from './advanced/advanced.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { MetadataRepositoryService } from './meta-repository.service';
 
 @NgModule({
     declarations: [
@@ -42,7 +47,9 @@ import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
         IconMetadataComponent,
         IconExportComponent,
         IconBootstrapComponent,
-        IconArrowComponent
+        IconArrowComponent,
+        AdvancedComponent,
+        LeftMenuComponent
     ],
     imports: [
         BrowserModule,
@@ -56,9 +63,10 @@ import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
         DxNumberBoxModule,
         DxColorBoxModule,
         DxButtonModule,
+        DxScrollViewModule,
         AppRoutingModule
     ],
-    providers: [BuilderService],
+    providers: [BuilderService, MetadataRepositoryService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,7 +30,6 @@ export class MasterComponent {
     }
 
     changeContent() {
-        const currentTheme = [this.themeName, this.colorScheme.replace(/-/, '.')].join('.');
         this.isMaster = this.colorScheme.length > 0;
         this.themes = themes.filter(t => t.name === this.themeName);
 
@@ -46,7 +45,7 @@ export class MasterComponent {
         }
 
         if(this.isMaster) {
-            this.builderService.buildTheme(currentTheme, false)
+            this.builderService.buildTheme(this.themeName, this.colorScheme, false, null)
                 .then((result) => {
                     const head = document.getElementsByTagName('head')[0];
                     const style = document.createElement('style');
