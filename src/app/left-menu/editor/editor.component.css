@@ -1,0 +1,13 @@
+.property-header {
+    padding: 20px 20px 3px 0;
+}
+
+.property-widget {
+    padding-right: 20px;
+}
+
+.property-delimiter {
+    margin-top: 20px;
+    height: 1px;
+    background-color: #e3e7ea;
+}

@@ -16,12 +16,12 @@
                             </div>
                             <div class="group-items">
                                 <ng-container *ngFor="let item of workItem.Items">
-                                    <ng-container *ngTemplateOutlet="propertyItem; context: item"></ng-container>
+                                    <app-editor [item]="item" (changed)="valueChanged()"></app-editor>
                                 </ng-container>
                             </div>
                         </div>
                         <div *ngIf="!workItem.GroupHeader">
-                            <ng-container *ngTemplateOutlet="propertyItem; context: workItem"></ng-container>
+                            <app-editor [item]="workItem" (changed)="valueChanged()"></app-editor>
                         </div>
                     </div>
                 </dx-scroll-view>
@@ -29,16 +29,6 @@
         </ng-template>
         <ng-template #baseSettings>
             Some base<div (click)="menuClosed = false;">1</div>
-        </ng-template>
-
-        <ng-template #propertyItem let-name="Name" let-type="Type" let-value="Value" let-array="TypeValuesArray" let-last="IsLastSubGroupItem" let-key="Key">
-            <div class="property-header">{{ getRealName(name) }}</div>
-            <div class="property-widget">
-                <dx-select-box *ngIf="type === 'select'" [value]="value" [items]="array" (onValueChanged)="valueChanged($event, key)"></dx-select-box>
-                <dx-text-box *ngIf="type === 'text'" [value]="value" (onValueChanged)="valueChanged($event, key)"></dx-text-box>
-                <dx-color-box *ngIf="type === 'color'" [value]="value" (onValueChanged)="valueChanged($event, key)"></dx-color-box>
-            </div>
-            <div *ngIf="last" class="property-delimiter"></div>
         </ng-template>
     </div>
     <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">

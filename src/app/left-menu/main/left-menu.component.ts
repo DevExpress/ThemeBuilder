@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LeftMenuAlias, LeftMenuItem, MetaItem } from './left-menu.aliases';
-import { MetadataRepositoryService } from '../meta-repository.service';
+import { LeftMenuAlias, LeftMenuItem, MetaItem } from '../left-menu.aliases';
+import { MetadataRepositoryService } from '../../meta-repository.service';
+import { NamesService } from '../../names.service';
 
 @Component({
     selector: 'app-left-menu',
@@ -12,9 +13,8 @@ import { MetadataRepositoryService } from '../meta-repository.service';
 export class LeftMenuComponent implements OnChanges {
 
     private BASE_THEMING_NAME = 'Base Theming';
-    private ORDER_REGEX = /^(\d+).\s/;
 
-    @Output() variableChange = new EventEmitter<any>();
+    @Output() variableChange = new EventEmitter<void>();
     @Input('metaValues') metaValues: Array<any>;
     @Input('theme') theme: string;
     @Input('colorScheme') colorScheme: string;
@@ -26,28 +26,15 @@ export class LeftMenuComponent implements OnChanges {
     workArea: Array<MetaItem>;
     workAreaName = this.BASE_THEMING_NAME;
 
-    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService) {
+    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe(params => {
             this.widget = params['widget'];
             this.changeWidget(this.widget);
         });
     }
 
-    valueChanged(e: any, key: string) {
-        this.metaRepository.getDataItemByKey(key, { name: this.theme, colorScheme: this.colorScheme }).then(dataItem => {
-            if(dataItem.Value === e.value) {
-                return;
-            }
-
-            dataItem.Value = e.value;
-
-            if(e.previousValue === undefined) {
-                return;
-            }
-
-            dataItem.IsModified = true;
-            this.variableChange.emit();
-        });
+    valueChanged() {
+        this.variableChange.emit();
     }
 
     openMenu() {
@@ -70,24 +57,16 @@ export class LeftMenuComponent implements OnChanges {
             }
         });
 
-        this.workArea = workItems.sort((item1, item2) => {
-            const orders = [item1, item2].map(value => Number.parseInt(value.Name.match(this.ORDER_REGEX)[1]));
-            return orders[0] - orders[1];
-        });
+        this.workArea = workItems.sort((item1, item2) => this.names.sortNames(item1.Name, item2.Name));
 
         this.workAreaName = name || this.BASE_THEMING_NAME;
         this.menuClosed = true;
     }
 
-    getRealName(name) {
-        return name.replace(this.ORDER_REGEX, '');
-    }
+    getRealName = name => this.names.getRealName(name);
 
-    changeTheme(theme: string, colorScheme: string) {
-        return this.metaRepository.getData({
-            name: theme,
-            colorScheme: colorScheme
-        }).then(groupedMetadata => {
+    loadThemeMetadata() {
+        return this.metaRepository.getData().then(groupedMetadata => {
             const widgetGroups: any = {};
             const itemArray: Array<LeftMenuItem> = [];
 
@@ -136,9 +115,7 @@ export class LeftMenuComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if(changes.theme && changes.theme.currentValue || changes.colorScheme && changes.colorScheme.currentValue) {
-            const theme = changes.theme.currentValue;
-            const colorScheme = changes.colorScheme.currentValue;
-            this.changeTheme(theme, colorScheme).then(() => {
+            this.loadThemeMetadata().then(() => {
                 this.changeWidget(this.widget);
             });
         }

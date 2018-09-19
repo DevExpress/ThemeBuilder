@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { BuilderService } from './../builder.service';
 import { ActivatedRoute } from '@angular/router';
-import { MetaItem } from '../left-menu/left-menu.aliases';
-import { MetadataRepositoryService } from '../meta-repository.service';
 
 @Component({
     selector: 'app-advanced',
