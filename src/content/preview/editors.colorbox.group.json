@@ -1,0 +1,13 @@
+{
+"id": "editors.colorbox", 
+"widgets": [
+		{
+			"name": "dxColorBox",
+			"supportedThemes": ["all"],
+			"options": {
+				"value": "rgba(89, 168, 61, .7)",
+				"editAlphaChannel": true
+			}
+		}
+]
+}

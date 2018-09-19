@@ -1,0 +1,13 @@
+{
+"id": "buttons.normal", 
+"widgets": [
+	{
+			"name": "dxButton",
+			"supportedThemes": ["all"],
+			"options": {
+				"text": "Normal",
+				"type": "normal"
+			}
+		}
+]
+}

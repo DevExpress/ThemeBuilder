@@ -1,0 +1,19 @@
+{
+"id": "navigations.navbar",
+"widgets": [
+    { 
+	    "name": "dxNavBar",
+	    "supportedThemes": ["all"],
+	    "options": { 
+		    "dataSource": [
+			    { "text": "user", "icon": "user" },
+			    { "text": "find", "icon": "find" },
+			    { "text": "favorites", "icon": "favorites" },
+			    { "text": "about", "icon": "info" },
+			    { "text": "home", "icon": "home", "badge": 77 },
+			    { "text": "URI", "icon": "tips", "disabled": true }
+		    ]
+	    }
+    }
+]
+}

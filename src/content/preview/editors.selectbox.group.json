@@ -1,0 +1,13 @@
+{
+"id": "editors.selectbox", 
+"widgets": [
+		{
+			"name": "dxSelectBox",
+			"title": "dxSelectBox",
+			"supportedThemes": ["all"],
+			"options": {
+				"items": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+			}
+		}
+]
+}

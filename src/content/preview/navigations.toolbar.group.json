@@ -1,0 +1,17 @@
+{
+"id": "navigations.toolbar", 
+"widgets": [
+	{ 
+		"name": "dxToolbar",
+		"supportedThemes": ["all"],
+		"options": {
+			"dataSource":[
+				{ "location": "before", "widget": "button", "options": { "type": "back", "text": "Back" }},
+				{ "location": "after", "widget": "button", "options": { "icon": "plus" } },
+				{ "location": "after", "widget": "button", "options": { "icon": "find" } },
+				{ "location": "center", "text": "Products" }
+			]
+		}
+	}
+]
+}

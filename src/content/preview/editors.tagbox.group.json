@@ -1,0 +1,12 @@
+{
+    "id": "editors.tagbox",
+    "widgets": [
+        {
+            "name": "dxTagBox",
+            "supportedThemes": ["all"],
+            "options": {
+                "items": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            }
+        }
+    ]
+}

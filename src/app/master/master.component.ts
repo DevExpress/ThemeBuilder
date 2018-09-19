@@ -17,6 +17,7 @@ export class MasterComponent {
     leftThemes: any;
     isCompactThemes = false;
     baseConstants: any;
+    iframeData: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -47,18 +48,7 @@ export class MasterComponent {
         if(this.isMaster) {
             this.builderService.buildTheme(this.themeName, this.colorScheme, false, null)
                 .then((result) => {
-                    const head = document.getElementsByTagName('head')[0];
-                    const style = document.createElement('style');
-                    const DYNAMIC_STYLES_ID = 'dynamic-styles';
-
-                    if(document.getElementById(DYNAMIC_STYLES_ID))
-                        document.getElementById(DYNAMIC_STYLES_ID).remove();
-
-                    style.type = 'text/css';
-                    style.id = DYNAMIC_STYLES_ID;
-                    style.appendChild(document.createTextNode(result.css));
-                    head.appendChild(style);
-
+                    this.iframeData = result;
                     this.baseConstants = this.builderService.buildBaseConstants(result);
                 });
         }

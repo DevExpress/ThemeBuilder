@@ -1,0 +1,22 @@
+{
+"id": "editors.checkbox",
+"ord": 4,
+"widgets": [
+	{
+			"name": "dxCheckBox",
+			"title": "dxCheckBox",
+			"supportedThemes": ["all"],
+			"options": {
+				"checked": true
+            }
+		},
+		{
+			"name": "dxCheckBox",
+			"title": "Disabled dxCheckBox",
+			"supportedThemes": ["all"],
+			"options": {
+				"disabled": true
+            }
+		}
+]
+}

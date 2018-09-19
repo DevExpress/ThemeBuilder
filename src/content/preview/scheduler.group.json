@@ -1,0 +1,58 @@
+{
+"id": "scheduler", 
+"widgets": [
+    {
+        "name": "dxScheduler",
+        "id": "scheduler-preview",
+        "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+        "options": {
+            "views": [ "month", "week", "day" ],
+            "currentDate": 1433106000000,
+            "height": 700,
+            "currentView": "week",
+            "firstDayOfWeek": 1,
+            "startDayHour": 2,
+            "endDayHour": 11,
+            "dataSource": [
+                {
+                    "startDate": 1433113200000,
+                    "endDate":  1433115000000,
+                    "text": "The first appointment"
+                },
+                {
+                    "startDate": 1433296800000,
+                    "endDate":  1433298600000,
+                    "text": "The second appointment"
+                }
+            ]
+        }
+    },
+    {
+        "name": "dxScheduler",
+        "id": "scheduler-preview",
+        "supportedThemes":  [ "ios7-default" ],
+        "options": {
+            "views": [ "month", "week", "day" ],
+            "currentDate":  1433106000000,
+            "currentView": "week",
+            "firstDayOfWeek": 1,
+            "startDayHour": 2,
+            "endDayHour": 6,
+            "width": 600,
+            "height":  470,
+            "dataSource":  [
+				{
+                    "startDate": 1433113200000,
+                    "endDate":  1433115000000,
+				    "text": "The first appointment"
+				},
+				{
+                    "startDate": 1433296800000,
+                    "endDate":  1433298600000,
+				    "text": "The second appointment"
+				}
+            ]
+        }
+    }
+]
+}

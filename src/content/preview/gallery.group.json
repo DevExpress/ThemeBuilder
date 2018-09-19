@@ -1,0 +1,21 @@
+{
+"id": "gallery",
+"ord": 9,
+"widgets": [
+	{  
+		"name": "dxGallery",
+		"supportedThemes": ["all"],
+		"options": { 
+			"items": [
+				"Content/Images/person1.png",
+				"Content/Images/person2.png",
+				"Content/Images/person3.png",
+				"Content/Images/person4.png"
+			],
+			"showNavButtons": true,
+            "height": 320,
+            "width":  500
+		}
+	}
+]
+}
