@@ -36,6 +36,7 @@ import { LeftMenuComponent } from './left-menu/main/left-menu.component';
 import { MetadataRepositoryService } from './meta-repository.service';
 import { EditorComponent } from './left-menu/editor/editor.component';
 import { NamesService } from './names.service';
+import { BaseParametersComponent } from './left-menu/base-parameters/base-parameters.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { NamesService } from './names.service';
         IconArrowComponent,
         AdvancedComponent,
         LeftMenuComponent,
-        EditorComponent
+        EditorComponent,
+        BaseParametersComponent
     ],
     imports: [
         BrowserModule,

@@ -28,7 +28,7 @@
             </div>
         </ng-template>
         <ng-template #baseSettings>
-            Some base<div (click)="menuClosed = false;">1</div>
+            <app-base-parameters></app-base-parameters>
         </ng-template>
     </div>
     <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">

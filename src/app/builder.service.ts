@@ -18,7 +18,7 @@ export class BuilderService {
     }
 
     buildTheme(themeName: string, colorScheme: string, makeSwatch: boolean, outColorScheme: string) {
-        return this.metaRepository.getModifiedData({ name: themeName, colorScheme: colorScheme }).then(modifiedData => {
+        return this.metaRepository.getModifiedData().then(modifiedData => {
             return builder.buildTheme({
                 lessCompiler: lessCompiler(window, {}),
                 makeSwatch: makeSwatch,

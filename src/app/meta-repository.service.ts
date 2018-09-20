@@ -2,8 +2,10 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import * as MetadataLoader from 'devextreme-themebuilder/modules/metadata-loader';
 import * as MetadataRepository from 'devextreme-themebuilder/modules/metadata-repository';
+import * as baseParameters from 'devextreme-themebuilder/modules/base-parameters';
 import * as themes from 'devextreme-themebuilder/modules/themes';
 import { filter } from 'rxjs/operators';
+import { MetaItem } from './left-menu/left-menu.aliases';
 
 
 
@@ -50,9 +52,9 @@ export class MetadataRepositoryService {
         return this.metadataPromise.then(() => {
             const result = [];
             const themeData = this.metadataRepository.getData(this.theme);
-            for(const themeName in themeData) {
-                if(themeData.hasOwnProperty(themeName)) {
-                    const groups = themeData[themeName];
+            for(const groupName in themeData) {
+                if(themeData.hasOwnProperty(groupName)) {
+                    const groups = themeData[groupName];
                     groups.forEach(item => {
                         if(item.IsModified) {
                             result.push({ key: item.Key, value: item.Value });
@@ -78,6 +80,24 @@ export class MetadataRepositoryService {
 
             dataItem.IsModified = true;
             emitter.emit();
+        });
+    }
+
+    getBaseParameters() {
+        return this.metadataPromise.then(() => {
+            const result: Array<MetaItem> = [];
+            const themeData = this.metadataRepository.getData(this.theme);
+            for(const groupName in themeData) {
+                if(themeData.hasOwnProperty(groupName)) {
+                    const groups = themeData[groupName];
+                    groups.forEach(item => {
+                        if(baseParameters.indexOf(item.Key) !== -1) {
+                            result.push(item);
+                        }
+                    });
+                }
+            }
+            return result;
         });
     }
 }
