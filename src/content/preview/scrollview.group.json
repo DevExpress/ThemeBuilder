@@ -1,0 +1,13 @@
+{
+"id": "scrollview", 
+"widgets": [
+		{
+			"name": "dxScrollView",
+			"supportedThemes": ["all"],
+			"prerenderAction": "LOAD_SCROLLVIEW_CONTENT",
+			"options": { 
+				"bounceEnabled": true	
+			}
+		}
+]
+}

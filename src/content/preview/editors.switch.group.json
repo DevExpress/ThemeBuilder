@@ -1,0 +1,21 @@
+{
+"id": "editors.switch", 
+"ord": 8,
+"widgets": [
+{
+			"name": "dxSwitch",
+			"title": "dxSwitch",
+			"supportedThemes": ["all"],
+			"options": { }
+		},
+		{
+			"name": "dxSwitch",
+			"title": "Disabled dxSwitch",
+			"supportedThemes": ["all"],
+			"options": { 
+				"disabled": true,
+				"value": true
+			}
+		}
+]
+}

@@ -15,15 +15,17 @@ import {
     DxSelectBoxModule,
     DxNumberBoxModule,
     DxColorBoxModule,
-    DxFormModule,
+    DxDataGridModule,
     DxScrollViewModule
 } from 'devextreme-angular';
+
+import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
 import { ImportBootstrapComponent } from './import-bootstrap/import-bootstrap.component';
-import { BuilderService } from './builder.service';
 import { IconThemesComponent } from './icons/icon-themes/icon-themes.component';
 import { IconGenericComponent } from './icons/icon-generic/icon-generic.component';
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
@@ -37,6 +39,11 @@ import { MetadataRepositoryService } from './meta-repository.service';
 import { EditorComponent } from './left-menu/editor/editor.component';
 import { NamesService } from './names.service';
 import { BaseParametersComponent } from './left-menu/base-parameters/base-parameters.component';
+import { IframeComponent } from './iframe/iframe.component';
+import { PreviewComponent } from './preview/preview.component';
+
+import { BuilderService } from './builder.service';
+import { PreviewService } from './preview.service';
 
 @NgModule({
     declarations: [
@@ -54,13 +61,16 @@ import { BaseParametersComponent } from './left-menu/base-parameters/base-parame
         AdvancedComponent,
         LeftMenuComponent,
         EditorComponent,
-        BaseParametersComponent
+        BaseParametersComponent,
+        AppLayoutComponent,
+        PreviewLayoutComponent,
+        IframeComponent,
+        PreviewComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        DxFormModule,
         DxTabPanelModule,
         DxFileUploaderModule,
         DxTextBoxModule,
@@ -69,9 +79,15 @@ import { BaseParametersComponent } from './left-menu/base-parameters/base-parame
         DxColorBoxModule,
         DxButtonModule,
         DxScrollViewModule,
+        DxDataGridModule,
         AppRoutingModule
     ],
-    providers: [BuilderService, MetadataRepositoryService, NamesService],
+    providers: [
+        BuilderService,
+        MetadataRepositoryService,
+        PreviewService,
+        NamesService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

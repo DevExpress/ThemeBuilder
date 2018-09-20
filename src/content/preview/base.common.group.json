@@ -1,0 +1,413 @@
+{
+    "id": "base.common",
+    "useFieldsetForThemes": [ "ios7-default" ],
+    "widgets": [
+        {
+            "name": "dxDataGrid",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "rowAlternationEnabled": true,
+                "dataSource": {
+                    "asyncLoadEnabled": false,
+                    "store": {
+                        "data": [
+                            {
+                                "CustomerID": "VINET",
+                                "Freight": "32.3800",
+                                "ShipCountry": "France",
+                                "ShipName": "Vins et alcools Chevalier"
+                            },
+                            {
+                                "CustomerID": "TOMSP",
+                                "Freight": "11.6100",
+                                "ShipCountry": "Germany",
+                                "ShipName": "Toms Spezialitaten"
+                            },
+                            {
+                                "CustomerID": "HANAR1",
+                                "Freight": "65.8300",
+                                "ShipCountry": "Brazil",
+                                "ShipName": "Hanari Carnes"
+                            },
+                            {
+                                "CustomerID": "VICTE",
+                                "Freight": "41.3400",
+                                "ShipCountry": "France",
+                                "ShipName": "Richter Supermarkt"
+                            },
+                            {
+                                "CustomerID": "SUPRD",
+                                "Freight": "51.3000",
+                                "ShipCountry": "Belgium",
+                                "ShipName": "Victuailles en stock"
+                            },
+                            {
+                                "CustomerID": "HANAR",
+                                "Freight": "58.1700",
+                                "ShipCountry": "Brazil",
+                                "ShipName": "Supremes delices"
+                            }
+                        ],
+                        "type": "array",
+                        "key": "CustomerID"
+                    }
+                },
+                "selectedRowKeys": [ "TOMSP", "SUPRD" ],
+                "selection": {
+                    "mode": "multiple"
+                },
+                "pager": {
+                    "showPageSizeSelector": true
+                },
+                "paging": {
+                    "pageSize": 4
+                },
+                "hoverStateEnabled": true,
+                "allowColumnResizing": true,
+                "allowColumnReordering": true,
+                "columns": [
+                    "ShipName",
+                    "Freight",
+                    "ShipCountry"
+                ]
+            }
+        },
+        {
+            "name": "dxList",
+            "supportedThemes": ["generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "items": [
+                        {
+                            key: "Ship Country: Germany",
+                            items: [
+                                { "text": "Toms Spezialitaten" },
+                                { "text": "Ottilies Kaseladen", "badge": 5, "showChevron": true }
+                            ]
+                        },
+                        {
+                            key: "Ship Country: France",
+                            items: [
+                                { "text": "Vins et alcools Chevalier" },
+                                { "text": "Richter Supermarkt" },
+                                { "text": "Blondel pere et fils" },
+								{ "text": "Que Delicia", "badge": 33 },
+                                { "text": "Folk och fa HB", "showChevron": true }
+                            ]
+                        },
+                        {
+                            key: "Ship Country: Switzerland",
+                            items: [
+                                { text: "Hanari Carnes" },
+                                { text: "Chop-suey Chinese" }
+                            ]
+                        }
+                ],
+                "grouped": true,
+                "height": "262px"
+            }
+        },
+        {
+            "name": "dxSelectBox",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "items": [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
+            }
+        },
+        {
+            "name": "dxSelectBox",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "items": [ "Bob", "John", "Frank", "Robert", "Paul", "Elizabeth", "Mary" ]
+            }
+        },
+        {
+            "name": "dxSlider",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "min": 0,
+                "max": 100,
+                "value": 38
+            }
+        },
+        {
+            "name": "dxLookup",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "items": [
+                    "New York",
+                    "Los Angeles",
+                    "Chicago",
+                    "Houston",
+                    "Philadelphia",
+                    "Phoenix",
+                    "San Antonio",
+                    "San Diego",
+                    "Dallas",
+                    "San Jose",
+                    "Jacksonville",
+                    "Indianapolis",
+                    "Austin",
+                    "San Francisco",
+                    "Columbus",
+                    "Fort Worth",
+                    "Charlotte",
+                    "Detroit",
+                    "El Paso",
+                    "Memphis",
+                    "Boston",
+                    "Seattle",
+                    "Denver",
+                    "Baltimore",
+                    "Washington",
+                    "Nashville",
+                    "Louisville",
+                    "Milwaukee",
+                    "Portland",
+                    "Oklahoma"
+                ],
+                "popupHeight": 500
+            }
+        },
+		{
+            "name": "dxButton",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "text": "Danger",
+                "type": "danger"
+            }
+        },
+		{
+            "name": "dxButton",
+            "supportedThemes": ["generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "text": "Success",
+                "type": "success"
+            }
+        },
+		{
+            "name": "dxButton",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "text": "Default",
+                "type": "default"
+            }
+        },
+        {
+             "name": "dxButton",
+             "supportedThemes": ["generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+             "options": {
+                 "text": "Normal",
+                 "type": "normal"
+             }
+        },
+
+        {
+            "name": "dxTextBox",
+            "title": "dxTextBox",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "value": "Textbox widget"
+            }
+        },
+        {
+            "name": "dxSelectBox",
+            "title": "dxSelectBox",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "items": [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
+            }
+        },
+        {
+            "name": "dxLookup",
+            "title": "dxLookup",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "items": [
+                    "New York",
+                    "Los Angeles",
+                    "Chicago",
+                    "Houston",
+                    "Philadelphia",
+                    "Phoenix",
+                    "San Antonio",
+                    "San Diego",
+                    "Dallas",
+                    "San Jose",
+                    "Jacksonville",
+                    "Indianapolis",
+                    "Austin",
+                    "San Francisco",
+                    "Columbus",
+                    "Fort Worth",
+                    "Charlotte",
+                    "Detroit",
+                    "El Paso",
+                    "Memphis",
+                    "Boston",
+                    "Seattle",
+                    "Denver",
+                    "Baltimore",
+                    "Washington",
+                    "Nashville",
+                    "Louisville",
+                    "Milwaukee",
+                    "Portland",
+                    "Oklahoma"
+                ],
+                "popupHeight": 500
+            }
+        },
+        {
+            "name": "dxCheckBox",
+            "title": "dxCheckBox",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "checked": true
+            }
+        },
+        {
+            "name": "dxSwitch",
+            "title": "dxSwitch",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "value": true
+            }
+        },
+        {
+            "name": "dxSwitch",
+            "title": "Disabled dxSwitch",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "disabled": true,
+                "value": true
+            }
+        },
+        {
+            "name": "dxButton",
+            "title": "dxButton",
+            "supportedThemes": [ "ios7-default" ],
+            "options": {
+                "text": "Normal Button",
+                "type": "normal"
+            }
+        },
+		{
+            "name": "dxScheduler",
+            "supportedThemes": [ "generic-dark", "generic-light", "generic-carmine", "generic-darkmoon", "generic-softblue", "generic-darkviolet", "generic-greenmist", "generic-carmine-compact", "generic-darkmoon-compact", "generic-softblue-compact", "generic-darkviolet-compact", "generic-greenmist-compact", "generic-light-compact", "generic-dark-compact", "material-blue-light", "material-orange-light", "material-lime-light", "material-purple-light", "material-teal-light" ],
+            "options": {
+                "dataSource": [
+                    {
+                        text: "Website Re-Design Plan",
+                        ownerId: [4],
+                        startDate: new Date(2015, 4, 25, 9, 30),
+                        endDate: new Date(2015, 4, 25, 11, 30)
+                    }, {
+                        text: "Book Flights to San Fran for Sales Trip",
+                        ownerId: [2],
+                        startDate: new Date(2015, 4, 25, 12, 0),
+                        endDate: new Date(2015, 4, 25, 13, 0)
+                    }, {
+                        text: "Install New Router in Dev Room",
+                        ownerId: [1],
+                        startDate: new Date(2015, 4, 25, 14, 30),
+                        endDate: new Date(2015, 4, 25, 15, 30)
+                    }, {
+                        text: "Approve Personal Computer Upgrade Plan",
+                        ownerId: [3],
+                        startDate: new Date(2015, 4, 26, 10, 0),
+                        endDate: new Date(2015, 4, 26, 11, 0)
+                    }, {
+                        text: "Final Budget Review",
+                        ownerId: [1],
+                        startDate: new Date(2015, 4, 26, 12, 0),
+                        endDate: new Date(2015, 4, 26, 13, 35)
+                    }, {
+                        text: "New Brochures",
+                        ownerId: [4],
+                        startDate: new Date(2015, 4, 26, 14, 30),
+                        endDate: new Date(2015, 4, 26, 15, 45)
+                    }, {
+                        text: "Install New Database",
+                        ownerId: [2],
+                        startDate: new Date(2015, 4, 27, 9, 45),
+                        endDate: new Date(2015, 4, 27, 11, 15)
+                    }, {
+                        text: "Approve New Online Marketing Strategy",
+                        ownerId: [3, 4],
+                        startDate: new Date(2015, 4, 27, 12, 0),
+                        endDate: new Date(2015, 4, 27, 14, 0)
+                    }, {
+                        text: "Upgrade Personal Computers",
+                        ownerId: [2],
+                        startDate: new Date(2015, 4, 27, 15, 15),
+                        endDate: new Date(2015, 4, 27, 16, 30)
+                    }, {
+                        text: "Prepare 2015 Marketing Plan",
+                        ownerId: [1, 3],
+                        startDate: new Date(2015, 4, 28, 11, 0),
+                        endDate: new Date(2015, 4, 28, 13, 30)
+                    }, {
+                        text: "Brochure Design Review",
+                        ownerId: [4],
+                        startDate: new Date(2015, 4, 28, 14, 0),
+                        endDate: new Date(2015, 4, 28, 15, 30)
+                    }, {
+                        text: "Create Icons for Website",
+                        ownerId: [3],
+                        startDate: new Date(2015, 4, 29, 10, 0),
+                        endDate: new Date(2015, 4, 29, 11, 30)
+                    }, {
+                        text: "Upgrade Server Hardware",
+                        ownerId: [4],
+                        startDate: new Date(2015, 4, 29, 14, 30),
+                        endDate: new Date(2015, 4, 29, 16, 0)
+                    }, {
+                        text: "Submit New Website Design",
+                        ownerId: [1],
+                        startDate: new Date(2015, 4, 29, 16, 30),
+                        endDate: new Date(2015, 4, 29, 18, 0)
+                    }, {
+                        text: "Launch New Website",
+                        ownerId: [2],
+                        startDate: new Date(2015, 4, 29, 12, 20),
+                        endDate: new Date(2015, 4, 29, 14, 0)
+                    }, {
+                        text: "Stand-up meeting",
+                        ownerId: [1, 2, 3, 4],
+                        startDate: new Date(2015, 4, 25, 9, 0),
+                        endDate: new Date(2015, 4, 25, 9, 15),
+                        recurrenceRule: "FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;UNTIL=20150530"
+                    }],
+                "views": ["week", "workWeek", "day"],
+                "currentView": "workWeek",
+                "currentDate": new Date(2015, 4, 25),
+                "useDropDownViewSwitcher": false,
+                "firstDayOfWeek": 0,
+                "startDayHour": 9,
+                "endDayHour": 19,
+                "resources": [{
+                    "field": "ownerId",
+                    "allowMultiple": true,
+                    "dataSource": [
+                        {
+                            text: "Samantha Bright",
+                            id: 1
+                        }, {
+                            text: "John Heart",
+                            id: 2
+                        }, {
+                            text: "Todd Hoffman",
+                            id: 3
+                        }, {
+                            text: "Sandra Johnson",
+                            id: 4
+                        }
+                    ],
+                    "label": "Owner"
+                }],
+                "width": "100%",
+                "height": 400
+            }
+        }
+    ]
+}

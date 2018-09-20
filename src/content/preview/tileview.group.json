@@ -1,0 +1,33 @@
+{
+	"id": "tileview",
+	"widgets": [
+		{
+			"name": "dxTileView",
+			"supportedThemes": ["all"],
+			"options": {
+				"listHeight": 400,
+				"width": "100%",
+				"items": [
+					"Russia",
+					"Czech",
+					"Poland",
+					"Greece",
+					"Germany",
+					"Portugal",
+					"Denmark",
+					"Netherlands",
+					"Belgium",
+                    "Italy",
+                    "France",
+                    "Spain",
+                    "Ukraine",
+                    "Ireland",
+                    "Austria",
+                    "Sweden",
+                    "Norway",
+                    "Finland"
+				]
+			}
+		}
+	]
+}

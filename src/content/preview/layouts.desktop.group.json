@@ -1,0 +1,56 @@
+{
+    "id": "layouts.desktop",
+    "application": {
+        "layoutSet": [
+            {
+                "controllerExpr": "DevExpress.framework.html.DefaultLayoutController",
+                "controllerOptions": {
+                    "name": "desktop",
+                    "disableViewLoadingState": true
+                }
+            }
+        ],
+        "layouts": [
+            "Desktop"
+        ],
+        "views": [
+            "list",
+            "about",
+            "details"
+        ],
+        "navigation": [
+            {
+                "title": "Items",
+                "onExecute": "#list",
+                "icon": "home"
+            },
+            {
+                "title": "About",
+                "onExecute": "#about",
+                "icon": "info"
+            }
+        ],
+        "startupView": "list",
+      "supportedThemes": [
+        "generic-dark",
+        "generic-light",
+        "generic-carmine",
+        "generic-darkmoon",
+        "generic-softblue",
+        "generic-darkviolet",
+        "generic-greenmist",
+        "generic-carmine-compact",
+        "generic-darkmoon-compact",
+        "generic-softblue-compact",
+        "generic-darkviolet-compact",
+        "generic-greenmist-compact",
+        "generic-light-compact",
+        "generic-dark-compact",
+        "material-blue-light",
+        "material-orange-light",
+        "material-lime-light",
+        "material-purple-light",
+        "material-teal-light"
+      ]
+    }
+}
