@@ -65,9 +65,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     getRealName = name => this.names.getRealName(name);
 
     loadThemeMetadata() {
-        this.theme = this.metaRepository.theme.name;
-        this.colorScheme = this.metaRepository.theme.colorScheme;
         return this.metaRepository.getData().then(groupedMetadata => {
+            this.theme = this.metaRepository.theme.name;
+            this.colorScheme = this.metaRepository.theme.colorScheme;
+
             const widgetGroups: any = {};
             const itemArray: Array<LeftMenuItem> = [];
 

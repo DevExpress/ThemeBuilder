@@ -24,18 +24,24 @@ export class MetadataRepositoryService {
 
     constructor(private router: Router, private builder: BuilderService) {
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
-        this.metadataPromise = this.metadataRepository.init(themes);
 
-        this.router.events.subscribe(event => {
-            if(!(event instanceof NavigationEnd)) return;
-            const urlParts = event.url.split('/');
-            if(urlParts[2] && urlParts[3]) {
-                if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
-                    this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
-                    this.build();
+        const repositoryPromise = this.metadataRepository.init(themes);
+        const themePromise = new Promise(resolve => {
+            this.router.events.subscribe(event => {
+                if(!(event instanceof NavigationEnd)) return;
+                const urlParts = event.url.split('/');
+                if(urlParts[2] && urlParts[3]) {
+                    // TODO make promise that will be resolved when theme is set
+                    if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
+                        this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                        resolve();
+                        this.build();
+                    }
                 }
-            }
+            });
         });
+
+        this.metadataPromise = Promise.all([repositoryPromise, themePromise]);
     }
 
     getData(): Promise<any> {

@@ -53,11 +53,7 @@
     font-size: 18px;
     padding-bottom: 10px;
     border-bottom: 1px solid #6d6e6f;
-}
-
-.left-menu .dark-menu .menu-item.top .arrow {
-    float: right;
-    line-height: 24px;
+    cursor: default;
 }
 
 .left-menu .working-area {
@@ -80,8 +76,9 @@
 .left-menu .working-area .name .arrow {
     position: absolute;
     top: 50%;
-    margin-top: -6px;
-    left: 10px;
+    margin-top: -7px;
+    left: 8px;
+    font-size: 14px;
 }
 
 .left-menu .working-area .scroll-container {
