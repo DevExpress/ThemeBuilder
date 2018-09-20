@@ -13,8 +13,8 @@ export class PreviewComponent implements OnInit {
     constructor(private previewService: PreviewService) { }
 
     receiveMessage(e) {
-        if(e.data.cssData) {
-            this.addHeadStyles(e.data.cssData);
+        if(e.data.css) {
+            this.addHeadStyles(e.data.css);
             this.createPreviewContent();
         }
     }
@@ -23,7 +23,7 @@ export class PreviewComponent implements OnInit {
         this.widgets.push(e.component);
     }
 
-    addHeadStyles(data: any) {
+    addHeadStyles(css: string) {
         const head = document.getElementsByTagName('head')[0];
         const style = document.createElement('style');
         const DYNAMIC_STYLES_ID = 'dynamic-styles';
@@ -34,11 +34,11 @@ export class PreviewComponent implements OnInit {
         style.type = 'text/css';
         style.id = DYNAMIC_STYLES_ID;
 
-        data.css = data.css
+        css = css
             .replace(/url\(icons\/dxicons/gi, 'url(content/css/icons/dxicons')
             .replace(/url\(fonts\/Roboto/gi, 'url(content/css/fonts/Roboto');
 
-        style.appendChild(document.createTextNode(data.css));
+        style.appendChild(document.createTextNode(css));
         head.appendChild(style);
     }
 

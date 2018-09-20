@@ -1,8 +1,12 @@
-import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LeftMenuAlias, LeftMenuItem, MetaItem } from '../left-menu.aliases';
+import { LeftMenuAlias } from '../left-menu.aliases';
+import { LeftMenuItem } from '../../types/left-menu-item';
+import { MetaItem } from '../../types/meta-item';
+
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-left-menu',
@@ -10,16 +14,15 @@ import { NamesService } from '../../names.service';
     styleUrls: ['./left-menu.component.css']
 })
 
-export class LeftMenuComponent implements OnChanges {
+export class LeftMenuComponent implements OnDestroy, OnInit {
 
     private BASE_THEMING_NAME = 'Base Theming';
 
-    @Output() variableChange = new EventEmitter<void>();
-    @Input('metaValues') metaValues: Array<any>;
-    @Input('theme') theme: string;
-    @Input('colorScheme') colorScheme: string;
+    theme: string;
+    colorScheme: string;
     widget: string;
 
+    subscription: Subscription;
     menuData: Array<LeftMenuItem>;
 
     menuClosed = true;
@@ -31,10 +34,6 @@ export class LeftMenuComponent implements OnChanges {
             this.widget = params['widget'];
             this.changeWidget(this.widget);
         });
-    }
-
-    valueChanged() {
-        this.variableChange.emit();
     }
 
     openMenu() {
@@ -66,6 +65,8 @@ export class LeftMenuComponent implements OnChanges {
     getRealName = name => this.names.getRealName(name);
 
     loadThemeMetadata() {
+        this.theme = this.metaRepository.theme.name;
+        this.colorScheme = this.metaRepository.theme.colorScheme;
         return this.metaRepository.getData().then(groupedMetadata => {
             const widgetGroups: any = {};
             const itemArray: Array<LeftMenuItem> = [];
@@ -113,26 +114,17 @@ export class LeftMenuComponent implements OnChanges {
         });
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        if(changes.theme && changes.theme.currentValue || changes.colorScheme && changes.colorScheme.currentValue) {
+    ngOnInit() {
+        this.loadThemeMetadata();
+
+        this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
                 this.changeWidget(this.widget);
             });
-        }
+        });
+    }
 
-        if(changes.metaValues && changes.metaValues.currentValue) {
-            const meta = changes.metaValues.currentValue;
-            for(const menuItem of this.menuData) {
-                for(const data of menuItem.items) {
-                    data.Value = meta[data.Key];
-
-                    if(data.Items && data.Items.length) {
-                        for(const nestedData of data.Items) {
-                            nestedData.Value = meta[nestedData.Key];
-                        }
-                    }
-                }
-            }
-        }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

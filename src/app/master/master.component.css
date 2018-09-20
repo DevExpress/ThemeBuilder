@@ -145,7 +145,7 @@
     float: right;
 }
 
-.base-theming ul {
+.base-theming .editors {
     background-color: #e2e5e7;
     width: 100%;
     padding: 30px 50px 30px 60px;
@@ -157,7 +157,7 @@
     box-sizing: border-box;
 }
 
-.base-theming ul:after {
+.base-theming .editors:after {
     content: "Base Theming";
     text-transform: uppercase;
     font-weight: bold;
@@ -169,21 +169,27 @@
     font-size: 14px;
 }
 
-.base-theming li {
+.base-theming .work-item, ::ng-deep .master .base-theming .work-item {
     width: 140px;
     height: 50px;
     margin-bottom: 18px;
-    color: #9c9c9c;
+    padding: 0;
 }
 
-.base-theming li span {
+.base-theming .work-item .property-header, ::ng-deep .base-theming .work-item .property-header {
     display: block;
     margin-bottom: 5px;
+    color: #9c9c9c;
+    padding: 0;
+}
+
+::ng-deep .base-theming .work-item .property-widget {
+    padding: 0;
 }
 
 .advanced {
     background-color: #fff;
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .button.advanced:hover {

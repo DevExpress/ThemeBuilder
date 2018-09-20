@@ -1,11 +1,14 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import * as MetadataLoader from 'devextreme-themebuilder/modules/metadata-loader';
 import * as MetadataRepository from 'devextreme-themebuilder/modules/metadata-repository';
 import * as baseParameters from 'devextreme-themebuilder/modules/base-parameters';
 import * as themes from 'devextreme-themebuilder/modules/themes';
-import { filter } from 'rxjs/operators';
-import { MetaItem } from './left-menu/left-menu.aliases';
+import { MetaItem } from './types/meta-item';
+import { BuilderService } from './builder.service';
+import { ExportedItem } from './types/exported-item';
+import { Theme } from './types/theme';
 
 
 
@@ -14,59 +17,53 @@ export class MetadataRepositoryService {
 
     private metadataRepository: MetadataRepository;
     private metadataPromise: Promise<any>;
-    private theme: any;
+    private modifiedMetaCollection: any = {};
 
-    constructor(private router: Router) {
+    theme: Theme;
+    css = new BehaviorSubject<string>('');
+
+    constructor(private router: Router, private builder: BuilderService) {
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
         this.metadataPromise = this.metadataRepository.init(themes);
 
-        this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd)
-        ).subscribe(event => {
+        this.router.events.subscribe(event => {
+            if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
             if(urlParts[2] && urlParts[3]) {
-                this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
+                    this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                    this.build();
+                }
             }
         });
     }
 
-    getData() {
+    getData(): Promise<any> {
         return this.metadataPromise.then(() => {
             return this.metadataRepository.getData(this.theme);
         });
     }
 
-    updateData(data: Array<any>) {
-        return this.metadataPromise.then(() => {
-            return this.metadataRepository.updateData(data, this.theme);
-        });
-    }
-
-    getDataItemByKey(key: string) {
+    getDataItemByKey(key: string): Promise<MetaItem> {
         return this.metadataPromise.then(() => {
             return this.metadataRepository.getDataItemByKey(key, this.theme);
         });
     }
 
-    getModifiedData() {
-        return this.metadataPromise.then(() => {
-            const result = [];
-            const themeData = this.metadataRepository.getData(this.theme);
-            for(const groupName in themeData) {
-                if(themeData.hasOwnProperty(groupName)) {
-                    const groups = themeData[groupName];
-                    groups.forEach(item => {
-                        if(item.IsModified) {
-                            result.push({ key: item.Key, value: item.Value });
-                        }
-                    });
-                }
+    getExportedMeta(): Array<ExportedItem> {
+        const modifications: Array<ExportedItem> = [];
+        for (const key in this.modifiedMetaCollection) {
+            if (this.modifiedMetaCollection.hasOwnProperty(key)) {
+                modifications.push({
+                    key: key,
+                    value: this.modifiedMetaCollection[key]
+                });
             }
-            return result;
-        });
+        }
+        return modifications;
     }
 
-    updateSingleVariable(e: any, key: string, emitter: EventEmitter<void>) {
+    updateSingleVariable(e: any, key: string): void {
         this.getDataItemByKey(key).then(dataItem => {
             if(dataItem.Value === e.value) {
                 return;
@@ -79,11 +76,30 @@ export class MetadataRepositoryService {
             }
 
             dataItem.IsModified = true;
-            emitter.emit();
+            this.modifiedMetaCollection[dataItem.Key] = dataItem.Value;
+
+            this.build();
         });
     }
 
-    getBaseParameters() {
+    build(): void {
+        this.builder.buildTheme(this.theme, false, null, this.getExportedMeta()).then(result => {
+            for (const dataKey in result.compiledMetadata) {
+                if (result.compiledMetadata.hasOwnProperty(dataKey)) {
+                    const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
+                    item.Value = result.compiledMetadata[dataKey];
+                }
+            }
+
+            if(!this.css) {
+                this.css = new BehaviorSubject<string>(result.css);
+            } else {
+                this.css.next(result.css);
+            }
+        });
+    }
+
+    getBaseParameters(): Promise<Array<MetaItem>> {
         return this.metadataPromise.then(() => {
             const result: Array<MetaItem> = [];
             const themeData = this.metadataRepository.getData(this.theme);

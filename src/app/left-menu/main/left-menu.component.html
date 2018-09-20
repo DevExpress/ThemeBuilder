@@ -16,12 +16,12 @@
                             </div>
                             <div class="group-items">
                                 <ng-container *ngFor="let item of workItem.Items">
-                                    <app-editor [item]="item" (changed)="valueChanged()"></app-editor>
+                                    <app-editor [item]="item"></app-editor>
                                 </ng-container>
                             </div>
                         </div>
                         <div *ngIf="!workItem.GroupHeader">
-                            <app-editor [item]="workItem" (changed)="valueChanged()"></app-editor>
+                            <app-editor [item]="workItem"></app-editor>
                         </div>
                     </div>
                 </dx-scroll-view>

@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as themes from 'devextreme-themebuilder/modules/themes.js';
-import { BuilderService } from './../builder.service';
 
 @Component({
     templateUrl: './master.component.html',
@@ -17,11 +16,9 @@ export class MasterComponent {
     leftThemes: any;
     isCompactThemes = false;
     baseConstants: any;
-    iframeData: any;
 
     constructor(
-        private route: ActivatedRoute,
-        private builderService: BuilderService) {
+        private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
             this.themeName = params['theme'] || '';
             this.colorScheme = params['color-scheme'] || '';
@@ -43,14 +40,6 @@ export class MasterComponent {
             this.rightThemes = genericThemes.splice(0, Math.round(genericThemesCount / 2));
             this.leftThemes = genericThemes;
             this.isCompactThemes = true;
-        }
-
-        if(this.isMaster) {
-            this.builderService.buildTheme(this.themeName, this.colorScheme, false, null)
-                .then((result) => {
-                    this.iframeData = result;
-                    this.baseConstants = this.builderService.buildBaseConstants(result);
-                });
         }
     }
 }
