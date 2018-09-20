@@ -1,0 +1,15 @@
+{
+    "id": "progressbars",
+    "widgets": [
+        {
+            "name": "dxProgressBar",
+            "supportedThemes": [ "all" ],
+            "options": {
+                "value": 40,
+                "min": 0,
+                "max": 100,
+                "showStatus": true
+            }
+        }
+    ]
+}

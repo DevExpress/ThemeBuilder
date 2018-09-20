@@ -1,0 +1,10 @@
+{
+    "id": "editors.fileuploader",
+    "widgets": [
+        {
+            "name": "dxFileUploader",
+            "supportedThemes": [ "all" ],
+            "options": { }
+        }
+    ]
+}

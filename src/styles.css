@@ -1,7 +1,9 @@
 @font-face {
     font-family: "OpenSansCondensedBold";
-    src: url("./fonts/OpenSansCondensedBold.eot");
-    src: url("./fonts/OpenSansCondensedBold.eot?#iefix") format("embedded-opentype"), url("./fonts/OpenSansCondensedBold.woff") format("woff"), url("./fonts/OpenSansCondensedBold.ttf") format("truetype");
+    src: url("./content/fonts/OpenSansCondensedBold.eot");
+    src: url("./content/fonts/OpenSansCondensedBold.eot?#iefix") format("embedded-opentype"),
+         url("./content/fonts/OpenSansCondensedBold.woff") format("woff"),
+         url("./content/fonts/OpenSansCondensedBold.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }

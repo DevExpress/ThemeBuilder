@@ -15,15 +15,17 @@ import {
     DxSelectBoxModule,
     DxNumberBoxModule,
     DxColorBoxModule,
-    DxFormModule,
+    DxDataGridModule,
     DxScrollViewModule
 } from 'devextreme-angular';
+
+import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
 import { ImportBootstrapComponent } from './import-bootstrap/import-bootstrap.component';
-import { BuilderService } from './builder.service';
 import { IconThemesComponent } from './icons/icon-themes/icon-themes.component';
 import { IconGenericComponent } from './icons/icon-generic/icon-generic.component';
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
@@ -33,7 +35,12 @@ import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.co
 import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { IframeComponent } from './iframe/iframe.component';
+import { PreviewComponent } from './preview/preview.component';
+
+import { BuilderService } from './builder.service';
 import { MetadataRepositoryService } from './meta-repository.service';
+import { PreviewService } from './preview.service';
 
 @NgModule({
     declarations: [
@@ -49,13 +56,16 @@ import { MetadataRepositoryService } from './meta-repository.service';
         IconBootstrapComponent,
         IconArrowComponent,
         AdvancedComponent,
-        LeftMenuComponent
+        LeftMenuComponent,
+        AppLayoutComponent,
+        PreviewLayoutComponent,
+        IframeComponent,
+        PreviewComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        DxFormModule,
         DxTabPanelModule,
         DxFileUploaderModule,
         DxTextBoxModule,
@@ -64,9 +74,14 @@ import { MetadataRepositoryService } from './meta-repository.service';
         DxColorBoxModule,
         DxButtonModule,
         DxScrollViewModule,
+        DxDataGridModule,
         AppRoutingModule
     ],
-    providers: [BuilderService, MetadataRepositoryService],
+    providers: [
+        BuilderService,
+        MetadataRepositoryService,
+        PreviewService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

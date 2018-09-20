@@ -1,0 +1,44 @@
+{
+    "id": "editors.validation",
+    "widgets": [
+        {
+
+            "name": "dxTextBox",
+            "title": "Name",
+            "supportedThemes": [ "all" ],
+            "afterRenderAction": "VALIDATION_ACTION",
+            "options": {
+                "placeholder": "Name",
+                "validationOptions": {
+                    "name": "Name",
+                    "validationRules": [
+                        {
+                            "type": "required",
+                            "message":  ""
+                        }
+                    ]
+                }
+            }
+        },
+        {
+
+            "name": "dxTextBox",
+            "title": "Password",
+            "supportedThemes": [ "all" ],
+            "afterRenderAction": "VALIDATION_ACTION",
+            "options": {
+                "placeholder": "Password",
+                "mode":  "password",
+                "validationOptions": {
+                    "name": "Password",
+                    "validationRules": [
+                        {
+                            "type": "required",
+                            "message":  ""
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

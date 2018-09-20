@@ -1,0 +1,18 @@
+{
+"id": "editors.lookup", 
+"ord": 6,
+"widgets": [
+{  
+			"name": "dxLookup",
+			"supportedThemes": ["all"],
+			"options": {
+				"items": ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia", "Phoenix", "San Antonio",
+				"San Diego", "Dallas", "San Jose", "Jacksonville", "Indianapolis", "Austin", "San Francisco",
+				"Columbus", "Fort Worth", "Charlotte", "Detroit", "El Paso", "Memphis", "Boston", "Seattle",
+				"Denver", "Baltimore", "Washington", "Nashville", "Louisville", "Milwaukee", "Portland", "Oklahoma"],
+				"popupHeight": 500,
+				"usePopover": false
+			}
+		}
+]
+}

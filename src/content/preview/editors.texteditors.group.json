@@ -1,0 +1,23 @@
+{
+	"id": "editors.texteditors", 
+	"ord": 9,
+	"widgets": [
+		{
+			"name": "dxTextBox",
+			"title": "dxTextBox",
+			"supportedThemes": ["all"],
+			"options": {
+				"placeholder": "Text box widget",
+				"mode": "search"
+            }
+		},
+		{
+			"name": "dxTextArea",
+			"title": "dxTextArea",
+			"supportedThemes": ["all"],
+			"options": {
+				"value": "Multiline text box widget"
+            }
+		}
+	]
+}

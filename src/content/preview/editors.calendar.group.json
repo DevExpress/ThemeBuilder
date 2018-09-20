@@ -1,0 +1,10 @@
+{
+"id": "editors.calendar", 
+"widgets": [
+		{
+			"name": "dxCalendar",
+			"supportedThemes": ["all"],
+			"options": { }
+		}
+]
+}

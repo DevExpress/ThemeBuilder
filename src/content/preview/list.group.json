@@ -1,0 +1,39 @@
+{
+"id": "list",
+	"ord": 2,
+	"widgets": [
+		{ 
+			"name": "dxList",
+			"supportedThemes": ["all"],
+			"options": {
+				"grouped": true,
+				"editEnabled": true,
+                "editConfig": {
+                    "deleteEnabled": true,
+                    "selectionEnabled": true
+                },
+                "selectionMode": "single",
+				"items": [
+					{
+						"key": "Group A",
+						"items": [
+							"Russia",
+							"Czech",
+							"Poland",
+							"Greece"
+						]
+					},
+					{
+						"key": "Group B",
+						"items": [
+							"Germany",
+							"Portugal",
+							"Denmark",
+							"Netherlands"
+						]
+					}
+				]
+			}
+		}
+	]
+}
