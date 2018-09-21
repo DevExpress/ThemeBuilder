@@ -207,15 +207,16 @@ body {
     color: #fff;
 }
 
-.button.apply:hover {
-    background-color: #fff;
-    color: #f05b41;
-}
-
 .button.apply:focus,
 .button.apply:active {
     background-color: #e2e4e5;
     color: #f05b41;
+}
+
+.button.apply:hover,
+.button.advanced:hover {
+    background-color: #707070;
+    color: #fff;
 }
 
 .master .title .back-arrow {
