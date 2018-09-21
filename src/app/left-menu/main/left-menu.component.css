@@ -53,7 +53,22 @@
     font-size: 18px;
     padding-bottom: 10px;
     border-bottom: 1px solid #6d6e6f;
-    cursor: default;
+    position: relative;
+}
+
+.left-menu .dark-menu .menu-item.top .arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    left: 5px;
+}
+
+.left-menu .dark-menu .menu-item.active-link {
+    background-color: #6f6f6f;
+}
+
+.left-menu .dark-menu .menu-item:not(.top):hover {
+    color: #f05b41;
 }
 
 .left-menu .working-area {

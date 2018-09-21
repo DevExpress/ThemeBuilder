@@ -169,11 +169,10 @@
     font-size: 14px;
 }
 
-.base-theming .work-item, ::ng-deep .master .base-theming .work-item {
+.base-theming .work-item {
     width: 140px;
     height: 50px;
     margin-bottom: 18px;
-    padding: 0;
 }
 
 .base-theming .work-item .property-header, ::ng-deep .base-theming .work-item .property-header {

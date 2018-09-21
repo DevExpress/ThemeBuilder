@@ -31,7 +31,6 @@ export class MetadataRepositoryService {
                 if(!(event instanceof NavigationEnd)) return;
                 const urlParts = event.url.split('/');
                 if(urlParts[2] && urlParts[3]) {
-                    // TODO make promise that will be resolved when theme is set
                     if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
                         this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
                         resolve();
@@ -97,11 +96,7 @@ export class MetadataRepositoryService {
                 }
             }
 
-            if(!this.css) {
-                this.css = new BehaviorSubject<string>(result.css);
-            } else {
-                this.css.next(result.css);
-            }
+            this.css.next(result.css);
         });
     }
 

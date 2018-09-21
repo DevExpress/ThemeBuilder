@@ -1,3 +1,4 @@
-.work-item {
-    padding-left: 30px;
+:host {
+    width: 140px;
+    display: block;
 }
