@@ -192,11 +192,6 @@
     margin-top: 10px;
 }
 
-.button.advanced:hover {
-    background-color: #f05b41;
-    color: #fff;
-}
-
 .button.advanced:focus,
 .button.advanced:active {
     background-color: #d0442c;
