@@ -53,11 +53,7 @@
     font-size: 18px;
     padding-bottom: 10px;
     border-bottom: 1px solid #6d6e6f;
-}
-
-.left-menu .dark-menu .menu-item.top .arrow {
-    float: right;
-    line-height: 24px;
+    cursor: default;
 }
 
 .left-menu .working-area {
@@ -80,8 +76,9 @@
 .left-menu .working-area .name .arrow {
     position: absolute;
     top: 50%;
-    margin-top: -6px;
-    left: 10px;
+    margin-top: -7px;
+    left: 8px;
+    font-size: 14px;
 }
 
 .left-menu .working-area .scroll-container {
@@ -121,18 +118,5 @@
     padding-bottom: 20px;
 }
 
-.left-menu .working-area .work-item .property-header {
-    padding: 20px 20px 3px 0;
-}
-
-.left-menu .working-area .work-item .property-widget {
-    padding-right: 20px;
-}
-
-.left-menu .working-area .work-item .property-delimiter {
-    margin-top: 20px;
-    height: 1px;
-    background-color: #e3e7ea;
-}
 
 

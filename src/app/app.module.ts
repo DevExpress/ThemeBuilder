@@ -34,12 +34,15 @@ import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
 import { AdvancedComponent } from './advanced/advanced.component';
-import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { LeftMenuComponent } from './left-menu/main/left-menu.component';
+import { MetadataRepositoryService } from './meta-repository.service';
+import { EditorComponent } from './left-menu/editor/editor.component';
+import { NamesService } from './names.service';
+import { BaseParametersComponent } from './left-menu/base-parameters/base-parameters.component';
 import { IframeComponent } from './iframe/iframe.component';
 import { PreviewComponent } from './preview/preview.component';
 
 import { BuilderService } from './builder.service';
-import { MetadataRepositoryService } from './meta-repository.service';
 import { PreviewService } from './preview.service';
 
 @NgModule({
@@ -57,6 +60,8 @@ import { PreviewService } from './preview.service';
         IconArrowComponent,
         AdvancedComponent,
         LeftMenuComponent,
+        EditorComponent,
+        BaseParametersComponent,
         AppLayoutComponent,
         PreviewLayoutComponent,
         IframeComponent,
@@ -80,7 +85,8 @@ import { PreviewService } from './preview.service';
     providers: [
         BuilderService,
         MetadataRepositoryService,
-        PreviewService
+        PreviewService,
+        NamesService
     ],
     bootstrap: [AppComponent]
 })

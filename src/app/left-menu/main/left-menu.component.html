@@ -1,0 +1,47 @@
+<div class="left-menu">
+    
+    <div class="working-area">
+        <div class="name" (click)="openMenu()">
+            <span class="arrow dx-icon-menu"></span>{{ workAreaName }}
+        </div>
+
+        <div class="scroll-container">
+            <dx-scroll-view>
+                <div *ngFor="let workItem of workArea" class="work-item">
+                    <div *ngIf="workItem.GroupHeader" class="group" #group>
+                        <div class="group-header" (click)="group.classList.toggle('closed')">
+                            {{ getRealName(workItem.Name) }}
+                            <span class="arrow dx-icon-chevronup"></span>
+                        </div>
+                        <div class="group-items">
+                            <ng-container *ngFor="let item of workItem.Items">
+                                <app-editor [item]="item"></app-editor>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div *ngIf="!workItem.GroupHeader">
+                        <app-editor [item]="workItem"></app-editor>
+                    </div>
+                </div>
+            </dx-scroll-view>
+        </div>
+
+    </div>
+    <div class="dark-menu closed" [ngClass]="{ 'closed' : menuClosed }">
+            <div class="menu-item top">
+                All Widgets
+            </div>
+            <div class="separator"></div>
+            <div class="scroll-container">
+                <dx-scroll-view>
+                    <div
+                        *ngFor="let menuItem of menuData"
+                        class="menu-item" [routerLink]="['/advanced', theme, colorScheme, menuItem.groupKey]"
+                        (click)="menuClosed = true;"
+                    >
+                        {{ menuItem.groupName }}
+                    </div>
+                </dx-scroll-view>
+            </div>
+        </div>
+</div>

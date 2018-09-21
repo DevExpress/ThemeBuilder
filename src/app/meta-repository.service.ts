@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
 import * as MetadataLoader from 'devextreme-themebuilder/modules/metadata-loader';
 import * as MetadataRepository from 'devextreme-themebuilder/modules/metadata-repository';
+import * as baseParameters from 'devextreme-themebuilder/modules/base-parameters';
 import * as themes from 'devextreme-themebuilder/modules/themes';
+import { MetaItem } from './types/meta-item';
+import { BuilderService } from './builder.service';
+import { ExportedItem } from './types/exported-item';
+import { Theme } from './types/theme';
 
 
 
@@ -10,40 +17,104 @@ export class MetadataRepositoryService {
 
     private metadataRepository: MetadataRepository;
     private metadataPromise: Promise<any>;
+    private modifiedMetaCollection: any = {};
 
-    constructor() {
+    theme: Theme;
+    css = new BehaviorSubject<string>('');
+
+    constructor(private router: Router, private builder: BuilderService) {
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
-        this.metadataPromise = this.metadataRepository.init(themes);
+
+        const repositoryPromise = this.metadataRepository.init(themes);
+        const themePromise = new Promise(resolve => {
+            this.router.events.subscribe(event => {
+                if(!(event instanceof NavigationEnd)) return;
+                const urlParts = event.url.split('/');
+                if(urlParts[2] && urlParts[3]) {
+                    // TODO make promise that will be resolved when theme is set
+                    if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
+                        this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                        resolve();
+                        this.build();
+                    }
+                }
+            });
+        });
+
+        this.metadataPromise = Promise.all([repositoryPromise, themePromise]);
     }
 
-    getData(theme: any) {
+    getData(): Promise<any> {
         return this.metadataPromise.then(() => {
-            return this.metadataRepository.getData(theme);
+            return this.metadataRepository.getData(this.theme);
         });
     }
 
-    updateData(data: Array<any>, theme: any) {
+    getDataItemByKey(key: string): Promise<MetaItem> {
         return this.metadataPromise.then(() => {
-            return this.metadataRepository.updateData(data, theme);
+            return this.metadataRepository.getDataItemByKey(key, this.theme);
         });
     }
 
-    getDataItemByKey(key: string, theme: any) {
-        return this.metadataPromise.then(() => {
-            return this.metadataRepository.getDataItemByKey(key, theme);
+    getExportedMeta(): Array<ExportedItem> {
+        const modifications: Array<ExportedItem> = [];
+        for (const key in this.modifiedMetaCollection) {
+            if (this.modifiedMetaCollection.hasOwnProperty(key)) {
+                modifications.push({
+                    key: key,
+                    value: this.modifiedMetaCollection[key]
+                });
+            }
+        }
+        return modifications;
+    }
+
+    updateSingleVariable(e: any, key: string): void {
+        this.getDataItemByKey(key).then(dataItem => {
+            if(dataItem.Value === e.value) {
+                return;
+            }
+
+            dataItem.Value = e.value;
+
+            if(e.previousValue === undefined) {
+                return;
+            }
+
+            dataItem.IsModified = true;
+            this.modifiedMetaCollection[dataItem.Key] = dataItem.Value;
+
+            this.build();
         });
     }
 
-    getModifiedData(theme: any) {
+    build(): void {
+        this.builder.buildTheme(this.theme, false, null, this.getExportedMeta()).then(result => {
+            for (const dataKey in result.compiledMetadata) {
+                if (result.compiledMetadata.hasOwnProperty(dataKey)) {
+                    const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
+                    item.Value = result.compiledMetadata[dataKey];
+                }
+            }
+
+            if(!this.css) {
+                this.css = new BehaviorSubject<string>(result.css);
+            } else {
+                this.css.next(result.css);
+            }
+        });
+    }
+
+    getBaseParameters(): Promise<Array<MetaItem>> {
         return this.metadataPromise.then(() => {
-            const result = [];
-            const themeData = this.metadataRepository.getData(theme);
-            for(const themeName in themeData) {
-                if(themeData.hasOwnProperty(themeName)) {
-                    const groups = themeData[themeName];
+            const result: Array<MetaItem> = [];
+            const themeData = this.metadataRepository.getData(this.theme);
+            for(const groupName in themeData) {
+                if(themeData.hasOwnProperty(groupName)) {
+                    const groups = themeData[groupName];
                     groups.forEach(item => {
-                        if(item.IsModified) {
-                            result.push({ key: item.Key, value: item.Value });
+                        if(baseParameters.indexOf(item.Key) !== -1) {
+                            result.push(item);
                         }
                     });
                 }

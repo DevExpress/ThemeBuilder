@@ -21,33 +21,20 @@
             <span>Back to select theme</span>
         </div>
         <div class="base-theming">
-            <ul>
-                <li *ngIf="isCompactThemes">
-                    <span>Base size</span>
-                    <dx-select-box width="140" height="35" [items]="['Normal', 'Compact']" value="Normal"></dx-select-box>
-                </li>
-                <li>
-                    <span>Accent color</span>
-                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseAccent | lowercase}}" width="140" height="35"></dx-color-box>
-                </li>
-                <li>
-                    <span>Text color</span>
-                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseTextColor}}" width="140" height="35"></dx-color-box>
-                </li>
-                <li>
-                    <span>Border radius</span>
-                    <dx-text-box *ngIf="baseConstants" value="{{baseConstants.baseBorderRadius}}" width="140" height="35"></dx-text-box>
-                </li>
-                <li>
-                    <span>Background color</span>
-                    <dx-color-box *ngIf="baseConstants" value="{{baseConstants.baseBg}}" width="140" height="35"></dx-color-box>
-                </li>
-            </ul>
+            <div class="editors">
+                <div class="work-item">
+                    <div class="property-header">Base size</div>
+                    <div class="property-widget">
+                        <dx-select-box [items]="['Normal', 'Compact']" value="Normal"></dx-select-box>
+                    </div>
+                </div>
+                <app-base-parameters></app-base-parameters>
+            </div>
             <div class="button apply">Save css</div>
-            <div class="button advanced">Advanced Customized</div>
+            <div class="button advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Customized</div>
         </div>
     </div>
     <div class="section right">
-        <app-iframe *ngIf="iframeData" [iframeData]="iframeData"></app-iframe>
+        <app-iframe *ngIf="isMaster"></app-iframe>
     </div>
 </div>

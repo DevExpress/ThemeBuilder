@@ -21,8 +21,7 @@ const routes: Routes = [
             { path: 'import-bootstrap', component: ImportBootstrapComponent },
             { path: 'master/:theme', component: MasterComponent },
             { path: 'master/:theme/:color-scheme', component: MasterComponent },
-            { path: 'advanced', redirectTo: '/advanced/generic/light', pathMatch: 'full' },
-            { path: 'advanced/:theme/:color-scheme', component: AdvancedComponent },
+            { path: 'advanced', redirectTo: '/advanced/generic/light/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/:widget', component: AdvancedComponent },
         ]
     },
