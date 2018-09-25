@@ -57,6 +57,11 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme/dist/css/fonts",
                                 "output": "content/css/fonts"
+                            },
+                            {
+                                "glob": "sass.worker.js",
+                                "input": "./node_modules/sass.js/dist/",
+                                "output": "sass"
                             }
                         ],
                         "styles": [

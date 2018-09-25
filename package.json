@@ -19,12 +19,13 @@
         "@angular/platform-browser-dynamic": "^6.1.0",
         "@angular/router": "^6.1.0",
         "core-js": "^2.5.4",
-        "rxjs": "^6.0.0",
-        "zone.js": "~0.8.26",
         "devextreme": "~18.1.5",
         "devextreme-angular": "~18.1.5",
-        "devextreme-themebuilder": "^18.2.1-pre-18250",
-        "less": "^2.6.1"
+        "devextreme-themebuilder": "^18.2.1-pre-18267",
+        "less": "^2.6.1",
+        "rxjs": "^6.0.0",
+        "sass.js": "^0.10.11",
+        "zone.js": "~0.8.26"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.7.0",
