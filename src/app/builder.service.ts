@@ -43,7 +43,7 @@ export class BuilderService {
             outputColorScheme: outColorScheme,
             reader: this.loadLess,
             items: modifiedData,
-            baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.'),
+            baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')
         });
     }
 }
