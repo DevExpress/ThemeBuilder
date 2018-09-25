@@ -33,6 +33,7 @@ export class MetadataRepositoryService {
                 if(urlParts[2] && urlParts[3]) {
                     if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
                         this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                        this.modifiedMetaCollection = {};
                         resolve();
                         this.build();
                     }
