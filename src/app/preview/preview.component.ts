@@ -15,7 +15,6 @@ export class PreviewComponent implements OnInit {
     receiveMessage(e) {
         if(e.data.css) {
             this.addHeadStyles(e.data.css);
-            this.createPreviewContent();
         }
     }
 
@@ -57,5 +56,6 @@ export class PreviewComponent implements OnInit {
 
     ngOnInit() {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
+        this.createPreviewContent();
     }
 }
