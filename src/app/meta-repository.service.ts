@@ -120,12 +120,6 @@ export class MetadataRepositoryService {
     export(outColorScheme: string, swatch: boolean): Promise<string> {
         return new Promise((resolve, reject) => {
             this.builder.buildTheme(this.theme, swatch, outColorScheme, this.getExportedMeta()).then(result => {
-                for (const dataKey in result.compiledMetadata) {
-                    if (result.compiledMetadata.hasOwnProperty(dataKey)) {
-                        const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
-                        item.Value = result.compiledMetadata[dataKey];
-                    }
-                }
                 resolve(result.css);
             }, error => {
                 reject(error);
