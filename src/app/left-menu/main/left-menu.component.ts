@@ -65,51 +65,62 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     getRealName = name => this.names.getRealName(name);
 
     loadThemeMetadata() {
-        return this.metaRepository.getData().then(groupedMetadata => {
+        return this.metaRepository.getData().then(metadata => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
-            const widgetGroups: any = {};
+
+            const widgetGroups: Array<MetaItem> = [];
             const itemArray: Array<LeftMenuItem> = [];
 
-            for(const groupKey in groupedMetadata) {
-                if(groupedMetadata.hasOwnProperty(groupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(groupKey);
-                    const groupName = aliasInfo.name;
-                    if(!aliasInfo) { continue; }
+            const processedGroups: any = {};
 
-                    if(aliasInfo.widgetGroup) {
-                        const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
-                        if(!widgetGroups[mainGroupKey]) {
-                            widgetGroups[mainGroupKey] = [];
-                        }
-                        widgetGroups[mainGroupKey].push({
-                            GroupHeader: true,
-                            Name: '0. ' + groupName,
-                            Items: groupedMetadata[groupKey]
-                        });
-                    } else {
-                        itemArray.push({
-                            order: aliasInfo.order,
-                            groupKey: groupKey,
-                            groupName: groupName,
-                            items: groupedMetadata[groupKey]
-                        });
-                    }
-                }
-            }
 
-            for(const widgetGroupKey in widgetGroups) {
-                if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
+            metadata.forEach(metaItem => {
+                const aliasInfo = LeftMenuAlias.getAlias(metaItem.Group);
+                const groupName = aliasInfo.name;
+                if(!aliasInfo) return;
+
+                if(aliasInfo.widgetGroup) {
+                    if(processedGroups[metaItem.Group]) return;
+                    processedGroups[metaItem.Group] = true;
+
+                    const groupKey = metaItem.Group.substring(0, metaItem.Group.indexOf('.'));
+
+                    widgetGroups.push({
+                        Key: null,
+                        Value: null,
+                        Group: groupKey,
+                        GroupHeader: true,
+                        Name: '0. ' + groupName,
+                        Items: metadata.filter(i => i.Group === metaItem.Group)
+                    });
+                } else {
+                    if(processedGroups[metaItem.Group]) return;
+                    processedGroups[metaItem.Group] = true;
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupKey: widgetGroupKey,
-                        groupName: aliasInfo.name,
-                        items: widgetGroups[widgetGroupKey]
+                        groupKey: metaItem.Group,
+                        groupName: groupName,
+                        items: metadata.filter(i => i.Group === metaItem.Group)
                     });
                 }
-            }
+            });
+
+            widgetGroups.forEach(groupItem => {
+                const mainGroupKey = groupItem.Group;
+                if(processedGroups[mainGroupKey]) return;
+                processedGroups[mainGroupKey] = true;
+
+                const aliasInfo = LeftMenuAlias.getAlias(mainGroupKey);
+
+                itemArray.push({
+                    order: aliasInfo.order,
+                    groupKey: mainGroupKey,
+                    groupName: aliasInfo.name,
+                    items: widgetGroups.filter(i => i.Group === mainGroupKey)
+                });
+            });
 
             this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
         });
