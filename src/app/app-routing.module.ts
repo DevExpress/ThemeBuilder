@@ -15,12 +15,11 @@ const routes: Routes = [
         path: '',
         component: AppLayoutComponent,
         children: [
-            { path: '', component: IndexComponent },
-            { path: 'master', component: IndexComponent },
-            { path: 'import', component: IndexComponent },
-            { path: 'import-bootstrap', component: ImportBootstrapComponent },
-            { path: 'master/:theme', component: MasterComponent },
-            { path: 'master/:theme/:color-scheme', component: MasterComponent },
+            { path: '', component: IndexComponent, data: { routeId: 1 } },
+            { path: 'master', component: IndexComponent, data: { routeId: 2 } },
+            { path: 'import', component: IndexComponent, data: { routeId: 2 } },
+            { path: 'import-bootstrap', component: ImportBootstrapComponent, data: { routeId: 3 } },
+            { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3 } },
             { path: 'advanced', redirectTo: '/advanced/generic/light/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/:widget', component: AdvancedComponent },
         ]

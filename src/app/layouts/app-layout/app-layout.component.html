@@ -2,6 +2,6 @@
     <span>DevExtreme</span> ThemeBuilder
     <span>by DevExpress</span>
 </div>
-<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+<main [@routeAnimation]="getRouteAnimation(o)" (@routeAnimation.done)="routeAnimationDone($event)">
     <router-outlet #o="outlet"></router-outlet>
 </main>

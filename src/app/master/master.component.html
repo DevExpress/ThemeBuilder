@@ -1,13 +1,11 @@
-<div class="content" [ngClass]="{'master': isMaster}">
+<div class="master"> 
     <div class="section left">
+        <div class="title-link master" [routerLink]="['/master']">Select a Theme</div>
         <div class="title">
-            <div [routerLink]="['/master', themeName]">
-                <app-icon-arrow></app-icon-arrow>
-                {{themeName | titlecase}} Theme
-                <span>Select color sheme</span>
-            </div>
+            {{themeName | titlecase}} Theme
+            <span>Select color sheme</span>
         </div>
-        <div class="themes-list">
+        <div class="schemes-container">
             <ul class="schemes" *ngFor="let side of [rightThemes, leftThemes]">
                 <li *ngFor="let theme of side" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
             true}" [routerLink]="['/master', theme.name, theme.colorScheme]">
@@ -15,10 +13,6 @@
                     <span class="color-name">{{theme.text}}</span>
                 </li>
             </ul>
-        </div>
-        <div class="back-button" [routerLink]="['/master']">
-            <app-icon-arrow></app-icon-arrow>
-            <span>Back to select theme</span>
         </div>
         <div class="base-theming">
             <div class="editors">
@@ -35,6 +29,6 @@
         </div>
     </div>
     <div class="section right">
-        <app-iframe *ngIf="isMaster"></app-iframe>
+        <app-iframe *ngIf="showIframe"></app-iframe>
     </div>
 </div>
