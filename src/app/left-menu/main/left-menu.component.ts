@@ -69,23 +69,26 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
-
             const widgetGroups: Array<MetaItem> = [];
             const itemArray: Array<LeftMenuItem> = [];
 
             const processedGroups: any = {};
 
-
             metadata.forEach(metaItem => {
-                const aliasInfo = LeftMenuAlias.getAlias(metaItem.Group);
-                const groupName = aliasInfo.name;
+                const group = metaItem.Group;
+
+                if(processedGroups[group]) return;
+                processedGroups[group] = true;
+
+                const aliasInfo = LeftMenuAlias.getAlias(group);
+
                 if(!aliasInfo) return;
 
-                if(aliasInfo.widgetGroup) {
-                    if(processedGroups[metaItem.Group]) return;
-                    processedGroups[metaItem.Group] = true;
+                const groupName = aliasInfo.name;
+                const groupItems = metadata.filter(i => i.Group === group);
 
-                    const groupKey = metaItem.Group.substring(0, metaItem.Group.indexOf('.'));
+                if(aliasInfo.widgetGroup) {
+                    const groupKey = group.substring(0, group.indexOf('.'));
 
                     widgetGroups.push({
                         Key: null,
@@ -93,16 +96,14 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                         Group: groupKey,
                         GroupHeader: true,
                         Name: '0. ' + groupName,
-                        Items: metadata.filter(i => i.Group === metaItem.Group)
+                        Items: groupItems
                     });
                 } else {
-                    if(processedGroups[metaItem.Group]) return;
-                    processedGroups[metaItem.Group] = true;
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupKey: metaItem.Group,
+                        groupKey: group,
                         groupName: groupName,
-                        items: metadata.filter(i => i.Group === metaItem.Group)
+                        items: groupItems
                     });
                 }
             });
