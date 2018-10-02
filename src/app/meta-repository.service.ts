@@ -10,14 +10,12 @@ import { BuilderService } from './builder.service';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
 
-
-
 @Injectable()
 export class MetadataRepositoryService {
 
     private metadataRepository: MetadataRepository;
     private metadataPromise: Promise<any>;
-    private modifiedMetaCollection: any = {};
+    private modifiedMetaCollection: Array<ExportedItem> = [];
 
     theme: Theme;
     css = new BehaviorSubject<string>('');
@@ -33,7 +31,7 @@ export class MetadataRepositoryService {
                 if(urlParts[2] && urlParts[3]) {
                     if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
                         this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
-                        this.modifiedMetaCollection = {};
+                        this.clearModifiedDataCache();
                         resolve();
                         this.build();
                     }
@@ -44,7 +42,11 @@ export class MetadataRepositoryService {
         this.metadataPromise = Promise.all([repositoryPromise, themePromise]);
     }
 
-    getData(): Promise<any> {
+    clearModifiedDataCache(): void {
+        this.modifiedMetaCollection = [];
+    }
+
+    getData(): Promise<Array<MetaItem>> {
         return this.metadataPromise.then(() => {
             return this.metadataRepository.getData(this.theme);
         });
@@ -54,19 +56,6 @@ export class MetadataRepositoryService {
         return this.metadataPromise.then(() => {
             return this.metadataRepository.getDataItemByKey(key, this.theme);
         });
-    }
-
-    getExportedMeta(): Array<ExportedItem> {
-        const modifications: Array<ExportedItem> = [];
-        for (const key in this.modifiedMetaCollection) {
-            if (this.modifiedMetaCollection.hasOwnProperty(key)) {
-                modifications.push({
-                    key: key,
-                    value: this.modifiedMetaCollection[key]
-                });
-            }
-        }
-        return modifications;
     }
 
     updateSingleVariable(e: any, key: string): void {
@@ -81,15 +70,14 @@ export class MetadataRepositoryService {
                 return;
             }
 
-            dataItem.IsModified = true;
-            this.modifiedMetaCollection[dataItem.Key] = dataItem.Value;
+            this.modifiedMetaCollection.push({ key: dataItem.Key, value: dataItem.Value });
 
             this.build();
         });
     }
 
     build(): void {
-        this.builder.buildTheme(this.theme, false, null, this.getExportedMeta()).then(result => {
+        this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection).then(result => {
             for (const dataKey in result.compiledMetadata) {
                 if (result.compiledMetadata.hasOwnProperty(dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
@@ -105,17 +93,30 @@ export class MetadataRepositoryService {
         return this.metadataPromise.then(() => {
             const result: Array<MetaItem> = [];
             const themeData = this.metadataRepository.getData(this.theme);
-            for(const groupName in themeData) {
-                if(themeData.hasOwnProperty(groupName)) {
-                    const groups = themeData[groupName];
-                    groups.forEach(item => {
-                        if(baseParameters.indexOf(item.Key) !== -1) {
-                            result.push(item);
-                        }
-                    });
+
+            themeData.forEach(item => {
+                if(baseParameters.indexOf(item.Key) !== -1) {
+                    result.push(item);
                 }
-            }
+            });
             return result;
         });
+    }
+
+    export(outColorScheme: string, swatch: boolean): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.builder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection).then(result => {
+                resolve(result.css);
+            }, error => {
+                reject(error);
+            });
+        });
+    }
+
+    import(theme: Theme, modifiedData: Array<ExportedItem>) {
+        this.clearModifiedDataCache();
+        this.theme = theme;
+        this.modifiedMetaCollection = modifiedData;
+        this.build();
     }
 }

@@ -8,7 +8,7 @@
 .master .section.left {
     position: relative;
     width: 750px;
-    padding-top: 100px;
+    padding-top: 40px;
 }
 
 .master .section.right {
@@ -31,12 +31,9 @@
 .master .title {
     width: 310px;
     text-align: left; 
-    margin-left: 100px;  
+    margin-left: 100px;
+    display: block;  
 }
-
-/* .master .title:before {
-    margin: 0;
-} */
 
 .master .title span {
     margin-left: 2px;

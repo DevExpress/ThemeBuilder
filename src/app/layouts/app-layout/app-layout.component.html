@@ -1,7 +1,4 @@
-<div class="logo">
-    <span>DevExtreme</span> ThemeBuilder
-    <span>by DevExpress</span>
-</div>
+<app-header [switchEnabled]="false"></app-header>
 <main [@routeAnimation]="getRouteAnimation(o)" (@routeAnimation.done)="routeAnimationDone($event)">
     <router-outlet #o="outlet"></router-outlet>
 </main>
