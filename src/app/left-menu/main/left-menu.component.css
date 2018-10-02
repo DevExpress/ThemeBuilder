@@ -2,6 +2,7 @@
     display: block;
     height: 100%;
     width: 240px;
+    border-right: 1px solid #e3e7ea;
 }
 
 .left-menu {
@@ -52,6 +53,7 @@
 .left-menu .dark-menu .menu-item.top {
     font-size: 18px;
     padding-bottom: 10px;
+    padding-left: 30px;
     border-bottom: 1px solid #6d6e6f;
     position: relative;
 }
@@ -60,7 +62,7 @@
     position: absolute;
     top: 50%;
     margin-top: -5px;
-    left: 5px;
+    left: 10px;
 }
 
 .left-menu .dark-menu .menu-item.active-link {
@@ -126,7 +128,7 @@
 }
 
 .left-menu .working-area .work-item {
-    padding-left:30px;
+    padding-left: 20px;
 }
 
 .left-menu .working-area .work-item:last-child {

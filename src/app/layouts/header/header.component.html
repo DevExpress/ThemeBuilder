@@ -1,0 +1,34 @@
+<div class="header" [ngClass]="{ 'filled': switchEnabled }">
+    <div class="logo">
+        <span>DevExtreme</span> ThemeBuilder
+        <span>by DevExpress</span>
+    </div>
+
+    <div *ngIf="switchEnabled; then switcherBlock;"></div>
+
+    <ng-template #switcherBlock>
+        <div class="separator first"></div>
+        <div class="switcher">
+            <dx-select-box
+                [dataSource]="switcherData"
+                [grouped]="true"
+                displayExpr="text"
+                valueExpr="themeId"
+                [value]="currentThemeId"
+                (onValueChanged)="themeChanged($event)"
+            ></dx-select-box>
+        </div>
+        <div class="separator"></div>
+        <div class="header-button">
+            <div class="icon import"></div>
+            <div class="text">Import</div>
+        </div>
+        <div class="separator"></div>
+        <div class="header-button">
+            <div class="icon export"></div>
+            <div class="text">Export</div>
+        </div>
+        <div class="separator"></div>
+    </ng-template>
+</div>
+

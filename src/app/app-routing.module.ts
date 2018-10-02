@@ -9,6 +9,7 @@ import { MasterComponent } from './master/master.component';
 import { ImportBootstrapComponent } from './import-bootstrap/import-bootstrap.component';
 import { PreviewComponent } from './preview/preview.component';
 import { AdvancedComponent } from './advanced/advanced.component';
+import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
 
 const routes: Routes = [
     {
@@ -21,7 +22,14 @@ const routes: Routes = [
             { path: 'import-bootstrap', component: ImportBootstrapComponent },
             { path: 'master/:theme', component: MasterComponent },
             { path: 'master/:theme/:color-scheme', component: MasterComponent },
+        ]
+    },
+    {
+        path: '',
+        component: AdvancedLayoutComponent,
+        children: [
             { path: 'advanced', redirectTo: '/advanced/generic/light/base.common', pathMatch: 'full' },
+            { path: 'advanced/:theme/:color-scheme', redirectTo: 'advanced/:theme/:color-scheme/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/:widget', component: AdvancedComponent },
         ]
     },
