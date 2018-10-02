@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from './app-routing.module';
 
 import {
@@ -44,6 +43,8 @@ import { PreviewComponent } from './preview/preview.component';
 
 import { BuilderService } from './builder.service';
 import { PreviewService } from './preview.service';
+import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
+import { HeaderComponent } from './layouts/header/header.component';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,9 @@ import { PreviewService } from './preview.service';
         AppLayoutComponent,
         PreviewLayoutComponent,
         IframeComponent,
-        PreviewComponent
+        PreviewComponent,
+        AdvancedLayoutComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,

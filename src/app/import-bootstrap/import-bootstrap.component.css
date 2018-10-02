@@ -11,8 +11,57 @@
 
 .text {
     margin: 10px auto 45px;
+    font-size: 16px;
+    color: #505050;
+    width: 500px;
 }
 
 .apply {
     width: 270px;
+}
+
+:host ::ng-deep .tabs.dx-tabpanel .dx-tab {
+    width: 280px;
+    height: 50px;
+}
+
+:host ::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
+    border-color: #d4d8da;
+    border-width: 2px;
+    border-bottom: 0;
+}
+
+:host ::ng-deep .tabs .dx-tab-selected {
+    background-color: #f0f2f3;
+    color: #f05b41;
+}
+
+:host ::ng-deep .tabs.dx-tabpanel .dx-tab-selected:before {
+    border-bottom: 0;
+}
+
+:host ::ng-deep .tabs .dx-tab.dx-state-focused:after {
+    border-color: transparent;
+}
+
+:host ::ng-deep .tabs .dx-tab-selected:after {
+    border-color: #d4d8da;
+    border-width: 2px;
+    border-top-style: solid;
+    height: 51px;
+}
+
+:host ::ng-deep .tabs .dx-tab.dx-item:not(.dx-tab-selected) {
+    background-color: #d4d8da;
+}
+
+:host ::ng-deep .tabs.dx-tabpanel .dx-multiview-wrapper,
+:host ::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
+    border: none;
+}
+
+:host ::ng-deep .file-uploader .dx-fileuploader-input-wrapper .dx-button {
+    float: none;
+    width: 260px;
+    height: 50px;
 }
