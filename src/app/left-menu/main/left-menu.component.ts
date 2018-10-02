@@ -65,51 +65,63 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     getRealName = name => this.names.getRealName(name);
 
     loadThemeMetadata() {
-        return this.metaRepository.getData().then(groupedMetadata => {
+        return this.metaRepository.getData().then(metadata => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
-            const widgetGroups: any = {};
+            const widgetGroups: Array<MetaItem> = [];
             const itemArray: Array<LeftMenuItem> = [];
 
-            for(const groupKey in groupedMetadata) {
-                if(groupedMetadata.hasOwnProperty(groupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(groupKey);
-                    const groupName = aliasInfo.name;
-                    if(!aliasInfo) { continue; }
+            const processedGroups: any = {};
 
-                    if(aliasInfo.widgetGroup) {
-                        const mainGroupKey = groupKey.substring(0, groupKey.indexOf('.'));
-                        if(!widgetGroups[mainGroupKey]) {
-                            widgetGroups[mainGroupKey] = [];
-                        }
-                        widgetGroups[mainGroupKey].push({
-                            GroupHeader: true,
-                            Name: '0. ' + groupName,
-                            Items: groupedMetadata[groupKey]
-                        });
-                    } else {
-                        itemArray.push({
-                            order: aliasInfo.order,
-                            groupKey: groupKey,
-                            groupName: groupName,
-                            items: groupedMetadata[groupKey]
-                        });
-                    }
-                }
-            }
+            metadata.forEach(metaItem => {
+                const group = metaItem.Group;
 
-            for(const widgetGroupKey in widgetGroups) {
-                if(widgetGroups.hasOwnProperty(widgetGroupKey)) {
-                    const aliasInfo = LeftMenuAlias.getAlias(widgetGroupKey);
+                if(processedGroups[group]) return;
+                processedGroups[group] = true;
+
+                const aliasInfo = LeftMenuAlias.getAlias(group);
+
+                if(!aliasInfo) return;
+
+                const groupName = aliasInfo.name;
+                const groupItems = metadata.filter(i => i.Group === group);
+
+                if(aliasInfo.widgetGroup) {
+                    const groupKey = group.substring(0, group.indexOf('.'));
+
+                    widgetGroups.push({
+                        Key: null,
+                        Value: null,
+                        Group: groupKey,
+                        GroupHeader: true,
+                        Name: '0. ' + groupName,
+                        Items: groupItems
+                    });
+                } else {
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupKey: widgetGroupKey,
-                        groupName: aliasInfo.name,
-                        items: widgetGroups[widgetGroupKey]
+                        groupKey: group,
+                        groupName: groupName,
+                        items: groupItems
                     });
                 }
-            }
+            });
+
+            widgetGroups.forEach(groupItem => {
+                const mainGroupKey = groupItem.Group;
+                if(processedGroups[mainGroupKey]) return;
+                processedGroups[mainGroupKey] = true;
+
+                const aliasInfo = LeftMenuAlias.getAlias(mainGroupKey);
+
+                itemArray.push({
+                    order: aliasInfo.order,
+                    groupKey: mainGroupKey,
+                    groupName: aliasInfo.name,
+                    items: widgetGroups.filter(i => i.Group === mainGroupKey)
+                });
+            });
 
             this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
         });

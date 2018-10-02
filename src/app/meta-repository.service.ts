@@ -46,7 +46,7 @@ export class MetadataRepositoryService {
         this.modifiedMetaCollection = [];
     }
 
-    getData(): Promise<any> {
+    getData(): Promise<Array<MetaItem>> {
         return this.metadataPromise.then(() => {
             return this.metadataRepository.getData(this.theme);
         });
@@ -70,7 +70,6 @@ export class MetadataRepositoryService {
                 return;
             }
 
-            dataItem.IsModified = true;
             this.modifiedMetaCollection.push({ key: dataItem.Key, value: dataItem.Value });
 
             this.build();
@@ -94,16 +93,12 @@ export class MetadataRepositoryService {
         return this.metadataPromise.then(() => {
             const result: Array<MetaItem> = [];
             const themeData = this.metadataRepository.getData(this.theme);
-            for(const groupName in themeData) {
-                if(themeData.hasOwnProperty(groupName)) {
-                    const groups = themeData[groupName];
-                    groups.forEach(item => {
-                        if(baseParameters.indexOf(item.Key) !== -1) {
-                            result.push(item);
-                        }
-                    });
+
+            themeData.forEach(item => {
+                if(baseParameters.indexOf(item.Key) !== -1) {
+                    result.push(item);
                 }
-            }
+            });
             return result;
         });
     }
