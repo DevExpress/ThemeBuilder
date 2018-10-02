@@ -25,11 +25,11 @@ export class AppLayoutComponent {
         });
     }
 
-    getRouteAnimation(outlet) {
+    getRouteAnimation() {
         return this.animationValue;
     }
 
-    routeAnimationDone(event: AnimationEvent) {
+    routeAnimationDone() {
         this.animationDone.next(true);
     }
 }
