@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
 })
 
 export class AppLayoutComponent {
-    animationValue: any;
-    animationDone = new Subject<any>();
+    animationValue: number;
+    animationDone = new Subject<boolean>();
 
     constructor(private router: Router) {
         this.router.events.subscribe((event) => {
@@ -25,7 +25,7 @@ export class AppLayoutComponent {
         });
     }
 
-    getRouteAnimation() {
+    getRouteAnimation(): number {
         return this.animationValue;
     }
 
