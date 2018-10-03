@@ -1,14 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as themes from 'devextreme-themebuilder/modules/themes.js';
+import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
+import { Subscription } from 'rxjs';
+
 
 @Component({
     templateUrl: './master.component.html',
     styleUrls: ['./master.component.css']
 })
 
-export class MasterComponent {
-    isMaster: boolean;
+export class MasterComponent implements OnInit, OnDestroy {
+    showIframe = false;
     themes: any;
     themeName: string;
     colorScheme: string;
@@ -16,9 +19,12 @@ export class MasterComponent {
     leftThemes: any;
     isCompactThemes = false;
     baseConstants: any;
+    subscription: Subscription;
 
     constructor(
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private appLayoutComponent: AppLayoutComponent
+    ) {
         this.route.params.subscribe(params => {
             this.themeName = params['theme'] || '';
             this.colorScheme = params['color-scheme'] || '';
@@ -28,7 +34,6 @@ export class MasterComponent {
     }
 
     changeContent() {
-        this.isMaster = this.colorScheme.length > 0;
         this.themes = themes.filter(t => t.name === this.themeName);
 
         if(this.themeName === 'material') {
@@ -41,5 +46,15 @@ export class MasterComponent {
             this.leftThemes = genericThemes;
             this.isCompactThemes = true;
         }
+    }
+
+    ngOnInit() {
+        this.subscription = this.appLayoutComponent.animationDone.subscribe(value => {
+            this.showIframe = value;
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

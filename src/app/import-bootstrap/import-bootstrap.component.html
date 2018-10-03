@@ -1,22 +1,21 @@
 <div class="content">
-    <div class="title">Import Data
-        <span>Bootstrap Variables</span>
-    </div>
-    <dx-tab-panel class="tabs" [width]="560" [height]="300" [dataSource]="tabPanelData" [selectedIndex]="0" [loop]="false">
-        <div *dxTemplate="let data of 'title'">
-            <span>{{data.name}}</span>
+    <div class="title-link" [routerLink]="['/import']">Import Data</div>
+    <div class="container">
+        <div class="title">Import Data
+            <span>Bootstrap Variables</span>
         </div>
-        <div *dxTemplate="let data of 'item'">
-            <div class="tabpanel-item">
-                <dx-file-uploader width="260" [multiple]="false" accept="*" selectButtonText="{{data.uploadButtonText}}" class="file-uploader">
-                </dx-file-uploader>
-                <div class="text">{{data.commonText}}</div>
+        <dx-tab-panel class="tabs" [width]="560" [height]="300" [dataSource]="tabPanelData" [selectedIndex]="0" [loop]="false">
+            <div *dxTemplate="let data of 'title'">
+                <span>{{data.name}}</span>
             </div>
-        </div>
-    </dx-tab-panel>
-    <div class="button apply">Apply</div>
-    <div class="back-button" [routerLink]="['/import']">
-        <app-icon-arrow></app-icon-arrow>
-        <span>Back to select data type</span>
+            <div *dxTemplate="let data of 'item'">
+                <div class="tabpanel-item">
+                    <dx-file-uploader width="260" [multiple]="false" accept="*" selectButtonText="{{data.uploadButtonText}}" class="file-uploader">
+                    </dx-file-uploader>
+                    <div class="text">{{data.commonText}}</div>
+                </div>
+            </div>
+        </dx-tab-panel>
+        <div class="button apply">Apply</div>
     </div>
 </div>

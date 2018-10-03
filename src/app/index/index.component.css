@@ -36,9 +36,17 @@
     font-size: 30px;
 }
 
+
+:host ::ng-deep .blocks .block:hover .block-image .st0,
+:host ::ng-deep .blocks .block:hover .block-image .st1  {
+    fill: #fff;
+}
+
+:host ::ng-deep .blocks .block:hover .block-image .icon-material .st1,
+:host ::ng-deep .blocks .block:hover .block-image .icon-material .st2  {
+    fill:#f05b41;
+}
+
 .text { 
-    font-size: 16px;
-    color: #505050;
     margin: 45px auto;
-    width: 500px;
 }

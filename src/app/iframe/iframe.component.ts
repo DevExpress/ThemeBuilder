@@ -10,11 +10,10 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./iframe.component.css']
 })
 export class IframeComponent implements OnDestroy {
-
-    @Input() iframeUrl: SafeResourceUrl;
     @ViewChild('iframe') iframe: ElementRef;
 
     url: string;
+    iframeUrl: SafeResourceUrl;
     subscription: Subscription;
     theme: string;
     colorScheme: string;

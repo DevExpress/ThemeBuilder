@@ -1,14 +1,14 @@
 .master .section {
-    height: 100%;
     text-align: left;
-    padding-top: 100px;
     float: left;
     box-sizing: border-box;
+    display: block;
 }
 
 .master .section.left {
     position: relative;
     width: 750px;
+    padding-top: 40px;
 }
 
 .master .section.right {
@@ -16,45 +16,46 @@
     position: absolute;
     left: 750px;
     right: 0;
+    top: 100px;
+    height: 800px;
+    min-width: 800px;
+    max-width: 1700px;
+    background-color: #e2e5e7; 
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3); 
 }
 
-.master .base-theming {
-    display: block;
+.master .section.right > * {
+    height: 100%;
 }
 
 .master .title {
     width: 310px;
-    padding-left: 100px;
-    text-align: center;   
+    text-align: left; 
+    margin-left: 100px;
+    display: block;  
 }
 
-.master .title > div  {
-    position: relative;
-    display: inline-block;
-    text-align: left;
-    margin: 0;  
+.master .title span {
+    margin-left: 2px;
 }
 
-.master .themes-list {
+.master .title-link {
+    margin-left: 100px;
+}
+
+.master .schemes-container {
     width: 180px;
     position: absolute;
     left: 90px;
     right: 300px;
     margin-left: 0;
     margin-right: 0;
+    margin-top: 50px;
 }
 
 .schemes .color-name {
     display: inline-block;
     vertical-align: middle;
-}
-
-.schemes {
-    display: inline-block;
-    vertical-align: top;
-    width: 180px;
-    margin: 0;
-    transition: all 1s ease-out 0.5s;
 }
 
 .schemes li {
@@ -195,11 +196,5 @@
 .button.advanced:active {
     background-color: #d0442c;
     color: #fff;
-}
-
-.section.right,
-.base-theming,
-.master .back-button {
-    display: none;
 }
 
