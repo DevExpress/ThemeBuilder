@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as themes from 'devextreme-themebuilder/modules/themes.js';
 import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./master.component.css']
 })
 
-export class MasterComponent implements OnInit {
+export class MasterComponent implements OnInit, OnDestroy {
     showIframe = false;
     themes: any;
     themeName: string;
@@ -49,8 +49,12 @@ export class MasterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.appLayoutComponent.animationDone.subscribe(value => {
-            this.showIframe = !this.showIframe && value;
+        this.subscription = this.appLayoutComponent.animationDone.subscribe(value => {
+            this.showIframe = value;
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }
