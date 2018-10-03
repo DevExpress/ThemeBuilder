@@ -31,7 +31,6 @@ import { IconMaterialComponent } from './icons/icon-material/icon-material.compo
 import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.component';
 import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
-import { IconArrowComponent } from './icons/icon-arrow/icon-arrow.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { LeftMenuComponent } from './left-menu/main/left-menu.component';
 import { MetadataRepositoryService } from './meta-repository.service';
@@ -58,7 +57,6 @@ import { HeaderComponent } from './layouts/header/header.component';
         IconMetadataComponent,
         IconExportComponent,
         IconBootstrapComponent,
-        IconArrowComponent,
         AdvancedComponent,
         LeftMenuComponent,
         EditorComponent,

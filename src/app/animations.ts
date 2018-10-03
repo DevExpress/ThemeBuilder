@@ -8,7 +8,7 @@ import {
 } from '@angular/animations';
 
 export const routeAnimation =  trigger('routeAnimation', [
-    transition('1 => 2, 2 => 3', [
+    transition('1 => 2, 2 => 3, * => 3', [
         query('.container', style({  opacity: 0, transform: 'translateY(20%)' }), { optional: true }),
         query('.title-link:not(.master)',  style({ 'font-size': '47px', color: '#404040', opacity: 0, transform: 'translateY(100%)' }),
         { optional: true }),

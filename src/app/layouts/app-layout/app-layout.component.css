@@ -1,0 +1,78 @@
+:host ::ng-deep .content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: #404040;
+}
+
+:host ::ng-deep .title {
+    font-weight: 100;
+    font-size: 47px;
+    margin: 0 auto;
+    border-top: 1px solid #dadada;
+    display: inline-block;
+}
+
+:host ::ng-deep .title.index {
+    border-top: none;
+}
+
+:host ::ng-deep .title-link {
+    cursor: pointer;
+    font-weight: 100;
+    margin: 0 auto;
+    color: #a7a8a9;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+:host ::ng-deep .title span {
+    font-weight: bold;
+    font-size: 24px;
+    display: block;
+    margin-top: -5px;
+}
+
+:host ::ng-deep .title-link:hover {
+    color: #f05b41;
+}
+
+:host ::ng-deep .text { 
+    font-size: 16px;
+    color: #505050;
+    width: 500px;
+}
+
+:host ::ng-deep .button {
+    width: 240px;
+    height: 45px;
+    line-height: 45px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+:host ::ng-deep .button.apply {
+    background-color: #f05b41;
+    color: #fff;
+}
+
+:host ::ng-deep .button.apply:focus,
+:host ::ng-deep .button.apply:active {
+    background-color: #e2e4e5;
+    color: #f05b41;
+}
+
+:host ::ng-deep .button.apply:hover,
+:host ::ng-deep .button.advanced:hover {
+    background-color: #707070;
+    color: #fff;
+}

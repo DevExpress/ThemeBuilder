@@ -29,7 +29,7 @@ export class AppLayoutComponent {
         return this.animationValue;
     }
 
-    routeAnimationDone() {
+    routeAnimationDone(): void {
         this.animationDone.next(true);
     }
 }

@@ -50,9 +50,7 @@ export class MasterComponent implements OnInit {
 
     ngOnInit() {
         this.appLayoutComponent.animationDone.subscribe(value => {
-            if(!this.showIframe && value) {
-                this.showIframe = value;
-            }
+            this.showIframe = !this.showIframe && value;
         });
     }
 }
