@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import * as themes from 'devextreme-themebuilder/modules/themes';
 import DataSource from 'devextreme/data/data_source';
+import { confirm } from 'devextreme/ui/dialog';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -19,15 +20,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     constructor(private metadataService: MetadataRepositoryService, private route: Router) { }
 
     themeChanged(e) {
-        // TODO alert about current constants resetting
-        const newTheme = themes.filter(i => i.themeId === e.value);
-        if(newTheme.length) {
-            const theme = newTheme[0].name;
-            const colorScheme = newTheme[0].colorScheme;
-            const url = this.route.url;
-            const widget = url.substring(url.lastIndexOf('/') + 1);
-            this.route.navigate(['advanced', theme, colorScheme, widget]);
+        if(e.component.canceled) {
+            e.component.canceled = false;
+            return;
         }
+        const newTheme = themes.filter(i => i.themeId === e.value);
+
+        confirm('Are you sure you want to change the base theme? All changes will be lost.', 'Theme Builder').then(confirmed => {
+            if(confirmed && newTheme.length) {
+                const theme = newTheme[0].name;
+                const colorScheme = newTheme[0].colorScheme;
+                const url = this.route.url;
+                const widget = url.substring(url.lastIndexOf('/') + 1);
+                this.route.navigate(['advanced', theme, colorScheme, widget]);
+            } else {
+                this.currentThemeId = e.previousValue;
+                e.component.canceled = true;
+            }
+        });
     }
 
     ngOnInit() {
