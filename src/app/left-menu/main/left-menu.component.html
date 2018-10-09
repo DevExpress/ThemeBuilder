@@ -36,7 +36,7 @@
                     <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
                 </div>
                 <div class="search-button" (click)="toggleSearch($event)">
-                    <span class="arrow search" [ngClass]="{'close': searchOpened}"></span>
+                    <app-search-opener [opened]="searchOpened"></app-search-opener>
                 </div>
             </div>
             <div class="separator"></div>

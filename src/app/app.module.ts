@@ -44,6 +44,7 @@ import { BuilderService } from './builder.service';
 import { PreviewService } from './preview.service';
 import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
+import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
 
 @NgModule({
     declarations: [
@@ -66,7 +67,8 @@ import { HeaderComponent } from './layouts/header/header.component';
         IframeComponent,
         PreviewComponent,
         AdvancedLayoutComponent,
-        HeaderComponent
+        HeaderComponent,
+        SearchOpenerComponent
     ],
     imports: [
         BrowserModule,

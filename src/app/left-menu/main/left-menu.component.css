@@ -79,15 +79,6 @@
     top: 0;
 }
 
-.left-menu .dark-menu .menu-item.top .search-button .search {
-    background-image: url(/images/search.svg);
-    left: 10px;
-}
-
-.left-menu .dark-menu .menu-item.top .search-button .search.close {
-    background-image: url(/images/close.svg);
-}
-
 .left-menu .dark-menu .menu-item.top .search-container {
     width: 240px;
     height: 45px;
@@ -106,6 +97,7 @@
 
 .left-menu .dark-menu .menu-item.top .search-container .search {
     background-image: url(/images/search.svg);
+    cursor: default;
 }
 
 .left-menu .dark-menu .menu-item.top .search-container input {
