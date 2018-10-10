@@ -63,10 +63,6 @@
     height: 18px;
 }
 
-.left-menu .dark-menu .menu-item.top .arrow.back {
-    background-image: url(/images/back.svg);
-}
-
 .left-menu .dark-menu .menu-item.top .search-button {
     width: 40px;
     height: 45px;

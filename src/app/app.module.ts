@@ -45,6 +45,7 @@ import { PreviewService } from './preview.service';
 import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
+import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigator.component';
 
 @NgModule({
     declarations: [
@@ -68,7 +69,8 @@ import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.c
         PreviewComponent,
         AdvancedLayoutComponent,
         HeaderComponent,
-        SearchOpenerComponent
+        SearchOpenerComponent,
+        BackNavigatorComponent
     ],
     imports: [
         BrowserModule,

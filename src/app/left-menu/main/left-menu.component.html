@@ -29,8 +29,9 @@
     </div>
     <div class="dark-menu closed" [ngClass]="{ 'closed' : menuClosed }">
             <div class="menu-item top" (click)="menuClosed = true;">
-                <span class="arrow back"></span>
-                Back
+                <div>
+                    <app-back-navigator text="Back"></app-back-navigator>
+                </div>
                 <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
                     <span class="arrow search"></span>
                     <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
