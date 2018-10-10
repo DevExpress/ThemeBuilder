@@ -21,7 +21,7 @@
         "core-js": "^2.5.4",
         "devextreme": "~18.1.5",
         "devextreme-angular": "~18.1.5",
-        "devextreme-themebuilder": "^18.2.1-pre-18270",
+        "devextreme-themebuilder": "^18.2.1-pre-18274",
         "less": "^2.6.1",
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
