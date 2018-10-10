@@ -1,0 +1,15 @@
+.search {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search:hover .icon {
+    fill: #f05b41;
+}
+
+.icon {
+    align-self: center;
+    fill: #fff;
+}

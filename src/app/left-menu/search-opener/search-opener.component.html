@@ -1,0 +1,4 @@
+<div class="search" [ngClass]="{'close': opened}">
+    <svg *ngIf="!opened" class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><title>search</title><path d="M17.71,16.29l-1.42,1.42-4.12-4.12A7,7,0,1,1,15,8a6.94,6.94,0,0,1-1.41,4.17ZM8,3a5,5,0,1,0,5,5A5,5,0,0,0,8,3Z" fill-rule="evenodd"/></svg>
+    <svg *ngIf="opened" class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><title>close</title><polygon points="14.99 13.62 13.62 14.99 9 10.36 4.38 14.99 3.01 13.62 7.64 9 3.01 4.38 4.38 3.01 9 7.64 13.62 3.01 14.99 4.38 10.36 9 14.99 13.62" fill-rule="evenodd"/></svg>
+</div>

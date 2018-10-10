@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter, ViewChild, OnDestroy, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LeftMenuAlias } from '../left-menu.aliases';
 import { LeftMenuItem } from '../../types/left-menu-item';
@@ -18,14 +18,19 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     private BASE_THEMING_NAME = 'Base Theming';
 
+    @ViewChild('searchInput') searchInput: ElementRef;
+
     theme: string;
     colorScheme: string;
     widget: string;
 
     subscription: Subscription;
     menuData: Array<LeftMenuItem>;
+    filteredMenuData: Array<LeftMenuItem>;
 
     menuClosed = true;
+    searchOpened = false;
+    searchKeyword = '';
     workArea: Array<MetaItem>;
     workAreaName = this.BASE_THEMING_NAME;
 
@@ -38,6 +43,23 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     openMenu() {
         this.menuClosed = false;
+    }
+
+    toggleSearch(e: any) {
+        this.searchOpened = !this.searchOpened;
+        this.searchKeyword = '';
+        setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+        this.menuSearch();
+        e.stopPropagation();
+    }
+
+    menuSearch() {
+        const keyword = this.searchKeyword.toLowerCase();
+        this.filteredMenuData = this.menuData.filter(value => {
+            const groupName = value.groupName.toLowerCase();
+            const checkName = word => word.indexOf(keyword) !== -1;
+            return checkName(groupName) || checkName(groupName.replace(/\s/, ''));
+        });
     }
 
     changeWidget(widget: string) {
@@ -124,6 +146,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             });
 
             this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
+            this.filteredMenuData = this.menuData;
         });
     }
 
