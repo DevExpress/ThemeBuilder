@@ -1,0 +1,15 @@
+:host:hover {
+    color: #f05b41;
+}
+
+:host:hover .back {
+    fill: #f05b41;
+}
+
+.back {
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    left: 5px;
+    fill: #fff;
+}
