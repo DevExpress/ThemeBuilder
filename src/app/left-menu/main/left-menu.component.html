@@ -2,7 +2,7 @@
     
     <div class="working-area">
         <div class="name" (click)="openMenu()">
-            <span class="arrow dx-icon-menu"></span>{{ workAreaName }}
+            <span class="arrow menu"></span>{{ workAreaName }}
         </div>
 
         <div class="scroll-container">
@@ -11,7 +11,7 @@
                     <div *ngIf="workItem.GroupHeader" class="group" #group>
                         <div class="group-header" (click)="group.classList.toggle('closed')">
                             {{ getRealName(workItem.Name) }}
-                            <span class="arrow dx-icon-chevronup"></span>
+                            <span class="chevron dx-icon-chevronup"></span>
                         </div>
                         <div class="group-items">
                             <ng-container *ngFor="let item of workItem.Items">
@@ -29,14 +29,22 @@
     </div>
     <div class="dark-menu closed" [ngClass]="{ 'closed' : menuClosed }">
             <div class="menu-item top" (click)="menuClosed = true;">
-                <span class="arrow arrow dx-icon-chevronleft"></span>
-                Back
+                <div>
+                    <app-back-navigator text="Back"></app-back-navigator>
+                </div>
+                <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
+                    <span class="arrow search"></span>
+                    <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
+                </div>
+                <div class="search-button" (click)="toggleSearch($event)">
+                    <app-search-opener [opened]="searchOpened"></app-search-opener>
+                </div>
             </div>
             <div class="separator"></div>
             <div class="scroll-container">
                 <dx-scroll-view>
                     <div
-                        *ngFor="let menuItem of menuData"
+                        *ngFor="let menuItem of filteredMenuData"
                         class="menu-item"
                         [routerLink]="['/advanced', theme, colorScheme, menuItem.groupKey]"
                         routerLinkActive="active-link"
