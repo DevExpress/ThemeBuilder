@@ -45,7 +45,7 @@
 :host ::ng-deep .text { 
     font-size: 16px;
     color: #505050;
-    width: 500px;
+    width: 520px;
 }
 
 :host ::ng-deep .button {

@@ -8,15 +8,11 @@ import { Component } from '@angular/core';
 export class ImportBootstrapComponent {
     tabPanelData = [{
         name: 'Bootstrap 4',
-        uploadButtonText: 'Upload SCSS Variables',
-        commonText: `You can use colors defined in a custom theme in the current Generic theme
-        if the initial theme is based on Bootstrap and colors are defined in the "_variables.scss" file.
-        Upload this file to apply colors defined in it.`
+        acceptFormat: '.scss',
+        uploadButtonText: 'Upload SCSS Variables'
     }, {
         name: 'Bootstrap 3',
-        uploadButtonText: 'Upload Less Variables',
-        commonText: `You can use colors defined in a custom theme in the current Generic theme
-        if the initial theme is based on Bootstrap and colors are defined in the less file.
-        Upload this file to apply colors defined in it.`
+        acceptFormat: '.less',
+        uploadButtonText: 'Upload LESS Variables'
     }];
 }
