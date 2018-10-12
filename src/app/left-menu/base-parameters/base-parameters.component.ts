@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { MetaItem } from '../../types/meta-item';
 import { NamesService } from '../../names.service';
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./base-parameters.component.css']
 })
 export class BaseParametersComponent implements OnDestroy, OnInit {
+    @Input() theme;
 
     subscription: Subscription;
     editorsData: Array<MetaItem>;
