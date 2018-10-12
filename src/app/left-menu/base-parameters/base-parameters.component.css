@@ -1,40 +1,4 @@
-.editors {
-    background-color: #e2e5e7;
-    width: 100%;
-    padding: 30px 50px 30px 60px;
-    margin-bottom: 30px;
-    margin-top: 50px; 
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.editors:after {
-    content: "Base Theming";
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #9c9c9c;
-    position: absolute;
-    transform: rotate(-90deg);
-    top: 45%;
-    left: -30px;
-    font-size: 14px;
-}
-
-.work-item {
+:host {
     width: 140px;
-    height: 50px;
-    margin-bottom: 18px;
-}
-
-:host ::ng-deep .work-item .property-header {
     display: block;
-    margin-bottom: 5px;
-    color: #9c9c9c;
-    padding: 0;
-}
-
-:host ::ng-deep .work-item .property-widget {
-    padding: 0;
 }
