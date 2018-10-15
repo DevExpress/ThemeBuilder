@@ -57,8 +57,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         const keyword = this.searchKeyword.toLowerCase();
         this.filteredMenuData = this.menuData.filter(value => {
             const groupName = value.groupName.toLowerCase();
-            const checkName = word => word.indexOf(keyword) !== -1;
-            return checkName(groupName) || checkName(groupName.replace(/\s/, ''));
+            const searchString = groupName + ', ' + value.equivalents;
+            return searchString.toLowerCase().indexOf(keyword) !== -1;
         });
     }
 
@@ -125,7 +125,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                         order: aliasInfo.order,
                         groupKey: group,
                         groupName: groupName,
-                        items: groupItems
+                        items: groupItems,
+                        equivalents: aliasInfo.equivalents
                     });
                 }
             });
@@ -141,7 +142,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                     order: aliasInfo.order,
                     groupKey: mainGroupKey,
                     groupName: aliasInfo.name,
-                    items: widgetGroups.filter(i => i.Group === mainGroupKey)
+                    items: widgetGroups.filter(i => i.Group === mainGroupKey),
+                    equivalents: aliasInfo.equivalents
                 });
             });
 
