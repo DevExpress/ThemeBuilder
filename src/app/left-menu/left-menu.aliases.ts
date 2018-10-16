@@ -32,10 +32,10 @@ export class LeftMenuAlias {
         'editors.lookup':       { name: 'Lookup', order: 835, equivalents: 'dxLookup, dx-lookup' },
         'editors.numberbox':    { name: 'Number Box', order: 840, equivalents: 'NumberBox, TextBox, dxNumberBox, dx-number-box' },
         'editors.radiogroup':   { name: 'Radio Group', order: 845, equivalents: 'RadioGroup, RadioButton, dxRadioGroup, dx-radio-group' },
-        'editors.selectbox':    { name: 'Select Box', order: 850, equivalents: 'SelectBox, ComboBox, Spinner, dxSelectBox, dx-select-box' },
+        'editors.selectbox':    { name: 'Select Box', order: 850, equivalents: 'SelectBox, ComboBox, Spinner, dxSelectBox, dx-select-box, dxDropDownBox, dx-drop-down-box' },
         'editors.switch':       { name: 'Switch', order: 855, equivalents: 'Switch, CheckBox, dxSwitch, dx-switch' },
         'editors.tagbox':       { name: 'Tag Box', order: 860, equivalents: 'TagBox, SelectBox, ComboBox, MultiSelect, TagSelector, TokenBox, dxTagBox, dx-tag-box' },
-        'editors.texteditors':  { name: 'Text Editors', order: 865, equivalents: 'TextBox, dxTextBox, dx-text-box' },
+        'editors.texteditors':  { name: 'Text Editors', order: 865, equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area' },
         'editors.validation':   { name: 'Validation', order: 870, equivalents: 'dxValidator, dx-validator' },
 
         'form':                 { name: 'Form', order: 900, equivalents: 'dxForm, dx-form' },
@@ -43,7 +43,7 @@ export class LeftMenuAlias {
         'gallery':              { name: 'Gallery', order: 1000, equivalents: 'dxGallery, dx-gallery' },
 
         'overlays':             { name: 'Overlays', order: 1100, equivalents: '' },
-        'overlays.common':      { name: 'Overlays', order: 1110, equivalents: '' },
+        'overlays.common':      { name: 'Overlays', order: 1110, equivalents: 'dxPopup, dx-popup, dxPopover, dx-popover, dxActionSheet, dx-action-sheet, dxTooltip, dx-tooltip, dxToast, dx-toast' },
         'overlays.actionsheet': { name: 'Action Sheet', order: 1120, equivalents: 'dxActionSheet, dx-action-sheet' },
         'overlays.tooltip':     { name: 'Tooltip', order: 1130, equivalents: 'dxTooltip, dx-tooltip' },
         'overlays.toasts':      { name: 'Toast', order: 1140, equivalents: 'dxToast, dx-toast' },
@@ -61,6 +61,7 @@ export class LeftMenuAlias {
         'navigations.tabs':     { name: 'Tabs', order: 1440, equivalents: 'TabBar, Segmented Control, dxTabs, dx-tabs' },
         'navigations.toolbar':  { name: 'Toolbar', order: 1450, equivalents: 'ActionBar, AppBar, dx-toolbar, dxToolbar' },
         'navigations.treeview': { name: 'Tree View', order: 1460, equivalents: 'TreeView, TreeList, dxTreeView, dx-tree-view' },
+        'navigations.drawer':   { name: 'Drawer', order: 1470, equivalents: 'dxDrawer, dx-drawer' },
 
         'progressbars':         { name: 'Progress Bar', order: 1500, equivalents: 'ProgressBar, dxProgressBar, dx-progress-bar' },
 
