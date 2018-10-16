@@ -61,7 +61,7 @@ export class LeftMenuAlias {
         'navigations.tabs':     { name: 'Tabs', order: 1440, equivalents: 'TabBar, Segmented Control, dxTabs, dx-tabs' },
         'navigations.toolbar':  { name: 'Toolbar', order: 1450, equivalents: 'ActionBar, AppBar, dx-toolbar, dxToolbar' },
         'navigations.treeview': { name: 'Tree View', order: 1460, equivalents: 'TreeView, TreeList, dxTreeView, dx-tree-view' },
-        'navigations.drawer':   { name: 'Drawer', order: 1470, equivalents: 'dxDrawer, dx-drawer' },
+        'navigations.drawer':   { name: 'Drawer', order: 1470, equivalents: 'dxDrawer, dx-drawer, Slideout, Panel, Slideview, Layout' },
 
         'progressbars':         { name: 'Progress Bar', order: 1500, equivalents: 'ProgressBar, dxProgressBar, dx-progress-bar' },
 
