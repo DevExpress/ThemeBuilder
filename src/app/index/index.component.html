@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="title index">Theme Builder</div>
                 <div class="text">
-                    The Theme Builder is a tool for building a theme based on a standard DevExtreme or custom theme.
+                    The DevExpress Theme Builder allows you to modify themes shipped inside DevExtreme or create custom themes.
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master']">
@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="title">Import a Theme</div>
                 <div class="text">
-                    You can customize your DevExtreme or Bootstrap theme. For this, import a .json file with DevExtreme metadata or Bootstrap variables file.
+                    You can customize your DevExtreme or Bootstrap theme as needed. To get started, import a .json file with DevExtreme metadata or Bootstrap variables file.
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/']">
@@ -48,7 +48,7 @@
         <ng-container *ngSwitchCase="'master'" >
                 <div class="container">
                 <div class="title">Choose a Base Theme</div>
-                <div class="text">DevExtreme provides the Generic and Material themes available in various color schemes.</div>
+                <div class="text">DevExtreme provides both a Generic and Material theme. Both are available in various color schemes.</div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master/generic/light']">
                         <div class="block-title">Generic</div>
