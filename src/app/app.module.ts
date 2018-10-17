@@ -20,6 +20,8 @@ import {
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
+import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
+import { HeaderComponent } from './layouts/header/header.component';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -33,19 +35,18 @@ import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { LeftMenuComponent } from './left-menu/main/left-menu.component';
-import { MetadataRepositoryService } from './meta-repository.service';
 import { EditorComponent } from './left-menu/editor/editor.component';
-import { NamesService } from './names.service';
 import { BaseParametersComponent } from './left-menu/base-parameters/base-parameters.component';
 import { IframeComponent } from './iframe/iframe.component';
 import { PreviewComponent } from './preview/preview.component';
-
-import { BuilderService } from './builder.service';
-import { PreviewService } from './preview.service';
-import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
-import { HeaderComponent } from './layouts/header/header.component';
 import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
 import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigator.component';
+
+import { BuilderService } from './builder.service';
+import { MetadataRepositoryService } from './meta-repository.service';
+import { NamesService } from './names.service';
+
+import { PreviewModule } from './preview/preview.module';
 
 @NgModule({
     declarations: [
@@ -85,12 +86,12 @@ import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigato
         DxButtonModule,
         DxScrollViewModule,
         DxDataGridModule,
+        PreviewModule,
         AppRoutingModule
     ],
     providers: [
         BuilderService,
         MetadataRepositoryService,
-        PreviewService,
         NamesService
     ],
     bootstrap: [AppComponent]

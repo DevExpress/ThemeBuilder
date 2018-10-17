@@ -1,0 +1,13 @@
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+
+<ng-template #collapsedBlock>
+    <dx-text-box [value]="'Text Box'"></dx-text-box>
+    <dx-tag-box [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
+    <dx-select-box [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
+    <dx-check-box [value]="true"></dx-check-box>
+    <dx-radio-group [items]="['']" [value]="''"></dx-radio-group>
+</ng-template>
+
+<ng-template #expandedBlock>
+    expanded block
+</ng-template>

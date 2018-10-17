@@ -14,9 +14,7 @@ export class LeftMenuAlias {
         'pivotgrid':            { name: 'Pivot Grid', order: 400 },
         'scheduler':            { name: 'Scheduler', order: 500 },
 
-        'badges':               { name: 'Badges', order: 600 },
-
-        'buttons':              { name: 'Button', order: 700 },
+        'buttons':              { name: 'Buttons', order: 700 },
         'buttons.default':      { name: 'Default Type', order: 710, widgetGroup: true },
         'buttons.normal':       { name: 'Normal Type', order: 720, widgetGroup: true },
         'buttons.success':      { name: 'Success Type', order: 730, widgetGroup: true },
@@ -24,29 +22,29 @@ export class LeftMenuAlias {
         'buttons.flat':         { name: 'Flat Button', order: 750, widgetGroup: true },
 
         'editors':              { name: 'Editors', order: 800 },
-        'editors.autocomplete': { name: 'Autocomplete', order: 810 },
-        'editors.calendar':     { name: 'Calendar', order: 815 },
-        'editors.checkbox':     { name: 'Check Box', order: 820 },
-        'editors.colorbox':     { name: 'Color Box', order: 825 },
-        'editors.fileuploader': { name: 'File Uploader', order: 830 },
-        'editors.lookup':       { name: 'Lookup', order: 835 },
-        'editors.numberbox':    { name: 'Number Box', order: 840 },
-        'editors.radiogroup':   { name: 'Radio Group', order: 845 },
-        'editors.selectbox':    { name: 'Select Box', order: 850 },
-        'editors.switch':       { name: 'Switch', order: 855 },
-        'editors.tagbox':       { name: 'Tag Box', order: 860 },
-        'editors.texteditors':  { name: 'Text Editors', order: 865 },
-        'editors.validation':   { name: 'Validation', order: 870 },
+        'editors.autocomplete': { name: 'Autocomplete', order: 810, widgetGroup: true  },
+        'editors.calendar':     { name: 'Calendar', order: 815, widgetGroup: true  },
+        'editors.checkbox':     { name: 'Check Box', order: 820, widgetGroup: true  },
+        'editors.colorbox':     { name: 'Color Box', order: 825, widgetGroup: true  },
+        'editors.fileuploader': { name: 'File Uploader', order: 830, widgetGroup: true  },
+        'editors.lookup':       { name: 'Lookup', order: 835, widgetGroup: true  },
+        'editors.numberbox':    { name: 'Number Box', order: 840, widgetGroup: true  },
+        'editors.radiogroup':   { name: 'Radio Group', order: 845, widgetGroup: true  },
+        'editors.selectbox':    { name: 'Select Box', order: 850, widgetGroup: true  },
+        'editors.switch':       { name: 'Switch', order: 855, widgetGroup: true  },
+        'editors.tagbox':       { name: 'Tag Box', order: 860, widgetGroup: true  },
+        'editors.texteditors':  { name: 'Text Editors', order: 865, widgetGroup: true  },
+        'editors.validation':   { name: 'Validation', order: 870, widgetGroup: true  },
 
         'form':                 { name: 'Form', order: 900 },
         'filterbuilder':        { name: 'Filter Builder', order: 950 },
         'gallery':              { name: 'Gallery', order: 1000 },
 
         'overlays':             { name: 'Overlays', order: 1100 },
-        'overlays.common':      { name: 'Overlays', order: 1110 },
-        'overlays.actionsheet': { name: 'Action Sheet', order: 1120 },
-        'overlays.tooltip':     { name: 'Tooltip', order: 1130 },
-        'overlays.toasts':      { name: 'Toast', order: 1140 },
+        'overlays.common':      { name: 'Common', order: 1110, widgetGroup: true },
+        'overlays.actionsheet': { name: 'Action Sheet', order: 1120, widgetGroup: true },
+        'overlays.tooltip':     { name: 'Tooltip', order: 1130, widgetGroup: true },
+        'overlays.toasts':      { name: 'Toast', order: 1140, widgetGroup: true },
 
         'list':                 { name: 'List', order: 1200 },
 
@@ -63,10 +61,9 @@ export class LeftMenuAlias {
         'navigations.treeview': { name: 'Tree View', order: 1460 },
 
         'progressbars':         { name: 'Progress Bar', order: 1500 },
+        'sliders':              { name: 'Sliders', order: 1600 },
 
-        'scrollview':           { name: 'Scroll View', order: 1600 },
-        'sliders':              { name: 'Sliders', order: 1700 },
-        'tileview':             { name: 'Tile View', order: 1800 }
+        'scrollview':           { name: 'Scroll View', order: 1700 },
     };
 
     static getAlias(key) {

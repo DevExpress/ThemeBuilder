@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PreviewService } from './../preview.service';
-
+import { Component, OnInit, ViewChildren, ViewChild, QueryList } from '@angular/core';
+import { DxScrollViewComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-preview',
@@ -8,18 +7,19 @@ import { PreviewService } from './../preview.service';
     styleUrls: ['./preview.component.css']
 })
 export class PreviewComponent implements OnInit {
-    widgets: Array<any> = [];
+    @ViewChildren('widget') widgetElements: QueryList<any>;
 
-    constructor(private previewService: PreviewService) { }
+    @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
+
+    constructor() { }
 
     receiveMessage(e) {
         if(e.data.css) {
             this.addHeadStyles(e.data.css);
         }
-    }
-
-    saveInstance(e) {
-        this.widgets.push(e.component);
+        if(e.data.widget) {
+            this.createPreviewContent(e.data.widget);
+        }
     }
 
     addHeadStyles(css: string) {
@@ -41,21 +41,45 @@ export class PreviewComponent implements OnInit {
         head.appendChild(style);
     }
 
-    createPreviewContent() {
-        this.previewService.getPreviewWidgets('datagrid')
-            .then((result: any) => {
-                for(let i = 0; i < result.widgets.length; i++) {
-                    const widget = result.widgets[i];
+    createPreviewContent(widget: string) {
+        const EXPAND_CLASS_NAME = 'expanded';
+        const flexContainers = document.getElementsByClassName('flex-item');
 
-                    if(this.widgets[0].NAME === widget.name) {
-                        this.widgets[0].option(widget.options);
-                    }
-                }
-            });
+        for(let i = 0; i < flexContainers.length; i++) {
+            flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
+        }
+
+        this.widgetElements.forEach((widgetEl) => {
+            widgetEl.isExpanded.next(widgetEl.widgetGroup === widget);
+        });
+
+
+        setTimeout(() => {
+            if(widget === 'base.common' || widget === 'base.typography') {
+                this.scrollView.instance.scrollTo(0);
+                return;
+            }
+
+            const widgetContainer = document.getElementsByTagName('app-' + widget.replace('navigations.', ''));
+            const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
+
+            if(flexParentContainer.parentElement.classList.contains('group')) {
+                flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
+            }
+
+            flexParentContainer.classList.add(EXPAND_CLASS_NAME);
+
+            setTimeout(() => {
+                this.scrollView.instance.scrollTo(flexParentContainer.offsetTop);
+
+                this.widgetElements.forEach((widgetEl) => {
+                    widgetEl.isExpanded.next(widgetEl.widgetGroup === widget);
+                });
+            }, 600);
+        }, 400);
     }
 
     ngOnInit() {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
-        this.createPreviewContent();
     }
 }
