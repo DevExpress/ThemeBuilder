@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxMenuComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxMenuComponent } from 'devextreme-angular';
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
     widgetGroup = 'menu';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('menu') menu: DxMenuComponent;
 
@@ -179,8 +180,12 @@ export class MenuComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.menu.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxFormComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxFormComponent } from 'devextreme-angular';
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
     widgetGroup = 'form';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('form') form: DxFormComponent;
 
@@ -53,9 +54,13 @@ export class FormComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.form.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.form.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

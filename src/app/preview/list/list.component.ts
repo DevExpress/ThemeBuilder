@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxListComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxListComponent } from 'devextreme-angular';
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
     widgetGroup = 'list';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('list') list: DxListComponent;
 
@@ -127,5 +128,9 @@ export class ListComponent implements OnInit {
             this.list.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.list.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

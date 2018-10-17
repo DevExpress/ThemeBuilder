@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxGalleryComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxGalleryComponent } from 'devextreme-angular';
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, OnDestroy {
     widgetGroup = 'gallery';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('gallery') gallery: DxGalleryComponent;
 
@@ -29,8 +30,12 @@ export class GalleryComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.gallery.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxAccordionComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxAccordionComponent } from 'devextreme-angular';
     templateUrl: './accordion.component.html',
     styleUrls: ['./accordion.component.css']
 })
-export class AccordionComponent implements OnInit {
+export class AccordionComponent implements OnInit, OnDestroy {
     widgetGroup = 'accordion';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('accordion') accordion: DxAccordionComponent;
 
@@ -48,10 +49,14 @@ export class AccordionComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.accordion.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.accordion.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }
 

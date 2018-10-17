@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxFilterBuilderComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxFilterBuilderComponent } from 'devextreme-angular';
     templateUrl: './filterbuilder.component.html',
     styleUrls: ['./filterbuilder.component.css']
 })
-export class FilterbuilderComponent implements OnInit {
+export class FilterbuilderComponent implements OnInit, OnDestroy {
     widgetGroup = 'filterbuilder';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('filterBuilder') filterBuilder: DxFilterBuilderComponent;
 
@@ -71,8 +72,12 @@ export class FilterbuilderComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.filterBuilder.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

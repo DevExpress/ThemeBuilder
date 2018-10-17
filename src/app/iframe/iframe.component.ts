@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MetadataRepositoryService } from '../meta-repository.service';
@@ -14,7 +14,8 @@ export class IframeComponent implements OnDestroy {
 
     url: string;
     iframeUrl: SafeResourceUrl;
-    subscription: Subscription;
+    cssSubscription: Subscription;
+    widgetSubscription: Subscription;
     theme: string;
     widgetName = new BehaviorSubject<string>('');
 
@@ -33,20 +34,22 @@ export class IframeComponent implements OnDestroy {
     }
 
     onIframeLoad() {
-        if(this.subscription)
-            this.subscription.unsubscribe();
-        this.subscription = this.metadataService.css.subscribe(css => {
+        if(this.cssSubscription)
+            this.cssSubscription.unsubscribe();
+        this.cssSubscription = this.metadataService.css.subscribe(css => {
             this.iframe.nativeElement.contentWindow.postMessage({ css: css }, this.url);
         });
 
-        this.widgetName.subscribe(widget => {
+        this.widgetSubscription = this.widgetName.subscribe(widget => {
             this.iframe.nativeElement.contentWindow.postMessage({ widget: widget }, this.url);
         });
     }
 
     ngOnDestroy() {
-        if(this.subscription)
-            this.subscription.unsubscribe();
+        if(this.cssSubscription)
+            this.cssSubscription.unsubscribe();
+
+        this.widgetSubscription.unsubscribe();
     }
 
 }

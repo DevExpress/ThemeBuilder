@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxTreeListComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxTreeListComponent } from 'devextreme-angular';
     templateUrl: './treelist.component.html',
     styleUrls: ['./treelist.component.css']
 })
-export class TreelistComponent implements OnInit {
+export class TreelistComponent implements OnInit, OnDestroy {
     widgetGroup = 'treelist';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('treeList') treeList: DxTreeListComponent;
 
@@ -481,9 +482,13 @@ export class TreelistComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.treeList.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.treeList.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

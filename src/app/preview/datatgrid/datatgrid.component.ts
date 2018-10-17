@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxDataGridComponent } from 'devextreme-angular';
     templateUrl: './datatgrid.component.html',
     styleUrls: ['./datatgrid.component.css']
 })
-export class DatatgridComponent implements OnInit {
+export class DatatgridComponent implements OnInit, OnDestroy {
     widgetGroup = 'datagrid';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('dataGrid') dataGrid: DxDataGridComponent;
 
@@ -243,9 +244,13 @@ export class DatatgridComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.dataGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.dataGrid.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

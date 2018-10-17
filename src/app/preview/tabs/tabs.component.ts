@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxTabsComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxTabsComponent } from 'devextreme-angular';
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent implements OnInit, OnDestroy {
     widgetGroup = 'tabs';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('tabs') tabs: DxTabsComponent;
 
@@ -32,8 +33,12 @@ export class TabsComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.tabs.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

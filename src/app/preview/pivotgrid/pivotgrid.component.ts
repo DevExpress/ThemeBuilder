@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxPivotGridComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxPivotGridComponent } from 'devextreme-angular';
     templateUrl: './pivotgrid.component.html',
     styleUrls: ['./pivotgrid.component.css' ]
 })
-export class PivotgridComponent implements OnInit {
+export class PivotgridComponent implements OnInit, OnDestroy {
     widgetGroup = 'pivotgrid';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('pivotGrid') pivotGrid: DxPivotGridComponent;
 
@@ -400,9 +401,13 @@ export class PivotgridComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.pivotGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.pivotGrid.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxTreeViewComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxTreeViewComponent } from 'devextreme-angular';
     templateUrl: './treeview.component.html',
     styleUrls: ['./treeview.component.css']
 })
-export class TreeviewComponent implements OnInit {
+export class TreeviewComponent implements OnInit, OnDestroy {
     widgetGroup = 'treeview';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('treeView') treeView: DxTreeViewComponent;
 
@@ -190,9 +191,13 @@ export class TreeviewComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.treeView.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.treeView.instance.updateDimensions();
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

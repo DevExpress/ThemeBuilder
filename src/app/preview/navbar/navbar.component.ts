@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxNavBarComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxNavBarComponent } from 'devextreme-angular';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
     widgetGroup = 'navbar';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('navBar') navBar: DxNavBarComponent;
 
@@ -36,8 +37,12 @@ export class NavbarComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.navBar.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

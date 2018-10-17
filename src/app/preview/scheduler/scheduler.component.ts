@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxSchedulerComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxSchedulerComponent } from 'devextreme-angular';
     templateUrl: './scheduler.component.html',
     styleUrls: ['./scheduler.component.css']
 })
-export class SchedulerComponent implements OnInit {
+export class SchedulerComponent implements OnInit, OnDestroy {
     widgetGroup = 'scheduler';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('scheduler') scheduler: DxSchedulerComponent;
 
@@ -56,8 +57,12 @@ export class SchedulerComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.isExpanded.subscribe((expanded) => {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.scheduler.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

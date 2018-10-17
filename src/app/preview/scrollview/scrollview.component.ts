@@ -1,5 +1,5 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { DxScrollViewComponent } from 'devextreme-angular';
 
 @Component({
@@ -7,9 +7,10 @@ import { DxScrollViewComponent } from 'devextreme-angular';
     templateUrl: './scrollview.component.html',
     styleUrls: ['./scrollview.component.css']
 })
-export class ScrollviewComponent implements AfterViewInit {
+export class ScrollviewComponent implements OnInit, OnDestroy {
     widgetGroup = 'scrollview';
     isExpanded = new Subject<boolean>();
+    subscription: Subscription;
 
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
 
@@ -20,9 +21,13 @@ export class ScrollviewComponent implements AfterViewInit {
 
     expandedOptions = {};
 
-    ngAfterViewInit() {
-        this.isExpanded.subscribe((expanded) => {
+    ngOnInit() {
+        this.subscription = this.isExpanded.subscribe((expanded) => {
             this.scrollView.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }
