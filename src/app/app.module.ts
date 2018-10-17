@@ -46,6 +46,7 @@ import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layo
 import { HeaderComponent } from './layouts/header/header.component';
 import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
 import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigator.component';
+import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-circle.component';
 
 @NgModule({
     declarations: [
@@ -70,7 +71,8 @@ import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigato
         AdvancedLayoutComponent,
         HeaderComponent,
         SearchOpenerComponent,
-        BackNavigatorComponent
+        BackNavigatorComponent,
+        IconThemeCircleComponent
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter, ViewChild, OnDestroy, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LeftMenuAlias } from '../left-menu.aliases';
 import { LeftMenuItem } from '../../types/left-menu-item';

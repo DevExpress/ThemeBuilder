@@ -1,0 +1,74 @@
+.color-circle {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.color-circle.small {
+    height: 20px;
+    width: 20px;
+    border-width: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 3px;
+    margin-right: 0;
+}
+
+.color-circle.light {
+    border-color: #fff; 
+    background-color: #337ab7;  
+}
+
+.color-circle.dark {
+    border-color: #363640;
+    background-color: #1ca8dd;
+}
+
+.color-circle.blue {
+    background-color: #03a9f4;
+}
+
+.color-circle.orange {
+    background-color: #ff5722;
+}
+
+.color-circle.lime {
+    background-color: #cddc39;
+}
+
+.color-circle.purple {
+    background-color: #9c27b0 ;
+}
+
+.color-circle.teal {
+    background-color: #009688;
+}
+
+.color-circle.soft {
+    background-color: #7ab8eb;
+    border-color: #fff;
+}
+
+.color-circle.carmine {
+    background-color: #f05b41;
+    border-color: #fff;
+}
+
+.color-circle.dark.moon {
+    background-color: #3debd3;
+    border-color: #465672;
+}
+
+.color-circle.dark.violet {
+    background-color: #9c63ff;
+    border-color: #17171f;
+}
+
+.color-circle.green {
+    background-color: #3cbab2;
+    border-color: #f5f5f5;
+}

@@ -10,13 +10,31 @@
         <div class="separator first"></div>
         <div class="switcher">
             <dx-select-box
+                class="switcher-editor"
                 [dataSource]="switcherData"
                 [grouped]="true"
                 displayExpr="text"
                 valueExpr="themeId"
+                fieldTemplate="field"
                 [(value)]="currentThemeId"
                 (onValueChanged)="themeChanged($event)"
-            ></dx-select-box>
+            >
+                <div *dxTemplate="let data of 'field'">
+                    <div class="switcher-template">
+                        <app-icon-theme-circle [theme]="data.text | lowercase" [small]="true" class="switcher-icon editor"></app-icon-theme-circle>
+                        <dx-text-box
+                            [value]="data.name + ' ' + data.colorScheme | titlecase"
+                            [readOnly]="true"
+                        ></dx-text-box>
+                    </div>
+                </div>
+                <div *dxTemplate="let data of 'item'">
+                    <div class="switcher-template">
+                        <app-icon-theme-circle [theme]="data.text | lowercase" [small]="true" class="switcher-icon"></app-icon-theme-circle>
+                        <div class="item-template-text">{{data.text}}</div>
+                    </div>
+                </div>
+            </dx-select-box>
         </div>
         <div class="separator"></div>
         <div class="header-button">
