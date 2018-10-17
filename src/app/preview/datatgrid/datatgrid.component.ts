@@ -14,98 +14,96 @@ export class DatatgridComponent implements OnInit, OnDestroy {
 
     @ViewChild('dataGrid') dataGrid: DxDataGridComponent;
 
-    dataSource = {
-        'store': [
-            {
-                'CustomerID': 'VINET',
-                'OrderDate': '1996/07/04',
-                'Freight': '32.3800',
-                'ShipName': 'Vins et alcools Chevalier',
-                'ShipCity': 'Reims',
-                'ShipCountry': 'France'
-            },
-            {
-                'CustomerID': 'TOMSP',
-                'OrderDate': '1996/07/05',
-                'Freight': '11.6100',
-                'ShipName': 'Toms Spezialitaten',
-                'ShipCity': 'Munster',
-                'ShipCountry': 'Germany'
-            },
-            {
-                'CustomerID': 'HANAR',
-                'OrderDate': '1996/07/08',
-                'Freight': '65.8300',
-                'ShipName': 'Hanari Carnes',
-                'ShipCity': 'Rio de Janeiro',
-                'ShipCountry': 'Brazil'
-            },
-            {
-                'CustomerID': 'VICTE',
-                'OrderDate': '1996/07/08',
-                'Freight': '41.3400',
-                'ShipName': 'Victuailles en stock',
-                'ShipCity': 'Lyon',
-                'ShipCountry': 'France'
-            },
-            {
-                'CustomerID': 'SUPRD',
-                'OrderDate': '1996/07/09',
-                'Freight': '51.3000',
-                'ShipName': 'Supremes delices',
-                'ShipCity': 'Charleroi',
-                'ShipCountry': 'Belgium'
-            },
-            {
-                'CustomerID': 'HANAR',
-                'OrderDate': '1996/07/10',
-                'Freight': '58.1700',
-                'ShipName': 'Hanari Carnes',
-                'ShipCity': 'Rio de Janeiro',
-                'ShipCountry': 'Brazil'
-            },
-            {
-                'CustomerID': 'CHOPS',
-                'OrderDate': '1996/07/11',
-                'Freight': '22.9800',
-                'ShipName': 'Chop-suey Chinese',
-                'ShipCity': 'Bern',
-                'ShipCountry': 'Switzerland'
-            },
-            {
-                'CustomerID': 'RICSU',
-                'OrderDate': '1996/07/12',
-                'Freight': '148.3300',
-                'ShipName': 'Richter Supermarkt',
-                'ShipCity': 'Geneve',
-                'ShipCountry': 'Switzerland'
-            },
-            {
-                'CustomerID': 'WELLI',
-                'OrderDate': '1996/07/15',
-                'Freight': '13.9700',
-                'ShipName': 'Wellington Importadora',
-                'ShipCity': 'Resende',
-                'ShipCountry': 'Brazil'
-            },
-            {
-                'CustomerID': 'HILAA',
-                'OrderDate': '1996/07/16',
-                'Freight': '81.9100',
-                'ShipName': 'HILARION-Abastos',
-                'ShipCity': 'San Cristobal',
-                'ShipCountry': 'Venezuela'
-            },
-            {
-                'CustomerID': 'ERNSH',
-                'OrderDate': '1996/07/17',
-                'Freight': '140.5100',
-                'ShipName': 'Ernst Handel',
-                'ShipCity': 'Graz',
-                'ShipCountry': 'Austria'
-            }
-        ]
-    };
+    dataSource = [
+        {
+            'CustomerID': 'VINET',
+            'OrderDate': '1996/07/04',
+            'Freight': '32.3800',
+            'ShipName': 'Vins et alcools Chevalier',
+            'ShipCity': 'Reims',
+            'ShipCountry': 'France'
+        },
+        {
+            'CustomerID': 'TOMSP',
+            'OrderDate': '1996/07/05',
+            'Freight': '11.6100',
+            'ShipName': 'Toms Spezialitaten',
+            'ShipCity': 'Munster',
+            'ShipCountry': 'Germany'
+        },
+        {
+            'CustomerID': 'HANAR',
+            'OrderDate': '1996/07/08',
+            'Freight': '65.8300',
+            'ShipName': 'Hanari Carnes',
+            'ShipCity': 'Rio de Janeiro',
+            'ShipCountry': 'Brazil'
+        },
+        {
+            'CustomerID': 'VICTE',
+            'OrderDate': '1996/07/08',
+            'Freight': '41.3400',
+            'ShipName': 'Victuailles en stock',
+            'ShipCity': 'Lyon',
+            'ShipCountry': 'France'
+        },
+        {
+            'CustomerID': 'SUPRD',
+            'OrderDate': '1996/07/09',
+            'Freight': '51.3000',
+            'ShipName': 'Supremes delices',
+            'ShipCity': 'Charleroi',
+            'ShipCountry': 'Belgium'
+        },
+        {
+            'CustomerID': 'HANAR',
+            'OrderDate': '1996/07/10',
+            'Freight': '58.1700',
+            'ShipName': 'Hanari Carnes',
+            'ShipCity': 'Rio de Janeiro',
+            'ShipCountry': 'Brazil'
+        },
+        {
+            'CustomerID': 'CHOPS',
+            'OrderDate': '1996/07/11',
+            'Freight': '22.9800',
+            'ShipName': 'Chop-suey Chinese',
+            'ShipCity': 'Bern',
+            'ShipCountry': 'Switzerland'
+        },
+        {
+            'CustomerID': 'RICSU',
+            'OrderDate': '1996/07/12',
+            'Freight': '148.3300',
+            'ShipName': 'Richter Supermarkt',
+            'ShipCity': 'Geneve',
+            'ShipCountry': 'Switzerland'
+        },
+        {
+            'CustomerID': 'WELLI',
+            'OrderDate': '1996/07/15',
+            'Freight': '13.9700',
+            'ShipName': 'Wellington Importadora',
+            'ShipCity': 'Resende',
+            'ShipCountry': 'Brazil'
+        },
+        {
+            'CustomerID': 'HILAA',
+            'OrderDate': '1996/07/16',
+            'Freight': '81.9100',
+            'ShipName': 'HILARION-Abastos',
+            'ShipCity': 'San Cristobal',
+            'ShipCountry': 'Venezuela'
+        },
+        {
+            'CustomerID': 'ERNSH',
+            'OrderDate': '1996/07/17',
+            'Freight': '140.5100',
+            'ShipName': 'Ernst Handel',
+            'ShipCity': 'Graz',
+            'ShipCountry': 'Austria'
+        }
+    ];
 
     collapsedOptions = {
         'columnChooser': { 'enabled': false },
@@ -152,6 +150,8 @@ export class DatatgridComponent implements OnInit, OnDestroy {
         'selection': {
             'mode': 'multiple'
         },
+        'keyExpr': 'CustomerID',
+        'selectedRowKeys': ['TOMSP'],
         'columns': [
             {
                 'dataField': 'CustomerID',
@@ -204,6 +204,8 @@ export class DatatgridComponent implements OnInit, OnDestroy {
             'allowDeleting': true,
             'mode': 'batch'
         },
+        'keyExpr': 'CustomerID',
+        'selectedRowKeys': ['TOMSP'],
         'columns': [
             {
                 'dataField': 'CustomerID',
