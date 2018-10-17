@@ -16,6 +16,7 @@ export class LeftMenuAlias {
         'buttons.flat':         { name: 'Flat Button', order: 750, widgetGroup: true, equivalents: 'dxButton, dx-button' },
 
         'editors':              { name: 'Editors', order: 800, equivalents: 'TextBox, dxTextBox, dx-text-box' },
+        'editors.texteditors':  { name: 'Text Editors', order: 805, widgetGroup: true, equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area' },
         'editors.autocomplete': { name: 'Autocomplete', order: 810, widgetGroup: true, equivalents: 'SuggestBox, AutoSuggestBox, dxAutocomplete, dx-autocomplete' },
         'editors.calendar':     { name: 'Calendar', order: 815, widgetGroup: true, equivalents: 'dxCalendar, dx-calendar' },
         'editors.checkbox':     { name: 'Check Box', order: 820, widgetGroup: true, equivalents: 'Switch, CheckBox, dxCheckBox, dx-check-box' },
@@ -27,7 +28,6 @@ export class LeftMenuAlias {
         'editors.selectbox':    { name: 'Select Box', order: 850, widgetGroup: true, equivalents: 'SelectBox, ComboBox, Spinner, dxSelectBox, dx-select-box, dxDropDownBox, dx-drop-down-box' },
         'editors.switch':       { name: 'Switch', order: 855, widgetGroup: true, equivalents: 'Switch, CheckBox, dxSwitch, dx-switch' },
         'editors.tagbox':       { name: 'Tag Box', order: 860, widgetGroup: true, equivalents: 'TagBox, SelectBox, ComboBox, MultiSelect, TagSelector, TokenBox, dxTagBox, dx-tag-box' },
-        'editors.texteditors':  { name: 'Text Editors', order: 865, widgetGroup: true, equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area' },
         'editors.validation':   { name: 'Validation', order: 870, widgetGroup: true, equivalents: 'dxValidator, dx-validator' },
 
         'form':                 { name: 'Form', order: 900, equivalents: 'dxForm, dx-form' },
