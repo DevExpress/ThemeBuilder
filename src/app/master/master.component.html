@@ -15,15 +15,7 @@
             </ul>
         </div>
         <div class="base-theming">
-            <div class="editors">
-                <div class="work-item">
-                    <div class="property-header">Base size</div>
-                    <div class="property-widget">
-                        <dx-select-box [items]="['Normal', 'Compact']" value="Normal"></dx-select-box>
-                    </div>
-                </div>
-                <app-base-parameters></app-base-parameters>
-            </div>
+            <app-base-parameters [theme]="themeName"></app-base-parameters>
             <div class="button apply">Save CSS</div>
             <div class="button advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Theming</div>
         </div>
