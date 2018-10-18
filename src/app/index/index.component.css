@@ -1,11 +1,11 @@
 .blocks {
-    width: 700px;
+    width: 780px;
     margin: 0 auto;
 }
 
 .blocks .block {
     background-color: #fff;
-    width: 340px;
+    width: 380px;
     height: 260px;
     display: inline-block;
     cursor: pointer;

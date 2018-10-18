@@ -1,18 +1,21 @@
 <div class="content">
-    <div class="title-link" [routerLink]="['/import']">Import Data</div>
+    <div class="title-link" [routerLink]="['/import']">Import a Theme</div>
     <div class="container">
-        <div class="title">Import Data
-            <span>Bootstrap Variables</span>
+        <div class="title">
+            Bootstrap Variables
         </div>
-        <dx-tab-panel class="tabs" [width]="560" [height]="300" [dataSource]="tabPanelData" [selectedIndex]="0" [loop]="false">
+        <div class="text">
+            Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.  
+            Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4.
+        </div>
+        <dx-tab-panel class="tabs" [width]="560" [height]="200" [dataSource]="tabPanelData" [selectedIndex]="0" [loop]="false">
             <div *dxTemplate="let data of 'title'">
                 <span>{{data.name}}</span>
             </div>
             <div *dxTemplate="let data of 'item'">
                 <div class="tabpanel-item">
-                    <dx-file-uploader width="260" [multiple]="false" accept="*" selectButtonText="{{data.uploadButtonText}}" class="file-uploader">
+                    <dx-file-uploader width="260" [multiple]="false" accept="{{data.acceptFormat}}" labelText="or Drop the file here" selectButtonText="{{data.uploadButtonText}}" class="file-uploader">
                     </dx-file-uploader>
-                    <div class="text">{{data.commonText}}</div>
                 </div>
             </div>
         </dx-tab-panel>

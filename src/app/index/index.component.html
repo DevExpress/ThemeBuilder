@@ -1,19 +1,21 @@
 <div class="content">
-    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">ThemeBuilder 2.0</div>
+    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">Theme Builder</div>
     <ng-container [ngSwitch]="url">
         <ng-container *ngSwitchCase="''" >
             <div class="container">
-                <div class="title index">ThemeBuilder 2.0</div>
-                <div class="text">1Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                <div class="title index">Theme Builder</div>
+                <div class="text">
+                    The DevExpress Theme Builder allows you to modify themes shipped inside DevExtreme or create custom themes.
+                </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master']">
-                        <div class="block-title">Select a Theme</div>
+                        <div class="block-title">Choose a Base Theme</div>
                         <div class="block-image">
                             <app-icon-themes></app-icon-themes>
                         </div>
                     </div>
                     <div class="block" [routerLink]="['/import']">
-                        <div class="block-title">Import Data</div>
+                        <div class="block-title">Import a Theme</div>
                         <div class="block-image">
                             <app-icon-metadata></app-icon-metadata>
                         </div>
@@ -23,11 +25,13 @@
         </ng-container>
         <ng-container  *ngSwitchCase="'import'">
             <div class="container">
-                <div class="title">Import Data</div>
-                <div class="text">3Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                <div class="title">Import a Theme</div>
+                <div class="text">
+                    You can customize your DevExtreme or Bootstrap theme as needed. To get started, import a .json file with DevExtreme metadata or Bootstrap variables file.
+                </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/']">
-                        <div class="block-title">Import Metadata</div>
+                        <div class="block-title">DevExtreme Metadata</div>
                         <div class="block-image">
                             <app-icon-export></app-icon-export>
                         </div>
@@ -43,8 +47,8 @@
         </ng-container>
         <ng-container *ngSwitchCase="'master'" >
                 <div class="container">
-                <div class="title">Select a Theme</div>
-                <div class="text">2Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                <div class="title">Choose a Base Theme</div>
+                <div class="text">DevExtreme provides both a Generic and Material theme. Both are available in various color schemes.</div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master/generic/light']">
                         <div class="block-title">Generic</div>
@@ -53,7 +57,7 @@
                         </div>              
                     </div>
                     <div class="block" [routerLink]="['/master/material/blue-light']">
-                        <div class="block-title">Material Design</div>
+                        <div class="block-title">Material</div>
                         <div class="block-image">
                             <app-icon-material></app-icon-material> 
                         </div> 
