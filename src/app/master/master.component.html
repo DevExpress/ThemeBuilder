@@ -9,7 +9,7 @@
             <ul class="schemes" *ngFor="let side of [rightThemes, leftThemes]">
                 <li *ngFor="let theme of side" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
             true}" [routerLink]="['/master', theme.name, theme.colorScheme]">
-                    <span class="color-circle {{theme.text | lowercase}}"></span>
+                    <app-icon-theme-circle [theme]="theme.text | lowercase" [small]="false"></app-icon-theme-circle>
                     <span class="color-name">{{theme.text}}</span>
                 </li>
             </ul>

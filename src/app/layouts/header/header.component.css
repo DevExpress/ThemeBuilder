@@ -59,4 +59,33 @@
     align-self: center;
 }
 
+.switcher-editor {
+    border: none;
+}
 
+.switcher-editor.dx-dropdowneditor-active {
+    background-color: #e6e6e6;
+}
+
+:host ::ng-deep .switcher-editor .dx-texteditor-input {
+    background: transparent;
+}
+
+.switcher-template {
+    display: flex;
+}
+
+.switcher-template .switcher-icon {
+    padding: 3px;
+    height: 30px;
+    align-self: center;
+}
+
+.switcher-template .switcher-icon.editor {
+    margin-left: 11px;
+}
+
+.switcher-template .item-template-text {
+    align-self: center;
+    padding-left: 10px;
+}
