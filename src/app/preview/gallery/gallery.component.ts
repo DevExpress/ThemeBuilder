@@ -14,7 +14,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
 
     @ViewChild('gallery') gallery: DxGalleryComponent;
 
-    galleryItems = [
+    galleryItems: Array<string> = [
         'images/person1.png',
         'images/person2.png',
         'images/person3.png',

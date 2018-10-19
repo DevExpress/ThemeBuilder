@@ -10,10 +10,10 @@ export class OverlaysComponent  {
     widgetGroup = 'overlays';
     isExpanded = new BehaviorSubject<boolean>(false);
 
-    actionSheetData = [
-        { text: 'Command 1' },
-        { text: 'Command 2' },
-        { text: 'Command 3' },
-        { text: 'Command 4' }
+    actionSheetData: Array<any> = [
+        { 'text': 'Command 1' },
+        { 'text': 'Command 2' },
+        { 'text': 'Command 3' },
+        { 'text': 'Command 4' }
     ];
 }

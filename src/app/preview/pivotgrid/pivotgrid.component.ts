@@ -14,7 +14,7 @@ export class PivotgridComponent implements OnInit, OnDestroy {
 
     @ViewChild('pivotGrid') pivotGrid: DxPivotGridComponent;
 
-    dataSourceStore = [
+    dataSourceStore: Array<any> = [
         {
             'OrderID':10248,
             'CustomerID':'VINET',

@@ -14,7 +14,7 @@ export class DatatgridComponent implements OnInit, OnDestroy {
 
     @ViewChild('dataGrid') dataGrid: DxDataGridComponent;
 
-    dataSource = [
+    dataSource: Array<any> = [
         {
             'CustomerID': 'VINET',
             'OrderDate': '1996/07/04',

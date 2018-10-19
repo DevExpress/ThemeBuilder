@@ -14,7 +14,7 @@ export class TreelistComponent implements OnInit, OnDestroy {
 
     @ViewChild('treeList') treeList: DxTreeListComponent;
 
-    dataSource = [
+    dataSource: Array<any> = [
         {
             'ID': 1,
             'Head_ID': 0,

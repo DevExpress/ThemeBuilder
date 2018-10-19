@@ -40,6 +40,8 @@ export class IframeComponent implements OnDestroy {
             this.iframe.nativeElement.contentWindow.postMessage({ css: css }, this.url);
         });
 
+        if(this.widgetSubscription)
+            this.widgetSubscription.unsubscribe();
         this.widgetSubscription = this.widgetName.subscribe(widget => {
             this.iframe.nativeElement.contentWindow.postMessage({ widget: widget }, this.url);
         });
@@ -49,7 +51,8 @@ export class IframeComponent implements OnDestroy {
         if(this.cssSubscription)
             this.cssSubscription.unsubscribe();
 
-        this.widgetSubscription.unsubscribe();
+        if(this.widgetSubscription)
+            this.widgetSubscription.unsubscribe();
     }
 
 }
