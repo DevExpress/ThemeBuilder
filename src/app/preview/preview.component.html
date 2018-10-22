@@ -1,128 +1,130 @@
 <div id="preview-container" class="dx-viewport">
     <dx-scroll-view #scrollView>
-        <div class="flex-container">
-            <div class="flex-item group">
-                <div class="flex-item">
-                    <div class="flex-label">EDITORS</div>
-                    <div class="flex-value">
-                        <app-editors #widget></app-editors>
+        <ng-container *ngIf="isStylesReady">
+            <div class="flex-container">
+                <div class="flex-item group">
+                    <div class="flex-item">
+                        <div class="flex-label">EDITORS</div>
+                        <div class="flex-value">
+                            <app-editors #widget></app-editors>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-label">BUTTONS</div>
+                        <div class="flex-value">
+                            <app-buttons #widget></app-buttons>
+                        </div>
                     </div>
                 </div>
                 <div class="flex-item">
-                    <div class="flex-label">BUTTONS</div>
+                    <div class="flex-label">DATAGRID</div>
                     <div class="flex-value">
-                        <app-buttons #widget></app-buttons>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">DATAGRID</div>
-                <div class="flex-value">
-                    <app-datagrid #widget></app-datagrid>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">PIVOTGRID</div>
-                <div class="flex-value">
-                    <app-pivotgrid #widget></app-pivotgrid>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">TREELIST</div>
-                <div class="flex-value">
-                    <app-treelist #widget></app-treelist>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">SCHEDULER</div>
-                <div class="flex-value">
-                    <app-scheduler #widget></app-scheduler>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">LIST</div>
-                <div class="flex-value">
-                    <app-list #widget></app-list>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">FORM</div>
-                <div class="flex-value">
-                    <app-form #widget></app-form>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">FILTER BUILDER</div>
-                <div class="flex-value">
-                    <app-filterbuilder #widget></app-filterbuilder>
-                </div>
-            </div>
-            <div class="flex-item group">
-                <div class="flex-item">
-                    <div class="flex-label">OVERLAYS</div>
-                    <div class="flex-value">
-                        <app-overlays #widget></app-overlays>
+                        <app-datagrid #widget></app-datagrid>
                     </div>
                 </div>
                 <div class="flex-item">
-                    <div class="flex-label">MENU</div>
+                    <div class="flex-label">PIVOTGRID</div>
                     <div class="flex-value">
-                        <app-menu #widget></app-menu>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">TREEVIEW</div>
-                <div class="flex-value">
-                    <app-treeview #widget></app-treeview>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">ACCORDION</div>
-                <div class="flex-value">
-                    <app-accordion #widget></app-accordion>
-                </div>
-            </div>
-            <div class="flex-item">
-                <div class="flex-label">GALLERY</div>
-                <div class="flex-value">
-                    <app-gallery #widget></app-gallery>
-                </div>
-            </div>
-            <div class="flex-item group">
-                <div class="flex-item">
-                    <div class="flex-label">NAVBAR</div>
-                    <div class="flex-value">
-                        <app-navbar #widget></app-navbar>
+                        <app-pivotgrid #widget></app-pivotgrid>
                     </div>
                 </div>
                 <div class="flex-item">
-                    <div class="flex-label">TABS</div>
+                    <div class="flex-label">TREELIST</div>
                     <div class="flex-value">
-                        <app-tabs #widget></app-tabs>
-                    </div>
-                </div>
-            </div> 
-            <div class="flex-item group">
-                <div class="flex-item">
-                    <div class="flex-label">PROGRESS BAR</div>
-                    <div class="flex-value">
-                        <app-progressbars #widget></app-progressbars>
+                        <app-treelist #widget></app-treelist>
                     </div>
                 </div>
                 <div class="flex-item">
-                    <div class="flex-label">SLIDERS</div>
+                    <div class="flex-label">SCHEDULER</div>
                     <div class="flex-value">
-                        <app-sliders #widget></app-sliders>
+                        <app-scheduler #widget></app-scheduler>
                     </div>
                 </div>
+                <div class="flex-item">
+                    <div class="flex-label">LIST</div>
+                    <div class="flex-value">
+                        <app-list #widget></app-list>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="flex-label">FORM</div>
+                    <div class="flex-value">
+                        <app-form #widget></app-form>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="flex-label">FILTER BUILDER</div>
+                    <div class="flex-value">
+                        <app-filterbuilder #widget></app-filterbuilder>
+                    </div>
+                </div>
+                <div class="flex-item group">
+                    <div class="flex-item">
+                        <div class="flex-label">OVERLAYS</div>
+                        <div class="flex-value">
+                            <app-overlays #widget></app-overlays>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-label">MENU</div>
+                        <div class="flex-value">
+                            <app-menu #widget></app-menu>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="flex-label">TREEVIEW</div>
+                    <div class="flex-value">
+                        <app-treeview #widget></app-treeview>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="flex-label">ACCORDION</div>
+                    <div class="flex-value">
+                        <app-accordion #widget></app-accordion>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="flex-label">GALLERY</div>
+                    <div class="flex-value">
+                        <app-gallery #widget></app-gallery>
+                    </div>
+                </div>
+                <div class="flex-item group">
+                    <div class="flex-item">
+                        <div class="flex-label">NAVBAR</div>
+                        <div class="flex-value">
+                            <app-navbar #widget></app-navbar>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-label">TABS</div>
+                        <div class="flex-value">
+                            <app-tabs #widget></app-tabs>
+                        </div>
+                    </div>
+                </div> 
+                <div class="flex-item group">
+                    <div class="flex-item">
+                        <div class="flex-label">PROGRESS BAR</div>
+                        <div class="flex-value">
+                            <app-progressbars #widget></app-progressbars>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="flex-label">SLIDERS</div>
+                        <div class="flex-value">
+                            <app-sliders #widget></app-sliders>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-item">
+                        <div class="flex-label">SCROLL VIEW</div>
+                        <div class="flex-value">
+                            <app-scrollview #widget></app-scrollview>
+                        </div>
+                </div>                          
             </div>
-            <div class="flex-item">
-                    <div class="flex-label">SCROLL VIEW</div>
-                    <div class="flex-value">
-                        <app-scrollview #widget></app-scrollview>
-                    </div>
-            </div>                          
-        </div>
+        </ng-container>
     </dx-scroll-view>
 </div>

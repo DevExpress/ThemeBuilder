@@ -9,9 +9,9 @@ import { DxScrollViewComponent } from 'devextreme-angular';
 export class PreviewComponent implements OnInit {
     @ViewChildren('widget') widgetElements: QueryList<any>;
 
-    @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
+    @ViewChild('scrollView') scrollView: DxScrollViewComponent;
 
-    constructor() { }
+    isStylesReady = false;
 
     receiveMessage(e) {
         if(e.data.css) {
@@ -39,6 +39,8 @@ export class PreviewComponent implements OnInit {
 
         style.appendChild(document.createTextNode(css));
         head.appendChild(style);
+
+        this.isStylesReady = true;
     }
 
     createPreviewContent(widget: string) {
