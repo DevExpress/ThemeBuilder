@@ -1,0 +1,20 @@
+:host {
+    display: inline-block;
+}
+
+:host ::ng-deep .dx-checkbox {
+    vertical-align: middle;
+    margin-right: 2%;
+}
+
+:host ::ng-deep .dx-texteditor {
+    display: inline-block;
+    vertical-align: middle;
+    width: 26%;
+    margin-right: 2%;
+}
+
+:host ::ng-deep .dx-radiogroup { 
+    display: inline-block;
+    vertical-align: middle;
+}

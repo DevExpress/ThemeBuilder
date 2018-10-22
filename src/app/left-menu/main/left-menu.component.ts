@@ -117,7 +117,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                         Value: null,
                         Group: groupKey,
                         GroupHeader: true,
-                        Name: '0. ' + groupName,
+                        Name: aliasInfo.order + '. ' + groupName,
                         Items: groupItems
                     });
                 } else {

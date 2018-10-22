@@ -1,20 +1,12 @@
 export class LeftMenuAlias {
     static aliases: any = {
-        'basetheming':          { name: 'Base Theming', order: 0 },
-
-        'advtheming':           { name: 'Advanced Theming', order: 1 },
-
-        'base':                 { name: 'Common', order: 100 },
         'base.common':          { name: 'Basic Settings', order: 110 },
-        'base.widgetstates':    { name: 'Widget States', order: 120 },
         'base.typography':      { name: 'Typography Settings', order: 130 },
 
         'datagrid':             { name: 'Data Grid', order: 200, equivalents: 'dxDataGrid, data grid, dx-data-grid' },
         'treelist':             { name: 'Tree List', order: 300, equivalents: 'dxTreeList, dx-tree-list' },
         'pivotgrid':            { name: 'Pivot Grid', order: 400, equivalents: 'dxPivotGrid, dx-pivot-grid' },
         'scheduler':            { name: 'Scheduler', order: 500, equivalents: 'dxScheduler, dx-scheduler' },
-
-        'badges':               { name: 'Badges', order: 600, equivalents: '' },
 
         'buttons':              { name: 'Button', order: 700, equivalents: 'dxButton, dx-button' },
         'buttons.default':      { name: 'Default Type', order: 710, widgetGroup: true, equivalents: 'dxButton, dx-button' },
@@ -24,29 +16,29 @@ export class LeftMenuAlias {
         'buttons.flat':         { name: 'Flat Button', order: 750, widgetGroup: true, equivalents: 'dxButton, dx-button' },
 
         'editors':              { name: 'Editors', order: 800, equivalents: 'TextBox, dxTextBox, dx-text-box' },
-        'editors.autocomplete': { name: 'Autocomplete', order: 810, equivalents: 'SuggestBox, AutoSuggestBox, dxAutocomplete, dx-autocomplete' },
-        'editors.calendar':     { name: 'Calendar', order: 815, equivalents: 'dxCalendar, dx-calendar' },
-        'editors.checkbox':     { name: 'Check Box', order: 820, equivalents: 'Switch, CheckBox, dxCheckBox, dx-check-box' },
-        'editors.colorbox':     { name: 'Color Box', order: 825, equivalents: 'ColorBox, ColorPicker, dxColorBox, dx-color-box' },
-        'editors.fileuploader': { name: 'File Uploader', order: 830, equivalents: 'dxFileUploader, dx-file-uploader' },
-        'editors.lookup':       { name: 'Lookup', order: 835, equivalents: 'dxLookup, dx-lookup' },
-        'editors.numberbox':    { name: 'Number Box', order: 840, equivalents: 'NumberBox, TextBox, dxNumberBox, dx-number-box' },
-        'editors.radiogroup':   { name: 'Radio Group', order: 845, equivalents: 'RadioGroup, RadioButton, dxRadioGroup, dx-radio-group' },
-        'editors.selectbox':    { name: 'Select Box', order: 850, equivalents: 'SelectBox, ComboBox, Spinner, dxSelectBox, dx-select-box, dxDropDownBox, dx-drop-down-box' },
-        'editors.switch':       { name: 'Switch', order: 855, equivalents: 'Switch, CheckBox, dxSwitch, dx-switch' },
-        'editors.tagbox':       { name: 'Tag Box', order: 860, equivalents: 'TagBox, SelectBox, ComboBox, MultiSelect, TagSelector, TokenBox, dxTagBox, dx-tag-box' },
-        'editors.texteditors':  { name: 'Text Editors', order: 865, equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area' },
-        'editors.validation':   { name: 'Validation', order: 870, equivalents: 'dxValidator, dx-validator' },
+        'editors.texteditors':  { name: 'Text Editors', order: 805, widgetGroup: true, equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area' },
+        'editors.autocomplete': { name: 'Autocomplete', order: 810, widgetGroup: true, equivalents: 'SuggestBox, AutoSuggestBox, dxAutocomplete, dx-autocomplete' },
+        'editors.calendar':     { name: 'Calendar', order: 815, widgetGroup: true, equivalents: 'dxCalendar, dx-calendar' },
+        'editors.checkbox':     { name: 'Check Box', order: 820, widgetGroup: true, equivalents: 'Switch, CheckBox, dxCheckBox, dx-check-box' },
+        'editors.colorbox':     { name: 'Color Box', order: 825, widgetGroup: true, equivalents: 'ColorBox, ColorPicker, dxColorBox, dx-color-box' },
+        'editors.fileuploader': { name: 'File Uploader', order: 830, widgetGroup: true, equivalents: 'dxFileUploader, dx-file-uploader' },
+        'editors.lookup':       { name: 'Lookup', order: 835, widgetGroup: true, equivalents: 'dxLookup, dx-lookup' },
+        'editors.numberbox':    { name: 'Number Box', order: 840, widgetGroup: true, equivalents: 'NumberBox, TextBox, dxNumberBox, dx-number-box' },
+        'editors.radiogroup':   { name: 'Radio Group', order: 845, widgetGroup: true, equivalents: 'RadioGroup, RadioButton, dxRadioGroup, dx-radio-group' },
+        'editors.selectbox':    { name: 'Select Box', order: 850, widgetGroup: true, equivalents: 'SelectBox, ComboBox, Spinner, dxSelectBox, dx-select-box, dxDropDownBox, dx-drop-down-box' },
+        'editors.switch':       { name: 'Switch', order: 855, widgetGroup: true, equivalents: 'Switch, CheckBox, dxSwitch, dx-switch' },
+        'editors.tagbox':       { name: 'Tag Box', order: 860, widgetGroup: true, equivalents: 'TagBox, SelectBox, ComboBox, MultiSelect, TagSelector, TokenBox, dxTagBox, dx-tag-box' },
+        'editors.validation':   { name: 'Validation', order: 870, widgetGroup: true, equivalents: 'dxValidator, dx-validator' },
 
         'form':                 { name: 'Form', order: 900, equivalents: 'dxForm, dx-form' },
         'filterbuilder':        { name: 'Filter Builder', order: 950, equivalents: 'dxFilterBuilder, QueryBuilder' },
         'gallery':              { name: 'Gallery', order: 1000, equivalents: 'dxGallery, dx-gallery' },
 
         'overlays':             { name: 'Overlays', order: 1100, equivalents: '' },
-        'overlays.common':      { name: 'Overlays', order: 1110, equivalents: 'dxPopup, dx-popup, dxPopover, dx-popover, dxActionSheet, dx-action-sheet, dxTooltip, dx-tooltip, dxToast, dx-toast' },
-        'overlays.actionsheet': { name: 'Action Sheet', order: 1120, equivalents: 'dxActionSheet, dx-action-sheet' },
-        'overlays.tooltip':     { name: 'Tooltip', order: 1130, equivalents: 'dxTooltip, dx-tooltip' },
-        'overlays.toasts':      { name: 'Toast', order: 1140, equivalents: 'dxToast, dx-toast' },
+        'overlays.common':      { name: 'Overlays', order: 1110, widgetGroup: true,  equivalents: 'dxPopup, dx-popup, dxPopover, dx-popover, dxActionSheet, dx-action-sheet, dxTooltip, dx-tooltip, dxToast, dx-toast' },
+        'overlays.actionsheet': { name: 'Action Sheet', order: 1120, widgetGroup: true, equivalents: 'dxActionSheet, dx-action-sheet' },
+        'overlays.tooltip':     { name: 'Tooltip', order: 1130, widgetGroup: true, equivalents: 'dxTooltip, dx-tooltip' },
+        'overlays.toasts':      { name: 'Toast', order: 1140, widgetGroup: true, equivalents: 'dxToast, dx-toast' },
 
         'list':                 { name: 'List', order: 1200, equivalents: 'ListView, TableView, ListBox, dxList, dx-list' },
 
@@ -64,10 +56,9 @@ export class LeftMenuAlias {
         'navigations.drawer':   { name: 'Drawer', order: 1470, equivalents: 'dxDrawer, dx-drawer, Slideout, Panel, Slideview, Layout' },
 
         'progressbars':         { name: 'Progress Bar', order: 1500, equivalents: 'ProgressBar, dxProgressBar, dx-progress-bar' },
+        'sliders':              { name: 'Sliders', order: 1600, equivalents: 'SeekBar, TrackBar, dxSlider, dx-slider' },
 
-        'scrollview':           { name: 'Scroll View', order: 1600, equivalents: 'dxScrollView, dx-scroll-view' },
-        'sliders':              { name: 'Sliders', order: 1700, equivalents: 'SeekBar, TrackBar, dxSlider, dx-slider' },
-        'tileview':             { name: 'Tile View', order: 1800, equivalents: 'dxTileView, dx-tile-view' }
+        'scrollview':           { name: 'Scroll View', order: 1700, equivalents: 'dxScrollView, dx-scroll-view' }
     };
 
     static getAlias(key) {

@@ -1,0 +1,11 @@
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+<ng-template #collapsedBlock>
+    <dx-button text="Normal" type="normal"></dx-button>
+    <dx-button text="Default" type="default"></dx-button>
+    <dx-button text="Success" type="success"></dx-button>
+    <dx-button text="Danger" type="danger"></dx-button>
+</ng-template>
+
+<ng-template #expandedBlock>
+    expanded block
+</ng-template>

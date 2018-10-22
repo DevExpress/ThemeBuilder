@@ -36,7 +36,7 @@ const routes: Routes = [
         path: '',
         component: PreviewLayoutComponent,
         children: [
-          { path: 'preview/:theme/:color-scheme', component: PreviewComponent }
+            { path: 'preview/:theme', component: PreviewComponent }
         ]
     },
     { path: '**', redirectTo: '' }

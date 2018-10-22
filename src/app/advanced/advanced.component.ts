@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { BuilderService } from './../builder.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-advanced',
