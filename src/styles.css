@@ -24,14 +24,6 @@ body {
     margin: 0;
 }
 
-.loading {
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    margin-top: -50px;
-}
-
 :focus {
     outline: none;
 }
