@@ -44,6 +44,7 @@ export class PreviewComponent implements OnInit {
     createPreviewContent(widget: string) {
         const EXPAND_CLASS_NAME = 'expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
+        const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
@@ -56,12 +57,17 @@ export class PreviewComponent implements OnInit {
 
         setTimeout(() => {
             if(widget === 'base.common' || widget === 'base.typography') {
-                this.scrollView.instance.scrollTo(0);
+                scrollableContainer.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
                 return;
             }
 
             const widgetContainer = document.getElementsByTagName('app-' + widget.replace('navigations.', ''));
             const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
+            const scrollTop = 30;
 
             if(flexParentContainer.parentElement.classList.contains('group')) {
                 flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
@@ -70,7 +76,10 @@ export class PreviewComponent implements OnInit {
             flexParentContainer.classList.add(EXPAND_CLASS_NAME);
 
             setTimeout(() => {
-                this.scrollView.instance.scrollTo(flexParentContainer.offsetTop);
+                scrollableContainer.scrollTo({
+                    top: flexParentContainer.offsetTop - scrollTop,
+                    behavior: 'smooth'
+                });
 
                 this.widgetElements.forEach((widgetEl) => {
                     widgetEl.isExpanded.next(widgetEl.widgetGroup === widget);
