@@ -15,24 +15,11 @@
     -webkit-flex: 1 1 580px; 
     -ms-flex:  1 1 580px; 
     flex:  1 1 580px;
-    height: 280px;
-    padding: 20px;
-    margin: 10px 20px;
-    max-width: 1200px;
+    height: 320px;
+    max-width: 800px;
+    margin: 10px 40px;
     transition: all .3s ease-in;
     box-sizing: border-box;
-}
-
-.flex-item.group {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-}
-
-.group .flex-item {
-    height: 140px;
-    margin: 0;
-    justify-content: center;
 }
 
 .group .flex-item.expanded,
@@ -41,12 +28,32 @@
     height: 640px;
     border: 1px solid #999999;
     max-width: 100%;
+    padding: 20px;
+}
+
+.flex-item.group {
+    display: flex;
+    flex-direction: column;
+}
+
+.group .flex-item {
+    height: 140px;
+}
+
+.group .flex-item.expanded {
+    margin: 10px 20px;
 }
 
 .group.expanded {
-    height: 780px;
+    height: 820px;
     border: none;
     padding: 0;
+    margin: 0;
+}
+
+.group.expanded  > .flex-item {
+    max-width: 100%;
+    flex: 1 1 100%;
 }
 
 .flex-label {
@@ -67,4 +74,17 @@
 
 .expanded > .flex-value, .expanded > .flex-value > * {
     height: 570px;
+}
+
+
+@media (max-width: 1600px) { 
+    .flex-item {
+        flex: 1 1 100%; 
+        max-width: 100%;
+        margin: 10px 0; 
+    }
+
+    .group .flex-item.expanded {
+        margin: 10px 0; 
+    }
 }
