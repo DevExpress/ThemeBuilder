@@ -85,16 +85,16 @@ export class MetadataRepositoryService {
             this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection);
 
         return buildResult.then(result => {
-            for (const dataKey in result.compiledMetadata) {
-                if (result.compiledMetadata.hasOwnProperty(dataKey)) {
+            for(const dataKey in result.compiledMetadata) {
+                if(result.compiledMetadata.hasOwnProperty(dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
                     item.Value = result.compiledMetadata[dataKey];
                 }
             }
 
             if(isFirstBootstrapBuild) {
-                for (const dataKey in result.modifyVars) {
-                    if (result.modifyVars.hasOwnProperty(dataKey)) {
+                for(const dataKey in result.modifyVars) {
+                    if(result.modifyVars.hasOwnProperty(dataKey)) {
                         this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
                     }
                 }
