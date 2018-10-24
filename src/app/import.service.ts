@@ -30,8 +30,11 @@ export class ImportService {
         });
     }
 
-    exportMetadata(): any {
-        return Object.assign(this.savedMetadata, { items: this.metaRepository.getModifiedItems() });
+    exportMetadata(): string {
+        const exportedObject = Object.assign(this.savedMetadata, { items: this.metaRepository.getModifiedItems() });
+        exportedObject.baseTheme = [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.');
+
+        return JSON.stringify(exportedObject, null, 4);
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean): Promise<string> {
