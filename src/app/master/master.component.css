@@ -21,7 +21,8 @@
     min-width: 800px;
     max-width: 1700px;
     background-color: #e2e5e7; 
-    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
+    z-index: 1; 
 }
 
 .master .section.right > * {
