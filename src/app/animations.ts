@@ -14,11 +14,16 @@ export const routeAnimation =  trigger('routeAnimation', [
         { optional: true }),
         query('.section.left', style({  opacity: 0, transform: 'translateX(70%)' }), { optional: true }),
         group([
-            query(':enter .container', [
-              style({  opacity: 0, transform: 'translateY(20%)' }),
-              animate('.3s .2s ease-in', style({ opacity: 1, transform: 'translateY(0px)' }))
+            query(':leave .title-link',  [
+                style({'font-size': '30px', color: '#a7a8a9', transform: 'translateY(0px)',  opacity: 1}),
+                animate('.3s ease-in',
+                  style({ 'font-size': '30px', color: '#a7a8a9', transform: 'translateY(-100%)', opacity: 0 })),
             ], { optional: true }),
-            query(':enter .title-link:not(.master)',  [
+            query(':enter .container', [
+                style({  opacity: 0, transform: 'translateY(20%)' }),
+                animate('.3s ease-in', style({ opacity: 1, transform: 'translateY(0px)' }))
+              ], { optional: true }),
+              query(':enter .title-link:not(.master)',  [
                 style({ opacity: 1, 'font-size': '47px', color: '#404040', transform: 'translateY(100%)'}),
                 animate('.3s ease-in',
                   style({ opacity: 1, 'font-size': '30px', color: '#a7a8a9', transform: 'translateY(0px)' })),
@@ -28,29 +33,37 @@ export const routeAnimation =  trigger('routeAnimation', [
             query(':enter .section.left', [
                 style({  opacity: 0, transform: 'translateX(70%)' }),
                 animate('.6s .2s ease-in-out', style({ opacity: 1, transform: 'translateX(0px)' }))
-            ], { optional: true }),
+            ], { optional: true })
         ])
     ]),
     transition('3 => 2, 2 => 1', [
-        query('.title',  style({ opacity: 0, 'font-size': '35px', color: '#a7a8a9', transform: 'translateY(0px)' }), { optional: true }),
-        query('.container', style({  opacity: 0, transform: 'translateY(-20%)' }), { optional: true }),
-        query('.title-link',  style({ opacity: 0, transform: 'translateY(-200%)' }), { optional: true }),
-        query('.section.left', style({  opacity: 0 }), { optional: true }),
-        query('.section.right', style({  opacity: 0 }), { optional: true }),
+        query('.title',  style({ opacity: 0, transform: 'translateY(-7%)', 'font-size': '30px', color: '#a7a8a9' }), { optional: true }),
+        query('.container', style({  opacity: 0, transform: 'translateY(-7%)' }), { optional: true }),
+        query('.title-link',  style({ opacity: 0, transform: 'translateY(-100%)' }), { optional: true }),
+        query('.section.left', style({ opacity: 1, transform: 'translateX(0px)' }), { optional: true }),
+        query('.section.right', style({  opacity: 1 }), { optional: true }),
+        query(':leave .section.left', [
+            style({ opacity: 1, transform: 'translateX(0px)' }),
+            animate('.6s ease-in-out', style({ opacity: 0, transform: 'translateX(70%)' }))
+        ], { optional: true }),
+        query(':leave .section.right', [
+            style({ opacity: 1 }),
+            animate('.3s ease-in', style({ opacity: 0 }))
+        ], { optional: true }),
         group([
             query(':enter .title-link', [
-                style({ opacity: 0, transform: 'translateY(-200%)' }),
+                style({ opacity: 0, transform: 'translateY(-100%)' }),
                 animate('.3s ease-in',
                   style({ opacity: 1, transform: 'translateY(0px)' })),
             ], { optional: true }),
             query(':enter .title', [
-                style({ opacity: 1, 'font-size': '35px', color: '#a7a8a9', transform: 'translateY(0px)' }),
-                animate('.3s  ease-in',
-                  style({ opacity: 1, 'font-size': '47px', color: '#404040', transform: 'translateY(0px)' })),
+                style({ opacity: 1, transform: 'translateY(-7%)', 'font-size': '30px', color: '#a7a8a9' }),
+                animate('.3s ease-in',
+                  style({ opacity: 1, transform: 'translateY(0)', 'font-size': '47px', color: '#404040' })),
             ], { optional: true }),
             query(':enter .container', [
-              style({ opacity: 1, transform: 'translateY(-20%)' }),
-              animate('.3s ease-in', style({ opacity: 1, transform: 'translateY(0px)' }))
+              style({ opacity: 1,  transform: 'scale(0.9) translateY(-15%)' }),
+              animate('.3s ease-in', style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
             ], { optional: true })
         ])
     ])
