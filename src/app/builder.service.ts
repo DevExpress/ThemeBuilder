@@ -9,7 +9,7 @@ import * as Sass from 'sass.js/dist/sass.js';
 
 @Injectable()
 export class BuilderService {
-    loadLess: any;
+    private loadLess: any;
 
     constructor(private http: HttpClient) {
        this.loadLess = (fileName: string) => {
@@ -18,7 +18,7 @@ export class BuilderService {
         };
     }
 
-    scssCompiler: any = {
+    private scssCompiler: any = {
         render: (scss) => {
             Sass.setWorkerUrl('sass/sass.worker.js');
             const sass = new Sass();
@@ -34,16 +34,30 @@ export class BuilderService {
         }
     };
 
-
-    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: Array<ExportedItem>) {
-        return builder.buildTheme({
+    private build(theme: Theme, config: any) {
+        const baseConfig = {
             lessCompiler: lessCompiler(window, {}),
             sassCompiler: this.scssCompiler,
+            reader: this.loadLess,
+            baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')
+        };
+
+        const extendedConfig = {...baseConfig, ...config };
+        return builder.buildTheme(extendedConfig);
+    }
+
+    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: Array<ExportedItem>) {
+        return this.build(theme, {
             makeSwatch: makeSwatch,
             outputColorScheme: outColorScheme,
-            reader: this.loadLess,
-            items: modifiedData,
-            baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')
+            items: modifiedData
+        });
+    }
+
+    buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number) {
+        return this.build(theme, {
+            data: bootstrapVariables,
+            inputFile: bootstrapVersion === 4 ? '.scss' : '.less'
         });
     }
 }

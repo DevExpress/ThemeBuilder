@@ -78,12 +78,25 @@ export class MetadataRepositoryService {
         });
     }
 
-    build(): Promise<BuilderResult> {
-        return this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection).then(result => {
+    build(bootstrapData?: string, bootstrapVersion?: number) {
+        const isFirstBootstrapBuild = bootstrapVersion !== undefined;
+        const buildResult = isFirstBootstrapBuild ?
+            this.builder.buildThemeBootstrap(this.theme, bootstrapData, bootstrapVersion) :
+            this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection);
+
+        return buildResult.then(result => {
             for (const dataKey in result.compiledMetadata) {
                 if (result.compiledMetadata.hasOwnProperty(dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
                     item.Value = result.compiledMetadata[dataKey];
+                }
+            }
+
+            if(isFirstBootstrapBuild) {
+                for (const dataKey in result.modifyVars) {
+                    if (result.modifyVars.hasOwnProperty(dataKey)) {
+                        this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
+                    }
                 }
             }
 
@@ -125,5 +138,11 @@ export class MetadataRepositoryService {
         this.theme = theme;
         this.modifiedMetaCollection = modifiedData;
         return this.build();
+    }
+
+    importBootstrap(bootstrapData: string, bootstrapVersion: number): Promise<BuilderResult> {
+        this.clearModifiedDataCache();
+        this.modifiedMetaCollection = [];
+        return this.build(bootstrapData, bootstrapVersion);
     }
 }

@@ -10,7 +10,9 @@ export class ImportService {
     savedMetadata: any = {};
     normalizedMetadata: any = {};
 
-    importBootstrapVariables() {}
+    importBootstrapVariables(variables: string, bootstrapVersion: number): Promise<any> {
+        return this.metaRepository.importBootstrap(variables, bootstrapVersion);
+    }
 
     importMetadata(meta: string, redirectView: string): Promise<void> {
         try {
