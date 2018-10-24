@@ -42,7 +42,7 @@ export class BuilderService {
             baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')
         };
 
-        const extendedConfig = {...baseConfig, ...config };
+        const extendedConfig = { ...baseConfig, ...config };
         return builder.buildTheme(extendedConfig);
     }
 
