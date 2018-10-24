@@ -46,6 +46,7 @@ import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-c
 import { BuilderService } from './builder.service';
 import { MetadataRepositoryService } from './meta-repository.service';
 import { NamesService } from './names.service';
+import { ImportService } from './import.service';
 
 import { PreviewModule } from './preview/preview.module';
 
@@ -94,7 +95,8 @@ import { PreviewModule } from './preview/preview.module';
     providers: [
         BuilderService,
         MetadataRepositoryService,
-        NamesService
+        NamesService,
+        ImportService
     ],
     bootstrap: [AppComponent]
 })
