@@ -78,7 +78,7 @@ export class MetadataRepositoryService {
         });
     }
 
-    build(bootstrapData?: string, bootstrapVersion?: number) {
+    build(bootstrapData?: string, bootstrapVersion?: number): Promise<BuilderResult> {
         const isFirstBootstrapBuild = bootstrapVersion !== undefined;
         const buildResult = isFirstBootstrapBuild ?
             this.builder.buildThemeBootstrap(this.theme, bootstrapData, bootstrapVersion) :

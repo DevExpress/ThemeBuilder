@@ -5,6 +5,7 @@ import * as builder from 'devextreme-themebuilder';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
 import * as Sass from 'sass.js/dist/sass.js';
+import { BuilderResult } from './types/builder-result';
 
 
 @Injectable()
@@ -34,7 +35,7 @@ export class BuilderService {
         }
     };
 
-    private build(theme: Theme, config: any) {
+    private build(theme: Theme, config: any): Promise<BuilderResult> {
         const baseConfig = {
             lessCompiler: lessCompiler(window, {}),
             sassCompiler: this.scssCompiler,
@@ -46,7 +47,7 @@ export class BuilderService {
         return builder.buildTheme(extendedConfig);
     }
 
-    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: Array<ExportedItem>) {
+    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: Array<ExportedItem>): Promise<BuilderResult> {
         return this.build(theme, {
             makeSwatch: makeSwatch,
             outputColorScheme: outColorScheme,
@@ -54,7 +55,7 @@ export class BuilderService {
         });
     }
 
-    buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number) {
+    buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number): Promise<BuilderResult> {
         return this.build(theme, {
             data: bootstrapVariables,
             inputFile: bootstrapVersion === 4 ? '.scss' : '.less'
