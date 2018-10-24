@@ -18,29 +18,28 @@ export class MetadataRepositoryService {
     private metadataPromise: Promise<any>;
     private modifiedMetaCollection: Array<ExportedItem> = [];
 
-    theme: Theme;
+    theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
 
     constructor(private router: Router, private builder: BuilderService) {
-        this.metadataRepository = new MetadataRepository(new MetadataLoader());
+        this.build();
 
+        this.metadataRepository = new MetadataRepository(new MetadataLoader());
         const repositoryPromise = this.metadataRepository.init(themes);
-        const themePromise = new Promise(resolve => {
-            this.router.events.subscribe(event => {
-                if(!(event instanceof NavigationEnd)) return;
-                const urlParts = event.url.split('/');
-                if(urlParts[2] && urlParts[3]) {
-                    if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
-                        this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
-                        this.clearModifiedDataCache();
-                        resolve();
-                        this.build();
-                    }
+
+        this.router.events.subscribe(event => {
+            if(!(event instanceof NavigationEnd)) return;
+            const urlParts = event.url.split('/');
+            if(urlParts[2] && urlParts[3]) {
+                if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
+                    this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+                    this.clearModifiedDataCache();
+                    this.build();
                 }
-            });
+            }
         });
 
-        this.metadataPromise = Promise.all([repositoryPromise, themePromise]);
+        this.metadataPromise = repositoryPromise;
     }
 
     clearModifiedDataCache(): void {
