@@ -80,14 +80,15 @@ export class MetadataRepositoryService {
 
     build(bootstrapData?: string, bootstrapVersion?: number): Promise<BuilderResult> {
         const isFirstBootstrapBuild = bootstrapVersion !== undefined;
+        const currentTheme = this.theme;
         const buildResult = isFirstBootstrapBuild ?
-            this.builder.buildThemeBootstrap(this.theme, bootstrapData, bootstrapVersion) :
-            this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection);
+            this.builder.buildThemeBootstrap(currentTheme, bootstrapData, bootstrapVersion) :
+            this.builder.buildTheme(currentTheme, false, null, this.modifiedMetaCollection);
 
         return buildResult.then(result => {
             for(const dataKey in result.compiledMetadata) {
                 if(result.compiledMetadata.hasOwnProperty(dataKey)) {
-                    const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
+                    const item = this.metadataRepository.getDataItemByKey(dataKey, currentTheme);
                     item.Value = result.compiledMetadata[dataKey];
                 }
             }
