@@ -33,8 +33,11 @@ export class ImportService {
     }
 
     exportMetadata(): string {
-        const exportedObject = { ...this.savedMetadata, items: this.metaRepository.getModifiedItems() };
-        exportedObject.baseTheme = [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.');
+        const exportedObject = {
+            ...this.savedMetadata,
+            items: this.metaRepository.getModifiedItems(),
+            baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.')
+        };
 
         return JSON.stringify(exportedObject, null, 4);
     }
