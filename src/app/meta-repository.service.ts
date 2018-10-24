@@ -9,6 +9,7 @@ import { MetaItem } from './types/meta-item';
 import { BuilderService } from './builder.service';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
+import { BuilderResult } from './types/builder-result';
 
 @Injectable()
 export class MetadataRepositoryService {
@@ -70,14 +71,16 @@ export class MetadataRepositoryService {
                 return;
             }
 
+            this.modifiedMetaCollection = this.modifiedMetaCollection.filter(item => item.key !== dataItem.Key);
+
             this.modifiedMetaCollection.push({ key: dataItem.Key, value: dataItem.Value });
 
             this.build();
         });
     }
 
-    build(): void {
-        this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection).then(result => {
+    build(): Promise<BuilderResult> {
+        return this.builder.buildTheme(this.theme, false, null, this.modifiedMetaCollection).then(result => {
             for (const dataKey in result.compiledMetadata) {
                 if (result.compiledMetadata.hasOwnProperty(dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, this.theme);
@@ -86,6 +89,7 @@ export class MetadataRepositoryService {
             }
 
             this.css.next(result.css);
+            return result;
         });
     }
 
@@ -103,6 +107,10 @@ export class MetadataRepositoryService {
         });
     }
 
+    getModifiedItems(): Array<ExportedItem> {
+        return this.modifiedMetaCollection;
+    }
+
     export(outColorScheme: string, swatch: boolean): Promise<string> {
         return new Promise((resolve, reject) => {
             this.builder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection).then(result => {
@@ -113,10 +121,10 @@ export class MetadataRepositoryService {
         });
     }
 
-    import(theme: Theme, modifiedData: Array<ExportedItem>) {
+    import(theme: Theme, modifiedData: Array<ExportedItem>): Promise<BuilderResult> {
         this.clearModifiedDataCache();
         this.theme = theme;
         this.modifiedMetaCollection = modifiedData;
-        this.build();
+        return this.build();
     }
 }
