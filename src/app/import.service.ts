@@ -10,7 +10,9 @@ export class ImportService {
     savedMetadata: any = {};
     normalizedMetadata: any = {};
 
-    importBootstrapVariables() {}
+    importBootstrapVariables(variables: string, bootstrapVersion: number): Promise<any> {
+        return this.metaRepository.importBootstrap(variables, bootstrapVersion);
+    }
 
     importMetadata(meta: string, redirectView: string): Promise<void> {
         try {
@@ -19,7 +21,7 @@ export class ImportService {
             return new Promise((_, reject) => { reject(); });
         }
 
-        this.normalizedMetadata = Object.assign({}, this.savedMetadata);
+        this.normalizedMetadata = { ...this.savedMetadata };
         normalize(this.normalizedMetadata);
 
         return this.metaRepository.import({
@@ -31,8 +33,11 @@ export class ImportService {
     }
 
     exportMetadata(): string {
-        const exportedObject = Object.assign(this.savedMetadata, { items: this.metaRepository.getModifiedItems() });
-        exportedObject.baseTheme = [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.');
+        const exportedObject = {
+            ...this.savedMetadata,
+            items: this.metaRepository.getModifiedItems(),
+            baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.')
+        };
 
         return JSON.stringify(exportedObject, null, 4);
     }
