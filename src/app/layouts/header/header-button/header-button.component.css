@@ -1,0 +1,27 @@
+:host {
+    align-self: center;
+}
+
+.header-button {
+    height: 60px;
+    display: flex;
+    cursor: pointer;
+}
+
+.header-button > div {
+    align-self: center;
+    user-select: none;
+}
+
+.header-button .icon {
+    height: 22px;
+    padding-right: 10px;
+}
+
+.header-button:hover .icon path {
+    fill: #f05b41;
+}
+
+.header-button:hover .text {
+    color: #f05b41;
+}

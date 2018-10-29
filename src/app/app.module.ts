@@ -49,6 +49,7 @@ import { NamesService } from './names.service';
 import { ImportService } from './import.service';
 
 import { PreviewModule } from './preview/preview.module';
+import { HeaderButtonComponent } from './layouts/header/header-button/header-button.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,8 @@ import { PreviewModule } from './preview/preview.module';
         HeaderComponent,
         SearchOpenerComponent,
         BackNavigatorComponent,
-        IconThemeCircleComponent
+        IconThemeCircleComponent,
+        HeaderButtonComponent
     ],
     imports: [
         BrowserModule,
