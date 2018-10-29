@@ -6,9 +6,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./header-button.component.css']
 })
 export class HeaderButtonComponent {
-
-    constructor() { }
-
     @Input() text: string;
     @Input() icon: string;
 }
