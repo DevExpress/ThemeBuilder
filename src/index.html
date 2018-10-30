@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="content/css/dx.common.css" />
 
     <script>
-        if(window.location.pathname.indexOf('preview') === -1) {
+        if(!(/preview|wizard/).test(window.location.pathname)) {
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         } else {
             var themeMarker = "dx." + window.location.pathname.split('/')[2];
@@ -20,6 +20,10 @@
     </script>
 
     <style>
+        body {
+            margin: 0;
+        }
+
         .loading {
             text-align: center;
             width: 100%;

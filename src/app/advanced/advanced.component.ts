@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './advanced.component.html',
     styleUrls: ['./advanced.component.css']
 })
-export class AdvancedComponent {
-    constructor() { }
-}
+export class AdvancedComponent {}

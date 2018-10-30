@@ -23,6 +23,9 @@ import { ScrollviewComponent } from './scrollview/scrollview.component';
 import { TreelistComponent } from './treelist/treelist.component';
 import { SlidersComponent } from './sliders/sliders.component';
 
+import { WizardComponent } from './wizard/wizard.component';
+import { PreviewComponent } from './preview/preview.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -47,7 +50,9 @@ import { SlidersComponent } from './sliders/sliders.component';
         SchedulerComponent,
         ScrollviewComponent,
         TreelistComponent,
-        SlidersComponent
+        SlidersComponent,
+        WizardComponent,
+        PreviewComponent
     ],
     exports: [
         DatatgridComponent,
@@ -68,7 +73,9 @@ import { SlidersComponent } from './sliders/sliders.component';
         SchedulerComponent,
         ScrollviewComponent,
         TreelistComponent,
-        SlidersComponent
+        SlidersComponent,
+        WizardComponent,
+        PreviewComponent
     ]
 })
 export class PreviewModule { }

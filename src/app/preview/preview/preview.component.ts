@@ -8,39 +8,12 @@ import { DxScrollViewComponent } from 'devextreme-angular';
 })
 export class PreviewComponent implements OnInit {
     @ViewChildren('widget') widgetElements: QueryList<any>;
-
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
 
-    isStylesReady = false;
-
     receiveMessage(e) {
-        if(e.data.css) {
-            this.addHeadStyles(e.data.css);
-        }
         if(e.data.widget) {
             this.createPreviewContent(e.data.widget);
         }
-    }
-
-    addHeadStyles(css: string) {
-        const head = document.getElementsByTagName('head')[0];
-        const style = document.createElement('style');
-        const DYNAMIC_STYLES_ID = 'dynamic-styles';
-
-        if(document.getElementById(DYNAMIC_STYLES_ID))
-            document.getElementById(DYNAMIC_STYLES_ID).remove();
-
-        style.type = 'text/css';
-        style.id = DYNAMIC_STYLES_ID;
-
-        css = css
-            .replace(/url\(icons\/dxicons/gi, 'url(content/css/icons/dxicons')
-            .replace(/url\(fonts\/Roboto/gi, 'url(content/css/fonts/Roboto');
-
-        style.appendChild(document.createTextNode(css));
-        head.appendChild(style);
-
-        this.isStylesReady = true;
     }
 
     createPreviewContent(widget: string) {

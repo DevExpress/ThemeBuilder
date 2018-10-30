@@ -1,16 +1,17 @@
-import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ViewChild, Input, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MetadataRepositoryService } from '../meta-repository.service';
-import { Subscription, BehaviorSubject, Subject } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-iframe',
     templateUrl: './iframe.component.html',
     styleUrls: ['./iframe.component.css']
 })
-export class IframeComponent implements OnDestroy {
+export class IframeComponent implements OnDestroy, OnInit {
     @ViewChild('iframe') iframe: ElementRef;
+    @Input() view: string;
 
     url: string;
     iframeUrl: SafeResourceUrl;
@@ -27,8 +28,6 @@ export class IframeComponent implements OnDestroy {
                 this.widgetName.next(params['widget']);
                 if(this.theme !== params['theme']) {
                     this.theme = params['theme'];
-                    this.url = window.location.origin + '/preview/' + this.theme;
-                    this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
                 }
             });
     }
@@ -55,4 +54,8 @@ export class IframeComponent implements OnDestroy {
             this.widgetSubscription.unsubscribe();
     }
 
+    ngOnInit() {
+        this.url = window.location.origin + '/' + this.view + '/' + this.theme;
+        this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    }
 }
