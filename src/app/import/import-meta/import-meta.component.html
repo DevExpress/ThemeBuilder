@@ -1,0 +1,13 @@
+<div class="content">
+    <div class="title-link" [routerLink]="['/import']">Import a Theme</div>
+    <div class="container">
+        <div class="title">
+            DevExtreme Metadata
+        </div>
+        <div class="text">
+            Copy and paste previously exported metadata below.
+        </div>
+        <dx-text-area [width]="560" [height]="200" #textArea></dx-text-area>
+        <div class="button apply" (click)="applyClick(textArea)">Import</div>
+    </div>
+</div>
