@@ -10,8 +10,10 @@ export class ImportService {
     savedMetadata: any = {};
     normalizedMetadata: any = {};
 
-    importBootstrapVariables(variables: string, bootstrapVersion: number): Promise<any> {
-        return this.metaRepository.importBootstrap(variables, bootstrapVersion);
+    importBootstrapVariables(variables: any, bootstrapVersion: number, redirectView: string): Promise<any> {
+        return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
+            this.route.navigate([redirectView, this.metaRepository.theme.name, this.metaRepository.theme.colorScheme]);
+        });
     }
 
     importMetadata(meta: string, redirectView: string): Promise<void> {
