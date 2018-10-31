@@ -16,7 +16,9 @@ import {
     DxNumberBoxModule,
     DxColorBoxModule,
     DxDataGridModule,
-    DxScrollViewModule
+    DxScrollViewModule,
+    DxPopupModule,
+    DxCheckBoxModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
@@ -52,6 +54,8 @@ import { ImportService } from './import.service';
 import { PreviewModule } from './preview/preview.module';
 import { HeaderButtonComponent } from './layouts/header/header-button/header-button.component';
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
+import { ImportPopupComponent } from './layouts/header/import-popup/import-popup.component';
+import { ExportPopupComponent } from './layouts/header/export-popup/export-popup.component';
 
 @NgModule({
     declarations: [
@@ -79,7 +83,9 @@ import { ImportMetaComponent } from './import/import-meta/import-meta.component'
         BackNavigatorComponent,
         IconThemeCircleComponent,
         HeaderButtonComponent,
-        ImportMetaComponent
+        ImportMetaComponent,
+        ImportPopupComponent,
+        ExportPopupComponent
     ],
     imports: [
         BrowserModule,
@@ -95,6 +101,8 @@ import { ImportMetaComponent } from './import/import-meta/import-meta.component'
         DxButtonModule,
         DxScrollViewModule,
         DxDataGridModule,
+        DxPopupModule,
+        DxCheckBoxModule,
         PreviewModule,
         AppRoutingModule
     ],

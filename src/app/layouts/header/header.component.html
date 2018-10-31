@@ -37,10 +37,13 @@
             </dx-select-box>
         </div>
         <div class="separator"></div>
-        <app-header-button text="Import" icon="import"></app-header-button>
+        <app-header-button text="Import" icon="import" (click)="import.visible = true;"></app-header-button>
         <div class="separator"></div>
-        <app-header-button text="Export" icon="export"></app-header-button>
+        <app-header-button text="Export" icon="export" (click)="export.visible = true;"></app-header-button>
         <div class="separator"></div>
+
+        <app-import-popup #import></app-import-popup>
+        <app-export-popup #export></app-export-popup>
     </ng-template>
 </div>
 

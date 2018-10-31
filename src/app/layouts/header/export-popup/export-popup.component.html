@@ -1,0 +1,38 @@
+<ng-template #parameters>
+    <div>
+        <dx-text-box [(value)]="schemeName"></dx-text-box>
+    </div>
+    <div>
+        <dx-check-box [(value)]="makeSwatch" text="Make swatch"></dx-check-box>
+    </div>
+    <div *ngIf="outFile">
+        <dx-text-box [value]="outFile" [readOnly]="true"></dx-text-box>
+    </div>
+</ng-template>
+
+<dx-popup
+    [(visible)]="visible"
+    title="DevExtreme ThemeBuilder: Export"
+>
+    <dx-tab-panel>
+        <dxi-item title="Export CSS">
+            <div class="text">
+                Export CSS
+            </div>
+            <ng-container *ngTemplateOutlet="parameters"></ng-container>
+            <div>
+                <dx-button text="Export CSS" (onClick)="exportCss()"></dx-button>
+            </div>
+        </dxi-item>
+        <dxi-item title="Export metadata">
+            <div class="text">
+                Export Metadata
+            </div>
+            <ng-container *ngTemplateOutlet="parameters"></ng-container>
+            <div>
+                <dx-button text="Export Metadata" (onClick)="exportMeta()"></dx-button>
+            </div>
+
+        </dxi-item>
+    </dx-tab-panel>
+</dx-popup>

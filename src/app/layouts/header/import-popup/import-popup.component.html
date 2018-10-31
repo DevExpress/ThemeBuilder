@@ -1,0 +1,39 @@
+<dx-popup
+    [(visible)]="visible"
+    title="DevExtreme ThemeBuilder: Import"
+>
+    <dx-tab-panel>
+        <dxi-item title="Import Metadata">
+            <div class="text">
+                Copy and paste previously exported metadata below.
+            </div>
+            <dx-text-area [width]="560" [height]="200" #textArea></dx-text-area>
+            <dx-button (onClick)="applyClick(textArea)">Import</dx-button>
+        </dxi-item>
+        <dxi-item title="Import Bootstrap Variables">
+            <div class="text">
+                Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.  
+                Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4.
+            </div>
+            <dx-tab-panel class="tabs" [width]="560" [height]="200" [dataSource]="tabPanelData" [(selectedIndex)]="selectedIndex" [loop]="false">
+                <div *dxTemplate="let data of 'title'">
+                    <span>{{data.name}}</span>
+                </div>
+                <div *dxTemplate="let data of 'item'">
+                    <div class="tabpanel-item">
+                        <dx-file-uploader
+                            width="260"
+                            [multiple]="false"
+                            accept="{{data.acceptFormat}}"
+                            labelText="or Drop the file here"
+                            uploadMode="useForm"
+                            selectButtonText="{{data.uploadButtonText}}"
+                            (onValueChanged)="uploaded($event)"
+                            class="file-uploader">
+                        </dx-file-uploader>
+                    </div>
+                </div>
+            </dx-tab-panel>
+        </dxi-item>
+    </dx-tab-panel>
+</dx-popup>
