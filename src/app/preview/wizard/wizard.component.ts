@@ -21,7 +21,7 @@ export class WizardComponent implements AfterViewInit {
         Email: 'jheart@dx-email.com'
     };
 
-    employees: any = [{
+    employees: Array<any> = [{
         key: 'Mr. John Heart',
         items: ['Choose between PPO and HMO Health Plan', 'Google AdWords Strategy']
     }, {
@@ -29,7 +29,7 @@ export class WizardComponent implements AfterViewInit {
         items: ['Update Personnel Files', 'Review Health Insurance Options Under the Affordable Care Act', 'Non-Compete Agreements']
     }];
 
-    positions: string[] = [
+    positions: Array<string> = [
         'HR Manager',
         'IT Manager',
         'CEO',
@@ -39,7 +39,7 @@ export class WizardComponent implements AfterViewInit {
         'Shipping Manager'
     ];
 
-    sales: any = [{
+    sales: Array<any> = [{
         'orderId': 10248,
         'region': 'North America',
         'country': 'United States',
@@ -181,7 +181,7 @@ export class WizardComponent implements AfterViewInit {
         'date': '2013/01/23'
     }];
 
-    toolbarItems: any = [{
+    toolbarItems: Array<any> = [{
         location: 'before',
         widget: 'dxButton',
         options: {
