@@ -7,7 +7,9 @@ import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layo
 
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
-import { ImportBootstrapComponent } from './import-bootstrap/import-bootstrap.component';
+
+import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
+import { ImportMetaComponent } from './import/import-meta/import-meta.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { PreviewIndexComponent } from './preview/index.component';
 
@@ -19,7 +21,8 @@ const routes: Routes = [
             { path: '', component: IndexComponent, data: { routeId: 1 } },
             { path: 'master', component: IndexComponent, data: { routeId: 2 } },
             { path: 'import', component: IndexComponent, data: { routeId: 2 } },
-            { path: 'import-bootstrap', component: ImportBootstrapComponent, data: { routeId: 3 } },
+            { path: 'import/bootstrap', component: ImportBootstrapComponent, data: { routeId: 3 } },
+            { path: 'import/meta', component: ImportMetaComponent, data: { routeId: 3 } },
             { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3 } }
         ]
     },

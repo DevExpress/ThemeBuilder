@@ -11,6 +11,7 @@ import {
     DxTabPanelModule,
     DxFileUploaderModule,
     DxTextBoxModule,
+    DxTextAreaModule,
     DxSelectBoxModule,
     DxNumberBoxModule,
     DxColorBoxModule,
@@ -26,7 +27,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
-import { ImportBootstrapComponent } from './import-bootstrap/import-bootstrap.component';
+import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
 import { IconThemesComponent } from './icons/icon-themes/icon-themes.component';
 import { IconGenericComponent } from './icons/icon-generic/icon-generic.component';
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
@@ -50,6 +51,7 @@ import { ImportService } from './import.service';
 
 import { PreviewModule } from './preview/preview.module';
 import { HeaderButtonComponent } from './layouts/header/header-button/header-button.component';
+import { ImportMetaComponent } from './import/import-meta/import-meta.component';
 
 @NgModule({
     declarations: [
@@ -76,7 +78,8 @@ import { HeaderButtonComponent } from './layouts/header/header-button/header-but
         SearchOpenerComponent,
         BackNavigatorComponent,
         IconThemeCircleComponent,
-        HeaderButtonComponent
+        HeaderButtonComponent,
+        ImportMetaComponent
     ],
     imports: [
         BrowserModule,
@@ -85,6 +88,7 @@ import { HeaderButtonComponent } from './layouts/header/header-button/header-but
         DxTabPanelModule,
         DxFileUploaderModule,
         DxTextBoxModule,
+        DxTextAreaModule,
         DxSelectBoxModule,
         DxNumberBoxModule,
         DxColorBoxModule,
