@@ -3,14 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
+import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
 
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
+
 import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
-import { PreviewComponent } from './preview/preview.component';
 import { AdvancedComponent } from './advanced/advanced.component';
-import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
+import { PreviewIndexComponent } from './preview/index.component';
 
 const routes: Routes = [
     {
@@ -38,7 +39,8 @@ const routes: Routes = [
         path: '',
         component: PreviewLayoutComponent,
         children: [
-            { path: 'preview/:theme', component: PreviewComponent }
+            { path: 'preview/:theme', component: PreviewIndexComponent },
+            { path: 'wizard/:theme', component: PreviewIndexComponent }
         ]
     },
     { path: '**', redirectTo: '' }

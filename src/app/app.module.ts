@@ -39,7 +39,7 @@ import { LeftMenuComponent } from './left-menu/main/left-menu.component';
 import { EditorComponent } from './left-menu/editor/editor.component';
 import { BaseParametersComponent } from './left-menu/base-parameters/base-parameters.component';
 import { IframeComponent } from './iframe/iframe.component';
-import { PreviewComponent } from './preview/preview.component';
+import { PreviewIndexComponent } from './preview/index.component';
 import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
 import { BackNavigatorComponent } from './left-menu/back-navigator/back-navigator.component';
 import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-circle.component';
@@ -72,7 +72,7 @@ import { ImportMetaComponent } from './import/import-meta/import-meta.component'
         AppLayoutComponent,
         PreviewLayoutComponent,
         IframeComponent,
-        PreviewComponent,
+        PreviewIndexComponent,
         AdvancedLayoutComponent,
         HeaderComponent,
         SearchOpenerComponent,

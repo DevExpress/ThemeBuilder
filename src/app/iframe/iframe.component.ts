@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MetadataRepositoryService } from '../meta-repository.service';
-import { Subscription, BehaviorSubject, Subject } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-iframe',
@@ -27,7 +27,7 @@ export class IframeComponent implements OnDestroy {
                 this.widgetName.next(params['widget']);
                 if(this.theme !== params['theme']) {
                     this.theme = params['theme'];
-                    this.url = window.location.origin + '/preview/' + this.theme;
+                    this.url = window.location.origin + '/' + (params['widget'] ? 'preview' : 'wizard') + '/' + this.theme;
                     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
                 }
             });
@@ -54,5 +54,4 @@ export class IframeComponent implements OnDestroy {
         if(this.widgetSubscription)
             this.widgetSubscription.unsubscribe();
     }
-
 }
