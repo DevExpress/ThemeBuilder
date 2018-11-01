@@ -1,3 +1,12 @@
+:host {
+    background-color: rgba(212, 212, 212, 0.25);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
 .header {
     width: 100%;
     height: 80px;
@@ -23,20 +32,43 @@
 
 .flex-blocks {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    padding: 30px 0;
-    background-color: rgba(212, 212, 212, 0.25);
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    left: 0;
+}
+ 
+.flex-blocks.generic {
+    bottom: 400px;
+} 
+
+.flex-blocks.material {
+    bottom: 362px;
 }
 
 .flex-block {
     flex: 1 1 520px;
-    max-width: 520px;
+    max-width: 100%;
+    min-width: 520px;
     height: 290px;
     box-sizing: border-box;
     padding: 25px;
-    margin: 0 20px;
 }
+
+.flex-blocks.generic .flex-block {
+    height: 265px;
+}
+
+.flex-block.left {
+    margin: 0 20px 0 40px;
+}
+
+.flex-block.right {
+    margin: 0 40px 0 20px;
+}
+
 
 :host ::ng-deep .flex-block .dx-button {
     margin-left: 10px;
@@ -48,5 +80,5 @@
     bottom: 0;
     left: 0;
     right: 0;
-    top: 430px;
+    top: auto;
 }

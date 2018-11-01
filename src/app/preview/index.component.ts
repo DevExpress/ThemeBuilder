@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 export class PreviewIndexComponent implements OnInit {
     isStylesReady = false;
     viewName: string;
+    themeName: string;
 
     constructor(private router: Router) {
        this.viewName = this.router.url.split('/')[1];
+       this.themeName = this.router.url.split('/')[2];
     }
 
     receiveMessage(e) {

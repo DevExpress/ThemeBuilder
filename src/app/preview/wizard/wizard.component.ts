@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
 
 @Component({
@@ -8,6 +8,7 @@ import { DxFormComponent } from 'devextreme-angular';
 })
 export class WizardComponent implements AfterViewInit {
     @ViewChild('form') form: DxFormComponent;
+    @Input() theme: string;
 
     employee: any = {
         ID: 1,
@@ -186,7 +187,8 @@ export class WizardComponent implements AfterViewInit {
         widget: 'dxButton',
         options: {
             icon: 'menu',
-            type: 'default'
+            type: 'default',
+            stylingMode: 'text'
         }
     },{
         location: 'before',
