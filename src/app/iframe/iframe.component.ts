@@ -37,7 +37,9 @@ export class IframeComponent implements OnDestroy {
         if(this.cssSubscription)
             this.cssSubscription.unsubscribe();
         this.cssSubscription = this.metadataService.css.subscribe(css => {
-            this.iframe.nativeElement.contentWindow.postMessage({ css: css }, this.url);
+            const themeSize = this.metadataService.theme.name === 'generic' ?
+            (this.metadataService.theme.colorScheme.split('-')[1] || 'normal') : '';
+            this.iframe.nativeElement.contentWindow.postMessage({ css: css, themeSize: themeSize }, this.url);
         });
 
         if(this.widgetSubscription)

@@ -1,12 +1,12 @@
 <dx-toolbar class="header" [items]="toolbarItems">
 </dx-toolbar>
-<div class="flex-blocks {{theme}}">
+<div class="flex-blocks {{theme}} {{themeSize}}">
     <div class="left flex-block dx-card">
             <dx-form 
             #form
             [formData]="employee"
             width="100%" 
-            [height]="theme === 'generic' ? 175 : 200" 
+            [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) : 200" 
             colCount="2"
             labelLocation="top">
                 <dxi-item dataField="FirstName" ></dxi-item>
@@ -47,7 +47,7 @@
             mode="multiple"
         ></dxo-selection>
         <dxo-paging
-            [pageSize]="theme === 'generic' ? 9 : 5"
+            [pageSize]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 14 : 9) : 5"
         ></dxo-paging>
         <dxi-column
             dataField="orderId"

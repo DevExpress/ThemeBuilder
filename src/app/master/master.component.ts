@@ -12,13 +12,12 @@ import { Subscription } from 'rxjs';
 
 export class MasterComponent implements OnInit, OnDestroy {
     showIframe = false;
-    themes: any;
+    themes: Array<any>;
     themeName: string;
     colorScheme: string;
-    rightThemes: any;
-    leftThemes: any;
+    themeSize: string;
+    themesList: Array<any>;
     isCompactThemes = false;
-    baseConstants: any;
     subscription: Subscription;
 
     constructor(
@@ -28,6 +27,7 @@ export class MasterComponent implements OnInit, OnDestroy {
         this.route.params.subscribe(params => {
             this.themeName = params['theme'] || '';
             this.colorScheme = params['color-scheme'] || '';
+            this.themeSize = params['color-scheme'].split('-')[1];
 
             this.changeContent();
         });
@@ -37,13 +37,17 @@ export class MasterComponent implements OnInit, OnDestroy {
         this.themes = themes.filter(t => t.name === this.themeName);
 
         if(this.themeName === 'material') {
-            this.rightThemes = this.themes.filter(t => t.text.includes('Light'));
-            this.leftThemes = this.themes.filter(t => t.text.includes('Dark'));
+            this.themesList = [].concat(
+                this.themes.filter(t => t.text.includes('Light')),
+                this.themes.filter(t => t.text.includes('Dark'))
+            );
         } else {
             const genericThemes = this.themes.filter(t => !t.group.includes('Compact'));
             const genericThemesCount = genericThemes.length;
-            this.rightThemes = genericThemes.splice(0, Math.round(genericThemesCount / 2));
-            this.leftThemes = genericThemes;
+            this.themesList = [].concat(
+                genericThemes.splice(0, Math.round(genericThemesCount / 2)),
+                genericThemes
+            );
             this.isCompactThemes = true;
         }
     }

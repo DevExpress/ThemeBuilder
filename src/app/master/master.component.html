@@ -6,16 +6,18 @@
             <span>Select a color scheme</span>
         </div>
         <div class="schemes-container">
-            <ul class="schemes" *ngFor="let side of [rightThemes, leftThemes]">
-                <li *ngFor="let theme of side" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-            true}" [routerLink]="['/master', theme.name, theme.colorScheme]">
+            <ul class="schemes">
+                <li *ngFor="let theme of themesList" 
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ __change_detection_hack__:  themeSize}" 
+                    [routerLink]="'/master/' + theme.name + '/' + (themeSize === 'compact' ? theme.colorScheme + '-' + themeSize : theme.colorScheme)">
                     <app-icon-theme-circle [theme]="theme.text | lowercase" [small]="false"></app-icon-theme-circle>
                     <span class="color-name">{{theme.text}}</span>
                 </li>
             </ul>
         </div>
         <div class="base-theming">
-            <app-base-parameters [theme]="themeName"></app-base-parameters>
+            <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
             <div class="button apply">Save CSS</div>
             <div class="button advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Theming</div>
         </div>

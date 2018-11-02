@@ -2,7 +2,7 @@
     <div class="work-item" *ngIf="theme === 'generic'">
         <div class="property-header">Base size</div>
         <div class="property-widget">
-            <dx-select-box [items]="['Normal', 'Compact']" value="Normal"></dx-select-box>
+            <dx-select-box [items]="['Normal', 'Compact']" (onValueChanged)="themeSizeChanged($event)" [value]="currentThemeSize"></dx-select-box>
         </div>
     </div>
     <div *ngFor="let item of editorsData" class="work-item">
