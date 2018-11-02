@@ -37,17 +37,16 @@ export class MasterComponent implements OnInit, OnDestroy {
         this.themes = themes.filter(t => t.name === this.themeName);
 
         if(this.themeName === 'material') {
+            // getting sorted list by background color
             this.themesList = [].concat(
                 this.themes.filter(t => t.text.includes('Light')),
                 this.themes.filter(t => t.text.includes('Dark'))
             );
         } else {
-            const genericThemes = this.themes.filter(t => !t.group.includes('Compact'));
-            const genericThemesCount = genericThemes.length;
-            this.themesList = [].concat(
-                genericThemes.splice(0, Math.round(genericThemesCount / 2)),
-                genericThemes
-            );
+            this.themesList = this.themes.filter(
+                t => this.themeSize ?
+                t.group.includes('Compact') :
+                !t.group.includes('Compact'));
             this.isCompactThemes = true;
         }
     }

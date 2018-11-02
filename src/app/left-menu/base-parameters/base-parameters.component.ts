@@ -16,7 +16,6 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
 
     subscription: Subscription;
     editorsData: Array<MetaItem>;
-    currentThemeSize: string;
 
     constructor(
         private metadataRepository: MetadataRepositoryService,
@@ -31,14 +30,9 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
     }
 
     themeSizeChanged(e) {
-        if(e.component.canceled) {
-            e.component.canceled = false;
-            return;
-        }
-
-        const currentColorScheme = this.router.url.split('/')[3];
-        const newColorScheme = e.value === 'Compact' ?
-                                (currentColorScheme +  '-' + e.value.toLowerCase()) :
+        const currentColorScheme = this.metadataRepository.theme.colorScheme;
+        const newColorScheme = e.value === 'compact' ?
+                                (currentColorScheme +  '-' + e.value) :
                                 currentColorScheme.split('-')[0];
 
         this.router.navigate(['master', this.theme, newColorScheme]);
@@ -46,10 +40,6 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
 
 
     ngOnInit() {
-        this.currentThemeSize = this.themeSize ?
-                                (this.themeSize.charAt(0).toUpperCase() + this.themeSize.slice(1)) :
-                                'Normal';
-
         this.updateData();
 
         this.subscription = this.metadataRepository.css.subscribe(() => {

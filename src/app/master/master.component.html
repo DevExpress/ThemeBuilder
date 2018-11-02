@@ -9,8 +9,7 @@
             <ul class="schemes">
                 <li *ngFor="let theme of themesList" 
                     routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ __change_detection_hack__:  themeSize}" 
-                    [routerLink]="['/master', theme.name, (themeSize === 'compact' ? theme.colorScheme + '-' + themeSize : theme.colorScheme)]">
+                    [routerLink]="['/master', theme.name, theme.colorScheme]">
                     <app-icon-theme-circle [theme]="theme.text | lowercase" [small]="false"></app-icon-theme-circle>
                     <span class="color-name">{{theme.text}}</span>
                 </li>
