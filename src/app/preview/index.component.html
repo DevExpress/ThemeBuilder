@@ -1,4 +1,4 @@
 <div id="preview-container" class="dx-theme-background-color" *ngIf="isStylesReady">
     <app-preview *ngIf="viewName === 'preview'"></app-preview>
-    <app-wizard *ngIf="viewName === 'wizard'" [theme]="themeName"></app-wizard>
+    <app-wizard *ngIf="viewName === 'wizard'" [theme]="themeName" [themeSize]="themeSize"></app-wizard>
 </div>

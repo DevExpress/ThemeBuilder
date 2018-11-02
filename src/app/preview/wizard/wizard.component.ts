@@ -9,6 +9,7 @@ import { DxFormComponent } from 'devextreme-angular';
 export class WizardComponent implements AfterViewInit {
     @ViewChild('form') form: DxFormComponent;
     @Input() theme: string;
+    @Input() themeSize: string;
 
     employee: any = {
         ID: 1,

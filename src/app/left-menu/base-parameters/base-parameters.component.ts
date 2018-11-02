@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { MetaItem } from '../../types/meta-item';
 import { NamesService } from '../../names.service';
@@ -10,18 +11,33 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./base-parameters.component.css']
 })
 export class BaseParametersComponent implements OnDestroy, OnInit {
-    @Input() theme;
+    @Input() theme: string;
+    @Input() themeSize: string;
 
     subscription: Subscription;
     editorsData: Array<MetaItem>;
 
-    constructor(private metadataRepository: MetadataRepositoryService, private names: NamesService) { }
+    constructor(
+        private metadataRepository: MetadataRepositoryService,
+        private names: NamesService,
+        private router: Router
+    ) { }
 
     updateData() {
         this.metadataRepository.getBaseParameters().then(parameters => {
             this.editorsData = parameters.sort((item1, item2) => this.names.sortNames(item1.Name, item2.Name));
         });
     }
+
+    themeSizeChanged(e) {
+        const currentColorScheme = this.metadataRepository.theme.colorScheme;
+        const newColorScheme = e.value === 'compact' ?
+                                (currentColorScheme +  '-' + e.value) :
+                                currentColorScheme.split('-')[0];
+
+        this.router.navigate(['master', this.theme, newColorScheme]);
+    }
+
 
     ngOnInit() {
         this.updateData();
