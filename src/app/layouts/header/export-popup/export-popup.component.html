@@ -1,38 +1,23 @@
-<ng-template #parameters>
-    <div>
-        <dx-text-box [(value)]="schemeName"></dx-text-box>
-    </div>
-    <div>
-        <dx-check-box [(value)]="makeSwatch" text="Make swatch"></dx-check-box>
-    </div>
-    <div *ngIf="outFile">
-        <dx-text-box [value]="outFile" [readOnly]="true"></dx-text-box>
-    </div>
-</ng-template>
-
-<dx-popup
-    [(visible)]="visible"
-    title="DevExtreme ThemeBuilder: Export"
+<app-popup
+    title="Export a Theme"
+    #popup
 >
-    <dx-tab-panel>
-        <dxi-item title="Export CSS">
-            <div class="text">
-                Export CSS
-            </div>
-            <ng-container *ngTemplateOutlet="parameters"></ng-container>
-            <div>
-                <dx-button text="Export CSS" (onClick)="exportCss()"></dx-button>
-            </div>
-        </dxi-item>
-        <dxi-item title="Export metadata">
-            <div class="text">
-                Export Metadata
-            </div>
-            <ng-container *ngTemplateOutlet="parameters"></ng-container>
-            <div>
-                <dx-button text="Export Metadata" (onClick)="exportMeta()"></dx-button>
-            </div>
 
-        </dxi-item>
-    </dx-tab-panel>
-</dx-popup>
+    <div class="editor-item">
+        <label>Custom color scheme name</label>
+        <dx-text-box [(value)]="schemeName" [width]="360"></dx-text-box>
+    </div>
+    <div class="editor-item">
+        <label>Swatch mode</label>
+        <dx-switch [(value)]="makeSwatch" text="Make swatch"></dx-switch>
+    </div>
+    <div class="editor-item" *ngIf="outputFile && outputFile.length > 0">
+        <label>Output file path</label>
+        <dx-text-box [value]="outputFile" [readOnly]="true" [width]="360"></dx-text-box>
+    </div>
+
+    <div class="buttons">
+        <div class="button apply" text="Export CSS" (click)="exportCss()">Export CSS</div>
+        <div class="button apply" text="Export Metadata" (click)="exportMeta()"> Export Metadata</div>
+    </div>
+</app-popup>

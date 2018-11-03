@@ -1,0 +1,14 @@
+<dx-popup
+    [(visible)]="visible"
+    shadingColor="rgba(0, 0, 0, 0.5)"
+    class="export-import-popup"
+    [showTitle]="false"
+    [width]="642"
+    height="auto"
+>
+    <div class="title">{{title}}</div>
+    <div class="close-button" (click)="visible = false;">
+        <div class="dx-icon dx-icon-close"></div>
+    </div>
+    <ng-content></ng-content>
+</dx-popup>

@@ -1,0 +1,23 @@
+.editor-item {
+    height: 34px;
+    display: flex;
+    margin: 20px 0;
+}
+
+.editor-item label {
+    width: 200px;
+}
+
+.editor-item > * {
+    align-self: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons > .button.apply {
+    margin: 0;
+    width: 270px;
+}
