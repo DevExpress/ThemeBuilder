@@ -35,6 +35,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.schemeName = this.importService.getColorSchemeName();
         this.outputFile = this.importService.getSavedMetadata().outputFile;
+        // TODO make this on every value change
         this.outputFileName = this.outputFile &&
                               this.outputFile.replace(/^.*[\\\/]/, '') ||
                               `dx.${this.importService.getThemeName()}.${this.schemeName}`;
