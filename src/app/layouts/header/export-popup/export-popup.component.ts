@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit, NgZone } from '@angular/core';
 import { ImportService } from '../../../import.service';
 import { fileSaver } from 'devextreme/client_exporter';
 import { PopupComponent } from '../popup/popup.component';
@@ -16,8 +16,20 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     outputFile: string;
     outputFileName: string;
     subscription: Subscription;
+    showOutputFile: boolean;
 
-    constructor(private importService: ImportService) { }
+    constructor(private importService: ImportService, private ngZone: NgZone) { }
+
+    setParameters() {
+        const savedMeta = this.importService.getSavedMetadata();
+
+        this.schemeName = this.importService.getColorSchemeName();
+        this.outputFile = savedMeta.outputFile;
+        this.makeSwatch = !!savedMeta.makeSwatch;
+        this.outputFileName = this.outputFile &&
+                              this.outputFile.replace(/^.*[\\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
+                              `dx.${this.importService.getThemeName()}.${this.schemeName}`;
+    }
 
     exportCss(): void {
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
@@ -33,19 +45,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.schemeName = this.importService.getColorSchemeName();
-        this.outputFile = this.importService.getSavedMetadata().outputFile;
-        // TODO make this on every value change
-        this.outputFileName = this.outputFile &&
-                              this.outputFile.replace(/^.*[\\\/]/, '') ||
-                              `dx.${this.importService.getThemeName()}.${this.schemeName}`;
-
-        this.subscription = this.importService.changed.subscribe(changed => {
-            if(changed) {
-                console.log(this.importService.getSavedMetadata().outputFile);
-                this.outputFile = this.importService.getSavedMetadata().outputFile;
-            }
-        });
+        this.setParameters();
+        this.subscription = this.importService.changed.subscribe(change => this.ngZone.run((change) => {
+            this.setParameters();
+            this.showOutputFile = this.outputFile && this.outputFile.length > 0;
+        })););
     }
 
     ngOnDestroy() {
