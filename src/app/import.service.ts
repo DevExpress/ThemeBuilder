@@ -11,7 +11,7 @@ export class ImportService {
     constructor(private metaRepository: MetadataRepositoryService, private route: Router) { }
     private savedMetadata: any = {};
     private normalizedMetadata: any = {};
-    changed: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    changed = new BehaviorSubject(false);
 
     importBootstrapVariables(variables: any, bootstrapVersion: number, redirectView: string): Promise<any> {
         return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
