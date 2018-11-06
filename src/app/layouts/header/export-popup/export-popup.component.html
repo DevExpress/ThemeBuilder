@@ -5,7 +5,11 @@
 
     <div class="editor-item first">
         <label>Custom color scheme name</label>
-        <dx-text-box [(value)]="schemeName" [width]="360" valueChangeEvent="keyup"></dx-text-box>
+        <dx-text-box [(value)]="schemeName" [width]="360" valueChangeEvent="keyup">
+            <dx-validator>
+                <dxi-validation-rule type="pattern" pattern="^[\w-_\.]*$" message="Only alphabetic and numeric characters, underscores, dots, and hyphens are allowed."></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
     </div>
     <div class="editor-item">
         <label>Swatch mode</label>

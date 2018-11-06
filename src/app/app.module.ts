@@ -19,7 +19,8 @@ import {
     DxScrollViewModule,
     DxPopupModule,
     DxRadioGroupModule,
-    DxSwitchModule
+    DxSwitchModule,
+    DxValidatorModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
@@ -107,6 +108,7 @@ import { PopupComponent } from './layouts/header/popup/popup.component';
         DxPopupModule,
         DxSwitchModule,
         DxRadioGroupModule,
+        DxValidatorModule,
         PreviewModule,
         AppRoutingModule
     ],
