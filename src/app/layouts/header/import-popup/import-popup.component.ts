@@ -32,6 +32,7 @@ export class ImportPopupComponent {
     applyClick(t) {
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();
+            t.value = '';
         }, () => {
             alert('It is unable to import this metadata.', 'ThemeBuilder');
         });
@@ -45,6 +46,7 @@ export class ImportPopupComponent {
             fileReader.onload = () => {
                 this.importService.importBootstrapVariables(fileReader.result, this.radioGroupData[this.selectedIndex].version, 'advanced');
                 this.popup.hide();
+                e.component.reset();
             };
             fileReader.readAsText(file);
         }

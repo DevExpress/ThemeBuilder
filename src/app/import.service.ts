@@ -2,9 +2,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { MetadataRepositoryService } from './meta-repository.service';
 import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-//import { EventEmitter } from 'selenium-webdriver';
-
 
 @Injectable()
 export class ImportService {
@@ -15,12 +12,14 @@ export class ImportService {
     changed = new EventEmitter();
 
     importBootstrapVariables(variables: any, bootstrapVersion: number, redirectView: string): Promise<any> {
+        this.clearSavedMetadata();
         return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
             this.route.navigate([redirectView, this.metaRepository.theme.name, this.metaRepository.theme.colorScheme]);
         });
     }
 
     importMetadata(meta: string, redirectView: string): Promise<void> {
+        this.clearSavedMetadata();
         try {
             this.savedMetadata = JSON.parse(meta);
         } catch {
@@ -68,5 +67,11 @@ export class ImportService {
 
     getThemeName(): string {
         return this.metaRepository.theme.name;
+    }
+
+    clearSavedMetadata() {
+        this.savedMetadata = {};
+        this.normalizedMetadata = {};
+        this.changed.emit();
     }
 }
