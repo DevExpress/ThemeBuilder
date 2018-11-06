@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy, OnInit, NgZone } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { ImportService } from '../../../import.service';
 import { fileSaver } from 'devextreme/client_exporter';
 import { PopupComponent } from '../popup/popup.component';
@@ -18,7 +18,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     showOutputFile: boolean;
 
-    constructor(private importService: ImportService, private ngZone: NgZone) { }
+    constructor(private importService: ImportService) { }
 
     setParameters() {
         const savedMeta = this.importService.getSavedMetadata();
@@ -29,6 +29,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.outputFileName = this.outputFile &&
                               this.outputFile.replace(/^.*[\\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
                               `dx.${this.importService.getThemeName()}.${this.schemeName}`;
+        this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
     exportCss(): void {
@@ -46,10 +47,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.setParameters();
-        this.subscription = this.importService.changed.subscribe(change => this.ngZone.run((change) => {
-            this.setParameters();
-            this.showOutputFile = this.outputFile && this.outputFile.length > 0;
-        }));
+        this.importService.changed.subscribe(() => this.setParameters());
     }
 
     ngOnDestroy() {

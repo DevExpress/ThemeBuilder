@@ -8,6 +8,10 @@
     margin-top: 20px;
 }
 
+.editor-item.hidden {
+    display: none;
+}
+
 .editor-item label {
     width: 200px;
 }

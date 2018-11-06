@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MetadataRepositoryService } from './meta-repository.service';
 import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+//import { EventEmitter } from 'selenium-webdriver';
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class ImportService {
     constructor(private metaRepository: MetadataRepositoryService, private route: Router) { }
     private savedMetadata: any = {};
     private normalizedMetadata: any = {};
-    changed = new BehaviorSubject(false);
+    changed = new EventEmitter();
 
     importBootstrapVariables(variables: any, bootstrapVersion: number, redirectView: string): Promise<any> {
         return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
@@ -34,7 +35,7 @@ export class ImportService {
             colorScheme: this.normalizedMetadata.colorScheme
         }, this.savedMetadata.items).then(() => {
             this.route.navigate([redirectView, this.normalizedMetadata.themeName, this.normalizedMetadata.colorScheme]);
-            this.changed.next(true);
+            this.changed.emit();
         });
     }
 

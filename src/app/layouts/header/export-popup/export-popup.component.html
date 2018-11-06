@@ -11,7 +11,7 @@
         <label>Swatch mode</label>
         <dx-switch [(value)]="makeSwatch" text="Make swatch"></dx-switch>
     </div>
-    <div class="editor-item">
+    <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
         <label>Output file path</label>
         <dx-text-box [value]="outputFile" [readOnly]="true" [width]="360"></dx-text-box>
     </div>
