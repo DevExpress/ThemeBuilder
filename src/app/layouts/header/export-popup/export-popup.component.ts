@@ -49,7 +49,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.subscription = this.importService.changed.subscribe(change => this.ngZone.run((change) => {
             this.setParameters();
             this.showOutputFile = this.outputFile && this.outputFile.length > 0;
-        })););
+        }));
     }
 
     ngOnDestroy() {
