@@ -5,11 +5,10 @@ import { Component, Input } from '@angular/core';
     templateUrl: './popup.component.html',
     styleUrls: ['./popup.component.css']
 })
+
 export class PopupComponent {
     @Input() title: string;
     visible = false;
-
-  constructor() { }
 
     show() {
         this.visible = true;
@@ -18,5 +17,4 @@ export class PopupComponent {
     hide() {
         this.visible = false;
     }
-
 }
