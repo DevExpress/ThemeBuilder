@@ -1,0 +1,79 @@
+::ng-deep .dx-popup-wrapper.export-import-popup > .dx-overlay-content {
+    background: #f0f2f3;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content {
+    padding: 30px 40px;
+}
+
+.title {
+    font-size: 47px;
+    font-weight: 100;
+    color: #404040;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-button .dx-icon {
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    color: #d6d5d5;
+    cursor: pointer;
+}
+
+.close-button:hover .dx-icon {
+    color: #f05b41;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button {
+    width: 240px;
+    height: 45px;
+    line-height: 45px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply {
+    background-color: #f05b41;
+    color: #fff;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:focus,
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:active {
+    background-color: #e2e4e5;
+    color: #f05b41;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:hover {
+    background-color: #707070;
+    color: #fff;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-textbox {
+    border-radius: 0;
+    border: 2px solid #d4d8da;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-textbox.dx-state-readonly {
+    opacity: 0.5;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-container {
+    border-radius: 0;
+    border: 2px solid #d4d8da;
+    height: 26px;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-handle:before {
+    background-color: #f05b41;
+}

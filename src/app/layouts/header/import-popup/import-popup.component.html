@@ -1,0 +1,42 @@
+<app-popup
+    title="Import a Theme"
+    #popup
+>
+    <div class="text">
+        Copy and paste previously exported metadata below or upload a Bootstrap theme file.
+    </div>
+    <dx-tab-panel class="tabs">
+        <dxi-item title="DevExtreme Metadata">
+            <dx-text-area class="text-area" [height]="200" #textArea></dx-text-area>
+            <div class="button apply" (click)="applyClick(textArea)">Import</div>
+        </dxi-item>
+        <dxi-item title="Bootstrap Variables">
+            <div class="text">
+                Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.
+                Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4.
+            </div>
+
+            <dx-radio-group
+                [dataSource]="radioGroupData"
+                displayExpr="text"
+                valueExpr="value"
+                layout="horizontal"
+                [(value)]="selectedIndex"
+                class="radio-group"
+            ></dx-radio-group>
+
+            <dx-file-uploader
+                width="260"
+                [multiple]="false"
+                [showFileList]="false"
+                accept="{{radioGroupData[selectedIndex].acceptFormat}}"
+                labelText="or Drop the file here"
+                uploadMode="useForm"
+                selectButtonText="{{radioGroupData[selectedIndex].uploadButtonText}}"
+                (onValueChanged)="uploaded($event)"
+                class="file-uploader">
+            </dx-file-uploader>
+
+        </dxi-item>
+    </dx-tab-panel>
+</app-popup>
