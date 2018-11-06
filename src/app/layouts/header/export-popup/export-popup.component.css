@@ -1,7 +1,11 @@
 .editor-item {
     height: 34px;
     display: flex;
-    margin: 20px 0;
+    margin-bottom: 10px;
+}
+
+.editor-item.first {
+    margin-top: 20px;
 }
 
 .editor-item label {
@@ -15,6 +19,7 @@
 .buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
 }
 
 .buttons > .button.apply {
