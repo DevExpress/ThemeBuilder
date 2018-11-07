@@ -18,8 +18,7 @@
     right: 0;
     top: 100px;
     height: 800px;
-    min-width: 800px;
-    max-width: 1700px;
+    min-width: 1160px;
     background-color: #e2e5e7; 
     box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
     z-index: 1; 
@@ -90,5 +89,12 @@
 .button.advanced:active {
     background-color: #d0442c;
     color: #fff;
+}
+
+
+@media (min-width: 1950px) { 
+    .master .section.right {
+        right: 40px;
+    }
 }
 
