@@ -81,3 +81,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 // sass.js use "typeof __dirname !== 'undefined'" expression to detect node environment
 (window as any).__dirname = undefined;
+
+// Element.scrollTo doesn't work in Edge (https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/15534521/)
+
+import smoothscroll from 'smoothscroll-polyfill';
+
+smoothscroll.polyfill();
