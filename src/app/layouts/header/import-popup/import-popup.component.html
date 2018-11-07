@@ -5,7 +5,7 @@
     <div class="text">
         Copy and paste previously exported metadata below or upload a Bootstrap theme file.
     </div>
-    <dx-tab-panel class="tabs">
+    <dx-tab-panel class="tabs" [height]="340">
         <dxi-item title="DevExtreme Metadata">
             <dx-text-area class="text-area" [height]="200" #textArea></dx-text-area>
             <div class="button apply" (click)="applyClick(textArea)">Import</div>
