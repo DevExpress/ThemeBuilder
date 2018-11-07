@@ -17,11 +17,13 @@
         </div>
         <div class="base-theming">
             <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
-            <div class="button apply">Save CSS</div>
+            <div class="button apply" (click)="export.popup.show();">Export</div>
             <div class="button advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Theming</div>
         </div>
     </div>
     <div class="section right">
         <app-iframe *ngIf="showIframe"></app-iframe>
     </div>
+
+    <app-export-popup #export></app-export-popup>
 </div>
