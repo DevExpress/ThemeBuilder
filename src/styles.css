@@ -28,6 +28,35 @@ body {
     outline: none;
 }
 
+.button {
+    width: 240px;
+    height: 45px;
+    line-height: 45px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+    background-color: #fff;
+}
 
+.file-uploader .dx-button:hover,
+.button:hover {
+    background-color: #707070;
+    color: #fff;
+}
 
+.file-uploader .dx-button:focus,
+.file-uploader .dx-button:active,
+.button:focus,
+.button:active {
+    background-color: #9e9e9e;
+    color: #fff;
+}
 
+.file-uploader .dx-button:not(:hover):not(:focus):not(:active),
+.button.apply:not(:hover):not(:focus):not(:active) {
+    background-color: #f05b41;
+    color: #fff;
+}
