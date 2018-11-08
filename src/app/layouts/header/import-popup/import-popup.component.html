@@ -8,7 +8,7 @@
     <dx-tab-panel class="tabs" [height]="340">
         <dxi-item title="DevExtreme Metadata">
             <dx-text-area class="text-area" [height]="200" #textArea></dx-text-area>
-            <div class="button apply" (click)="applyClick(textArea)">Import</div>
+            <app-button type="apply" (clicked)="applyClick(textArea)">Import</app-button>
         </dxi-item>
         <dxi-item title="Bootstrap Variables">
             <div class="text">
@@ -25,17 +25,12 @@
                 class="radio-group"
             ></dx-radio-group>
 
-            <dx-file-uploader
-                width="260"
-                [multiple]="false"
-                [showFileList]="false"
-                accept="{{radioGroupData[selectedIndex].acceptFormat}}"
-                labelText="or Drop the file here"
-                uploadMode="useForm"
-                selectButtonText="{{radioGroupData[selectedIndex].uploadButtonText}}"
-                (onValueChanged)="uploaded($event)"
-                class="file-uploader">
-            </dx-file-uploader>
+            <app-bootstrap-uploader
+                [accept]="radioGroupData[selectedIndex].acceptFormat"
+                [buttonText]="radioGroupData[selectedIndex].uploadButtonText"
+                [version]="radioGroupData[selectedIndex].version"
+                (imported)="imported()"
+            ></app-bootstrap-uploader>
 
         </dxi-item>
     </dx-tab-panel>

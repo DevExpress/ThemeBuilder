@@ -8,6 +8,6 @@
             Copy and paste previously exported metadata below.
         </div>
         <dx-text-area [width]="560" [height]="200" #textArea></dx-text-area>
-        <div class="button apply" (click)="applyClick(textArea)">Import</div>
+        <app-button type="apply" (clicked)="applyClick(textArea)">Import</app-button>
     </div>
 </div>

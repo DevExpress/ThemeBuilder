@@ -48,31 +48,3 @@
     width: 520px;
 }
 
-:host ::ng-deep .button {
-    width: 240px;
-    height: 45px;
-    line-height: 45px;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
-:host ::ng-deep .button.apply {
-    background-color: #f05b41;
-    color: #fff;
-}
-
-:host ::ng-deep .button.apply:focus,
-:host ::ng-deep .button.apply:active {
-    background-color: #e2e4e5;
-    color: #f05b41;
-}
-
-:host ::ng-deep .button.apply:hover,
-:host ::ng-deep .button.advanced:hover {
-    background-color: #707070;
-    color: #fff;
-}

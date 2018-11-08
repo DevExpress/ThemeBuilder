@@ -31,34 +31,6 @@
     color: #f05b41;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button {
-    width: 240px;
-    height: 45px;
-    line-height: 45px;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply {
-    background-color: #f05b41;
-    color: #fff;
-}
-
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:focus,
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:active {
-    background-color: #e2e4e5;
-    color: #f05b41;
-}
-
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .button.apply:hover {
-    background-color: #707070;
-    color: #fff;
-}
-
 ::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-textbox {
     border-radius: 0;
     border: 2px solid #d4d8da;

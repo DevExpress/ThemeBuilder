@@ -68,26 +68,4 @@
     border-color: #f05b41b0;
 }
 
-.file-uploader {
-    margin: 0 auto;
-}
-
-::ng-deep .file-uploader .dx-fileuploader-input-container {
-    float: left;
-    text-align: center;
-}
-
-::ng-deep .file-uploader .dx-button {
-    width: 100%;
-    background-color: #f05b41;
-    color: #fff;
-    height: 45px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-::ng-deep .file-uploader .dx-button.dx-state-hover {
-    background-color: #707070;
-}
-
 
