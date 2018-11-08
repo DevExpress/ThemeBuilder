@@ -27,5 +27,4 @@ export class BootstrapUploaderComponent {
             fileReader.readAsText(file);
         }
     }
-
 }
