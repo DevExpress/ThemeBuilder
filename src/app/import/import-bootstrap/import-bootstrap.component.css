@@ -17,6 +17,10 @@
     width: 270px;
 }
 
+.tabpanel-item {
+    padding-top: 20px;
+}
+
 :host ::ng-deep .tabs.dx-tabpanel .dx-tab {
     width: 280px;
     height: 50px;
@@ -57,8 +61,3 @@
     border: none;
 }
 
-:host ::ng-deep .file-uploader .dx-fileuploader-input-wrapper .dx-button {
-    float: none;
-    width: 260px;
-    height: 50px;
-}
