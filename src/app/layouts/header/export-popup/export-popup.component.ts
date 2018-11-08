@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { ImportService } from '../../../import.service';
-import { fileSaver } from 'devextreme/client_exporter';
+import { fileSaver } from 'devextreme/exporter';
 import { PopupComponent } from '../popup/popup.component';
 import { Subscription } from 'rxjs';
 import validationEngine from 'devextreme/ui/validation_engine';
