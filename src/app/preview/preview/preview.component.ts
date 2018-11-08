@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ViewChild, QueryList } from '@angular/core';
+import { Component, AfterViewInit, ViewChildren, ViewChild, QueryList, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DxScrollViewComponent } from 'devextreme-angular';
 
 @Component({
@@ -6,15 +6,10 @@ import { DxScrollViewComponent } from 'devextreme-angular';
     templateUrl: './preview.component.html',
     styleUrls: ['./preview.component.css']
 })
-export class PreviewComponent implements OnInit {
+export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChildren('widget') widgetElements: QueryList<any>;
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
-
-    receiveMessage(e) {
-        if(e.data.widget) {
-            this.createPreviewContent(e.data.widget);
-        }
-    }
+    @Input() widget: string;
 
     createPreviewContent(widget: string) {
         const EXPAND_CLASS_NAME = 'expanded';
@@ -63,7 +58,12 @@ export class PreviewComponent implements OnInit {
         }, 400);
     }
 
-    ngOnInit() {
-        window.addEventListener('message', this.receiveMessage.bind(this), false);
+    ngOnChanges(changes: SimpleChanges) {
+        if(!changes.widget.firstChange)
+            this.createPreviewContent(this.widget);
+    }
+
+    ngAfterViewInit() {
+        this.createPreviewContent(this.widget);
     }
 }
