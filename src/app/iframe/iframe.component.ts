@@ -24,7 +24,9 @@ export class IframeComponent implements OnDestroy {
         private sanitizer: DomSanitizer,
         private metadataService: MetadataRepositoryService) {
             this.route.params.subscribe((params) => {
-                this.widgetName.next(params['widget']);
+                if(this.widgetName.getValue() !== params['widget']) {
+                    this.widgetName.next(params['widget']);
+                }
                 if(this.theme !== params['theme']) {
                     this.theme = params['theme'];
                     this.url = window.location.origin + '/' + (params['widget'] ? 'preview' : 'wizard') + '/' + this.theme;
@@ -39,7 +41,11 @@ export class IframeComponent implements OnDestroy {
         this.cssSubscription = this.metadataService.css.subscribe(css => {
             const theme = this.metadataService.theme;
             const themeSize = theme.name === 'generic' ? (theme.colorScheme.split('-')[1] || 'normal') : '';
-            this.iframe.nativeElement.contentWindow.postMessage({ css: css, themeSize: themeSize }, this.url);
+            this.iframe.nativeElement.contentWindow.postMessage({
+                css: css,
+                themeSize: themeSize,
+                widget: this.widgetName.getValue()
+            }, this.url);
         });
 
         if(this.widgetSubscription)
