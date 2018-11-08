@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnInit() {
         if(!this.switchEnabled) return;
         this.switcherData  = new DataSource({
-            store: themes,
+            store: themes.filter(theme => theme.group != "Mobile"),
             key: 'themeId',
             group: 'group'
         });
