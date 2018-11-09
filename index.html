@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Devextreme ThemeBuilder</title>
-    <base href="/ThemeBuilder/">
+    <title>DevExtreme ThemeBuilder</title>
+    <base href="ThemeBuilder">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,6 +12,13 @@
 
     <script>
         if(!/preview|wizard/.test(window.location.pathname)) {
+            window.addEventListener('resize', function() {
+                var bodyOverflowX = window.getComputedStyle(document.body).getPropertyValue('overflow-x');
+                if(bodyOverflowX === 'hidden') {
+                   document.documentElement.scrollLeft = 0;
+                }
+            });
+
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         } else {
             var themeMarker = "dx." + window.location.pathname.split('/')[2];
@@ -32,7 +39,7 @@
             margin-top: -50px;
         }
     </style>
-</head>
+<link rel="stylesheet" href="styles.f2900777fed5dcca1b8a.css"></head>
 
 <body>
     <app-root>
@@ -40,6 +47,6 @@
             <img src="images/loading.gif" alt="loading..." />
         </div>
     </app-root>
-<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.e521b5ad98ef535bbd60.js"></script><script type="text/javascript" src="main.2a85f641626df4974592.js"></script></body>
 
 </html>
