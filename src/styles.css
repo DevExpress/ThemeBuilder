@@ -27,13 +27,14 @@ body {
     outline: none;
 }
 
-@media (min-height: 1000px) and (min-width: 1000px) { 
+@media (min-height: 1000px) { 
     body {
-        overflow: hidden;
+        overflow-y: hidden;
     }
 }
 
-
-
-
-
+@media (min-width: 1000px) { 
+    body {
+        overflow-x: hidden;
+    }
+}
