@@ -9,5 +9,8 @@
 
 .advanced .preview {
     width: 100%;
+    flex-basis: 759px;
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 
