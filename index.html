@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Devextreme ThemeBuilder</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="content/css/dx.common.css" />
+
+    <script>
+        if(!/preview|wizard/.test(window.location.pathname)) {
+            document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
+        } else {
+            var themeMarker = "dx." + window.location.pathname.split('/')[2];
+            document.write('<style>\r\n   .dx-theme-marker { font-family: "' + themeMarker + '" }\r\n</style>')
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .loading {
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+        }
+    </style>
+</head>
+
+<body>
+    <app-root>
+        <div class="loading">
+            <img src="images/loading.gif" alt="loading..." />
+        </div>
+    </app-root>
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+
+</html>
