@@ -14,19 +14,13 @@
             </div>
             <div *dxTemplate="let data of 'item'">
                 <div class="tabpanel-item">
-                    <dx-file-uploader
-                        width="260"
-                        [multiple]="false"
-                        accept="{{data.acceptFormat}}"
-                        labelText="or Drop the file here"
-                        uploadMode="useForm"
-                        selectButtonText="{{data.uploadButtonText}}"
-                        (onValueChanged)="uploaded($event)"
-                        class="file-uploader">
-                    </dx-file-uploader>
+                    <app-bootstrap-uploader
+                    [accept]="data.acceptFormat"
+                    [buttonText]="data.uploadButtonText"
+                    [version]="data.version"
+                    ></app-bootstrap-uploader>
                 </div>
             </div>
         </dx-tab-panel>
-        <!-- <div class="button apply">Apply</div> -->
     </div>
 </div>

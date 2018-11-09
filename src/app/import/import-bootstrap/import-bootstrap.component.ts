@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ImportService } from '../../import.service';
 
 @Component({
     templateUrl: './import-bootstrap.component.html',
@@ -20,18 +19,4 @@ export class ImportBootstrapComponent {
     }];
 
     selectedIndex = 0;
-
-    constructor(private importService: ImportService) {}
-
-    uploaded(e) {
-        const file = e.value[0];
-        if(file) {
-            let fileReader: FileReader;
-            fileReader = new FileReader();
-            fileReader.onload = () => {
-                this.importService.importBootstrapVariables(fileReader.result, this.tabPanelData[this.selectedIndex].version, 'advanced');
-            };
-            fileReader.readAsText(file);
-        }
-    }
 }

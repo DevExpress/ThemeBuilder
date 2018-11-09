@@ -59,6 +59,8 @@ import { ImportMetaComponent } from './import/import-meta/import-meta.component'
 import { ImportPopupComponent } from './layouts/header/import-popup/import-popup.component';
 import { ExportPopupComponent } from './layouts/header/export-popup/export-popup.component';
 import { PopupComponent } from './layouts/header/popup/popup.component';
+import { ButtonComponent } from './layouts/button/button.component';
+import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstrap-uploader.component';
 
 @NgModule({
     declarations: [
@@ -89,7 +91,9 @@ import { PopupComponent } from './layouts/header/popup/popup.component';
         ImportMetaComponent,
         ImportPopupComponent,
         ExportPopupComponent,
-        PopupComponent
+        PopupComponent,
+        ButtonComponent,
+        BootstrapUploaderComponent
     ],
     imports: [
         BrowserModule,

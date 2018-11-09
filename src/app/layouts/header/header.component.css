@@ -2,6 +2,8 @@
     height: 60px;
     display: flex;
     min-width: 1000px;
+    position: relative;
+    z-index: 1;
 }
 
 .header.filled {
@@ -21,6 +23,7 @@
     font-size: 18px;
     width: 220px;
     height: 40px;
+    cursor: pointer;
 }
 
 .logo span {

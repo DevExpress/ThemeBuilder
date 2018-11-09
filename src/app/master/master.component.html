@@ -17,8 +17,8 @@
         </div>
         <div class="base-theming">
             <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
-            <div class="button apply" (click)="export.popup.show();">Export</div>
-            <div class="button advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Theming</div>
+            <app-button type="apply" (clicked)="export.popup.show();">Export</app-button>
+            <app-button type="advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Theming</app-button>
         </div>
     </div>
     <div class="section right">

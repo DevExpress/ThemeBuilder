@@ -38,17 +38,7 @@ export class ImportPopupComponent {
         });
     }
 
-    uploaded(e) {
-        const file = e.value[0];
-        if(file) {
-            let fileReader: FileReader;
-            fileReader = new FileReader();
-            fileReader.onload = () => {
-                this.importService.importBootstrapVariables(fileReader.result, this.radioGroupData[this.selectedIndex].version, 'advanced');
-                this.popup.hide();
-                e.component.reset();
-            };
-            fileReader.readAsText(file);
-        }
+    imported() {
+        this.popup.hide();
     }
 }

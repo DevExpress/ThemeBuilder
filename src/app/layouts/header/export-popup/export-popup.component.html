@@ -21,7 +21,7 @@
     </div>
 
     <div class="buttons">
-        <div class="button apply" text="Export CSS" (click)="exportCss()">Export CSS</div>
-        <div class="button apply" text="Export Metadata" (click)="exportMeta()"> Export Metadata</div>
+        <app-button type="apply" [width]="270" (clicked)="exportCss()">Export CSS</app-button>
+        <app-button type="apply" [width]="270" (clicked)="exportMeta()">Export Metadata</app-button>
     </div>
 </app-popup>

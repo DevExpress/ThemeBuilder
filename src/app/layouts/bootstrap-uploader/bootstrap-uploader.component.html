@@ -1,0 +1,11 @@
+<dx-file-uploader
+    width="260"
+    [multiple]="false"
+    [showFileList]="false"
+    [accept]="accept"
+    labelText="or Drop the file here"
+    uploadMode="useForm"
+    [selectButtonText]="buttonText"
+    (onValueChanged)="uploaded($event)"
+    class="file-uploader">
+</dx-file-uploader>

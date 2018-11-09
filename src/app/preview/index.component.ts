@@ -11,6 +11,7 @@ export class PreviewIndexComponent implements OnInit {
     viewName: string;
     themeName: string;
     themeSize: string;
+    widgetName: string;
 
     constructor(private router: Router) {
        this.viewName = this.router.url.split('/')[1];
@@ -21,6 +22,10 @@ export class PreviewIndexComponent implements OnInit {
         if(e.data.css) {
             this.addHeadStyles(e.data.css);
             this.themeSize = e.data.themeSize;
+        }
+
+        if(e.data.widget) {
+            this.widgetName = e.data.widget;
         }
     }
 
