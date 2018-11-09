@@ -12,6 +12,13 @@
 
     <script>
         if(!/preview|wizard/.test(window.location.pathname)) {
+            window.addEventListener('resize', function() {
+                var bodyOverflowX = window.getComputedStyle(document.body).getPropertyValue('overflow-x');
+                if(bodyOverflowX === 'hidden') {
+                   document.documentElement.scrollLeft = 0;
+                }
+            });
+
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         } else {
             var themeMarker = "dx." + window.location.pathname.split('/')[2];
