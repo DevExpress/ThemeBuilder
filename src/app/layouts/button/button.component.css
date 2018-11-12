@@ -36,12 +36,5 @@
 }
 
 .advanced {
-    background-color: #fff;
     margin-top: 10px;
-}
-
-.button.advanced:focus,
-.button.advanced:active {
-    background-color: #d0442c;
-    color: #fff;
 }
