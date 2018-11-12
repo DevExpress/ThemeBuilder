@@ -42,6 +42,11 @@
     display: block;
 }
 
+.logo sup {
+    font-size: 11px;
+    color: #f05b41;
+}
+
 .header .separator {
     width: 1px;
     background-color: #e3e7ea;
