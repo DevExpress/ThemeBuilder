@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 export class AppLayoutComponent {
     animationValue: number;
     animationDone = new Subject<boolean>();
+    themesSwitchEnabled = false;
 
     constructor(private router: Router) {
         this.router.events.subscribe((event) => {
@@ -20,6 +21,7 @@ export class AppLayoutComponent {
                 const snapshot = event.snapshot;
                 if(snapshot.data.routeId) {
                     this.animationValue = snapshot.data.routeId;
+                    this.themesSwitchEnabled = snapshot.data.routeId === 4;
                 }
             }
         });

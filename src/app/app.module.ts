@@ -25,7 +25,6 @@ import {
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
-import { AdvancedLayoutComponent } from './layouts/advanced-layout/advanced-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
 import { AppComponent } from './app.component';
@@ -82,7 +81,6 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         PreviewLayoutComponent,
         IframeComponent,
         PreviewIndexComponent,
-        AdvancedLayoutComponent,
         HeaderComponent,
         SearchOpenerComponent,
         BackNavigatorComponent,
