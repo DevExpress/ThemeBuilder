@@ -21,7 +21,7 @@
 
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         } else {
-            var themeMarker = "dx." + window.location.pathname.split('/')[2];
+            var themeMarker = "dx." + /generic|material/.exec(window.location.pathname)[0];
             document.write('<style>\r\n   .dx-theme-marker { font-family: "' + themeMarker + '" }\r\n</style>')
         }
     </script>

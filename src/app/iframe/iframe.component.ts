@@ -29,7 +29,7 @@ export class IframeComponent implements OnDestroy {
                 }
                 if(this.theme !== params['theme']) {
                     this.theme = params['theme'];
-                    this.url = document.getElementsByTagName('base')[0].href + '/' + (params['widget'] ? 'preview' : 'wizard') + '/' + this.theme;
+                    this.url = document.getElementsByTagName('base')[0].href + (params['widget'] ? 'preview' : 'wizard') + '/' + this.theme;
                     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
                 }
             });
