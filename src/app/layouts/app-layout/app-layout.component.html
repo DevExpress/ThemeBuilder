@@ -1,4 +1,4 @@
-<app-header [switchEnabled]="false"></app-header>
+<app-header [switchEnabled]="themesSwitchEnabled"></app-header>
 <main [@routeAnimation]="getRouteAnimation()" (@routeAnimation.done)="routeAnimationDone()">
     <router-outlet></router-outlet>
 </main>
