@@ -1,13 +1,169 @@
 <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
 
 <ng-template #collapsedBlock>
-    <dx-text-box [value]="'Text Box'"></dx-text-box>
-    <dx-tag-box [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
-    <dx-select-box [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
+    <dx-text-box width="140" [value]="'Text Box'"></dx-text-box>
+    <dx-tag-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
+    <dx-select-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
     <dx-check-box [value]="true"></dx-check-box>
     <dx-radio-group [items]="['']" [value]="''"></dx-radio-group>
 </ng-template>
 
 <ng-template #expandedBlock>
-    expanded block
+    <div class="editors">
+        <div class="block outlined">
+            <div class="field">
+                <div class="label">Text Box</div>
+                <div class="value">
+                    <dx-text-box width="140" stylingMode="outlined" value="Outlined"></dx-text-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Select Box</div>
+                <div class="value">
+                    <dx-select-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Outlined'"></dx-select-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Color Box</div>
+                <div class="value">
+                    <dx-color-box stylingMode="outlined" value="#333"></dx-color-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Number Box</div>
+                <div class="value">
+                    <dx-number-box stylingMode="outlined" value="123"></dx-number-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Tag Box</div>
+                <div class="value">
+                    <dx-tag-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Outlined']"></dx-tag-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Validated</div>
+                <div class="value">
+                    <dx-text-box stylingMode="outlined" value="">
+                        <dx-validator>
+                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
+                        </dx-validator>
+                    </dx-text-box>
+                </div>
+            </div>
+        </div>
+        <div class="block filled">
+            <div class="field">
+                <div class="label">Text Box</div>
+                <div class="value">
+                    <dx-text-box stylingMode="filled" value="Filled"></dx-text-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Select Box</div>
+                <div class="value">
+                    <dx-select-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Filled'"></dx-select-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Color Box</div>
+                <div class="value">
+                    <dx-color-box stylingMode="filled" value="#333"></dx-color-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Number Box</div>
+                <div class="value">
+                    <dx-number-box stylingMode="filled" value="123"></dx-number-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Tag Box</div>
+                <div class="value">
+                    <dx-tag-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Filled']"></dx-tag-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Validated</div>
+                <div class="value">
+                    <dx-text-box stylingMode="filled" value="">
+                        <dx-validator>
+                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
+                        </dx-validator>
+                    </dx-text-box>
+                </div>
+            </div>
+        </div>
+        <div class="block underlined">
+            <div class="field">
+                <div class="label">Text Box</div>
+                <div class="value">
+                    <dx-text-box stylingMode="underlined" value="Underlined"></dx-text-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Select Box</div>
+                <div class="value">
+                    <dx-select-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Underlined'"></dx-select-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Color Box</div>
+                <div class="value">
+                    <dx-color-box stylingMode="underlined" value="#333"></dx-color-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Number Box</div>
+                <div class="value">
+                    <dx-number-box stylingMode="underlined" value="123"></dx-number-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Tag Box</div>
+                <div class="value">
+                    <dx-tag-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Underlined']"></dx-tag-box>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">Validated</div>
+                <div class="value">
+                    <dx-text-box stylingMode="underlined" value="">
+                        <dx-validator>
+                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
+                        </dx-validator>
+                    </dx-text-box>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block calendar">
+        <div class="header">Calendar</div>
+        <dx-calendar></dx-calendar>
+    </div>
+    <div class="block checkbox">
+        <div class="header">CheckBox</div>
+        <dx-check-box [value]="true" text="Normal"></dx-check-box>
+        <dx-check-box [value]="true" [disabled]="true" text="Disable"></dx-check-box>
+    </div>
+    <div class="block radiogroup">
+        <div class="header">Radio Group</div>
+        <dx-radio-group [items]="['Normal']" [value]="'Normal'"></dx-radio-group>
+        <dx-radio-group [items]="['Disable']" [value]="'Disable'" [disabled]="true"></dx-radio-group>
+    </div>
+    <div class="block switch">
+        <div class="header">Switch</div>
+        <div class="field">
+            <div class="value">
+                <dx-switch [value]="true"></dx-switch>
+            </div>
+            <div class="label">Normal</div>
+        </div>
+        <div class="field">
+            <div class="value">
+                <dx-switch [value]="true" [disabled]="true"></dx-switch>
+            </div>
+            <div class="label">Disable</div>
+        </div>
+    </div>
 </ng-template>

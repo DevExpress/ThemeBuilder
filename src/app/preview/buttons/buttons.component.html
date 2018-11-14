@@ -5,7 +5,14 @@
     <dx-button text="Success" type="success"></dx-button>
     <dx-button text="Danger" type="danger"></dx-button>
 </ng-template>
-
-<ng-template #expandedBlock>
-    expanded block
+<ng-template  #expandedBlock>
+    <div class="buttons">
+        <ng-template ngFor let-mode [ngForOf]="modes">
+            <div class="type"> {{mode | titlecase}}</div>
+            <div *ngFor="let options of baseOptions">
+                <dx-button [stylingMode]="mode" [type]="options.type" [text]="options.text" (onClick)="click($event)"></dx-button>
+            </div>
+            <br/>
+        </ng-template>
+    </div>
 </ng-template>

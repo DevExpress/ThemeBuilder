@@ -1,3 +1,21 @@
 :host ::ng-deep .dx-button {
     margin-right: 20px;
 }
+
+:host .buttons .type {
+    width: 100px;
+    height: auto;
+    font-weight: bold;
+    color: rgba(51, 51, 51, 0.7);
+    vertical-align: middle;
+}
+
+:host .buttons > div {
+    height: 50px;
+    display: inline-block;
+}
+
+:host ::ng-deep  .buttons .dx-button {
+    margin-right: 30px;
+}
+

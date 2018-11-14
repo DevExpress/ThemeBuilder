@@ -1,20 +1,97 @@
 :host {
     display: inline-block;
+    width: 100%;
 }
 
 :host ::ng-deep .dx-checkbox {
     vertical-align: middle;
-    margin-right: 2%;
+    margin-right: 10px;
 }
 
 :host ::ng-deep .dx-texteditor {
     display: inline-block;
     vertical-align: middle;
-    width: 26%;
-    margin-right: 2%;
+    margin-right: 10px;
 }
 
 :host ::ng-deep .dx-radiogroup { 
     display: inline-block;
     vertical-align: middle;
 }
+
+.editors {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.editors .block {
+    width: 480px;
+}
+
+.editors .block .field {
+    margin: 0 10px 10px 0;
+    width: 140px;
+    display: inline-block;
+}
+
+:host ::ng-deep .editors .dx-texteditor {
+    width: 100%;
+}
+
+.editors .block .field .label {
+    color: #999999;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.block .header {
+    color: #999999;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.radiogroup > *,
+.checkbox > *,
+.calendar > * {
+    display: block;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.calendar {
+    margin-right: 30px;
+    width: 280px;
+}
+
+.radiogroup,
+.checkbox,
+.switch {
+    margin: 0 30px;
+}
+
+:host ::ng-deep .checkbox .dx-checkbox {
+    margin-right: 0;
+}
+
+.switch {
+    width: 120px;
+}
+
+.switch .field {
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.switch .field > div {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+

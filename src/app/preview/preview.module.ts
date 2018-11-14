@@ -26,6 +26,8 @@ import { SlidersComponent } from './sliders/sliders.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { PreviewComponent } from './preview/preview.component';
 
+import { ButtonDetailedComponent } from './button-detailed/button-detailed.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -52,7 +54,8 @@ import { PreviewComponent } from './preview/preview.component';
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
-        PreviewComponent
+        PreviewComponent,
+        ButtonDetailedComponent
     ],
     exports: [
         DatatgridComponent,
@@ -75,7 +78,8 @@ import { PreviewComponent } from './preview/preview.component';
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
-        PreviewComponent
+        PreviewComponent,
+        ButtonDetailedComponent
     ]
 })
 export class PreviewModule { }

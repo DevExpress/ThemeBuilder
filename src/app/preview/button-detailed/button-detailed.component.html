@@ -1,0 +1,8 @@
+<button (click)="onClick()">
+    <svg *ngIf="currentWidget !== widget" viewBox="0 0 12 12" width="12px" height="12px">
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M9,0L0,9v3h3l9-9L9,0z M1,11V9l2,2H1z" />
+    </svg>
+    <svg *ngIf="currentWidget === widget" fill="#FFFFFF" width="16px" height="16px" viewBox="0 0 18 18">
+        <polygon points="14.99 13.62 13.62 14.99 9 10.36 4.38 14.99 3.01 13.62 7.64 9 3.01 4.38 4.38 3.01 9 7.64 13.62 3.01 14.99 4.38 10.36 9 14.99 13.62" fill-rule="evenodd"/>
+    </svg>
+</button>

@@ -1,6 +1,6 @@
-import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataRepositoryService } from '../meta-repository.service';
 import { Subscription, BehaviorSubject } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription, BehaviorSubject } from 'rxjs';
     templateUrl: './iframe.component.html',
     styleUrls: ['./iframe.component.css']
 })
-export class IframeComponent implements OnDestroy {
+export class IframeComponent implements OnDestroy, OnInit {
     @ViewChild('iframe') iframe: ElementRef;
 
     url: string;
@@ -21,6 +21,7 @@ export class IframeComponent implements OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private sanitizer: DomSanitizer,
         private metadataService: MetadataRepositoryService) {
             this.route.params.subscribe((params) => {
@@ -33,6 +34,11 @@ export class IframeComponent implements OnDestroy {
                     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
                 }
             });
+    }
+
+    receiveMessage(e) {
+        if(e.data.widget)
+            this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
     }
 
     onIframeLoad() {
@@ -61,5 +67,9 @@ export class IframeComponent implements OnDestroy {
 
         if(this.widgetSubscription)
             this.widgetSubscription.unsubscribe();
+    }
+
+    ngOnInit() {
+        window.addEventListener('message', this.receiveMessage.bind(this), false);
     }
 }

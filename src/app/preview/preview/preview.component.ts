@@ -9,24 +9,25 @@ import { DxScrollViewComponent } from 'devextreme-angular';
 export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChildren('widget') widgetElements: QueryList<any>;
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
-    @Input() widget: string;
+    @Input() widgetName: string;
 
-    createPreviewContent(widget: string) {
+    createPreviewContent(widget: any) {
         const EXPAND_CLASS_NAME = 'expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
+        const currentWidget = widget.currentValue || widget;
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
-            widgetEl.isExpanded.next(widgetEl.widgetGroup === widget);
+            widgetEl.isExpanded.next(false);
         });
 
 
         setTimeout(() => {
-            if(widget === 'base.common' || widget === 'base.typography') {
+            if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
                 scrollableContainer.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -35,7 +36,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 return;
             }
 
-            const widgetContainer = document.getElementsByTagName('app-' + widget.replace('navigations.', ''));
+            const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
             const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
             const scrollTop = 30;
 
@@ -52,18 +53,19 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 });
 
                 this.widgetElements.forEach((widgetEl) => {
-                    widgetEl.isExpanded.next(widgetEl.widgetGroup === widget);
+                    if(widgetEl.widgetGroup === currentWidget)
+                        widgetEl.isExpanded.next(true);
                 });
             }, 600);
         }, 400);
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if(!changes.widget.firstChange)
-            this.createPreviewContent(this.widget);
+        if(!changes.widgetName.firstChange)
+            this.createPreviewContent(changes.widgetName);
     }
 
     ngAfterViewInit() {
-        this.createPreviewContent(this.widget);
+        this.createPreviewContent(this.widgetName);
     }
 }
