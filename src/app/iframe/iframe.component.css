@@ -6,5 +6,6 @@ iframe {
 
 :host {
     display: block;
-    height: 99%;
+    height: 100%;
+    overflow: hidden;
 }

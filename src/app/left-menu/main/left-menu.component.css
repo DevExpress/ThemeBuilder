@@ -15,7 +15,7 @@
     top: 0;
     z-index: 2;
     left: 0;
-    width: 240px;
+    width: 241px;
     height: 100%;
     background-color: #505050;
     color: #fff;
@@ -64,7 +64,7 @@
 }
 
 .left-menu .dark-menu .menu-item.top .search-button {
-    width: 40px;
+    width: 41px;
     height: 45px;
     box-sizing: border-box;
     position: absolute;
@@ -76,7 +76,7 @@
 }
 
 .left-menu .dark-menu .menu-item.top .search-container {
-    width: 240px;
+    width: 241px;
     height: 45px;
     box-sizing: border-box;
     position: absolute;
