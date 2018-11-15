@@ -149,11 +149,11 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.1.7
+@angular/common@6.1.10
 MIT
 MIT
 
-rxjs@6.3.2
+rxjs@6.3.3
 Apache-2.0
 Apache License
                          Version 2.0, January 2004
@@ -357,7 +357,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-@angular/platform-browser@6.1.7
+@angular/platform-browser@6.1.10
 MIT
 MIT
 
@@ -585,7 +585,7 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
 END OF TERMS AND CONDITIONS
 
-sass.js@0.10.11
+sass.js@0.10.12
 MIT
 The MIT License (MIT)
 
@@ -653,10 +653,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
-@angular/core@6.1.7
+@angular/core@6.1.10
 MIT
 MIT
 
-@angular/forms@6.1.7
+@angular/forms@6.1.10
 MIT
 MIT

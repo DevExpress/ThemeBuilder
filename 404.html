@@ -21,7 +21,7 @@
 
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         } else {
-            var themeMarker = "dx." + window.location.pathname.split('/')[2];
+            var themeMarker = "dx." + /generic|material/.exec(window.location.pathname)[0];
             document.write('<style>\r\n   .dx-theme-marker { font-family: "' + themeMarker + '" }\r\n</style>')
         }
     </script>
@@ -39,7 +39,7 @@
             margin-top: -50px;
         }
     </style>
-<link rel="stylesheet" href="styles.f2900777fed5dcca1b8a.css"></head>
+<link rel="stylesheet" href="styles.af64a2ba0c5da50ac6e9.css"></head>
 
 <body>
     <app-root>
@@ -47,6 +47,6 @@
             <img src="images/loading.gif" alt="loading..." />
         </div>
     </app-root>
-<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.e521b5ad98ef535bbd60.js"></script><script type="text/javascript" src="main.2a85f641626df4974592.js"></script></body>
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.1e5675ad4e4e3c3d8e80.js"></script><script type="text/javascript" src="main.5a473e78586901f48123.js"></script></body>
 
 </html>
