@@ -6,6 +6,6 @@ button {
     right: -2px;
     top: -2px;
     cursor: pointer;
-    padding: 0;
+    padding: 2px;
     border: none;
 }

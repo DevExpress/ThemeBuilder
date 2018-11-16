@@ -11,6 +11,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
+    isWidgetClosed = true;
+
     createPreviewContent(widget: any) {
         const EXPAND_CLASS_NAME = 'expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
@@ -25,39 +27,46 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
             widgetEl.isExpanded.next(false);
         });
 
-
-        setTimeout(() => {
-            if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
-                scrollableContainer.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-
-                return;
-            }
-
-            const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
-            const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
-            const scrollTop = 30;
-
-            if(flexParentContainer.parentElement.classList.contains('group')) {
-                flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
-            }
-
-            flexParentContainer.classList.add(EXPAND_CLASS_NAME);
-
+        if(this.isWidgetClosed) {
             setTimeout(() => {
-                scrollableContainer.scrollTo({
-                    top: flexParentContainer.offsetTop - scrollTop,
-                    behavior: 'smooth'
-                });
+                if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
+                    scrollableContainer.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
 
-                this.widgetElements.forEach((widgetEl) => {
-                    if(widgetEl.widgetGroup === currentWidget)
-                        widgetEl.isExpanded.next(true);
-                });
-            }, 600);
-        }, 400);
+                    return;
+                }
+
+                const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
+                const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
+                const scrollTop = 30;
+
+                if(flexParentContainer.parentElement.classList.contains('group')) {
+                    flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
+                }
+
+                flexParentContainer.classList.add(EXPAND_CLASS_NAME);
+
+                setTimeout(() => {
+                    scrollableContainer.scrollTo({
+                        top: flexParentContainer.offsetTop - scrollTop,
+                        behavior: 'smooth'
+                    });
+
+                    this.widgetElements.forEach((widgetEl) => {
+                        if(widgetEl.widgetGroup === currentWidget)
+                            widgetEl.isExpanded.next(true);
+                    });
+                }, 600);
+            }, 400);
+        }
+
+        this.isWidgetClosed = true;
+    }
+
+    buttonDetailedClick(e) {
+       this.isWidgetClosed = e.isClosed;
     }
 
     ngOnChanges(changes: SimpleChanges) {

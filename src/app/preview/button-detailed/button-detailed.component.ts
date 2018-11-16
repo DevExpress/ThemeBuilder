@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-button-detailed',
@@ -9,11 +9,14 @@ export class ButtonDetailedComponent {
     @Input() widget: string;
     @Input() currentWidget: any;
 
+    @Output() clicked = new EventEmitter();
 
     onClick() {
         window.parent.postMessage(
-            { widget: (this.widget !== this.currentWidget ? this.widget : 'base.common') },
+            { widget: (this.widget !== this.currentWidget ? this.widget  : 'base.common') },
              window.parent.location.href
         );
+
+        this.clicked.emit({isClosed: this.widget !== this.currentWidget});
     }
 }

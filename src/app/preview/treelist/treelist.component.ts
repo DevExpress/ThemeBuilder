@@ -448,8 +448,8 @@ export class TreelistComponent implements OnInit, OnDestroy {
     expandedOptions = {
         'columnChooser': { 'enabled': true },
         'rowAlternationEnabled': true,
-        'selectedRowKeys': [2],
-        'expandedRowKeys': [1, 2, 5],
+        'selectedRowKeys': [2, 3],
+        'expandedRowKeys': [1, 5],
         'columnAutoWidth': true,
         'filterRow': {
             'visible': true
