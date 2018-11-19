@@ -15,166 +15,166 @@ export class MenuComponent implements OnInit, OnDestroy {
     @ViewChild('menu') menu: DxMenuComponent;
 
     collapsedOptions = {
-        'showFirstSubmenuMode': 'onHover',
-        'animation': {
-            'show': false,
-            'hide': false
+        showFirstSubmenuMode: 'onHover',
+        animation: {
+            show: false,
+            hide: false
         },
-        'items': [
+        items: [
             {
-                'text': '.NET',
-                'items': [
+                text: '.NET',
+                items: [
                     {
-                        'text': 'Individual Platforms',
-                        'items': [
-                            { 'text': 'WinForms' },
-                            { 'text': 'ASP.NET' },
-                            { 'text': 'MVC' },
-                            { 'text': 'WPF' },
-                            { 'text': 'Silverlight' },
-                            { 'text': 'Windows 8 XAML' }
+                        text: 'Individual Platforms',
+                        items: [
+                            { text: 'WinForms' },
+                            { text: 'ASP.NET' },
+                            { text: 'MVC' },
+                            { text: 'WPF' },
+                            { text: 'Silverlight' },
+                            { text: 'Windows 8 XAML' }
                         ],
-                        'selected': true,
-                        'selectable': true
+                        selected: true,
+                        selectable: true
                     },
                     {
-                        'text': 'Frameworks',
-                        'items': [{ 'text': 'eXpressApp Framework' }]
+                        text: 'Frameworks',
+                        items: [{ text: 'eXpressApp Framework' }]
                     },
                     {
-                        'text': 'Code-Debug-Refactor',
-                        'items': [{ 'text': 'CodeRush for Visual Studio' }]
+                        text: 'Code-Debug-Refactor',
+                        items: [{ text: 'CodeRush for Visual Studio' }]
                     },
                     {
-                        'text': 'Mobile (HTML JS)',
-                        'items': [{ 'text': 'DevExtreme' }]
+                        text: 'Mobile (HTML JS)',
+                        items: [{ text: 'DevExtreme' }]
                     },
                     {
-                        'text': 'Cross-Platform',
-                        'items': [
-                            { 'text': 'Reporting' },
-                            { 'text': 'Document Generation' }
+                        text: 'Cross-Platform',
+                        items: [
+                            { text: 'Reporting' },
+                            { text: 'Document Generation' }
                         ]
                     },
                     {
-                        'text': 'Enterprise Tools',
-                        'items': [{ 'text': 'Report Server' },
-                        { 'text': 'Analytics Dashboard' }]
+                        text: 'Enterprise Tools',
+                        items: [{ text: 'Report Server' },
+                        { text: 'Analytics Dashboard' }]
                     }
                 ]
             },
             {
-                'text': 'HTML JavaScript',
-                'items': [
+                text: 'HTML JavaScript',
+                items: [
                     {
-                        'text': 'Mobile',
-                        'items': [{ 'text': 'Phone JS' }]
+                        text: 'Mobile',
+                        items: [{ text: 'Phone JS' }]
                     },
                     {
-                        'text': 'HTML 5 JS Widgets',
-                        'items': [{ 'text': 'Chart JS' }]
+                        text: 'HTML 5 JS Widgets',
+                        items: [{ text: 'Chart JS' }]
                     }
                 ]
             },
             {
-                'text': 'Testing Tools',
-                'items': [
+                text: 'Testing Tools',
+                items: [
                     {
-                        'text': 'Web Testing',
-                        'items': [{ 'text': 'TestCafe' }]
+                        text: 'Web Testing',
+                        items: [{ text: 'TestCafe' }]
                     }
                 ]
             },
             {
-                'text': 'Delphi & C++Builder',
-                'disabled': true
+                text: 'Delphi & C++Builder',
+                disabled: true
             }
         ]
     };
 
-    expandedOptions =  {
-        'showFirstSubmenuMode': 'onHover',
-        'animation': {
-            'show': false,
-            'hide': false
+    expandedOptions = {
+        showFirstSubmenuMode: 'onHover',
+        animation: {
+            show: false,
+            hide: false
         },
-        'items': [
+        items: [
             {
-                'text': '.NET',
-                'items': [
+                text: '.NET',
+                items: [
                     {
-                        'text': 'Individual Platforms',
-                        'items': [
-                            { 'text': 'WinForms' },
-                            { 'text': 'ASP.NET' },
-                            { 'text': 'MVC' },
-                            { 'text': 'WPF' },
-                            { 'text': 'Silverlight' },
-                            { 'text': 'Windows 8 XAML' }
+                        text: 'Individual Platforms',
+                        items: [
+                            { text: 'WinForms' },
+                            { text: 'ASP.NET' },
+                            { text: 'MVC' },
+                            { text: 'WPF' },
+                            { text: 'Silverlight' },
+                            { text: 'Windows 8 XAML' }
                         ],
-                        'selected': true,
-                        'selectable': true
+                        selected: true,
+                        selectable: true
                     },
                     {
-                        'text': 'Frameworks',
-                        'items': [{ 'text': 'eXpressApp Framework' }]
+                        text: 'Frameworks',
+                        items: [{ text: 'eXpressApp Framework' }]
                     },
                     {
-                        'text': 'Code-Debug-Refactor',
-                        'items': [{ 'text': 'CodeRush for Visual Studio' }]
+                        text: 'Code-Debug-Refactor',
+                        items: [{ text: 'CodeRush for Visual Studio' }]
                     },
                     {
-                        'text': 'Mobile (HTML JS)',
-                        'items': [{ 'text': 'DevExtreme' }]
+                        text: 'Mobile (HTML JS)',
+                        items: [{ text: 'DevExtreme' }]
                     },
                     {
-                        'text': 'Cross-Platform',
-                        'items': [
-                            { 'text': 'Reporting' },
-                            { 'text': 'Document Generation' }
+                        text: 'Cross-Platform',
+                        items: [
+                            { text: 'Reporting' },
+                            { text: 'Document Generation' }
                         ]
                     },
                     {
-                        'text': 'Enterprise Tools',
-                        'items': [{ 'text': 'Report Server' },
-                        { 'text': 'Analytics Dashboard' }]
+                        text: 'Enterprise Tools',
+                        items: [{ text: 'Report Server' },
+                        { text: 'Analytics Dashboard' }]
                     }
                 ]
             },
             {
-                'text': 'HTML JavaScript',
-                'items': [
+                text: 'HTML JavaScript',
+                items: [
                     {
-                        'text': 'Mobile',
-                        'items': [{ 'text': 'Phone JS' }]
+                        text: 'Mobile',
+                        items: [{ text: 'Phone JS' }]
                     },
                     {
-                        'text': 'HTML 5 JS Widgets',
-                        'items': [{ 'text': 'Chart JS' }]
+                        text: 'HTML 5 JS Widgets',
+                        items: [{ text: 'Chart JS' }]
                     }
                 ]
             },
             {
-                'text': 'iOS 7',
-                'items': [
+                text: 'iOS 7',
+                items: [
                     {
-                        'text': 'Native',
-                        'items': [{ 'text': 'DataExplorer' }]
+                        text: 'Native',
+                        items: [{ text: 'DataExplorer' }]
                     }
                 ]
             },
             {
-                'text': 'Testing Tools',
-                'items': [
+                text: 'Testing Tools',
+                items: [
                     {
-                        'text': 'Web Testing',
-                        'items': [{ 'text': 'TestCafe' }]
+                        text: 'Web Testing',
+                        items: [{ text: 'TestCafe' }]
                     }
                 ]
             },
             {
-                'text': 'Delphi & C++Builder',
-                'disabled': true
+                text: 'Delphi & C++Builder',
+                disabled: true
             }
         ]
     };

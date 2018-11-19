@@ -1,11 +1,11 @@
 <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
 
 <ng-template #collapsedBlock>
-    <dx-text-box width="140" [value]="'Text Box'"></dx-text-box>
+    <dx-text-box width="140" value="Text Box"></dx-text-box>
     <dx-tag-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
     <dx-select-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
     <dx-check-box [value]="true"></dx-check-box>
-    <dx-radio-group [items]="['']" [value]="''"></dx-radio-group>
+    <dx-radio-group [items]="['']" value=""></dx-radio-group>
 </ng-template>
 
 <ng-template #expandedBlock>
@@ -20,7 +20,7 @@
             <div class="field">
                 <div class="label">Select Box</div>
                 <div class="value">
-                    <dx-select-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Outlined'"></dx-select-box>
+                    <dx-select-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined"></dx-select-box>
                 </div>
             </div>
             <div class="field">
@@ -44,9 +44,9 @@
             <div class="field">
                 <div class="label">Validated</div>
                 <div class="value">
-                    <dx-text-box stylingMode="outlined" value="">
+                    <dx-text-box stylingMode="outlined" [value]="invalidValue">
                         <dx-validator>
-                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
+                            <dxi-validation-rule type="stringLength" [min]="1"  message="Field is required"></dxi-validation-rule>
                         </dx-validator>
                     </dx-text-box>
                 </div>
@@ -62,7 +62,7 @@
             <div class="field">
                 <div class="label">Select Box</div>
                 <div class="value">
-                    <dx-select-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Filled'"></dx-select-box>
+                    <dx-select-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" value="Filled"></dx-select-box>
                 </div>
             </div>
             <div class="field">
@@ -104,7 +104,7 @@
             <div class="field">
                 <div class="label">Select Box</div>
                 <div class="value">
-                    <dx-select-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="'Underlined'"></dx-select-box>
+                    <dx-select-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Underlined"></dx-select-box>
                 </div>
             </div>
             <div class="field">
@@ -148,8 +148,8 @@
     </div>
     <div class="block radiogroup">
         <div class="header">Radio Group</div>
-        <dx-radio-group [items]="['Normal']" [value]="'Normal'"></dx-radio-group>
-        <dx-radio-group [items]="['Disable']" [value]="'Disable'" [disabled]="true"></dx-radio-group>
+        <dx-radio-group [items]="['Normal']" value="Normal"></dx-radio-group>
+        <dx-radio-group [items]="['Disable']" value="Disable" [disabled]="true"></dx-radio-group>
     </div>
     <div class="block switch">
         <div class="header">Switch</div>

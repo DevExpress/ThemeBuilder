@@ -26,12 +26,15 @@
 
 .editors .block {
     width: 480px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-right: 10px;
 }
 
 .editors .block .field {
     margin: 0 10px 10px 0;
-    width: 140px;
-    display: inline-block;
+    flex: 1 0 150px;
+    height: 90px;
 }
 
 :host ::ng-deep .editors .dx-texteditor {

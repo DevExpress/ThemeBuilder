@@ -15,12 +15,12 @@ export class SchedulerComponent implements OnInit, OnDestroy {
     @ViewChild('scheduler') scheduler: DxSchedulerComponent;
 
     collapsedOptions = {
-        'views': ['day'],
-        'currentView': 'day',
-        'currentDate': new Date(2017, 4, 22),
-        'firstDayOfWeek': 1,
-        'startDayHour': 9,
-        'dataSource': [
+        views: ['day'],
+        currentView: 'day',
+        currentDate: new Date(2017, 4, 22),
+        firstDayOfWeek: 1,
+        startDayHour: 9,
+        dataSource: [
             {
                 text: 'Website Re-Design Plan',
                 startDate: new Date(2017, 4, 22, 9, 30),
@@ -30,13 +30,13 @@ export class SchedulerComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions = {
-        'views': ['month', 'week', 'day'],
-        'currentDate': new Date(2017, 4, 25),
-        'currentView': 'week',
-        'startDayHour': 9,
-        'endDayHour': 13,
-        'firstDayOfWeek': 1,
-        'dataSource': [
+        views: ['month', 'week', 'day'],
+        currentDate: new Date(2017, 4, 25),
+        currentView: 'week',
+        startDayHour: 9,
+        endDayHour: 13,
+        firstDayOfWeek: 1,
+        dataSource: [
             {
                 text: 'Website Re-Design Plan',
                 startDate: new Date(2017, 4, 22, 9, 30),

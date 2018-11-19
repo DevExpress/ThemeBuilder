@@ -15,109 +15,97 @@ export class ListComponent implements OnInit, OnDestroy {
     @ViewChild('list') list: DxListComponent;
 
     collapsedOptions = {
-        'grouped': true,
-        'editEnabled': true,
-        'editConfig': {
-            'deleteEnabled': true,
-            'selectionEnabled': true
+        grouped: true,
+        editEnabled: true,
+        editConfig: {
+            deleteEnabled: true,
+            selectionEnabled: true
         },
-        'selectionMode': 'single',
-        'items': [{
-            'key': 'Ship Country: Germany',
-            'items': [
+        selectionMode: 'single',
+        items: [{
+            key: 'Ship Country: Germany',
+            items: [
                 {
-                    'text': 'Toms Spezialitaten'
-                },
-                {
-                    'text': 'Ottilies Kaseladen',
-                    'badge': 5
+                    text: 'Toms Spezialitaten'
+                }, {
+                    text: 'Ottilies Kaseladen',
+                    badge: 5
                 }
             ]
         },
         {
-            'key': 'Ship Country: France',
-            'items': [
+            key: 'Ship Country: France',
+            items: [
                 {
-                    'text': 'Vins et alcools Chevalier'
-                },
-                {
-                    'text': 'Richter Supermarkt'
-                },
-                {
-                    'text': 'Blondel pere et fils'
-                },
-                {
-                    'text': 'Que Delicia',
-                    'badge': 33
-                },
-                {
-                    'text': 'Folk och fa HB',
-                    'showChevron': true
+                    text: 'Vins et alcools Chevalier'
+                }, {
+                    text: 'Richter Supermarkt'
+                }, {
+                    text: 'Blondel pere et fils'
+                }, {
+                    text: 'Que Delicia',
+                    badge: 33
+                }, {
+                    text: 'Folk och fa HB',
+                    showChevron: true
                 }
             ]
         },
         {
-            'key': 'Ship Country: Switzerland',
-            'items': [
+            key: 'Ship Country: Switzerland',
+            items: [
                 {
-                    'text': 'Hanari Carnes'
-                },
-                {
-                    'text': 'Chop-suey Chinese'
+                    text: 'Hanari Carnes'
+                }, {
+                    text: 'Chop-suey Chinese'
                 }
             ]
         }]
     };
 
     expandedOptions = {
-        'grouped': true,
-        'editEnabled': true,
-        'editConfig': {
-            'deleteEnabled': true,
-            'selectionEnabled': true
+        grouped: true,
+        editEnabled: true,
+        editConfig: {
+            deleteEnabled: true,
+            selectionEnabled: true
         },
-        'selectionMode': 'single',
-        'items': [{
-            'key': 'Ship Country: Germany',
-            'items': [
+        selectionMode: 'single',
+        items: [{
+            key: 'Ship Country: Germany',
+            items: [
                 {
-                    'text': 'Toms Spezialitaten'
-                },
-                {
-                    'text': 'Ottilies Kaseladen',
-                    'badge': 5
+                    text: 'Toms Spezialitaten'
+                }, {
+                    text: 'Ottilies Kaseladen',
+                    badge: 5
                 }
             ]
         },
         {
-            'key': 'Ship Country: France',
-            'items': [
+            key: 'Ship Country: France',
+            items: [
                 {
-                    'text': 'Vins et alcools Chevalier'
-                },
-                {
-                    'text': 'Richter Supermarkt'
-                },
-                {
-                    'text': 'Blondel pere et fils'
-                },
-                {
-                    'text': 'Que Delicia',
-                    'badge': 33
-                },
-                {
-                    'text': 'Folk och fa HB'
+                    text: 'Vins et alcools Chevalier'
+                }, {
+                    text: 'Richter Supermarkt'
+                }, {
+                    text: 'Blondel pere et fils'
+                }, {
+                    text: 'Que Delicia',
+                    badge: 33
+                }, {
+                    text: 'Folk och fa HB'
                 }
             ]
         },
         {
-            'key': 'Ship Country: Switzerland',
-            'items': [
+            key: 'Ship Country: Switzerland',
+            items: [
                 {
-                    'text': 'Hanari Carnes'
-                },
-                {
-                    'text': 'Chop-suey Chinese'
+                    text: 'Hanari Carnes'
+                }, {
+                    text: 'Chop-suey Chinese'
                 }
             ]
         }]

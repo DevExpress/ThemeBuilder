@@ -138,53 +138,53 @@ export class DatagridComponent implements OnInit, OnDestroy {
     ];
 
     collapsedOptions = {
-        'columnChooser': { 'enabled': false },
-        'rowAlternationEnabled': false,
-        'showBorders': true,
-        'paging': {
-            'pageSize': 10
+        columnChooser: { enabled: false },
+        rowAlternationEnabled: false,
+        showBorders: true,
+        paging: {
+            pageSize: 10
         },
-        'filterRow': {
-            'visible': false
+        filterRow: {
+            visible: false
         },
-        'searchPanel': {
-            'visible': false
+        searchPanel: {
+            visible: false
         },
-        'groupPanel': {
-            'visible': false
+        groupPanel: {
+            visible: false
         },
-        'editing': {
-            'allowUpdating': false,
-            'allowDeleting': false,
-            'mode': 'row'
+        editing: {
+            allowUpdating: false,
+            allowDeleting: false,
+            mode: 'row'
         },
-        'summary': {
-            'totalItems': [
+        summary: {
+            totalItems: [
                 {
-                    'column': undefined,
-                    'summaryType': undefined,
-                    'displayFormat': undefined
+                    column: undefined,
+                    summaryType: undefined,
+                    displayFormat: undefined
                 }
             ],
-            'groupItems': [
+            groupItems: [
                 {
-                    'column': undefined,
-                    'summaryType': undefined
+                    column: undefined,
+                    summaryType: undefined
                 }
             ]
         },
-        'hoverStateEnabled': false,
-        'allowColumnResizing': false,
-        'allowColumnReordering': false,
-        'pager': {
-            'showPageSizeSelector': true
+        hoverStateEnabled: false,
+        allowColumnResizing: false,
+        allowColumnReordering: false,
+        pager: {
+            showPageSizeSelector: true
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'keyExpr': 'orderId',
-        'selectedRowKeys': ['10249'],
-        'columns': [
+        keyExpr: 'orderId',
+        selectedRowKeys: [10249],
+        columns: [
             {
                 dataField: 'orderId',
                 caption: 'Order ID',
@@ -206,37 +206,37 @@ export class DatagridComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions = {
-        'columnChooser': { 'enabled': true },
-        'rowAlternationEnabled': true,
-        'filterRow': {
-            'visible': true
+        columnChooser: { enabled: true },
+        rowAlternationEnabled: true,
+        filterRow: {
+            visible: true
         },
-        'paging': {
-            'pageSize': 10
+        paging: {
+            pageSize: 10
         },
-        'pager': {
-            'showPageSizeSelector': true
+        pager: {
+            showPageSizeSelector: true
         },
-        'searchPanel': {
-            'visible': true
+        searchPanel: {
+            visible: true
         },
-        'groupPanel': {
-            'visible': true
+        groupPanel: {
+            visible: true
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'hoverStateEnabled': true,
-        'allowColumnResizing': true,
-        'allowColumnReordering': true,
-        'editing': {
-            'allowUpdating': true,
-            'allowDeleting': true,
-            'mode': 'batch'
+        hoverStateEnabled: true,
+        allowColumnResizing: true,
+        allowColumnReordering: true,
+        editing: {
+            allowUpdating: true,
+            allowDeleting: true,
+            mode: 'batch'
         },
-        'keyExpr': 'orderId',
-        'selectedRowKeys': ['10250', '10251'],
-        'columns': [
+        keyExpr: 'orderId',
+        selectedRowKeys: [10250, 10251],
+        columns: [
             {
                 dataField: 'orderId',
                 caption: 'Order ID',
@@ -259,18 +259,18 @@ export class DatagridComponent implements OnInit, OnDestroy {
                 width: 90
             }
         ],
-        'summary': {
-            'totalItems': [
+        summary: {
+            totalItems: [
                 {
-                    'column': 'amount',
-                    'summaryType': 'sum',
-                    'displayFormat': 'Total: {0}'
+                    column: 'amount',
+                    summaryType: 'sum',
+                    displayFormat: 'Total: {0}'
                 }
             ],
-            'groupItems': [
+            groupItems: [
                 {
-                    'column': 'orderId',
-                    'summaryType': 'count'
+                    column: 'orderId',
+                    summaryType: 'count'
                 }
             ]
         }

@@ -12,11 +12,12 @@ export class ButtonDetailedComponent {
     @Output() clicked = new EventEmitter();
 
     onClick() {
+        const isClosed = this.widget !== this.currentWidget;
         window.parent.postMessage(
-            { widget: (this.widget !== this.currentWidget ? this.widget  : 'base.common') },
+            { widget: (isClosed ? this.widget  : 'base.common') },
              window.parent.location.href
         );
 
-        this.clicked.emit({isClosed: this.widget !== this.currentWidget});
+        this.clicked.emit({isClosed: isClosed});
     }
 }

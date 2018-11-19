@@ -2,25 +2,25 @@
     margin-right: 20px;
 }
 
-:host .buttons {
+.buttons {
     display: flex;
     flex-wrap: wrap;
     width: 700px;
 }
 
-:host .buttons > div {
+.buttons > div {
     display: inline-flex;
     align-items: center;
     height: 50px;
 }
 
-:host .buttons .type {
+.buttons .type {
     font-weight: bold;
     color: rgba(51, 51, 51, 0.7);
     flex: 1 0 100px;
 }
 
-:host .buttons > div:not(.type) {
+.buttons > div:not(.type) {
     flex: 1 0 150px;
 }
 

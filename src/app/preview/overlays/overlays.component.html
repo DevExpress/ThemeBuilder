@@ -1,29 +1,21 @@
-<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+<dx-button text="Load Panel" type="normal" (onClick)="loadPanel.visible = true"></dx-button>
+<dx-button text="Popup" type="normal" (onClick)="popup.visisble = true"></dx-button>
+<dx-button id="actionsheet-button" text="ActionSheet" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
+<dx-button id="tooltip-button" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
+<dx-button text="Info toast" type="normal" (onClick)="infoToast.visible = true"></dx-button>
+<dx-button text="Warning toast" type="normal" (onClick)="warningToast.visible = true"></dx-button>
+<dx-button text="Error toast" type="normal" (onClick)="errorToast.visible = true"></dx-button>
+<dx-button text="Success toast" type="normal" (onClick)="successToast.visible = true"></dx-button>
 
-<ng-template #collapsedBlock>
-    <dx-button text="Load Panel" type="normal" (onClick)="loadPanel.visible = true"></dx-button>
-    <dx-button text="Popup" type="normal" (onClick)="popup.visisble = true"></dx-button>
-    <dx-button id="actionsheet-button" text="ActionSheet" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
-    <dx-button id="tooltip-button" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
-    <dx-button text="Info toast" type="normal" (onClick)="infoToast.visible = true"></dx-button>
-    <dx-button text="Warning toast" type="normal" (onClick)="warningToast.visible = true"></dx-button>
-    <dx-button text="Error toast" type="normal" (onClick)="errorToast.visible = true"></dx-button>
-    <dx-button text="Success toast" type="normal" (onClick)="successToast.visible = true"></dx-button>
-
-    <dx-load-panel #loadPanel [closeOnOutsideClick]="true" [visible]="false"></dx-load-panel>
-    <dx-popup #popup title="Popup Title" [visible]="false"></dx-popup>
-    <dx-action-sheet #actionSheet target="#actionsheet-button" [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
-    <dx-tooltip #tooltip  target="#tooltip-button" [visible]="false">
-        <div *dxTemplate="let data of 'content'">
-            <p>Tooltip content</p>
-        </div>
-    </dx-tooltip>
-    <dx-toast #infoToast message="Info toast" type="info" [displayTime]="300" [visible]="false"></dx-toast>
-    <dx-toast #warningToast message="Warning toast" type="warning" [displayTime]="300" [visible]="false"></dx-toast>
-    <dx-toast #errorToast message="Error toast" type="error" [displayTime]="300" [visible]="false"></dx-toast>
-    <dx-toast #successToast message="Success toast" type="success" [displayTime]="300" [visible]="false"></dx-toast>
-</ng-template>
-
-<ng-template #expandedBlock>
-    
-</ng-template>
+<dx-load-panel #loadPanel [closeOnOutsideClick]="true" [visible]="false"></dx-load-panel>
+<dx-popup #popup title="Popup Title" [visible]="false"></dx-popup>
+<dx-action-sheet #actionSheet target="#actionsheet-button" [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
+<dx-tooltip #tooltip  target="#tooltip-button" [visible]="false">
+    <div *dxTemplate="let data of 'content'">
+        <p>Tooltip content</p>
+    </div>
+</dx-tooltip>
+<dx-toast #infoToast message="Info toast" type="info" [displayTime]="300" [visible]="false"></dx-toast>
+<dx-toast #warningToast message="Warning toast" type="warning" [displayTime]="300" [visible]="false"></dx-toast>
+<dx-toast #errorToast message="Error toast" type="error" [displayTime]="300" [visible]="false"></dx-toast>
+<dx-toast #successToast message="Success toast" type="success" [displayTime]="300" [visible]="false"></dx-toast>
