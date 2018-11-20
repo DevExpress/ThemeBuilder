@@ -18,6 +18,6 @@ export class ButtonDetailedComponent {
              window.parent.location.href
         );
 
-        this.clicked.emit({isClosed: isClosed});
+        this.clicked.emit({ isClosed: isClosed });
     }
 }
