@@ -15,7 +15,7 @@ export class FilterbuilderComponent implements OnInit, OnDestroy {
     @ViewChild('filterBuilder') filterBuilder: DxFilterBuilderComponent;
 
     collapsedOptions = {
-        'value': [
+        value: [
             ['Name', '=', 'Projector PlusHD'],
             'or',
             [
@@ -25,24 +25,24 @@ export class FilterbuilderComponent implements OnInit, OnDestroy {
             'or',
             []
         ],
-        'fields': [{
-            'dataField': 'ID',
-            'dataType': 'number'
+        fields: [{
+            dataField: 'ID',
+            dataType: 'number'
         }, {
-            'dataField': 'Name'
+            dataField: 'Name'
         }, {
-            'dataField': 'Price',
-            'dataType': 'number'
+            dataField: 'Price',
+            dataType: 'number'
         }, {
-            'dataField': 'Current_Inventory',
-            'dataType': 'number'
+            dataField: 'Current_Inventory',
+            dataType: 'number'
         }, {
-            'dataField': 'Category'
+            dataField: 'Category'
         }]
     };
 
     expandedOptions = {
-        'value': [
+        value: [
             ['Name', '=', 'Projector PlusHD'],
             'or',
             [
@@ -55,19 +55,19 @@ export class FilterbuilderComponent implements OnInit, OnDestroy {
                 ['Price', '<', '4000']
             ]
         ],
-        'fields': [{
-            'dataField': 'ID',
-            'dataType': 'number'
+        fields: [{
+            dataField: 'ID',
+            dataType: 'number'
         }, {
-            'dataField': 'Name'
+            dataField: 'Name'
         }, {
-            'dataField': 'Price',
-            'dataType': 'number'
+            dataField: 'Price',
+            dataType: 'number'
         }, {
-            'dataField': 'Current_Inventory',
-            'dataType': 'number'
+            dataField: 'Current_Inventory',
+            dataType: 'number'
         }, {
-            'dataField': 'Category'
+            dataField: 'Category'
         }]
     };
 

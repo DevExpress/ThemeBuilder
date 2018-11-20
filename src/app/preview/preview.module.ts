@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DevExtremeModule } from 'devextreme-angular';
 
 import { ButtonsComponent } from './buttons/buttons.component';
-import { DatatgridComponent } from './datatgrid/datatgrid.component';
+import { DatagridComponent } from './datatgrid/datatgrid.component';
 import { EditorsComponent } from './editors/editors.component';
 import { FilterbuilderComponent } from './filterbuilder/filterbuilder.component';
 import { FormComponent } from './form/form.component';
@@ -26,13 +26,15 @@ import { SlidersComponent } from './sliders/sliders.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { PreviewComponent } from './preview/preview.component';
 
+import { ButtonDetailedComponent } from './button-detailed/button-detailed.component';
+
 @NgModule({
     imports: [
         CommonModule,
         DevExtremeModule
     ],
     declarations: [
-        DatatgridComponent,
+        DatagridComponent,
         ButtonsComponent,
         EditorsComponent,
         FilterbuilderComponent,
@@ -52,10 +54,11 @@ import { PreviewComponent } from './preview/preview.component';
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
-        PreviewComponent
+        PreviewComponent,
+        ButtonDetailedComponent
     ],
     exports: [
-        DatatgridComponent,
+        DatagridComponent,
         ButtonsComponent,
         EditorsComponent,
         FilterbuilderComponent,
@@ -75,7 +78,8 @@ import { PreviewComponent } from './preview/preview.component';
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
-        PreviewComponent
+        PreviewComponent,
+        ButtonDetailedComponent
     ]
 })
 export class PreviewModule { }

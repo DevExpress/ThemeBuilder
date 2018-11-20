@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-overlays',
@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class OverlaysComponent  {
     widgetGroup = 'overlays';
-    isExpanded = new BehaviorSubject<boolean>(false);
+    isExpanded = new Subject<boolean>();
 
     actionSheetData: Array<any> = [
         { 'text': 'Command 1' },

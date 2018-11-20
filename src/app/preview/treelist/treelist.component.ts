@@ -408,77 +408,77 @@ export class TreelistComponent implements OnInit, OnDestroy {
     ];
 
     collapsedOptions = {
-        'expandedRowKeys': [1],
-        'selectedRowKeys': [2],
-        'columnAutoWidth': true,
-        'columnChooser': { 'enabled': false },
-        'rowAlternationEnabled': false,
-        'filterRow': {
-            'visible': false
+        expandedRowKeys: [1],
+        selectedRowKeys: [2],
+        columnAutoWidth: true,
+        columnChooser: { enabled: false },
+        rowAlternationEnabled: false,
+        filterRow: {
+            visible: false
         },
-        'searchPanel': {
-            'visible': false
+        searchPanel: {
+            visible: false
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'showBorders': true,
-        'hoverStateEnabled': false,
-        'allowColumnResizing': false,
-        'allowColumnReordering': false,
-        'editing': {
-            'allowUpdating': false,
-            'allowDeleting': false,
-            'mode': 'row'
+        showBorders: true,
+        hoverStateEnabled: false,
+        allowColumnResizing: false,
+        allowColumnReordering: false,
+        editing: {
+            allowUpdating: false,
+            allowDeleting: false,
+            mode: 'row'
         },
-        'columns': [
+        columns: [
             {
-                'dataField': 'Title',
-                'caption': 'Position'
+                dataField: 'Title',
+                caption: 'Position'
             },
             'Full_Name',
             'City',
             {
-                'dataField': 'Hire_Date',
-                'dataType': 'date'
+                dataField: 'Hire_Date',
+                dataType: 'date'
             }
         ]
     };
 
     expandedOptions = {
-        'columnChooser': { 'enabled': true },
-        'rowAlternationEnabled': true,
-        'selectedRowKeys': [2],
-        'expandedRowKeys': [1, 2, 5],
-        'columnAutoWidth': true,
-        'filterRow': {
-            'visible': true
+        columnChooser: { enabled: true },
+        rowAlternationEnabled: true,
+        selectedRowKeys: [2, 3],
+        expandedRowKeys: [1, 5],
+        columnAutoWidth: true,
+        filterRow: {
+            visible: true
         },
-        'searchPanel': {
-            'visible': true
+        searchPanel: {
+            visible: true
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'showBorders': true,
-        'hoverStateEnabled': true,
-        'allowColumnResizing': true,
-        'allowColumnReordering': true,
-        'editing': {
-            'allowUpdating': true,
-            'allowDeleting': true,
-            'mode': 'batch'
+        showBorders: true,
+        hoverStateEnabled: true,
+        allowColumnResizing: true,
+        allowColumnReordering: true,
+        editing: {
+            allowUpdating: true,
+            allowDeleting: true,
+            mode: 'batch'
         },
-        'columns': [
+        columns: [
             {
-                'dataField': 'Title',
-                'caption': 'Position'
+                dataField: 'Title',
+                caption: 'Position'
             },
             'Full_Name',
             'City',
             {
-                'dataField': 'Hire_Date',
-                'dataType': 'date'
+                dataField: 'Hire_Date',
+                dataType: 'date'
             }
         ]
     };

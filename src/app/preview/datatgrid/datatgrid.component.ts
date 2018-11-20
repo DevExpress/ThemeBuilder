@@ -7,7 +7,7 @@ import { DxDataGridComponent } from 'devextreme-angular';
     templateUrl: './datatgrid.component.html',
     styleUrls: ['./datatgrid.component.css']
 })
-export class DatatgridComponent implements OnInit, OnDestroy {
+export class DatagridComponent implements OnInit, OnDestroy {
     widgetGroup = 'datagrid';
     isExpanded = new Subject<boolean>();
     subscription: Subscription;
@@ -16,230 +16,261 @@ export class DatatgridComponent implements OnInit, OnDestroy {
 
     dataSource: Array<any> = [
         {
-            'CustomerID': 'VINET',
-            'OrderDate': '1996/07/04',
-            'Freight': '32.3800',
-            'ShipName': 'Vins et alcools Chevalier',
-            'ShipCity': 'Reims',
-            'ShipCountry': 'France'
-        },
-        {
-            'CustomerID': 'TOMSP',
-            'OrderDate': '1996/07/05',
-            'Freight': '11.6100',
-            'ShipName': 'Toms Spezialitaten',
-            'ShipCity': 'Munster',
-            'ShipCountry': 'Germany'
-        },
-        {
-            'CustomerID': 'HANAR',
-            'OrderDate': '1996/07/08',
-            'Freight': '65.8300',
-            'ShipName': 'Hanari Carnes',
-            'ShipCity': 'Rio de Janeiro',
-            'ShipCountry': 'Brazil'
-        },
-        {
-            'CustomerID': 'VICTE',
-            'OrderDate': '1996/07/08',
-            'Freight': '41.3400',
-            'ShipName': 'Victuailles en stock',
-            'ShipCity': 'Lyon',
-            'ShipCountry': 'France'
-        },
-        {
-            'CustomerID': 'SUPRD',
-            'OrderDate': '1996/07/09',
-            'Freight': '51.3000',
-            'ShipName': 'Supremes delices',
-            'ShipCity': 'Charleroi',
-            'ShipCountry': 'Belgium'
-        },
-        {
-            'CustomerID': 'HANAR',
-            'OrderDate': '1996/07/10',
-            'Freight': '58.1700',
-            'ShipName': 'Hanari Carnes',
-            'ShipCity': 'Rio de Janeiro',
-            'ShipCountry': 'Brazil'
-        },
-        {
-            'CustomerID': 'CHOPS',
-            'OrderDate': '1996/07/11',
-            'Freight': '22.9800',
-            'ShipName': 'Chop-suey Chinese',
-            'ShipCity': 'Bern',
-            'ShipCountry': 'Switzerland'
-        },
-        {
-            'CustomerID': 'RICSU',
-            'OrderDate': '1996/07/12',
-            'Freight': '148.3300',
-            'ShipName': 'Richter Supermarkt',
-            'ShipCity': 'Geneve',
-            'ShipCountry': 'Switzerland'
-        },
-        {
-            'CustomerID': 'WELLI',
-            'OrderDate': '1996/07/15',
-            'Freight': '13.9700',
-            'ShipName': 'Wellington Importadora',
-            'ShipCity': 'Resende',
-            'ShipCountry': 'Brazil'
-        },
-        {
-            'CustomerID': 'HILAA',
-            'OrderDate': '1996/07/16',
-            'Freight': '81.9100',
-            'ShipName': 'HILARION-Abastos',
-            'ShipCity': 'San Cristobal',
-            'ShipCountry': 'Venezuela'
-        },
-        {
-            'CustomerID': 'ERNSH',
-            'OrderDate': '1996/07/17',
-            'Freight': '140.5100',
-            'ShipName': 'Ernst Handel',
-            'ShipCity': 'Graz',
-            'ShipCountry': 'Austria'
+            'orderId': 10248,
+            'region': 'North America',
+            'country': 'United States',
+            'city': 'New York',
+            'amount': 1740,
+            'date': '2013/01/06'
+        }, {
+            'orderId': 10249,
+            'region': 'North America',
+            'country': 'United States',
+            'city': 'Los Angeles',
+            'amount': 850,
+            'date': '2013/01/13'
+        }, {
+            'orderId': 10250,
+            'region': 'North America',
+            'country': 'United States',
+            'city': 'Denver',
+            'amount': 2235,
+            'date': '2013/01/07'
+        }, {
+            'orderId': 10251,
+            'region': 'North America',
+            'country': 'Canada',
+            'city': 'Vancouver',
+            'amount': 1965,
+            'date': '2013/01/03'
+        }, {
+            'orderId': 10252,
+            'region': 'North America',
+            'country': 'Canada',
+            'city': 'Edmonton',
+            'amount': 880,
+            'date': '2013/01/10'
+        }, {
+            'orderId': 10256,
+            'region': 'Europe',
+            'country': 'United Kingdom',
+            'city': 'London',
+            'amount': 6175,
+            'date': '2013/01/24'
+        }, {
+            'orderId': 10257,
+            'region': 'Europe',
+            'country': 'Germany',
+            'city': 'Berlin',
+            'amount': 4575,
+            'date': '2013/01/11'
+        }, {
+            'orderId': 10258,
+            'region': 'Europe',
+            'country': 'Spain',
+            'city': 'Madrid',
+            'amount': 3680,
+            'date': '2013/01/12'
+        }, {
+            'orderId': 10259,
+            'region': 'Europe',
+            'country': 'Russian Federation',
+            'city': 'Moscow',
+            'amount': 2260,
+            'date': '2013/01/01'
+        }, {
+            'orderId': 10260,
+            'region': 'Asia',
+            'country': 'China',
+            'city': 'Beijing',
+            'amount': 2910,
+            'date': '2013/01/26'
+        }, {
+            'orderId': 10261,
+            'region': 'Asia',
+            'country': 'Japan',
+            'city': 'Tokyo',
+            'amount': 8400,
+            'date': '2013/01/05'
+        }, {
+            'orderId': 10262,
+            'region': 'Asia',
+            'country': 'Korea (Republic of)',
+            'city': 'Seoul',
+            'amount': 1325,
+            'date': '2013/01/14'
+        }, {
+            'orderId': 10263,
+            'region': 'Australia',
+            'country': 'Australia',
+            'city': 'Sydney',
+            'amount': 3920,
+            'date': '2013/01/05'
+        }, {
+            'orderId': 10264,
+            'region': 'Australia',
+            'country': 'Australia',
+            'city': 'Melbourne',
+            'amount': 2220,
+            'date': '2013/01/15'
+        }, {
+            'orderId': 10265,
+            'region': 'Africa',
+            'country': 'South Africa',
+            'city': 'Pretoria',
+            'amount': 940,
+            'date': '2013/01/01'
+        }, {
+            'orderId': 10266,
+            'region': 'Africa',
+            'country': 'Egypt',
+            'city': 'Cairo',
+            'amount': 1630,
+            'date': '2013/01/10'
+        }, {
+            'orderId': 10267,
+            'region': 'North America',
+            'country': 'Canada',
+            'city': 'Edmonton',
+            'amount': 2910,
+            'date': '2013/01/23'
         }
     ];
 
     collapsedOptions = {
-        'columnChooser': { 'enabled': false },
-        'rowAlternationEnabled': false,
-        'showBorders': true,
-        'paging': {
-            'pageSize': 10
+        columnChooser: { enabled: false },
+        rowAlternationEnabled: false,
+        showBorders: true,
+        paging: {
+            pageSize: 10
         },
-        'filterRow': {
-            'visible': false
+        filterRow: {
+            visible: false
         },
-        'searchPanel': {
-            'visible': false
+        searchPanel: {
+            visible: false
         },
-        'groupPanel': {
-            'visible': false
+        groupPanel: {
+            visible: false
         },
-        'editing': {
-            'allowUpdating': false,
-            'allowDeleting': false,
-            'mode': 'row'
+        editing: {
+            allowUpdating: false,
+            allowDeleting: false,
+            mode: 'row'
         },
-        'summary': {
-            'totalItems': [
+        summary: {
+            totalItems: [
                 {
-                    'column': undefined,
-                    'summaryType': undefined,
-                    'displayFormat': undefined
+                    column: undefined,
+                    summaryType: undefined,
+                    displayFormat: undefined
                 }
             ],
-            'groupItems': [
+            groupItems: [
                 {
-                    'column': undefined,
-                    'summaryType': undefined
+                    column: undefined,
+                    summaryType: undefined
                 }
             ]
         },
-        'hoverStateEnabled': false,
-        'allowColumnResizing': false,
-        'allowColumnReordering': false,
-        'pager': {
-            'showPageSizeSelector': true
+        hoverStateEnabled: false,
+        allowColumnResizing: false,
+        allowColumnReordering: false,
+        pager: {
+            showPageSizeSelector: true
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'keyExpr': 'CustomerID',
-        'selectedRowKeys': ['TOMSP'],
-        'columns': [
+        keyExpr: 'orderId',
+        selectedRowKeys: [10249],
+        columns: [
             {
-                'dataField': 'CustomerID',
-                'allowFiltering': false
+                dataField: 'orderId',
+                caption: 'Order ID',
+                width: 90
             },
-            {
-                'dataField': 'OrderDate',
-                'dataType': 'date',
-                'allowFiltering': false
+            'city', {
+                dataField: 'country',
+                width: 180
             },
-            'ShipName',
-            {
-                'dataField': 'ShipCity',
-                'allowFiltering': false
-            },
-            {
-                'dataField': 'ShipCountry',
-                'allowFiltering': false
-            },
-            'Freight'
+            'region', {
+                dataField: 'date',
+                dataType: 'date'
+            }, {
+                dataField: 'amount',
+                format: 'currency',
+                width: 90
+            }
         ]
     };
 
     expandedOptions = {
-        'columnChooser': { 'enabled': true },
-        'rowAlternationEnabled': true,
-        'filterRow': {
-            'visible': true
+        columnChooser: { enabled: true },
+        rowAlternationEnabled: true,
+        filterRow: {
+            visible: true
         },
-        'paging': {
-            'pageSize': 10
+        paging: {
+            pageSize: 10
         },
-        'pager': {
-            'showPageSizeSelector': true
+        pager: {
+            showPageSizeSelector: true
         },
-        'searchPanel': {
-            'visible': true
+        searchPanel: {
+            visible: true
         },
-        'groupPanel': {
-            'visible': true
+        groupPanel: {
+            visible: true
         },
-        'selection': {
-            'mode': 'multiple'
+        selection: {
+            mode: 'multiple'
         },
-        'hoverStateEnabled': true,
-        'allowColumnResizing': true,
-        'allowColumnReordering': true,
-        'editing': {
-            'allowUpdating': true,
-            'allowDeleting': true,
-            'mode': 'batch'
+        hoverStateEnabled: true,
+        allowColumnResizing: true,
+        allowColumnReordering: true,
+        editing: {
+            allowUpdating: true,
+            allowDeleting: true,
+            mode: 'batch'
         },
-        'keyExpr': 'CustomerID',
-        'selectedRowKeys': ['TOMSP'],
-        'columns': [
+        keyExpr: 'orderId',
+        selectedRowKeys: [10250, 10251],
+        columns: [
             {
-                'dataField': 'CustomerID',
-                'allowFiltering': false
+                dataField: 'orderId',
+                caption: 'Order ID',
+                width: 90
+            },
+            'city', {
+                dataField: 'country',
+                width: 180
             },
             {
-                'dataField': 'OrderDate',
-                'dataType': 'date'
-            },
-            'ShipName',
-            {
-                'dataField': 'ShipCity',
-                'groupIndex': 0,
-                'filterOperations': ['startswith', 'contains', '=']
-            },
-            {
-                'dataField': 'ShipCountry',
-                'filterOperations': false,
-                'selectedFilterOperation': 'startswith'
-            },
-            'Freight'
+                dataField: 'region',
+                groupIndex: 0,
+                sortOrder: 'desc'
+            }, {
+                dataField: 'date',
+                dataType: 'date'
+            }, {
+                dataField: 'amount',
+                format: 'currency',
+                width: 90
+            }
         ],
-        'summary': {
-            'totalItems': [
+        summary: {
+            totalItems: [
                 {
-                    'column': 'Freight',
-                    'summaryType': 'sum',
-                    'displayFormat': 'Total: {0}'
+                    column: 'amount',
+                    summaryType: 'sum',
+                    displayFormat: 'Total: {0}'
                 }
             ],
-            'groupItems': [
+            groupItems: [
                 {
-                    'column': 'CustomerID',
-                    'summaryType': 'count'
+                    column: 'orderId',
+                    summaryType: 'count'
                 }
             ]
         }

@@ -22,11 +22,11 @@ export class GalleryComponent implements OnInit, OnDestroy {
     ];
 
     collapsedOptions = {
-        'showNavButtons': false,
+        showNavButtons: false,
     };
 
     expandedOptions = {
-        'showNavButtons': true,
+        showNavButtons: true,
     };
 
     ngOnInit() {

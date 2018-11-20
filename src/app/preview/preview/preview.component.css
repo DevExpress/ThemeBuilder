@@ -9,41 +9,58 @@
     flex:  1 1 800px;
     max-width: 800px;
     height: 320px;
-    padding: 10px 40px;
+    padding: 20px;
     transition: all .3s ease-in;
     box-sizing: border-box;
+    border: 2px solid transparent;
+    position: relative;
 }
+
+.flex-item:not(.group):not(.expanded):hover {
+    border: 2px solid rgba(240, 91, 65, 0.3);
+}
+
+:host ::ng-deep .flex-item:not(.expanded) button {
+    display: none;
+}
+
+:host ::ng-deep .flex-item:not(.group):not(.expanded):hover button {
+    display: block;
+} 
 
 .group .flex-item.expanded,
 .flex-item.expanded {
     flex: 1 1 100%;
-    height: 640px;
-    border: 1px solid #999999;
+    height: auto;
+    border: 2px solid rgba(156, 156, 156, 0.75);
     max-width: 100%;
     padding: 20px;
+    margin: 10px 0;
 }
 
 .flex-item.group {
     display: flex;
     flex-direction: column;
+    position: static;
+    padding: 0;
 }
 
 .group .flex-item {
     height: 140px;
-    padding: 10px 0;
+    padding: 20px;
+    
 }
 
 .group.expanded {
-    height: 820px;
+    height: auto;
     border: none;
     padding: 0;
-    margin: 0;
 }
 
 .group.expanded  .flex-item {
     max-width: 100%;
     flex: 1 1 100%;
-    padding: 10px 40px;
+    padding: 20px;
 }
 
 .flex-label {
@@ -53,17 +70,20 @@
     color: #999999;
 }
 
-.flex-value, .flex-value > * {
+.flex-value,
+.flex-value > * {
     height: 210px;
 }
 
-.group .flex-value, .group .flex-value > * {
+.group .flex-value,
+.group .flex-value > * {
     height: auto;
 }
 
 
-.expanded > .flex-value, .expanded > .flex-value > * {
-    height: 570px;
+.expanded > .flex-value,
+.expanded > .flex-value > * {
+    height: auto;
 }
 
 
@@ -74,7 +94,13 @@
         padding: 10px 20px; 
     }
 
-    .group .flex-item.expanded {
-        padding: 10px 0; 
+    .group .flex-item.expanded,
+    .flex-item.expanded {
+        height: auto;
+    }
+
+    .expanded > .flex-value,
+    .expanded > .flex-value > * {
+        height: auto;
     }
 }

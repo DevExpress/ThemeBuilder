@@ -15,40 +15,40 @@ export class FormComponent implements OnInit, OnDestroy {
     @ViewChild('form') form: DxFormComponent;
 
     collapsedOptions = {
-        'labelLocation': 'top',
-        'formData': {
+        labelLocation: 'top',
+        formData: {
             'ID': 1,
             'Full Name': 'John Heart'
         },
-        'items': [
+        items: [
             {
-                'itemType': 'group',
-                'caption': 'Personal Data',
-                'items': ['ID',  'Full Name']
+                itemType: 'group',
+                caption: 'Personal Data',
+                items: ['ID',  'Full Name']
             }
         ]
     };
 
     expandedOptions = {
-        'labelLocation': 'top',
-        'formData': {
-            'Address': '351 S Hill St.',
-            'City': 'Los Angeles',
-            'State': 'CA',
-            'FirstName': 'John',
-            'LastName': 'Heart'
+        labelLocation: 'top',
+        formData: {
+            Address: '351 S Hill St.',
+            City: 'Los Angeles',
+            State: 'CA',
+            FirstName: 'John',
+            LastName: 'Heart'
         },
-        'items': [
+        items: [
             {
-                'itemType': 'group',
-                'caption': 'Personal Data',
-                'items': ['FirstName', 'LastName']
+                itemType: 'group',
+                caption: 'Personal Data',
+                items: ['FirstName', 'LastName']
             },
             {
-                'itemType': 'group',
-                'colCount': 2,
-                'caption': 'Home Address',
-                'items': ['Address', 'City', 'State']
+                itemType: 'group',
+                colCount: 2,
+                caption: 'Home Address',
+                items: ['Address', 'City, State']
             }
         ]
     };

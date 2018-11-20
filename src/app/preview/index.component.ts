@@ -12,10 +12,12 @@ export class PreviewIndexComponent implements OnInit {
     themeName: string;
     themeSize: string;
     widgetName: string;
+    typographyClass: string;
 
     constructor(private router: Router) {
        this.viewName = this.router.url.split('/')[1];
        this.themeName = this.router.url.split('/')[2];
+       this.typographyClass = 'dx-theme-' + this.themeName + '-typography';
     }
 
     receiveMessage(e) {
