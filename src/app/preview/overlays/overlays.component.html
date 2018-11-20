@@ -1,6 +1,6 @@
 <dx-button text="Load Panel" type="normal" (onClick)="loadPanel.visible = true"></dx-button>
 <dx-button text="Popup" type="normal" (onClick)="popup.visisble = true"></dx-button>
-<dx-button id="actionsheet-button" text="ActionSheet" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
+<dx-button text="ActionSheet" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
 <dx-button id="tooltip-button" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
 <dx-button text="Info toast" type="normal" (onClick)="infoToast.visible = true"></dx-button>
 <dx-button text="Warning toast" type="normal" (onClick)="warningToast.visible = true"></dx-button>
@@ -9,7 +9,7 @@
 
 <dx-load-panel #loadPanel [closeOnOutsideClick]="true" [visible]="false"></dx-load-panel>
 <dx-popup #popup title="Popup Title" [visible]="false"></dx-popup>
-<dx-action-sheet #actionSheet target="#actionsheet-button" [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
+<dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
 <dx-tooltip #tooltip  target="#tooltip-button" [visible]="false">
     <div *dxTemplate="let data of 'content'">
         <p>Tooltip content</p>
