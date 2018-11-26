@@ -1,1 +1,5 @@
-
+:host {
+    display: block;
+    min-width: 1000px;
+    overflow: hidden;
+}
