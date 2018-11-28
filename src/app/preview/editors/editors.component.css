@@ -32,9 +32,16 @@
 }
 
 .editors .block .field {
-    margin: 0 10px 10px 0;
+    margin: 0 10px 20px 0;
     flex: 1 0 150px;
-    height: 90px;
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+::ng-deep .dx-theme-material-typography .editors .block .field {
+    min-height: 90px;
 }
 
 :host ::ng-deep .editors .dx-texteditor {
@@ -69,7 +76,7 @@
 
 .calendar {
     margin-right: 30px;
-    width: 280px;
+    min-width: 280px;
 }
 
 .radiogroup,

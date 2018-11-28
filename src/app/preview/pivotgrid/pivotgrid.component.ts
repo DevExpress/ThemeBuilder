@@ -322,6 +322,9 @@ export class PivotgridComponent implements OnInit, OnDestroy {
             ],
 
         },
+        fieldPanel: {
+            visible: false
+        },
         showBorders: true,
         allowSorting: true,
         allowSortingBySummary: true,

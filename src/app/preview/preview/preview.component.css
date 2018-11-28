@@ -10,7 +10,7 @@
     max-width: 800px;
     height: 320px;
     padding: 20px;
-    transition: all .3s ease-in;
+    transition: max-width .3s ease-in, max-width .3s ease-in, height .3s ease-in;
     box-sizing: border-box;
     border: 2px solid transparent;
     position: relative;
@@ -32,7 +32,7 @@
 .flex-item.expanded {
     flex: 1 1 100%;
     height: auto;
-    border: 2px solid rgba(156, 156, 156, 0.75);
+    border: 2px solid rgba(156, 156, 156, 0.35);
     max-width: 100%;
     padding: 20px;
     margin: 10px 0;
@@ -86,6 +86,13 @@
     height: auto;
 }
 
+:host ::ng-deep .dx-scrollview.preview-scrollview > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollbar-vertical.dx-scrollbar-hoverable.dx-state-hover {
+    background-color: rgba(191, 191, 191, 0.2);
+}
+
+:host ::ng-deep .dx-scrollview.preview-scrollview > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollbar-vertical.dx-scrollbar-hoverable .dx-scrollable-scroll .dx-scrollable-scroll-content {
+    background-color: rgba(191, 191, 191, 0.7);
+}
 
 @media (max-width: 1400px) { 
     .flex-item {
