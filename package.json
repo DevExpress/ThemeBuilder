@@ -22,7 +22,7 @@
         "devextreme": "^18.2.2-pre-18292",
         "devextreme-angular": "^18.2.1-beta.7",
         "devextreme-themebuilder": "^18.2.2-pre-18292",
-        "less": "^2.6.1",
+        "less": "^3.8.1",
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
         "smoothscroll-polyfill": "^0.4.3",
