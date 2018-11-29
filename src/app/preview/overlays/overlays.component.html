@@ -51,7 +51,7 @@
         <div id="target-element"></div>
     </div>
 
-    <dx-popup #popup title="Popup Title" [showTitle]="true" [width]="400" [height]="150" [visible]="false" container="#target-block" [position]="{ of: '#target-element' }"></dx-popup> 
+    <dx-popup #popup title="Popup Title" [closeOnOutsideClick]="true" [showTitle]="true" [width]="400" [height]="150" [visible]="false" container="#target-block" [position]="{ of: '#target-element' }"></dx-popup> 
     <dx-load-panel #loadPanel container="#target-block" [position]="{ of: '#target-element' }" [closeOnOutsideClick]="true" [visible]="false"></dx-load-panel>
     <dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
     <dx-tooltip #tooltip  target="#tooltip-button" [visible]="false">
