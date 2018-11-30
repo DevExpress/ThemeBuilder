@@ -21,4 +21,8 @@ export class OverlaysComponent  {
         const toastContainer = this.isExpanded.getValue() ? '#target-block': '#toast-block';
         e.component.option('container', toastContainer);
     }
+
+    hiding(e) {
+        e.cancel = true;
+    }
 }

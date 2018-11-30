@@ -1,13 +1,18 @@
 :host {
     display: inline-block;
     width: 100%;
-    padding: 20px 0;
-    text-align: justify;
+    height: 210px;
+    padding: 30px 0;
+    text-align: center;
 }
 
 :host ::ng-deep .dx-button {
     margin-right: 10px;
     margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-overlay-wrapper.dx-toast-wrapper {
+    z-index: 1500!important;
 }
 
 #loadpanel-block,
@@ -31,8 +36,8 @@
     width: 70px;
 }
 
-:host ::ng-deep .dx-button.tooltip-target {
-    margin: 0;
+::ng-deep .dx-theme-material-typography #target-element #loadpanel-target {
+    left: -480px!important;
 }
 
 #target-block {
@@ -44,7 +49,15 @@
 
 #target-element {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    position: relative;
+    width: 20px;
+    height: 10px;
     vertical-align: middle;
+}
+
+#target-element #loadpanel-target {
+    display: inline-block;
+    width: 100px;
+    left: -640px;
+    position: absolute;
 }
