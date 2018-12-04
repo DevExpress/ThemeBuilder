@@ -11,3 +11,8 @@
     height: 1px;
     background-color: #e3e7ea;
 }
+
+:host ::ng-deep .dx-dropdowneditor-icon {
+    color: #9c9c9c;
+}
+

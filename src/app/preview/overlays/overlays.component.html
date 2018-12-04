@@ -1,21 +1,105 @@
-<dx-button text="Load Panel" type="normal" (onClick)="loadPanel.visible = true"></dx-button>
-<dx-button text="Popup" type="normal" (onClick)="popup.visisble = true"></dx-button>
-<dx-button text="ActionSheet" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
-<dx-button id="tooltip-button" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
-<dx-button text="Info toast" type="normal" (onClick)="infoToast.visible = true"></dx-button>
-<dx-button text="Warning toast" type="normal" (onClick)="warningToast.visible = true"></dx-button>
-<dx-button text="Error toast" type="normal" (onClick)="errorToast.visible = true"></dx-button>
-<dx-button text="Success toast" type="normal" (onClick)="successToast.visible = true"></dx-button>
-
-<dx-load-panel #loadPanel [closeOnOutsideClick]="true" [visible]="false"></dx-load-panel>
-<dx-popup #popup title="Popup Title" [visible]="false"></dx-popup>
-<dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
-<dx-tooltip #tooltip  target="#tooltip-button" [visible]="false">
-    <div *dxTemplate="let data of 'content'">
-        <p>Tooltip content</p>
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+<ng-template #collapsedBlock>
+    <div id="loadpanel-block">
+        <div id="loadpanel-target"></div>
     </div>
-</dx-tooltip>
-<dx-toast #infoToast message="Info toast" type="info" [displayTime]="300" [visible]="false"></dx-toast>
-<dx-toast #warningToast message="Warning toast" type="warning" [displayTime]="300" [visible]="false"></dx-toast>
-<dx-toast #errorToast message="Error toast" type="error" [displayTime]="300" [visible]="false"></dx-toast>
-<dx-toast #successToast message="Success toast" type="success" [displayTime]="300" [visible]="false"></dx-toast>
+    <div id="toast-block">
+        <div id="toast-target"></div>
+    </div>
+    <div id="tooltip-block">
+        <div id="tooltip-target"></div>
+    </div>
+    <dx-tooltip 
+        #tooltip
+        width="100"
+        target="#tooltip-target"
+        container="#tooltip-block"
+        position="center"
+        [visible]="true">
+        <p>Tooltip</p>
+    </dx-tooltip>
+    <dx-toast 
+        message="Info toast"
+        width="300"
+        type="info"
+        [position]="{ of: '#toast-target', at: 'left center', my: 'left center' }"
+        [visible]="true"
+        (onHiding)="hiding($event)"
+        (onContentReady)="toastInit($event)">
+    </dx-toast>
+    <dx-load-panel 
+        [visible]="true"
+        (onHiding)="hiding($event)"
+        container="#loadpanel-block"
+        [position]="{ of: '#loadpanel-target', at: 'left', my: 'left' }">
+    </dx-load-panel>
+</ng-template>
+
+<ng-template #expandedBlock>
+    <dx-button text="Popup" type="normal" width="135" (onClick)="popup.visible = true"></dx-button>
+    <dx-button text="ActionSheet" width="135" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
+    <dx-button id="tooltip-button" width="135" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
+
+    <div id="target-block">
+        <div id="target-element">
+            <div id="loadpanel-target"></div>
+        </div>
+    </div>
+
+    <dx-popup #popup 
+        title="Popup Title"
+        [closeOnOutsideClick]="true"
+        [showTitle]="true"
+        width="400"
+        height="150"
+        [visible]="false"
+        container="#target-block"
+        [position]="{ of: '#target-element' }">
+    </dx-popup> 
+    <dx-load-panel 
+        [visible]="true"
+        (onHiding)="hiding($event)"
+        container="#target-block"
+        [position]="{ of: '#loadpanel-target', at: 'left', my: 'left' }">
+    </dx-load-panel>
+    <dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
+    <dx-tooltip #tooltip  target="#tooltip-button" position="top" [visible]="false"> 
+        <p>Tooltip content</p>
+    </dx-tooltip>
+    <dx-toast 
+        message="Info toast" 
+        width="350" 
+        [position]="{ of: '#target-element', at: 'left top', my:'right bottom' }" 
+        (onHiding)="hiding($event)" 
+        (onContentReady)="toastInit($event)" 
+        type="info" 
+        [visible]="true">
+    </dx-toast>
+    <dx-toast 
+        message="Warning toast" 
+        width="350" 
+        [position]="{ of: '#target-element', at: 'right top', my:'left bottom' }" 
+        (onHiding)="hiding($event)" 
+        (onContentReady)="toastInit($event)" 
+        type="warning" 
+        [visible]="true">
+    </dx-toast>
+    <dx-toast 
+        message="Error toast"
+        width="350"
+        [position]="{ of: '#target-element', at: 'left bottom', my: 'right top' }"
+        (onHiding)="hiding($event)" 
+        (onContentReady)="toastInit($event)" 
+        type="error" 
+        [visible]="true">
+    </dx-toast>
+    <dx-toast 
+        message="Success toast" 
+        width="350" 
+        [position]="{ of: '#target-element', at: 'right bottom', my:'left top' }" 
+        (onHiding)="hiding($event)" 
+        (onContentReady)="toastInit($event)" 
+        type="success" 
+        [visible]="true">
+    </dx-toast>
+</ng-template>

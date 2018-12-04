@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-overlays',
@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 })
 export class OverlaysComponent  {
     widgetGroup = 'overlays';
-    isExpanded = new Subject<boolean>();
+    isExpanded = new BehaviorSubject<boolean>(false);
 
     actionSheetData: Array<any> = [
         { 'text': 'Command 1' },
@@ -16,4 +16,13 @@ export class OverlaysComponent  {
         { 'text': 'Command 3' },
         { 'text': 'Command 4' }
     ];
+
+    toastInit(e) {
+        const toastContainer = this.isExpanded.getValue() ? '#target-block': '#toast-block';
+        e.component.option('container', toastContainer);
+    }
+
+    hiding(e) {
+        e.cancel = true;
+    }
 }

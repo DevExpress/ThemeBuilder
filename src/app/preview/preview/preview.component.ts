@@ -11,6 +11,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
+    noNexpandableWidgets: Array<string> = ['navigations.menu', 'navigations.navbar', 'navigations.tabs', 'progressbars', 'sliders'];
+
     isWidgetClosed = true;
 
     createPreviewContent(widget: any) {
@@ -41,6 +43,15 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
                 const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
+
+                if(this.noNexpandableWidgets.includes(currentWidget)) {
+                    scrollableContainer.scrollTo({
+                        top: flexParentContainer.offsetTop - scrollTop,
+                        behavior: 'smooth'
+                    });
+
+                    return;
+                }
 
                 if(flexParentContainer.parentElement.classList.contains('group')) {
                     flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);

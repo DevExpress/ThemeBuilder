@@ -322,6 +322,9 @@ export class PivotgridComponent implements OnInit, OnDestroy {
             ],
 
         },
+        fieldPanel: {
+            visible: false
+        },
         showBorders: true,
         allowSorting: true,
         allowSortingBySummary: true,
@@ -405,8 +408,14 @@ export class PivotgridComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.pivotGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.pivotGrid.instance.updateDimensions();
+            const that = this;
+            that.pivotGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
+            that.pivotGrid.instance
+                .element()
+                .closest('.flex-item')
+                .addEventListener('transitionend', function () {
+                    that.pivotGrid.instance.updateDimensions();
+                }, false);
         });
     }
 

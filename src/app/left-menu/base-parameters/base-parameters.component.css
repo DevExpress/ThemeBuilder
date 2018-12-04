@@ -13,13 +13,13 @@
 .editors:after {
     content: "Base Theming";
     text-transform: uppercase;
-    font-weight: bold;
-    color: #9c9c9c;
+    color: #aaa;
     position: absolute;
     transform: rotate(-90deg);
     top: 45%;
     left: -30px;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .work-item {
