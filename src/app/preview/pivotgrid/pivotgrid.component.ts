@@ -411,11 +411,11 @@ export class PivotgridComponent implements OnInit, OnDestroy {
             const that = this;
             that.pivotGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             that.pivotGrid.instance
-                            .element()
-                            .closest('.flex-item')
-                            .addEventListener('transitionend', function() {
-                                that.pivotGrid.instance.updateDimensions();
-                            }, false);
+                .element()
+                .closest('.flex-item')
+                .addEventListener('transitionend', function () {
+                    that.pivotGrid.instance.updateDimensions();
+                }, false);
         });
     }
 

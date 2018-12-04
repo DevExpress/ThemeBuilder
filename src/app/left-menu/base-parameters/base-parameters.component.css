@@ -38,7 +38,3 @@
 :host ::ng-deep .work-item .property-widget {
     padding: 0;
 }
-
-:host ::ng-deep .dx-dropdowneditor-icon {
-    color: #9c9c9c;
-}
