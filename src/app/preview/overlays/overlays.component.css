@@ -19,7 +19,7 @@
 #toast-block,
 #tooltip-block  {
     display: inline-block;
-    width: 300px;
+    width: 340px;
     vertical-align: middle;
 }
 
@@ -33,7 +33,7 @@
 }
 
 ::ng-deep .dx-theme-material-typography #loadpanel-block {
-    width: 70px;
+    width: 100px;
 }
 
 ::ng-deep .dx-theme-material-typography #target-element #loadpanel-target {
