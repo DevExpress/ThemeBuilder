@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-:host ::ng-deep .dx-button {
+:host ::ng-deep  .dx-button:not(.dx-closebutton) {
     margin-right: 30px;
     margin-bottom: 10px;
 }

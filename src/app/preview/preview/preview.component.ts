@@ -17,12 +17,14 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
     createPreviewContent(widget: any) {
         const EXPAND_CLASS_NAME = 'expanded';
+        const NON_EXPAND_CLASS_NAME = 'non-expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget = widget.currentValue || widget;
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
+            flexContainers[i].classList.remove(NON_EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
@@ -45,6 +47,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const scrollTop = 30;
 
                 if(this.noNexpandableWidgets.includes(currentWidget)) {
+                    flexParentContainer.classList.add(NON_EXPAND_CLASS_NAME);
+
                     scrollableContainer.scrollTo({
                         top: flexParentContainer.offsetTop - scrollTop,
                         behavior: 'smooth'

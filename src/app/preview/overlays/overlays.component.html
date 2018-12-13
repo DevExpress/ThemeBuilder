@@ -14,11 +14,13 @@
         width="100"
         target="#tooltip-target"
         container="#tooltip-block"
+        (onHiding)="hiding($event)"
         position="center"
         [visible]="true">
         <p>Tooltip</p>
     </dx-tooltip>
-    <dx-toast 
+    <dx-toast
+        #toast 
         message="Info toast"
         width="300"
         type="info"
@@ -27,7 +29,8 @@
         (onHiding)="hiding($event)"
         (onContentReady)="toastInit($event)">
     </dx-toast>
-    <dx-load-panel 
+    <dx-load-panel
+        #loadPanel 
         [visible]="true"
         (onHiding)="hiding($event)"
         container="#loadpanel-block"
