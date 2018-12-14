@@ -38,6 +38,11 @@
     margin: 10px 0;
 }
 
+
+.group .flex-item.non-expanded {
+    border: 2px solid rgba(156, 156, 156, 0.35);
+}
+
 .flex-item.group {
     display: flex;
     flex-direction: column;
