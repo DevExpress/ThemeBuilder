@@ -1,0 +1,15 @@
+<dx-toolbar [items]="toolbarItems" height="40"></dx-toolbar>
+<dx-drawer
+    #drawer
+    openedStateMode="overlap"
+    position="left"
+    template="template"
+    [opened]="true"
+    [shading]="true"
+    height="200"
+    [closeOnOutsideClick]="true">
+    <div *dxTemplate="let data of 'template'">
+        <div class="drawer-panel dx-theme-background-color" [innerHTML]="drawerPanelContent"></div>
+    </div>
+    <div class="drawer-content dx-theme-background-color" [innerHTML]="drawerContent"></div>
+</dx-drawer>

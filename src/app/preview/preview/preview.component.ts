@@ -16,6 +16,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         'navigations.navbar',
         'navigations.tabs',
         'navigations.toolbar',
+        'navigations.drawer',
         'progressbars',
         'sliders'
     ];
