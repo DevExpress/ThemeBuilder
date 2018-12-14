@@ -149,7 +149,14 @@
                     <app-toolbar #widget></app-toolbar>
                 </div>
             </div>
-            <div class="flex-item"></div>
+            <div class="flex-item empty"></div>
+        </div>
+        <div class="flex-item">
+            <app-button-detailed widget="navigations.drawer" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">DRAWER</div>
+            <div class="flex-value">
+                <app-drawer #widget></app-drawer>
+            </div>
         </div>
     </div>
 </dx-scroll-view>
