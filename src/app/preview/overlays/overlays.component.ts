@@ -36,12 +36,11 @@ export class OverlaysComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-            const that = this;
             const flexContainer = document.getElementsByTagName('app-overlays')[0].parentElement.parentElement;
-            flexContainer.addEventListener('transitionend', function () {
-                that.tooltip.instance.repaint();
-                that.toast.instance.repaint();
-                that.loadPanel.instance.repaint();
+            flexContainer.addEventListener('transitionend', () => {
+                this.tooltip.instance.repaint();
+                this.toast.instance.repaint();
+                this.loadPanel.instance.repaint();
             }, false);
         });
     }
