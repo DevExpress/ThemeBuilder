@@ -22,6 +22,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
 import { ScrollviewComponent } from './scrollview/scrollview.component';
 import { TreelistComponent } from './treelist/treelist.component';
 import { SlidersComponent } from './sliders/sliders.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { WizardComponent } from './wizard/wizard.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -55,6 +56,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         SlidersComponent,
         WizardComponent,
         PreviewComponent,
+        ToolbarComponent,
         ButtonDetailedComponent
     ],
     exports: [

@@ -11,7 +11,14 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
-    noNexpandableWidgets: Array<string> = ['navigations.menu', 'navigations.navbar', 'navigations.tabs', 'progressbars', 'sliders'];
+    noNexpandableWidgets: Array<string> = [
+        'navigations.menu',
+        'navigations.navbar',
+        'navigations.tabs',
+        'navigations.toolbar',
+        'progressbars',
+        'sliders'
+    ];
 
     isWidgetClosed = true;
 

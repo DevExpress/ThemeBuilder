@@ -141,5 +141,15 @@
                 <app-scrollview #widget></app-scrollview>
             </div>
         </div>
+        <div class="flex-item group">
+            <div class="flex-item">
+                <app-button-detailed widget="navigations.toolbar" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <div class="flex-label">TOOLBAR</div>
+                <div class="flex-value">
+                    <app-toolbar #widget></app-toolbar>
+                </div>
+            </div>
+            <div class="flex-item"></div>
+        </div>
     </div>
 </dx-scroll-view>
