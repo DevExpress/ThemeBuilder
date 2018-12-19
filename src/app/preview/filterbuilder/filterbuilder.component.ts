@@ -15,6 +15,7 @@ export class FilterbuilderComponent implements OnInit, OnDestroy {
     @ViewChild('filterBuilder') filterBuilder: DxFilterBuilderComponent;
 
     collapsedOptions = {
+        width: '100%',
         value: [
             ['Name', '=', 'Projector PlusHD'],
             'or',
@@ -42,6 +43,7 @@ export class FilterbuilderComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions = {
+        width: 400,
         value: [
             ['Name', '=', 'Projector PlusHD'],
             'or',

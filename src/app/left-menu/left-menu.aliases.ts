@@ -42,10 +42,6 @@ export class LeftMenuAlias {
 
         'list':                 { name: 'List', order: 1200, equivalents: 'ListView, TableView, ListBox, dxList, dx-list' },
 
-        'layouts':              { name: 'Layouts', order: 1300, equivalents: '' },
-        'layouts.desktop':      { name: 'Desktop', order: 1310, widgetGroup: true, equivalents: '' },
-        'layouts.split':        { name: 'Split', order: 1320, widgetGroup: true, equivalents: '' },
-
         'navigations':          { name: 'Navigation', order: 1400, equivalents: '' },
         'navigations.accordion': { name: 'Accordion', order: 1410, equivalents: 'dxAccordion, dx-accordion' },
         'navigations.menu':     { name: 'Menu', order: 1420, equivalents: 'dxMenu, dx-menu' },

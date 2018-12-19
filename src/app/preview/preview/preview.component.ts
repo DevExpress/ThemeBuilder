@@ -18,7 +18,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         'navigations.toolbar',
         'navigations.drawer',
         'progressbars',
-        'sliders'
+        'sliders',
+        'scrollview'
     ];
 
     isWidgetClosed = true;

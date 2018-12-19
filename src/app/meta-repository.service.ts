@@ -111,11 +111,13 @@ export class MetadataRepositoryService {
             const result: Array<MetaItem> = [];
             const themeData = this.metadataRepository.getData(this.theme);
 
-            themeData.forEach(item => {
-                if(baseParameters.indexOf(item.Key) !== -1) {
-                    result.push(item);
-                }
+            baseParameters.forEach(parameter => {                
+                themeData.forEach(item => {
+                    if(parameter === item.Key) 
+                        result.push(item);
+                })
             });
+
             return result;
         });
     }
