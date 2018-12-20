@@ -32,6 +32,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.gallery.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
+            this.gallery.instance
+                .element()
+                .closest('.flex-item')
+                .addEventListener('transitionend', () => {
+                    this.gallery.instance.repaint();
+                }, false);
         });
     }
 

@@ -486,7 +486,12 @@ export class TreelistComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.treeList.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.treeList.instance.updateDimensions();
+            this.treeList.instance
+                .element()
+                .closest('.flex-item')
+                .addEventListener('transitionend', () => {
+                    this.treeList.instance.updateDimensions();
+                }, false);
         });
     }
 
