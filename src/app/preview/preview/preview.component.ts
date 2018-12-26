@@ -11,28 +11,32 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
-    noNexpandableWidgets: Array<string> = [
+    notExpandableWidgets: Array<string> = [
         'navigations.menu',
         'navigations.navbar',
         'navigations.tabs',
         'navigations.toolbar',
         'navigations.drawer',
+        'navigations.treeview',
+        'navigations.accordion',
         'progressbars',
-        'sliders'
+        'sliders',
+        'scrollview',
+        'filterbuilder'
     ];
 
     isWidgetClosed = true;
 
     createPreviewContent(widget: any) {
         const EXPAND_CLASS_NAME = 'expanded';
-        const NON_EXPAND_CLASS_NAME = 'non-expanded';
+        const NOT_EXPAND_CLASS_NAME = 'not-expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget = widget.currentValue || widget;
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
-            flexContainers[i].classList.remove(NON_EXPAND_CLASS_NAME);
+            flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
@@ -54,8 +58,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
-                if(this.noNexpandableWidgets.includes(currentWidget)) {
-                    flexParentContainer.classList.add(NON_EXPAND_CLASS_NAME);
+                if(this.notExpandableWidgets.includes(currentWidget)) {
+                    flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
 
                     scrollableContainer.scrollTo({
                         top: flexParentContainer.offsetTop - scrollTop,

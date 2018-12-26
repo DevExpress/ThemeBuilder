@@ -28,7 +28,7 @@
     width: 480px;
     display: inline-flex;
     flex-wrap: wrap;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .editors .block .field {

@@ -37,7 +37,7 @@ export class BuilderService {
 
     private build(theme: Theme, config: any): Promise<BuilderResult> {
         const baseConfig = {
-            lessCompiler: lessCompiler(window, { math: "always" }),
+            lessCompiler: lessCompiler(window, { math: 'always' }),
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
             baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')

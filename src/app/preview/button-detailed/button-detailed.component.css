@@ -9,3 +9,7 @@ button {
     padding: 2px;
     border: none;
 }
+
+button.close {
+    background-color: #a5a5a5;
+}

@@ -25,7 +25,7 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
 
     updateData() {
         this.metadataRepository.getBaseParameters().then(parameters => {
-            this.editorsData = parameters.sort((item1, item2) => this.names.sortNames(item1.Name, item2.Name));
+            this.editorsData = parameters;
         });
     }
 

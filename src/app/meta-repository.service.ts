@@ -112,10 +112,11 @@ export class MetadataRepositoryService {
             const themeData = this.metadataRepository.getData(this.theme);
 
             themeData.forEach(item => {
-                if(baseParameters.indexOf(item.Key) !== -1) {
-                    result.push(item);
-                }
+                const index = baseParameters.indexOf(item.Key);
+                if(index !== -1)
+                    result[index] = item;
             });
+
             return result;
         });
     }

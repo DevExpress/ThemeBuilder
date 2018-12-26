@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-scrollview',
@@ -8,5 +8,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ScrollviewComponent {
     widgetGroup = 'scrollview';
-    isExpanded = new BehaviorSubject<boolean>(false);
+    isExpanded = new Subject<boolean>();
 }

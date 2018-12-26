@@ -1,0 +1,15 @@
+:host ::ng-deep .dx-accordion-item-body {
+    padding: 20px;
+}
+
+:host ::ng-deep .dx-accordion-item-body p {
+    margin: 0;
+}
+
+:host ::ng-deep .dx-accordion-item-title .dx-icon {
+    font-size: 18px;
+}
+
+:host ::ng-deep .dx-accordion-item-title .dx-accordion-item-title-caption {
+    font-size: 18px;
+}
