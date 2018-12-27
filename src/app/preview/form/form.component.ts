@@ -48,7 +48,15 @@ export class FormComponent implements OnInit, OnDestroy {
                 itemType: 'group',
                 colCount: 2,
                 caption: 'Home Address',
-                items: ['Address', 'City, State']
+                items: [
+                    'Address',
+                    {
+                        dataField: 'City',
+                        label: {
+                            text: 'City, State'
+                        }
+                    }
+                ]
             }
         ]
     };

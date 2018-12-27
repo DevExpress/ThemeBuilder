@@ -1,85 +1,40 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { DxFilterBuilderComponent } from 'devextreme-angular';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-filterbuilder',
     templateUrl: './filterbuilder.component.html',
     styleUrls: ['./filterbuilder.component.css']
 })
-export class FilterbuilderComponent implements OnInit, OnDestroy {
+export class FilterbuilderComponent {
     widgetGroup = 'filterbuilder';
     isExpanded = new Subject<boolean>();
-    subscription: Subscription;
-
-    @ViewChild('filterBuilder') filterBuilder: DxFilterBuilderComponent;
-
-    collapsedOptions = {
-        width: '100%',
-        value: [
-            ['Name', '=', 'Projector PlusHD'],
-            'or',
-            [
-                ['Category', '=', 'Monitors'],
-                ['Price', '<', '1300']
-            ],
-            'or',
-            []
+  
+    filterBuilderValue: Array<any> = [
+        ['Name', '=', 'Projector PlusHD'],
+        'or',
+        [
+            ['Category', '=', 'Monitors'],
+            ['Price', '<', '1300']
         ],
-        fields: [{
-            dataField: 'ID',
-            dataType: 'number'
-        }, {
-            dataField: 'Name'
-        }, {
-            dataField: 'Price',
-            dataType: 'number'
-        }, {
-            dataField: 'Current_Inventory',
-            dataType: 'number'
-        }, {
-            dataField: 'Category'
-        }]
-    };
+        'or',
+        [
+            ['Category', '=', 'Televisions']
+        ]
+    ];
 
-    expandedOptions = {
-        width: 400,
-        value: [
-            ['Name', '=', 'Projector PlusHD'],
-            'or',
-            [
-                ['Category', '=', 'Monitors'],
-                ['Price', '<', '1300']
-            ],
-            'or',
-            [
-                ['Category', '=', 'Televisions'],
-                ['Price', '<', '4000']
-            ]
-        ],
-        fields: [{
-            dataField: 'ID',
-            dataType: 'number'
-        }, {
-            dataField: 'Name'
-        }, {
-            dataField: 'Price',
-            dataType: 'number'
-        }, {
-            dataField: 'Current_Inventory',
-            dataType: 'number'
-        }, {
-            dataField: 'Category'
-        }]
-    };
-
-    ngOnInit() {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.filterBuilder.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-        });
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
+    filterBuilderFields: Array<any> = [{
+        dataField: 'ID',
+        dataType: 'number'
+    }, {
+        dataField: 'Name'
+    }, {
+        dataField: 'Price',
+        dataType: 'number'
+    }, {
+        dataField: 'Current_Inventory',
+        dataType: 'number'
+    }, {
+        dataField: 'Category'
+    }];
 }

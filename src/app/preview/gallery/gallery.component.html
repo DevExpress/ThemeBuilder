@@ -1,1 +1,5 @@
-<dx-gallery #gallery width="100%" height="100%" [items]="galleryItems"></dx-gallery>
+<dx-gallery [showNavButtons]="true" [loop]="true" width="100%" height="100%" [items]="galleryItems">
+    <div *dxTemplate="let galleryItem of 'item'">
+        <div class="image" [ngStyle]="{'background-image': 'url(' + galleryItem + ')'}"></div>
+    </div>
+</dx-gallery>

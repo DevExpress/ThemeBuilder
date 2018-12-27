@@ -1,47 +1,20 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { DxGalleryComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements OnInit, OnDestroy {
+export class GalleryComponent  {
     widgetGroup = 'gallery';
     isExpanded = new Subject<boolean>();
-    subscription: Subscription;
-
-    @ViewChild('gallery') gallery: DxGalleryComponent;
 
     galleryItems: Array<string> = [
-        'images/person1.png',
-        'images/person2.png',
-        'images/person3.png',
-        'images/person4.png'
+        'images/gallery1.jpg',
+        'images/gallery2.jpg',
+        'images/gallery3.jpg',
+        'images/gallery4.jpg',
+        'images/gallery5.jpg'
     ];
-
-    collapsedOptions = {
-        showNavButtons: false,
-    };
-
-    expandedOptions = {
-        showNavButtons: true,
-    };
-
-    ngOnInit() {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.gallery.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.gallery.instance
-                .element()
-                .closest('.flex-item')
-                .addEventListener('transitionend', () => {
-                    this.gallery.instance.repaint();
-                }, false);
-        });
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
 }

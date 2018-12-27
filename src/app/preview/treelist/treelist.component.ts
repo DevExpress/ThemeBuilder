@@ -408,6 +408,7 @@ export class TreelistComponent implements OnInit, OnDestroy {
     ];
 
     collapsedOptions = {
+        height: '100%',
         expandedRowKeys: [1],
         selectedRowKeys: [2],
         columnAutoWidth: true,
@@ -446,6 +447,7 @@ export class TreelistComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions = {
+        height: 460,
         columnChooser: { enabled: true },
         rowAlternationEnabled: true,
         selectedRowKeys: [2, 3],
