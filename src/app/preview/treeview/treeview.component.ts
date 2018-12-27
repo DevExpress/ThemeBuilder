@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
     templateUrl: './treeview.component.html',
     styleUrls: ['./treeview.component.css']
 })
-export class TreeviewComponent implements OnInit, OnDestroy {
+export class TreeviewComponent {
     widgetGroup = 'treeview';
     isExpanded = new Subject<boolean>();
 

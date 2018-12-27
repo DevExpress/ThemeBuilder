@@ -35,33 +35,20 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
-        const baseCommonWidget = 'base.common';
-        const baseTypographyWidget = 'base.typography';
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
             flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);
         }
 
-        if(
-            currentWidget === baseCommonWidget && previousWidget === baseTypographyWidget || 
-            currentWidget === baseTypographyWidget && previousWidget === baseCommonWidget
-        ) {
-            return;
-        } else if(!previousWidget) {
-            this.widgetElements.forEach((widgetEl) => {
+        this.widgetElements.forEach((widgetEl) => {
+            if(!previousWidget || widgetEl.widgetGroup === previousWidget)
                 widgetEl.isExpanded.next(false);
-            });
-        } else {
-            this.widgetElements.forEach((widgetEl) => {
-                if(widgetEl.widgetGroup === previousWidget)
-                    widgetEl.isExpanded.next(false);
-            });
-        }
+        });
 
         if(this.isWidgetClosed) {
             setTimeout(() => {
-                if(currentWidget === baseCommonWidget || currentWidget === baseTypographyWidget) {
+                if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
                     scrollableContainer.scrollTo({
                         top: 0,
                         behavior: 'smooth'
