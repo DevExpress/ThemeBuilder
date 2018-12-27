@@ -1,4 +1,6 @@
-:host ::ng-deep .dx-gallery-item-image {
-    max-height: 100%;
-    width: 210px;
+.image {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

@@ -24,10 +24,24 @@
             </div>
         </div>
         <div class="flex-item">
+            <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">SCHEDULER</div>
+            <div class="flex-value">
+                <app-scheduler #widget></app-scheduler>
+            </div>
+        </div>
+        <div class="flex-item">
             <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
             <div class="flex-label">PIVOTGRID</div>
             <div class="flex-value">
                 <app-pivotgrid #widget></app-pivotgrid>
+            </div>
+        </div>
+        <div class="flex-item">
+            <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">FORM</div>
+            <div class="flex-value">
+                <app-form #widget></app-form>
             </div>
         </div>
         <div class="flex-item">
@@ -37,25 +51,11 @@
                 <app-treelist #widget></app-treelist>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">SCHEDULER</div>
-            <div class="flex-value">
-                <app-scheduler #widget></app-scheduler>
-            </div>
-        </div>
         <div class="flex-item"> 
             <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
             <div class="flex-label">LIST</div>
             <div class="flex-value">
                 <app-list #widget></app-list>
-            </div>
-        </div>
-        <div class="flex-item">
-            <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">FORM</div>
-            <div class="flex-value">
-                <app-form #widget></app-form>
             </div>
         </div>
         <div class="flex-item">
@@ -158,5 +158,6 @@
                 <app-drawer #widget></app-drawer>
             </div>
         </div>
+        <div class="flex-item empty"></div>
     </div>
 </dx-scroll-view>

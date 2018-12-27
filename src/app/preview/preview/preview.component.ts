@@ -19,6 +19,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         'navigations.drawer',
         'navigations.treeview',
         'navigations.accordion',
+        'gallery',
         'progressbars',
         'sliders',
         'scrollview',
@@ -33,6 +34,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget = widget.currentValue || widget;
+        const previousWidget = widget.previousValue || '';
 
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
@@ -40,7 +42,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         }
 
         this.widgetElements.forEach((widgetEl) => {
-            widgetEl.isExpanded.next(false);
+            if(!previousWidget || widgetEl.widgetGroup === previousWidget)
+                widgetEl.isExpanded.next(false);
         });
 
         if(this.isWidgetClosed) {

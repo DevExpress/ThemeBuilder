@@ -32,6 +32,7 @@
     <dx-load-panel
         #loadPanel 
         [visible]="true"
+        [shading]="false"
         (onHiding)="hiding($event)"
         container="#loadpanel-block"
         [position]="{ of: '#loadpanel-target', at: 'left', my: 'left' }">
@@ -60,6 +61,7 @@
     </dx-popup> 
     <dx-load-panel 
         [visible]="true"
+        [shading]="false"
         (onHiding)="hiding($event)"
         container="#target-block"
         [position]="{ of: '#loadpanel-target', at: 'center', my: 'center' }">

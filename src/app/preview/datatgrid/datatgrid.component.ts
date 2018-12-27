@@ -138,6 +138,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
     ];
 
     collapsedOptions = {
+        height: '100%',
         columnChooser: { enabled: false },
         rowAlternationEnabled: false,
         showBorders: true,
@@ -209,6 +210,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions = {
+        height: 460,
         columnChooser: { enabled: true },
         rowAlternationEnabled: true,
         filterRow: {
