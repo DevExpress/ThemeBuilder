@@ -6,7 +6,7 @@ If you need to run the ThemeBuilder locally (for example, when working with a pr
 
 ## Prerequisites
 
-You will need Node.js 8.9 or higher and npm 5.5.1 or higher. The app was build using angular-cli. Run `npm install @angular/cli -g` to install it.
+You will need Node.js 8.9 or higher and npm 5.5.1 or higher. The app is built using angular-cli. Run `npm install @angular/cli -g` to install it.
 
 ## Install required packages and Launch
 
