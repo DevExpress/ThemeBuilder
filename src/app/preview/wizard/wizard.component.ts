@@ -201,7 +201,7 @@ export class WizardComponent implements AfterViewInit {
         location: 'after',
         locateInMenu: 'never',
         template: () => {
-            return '<img src="images/person2.png" width="30" height="30"/><span>John Heart</span>';
+            return '<img src="images/person.png" width="30" height="30"/><span>John Heart</span>';
         }
     }];
 
