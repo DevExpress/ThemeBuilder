@@ -20,6 +20,7 @@ export class MetadataRepositoryService {
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
+    busy = new BehaviorSubject<boolean>(false);
 
     constructor(private router: Router, private builder: BuilderService) {
         this.build();
@@ -79,6 +80,7 @@ export class MetadataRepositoryService {
     }
 
     build(bootstrapData?: string, bootstrapVersion?: number): Promise<BuilderResult> {
+        this.busy.next(true);
         const isFirstBootstrapBuild = bootstrapVersion !== undefined;
         const currentTheme = this.theme;
         const buildResult = isFirstBootstrapBuild ?
@@ -102,6 +104,7 @@ export class MetadataRepositoryService {
             }
 
             this.css.next(result.css);
+            this.busy.next(false);
             return result;
         });
     }

@@ -20,7 +20,8 @@ import {
     DxPopupModule,
     DxRadioGroupModule,
     DxSwitchModule,
-    DxValidatorModule
+    DxValidatorModule,
+    DxLoadPanelModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
@@ -60,6 +61,7 @@ import { ExportPopupComponent } from './layouts/header/export-popup/export-popup
 import { PopupComponent } from './layouts/header/popup/popup.component';
 import { ButtonComponent } from './layouts/button/button.component';
 import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstrap-uploader.component';
+import { LoadingComponent } from './layouts/loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -91,7 +93,8 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         ExportPopupComponent,
         PopupComponent,
         ButtonComponent,
-        BootstrapUploaderComponent
+        BootstrapUploaderComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
@@ -111,6 +114,7 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         DxSwitchModule,
         DxRadioGroupModule,
         DxValidatorModule,
+        DxLoadPanelModule,
         PreviewModule,
         AppRoutingModule
     ],
