@@ -11,9 +11,9 @@ export class ToolbarComponent {
     isExpanded = new Subject<boolean>();
 
     items: Array<any> = [
-        { 'location': 'before', 'widget': 'button', 'options': { 'type': 'back', 'text': 'Back' } },
-        { 'location': 'after', 'widget': 'button', 'options': { 'icon': 'plus' } },
-        { 'location': 'after', 'widget': 'button', 'options': { 'icon': 'find' } },
+        { 'location': 'before', 'widget': 'dxButton', 'options': { 'type': 'back', 'text': 'Back' } },
+        { 'location': 'after', 'widget': 'dxButton', 'options': { 'icon': 'plus' } },
+        { 'location': 'after', 'widget': 'dxButton', 'options': { 'icon': 'find' } },
         { 'location': 'center', 'text': 'Products' }
     ];
 }
