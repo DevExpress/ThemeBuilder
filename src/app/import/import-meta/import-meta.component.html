@@ -4,10 +4,14 @@
         <div class="title">
             DevExtreme Metadata
         </div>
+        <app-bootstrap-uploader
+            accept=".json"
+            buttonText="Import File"
+        ></app-bootstrap-uploader>
         <div class="text">
-            Copy and paste previously exported metadata below.
+            or insert metadata in the following field.
         </div>
-        <dx-text-area [width]="560" [height]="200" #textArea></dx-text-area>
-        <app-button type="apply" (clicked)="applyClick(textArea)">Import</app-button>
-    </div>
+        <dx-text-area [width]="560" [height]="200" #textArea valueChangeEvent="keyup" [(value)]="importValue"></dx-text-area>
+        <app-button type="apply" [disabled]="importValue === ''" (clicked)="applyClick(textArea)">Import Code</app-button>
+    </div> 
 </div>

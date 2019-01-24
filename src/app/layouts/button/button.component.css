@@ -19,7 +19,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
     background-color: #707070;
     color: #fff;
 }
@@ -30,9 +30,13 @@
     color: #fff;
 }
 
-.button.apply:not(:hover):not(:focus):not(:active) {
+.button.apply:not(:focus):not(:active) {
     background-color: #f05b41;
     color: #fff;
+}
+
+.button.apply:disabled {
+    opacity: 0.5;
 }
 
 .advanced {

@@ -20,7 +20,8 @@ import {
     DxPopupModule,
     DxRadioGroupModule,
     DxSwitchModule,
-    DxValidatorModule
+    DxValidatorModule,
+    DxLoadPanelModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
@@ -111,6 +112,7 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         DxSwitchModule,
         DxRadioGroupModule,
         DxValidatorModule,
+        DxLoadPanelModule,
         PreviewModule,
         AppRoutingModule
     ],

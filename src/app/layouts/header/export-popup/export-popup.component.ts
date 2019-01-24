@@ -14,9 +14,18 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
+    saveAsFile = true;
+    showFileContent = false;
+    fileContent: string;
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
+    loadIndicatorVisible = false;
+    buttonDisabled: boolean;
+    settingDisabled: boolean;
+
+    selectedIndex = 0;
+
 
     constructor(private importService: ImportService) { }
 
@@ -37,6 +46,9 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.outputFile = savedMeta.outputFile;
         this.makeSwatch = !!savedMeta.makeSwatch;
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
+
+        this.displayfileContent(this.selectedIndex);
+        this.settingDisabled = false;
     }
 
     exportCss(): void {
@@ -52,6 +64,24 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
+    }
+
+    displayfileContent(currentTabIndex) {
+        if(currentTabIndex === 0) {
+            this.buttonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
+            this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+                this.fileContent = css;
+                this.loadIndicatorVisible = false;
+                this.settingDisabled = false;
+            });
+        } else {
+            this.fileContent = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+            this.buttonDisabled = true;
+        }
+    }
+
+    valueChange() {
+        this.buttonDisabled = false;
     }
 
     ngOnInit() {

@@ -1,49 +1,10 @@
 .text {
-    padding: 20px 0 30px 0;
+    width: 250px;
+    margin: 0 auto 20px;
 }
 
 .text-area {
-    margin: 20px 0;
-}
-
-::ng-deep .tabs.dx-tabpanel .dx-tab {
-    width: 280px;
-    height: 50px;
-}
-
-::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
-    border-color: #d4d8da;
-    border-width: 2px;
-    border-bottom: 0;
-}
-
-::ng-deep .tabs .dx-tab-selected {
-    background-color: #f0f2f3;
-    color: #f05b41;
-}
-
-::ng-deep .tabs.dx-tabpanel .dx-tab-selected:before {
-    border-bottom: 0;
-}
-
-::ng-deep .tabs .dx-tab.dx-state-focused:after {
-    border-color: transparent;
-}
-
-::ng-deep .tabs .dx-tab-selected:after {
-    border-color: #d4d8da;
-    border-width: 2px;
-    border-top-style: solid;
-    height: 51px;
-}
-
-::ng-deep .tabs .dx-tab.dx-item:not(.dx-tab-selected) {
-    background-color: #d4d8da;
-}
-
-::ng-deep .tabs.dx-tabpanel .dx-multiview-wrapper,
-::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
-    border: none;
+    margin: 0 0 15px;
 }
 
 .radio-group {
@@ -52,20 +13,6 @@
     margin: 0 auto;
 }
 
-::ng-deep .radio-group.dx-radiogroup-horizontal .dx-radiobutton:first-of-type {
-    margin-right: 30px;
+.tabs {
+    margin-top: 20px;
 }
-
-::ng-deep .dx-radiobutton-checked .dx-radiobutton-icon-dot {
-    background-color: #f05b41;
-}
-
-::ng-deep .dx-radiobutton.dx-state-focused:not(.dx-state-active) .dx-radiobutton-icon:before {
-    border-color: #f05b41;
-}
-
-::ng-deep .dx-radiobutton.dx-state-hover:not(.dx-state-active) .dx-radiobutton-icon:before {
-    border-color: #f05b41b0;
-}
-
-

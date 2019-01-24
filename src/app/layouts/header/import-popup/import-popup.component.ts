@@ -28,6 +28,7 @@ export class ImportPopupComponent {
     }];
 
     selectedIndex = 0;
+    importValue = '';
 
     applyClick(t) {
         this.importService.importMetadata(t.value, 'advanced').then(() => {

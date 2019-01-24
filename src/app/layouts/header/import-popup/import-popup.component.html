@@ -2,13 +2,18 @@
     title="Import a Theme"
     #popup
 >
-    <div class="text">
-        Copy and paste previously exported metadata below or upload a Bootstrap theme file.
-    </div>
-    <dx-tab-panel class="tabs" [height]="340">
+    <dx-tab-panel class="tabs">
         <dxi-item title="DevExtreme Metadata">
-            <dx-text-area class="text-area" [height]="200" #textArea></dx-text-area>
-            <app-button type="apply" (clicked)="applyClick(textArea)">Import</app-button>
+            <app-bootstrap-uploader
+                accept=".json"
+                buttonText="Import File"
+                (imported)="imported()"
+            ></app-bootstrap-uploader>
+            <div class="text">
+                or insert metadata in the following field.
+            </div>
+            <dx-text-area valueChangeEvent="keyup" class="text-area" [(value)]="importValue" [height]="100" #textArea></dx-text-area>
+            <app-button type="apply" [disabled]="importValue === ''" (clicked)="applyClick(textArea)">Import Code</app-button>
         </dxi-item>
         <dxi-item title="Bootstrap Variables">
             <div class="text">
