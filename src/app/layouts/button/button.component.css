@@ -30,7 +30,7 @@
     color: #fff;
 }
 
-.button.apply:not(:focus):not(:active) {
+.button.apply {
     background-color: #f05b41;
     color: #fff;
 }

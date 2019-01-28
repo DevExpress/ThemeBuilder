@@ -14,18 +14,15 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
-    saveAsFile = true;
-    showFileContent = false;
     fileContent: string;
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
     loadIndicatorVisible = false;
-    buttonDisabled: boolean;
-    settingDisabled: boolean;
+    applyButtonDisabled = true;
+    settingDisabled = false;
 
     selectedIndex = 0;
-
 
     constructor(private importService: ImportService) { }
 
@@ -46,15 +43,27 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.outputFile = savedMeta.outputFile;
         this.makeSwatch = !!savedMeta.makeSwatch;
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
+    }
 
-        this.displayfileContent(this.selectedIndex);
+    fileSave(cssContent) {
+        fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([cssContent]));
+    }
+
+
+    popupShown() {
+        this.displayFileContent(this.selectedIndex);
         this.settingDisabled = false;
     }
 
     exportCss(): void {
         if(!this.validate().isValid) return;
+        const fileContentReady = this.applyButtonDisabled && !this.loadIndicatorVisible;
+        if(fileContentReady) {
+            this.fileSave(this.fileContent);
+            return;
+        }
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
-            fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([css]));
+            this.fileSave(css);
             this.popup.hide();
         });
     }
@@ -66,9 +75,9 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.popup.hide();
     }
 
-    displayfileContent(currentTabIndex) {
+    displayFileContent(currentTabIndex) {
         if(currentTabIndex === 0) {
-            this.buttonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
+            this.applyButtonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
             this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
                 this.fileContent = css;
                 this.loadIndicatorVisible = false;
@@ -76,12 +85,12 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
             });
         } else {
             this.fileContent = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
-            this.buttonDisabled = true;
+            this.applyButtonDisabled = true;
         }
     }
 
     valueChange() {
-        this.buttonDisabled = false;
+        this.applyButtonDisabled = false;
     }
 
     ngOnInit() {

@@ -1,6 +1,5 @@
 .text {
-    width: 250px;
-    margin: 0 auto 20px;
+    margin: 20px auto 30px;
 }
 
 .text-area {
@@ -15,4 +14,9 @@
 
 .tabs {
     margin-top: 20px;
+}
+
+.tabs .text {
+    text-align: center;
+    margin: 20px 0;
 }

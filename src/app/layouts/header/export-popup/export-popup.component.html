@@ -1,9 +1,10 @@
 <app-popup
-    title="Export a Theme"
+    title="Theme Export"
+    (popupShown)="popupShown()"
     #popup
 >   
     <div class="editor-item first">
-        <label>Custom color scheme name</label>
+        <label>Color scheme name</label>
         <dx-text-box [(value)]="schemeName" [width]="360" valueChangeEvent="keyup" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)">
             <dx-validator>
                 <dxi-validation-rule 
@@ -15,7 +16,7 @@
         </dx-text-box>
     </div>
     <div class="editor-item">
-        <label>Swatch mode</label>
+        <label>Save as a color swatch</label>
         <dx-switch [(value)]="makeSwatch" [disabled]="settingDisabled" text="Make swatch" (onValueChanged)="valueChange($event)"></dx-switch>
     </div>
     <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
@@ -27,30 +28,30 @@
         class="tabs" 
         [height]="140"
         [(selectedIndex)]="selectedIndex"
-        (onSelectionChanged)="displayfileContent(selectedIndex)">
+        (onSelectionChanged)="displayFileContent(selectedIndex)">
         <dxi-item title="Export CSS">              
             <div class="buttons">
-                <app-button type="apply" [width]="270" title="Save CSS to file" (clicked)="exportCss()">Save CSS to file</app-button>
+                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to file" (clicked)="exportCss()">Save to file</app-button>
                 <app-button 
                     type="apply" 
                     [width]="270" 
-                    title="Apply" 
-                    [disabled]="buttonDisabled" 
-                    (clicked)="displayfileContent(selectedIndex)">
-                    Apply
+                    title="Display CSS" 
+                    [disabled]="applyButtonDisabled" 
+                    (clicked)="displayFileContent(selectedIndex)">
+                    Display CSS
                 </app-button>
             </div>
         </dxi-item>
         <dxi-item title="Export Metadata">
             <div class="buttons">
-                <app-button type="apply" [width]="270" title="Save Metadata to file" (clicked)="exportMeta()">Save Metadata to file</app-button>
+                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to file" (clicked)="exportMeta()">Save to file</app-button>
                 <app-button 
                     type="apply" 
                     [width]="270" 
-                    title="Apply" 
-                    [disabled]="buttonDisabled" 
-                    (clicked)="displayfileContent(selectedIndex)">
-                    Apply
+                    title="Display Metadata" 
+                    [disabled]="applyButtonDisabled" 
+                    (clicked)="displayFileContent(selectedIndex)">
+                    Display Metadata
                 </app-button>
             </div>
         </dxi-item>
@@ -65,10 +66,10 @@
     </dx-text-area>
     <dx-load-panel 
         [visible]="loadIndicatorVisible" 
-        [position]="{ of: '#file-content', at: 'center', my: 'center' }" 
+        [position]="{ of: '#file-content' }" 
         [showPane]="false" 
         [shading]="true" 
         shadingColor="rgba(232, 232, 232, 0.5)"
-        message="Generate CSS...">
+        message="Generating CSS...">
     </dx-load-panel>
 </app-popup>
