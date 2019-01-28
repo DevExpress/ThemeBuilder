@@ -1,15 +1,15 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:8
 
     steps:
       - checkout
 
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
       - run:
           name: Install packages
           command: npm install
