@@ -2,3 +2,9 @@
     width: 100px;
     height: 100px;
 }
+
+::ng-deep .dx-loadpanel-content {
+    border-radius: 50%;
+    background-color: #f0f2f3;
+    border: none;
+}

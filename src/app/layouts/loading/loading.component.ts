@@ -15,5 +15,6 @@ export class LoadingComponent implements OnInit {
 
     ngOnInit() {
         this.metadataService.busy.subscribe(busy => this.loading = busy);
+        // this.loading = true;
     }
 }
