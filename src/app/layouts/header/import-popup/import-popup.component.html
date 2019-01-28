@@ -2,19 +2,16 @@
     title="Theme Import"
     #popup
 >
-    <div class="text">
-        Copy and paste previously exported metadata below or upload a Bootstrap theme file.	
-    </div>
     <dx-tab-panel class="tabs">
         <dxi-item title="DevExtreme Metadata">
+            <div class="text first-tab">
+                Upload a .json file with DevExtreme metadata or copy and paste the metadata in the area below.
+            </div>
             <app-bootstrap-uploader
                 accept=".json"
                 buttonText="Upload File"
                 (imported)="imported()"
             ></app-bootstrap-uploader>
-            <div class="text">
-                or insert metadata in the following field.
-            </div>
             <dx-text-area
                 #textArea
                 valueChangeEvent="keyup"

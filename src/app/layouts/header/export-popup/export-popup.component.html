@@ -17,7 +17,7 @@
     </div>
     <div class="editor-item">
         <label>Save as a color swatch</label>
-        <dx-switch [(value)]="makeSwatch" [disabled]="settingDisabled" text="Make swatch" (onValueChanged)="valueChange($event)"></dx-switch>
+        <dx-check-box [(value)]="makeSwatch" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)"></dx-check-box>
     </div>
     <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
         <label>Output file path</label>
@@ -31,7 +31,7 @@
         (onSelectionChanged)="displayFileContent(selectedIndex)">
         <dxi-item title="Export CSS">              
             <div class="buttons">
-                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to file" (clicked)="exportCss()">Save to file</app-button>
+                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to File" (clicked)="exportCss()">Save to File</app-button>
                 <app-button 
                     type="apply" 
                     [width]="270" 
@@ -44,7 +44,7 @@
         </dxi-item>
         <dxi-item title="Export Metadata">
             <div class="buttons">
-                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to file" (clicked)="exportMeta()">Save to file</app-button>
+                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to File" (clicked)="exportMeta()">Save to File</app-button>
                 <app-button 
                     type="apply" 
                     [width]="270" 

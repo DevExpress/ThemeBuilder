@@ -1,9 +1,5 @@
-.text {
-    margin: 20px auto 30px;
-}
-
 .text-area {
-    margin: 0 0 15px;
+    margin: 10px 0 15px;
 }
 
 .radio-group {
@@ -19,4 +15,8 @@
 .tabs .text {
     text-align: center;
     margin: 20px 0;
+}
+
+.tabs .text.first-tab {
+    margin-bottom: 0;
 }

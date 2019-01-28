@@ -76,6 +76,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     displayFileContent(currentTabIndex) {
+        if(!this.validate().isValid) return;
         if(currentTabIndex === 0) {
             this.applyButtonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
             this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {

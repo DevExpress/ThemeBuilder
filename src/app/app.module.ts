@@ -19,7 +19,7 @@ import {
     DxScrollViewModule,
     DxPopupModule,
     DxRadioGroupModule,
-    DxSwitchModule,
+    DxCheckBoxModule,
     DxValidatorModule,
     DxLoadPanelModule
 } from 'devextreme-angular';
@@ -109,7 +109,7 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         DxScrollViewModule,
         DxDataGridModule,
         DxPopupModule,
-        DxSwitchModule,
+        DxCheckBoxModule,
         DxRadioGroupModule,
         DxValidatorModule,
         DxLoadPanelModule,
