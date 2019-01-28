@@ -14,9 +14,15 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
+    fileContent: string;
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
+    loadIndicatorVisible = false;
+    applyButtonDisabled = true;
+    settingDisabled = false;
+
+    selectedIndex = 0;
 
     constructor(private importService: ImportService) { }
 
@@ -39,10 +45,25 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
+    fileSave(cssContent) {
+        fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([cssContent]));
+    }
+
+
+    popupShown() {
+        this.displayFileContent(this.selectedIndex);
+        this.settingDisabled = false;
+    }
+
     exportCss(): void {
         if(!this.validate().isValid) return;
+        const fileContentReady = this.applyButtonDisabled && !this.loadIndicatorVisible;
+        if(fileContentReady) {
+            this.fileSave(this.fileContent);
+            return;
+        }
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
-            fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([css]));
+            this.fileSave(css);
             this.popup.hide();
         });
     }
@@ -52,6 +73,25 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
+    }
+
+    displayFileContent(currentTabIndex) {
+        if(!this.validate().isValid) return;
+        if(currentTabIndex === 0) {
+            this.applyButtonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
+            this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+                this.fileContent = css;
+                this.loadIndicatorVisible = false;
+                this.settingDisabled = false;
+            });
+        } else {
+            this.fileContent = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+            this.applyButtonDisabled = true;
+        }
+    }
+
+    valueChange() {
+        this.applyButtonDisabled = false;
     }
 
     ngOnInit() {

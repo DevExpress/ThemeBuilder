@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
         const newTheme = themes.filter(i => i.themeId === e.value);
 
-        confirm('Are you sure you want to change the base theme? All changes will be lost.', 'Theme Builder').then(confirmed => {
+        confirm('Are you sure you want to change the base theme? All changes will be lost.', 'ThemeBuilder').then(confirmed => {
             if(confirmed && newTheme.length) {
                 const theme = newTheme[0].name;
                 const colorScheme = newTheme[0].colorScheme;
