@@ -5,12 +5,16 @@
 >   
     <div class="editor-item first">
         <label>Color scheme name</label>
-        <dx-text-box [(value)]="schemeName" [width]="360" valueChangeEvent="keyup" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)">
+        <dx-text-box [(value)]="schemeName" [width]="400" valueChangeEvent="keyup" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)">
             <dx-validator>
                 <dxi-validation-rule 
                     type="pattern" 
                     pattern="^[\w-_\.]*$" 
                     message="Only alphabetic and numeric characters, underscores, dots, and hyphens are allowed.">
+                </dxi-validation-rule>
+                <dxi-validation-rule 
+                    type="required" 
+                    message="Color scheme name is required.">
                 </dxi-validation-rule>
             </dx-validator>
         </dx-text-box>
@@ -21,14 +25,13 @@
     </div>
     <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
         <label>Output file path</label>
-        <dx-text-box [value]="outputFile" [readOnly]="true" [width]="360"></dx-text-box>
+        <dx-text-box [value]="outputFile" [readOnly]="true" [width]="400"></dx-text-box>
     </div>
     <dx-tab-panel
         #tabPane 
-        class="tabs" 
+        class="tabs first" 
         [height]="140"
-        [(selectedIndex)]="selectedIndex"
-        (onSelectionChanged)="displayFileContent(selectedIndex)">
+        [(selectedIndex)]="selectedIndex">
         <dxi-item title="Export CSS">              
             <div class="buttons">
                 <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to File" (clicked)="exportCss()">Save to File</app-button>
@@ -37,7 +40,7 @@
                     [width]="270" 
                     title="Display CSS" 
                     [disabled]="applyButtonDisabled" 
-                    (clicked)="displayFileContent(selectedIndex)">
+                    (clicked)="displayFileContent()">
                     Display CSS
                 </app-button>
             </div>
@@ -50,7 +53,7 @@
                     [width]="270" 
                     title="Display Metadata" 
                     [disabled]="applyButtonDisabled" 
-                    (clicked)="displayFileContent(selectedIndex)">
+                    (clicked)="displayFileContent()">
                     Display Metadata
                 </app-button>
             </div>
@@ -61,7 +64,7 @@
         class="first" 
         [readOnly]="true" 
         [height]="150" 
-        [value]="fileContent" 
+        [value]="fileContent[selectedIndex]" 
         #textArea>
     </dx-text-area>
     <dx-load-panel 
@@ -70,6 +73,6 @@
         [showPane]="false" 
         [shading]="true" 
         shadingColor="rgba(232, 232, 232, 0.5)"
-        message="Generating CSS...">
+        message="Generating...">
     </dx-load-panel>
 </app-popup>
