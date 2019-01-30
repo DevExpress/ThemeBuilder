@@ -69,7 +69,8 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportMeta(): void {
         if(!this.validate().isValid) return;
-        fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([this.fileContent[1]]));
+        const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+        fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
     }
 
