@@ -11,7 +11,7 @@
 }
 
 .editors:after {
-    content: "Base Theming";
+    content: "Basic Settings";
     text-transform: uppercase;
     color: #aaa;
     position: absolute;
