@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      ignore:
-        - gh-pages
     docker:
       - image: circleci/node:8
 
@@ -16,3 +13,12 @@ jobs:
       - run:
           name: Run linter
           command: npm run lint
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
