@@ -18,7 +18,7 @@ workflows:
   version: 2
   lint:
     jobs:
-      - build
+      - build:
           filters:
             branches:
               ignore: gh-pages
