@@ -40,14 +40,18 @@
     opacity: 0.5;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-container {
-    border-radius: 0;
-    border: 2px solid #d4d8da;
-    height: 26px;
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox.dx-state-focused .dx-checkbox-icon {
+    border-color: #d4d8da;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-handle:before {
-    background-color: #f05b41;
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox.dx-state-hover .dx-checkbox-icon {
+    background-color: transparent;
+    border-color: #d4d8da;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox-icon {
+    color: #f05b41;
+    border: 2px solid #d4d8da;
 }
 
 ::ng-deep .tabs.dx-tabpanel .dx-tab {

@@ -14,7 +14,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
-    fileContent: string;
+    fileContent: Array<string> = [];
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
@@ -51,15 +51,14 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
 
     popupShown() {
-        this.displayFileContent(this.selectedIndex);
-        this.settingDisabled = false;
+        this.displayFileContent();
     }
 
     exportCss(): void {
         if(!this.validate().isValid) return;
         const fileContentReady = this.applyButtonDisabled && !this.loadIndicatorVisible;
         if(fileContentReady) {
-            this.fileSave(this.fileContent);
+            this.fileSave(this.fileContent[0]);
             return;
         }
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
@@ -75,19 +74,17 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.popup.hide();
     }
 
-    displayFileContent(currentTabIndex) {
+    displayFileContent() {
         if(!this.validate().isValid) return;
-        if(currentTabIndex === 0) {
-            this.applyButtonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
-            this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
-                this.fileContent = css;
-                this.loadIndicatorVisible = false;
-                this.settingDisabled = false;
-            });
-        } else {
-            this.fileContent = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+
+        this.applyButtonDisabled = this.settingDisabled = this.loadIndicatorVisible = true;
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+            this.fileContent[0] = css;
+            this.loadIndicatorVisible = false;
+            this.settingDisabled = false;
             this.applyButtonDisabled = true;
-        }
+        });
+        this.fileContent[1] = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
     }
 
     valueChange() {
