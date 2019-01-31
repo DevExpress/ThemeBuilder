@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 
 export class LeftMenuComponent implements OnDestroy, OnInit {
 
-    private BASE_THEMING_NAME = 'Base Theming';
+    private BASE_THEMING_NAME = 'Basic Settings';
 
     @ViewChild('searchInput') searchInput: ElementRef;
 
