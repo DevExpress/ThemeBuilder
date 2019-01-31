@@ -16,3 +16,9 @@ jobs:
       - run:
           name: Run linter
           command: npm run lint
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - build
