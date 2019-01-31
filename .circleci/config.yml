@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     branches:
-      only:
-        - master
+      ignore:
+        - gh-pages
     docker:
       - image: circleci/node:8
 
