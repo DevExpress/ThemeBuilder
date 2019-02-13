@@ -2,6 +2,10 @@
     margin: 15px auto;
 }
 
+.text.first {
+    margin-bottom: 0;
+} 
+
 dx-text-area {
     display: block;
     margin: 0 auto 30px auto;

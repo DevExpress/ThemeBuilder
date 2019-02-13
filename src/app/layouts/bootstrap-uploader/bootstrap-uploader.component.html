@@ -3,10 +3,10 @@
     [multiple]="false"
     [showFileList]="false"
     [accept]="accept"
-    labelText="or Drop the file here"
+    [labelText]="labelText"
     uploadMode="useForm"
     [selectButtonText]="buttonText"
     (onValueChanged)="uploaded($event)"
-    height="100"
+    [height]="height"
     class="file-uploader">
 </dx-file-uploader>

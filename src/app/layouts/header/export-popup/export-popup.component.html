@@ -5,11 +5,15 @@
 >   
     <div class="editor-item first">
         <label>Color scheme name</label>
-        <dx-text-box [(value)]="schemeName" [width]="400" valueChangeEvent="keyup" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)">
+        <dx-text-box 
+            [(value)]="schemeName" 
+            [width]="400" 
+            valueChangeEvent="keyup" 
+            (onValueChanged)="schemeNameChange()">
             <dx-validator>
                 <dxi-validation-rule 
                     type="pattern" 
-                    pattern="^[\w-_\.]*$" 
+                    pattern="^[\w-_]*$" 
                     message="Only alphabetic and numeric characters, underscores, dots, and hyphens are allowed.">
                 </dxi-validation-rule>
                 <dxi-validation-rule 
@@ -21,7 +25,7 @@
     </div>
     <div class="editor-item">
         <label>Save as a color swatch</label>
-        <dx-check-box [(value)]="makeSwatch" [disabled]="settingDisabled" (onValueChanged)="valueChange($event)"></dx-check-box>
+        <dx-check-box [(value)]="makeSwatch" (onValueChanged)="swatchChange()"></dx-check-box>
     </div>
     <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
         <label>Output file path</label>
@@ -30,35 +34,17 @@
     <dx-tab-panel
         #tabPane 
         class="tabs first" 
-        [height]="140"
+        [height]="60"
         [(selectedIndex)]="selectedIndex">
-        <dxi-item title="Export CSS">              
-            <div class="buttons">
-                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to File" (clicked)="exportCss()">Save to File</app-button>
-                <app-button 
-                    type="apply" 
-                    [width]="270" 
-                    title="Display CSS" 
-                    [disabled]="applyButtonDisabled" 
-                    (clicked)="displayFileContent()">
-                    Display CSS
-                </app-button>
-            </div>
-        </dxi-item>
-        <dxi-item title="Export Metadata">
-            <div class="buttons">
-                <app-button type="apply" [disabled]="settingDisabled" [width]="270" title="Save to File" (clicked)="exportMeta()">Save to File</app-button>
-                <app-button 
-                    type="apply" 
-                    [width]="270" 
-                    title="Display Metadata" 
-                    [disabled]="applyButtonDisabled" 
-                    (clicked)="displayFileContent()">
-                    Display Metadata
-                </app-button>
-            </div>
-        </dxi-item>
+        <dxi-item title="Export CSS"></dxi-item>
+        <dxi-item title="Export Metadata"></dxi-item>
     </dx-tab-panel>
+    <div class="buttons">
+        <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button>
+    </div>
+    <div class="text">
+        or copy CSS/metadata from the area below.
+    </div>
     <dx-text-area 
         id="file-content" 
         class="first" 
