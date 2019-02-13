@@ -21,7 +21,11 @@
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text {
+    text-align: center;
+    margin: 20px 0;
 }

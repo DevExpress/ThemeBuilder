@@ -11,6 +11,8 @@ export class BootstrapUploaderComponent {
     @Input() accept: string;
     @Input() buttonText: string;
     @Input() version: number;
+    @Input() height: number;
+    @Input() labelText = 'or Drop the file here';
     @Output() imported = new EventEmitter();
 
     constructor(private importService: ImportService) {}
