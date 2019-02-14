@@ -3,7 +3,7 @@
 }
 
 .file-uploader {
-    margin: 0 auto;
+    margin: -5px auto 0;
 }
 
 :host ::ng-deep .file-uploader .dx-fileuploader-input-container {
