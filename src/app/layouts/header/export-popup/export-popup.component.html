@@ -43,7 +43,7 @@
         <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button>
     </div>
     <div class="text">
-        or copy CSS/metadata from the area below.
+        or copy {{ selectedIndex ? "metadata" : "CSS" }} from the area below.
     </div>
     <dx-text-area 
         id="file-content" 
