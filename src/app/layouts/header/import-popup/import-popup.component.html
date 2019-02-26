@@ -1,14 +1,32 @@
 <app-popup
-    title="Import a Theme"
+    title="Theme Import"
     #popup
 >
-    <div class="text">
-        Copy and paste previously exported metadata below or upload a Bootstrap theme file.
-    </div>
-    <dx-tab-panel class="tabs" [height]="340">
+    <dx-tab-panel class="tabs">
         <dxi-item title="DevExtreme Metadata">
-            <dx-text-area class="text-area" [height]="200" #textArea></dx-text-area>
-            <app-button type="apply" (clicked)="applyClick(textArea)">Import</app-button>
+            <div class="text first-tab">
+                Upload a .json file with DevExtreme metadata
+            </div>
+            <app-bootstrap-uploader
+                accept=".json"
+                buttonText="Upload File"
+                labelText=""
+                height="65"
+                (imported)="imported()"
+            ></app-bootstrap-uploader>
+            <div class="text">
+                or paste metadata in the area below.
+            </div>
+            <dx-text-area
+                #textArea
+                valueChangeEvent="keyup"
+                class="text-area"
+                [(value)]="importValue"
+                [height]="100"
+                placeholder="Paste metadata here"
+            >
+            </dx-text-area>
+            <app-button [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
         </dxi-item>
         <dxi-item title="Bootstrap Variables">
             <div class="text">
@@ -31,7 +49,6 @@
                 [version]="radioGroupData[selectedIndex].version"
                 (imported)="imported()"
             ></app-bootstrap-uploader>
-
         </dxi-item>
     </dx-tab-panel>
 </app-popup>

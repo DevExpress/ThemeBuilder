@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/DevExpress/ThemeBuilder.svg?style=svg)](https://circleci.com/gh/DevExpress/ThemeBuilder)
+
 # DevExtreme ThemeBuilder
  
 The DevExtreme ThemeBuilder allows you to modify themes shipped with DevExtreme or create custom themes. This tool is available [online](https://devexpress.github.io/ThemeBuilder/).

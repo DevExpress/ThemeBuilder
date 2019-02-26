@@ -36,16 +36,76 @@
     border: 2px solid #d4d8da;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-textbox.dx-state-readonly {
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-textbox.dx-state-readonly:not(.dx-textarea) {
     opacity: 0.5;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-container {
-    border-radius: 0;
-    border: 2px solid #d4d8da;
-    height: 26px;
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox.dx-state-focused .dx-checkbox-icon {
+    border-color: #d4d8da;
 }
 
-::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-switch-handle:before {
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox.dx-state-hover .dx-checkbox-icon {
+    background-color: transparent;
+    border-color: #d4d8da;
+}
+
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox-icon {
+    color: #f05b41;
+    border: 2px solid #d4d8da;
+}
+
+::ng-deep .tabs.dx-tabpanel .dx-tab {
+    width: 280px;
+    height: 50px;
+}
+
+::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
+    border-color: #d4d8da;
+    border-width: 2px;
+    border-bottom: 0;
+}
+
+::ng-deep .tabs .dx-tab-selected {
+    background-color: #f0f2f3;
+    color: #f05b41;
+}
+
+::ng-deep .tabs.dx-tabpanel .dx-tab-selected:before {
+    border-bottom: 0;
+}
+
+::ng-deep .tabs .dx-tab.dx-state-focused:after {
+    border-color: transparent;
+}
+
+::ng-deep .tabs .dx-tab-selected:after {
+    border-color: #d4d8da;
+    border-width: 2px;
+    border-top-style: solid;
+    height: 51px;
+}
+
+::ng-deep .tabs .dx-tab.dx-item:not(.dx-tab-selected) {
+    background-color: #d4d8da;
+}
+
+::ng-deep .tabs.dx-tabpanel .dx-multiview-wrapper,
+::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
+    border: none;
+}
+
+::ng-deep .radio-group.dx-radiogroup-horizontal .dx-radiobutton:first-of-type {
+    margin-right: 30px;
+}
+
+::ng-deep .dx-radiobutton-checked .dx-radiobutton-icon-dot {
     background-color: #f05b41;
+}
+
+::ng-deep .dx-radiobutton.dx-state-focused:not(.dx-state-active) .dx-radiobutton-icon:before {
+    border-color: #f05b41;
+}
+
+::ng-deep .dx-radiobutton.dx-state-hover:not(.dx-state-active) .dx-radiobutton-icon:before {
+    border-color: #f05b41b0;
 }

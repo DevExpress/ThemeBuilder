@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-popup',
@@ -8,7 +8,13 @@ import { Component, Input } from '@angular/core';
 
 export class PopupComponent {
     @Input() title: string;
+    @Output() popupShown = new EventEmitter();
+
     visible = false;
+
+    shown() {
+        this.popupShown.emit();
+    }
 
     show() {
         this.visible = true;

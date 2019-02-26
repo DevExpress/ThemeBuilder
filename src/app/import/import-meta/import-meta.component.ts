@@ -9,6 +9,9 @@ import { alert } from 'devextreme/ui/dialog';
 })
 export class ImportMetaComponent {
     constructor(private importService: ImportService) {}
+
+    importValue = '';
+
     applyClick(t) {
         this.importService.importMetadata(t.value, 'advanced').then(null, () => {
             alert('It is unable to import this metadata.', 'ThemeBuilder');

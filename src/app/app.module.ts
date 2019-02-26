@@ -19,7 +19,7 @@ import {
     DxScrollViewModule,
     DxPopupModule,
     DxRadioGroupModule,
-    DxSwitchModule,
+    DxCheckBoxModule,
     DxValidatorModule,
     DxLoadPanelModule
 } from 'devextreme-angular';
@@ -111,7 +111,7 @@ import { LoadingComponent } from './layouts/loading/loading.component';
         DxScrollViewModule,
         DxDataGridModule,
         DxPopupModule,
-        DxSwitchModule,
+        DxCheckBoxModule,
         DxRadioGroupModule,
         DxValidatorModule,
         DxLoadPanelModule,

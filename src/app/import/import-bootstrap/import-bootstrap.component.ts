@@ -17,6 +17,4 @@ export class ImportBootstrapComponent {
         acceptFormat: '.less',
         uploadButtonText: 'Upload LESS Variables'
     }];
-
-    selectedIndex = 0;
 }

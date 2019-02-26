@@ -14,9 +14,15 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
+    fileContent: Array<string> = [];
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
+    loadIndicatorVisible = false;
+    saveButtonDisabled = false;
+
+    selectedIndex = 0;
+    timerId = null;
 
     constructor(private importService: ImportService) { }
 
@@ -39,10 +45,23 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
+    fileSave(cssContent) {
+        fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([cssContent]));
+    }
+
+    popupShown() {
+        this.displayFileContent(0);
+    }
+
     exportCss(): void {
         if(!this.validate().isValid) return;
+        const fileContentReady = !this.loadIndicatorVisible;
+        if(fileContentReady) {
+            this.fileSave(this.fileContent[0]);
+            return;
+        }
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
-            fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([css]));
+            this.fileSave(css);
             this.popup.hide();
         });
     }
@@ -52,6 +71,43 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
+    }
+
+    displayCss() {
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+            this.fileContent[0] = css;
+            this.loadIndicatorVisible = false;
+            this.saveButtonDisabled = false;
+        });
+    }
+
+    displayMeta() {
+        this.fileContent[1] = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+    }
+
+    displayFileContent(timeout: number) {
+        if(!this.validate().isValid) return;
+
+        this.loadIndicatorVisible = true;
+        this.saveButtonDisabled = true;
+
+        clearTimeout(this.timerId);
+        this.timerId = setTimeout(() => {
+            this.displayCss();
+        }, timeout);
+
+        this.displayMeta();
+    }
+
+    schemeNameChange() {
+        if(this.makeSwatch)
+            this.displayFileContent(1000);
+        else
+            this.displayMeta();
+    }
+
+    swatchChange() {
+        this.displayFileContent(0);
     }
 
     ngOnInit() {

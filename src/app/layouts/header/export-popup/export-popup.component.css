@@ -1,11 +1,11 @@
+.first {
+    margin-top: 20px;
+}
+
 .editor-item {
     height: 34px;
     display: flex;
     margin-bottom: 10px;
-}
-
-.editor-item.first {
-    margin-top: 20px;
 }
 
 .editor-item.hidden {
@@ -13,7 +13,7 @@
 }
 
 .editor-item label {
-    width: 200px;
+    width: 160px;
 }
 
 .editor-item > * {
@@ -21,8 +21,11 @@
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 20px;
 }
 
+.text {
+    text-align: center;
+    margin: 20px 0 10px;
+}

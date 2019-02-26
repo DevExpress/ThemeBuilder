@@ -3,7 +3,7 @@
 }
 
 .file-uploader {
-    margin: 0 auto;
+    margin: -5px auto 0;
 }
 
 :host ::ng-deep .file-uploader .dx-fileuploader-input-container {
@@ -13,8 +13,6 @@
 
 :host ::ng-deep .file-uploader .dx-button {
     width: 100%;
-    background-color: #f05b41;
-    color: #fff;
     height: 45px;
     font-weight: bold;
     font-size: 16px;
@@ -22,6 +20,7 @@
 
 :host ::ng-deep .file-uploader .dx-button.dx-state-hover {
     background-color: #707070;
+    color: #fff;
 }
 
 :host ::ng-deep .file-uploader .dx-button.dx-state-active,

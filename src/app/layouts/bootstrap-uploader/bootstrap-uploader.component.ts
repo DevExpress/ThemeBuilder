@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImportService } from 'src/app/import.service';
+import { alert } from 'devextreme/ui/dialog';
 
 @Component({
   selector: 'app-bootstrap-uploader',
@@ -10,6 +11,8 @@ export class BootstrapUploaderComponent {
     @Input() accept: string;
     @Input() buttonText: string;
     @Input() version: number;
+    @Input() height: number;
+    @Input() labelText = 'or Drop the file here';
     @Output() imported = new EventEmitter();
 
     constructor(private importService: ImportService) {}
@@ -20,7 +23,13 @@ export class BootstrapUploaderComponent {
             let fileReader: FileReader;
             fileReader = new FileReader();
             fileReader.onload = () => {
-                this.importService.importBootstrapVariables(fileReader.result, this.version, 'advanced');
+                if(this.version)
+                    this.importService.importBootstrapVariables(fileReader.result, this.version, 'advanced');
+                else
+                    this.importService.importMetadata(fileReader.result, 'advanced').catch(() => {
+                        alert('It is unable to import this metadata.', 'ThemeBuilder');
+                    });
+
                 this.imported.emit();
                 e.component.reset();
             };

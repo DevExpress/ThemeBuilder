@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 export class FilterbuilderComponent {
     widgetGroup = 'filterbuilder';
     isExpanded = new Subject<boolean>();
-  
+
     filterBuilderValue: Array<any> = [
         ['Name', '=', 'Projector PlusHD'],
         'or',
