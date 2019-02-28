@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MetadataRepositoryService } from '../../meta-repository.service';
+import { Component, OnInit } from '@angular/core';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
     selector: 'app-loading',
@@ -8,13 +8,11 @@ import { MetadataRepositoryService } from '../../meta-repository.service';
 })
 
 export class LoadingComponent implements OnInit {
-    @Input() target;
     loading = false;
 
-    constructor(private metadataService: MetadataRepositoryService) { }
+    constructor(private loadingService: LoadingService) { }
 
     ngOnInit() {
-        this.metadataService.busy.subscribe(busy => this.loading = busy);
-        // this.loading = true;
+        this.loadingService.busy.subscribe(busy => this.loading = busy);
     }
 }

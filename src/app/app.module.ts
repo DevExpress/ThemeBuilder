@@ -50,6 +50,7 @@ import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-c
 
 import { BuilderService } from './builder.service';
 import { MetadataRepositoryService } from './meta-repository.service';
+import { LoadingService } from './loading.service';
 import { NamesService } from './names.service';
 import { ImportService } from './import.service';
 
@@ -122,7 +123,8 @@ import { LoadingComponent } from './layouts/loading/loading.component';
         BuilderService,
         MetadataRepositoryService,
         NamesService,
-        ImportService
+        ImportService,
+        LoadingService
     ],
     bootstrap: [AppComponent]
 })
