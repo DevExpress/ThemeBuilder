@@ -20,19 +20,30 @@ export class MetadataRepositoryService {
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
+    forceRebuild = false;
 
     constructor(private router: Router, private builder: BuilderService) {
         this.build();
-
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
         const repositoryPromise = this.metadataRepository.init(themes);
 
         this.router.events.subscribe(event => {
             if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
-            if(urlParts[2] && urlParts[3]) {
-                if(!this.theme || this.theme.name !== urlParts[2] || this.theme.colorScheme !== urlParts[3]) {
-                    this.theme = { name: urlParts[2], colorScheme: urlParts[3] };
+            const themeName = urlParts[2];
+            const colorScheme = urlParts[3];
+
+            if(!colorScheme && this.modifiedMetaCollection.length) {
+                this.forceRebuild = true;
+            }
+
+            if(themeName && colorScheme) {
+                if(this.theme.name !== themeName ||
+                    this.theme.colorScheme !== colorScheme ||
+                    this.forceRebuild
+                ) {
+                    this.forceRebuild = false;
+                    this.theme = { name: themeName, colorScheme: colorScheme };
                     this.clearModifiedDataCache();
                     this.build();
                 }
