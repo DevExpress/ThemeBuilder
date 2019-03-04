@@ -32,10 +32,12 @@ export class SchedulerComponent implements OnInit, OnDestroy {
     expandedOptions = {
         views: ['month', 'week', 'day'],
         currentDate: new Date(2017, 4, 25),
+        indicatorTime: new Date(2017, 4, 24),
         currentView: 'week',
         startDayHour: 9,
         endDayHour: 13,
         firstDayOfWeek: 1,
+        showCurrentTimeIndicator: true,
         dataSource: [
             {
                 text: 'Website Re-Design Plan',

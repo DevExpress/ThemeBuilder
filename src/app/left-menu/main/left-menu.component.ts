@@ -63,7 +63,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     changeWidget(widget: string) {
-        const item = this.menuData && this.menuData.find(value => value.groupKey === widget);
+        const item = this.menuData && this.menuData.find(value => value.groupKey === (widget === 'treelist' ? 'datagrid': widget));
         if(item) {
             this.openWorkArea(item.items, item.groupName);
         }

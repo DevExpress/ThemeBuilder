@@ -4,12 +4,8 @@ export class LeftMenuAlias {
         'base.typography': { name: 'Typography Settings', order: 130 },
 
         'datagrid': {
-            name: 'Data Grid', order: 200,
-            equivalents: 'dxDataGrid, data grid, dx-data-grid'
-        },
-        'treelist': {
-            name: 'Tree List', order: 300,
-            equivalents: 'dxTreeList, dx-tree-list'
+            name: 'Data Grid / Tree List', order: 200,
+            equivalents: 'dxDataGrid, data grid, dx-data-grid, dxTreeList, dx-tree-list'
         },
         'pivotgrid': {
             name: 'Pivot Grid', order: 400,
@@ -19,7 +15,6 @@ export class LeftMenuAlias {
             name: 'Scheduler', order: 500,
             equivalents: 'dxScheduler, dx-scheduler'
         },
-
         'buttons': {
             name: 'Button', order: 700,
             equivalents: 'dxButton, dx-button'
@@ -69,10 +64,6 @@ export class LeftMenuAlias {
             name: 'Color Box', order: 825, widgetGroup: true,
             equivalents: 'ColorBox, ColorPicker, dxColorBox, dx-color-box'
         },
-        'editors.fileuploader': {
-            name: 'File Uploader', order: 830, widgetGroup: true,
-            equivalents: 'dxFileUploader, dx-file-uploader'
-        },
         'editors.lookup': {
             name: 'Lookup', order: 835, widgetGroup: true,
             equivalents: 'dxLookup, dx-lookup'
@@ -101,6 +92,10 @@ export class LeftMenuAlias {
             name: 'Validation', order: 870, widgetGroup: true,
             equivalents: 'dxValidator, dx-validator'
         },
+        'editors.fileuploader': {
+            name: 'File Uploader', order: 875, widgetGroup: true,
+            equivalents: 'dxFileUploader, dx-file-uploader'
+        },
 
         'form': {
             name: 'Form', order: 900,
@@ -123,16 +118,20 @@ export class LeftMenuAlias {
             name: 'Overlays', order: 1110, widgetGroup: true,
             equivalents: 'dxPopup, dx-popup, dxPopover, dx-popover, dxActionSheet, dx-action-sheet, dxTooltip, dx-tooltip, dxToast, dx-toast'
         },
-        'overlays.actionsheet': {
-            name: 'Action Sheet', order: 1120, widgetGroup: true,
-            equivalents: 'dxActionSheet, dx-action-sheet'
+        'overlays.popup': {
+            name: 'Popup', order: 1120, widgetGroup: true,
+            equivalents: 'dxPopup, dx-popup'
+        },
+        'overlays.loadpanel': {
+            name: 'Load Panel', order: 1130, widgetGroup: true,
+            equivalents: 'dxLoadPanel, dx-load-panel'
         },
         'overlays.tooltip': {
-            name: 'Tooltip', order: 1130, widgetGroup: true,
+            name: 'Tooltip', order: 1140, widgetGroup: true,
             equivalents: 'dxTooltip, dx-tooltip'
         },
         'overlays.toasts': {
-            name: 'Toast', order: 1140, widgetGroup: true,
+            name: 'Toast', order: 1150, widgetGroup: true,
             equivalents: 'dxToast, dx-toast'
         },
 

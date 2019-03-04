@@ -50,6 +50,7 @@
                         routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{exact: true}"
                         (click)="menuClosed = true;"
+                        [ngClass]="widget === 'treelist' && menuItem.groupKey === 'datagrid' ? 'active-link': ''"
                     >
                         {{ menuItem.groupName }}
                     </div>

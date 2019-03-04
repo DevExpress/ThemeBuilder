@@ -32,7 +32,7 @@
             <div class="field">
                 <div class="label">Number Box</div>
                 <div class="value">
-                    <dx-number-box stylingMode="outlined" value="123"></dx-number-box>
+                    <dx-number-box stylingMode="outlined" [showSpinButtons]="true" value="123"></dx-number-box>
                 </div>
             </div>
             <div class="field">
@@ -74,7 +74,7 @@
             <div class="field">
                 <div class="label">Number Box</div>
                 <div class="value">
-                    <dx-number-box stylingMode="filled" value="123"></dx-number-box>
+                    <dx-number-box [showSpinButtons]="true" stylingMode="filled" value="123"></dx-number-box>
                 </div>
             </div>
             <div class="field">
@@ -116,7 +116,7 @@
             <div class="field">
                 <div class="label">Number Box</div>
                 <div class="value">
-                    <dx-number-box stylingMode="underlined" value="123"></dx-number-box>
+                    <dx-number-box [showSpinButtons]="true" stylingMode="underlined" value="123"></dx-number-box>
                 </div>
             </div>
             <div class="field">
@@ -149,7 +149,7 @@
     <div class="block radiogroup">
         <div class="header">Radio Group</div>
         <dx-radio-group [items]="['Normal']" value="Normal"></dx-radio-group>
-        <dx-radio-group [items]="['Disable']" value="Disable" [disabled]="true"></dx-radio-group>
+        <dx-radio-group [items]="['Disabled']" value="Disable" [disabled]="true"></dx-radio-group>
     </div>
     <div class="block switch">
         <div class="header">Switch</div>
@@ -165,5 +165,25 @@
             </div>
             <div class="label">Disable</div>
         </div>
+    </div>
+    <div class="block fileuploader">
+        <div class="header">File Uploader</div>
+        <dx-file-uploader
+            uploadMode="useButtons"
+            [multiple]="true"
+            [value]="[{
+                name: '1.txt',
+                size: 100,
+                type: 'text/plain'
+            },{
+                name: '2.txt',
+                size: 200,
+                type: 'text/plain'
+            },{
+                name: '3.txt',
+                size: 300,
+                type: 'text/plain'
+            }]"
+        ></dx-file-uploader>
     </div>
 </ng-template>

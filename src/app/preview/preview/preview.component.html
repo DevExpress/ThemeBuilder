@@ -17,10 +17,24 @@
             </div>
         </div>
         <div class="flex-item">
+            <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">PIVOTGRID</div>
+            <div class="flex-value">
+                <app-pivotgrid #widget></app-pivotgrid>
+            </div>
+        </div>
+        <div class="flex-item">
             <app-button-detailed widget="datagrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
             <div class="flex-label">DATAGRID</div>
             <div class="flex-value">
                 <app-datagrid #widget></app-datagrid>
+            </div>
+        </div>
+        <div class="flex-item">
+            <app-button-detailed widget="treelist" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">TREELIST</div>
+            <div class="flex-value">
+                <app-treelist #widget></app-treelist>
             </div>
         </div>
         <div class="flex-item">
@@ -31,24 +45,10 @@
             </div>
         </div>
         <div class="flex-item">
-            <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">PIVOTGRID</div>
-            <div class="flex-value">
-                <app-pivotgrid #widget></app-pivotgrid>
-            </div>
-        </div>
-        <div class="flex-item">
             <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
             <div class="flex-label">FORM</div>
             <div class="flex-value">
                 <app-form #widget></app-form>
-            </div>
-        </div>
-        <div class="flex-item">
-            <app-button-detailed widget="treelist" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">TREELIST</div>
-            <div class="flex-value">
-                <app-treelist #widget></app-treelist>
             </div>
         </div>
         <div class="flex-item"> 
