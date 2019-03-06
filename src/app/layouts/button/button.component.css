@@ -24,8 +24,8 @@
     color: #fff;
 }
 
-.button:focus,
-.button:active {
+.button:focus:not(:disabled),
+.button:active:not(:disabled) {
     background-color: #9e9e9e;
     color: #fff;
 }
