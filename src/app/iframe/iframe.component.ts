@@ -3,6 +3,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataRepositoryService } from '../meta-repository.service';
 import { Subscription, BehaviorSubject } from 'rxjs';
+import { LoadingService } from '../loading.service';
 
 @Component({
     selector: 'app-iframe',
@@ -23,12 +24,14 @@ export class IframeComponent implements OnDestroy, OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private sanitizer: DomSanitizer,
-        private metadataService: MetadataRepositoryService) {
+        private metadataService: MetadataRepositoryService,
+        private loading: LoadingService) {
             this.route.params.subscribe((params) => {
                 if(this.widgetName.getValue() !== params['widget']) {
                     this.widgetName.next(params['widget']);
                 }
                 if(this.theme !== params['theme']) {
+                    this.loading.show();
                     this.theme = params['theme'];
                     this.url = document.getElementsByTagName('base')[0].href + (params['widget'] ? 'preview' : 'wizard') + '/' + this.theme;
                     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -39,6 +42,10 @@ export class IframeComponent implements OnDestroy, OnInit {
     receiveMessage(e) {
         if(e.data.widget)
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
+
+        if(e.data.hideLoading) {
+            this.loading.hide();
+        }
     }
 
     onIframeLoad() {

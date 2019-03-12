@@ -10,6 +10,7 @@ import { BuilderService } from './builder.service';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
 import { BuilderResult } from './types/builder-result';
+import { LoadingService } from './loading.service';
 
 @Injectable()
 export class MetadataRepositoryService {
@@ -22,7 +23,7 @@ export class MetadataRepositoryService {
     css = new BehaviorSubject<string>('');
     forceRebuild = false;
 
-    constructor(private router: Router, private builder: BuilderService) {
+    constructor(private router: Router, private builder: BuilderService, private loading: LoadingService) {
         this.build();
         this.metadataRepository = new MetadataRepository(new MetadataLoader());
         const repositoryPromise = this.metadataRepository.init(themes);
@@ -90,6 +91,7 @@ export class MetadataRepositoryService {
     }
 
     build(bootstrapData?: string, bootstrapVersion?: number): Promise<BuilderResult> {
+        this.loading.show();
         const isFirstBootstrapBuild = bootstrapVersion !== undefined;
         const currentTheme = this.theme;
         const buildResult = isFirstBootstrapBuild ?
@@ -113,6 +115,7 @@ export class MetadataRepositoryService {
             }
 
             this.css.next(result.css);
+            this.loading.hide();
             return result;
         });
     }

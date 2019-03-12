@@ -1,5 +1,11 @@
 .master {
     display: flex;
+    position: relative;
+}
+
+:host ::ng-deep .master .loading {
+    width: calc(100% - 750px);
+    left: 750px;
 }
 
 .master .section {

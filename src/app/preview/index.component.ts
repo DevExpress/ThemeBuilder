@@ -53,6 +53,9 @@ export class PreviewIndexComponent implements OnInit {
     }
 
     ngOnInit() {
-        window.addEventListener('message', this.receiveMessage.bind(this), false);
+        const messageListener = this.receiveMessage.bind(this);
+        window.removeEventListener('message', messageListener);
+        window.addEventListener('message', messageListener, false);
+        window.parent.postMessage({ hideLoading: true }, window.parent.location.href);
     }
 }

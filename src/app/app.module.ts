@@ -50,6 +50,7 @@ import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-c
 
 import { BuilderService } from './builder.service';
 import { MetadataRepositoryService } from './meta-repository.service';
+import { LoadingService } from './loading.service';
 import { NamesService } from './names.service';
 import { ImportService } from './import.service';
 
@@ -61,6 +62,7 @@ import { ExportPopupComponent } from './layouts/header/export-popup/export-popup
 import { PopupComponent } from './layouts/header/popup/popup.component';
 import { ButtonComponent } from './layouts/button/button.component';
 import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstrap-uploader.component';
+import { LoadingComponent } from './layouts/loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -92,7 +94,8 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         ExportPopupComponent,
         PopupComponent,
         ButtonComponent,
-        BootstrapUploaderComponent
+        BootstrapUploaderComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
@@ -120,7 +123,8 @@ import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstr
         BuilderService,
         MetadataRepositoryService,
         NamesService,
-        ImportService
+        ImportService,
+        LoadingService
     ],
     bootstrap: [AppComponent]
 })
