@@ -27,7 +27,7 @@ export class BootstrapUploaderComponent {
                 if(typeof fileReader.result === 'string') {
                     meta = fileReader.result;
                 } else {
-                    throw new Error('FileReader.readAsText fills FileReader.result with value that is not a string');
+                    throw new Error('FileReader.readAsText set FileReader.result to a value which is not a string');
                 }
 
                 if(this.version) {
