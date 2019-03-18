@@ -11,7 +11,7 @@ export class ImportService {
     private normalizedMetadata: any = {};
     changed = new EventEmitter();
 
-    importBootstrapVariables(variables: any, bootstrapVersion: number, redirectView: string): Promise<any> {
+    importBootstrapVariables(variables: string, bootstrapVersion: number, redirectView: string): Promise<any> {
         this.clearSavedMetadata();
         return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
             this.route.navigate([redirectView, this.metaRepository.theme.name, this.metaRepository.theme.colorScheme]);

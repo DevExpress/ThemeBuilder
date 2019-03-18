@@ -23,12 +23,20 @@ export class BootstrapUploaderComponent {
             let fileReader: FileReader;
             fileReader = new FileReader();
             fileReader.onload = () => {
-                if(this.version)
-                    this.importService.importBootstrapVariables(fileReader.result, this.version, 'advanced');
-                else
-                    this.importService.importMetadata(fileReader.result, 'advanced').catch(() => {
+                let meta: string;
+                if(typeof fileReader.result === 'string') {
+                    meta = fileReader.result;
+                } else {
+                    throw new Error('FileReader.readAsText set FileReader.result to a value which is not a string');
+                }
+
+                if(this.version) {
+                    this.importService.importBootstrapVariables(meta, this.version, 'advanced');
+                } else {
+                    this.importService.importMetadata(meta, 'advanced').catch(() => {
                         alert('It is unable to import this metadata.', 'ThemeBuilder');
                     });
+                }
 
                 this.imported.emit();
                 e.component.reset();
