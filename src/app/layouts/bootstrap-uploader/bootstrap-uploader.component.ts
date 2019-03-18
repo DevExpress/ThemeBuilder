@@ -34,7 +34,7 @@ export class BootstrapUploaderComponent {
                     this.importService.importBootstrapVariables(meta, this.version, 'advanced');
                 } else {
                     this.importService.importMetadata(meta, 'advanced').catch(() => {
-                        alert('It is unable to import this metadata.', 'ThemeBuilder');
+                        alert('Metadata has a wrong format.', 'Error');
                     });
                 }
 

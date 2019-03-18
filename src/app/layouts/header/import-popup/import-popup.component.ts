@@ -35,7 +35,7 @@ export class ImportPopupComponent {
             this.popup.hide();
             t.value = '';
         }, () => {
-            alert('It is unable to import this metadata.', 'ThemeBuilder');
+            alert('Metadata has a wrong format.', 'Error');
         });
     }
 
