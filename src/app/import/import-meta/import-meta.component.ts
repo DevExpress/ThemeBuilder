@@ -14,7 +14,7 @@ export class ImportMetaComponent {
 
     applyClick(t) {
         this.importService.importMetadata(t.value, 'advanced').then(null, () => {
-            alert('It is unable to import this metadata.', 'ThemeBuilder');
+            alert('Metadata has a wrong format.', 'Error');
         });
     }
 }
