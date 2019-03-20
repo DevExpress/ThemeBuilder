@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
             if(confirmed && newTheme.length) {
                 const theme = newTheme[0].name;
                 const colorScheme = newTheme[0].colorScheme;
-                const url = this.route.url;
-                const widget = url.substring(url.lastIndexOf('/') + 1);
+                const urlParts = this.route.url.split('/');
+                const widget = urlParts[urlParts.length - 2];
                 this.route.navigate(['advanced', theme, colorScheme, widget]);
             } else {
                 this.currentThemeId = e.previousValue;

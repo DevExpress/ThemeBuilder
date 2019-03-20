@@ -191,5 +191,9 @@ export class LeftMenuAlias {
     static getAlias(key) {
         return this.aliases[key];
     }
+
+    static getUnitedGroupName(group): string {
+        return group === 'datagrid' ? 'grids' : group;
+    }
 }
 

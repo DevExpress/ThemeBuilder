@@ -25,7 +25,11 @@ const routes: Routes = [
             { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3 } },
             { path: 'advanced', redirectTo: '/advanced/generic/light/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme', redirectTo: 'advanced/:theme/:color-scheme/base.common', pathMatch: 'full' },
-            { path: 'advanced/:theme/:color-scheme/:widget', component: AdvancedComponent, data: { routeId: 4 } },
+            { path: 'advanced/:theme/:color-scheme/grids', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
+            { path: 'advanced/:theme/:color-scheme/datagrid', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
+            { path: 'advanced/:theme/:color-scheme/treelist', redirectTo: '/advanced/:theme/:color-scheme/grids/treelist', pathMatch: 'full' },
+            { path: 'advanced/:theme/:color-scheme/:widget', redirectTo: '/advanced/:theme/:color-scheme/:widget/', pathMatch: 'full'},
+            { path: 'advanced/:theme/:color-scheme/:group/:widget', component: AdvancedComponent, data: { routeId: 4 } },
         ]
     },
     {
