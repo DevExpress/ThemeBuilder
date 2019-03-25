@@ -124,7 +124,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 } else {
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupKey: group,
                         groupName: groupName,
                         items: groupItems,
                         equivalents: aliasInfo.equivalents,
@@ -143,7 +142,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
                 itemArray.push({
                     order: aliasInfo.order,
-                    groupKey: mainGroupKey,
                     groupName: aliasInfo.name,
                     items: widgetGroups.filter(i => i.Group === mainGroupKey),
                     equivalents: aliasInfo.equivalents,
