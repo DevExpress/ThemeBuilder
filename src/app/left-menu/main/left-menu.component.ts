@@ -36,7 +36,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe(params => {
-            this.widget = params['widget'];
+            this.widget = params['group'];
             this.changeWidget(this.widget);
         });
     }
@@ -63,7 +63,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     changeWidget(widget: string) {
-        const item = this.menuData && this.menuData.find(value => value.groupKey === widget);
+        const item = this.menuData && this.menuData.find(value => value.unitedGroupKey === widget);
         if(item) {
             this.openWorkArea(item.items, item.groupName);
         }
@@ -103,6 +103,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 processedGroups[group] = true;
 
                 const aliasInfo = LeftMenuAlias.getAlias(group);
+                const unitedGroupName = LeftMenuAlias.getUnitedGroupName(group);
 
                 if(!aliasInfo) return;
 
@@ -123,10 +124,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 } else {
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupKey: group,
                         groupName: groupName,
                         items: groupItems,
-                        equivalents: aliasInfo.equivalents
+                        equivalents: aliasInfo.equivalents,
+                        unitedGroupKey: unitedGroupName
                     });
                 }
             });
@@ -137,13 +138,14 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 processedGroups[mainGroupKey] = true;
 
                 const aliasInfo = LeftMenuAlias.getAlias(mainGroupKey);
+                const unitedGroupName = LeftMenuAlias.getUnitedGroupName(mainGroupKey);
 
                 itemArray.push({
                     order: aliasInfo.order,
-                    groupKey: mainGroupKey,
                     groupName: aliasInfo.name,
                     items: widgetGroups.filter(i => i.Group === mainGroupKey),
-                    equivalents: aliasInfo.equivalents
+                    equivalents: aliasInfo.equivalents,
+                    unitedGroupKey: unitedGroupName
                 });
             });
 

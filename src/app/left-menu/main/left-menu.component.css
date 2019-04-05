@@ -158,6 +158,10 @@
     cursor: pointer;
 }
 
+.left-menu .working-area .work-item .group:not(.closed) {
+    padding-bottom: 10px;
+}
+
 .left-menu .working-area .work-item .group .group-header .chevron {
     float: right;
     font-weight: bold;

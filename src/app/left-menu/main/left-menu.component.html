@@ -46,7 +46,7 @@
                     <div
                         *ngFor="let menuItem of filteredMenuData"
                         class="menu-item"
-                        [routerLink]="['/advanced', theme, colorScheme, menuItem.groupKey]"
+                        [routerLink]="['/advanced', theme, colorScheme, menuItem.unitedGroupKey]"
                         routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{exact: true}"
                         (click)="menuClosed = true;"

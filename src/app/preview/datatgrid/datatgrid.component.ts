@@ -196,8 +196,8 @@ export class DatagridComponent implements OnInit, OnDestroy {
                 width: 180
             }, {
                 dataField: 'region',
-                groupIndex: null,
-                sortOrder: undefined
+                groupIndex: 0,
+                sortOrder: 'desc'
             }, {
                 dataField: 'date',
                 dataType: 'date'
@@ -261,7 +261,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
             }, {
                 dataField: 'amount',
                 format: 'currency',
-                width: 90
+                width: 300
             }
         ],
         summary: {
@@ -283,10 +283,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.dataGrid.instance.beginUpdate();
-            this.dataGrid.instance.clearGrouping();
             this.dataGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.dataGrid.instance.endUpdate();
         });
     }
 
