@@ -44,7 +44,8 @@ export class ImportService {
             items: this.metaRepository.getModifiedItems(),
             baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.'),
             outputColorScheme: customSchemeName,
-            makeSwatch: useSwatch
+            makeSwatch: useSwatch,
+            version: this.metaRepository.version()
         };
 
         return JSON.stringify(exportedObject, null, 4);
