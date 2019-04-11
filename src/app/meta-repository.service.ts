@@ -161,4 +161,8 @@ export class MetadataRepositoryService {
         this.modifiedMetaCollection = [];
         return this.build(bootstrapData, bootstrapVersion);
     }
+
+    version(): string {
+        return this.metadataRepository.getVersion();
+    }
 }
