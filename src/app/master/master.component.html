@@ -11,7 +11,7 @@
                     routerLinkActive="active"
                     [routerLink]="['/master', theme.name, theme.colorScheme]">
                     <app-icon-theme-circle [theme]="theme.text | lowercase" [small]="false"></app-icon-theme-circle>
-                    <span class="color-name">{{theme.text}}</span>
+                    <span class="color-name">{{theme.text.replace('Compact', '')}}</span>
                 </li>
             </ul>
         </div>
