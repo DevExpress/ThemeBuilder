@@ -11,18 +11,15 @@
     <link rel="stylesheet" type="text/css" href="content/css/dx.common.css" />
 
     <script>
-        if(!/preview|wizard/.test(window.location.pathname)) {
-            window.addEventListener('resize', function() {
-                var bodyOverflowX = window.getComputedStyle(document.body).getPropertyValue('overflow-x');
-                if(bodyOverflowX === 'hidden') {
-                   document.documentElement.scrollLeft = 0;
-                }
-            });
+        function isIframe() {
+            return /preview|wizard/.test(window.location.pathname);
+        }
 
-            document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
-        } else {
+        if(isIframe()) {
             var themeMarker = "dx." + /generic|material/.exec(window.location.pathname)[0];
-            document.write('<style>\r\n   .dx-theme-marker { font-family: "' + themeMarker + '" }\r\n</style>')
+            document.write(`<style>.dx-theme-marker { font-family: "${themeMarker}"; }</style>`);
+        } else {
+            document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
         }
     </script>
 
@@ -31,22 +28,45 @@
             margin: 0;
         }
 
+        body.hide-loading .loading {
+            display: none;
+        }
+
         .loading {
             text-align: center;
             width: 100%;
             position: absolute;
             top: 50%;
-            margin-top: -50px;
+            margin-top: -136px;
+            height: 272px;
+        }
+
+        .loading img {
+            transition-property: transform;
+            backface-visibility: hidden;
+            animation: rotate 2s linear infinite;
+            transform-origin: 50% 50%;
+            will-change: transform;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform:rotate(-360deg);
+            }
         }
     </style>
 <link rel="stylesheet" href="styles.af64a2ba0c5da50ac6e9.css"></head>
 
 <body>
+    <script>
+        if(isIframe()) {
+            document.body.classList.add("hide-loading");
+        }
+    </script>
     <app-root>
         <div class="loading">
-            <img src="images/loading.gif" alt="loading..." />
+            <img src="images/loading.svg" alt="loading..." />
         </div>
     </app-root>
-<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.3bd3f2542d09364eb59a.js"></script><script type="text/javascript" src="main.1edf8cfc0d37cbe79803.js"></script></body>
-
+<script type="text/javascript" src="runtime.26209474bfa8dc87a77c.js"></script><script type="text/javascript" src="polyfills.dd830cb12d3282a7709d.js"></script><script type="text/javascript" src="main.0a14b643a2d76b728b82.js"></script></body>
 </html>
