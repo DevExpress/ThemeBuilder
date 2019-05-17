@@ -15,9 +15,9 @@ export class MasterComponent implements OnInit, OnDestroy {
     themes: Array<any>;
     themeName: string;
     colorScheme: string;
+    isThemeCompact: boolean;
     themeSize: string;
     themesList: Array<any>;
-    isCompactThemes = false;
     subscription: Subscription;
 
     constructor(
@@ -27,7 +27,8 @@ export class MasterComponent implements OnInit, OnDestroy {
         this.route.params.subscribe(params => {
             this.themeName = params['theme'] || '';
             this.colorScheme = params['color-scheme'] || '';
-            this.themeSize = params['color-scheme'].split('-')[1];
+            this.isThemeCompact = this.colorScheme.includes('compact');
+            this.themeSize = this.isThemeCompact ? 'compact' : 'normal';
 
             this.changeContent();
         });
@@ -36,19 +37,18 @@ export class MasterComponent implements OnInit, OnDestroy {
     changeContent() {
         this.themes = themes.filter(t => t.name === this.themeName);
 
+        const themesBySize = this.themes.filter(
+            t => this.isThemeCompact ?
+            t.group.includes('Compact'):
+            !t.group.includes('Compact'));
+
         if(this.themeName === 'material') {
             // getting sorted list by background color
             this.themesList = [].concat(
-                this.themes.filter(t => t.text.includes('Light')),
-                this.themes.filter(t => t.text.includes('Dark'))
+                themesBySize.filter(t => t.text.includes('Light')),
+                themesBySize.filter(t => t.text.includes('Dark'))
             );
-        } else {
-            this.themesList = this.themes.filter(
-                t => this.themeSize ?
-                t.group.includes('Compact') :
-                !t.group.includes('Compact'));
-            this.isCompactThemes = true;
-        }
+        } else this.themesList = themesBySize;
     }
 
     ngOnInit() {
