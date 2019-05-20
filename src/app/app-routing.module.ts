@@ -22,7 +22,7 @@ const routes: Routes = [
             { path: 'import', component: IndexComponent, data: { routeId: 2, docHash: '#Get_Started/Import_an_Existing_Theme' } },
             { path: 'import/bootstrap', component: ImportBootstrapComponent, data: { routeId: 3, docHash: '#Get_Started/Import_an_Existing_Theme' } },
             { path: 'import/meta', component: ImportMetaComponent, data: { routeId: 3, docHash: '#Get_Started/Import_an_Existing_Theme' } },
-            { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3, docHash: '' } },
+            { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3, docHash: '#Customize_the_Theme' } },
             { path: 'advanced', redirectTo: '/advanced/generic/light/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme', redirectTo: 'advanced/:theme/:color-scheme/base.common', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/grids', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
