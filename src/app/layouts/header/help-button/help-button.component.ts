@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
     styleUrls: ['./help-button.component.css']
 })
 export class HelpButtonComponent {
-    readonly baseUrl: string = "https://js.devexpress.com/Documentation/Guide/Themes_and_Styles/ThemeBuilder/";
+    readonly baseUrl: string = 'https://js.devexpress.com/Documentation/Guide/Themes_and_Styles/ThemeBuilder/';
     public $docUrl: string;
 
     constructor(private router: Router) {
