@@ -56,6 +56,7 @@ import { ImportService } from './import.service';
 
 import { PreviewModule } from './preview/preview.module';
 import { HeaderButtonComponent } from './layouts/header/header-button/header-button.component';
+import { HelpButtonComponent } from './layouts/header/help-button/help-button.component';
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
 import { ImportPopupComponent } from './layouts/header/import-popup/import-popup.component';
 import { ExportPopupComponent } from './layouts/header/export-popup/export-popup.component';
@@ -89,6 +90,7 @@ import { LoadingComponent } from './layouts/loading/loading.component';
         BackNavigatorComponent,
         IconThemeCircleComponent,
         HeaderButtonComponent,
+        HelpButtonComponent,
         ImportMetaComponent,
         ImportPopupComponent,
         ExportPopupComponent,

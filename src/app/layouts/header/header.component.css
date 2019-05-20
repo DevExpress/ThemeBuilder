@@ -58,6 +58,14 @@
     margin-left: 0;
 }
 
+.header .separator.help {
+    margin-left: auto;
+}
+
+.header .separator.help + app-help-button {
+    margin-left: 0;
+}
+
 .switcher-editor {
     border: none;
 }
