@@ -12,12 +12,12 @@
     text-decoration: none;
 }
 
-.header-button > div {
+.header-button > * {
     align-self: center;
     user-select: none;
 }
 
-.header-button .icon {
+.header-button svg {
     height: 18px;
     padding-right: 10px;
 }
