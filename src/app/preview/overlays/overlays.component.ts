@@ -38,9 +38,9 @@ export class OverlaysComponent implements OnInit, OnDestroy {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             const flexContainer = document.getElementsByTagName('app-overlays')[0].parentElement.parentElement;
             flexContainer.addEventListener('transitionend', () => {
-                this.tooltip && this.tooltip.instance.repaint();
-                this.toast && this.toast.instance.repaint();
-                this.loadPanel && this.loadPanel.instance.repaint();
+                if(this.tooltip) this.tooltip.instance.repaint();
+                if(this.toast) this.toast.instance.repaint();
+                if(this.loadPanel) this.loadPanel.instance.repaint();
             }, false);
         });
     }
