@@ -61,7 +61,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
-                if(this.notExpandableWidgets.includes(currentWidget)) {
+                if(this.notExpandableWidgets.indexOf(currentWidget) !== -1) {
                     flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
 
                     scrollableContainer.scrollTo({

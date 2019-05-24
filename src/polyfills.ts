@@ -75,6 +75,23 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
 
+if(!Element.prototype.matches) {
+    Element.prototype.matches = (Element as any).prototype.msMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+      let el = this;
+
+      do {
+        console.log(el);
+        if (el.matches(s)) return el;
+        el = el.parentElement || el.parentNode;
+      } while (el !== null && el.nodeType === 1);
+      return null;
+    };
+  }
+
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
