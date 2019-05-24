@@ -141,6 +141,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
         height: '100%',
         columnChooser: { enabled: false },
         rowAlternationEnabled: false,
+        columnHidingEnabled: false,
         showBorders: true,
         paging: {
             pageSize: 10
@@ -213,6 +214,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
         height: 460,
         columnChooser: { enabled: true },
         rowAlternationEnabled: true,
+        columnHidingEnabled: true,
         filterRow: {
             visible: true
         },
@@ -245,23 +247,28 @@ export class DatagridComponent implements OnInit, OnDestroy {
             {
                 dataField: 'orderId',
                 caption: 'Order ID',
-                width: 90
+                width: 90,
+                hidingPriority: 7
             },
             'city', {
                 dataField: 'country',
-                width: 180
+                width: 180,
+                hidingPriority: 8
             },
             {
                 dataField: 'region',
                 groupIndex: 0,
-                sortOrder: 'desc'
+                sortOrder: 'desc',
+                hidingPriority: 10
             }, {
                 dataField: 'date',
-                dataType: 'date'
+                dataType: 'date',
+                hidingPriority: 6
             }, {
                 dataField: 'amount',
                 format: 'currency',
-                width: 300
+                width: 150,
+                hidingPriority: 9
             }
         ],
         summary: {

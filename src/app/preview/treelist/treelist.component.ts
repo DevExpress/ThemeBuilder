@@ -411,7 +411,8 @@ export class TreelistComponent implements OnInit, OnDestroy {
         height: '100%',
         expandedRowKeys: [1],
         selectedRowKeys: [2],
-        columnAutoWidth: true,
+        columnAutoWidth: false,
+        columnHidingEnabled: true,
         columnChooser: { enabled: false },
         rowAlternationEnabled: false,
         filterRow: {
@@ -452,7 +453,8 @@ export class TreelistComponent implements OnInit, OnDestroy {
         rowAlternationEnabled: true,
         selectedRowKeys: [2, 3],
         expandedRowKeys: [1, 5],
-        columnAutoWidth: true,
+        columnAutoWidth: false,
+        columnHidingEnabled: true,
         filterRow: {
             visible: true
         },
@@ -488,12 +490,6 @@ export class TreelistComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.treeList.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.treeList.instance
-                .element()
-                .closest('.flex-item')
-                .addEventListener('transitionend', () => {
-                    this.treeList.instance.updateDimensions();
-                }, false);
         });
     }
 

@@ -11,10 +11,10 @@ export class ButtonsComponent {
     isExpanded = new BehaviorSubject<boolean>(false);
 
     baseOptions: Array<any> = [
-        { text: 'Normal Type', type: 'normal' },
-        { text: 'Success Type', type: 'success' },
-        { text: 'Default Type', type: 'default' },
-        { text: 'Danger Type', type: 'danger' }
+        { text: 'Normal', type: 'normal' },
+        { text: 'Success', type: 'success' },
+        { text: 'Default', type: 'default' },
+        { text: 'Danger', type: 'danger' }
     ];
 
     modes: Array<string> = [ 'contained', 'outlined', 'text' ];
