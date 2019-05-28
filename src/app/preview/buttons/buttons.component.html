@@ -6,13 +6,12 @@
     <dx-button text="Danger" type="danger"></dx-button>
 </ng-template>
 <ng-template  #expandedBlock>
-    <div class="buttons">
-        <ng-template ngFor let-mode [ngForOf]="modes">
+    <ng-template ngFor let-mode [ngForOf]="modes">
+        <div class="buttons">
             <div class="type"> {{mode | titlecase}}</div>
             <div *ngFor="let options of baseOptions">
-                <dx-button [stylingMode]="mode" [type]="options.type" [text]="options.text" (onClick)="click($event)"></dx-button>
+                <dx-button [stylingMode]="mode" [type]="options.type" [text]="options.text"></dx-button>
             </div>
-            <br/>
-        </ng-template>
-    </div>
+        </div>
+    </ng-template>
 </ng-template>

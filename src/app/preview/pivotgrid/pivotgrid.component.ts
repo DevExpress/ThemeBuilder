@@ -408,13 +408,27 @@ export class PivotgridComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.pivotGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-            this.pivotGrid.instance
-                .element()
-                .closest('.flex-item')
-                .addEventListener('transitionend', () => {
-                    this.pivotGrid.instance.updateDimensions();
-                }, false);
+            const pivotGridInstance = this.pivotGrid.instance;
+            const flexItem = pivotGridInstance.element().closest('.flex-item');
+            const maxWidthForFieldPanel = 970;
+
+            const fixDimensions = () => {
+                const width = flexItem.getBoundingClientRect().width;
+
+                if(width < maxWidthForFieldPanel) {
+                    pivotGridInstance.option({ fieldPanel: { visible: false }});
+                } else {
+                    pivotGridInstance.updateDimensions();
+                }
+            };
+
+            pivotGridInstance.beginUpdate();
+            pivotGridInstance.option(expanded ? this.expandedOptions : this.collapsedOptions);
+            fixDimensions();
+            pivotGridInstance.endUpdate();
+
+            flexItem.removeEventListener('transitionend', fixDimensions);
+            flexItem.addEventListener('transitionend', fixDimensions, false);
         });
     }
 

@@ -1,14 +1,17 @@
 <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
 <ng-template #collapsedBlock>
-    <div id="loadpanel-block">
-        <div id="loadpanel-target"></div>
+    <div class="collapsed">
+        <div id="loadpanel-block">
+            <div id="loadpanel-target"></div>
+        </div>
+        <div id="toast-block">
+            <div id="toast-target"></div>
+        </div>
+        <div id="tooltip-block">
+            <div id="tooltip-target"></div>
+        </div>
     </div>
-    <div id="toast-block">
-        <div id="toast-target"></div>
-    </div>
-    <div id="tooltip-block">
-        <div id="tooltip-target"></div>
-    </div>
+
     <dx-tooltip 
         #tooltip
         width="100"
@@ -22,7 +25,8 @@
     <dx-toast
         #toast 
         message="Info toast"
-        width="300"
+        width="250"
+        minWidth="250"
         type="info"
         [position]="{ of: '#toast-target', at: 'center', my: 'center' }"
         [visible]="true"
@@ -72,7 +76,8 @@
     </dx-tooltip>
     <dx-toast 
         message="Info toast" 
-        width="350" 
+        width="310"
+        minWidth="310"
         [position]="{ of: '#target-element', at: 'left top', my:'right bottom' }" 
         (onHiding)="hiding($event)" 
         (onContentReady)="toastInit($event)" 
@@ -81,7 +86,8 @@
     </dx-toast>
     <dx-toast 
         message="Warning toast" 
-        width="350" 
+        width="310"
+        minWidth="310"
         [position]="{ of: '#target-element', at: 'right top', my:'left bottom' }" 
         (onHiding)="hiding($event)" 
         (onContentReady)="toastInit($event)" 
@@ -90,7 +96,8 @@
     </dx-toast>
     <dx-toast 
         message="Error toast"
-        width="350"
+        width="310"
+        minWidth="310"
         [position]="{ of: '#target-element', at: 'left bottom', my: 'right top' }"
         (onHiding)="hiding($event)" 
         (onContentReady)="toastInit($event)" 
@@ -99,7 +106,8 @@
     </dx-toast>
     <dx-toast 
         message="Success toast" 
-        width="350" 
+        width="310"
+        minWidth="310"
         [position]="{ of: '#target-element', at: 'right bottom', my:'left top' }" 
         (onHiding)="hiding($event)" 
         (onContentReady)="toastInit($event)" 
