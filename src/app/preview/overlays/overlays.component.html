@@ -44,9 +44,11 @@
 </ng-template>
 
 <ng-template #expandedBlock>
-    <dx-button text="Popup" type="normal" width="135" (onClick)="popup.visible = true"></dx-button>
-    <dx-button text="ActionSheet" width="135" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
-    <dx-button id="tooltip-button" width="135" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
+    <div class="buttons-container">
+        <dx-button text="Popup" type="normal" width="135" (onClick)="popup.visible = true"></dx-button>
+        <dx-button text="ActionSheet" width="135" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
+        <dx-button id="tooltip-button" width="135" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
+    </div>
 
     <div id="target-block">
         <div id="target-element"></div>

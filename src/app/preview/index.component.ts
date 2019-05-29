@@ -36,8 +36,11 @@ export class PreviewIndexComponent implements OnInit {
         const style = document.createElement('style');
         const DYNAMIC_STYLES_ID = 'dynamic-styles';
 
-        if (document.getElementById(DYNAMIC_STYLES_ID))
-            document.getElementById(DYNAMIC_STYLES_ID).remove();
+        const dynamicStylesElement = document.getElementById(DYNAMIC_STYLES_ID);
+
+        if(dynamicStylesElement) {
+            dynamicStylesElement.parentNode.removeChild(dynamicStylesElement);
+        }
 
         style.type = 'text/css';
         style.id = DYNAMIC_STYLES_ID;

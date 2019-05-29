@@ -46,18 +46,24 @@
 }
 
 .flex-item.group {
-    display: flex;
     height: 360px;
-    flex-direction: column;
     position: static;
     padding: 0;
     margin: 0 20px;
 }
 
 .group .flex-item {
-    height: 140px;
+    min-height: 160px;
+    height: auto;
     padding: 20px;
-    margin: 10px 0;
+}
+
+.group .flex-item:first-child {
+    margin: 10px 0 20px 0;
+}
+
+.group .flex-item:last-child {
+    margin: 20px 0 10px 0;
 }
 
 .group.expanded {
@@ -67,10 +73,11 @@
     margin: 0;
 }
 
-.group.expanded  .flex-item {
+.group.expanded .flex-item {
     flex: 1 1 100%;
     padding: 20px;
-    margin: 10px 20px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .flex-label {

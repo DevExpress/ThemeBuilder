@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { DxPivotGridComponent } from 'devextreme-angular';
 
@@ -13,6 +13,8 @@ export class PivotgridComponent implements OnInit, OnDestroy {
     subscription: Subscription;
 
     @ViewChild('pivotGrid') pivotGrid: DxPivotGridComponent;
+
+    constructor(private element: ElementRef) { }
 
     dataSourceStore: Array<any> = [
         {
@@ -409,7 +411,7 @@ export class PivotgridComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             const pivotGridInstance = this.pivotGrid.instance;
-            const flexItem = pivotGridInstance.element().closest('.flex-item');
+            const flexItem = this.element.nativeElement.parentElement.parentElement;
             const maxWidthForFieldPanel = 970;
 
             const fixDimensions = () => {
