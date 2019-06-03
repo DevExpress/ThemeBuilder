@@ -40,7 +40,7 @@ export class BuilderService {
             lessCompiler: lessCompiler(window, { math: 'always' }),
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
-            baseTheme: theme.name + '.' + theme.colorScheme.replace('-', '.')
+            baseTheme: theme.name + '.' + theme.colorScheme.replace(/-/g, '.')
         };
 
         const extendedConfig = { ...baseConfig, ...config };

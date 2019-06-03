@@ -42,7 +42,7 @@ export class ImportService {
         const exportedObject = {
             ...this.savedMetadata,
             items: this.metaRepository.getModifiedItems(),
-            baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace('-', '.') ].join('.'),
+            baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.') ].join('.'),
             outputColorScheme: customSchemeName,
             makeSwatch: useSwatch,
             version: this.metaRepository.version()
