@@ -23,6 +23,7 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/images",
+                            "src/_config.yml",
                             {
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme-themebuilder/data/less",
