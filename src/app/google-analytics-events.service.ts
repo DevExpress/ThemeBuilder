@@ -12,7 +12,7 @@ export class GoogleAnalyticsEventsService {
         eventCategory: string,
         eventAction: string,
         eventLabel: string) {
-        if (!environment.production) return;
+        if(!environment.production) return;
 
         if(ga && ga.getAll) {
             const _tracker = ga.getAll()[0];
