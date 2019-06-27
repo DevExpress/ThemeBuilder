@@ -59,9 +59,12 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportCss(): void {
         if(!this.validate().isValid) return;
-        
-        this.googleAnalyticsEventsService.emitEvent("ThemeBuilder", "export", "save css (" + this.importService.getThemeName() + ")");
-        
+
+        this.googleAnalyticsEventsService.emitEvent(
+            'ThemeBuilder',
+            'export',
+            'save css (' + this.importService.getThemeName() + ')');
+
         const fileContentReady = !this.loadIndicatorVisible;
         if(fileContentReady) {
             this.fileSave(this.fileContent[0]);
@@ -76,8 +79,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     exportMeta(): void {
         if(!this.validate().isValid) return;
 
-        this.googleAnalyticsEventsService.emitEvent("ThemeBuilder", "export", "save metadata (" + this.importService.getThemeName() + ")");
-        
+        this.googleAnalyticsEventsService.emitEvent(
+            'ThemeBuilder',
+            'export',
+            'save metadata (' + this.importService.getThemeName() + ')');
+
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
@@ -110,7 +116,10 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     copyFileContent() {
-        this.googleAnalyticsEventsService.emitEvent("ThemeBuilder", "export", "copy " + (this.selectedIndex ? "metadata" : "css")  + " (" + this.importService.getThemeName() + ")");
+        this.googleAnalyticsEventsService.emitEvent(
+            'ThemeBuilder',
+            'export',
+            'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
     }
 
     schemeNameChange() {

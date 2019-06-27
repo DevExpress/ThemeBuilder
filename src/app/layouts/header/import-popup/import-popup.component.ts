@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ImportService } from '../../../import.service';
 import { alert } from 'devextreme/ui/dialog';
 import { PopupComponent } from '../popup/popup.component';
-import { GoogleAnalyticsEventsService } from "../../../google-analytics-events.service";
+import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
 
 @Component({
     selector: 'app-import-popup',
@@ -35,7 +35,7 @@ export class ImportPopupComponent {
     importValue = '';
 
     applyClick(t) {
-        this.googleAnalyticsEventsService.emitEvent("ThemeBuilder", "import", "metadata");
+        this.googleAnalyticsEventsService.emitEvent('ThemeBuilder', 'import', 'metadata');
 
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();

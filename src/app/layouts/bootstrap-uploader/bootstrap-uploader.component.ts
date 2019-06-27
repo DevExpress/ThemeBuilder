@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImportService } from '../../import.service';
 import { alert } from 'devextreme/ui/dialog';
-import { GoogleAnalyticsEventsService } from "../../google-analytics-events.service";
+import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 
 @Component({
   selector: 'app-bootstrap-uploader',
@@ -42,7 +42,10 @@ export class BootstrapUploaderComponent {
                     });
                 }
 
-                this.googleAnalyticsEventsService.emitEvent("ThemeBuilder", "import", this.version ? "bootstrap variables (file)" : "metadata (file)");
+                this.googleAnalyticsEventsService.emitEvent(
+                    'ThemeBuilder',
+                    'import',
+                    this.version ? 'bootstrap variables (file)' : 'metadata (file)');
 
                 this.imported.emit();
                 e.component.reset();
