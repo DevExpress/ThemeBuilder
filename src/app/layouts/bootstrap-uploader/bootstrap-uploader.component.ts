@@ -43,7 +43,6 @@ export class BootstrapUploaderComponent {
                 }
 
                 this.googleAnalyticsEventsService.emitEvent(
-                    'ThemeBuilder',
                     'import',
                     this.version ? 'bootstrap variables (file)' : 'metadata (file)');
 

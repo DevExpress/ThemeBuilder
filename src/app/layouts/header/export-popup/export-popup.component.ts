@@ -61,7 +61,6 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         if(!this.validate().isValid) return;
 
         this.googleAnalyticsEventsService.emitEvent(
-            'ThemeBuilder',
             'export',
             'save css (' + this.importService.getThemeName() + ')');
 
@@ -80,7 +79,6 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         if(!this.validate().isValid) return;
 
         this.googleAnalyticsEventsService.emitEvent(
-            'ThemeBuilder',
             'export',
             'save metadata (' + this.importService.getThemeName() + ')');
 
@@ -117,7 +115,6 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     copyFileContent() {
         this.googleAnalyticsEventsService.emitEvent(
-            'ThemeBuilder',
             'export',
             'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
     }

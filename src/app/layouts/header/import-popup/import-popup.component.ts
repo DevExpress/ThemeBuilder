@@ -35,7 +35,7 @@ export class ImportPopupComponent {
     importValue = '';
 
     applyClick(t) {
-        this.googleAnalyticsEventsService.emitEvent('ThemeBuilder', 'import', 'metadata');
+        this.googleAnalyticsEventsService.emitEvent('import', 'metadata');
 
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();
