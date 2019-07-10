@@ -22,10 +22,14 @@
         "devextreme": "19.1-next",
         "devextreme-angular": "19.1-next",
         "devextreme-themebuilder": "19.1-next",
+        "file-saver": "^2.0.2",
+        "jszip": "^3.2.2",
+        "jszip-utils": "^0.1.0",
         "less": "^3.8.1",
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
         "smoothscroll-polyfill": "^0.4.3",
+        "stream": "0.0.2",
         "zone.js": "~0.8.26"
     },
     "devDependencies": {
