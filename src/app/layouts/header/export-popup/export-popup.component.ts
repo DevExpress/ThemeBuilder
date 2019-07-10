@@ -4,6 +4,9 @@ import { fileSaver } from 'devextreme/exporter';
 import { PopupComponent } from '../popup/popup.component';
 import { Subscription } from 'rxjs';
 import validationEngine from 'devextreme/ui/validation_engine';
+import * as JSZip from 'jszip';
+import * as JSZipUtils from 'jszip-utils';
+import { saveAs } from "file-saver";
 
 @Component({
     selector: 'app-export-popup',
@@ -72,6 +75,35 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
     }
+
+    exportZip():void{
+        var zip=new JSZip();
+        var generic=["content/css/icons/dxicons.ttf","content/css/icons/dxicons.woff","content/css/icons/dxicons.woff2"];
+        var material=["content/css/icons/dxiconsmaterial.ttf","content/css/icons/dxiconsmaterial.woff","content/css/icons/dxiconsmaterial.woff2"];
+        var choice=[];
+        var name="dx."+this.importService.getThemeName()+"."+this.schemeName+".css";
+
+        if(this.importService.getThemeName()=="generic"){
+            choice=generic;
+        }
+        else{
+            choice=material;
+        }
+
+        for(var i=0;i<3;i++){
+            zip.file(choice[i],JSZipUtils.getBinaryContent(choice[i]));
+            if(i==2){
+                this.importService.exportCss(this.schemeName,this.makeSwatch).then(css=>{
+                    zip.file(name,css);
+                    zip.generateAsync({type:'blob'})
+                    .then(function(content){
+                        saveAs(content,name+'.zip');
+                    });
+                });
+            }
+        }
+    }
+
 
     displayCss() {
         this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
