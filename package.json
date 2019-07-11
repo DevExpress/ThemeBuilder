@@ -29,6 +29,7 @@
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
         "smoothscroll-polyfill": "^0.4.3",
+        "stream": "0.0.2",
         "zone.js": "~0.8.26"
     },
     "devDependencies": {
