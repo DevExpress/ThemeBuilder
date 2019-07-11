@@ -77,26 +77,26 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     exportZip(): void {
-        const zip=new JSZip();
-        const generic=['content/css/icons/dxicons.ttf','content/css/icons/dxicons.woff','content/css/icons/dxicons.woff2'];
-        const material=['content/css/icons/dxiconsmaterial.ttf','content/css/icons/dxiconsmaterial.woff','content/css/icons/dxiconsmaterial.woff2'];
-        let choice=[];
-        const name='dx.'+this.importService.getThemeName()+'.'+this.schemeName+'.css';
+        const zip = new JSZip();
+        const generic = ['content/css/icons/dxicons.ttf', 'content/css/icons/dxicons.woff', 'content/css/icons/dxicons.woff2'];
+        const material = ['content/css/icons/dxiconsmaterial.ttf', 'content/css/icons/dxiconsmaterial.woff', 'content/css/icons/dxiconsmaterial.woff2'];
+        let choice = [];
+        const name = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
 
-        if(this.importService.getThemeName()==='generic') {
-            choice=generic;
+        if(this.importService.getThemeName() === 'generic') {
+            choice = generic;
         } else {
-            choice=material;
+            choice = material;
         }
 
-        for(let i=0;i<3;i++) {
+        for(let i = 0; i < 3; i++) {
             zip.file(choice[i],JSZipUtils.getBinaryContent(choice[i]));
-            if( i===2 ) {
-                this.importService.exportCss(this.schemeName,this.makeSwatch).then(css=> {
-                    zip.file(name,css);
-                    zip.generateAsync({type:'blob'})
+            if( i === 2 ) {
+                this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+                    zip.file(name, css);
+                    zip.generateAsync({type: 'blob'})
                     .then(function(content) {
-                        saveAs(content,name + '.zip');
+                        saveAs(content, name + '.zip');
                     });
                 });
             }
