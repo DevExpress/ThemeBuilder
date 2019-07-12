@@ -78,27 +78,26 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportZip(): void {
         const zip = new JSZip();
-        const generic = ['content/css/icons/dxicons.ttf', 'content/css/icons/dxicons.woff', 'content/css/icons/dxicons.woff2'];
-        const material = ['content/css/icons/dxiconsmaterial.ttf', 'content/css/icons/dxiconsmaterial.woff', 'content/css/icons/dxiconsmaterial.woff2'];
-        let choice = [];
-        const name = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
+        const genericFiles = ['content/css/icons/dxicons.ttf', 'content/css/icons/dxicons.woff', 'content/css/icons/dxicons.woff2'];
+        const materialFiles = ['content/css/icons/dxiconsmaterial.ttf', 'content/css/icons/dxiconsmaterial.woff', 'content/css/icons/dxiconsmaterial.woff2'];
+        let choice: Array<string>;
+        const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
 
         if(this.importService.getThemeName() === 'generic') {
-            choice = generic;
+            choice = genericFiles;
         } else {
-            choice = material;
+            choice = materialFiles;
         }
 
-        for(let i = 0; i < 3; i++) {
-            zip.file(choice[i],JSZipUtils.getBinaryContent(choice[i]));
+        zip.file(fileName, this.importService.exportCss(this.schemeName, this.makeSwatch));
+
+        for(let i = 0; i < choice.length; i++) {
+            zip.file(choice[i], JSZipUtils.getBinaryContent(choice[i]));
             if( i === 2 ) {
-                this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
-                    zip.file(name, css);
                     zip.generateAsync({type: 'blob'})
                     .then(function(content) {
-                        saveAs(content, name + '.zip');
+                        saveAs(content, fileName + '.zip');
                     });
-                });
             }
         }
     }
