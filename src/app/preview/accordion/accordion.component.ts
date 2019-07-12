@@ -10,7 +10,7 @@ export class AccordionComponent {
     widgetGroup = 'accordion';
     isExpanded = new Subject<boolean>();
 
-    accordionItems: Array<any> = [
+    accordionItems: any[] = [
         {
             title: 'Jack London (1876-1916)',
             icon: 'card',
@@ -24,5 +24,3 @@ export class AccordionComponent {
         }
     ];
 }
-
-

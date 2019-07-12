@@ -196,4 +196,3 @@ export class LeftMenuAlias {
         return group === 'datagrid' ? 'grids' : group;
     }
 }
-

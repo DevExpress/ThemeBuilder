@@ -1,10 +1,10 @@
-import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
-import { ImportService } from '../../../import.service';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
-import { PopupComponent } from '../popup/popup.component';
-import { Subscription } from 'rxjs';
 import validationEngine from 'devextreme/ui/validation_engine';
+import { Subscription } from 'rxjs';
 import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
+import { ImportService } from '../../../import.service';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
     selector: 'app-export-popup',
@@ -15,7 +15,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
-    fileContent: Array<string> = [];
+    fileContent: string[] = [];
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
@@ -69,7 +69,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
             this.fileSave(this.fileContent[0]);
             return;
         }
-        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
             this.fileSave(css);
             this.popup.hide();
         });
@@ -88,7 +88,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     displayCss() {
-        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
             this.fileContent[0] = css;
             this.loadIndicatorVisible = false;
             this.saveButtonDisabled = false;

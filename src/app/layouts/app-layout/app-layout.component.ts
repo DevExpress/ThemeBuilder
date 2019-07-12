@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, ActivationEnd } from '@angular/router';
-import { routeAnimation } from './../../animations';
+import { ActivationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { routeAnimation } from './../../animations';
 
 @Component({
     selector: 'app-app-layout',

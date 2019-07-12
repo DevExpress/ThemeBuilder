@@ -11,7 +11,7 @@ export class GoogleAnalyticsEventsService {
         eventLabel: string) {
         if(!environment.production) return;
 
-        const ga = (<any>window).ga;
+        const ga = (window as any).ga;
 
         if(ga && ga.getAll) {
             const _tracker = ga.getAll()[0];

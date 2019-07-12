@@ -1,7 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { MetadataRepositoryService } from './meta-repository.service';
-import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
+import { MetadataRepositoryService } from './meta-repository.service';
 
 @Injectable()
 export class ImportService {

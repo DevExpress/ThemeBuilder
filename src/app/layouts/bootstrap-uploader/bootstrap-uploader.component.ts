@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ImportService } from '../../import.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
+import { ImportService } from '../../import.service';
 
 @Component({
   selector: 'app-bootstrap-uploader',

@@ -10,7 +10,7 @@ export class TabsComponent {
     widgetGroup = 'tabs';
     isExpanded = new Subject<boolean>();
 
-    dataSource: Array<any> = [
+    dataSource: any[] = [
         { text: 'user', icon: 'user' },
         { text: 'comment', icon: 'comment' },
         { text: 'find', icon: 'find' },

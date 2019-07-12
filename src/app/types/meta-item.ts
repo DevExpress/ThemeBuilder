@@ -7,6 +7,6 @@ export class MetaItem {
     IsLastSubGroupItem?: boolean;
     Type?: string;
     TypeValues?: string;
-    TypeValuesArray?: Array<string>;
-    Items?: Array<MetaItem>;
+    TypeValuesArray?: string[];
+    Items?: MetaItem[];
 }

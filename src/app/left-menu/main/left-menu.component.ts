@@ -1,12 +1,12 @@
-import { Component, ViewChild, OnDestroy, OnInit, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LeftMenuAlias } from '../left-menu.aliases';
 import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
+import { LeftMenuAlias } from '../left-menu.aliases';
 
+import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-left-menu',
@@ -25,17 +25,17 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     widget: string;
 
     subscription: Subscription;
-    menuData: Array<LeftMenuItem>;
-    filteredMenuData: Array<LeftMenuItem>;
+    menuData: LeftMenuItem[];
+    filteredMenuData: LeftMenuItem[];
 
     menuClosed = true;
     searchOpened = false;
     searchKeyword = '';
-    workArea: Array<MetaItem>;
+    workArea: MetaItem[];
     workAreaName = this.BASE_THEMING_NAME;
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.widget = params['group'];
             this.changeWidget(this.widget);
         });
@@ -55,7 +55,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     menuSearch() {
         const keyword = this.searchKeyword.toLowerCase();
-        this.filteredMenuData = this.menuData.filter(value => {
+        this.filteredMenuData = this.menuData.filter((value) => {
             const groupName = value.groupName.toLowerCase();
             const searchString = groupName + ', ' + value.equivalents;
             return searchString.toLowerCase().indexOf(keyword) !== -1;
@@ -63,16 +63,16 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     changeWidget(widget: string) {
-        const item = this.menuData && this.menuData.find(value => value.unitedGroupKey === widget);
+        const item = this.menuData && this.menuData.find((value) => value.unitedGroupKey === widget);
         if(item) {
             this.openWorkArea(item.items, item.groupName);
         }
     }
 
-    openWorkArea(items: Array<MetaItem>, name: string) {
+    openWorkArea(items: MetaItem[], name: string) {
         const workItems = items || [];
 
-        workItems.forEach(item => {
+        workItems.forEach((item) => {
             if(item.TypeValues) {
                 item.TypeValuesArray = item.TypeValues.split('|');
             }
@@ -84,19 +84,19 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.menuClosed = true;
     }
 
-    getRealName = name => this.names.getRealName(name);
+    getRealName = (name) => this.names.getRealName(name);
 
     loadThemeMetadata() {
-        return this.metaRepository.getData().then(metadata => {
+        return this.metaRepository.getData().then((metadata) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
-            const widgetGroups: Array<MetaItem> = [];
-            const itemArray: Array<LeftMenuItem> = [];
+            const widgetGroups: MetaItem[] = [];
+            const itemArray: LeftMenuItem[] = [];
 
             const processedGroups: any = {};
 
-            metadata.forEach(metaItem => {
+            metadata.forEach((metaItem) => {
                 const group = metaItem.Group;
 
                 if(processedGroups[group]) return;
@@ -108,7 +108,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 if(!aliasInfo) return;
 
                 const groupName = aliasInfo.name;
-                const groupItems = metadata.filter(i => i.Group === group);
+                const groupItems = metadata.filter((i) => i.Group === group);
 
                 if(aliasInfo.widgetGroup) {
                     const groupKey = group.substring(0, group.indexOf('.'));
@@ -124,7 +124,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 } else {
                     itemArray.push({
                         order: aliasInfo.order,
-                        groupName: groupName,
+                        groupName,
                         items: groupItems,
                         equivalents: aliasInfo.equivalents,
                         unitedGroupKey: unitedGroupName
@@ -132,7 +132,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 }
             });
 
-            widgetGroups.forEach(groupItem => {
+            widgetGroups.forEach((groupItem) => {
                 const mainGroupKey = groupItem.Group;
                 if(processedGroups[mainGroupKey]) return;
                 processedGroups[mainGroupKey] = true;
@@ -143,7 +143,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 itemArray.push({
                     order: aliasInfo.order,
                     groupName: aliasInfo.name,
-                    items: widgetGroups.filter(i => i.Group === mainGroupKey),
+                    items: widgetGroups.filter((i) => i.Group === mainGroupKey),
                     equivalents: aliasInfo.equivalents,
                     unitedGroupKey: unitedGroupName
                 });

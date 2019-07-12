@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ export class FilterbuilderComponent {
     widgetGroup = 'filterbuilder';
     isExpanded = new Subject<boolean>();
 
-    filterBuilderValue: Array<any> = [
+    filterBuilderValue: any[] = [
         ['Name', '=', 'Projector PlusHD'],
         'or',
         [
@@ -23,7 +23,7 @@ export class FilterbuilderComponent {
         ]
     ];
 
-    filterBuilderFields: Array<any> = [{
+    filterBuilderFields: any[] = [{
         dataField: 'ID',
         dataType: 'number'
     }, {

@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MetadataRepositoryService } from '../../meta-repository.service';
-import { MetaItem } from '../../types/meta-item';
-import { NamesService } from '../../names.service';
 import { Subscription } from 'rxjs';
+import { MetadataRepositoryService } from '../../meta-repository.service';
+import { NamesService } from '../../names.service';
+import { MetaItem } from '../../types/meta-item';
 
 @Component({
     selector: 'app-base-parameters',
@@ -15,7 +15,7 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
     @Input() themeSize: string;
 
     subscription: Subscription;
-    editorsData: Array<MetaItem>;
+    editorsData: MetaItem[];
 
     constructor(
         private metadataRepository: MetadataRepositoryService,
@@ -24,7 +24,7 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
     ) { }
 
     updateData() {
-        this.metadataRepository.getBaseParameters().then(parameters => {
+        this.metadataRepository.getBaseParameters().then((parameters) => {
             this.editorsData = parameters;
         });
     }
@@ -37,7 +37,6 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
 
         this.router.navigate(['master', this.theme, newColorScheme]);
     }
-
 
     ngOnInit() {
         this.updateData();

@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as themes from 'devextreme-themebuilder/modules/themes';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
-import { MetadataRepositoryService } from '../../meta-repository.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { MetadataRepositoryService } from '../../meta-repository.service';
 
 @Component({
     selector: 'app-header',
@@ -24,9 +24,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
             e.component.canceled = false;
             return;
         }
-        const newTheme = themes.filter(i => i.themeId === e.value);
+        const newTheme = themes.filter((i) => i.themeId === e.value);
 
-        confirm('Are you sure you want to change the base theme? All changes will be lost.', 'ThemeBuilder').then(confirmed => {
+        confirm('Are you sure you want to change the base theme? All changes will be lost.', 'ThemeBuilder').then((confirmed) => {
             if(confirmed && newTheme.length) {
                 const theme = newTheme[0].name;
                 const colorScheme = newTheme[0].colorScheme;
@@ -42,13 +42,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.switcherData  = new DataSource({
-            store: themes.filter(theme => theme.group !== 'Mobile'),
+            store: themes.filter((theme) => theme.group !== 'Mobile'),
             key: 'themeId',
             group: 'group'
         });
 
         this.subscription = this.metadataService.css.subscribe(() => {
-            const currentTheme = themes.filter(i =>
+            const currentTheme = themes.filter((i) =>
                 i.name === this.metadataService.theme.name &&
                 i.colorScheme === this.metadataService.theme.colorScheme);
 

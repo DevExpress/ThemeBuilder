@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-button-detailed',
@@ -18,6 +18,6 @@ export class ButtonDetailedComponent {
              window.parent.location.href
         );
 
-        this.clicked.emit({ isClosed: isClosed });
+        this.clicked.emit({ isClosed });
     }
 }
