@@ -78,23 +78,18 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportZip(): void {
         const zip = new JSZip();
-        const fontExtension=['ttf', 'woff', 'woff2'];
-        let choice: string;
+        const fontExtension = ['ttf', 'woff', 'woff2'];
+        let fontFilePath = 'icons/dxicons' + (this.importService.getThemeName() === 'generic' ? '' : 'material');
         let fileName: string;
 
-        if(this.importService.getThemeName() === 'generic') {
-            choice = 'content/css/icons/dxicons';
-        } else {
-            choice = 'content/css/icons/dxiconsmaterial';
-        }
-
         fontExtension.forEach((extension) => {
-            fileName = choice + '.' + extension;
-            zip.file(fileName, JSZipUtils.getBinaryContent(fileName));
+            fileName = fontFilePath + '.' + extension;
+            zip.file(fileName, JSZipUtils.getBinaryContent('content/css/' + fileName));
         });
-        fileName='dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
-        zip.file(fileName, this.importService.exportCss(this.schemeName, this.makeSwatch));
-        fileName=fileName.slice(0,-4);
+
+        fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName;
+        zip.file(fileName + '.css', this.importService.exportCss(this.schemeName, this.makeSwatch));
+
         zip.generateAsync({type: 'blob'})
             .then((content) => {
                 saveAs(content, fileName + '.zip');
