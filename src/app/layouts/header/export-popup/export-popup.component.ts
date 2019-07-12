@@ -80,7 +80,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         const zip = new JSZip();
         const fontExtension=['ttf', 'woff', 'woff2'];
         let choice: string;
-        const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
+        let fileName:string;
 
         if(this.importService.getThemeName() === 'generic') {
             choice = 'content/css/icons/dxicons';
@@ -88,16 +88,17 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
             choice = 'content/css/icons/dxiconsmaterial';
         }
 
-        zip.file(fileName, this.importService.exportCss(this.schemeName, this.makeSwatch));
-
-        fontExtension.forEach( function (extension) {
-            const filename = choice + '.' + extension;
-            zip.file(filename, JSZipUtils.getBinaryContent(filename));
+        fontExtension.forEach((extension) => {
+            fileName = choice + '.' + extension;
+            zip.file(fileName, JSZipUtils.getBinaryContent(fileName));
         });
+        fileName='dx.' + this.importService.getThemeName() + '.' + this.schemeName + '.css';
+        zip.file(fileName, this.importService.exportCss(this.schemeName, this.makeSwatch));
+        fileName=fileName.slice(0,-4);
         zip.generateAsync({type: 'blob'})
-                    .then(function(content) {
-                        saveAs(content, fileName + '.zip');
-                    });
+            .then((content) => {
+            saveAs(content, fileName + '.zip');
+            });
     }
 
 
