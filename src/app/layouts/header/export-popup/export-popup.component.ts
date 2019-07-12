@@ -97,7 +97,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         fileName=fileName.slice(0,-4);
         zip.generateAsync({type: 'blob'})
             .then((content) => {
-            saveAs(content, fileName + '.zip');
+                saveAs(content, fileName + '.zip');
             });
     }
 
