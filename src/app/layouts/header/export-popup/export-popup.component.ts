@@ -79,7 +79,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     exportZip(): void {
         const zip = new JSZip();
         const fontExtension = ['ttf', 'woff', 'woff2'];
-        let fontFilePath = 'icons/dxicons' + (this.importService.getThemeName() === 'generic' ? '' : 'material');
+        const fontFilePath = 'icons/dxicons' + (this.importService.getThemeName() === 'generic' ? '' : 'material');
         let fileName: string;
 
         fontExtension.forEach((extension) => {
