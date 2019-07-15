@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { ImportService } from '../../../import.service';
 import { alert } from 'devextreme/ui/dialog';
-import { PopupComponent } from '../popup/popup.component';
 import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
+import { ImportService } from '../../../import.service';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
     selector: 'app-import-popup',

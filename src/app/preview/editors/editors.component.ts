@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import validationEngine from 'devextreme/ui/validation_engine';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-editors',

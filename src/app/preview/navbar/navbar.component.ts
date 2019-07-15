@@ -10,7 +10,7 @@ export class NavbarComponent {
     widgetGroup = 'navbar';
     isExpanded = new Subject<boolean>();
 
-    dataSource: Array<any> = [
+    dataSource: any[] = [
         { text: 'user', icon: 'user' },
         { text: 'find', icon: 'find' },
         { text: 'favorites', icon: 'favorites' },

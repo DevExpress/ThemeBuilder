@@ -6,12 +6,11 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./index.component.css']
 })
 
-
 export class IndexComponent {
     url: string;
 
     constructor(private route: ActivatedRoute) {
-        this.route.url.subscribe(u => {
+        this.route.url.subscribe((u) => {
             this.url = u[0] ? u[0].path : '';
         });
     }

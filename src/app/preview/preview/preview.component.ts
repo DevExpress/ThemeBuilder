@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChildren, ViewChild, QueryList, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { DxScrollViewComponent } from 'devextreme-angular';
 
 @Component({
@@ -11,7 +11,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
-    notExpandableWidgets: Array<string> = [
+    notExpandableWidgets: string[] = [
         'navigations.menu',
         'navigations.navbar',
         'navigations.tabs',

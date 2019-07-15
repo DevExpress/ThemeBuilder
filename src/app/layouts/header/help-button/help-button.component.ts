@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivationEnd } from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
 

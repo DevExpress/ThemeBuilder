@@ -10,11 +10,11 @@ export class TreeviewComponent {
     widgetGroup = 'treeview';
     isExpanded = new Subject<boolean>();
 
-    treeViewItems: Array<any> = [
+    treeViewItems: any[] = [
         {
             id: 1,
             text: '.NET',
-            'expanded': true,
+            expanded: true,
             items: [
                 {
                     id: 11,

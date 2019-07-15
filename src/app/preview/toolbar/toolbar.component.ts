@@ -10,10 +10,10 @@ export class ToolbarComponent {
     widgetGroup = 'toolbar';
     isExpanded = new Subject<boolean>();
 
-    items: Array<any> = [
-        { 'location': 'before', 'widget': 'dxButton', 'options': { 'type': 'back', 'text': 'Back' } },
-        { 'location': 'after', 'widget': 'dxButton', 'options': { 'icon': 'plus' } },
-        { 'location': 'after', 'widget': 'dxButton', 'options': { 'icon': 'find' } },
-        { 'location': 'center', 'text': 'Products' }
+    items: any[] = [
+        { location: 'before', widget: 'dxButton', options: { type: 'back', text: 'Back' } },
+        { location: 'after', widget: 'dxButton', options: { icon: 'plus' } },
+        { location: 'after', widget: 'dxButton', options: { icon: 'find' } },
+        { location: 'center', text: 'Products' }
     ];
 }
