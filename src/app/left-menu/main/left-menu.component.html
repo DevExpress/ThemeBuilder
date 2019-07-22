@@ -1,59 +1,59 @@
 <div class="left-menu">
-    
     <div class="working-area">
         <div class="name" (click)="openMenu()">
             <span class="arrow menu"></span>{{ workAreaName }}
         </div>
 
-        <div class="scroll-container">
+        <div class="scroll-container" *ngIf="workArea">
             <dx-scroll-view>
-                <div *ngFor="let workItem of workArea" class="work-item">
-                    <div *ngIf="workItem.GroupHeader" class="group" #group>
-                        <div class="group-header" (click)="group.classList.toggle('closed')">
-                            {{ getRealName(workItem.Name) }}
+                <div *ngFor="let group of workArea.groups" class="work-item">
+                    <div class="group" #groupElement *ngIf="group.items && group.items.length">
+                        <div class="group-header" (click)="groupElement.classList.toggle('closed')">
+                            {{ getRealName(group.name) }}
                             <span class="chevron dx-icon-chevronup"></span>
                         </div>
                         <div class="group-items">
-                            <ng-container *ngFor="let item of workItem.Items">
+                            <ng-container *ngFor="let item of group.items">
                                 <app-editor [item]="item"></app-editor>
                             </ng-container>
                         </div>
                     </div>
-                    <div *ngIf="!workItem.GroupHeader">
-                        <app-editor [item]="workItem"></app-editor>
+                </div>
+                <div *ngFor="let item of workArea.items" class="work-item">
+                    <div>
+                        <app-editor [item]="item"></app-editor>
                     </div>
                 </div>
             </dx-scroll-view>
         </div>
-
     </div>
     <div class="dark-menu closed" [ngClass]="{ 'closed' : menuClosed }">
-            <div class="menu-item top" (click)="menuClosed = true;">
-                <div>
-                    <app-back-navigator text="Back"></app-back-navigator>
-                </div>
-                <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
-                    <span class="arrow search"></span>
-                    <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
-                </div>
-                <div class="search-button" (click)="toggleSearch($event)">
-                    <app-search-opener [opened]="searchOpened"></app-search-opener>
-                </div>
+        <div class="menu-item top" (click)="menuClosed = true;">
+            <div>
+                <app-back-navigator text="Back"></app-back-navigator>
             </div>
-            <div class="separator"></div>
-            <div class="scroll-container">
-                <dx-scroll-view>
-                    <div
-                        *ngFor="let menuItem of filteredMenuData"
-                        class="menu-item"
-                        [routerLink]="['/advanced', theme, colorScheme, menuItem.unitedGroupKey]"
-                        routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{exact: true}"
-                        (click)="menuClosed = true;"
-                    >
-                        {{ menuItem.groupName }}
-                    </div>
-                </dx-scroll-view>
+            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
+                <span class="arrow search"></span>
+                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
+            </div>
+            <div class="search-button" (click)="toggleSearch($event)">
+                <app-search-opener [opened]="searchOpened"></app-search-opener>
             </div>
         </div>
+        <div class="separator"></div>
+        <div class="scroll-container">
+            <dx-scroll-view>
+                <div
+                    *ngFor="let menuItem of filteredMenuData"
+                    class="menu-item"
+                    [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    (click)="menuClosed = true;"
+                >
+                    {{ menuItem.name }}
+                </div>
+            </dx-scroll-view>
+        </div>
+    </div>
 </div>

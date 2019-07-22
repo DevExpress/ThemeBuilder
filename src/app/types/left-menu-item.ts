@@ -1,9 +1,10 @@
 import { MetaItem } from './meta-item';
 
 export class LeftMenuItem {
-    order: number;
-    unitedGroupKey: string;
-    groupName: string;
-    equivalents: string;
-    items: MetaItem[];
+    name: string;
+    regs?: RegExp[];
+    equivalents?: string;
+    groups?: LeftMenuItem[];
+    items?: MetaItem[];
+    route?: string;
 }
