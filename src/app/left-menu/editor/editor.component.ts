@@ -14,7 +14,7 @@ export class EditorComponent {
 
     constructor(private names: NamesService, private metaRepository: MetadataRepositoryService) { }
 
-    getRealName = name => this.names.getRealName(name);
+    getRealName = (name) => this.names.getRealName(name);
 
     valueChanged(e: any, key: string) {
         this.metaRepository.updateSingleVariable(e, key);

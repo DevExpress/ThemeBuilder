@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-form',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ImportService } from '../../import.service';
 import { alert } from 'devextreme/ui/dialog';
+import { ImportService } from '../../import.service';
 
 @Component({
     selector: 'app-import-meta',

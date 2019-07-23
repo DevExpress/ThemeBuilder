@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { DxLoadPanelComponent, DxToastComponent, DxTooltipComponent } from 'devextreme-angular';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { DxTooltipComponent, DxToastComponent, DxLoadPanelComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-overlays',
@@ -18,15 +18,15 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);
     isExpandedValue = false;
 
-    actionSheetData: Array<any> = [
-        { 'text': 'Command 1' },
-        { 'text': 'Command 2' },
-        { 'text': 'Command 3' },
-        { 'text': 'Command 4' }
+    actionSheetData: any[] = [
+        { text: 'Command 1' },
+        { text: 'Command 2' },
+        { text: 'Command 3' },
+        { text: 'Command 4' }
     ];
 
     toastInit(e) {
-        const toastContainer = this.isExpanded.getValue() ? '#target-block': '#toast-block';
+        const toastContainer = this.isExpanded.getValue() ? '#target-block' : '#toast-block';
         e.component.option('container', toastContainer);
     }
 

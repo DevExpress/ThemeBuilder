@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ImportService } from 'src/app/import.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
+import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
+import { ImportService } from '../../import.service';
 
 @Component({
   selector: 'app-bootstrap-uploader',
@@ -15,7 +16,10 @@ export class BootstrapUploaderComponent {
     @Input() labelText = 'or Drop the file here';
     @Output() imported = new EventEmitter();
 
-    constructor(private importService: ImportService) {}
+    constructor(
+        private importService: ImportService,
+        private googleAnalyticsEventsService: GoogleAnalyticsEventsService
+    ) {}
 
     uploaded(e) {
         const file = e.value[0];
@@ -37,6 +41,10 @@ export class BootstrapUploaderComponent {
                         alert('Metadata has a wrong format.', 'Error');
                     });
                 }
+
+                this.googleAnalyticsEventsService.emitEvent(
+                    'import',
+                    this.version ? 'bootstrap variables (file)' : 'metadata (file)');
 
                 this.imported.emit();
                 e.component.reset();

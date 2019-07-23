@@ -1,12 +1,13 @@
-import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
-import { ImportService } from '../../../import.service';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
-import { PopupComponent } from '../popup/popup.component';
-import { Subscription } from 'rxjs';
 import validationEngine from 'devextreme/ui/validation_engine';
 import * as JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
+import { Subscription } from 'rxjs';
+import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
+import { ImportService } from '../../../import.service';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
     selector: 'app-export-popup',
@@ -17,7 +18,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
     schemeName: string;
     makeSwatch = false;
-    fileContent: Array<string> = [];
+    fileContent: string[] = [];
     outputFile: string;
     subscription: Subscription;
     showOutputFile: boolean;
@@ -27,7 +28,10 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     selectedIndex = 0;
     timerId = null;
 
-    constructor(private importService: ImportService) { }
+    constructor(
+        private importService: ImportService,
+        private googleAnalyticsEventsService: GoogleAnalyticsEventsService
+    ) { }
 
     getFileNameWithoutExt(): string {
         return this.outputFile &&
@@ -58,12 +62,17 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportCss(): void {
         if(!this.validate().isValid) return;
+
+        this.googleAnalyticsEventsService.emitEvent(
+            'export',
+            'save css (' + this.importService.getThemeName() + ')');
+
         const fileContentReady = !this.loadIndicatorVisible;
         if(fileContentReady) {
             this.fileSave(this.fileContent[0]);
             return;
         }
-        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
             this.fileSave(css);
             this.popup.hide();
         });
@@ -71,6 +80,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     exportMeta(): void {
         if(!this.validate().isValid) return;
+
+        this.googleAnalyticsEventsService.emitEvent(
+            'export',
+            'save metadata (' + this.importService.getThemeName() + ')');
+
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
@@ -96,7 +110,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
 
     displayCss() {
-        this.importService.exportCss(this.schemeName, this.makeSwatch).then(css => {
+        this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
             this.fileContent[0] = css;
             this.loadIndicatorVisible = false;
             this.saveButtonDisabled = false;
@@ -119,6 +133,12 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         }, timeout);
 
         this.displayMeta();
+    }
+
+    copyFileContent() {
+        this.googleAnalyticsEventsService.emitEvent(
+            'export',
+            'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
     }
 
     schemeNameChange() {

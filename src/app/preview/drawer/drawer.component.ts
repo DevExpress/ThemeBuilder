@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
 import { DxDrawerComponent } from 'devextreme-angular';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-drawer',
@@ -29,7 +29,7 @@ export class DrawerComponent {
     Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim.</p>
     <p>Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar.</p>`;
 
-    toolbarItems: Array<any> = [{
+    toolbarItems: any[] = [{
         widget: 'dxButton',
         options: {
             icon: 'menu',

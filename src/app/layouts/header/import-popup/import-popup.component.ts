@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ImportService } from '../../../import.service';
 import { alert } from 'devextreme/ui/dialog';
+import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
+import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 
 @Component({
@@ -11,7 +12,10 @@ import { PopupComponent } from '../popup/popup.component';
 export class ImportPopupComponent {
     @ViewChild('popup') popup: PopupComponent;
 
-    constructor(private importService: ImportService) { }
+    constructor(
+        private importService: ImportService,
+        private googleAnalyticsEventsService: GoogleAnalyticsEventsService
+    ) { }
 
     radioGroupData = [{
         text: 'Bootstrap 4',
@@ -31,6 +35,8 @@ export class ImportPopupComponent {
     importValue = '';
 
     applyClick(t) {
+        this.googleAnalyticsEventsService.emitEvent('import', 'metadata');
+
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();
             t.value = '';

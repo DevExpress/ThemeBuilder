@@ -1,9 +1,9 @@
-import { Component, ViewChild, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MetadataRepositoryService } from '../meta-repository.service';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoadingService } from '../loading.service';
+import { MetadataRepositoryService } from '../meta-repository.service';
 
 @Component({
     selector: 'app-iframe',
@@ -52,20 +52,20 @@ export class IframeComponent implements OnDestroy, OnInit {
     onIframeLoad() {
         if(this.cssSubscription)
             this.cssSubscription.unsubscribe();
-        this.cssSubscription = this.metadataService.css.subscribe(css => {
+        this.cssSubscription = this.metadataService.css.subscribe((css) => {
             const theme = this.metadataService.theme;
             const themeSize = theme.name === 'generic' ? (theme.colorScheme.split('-')[1] || 'normal') : '';
             this.iframe.nativeElement.contentWindow.postMessage({
-                css: css,
-                themeSize: themeSize,
+                css,
+                themeSize,
                 widget: this.widgetName.getValue()
             }, this.url);
         });
 
         if(this.widgetSubscription)
             this.widgetSubscription.unsubscribe();
-        this.widgetSubscription = this.widgetName.subscribe(widget => {
-            this.iframe.nativeElement.contentWindow.postMessage({ widget: widget }, this.url);
+        this.widgetSubscription = this.widgetName.subscribe((widget) => {
+            this.iframe.nativeElement.contentWindow.postMessage({ widget }, this.url);
         });
     }
 

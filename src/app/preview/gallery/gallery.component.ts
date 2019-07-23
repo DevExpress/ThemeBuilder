@@ -10,7 +10,7 @@ export class GalleryComponent  {
     widgetGroup = 'gallery';
     isExpanded = new Subject<boolean>();
 
-    galleryItems: Array<string> = [
+    galleryItems: string[] = [
         'images/gallery1.jpg',
         'images/gallery2.jpg',
         'images/gallery3.jpg',

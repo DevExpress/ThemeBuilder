@@ -7,9 +7,9 @@ import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.
 import { IndexComponent } from './index/index.component';
 import { MasterComponent } from './master/master.component';
 
+import { AdvancedComponent } from './advanced/advanced.component';
 import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
-import { AdvancedComponent } from './advanced/advanced.component';
 import { PreviewIndexComponent } from './preview/index.component';
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
             { path: 'advanced/:theme/:color-scheme/datagrid', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/treelist', redirectTo: '/advanced/:theme/:color-scheme/grids/treelist', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/:widget', redirectTo: '/advanced/:theme/:color-scheme/:widget/', pathMatch: 'full'},
-            { path: 'advanced/:theme/:color-scheme/:group/:widget', component: AdvancedComponent, data: { routeId: 4, docHash: '#Customize_the_Theme' } },
+            { path: 'advanced/:theme/:color-scheme/:group/:widget', component: AdvancedComponent, data: { routeId: 4, docHash: '#Customize_the_Theme' } }
         ]
     },
     {
@@ -42,7 +42,6 @@ const routes: Routes = [
     },
     { path: '**', redirectTo: '' }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

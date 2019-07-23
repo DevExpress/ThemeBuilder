@@ -5,5 +5,5 @@ export class LeftMenuItem {
     unitedGroupKey: string;
     groupName: string;
     equivalents: string;
-    items: Array<MetaItem>;
+    items: MetaItem[];
 }

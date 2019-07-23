@@ -1,4 +1,5 @@
 {
+    "extends": "tslint:recommended",
     "rulesDirectory": [
         "node_modules/codelyzer"
     ],
@@ -23,9 +24,11 @@
         "import-spacing": true,
         "indent": [
             true,
-            "spaces"
+            "spaces",
+            4
         ],
         "interface-over-type-literal": true,
+        "jsdoc-format": false,
         "label-position": true,
         "max-line-length": [
             true,
@@ -83,6 +86,7 @@
             "check-whitespace"
         ],
         "prefer-const": true,
+        "prefer-for-of": false,
         "quotemark": [
             true,
             "single"
@@ -91,6 +95,10 @@
         "semicolon": [
             true,
             "always"
+        ],
+        "space-within-parens": [
+            true,
+            0
         ],
         "triple-equals": [
             true,
@@ -106,15 +114,27 @@
                 "variable-declaration": "nospace"
             }
         ],
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "never",
+                "singleline": "never"
+            }
+        ],
         "unified-signatures": true,
         "variable-name": false,
         "whitespace": [
-            false,
-            "check-branch",
+            true,
             "check-decl",
             "check-operator",
+            "check-module",
             "check-separator",
-            "check-type"
+            "check-rest-spread",
+            "check-type",
+            "check-typecast",
+            "check-type-operator",
+            "check-preblock",
+            "check-postbrace"
         ],
         "no-output-on-prefix": true,
         "use-input-property-decorator": true,

@@ -50,7 +50,8 @@
         id="file-content" 
         [readOnly]="true" 
         [height]="150" 
-        [value]="fileContent[selectedIndex]" 
+        [value]="fileContent[selectedIndex]"
+        (onCopy)="copyFileContent()"
         #textArea>
     </dx-text-area>
     <dx-load-panel 
