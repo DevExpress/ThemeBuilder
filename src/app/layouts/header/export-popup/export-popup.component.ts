@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
+import { saveAs } from 'file-saver';
 import * as JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
-import { saveAs } from 'file-saver';
 import { Subscription } from 'rxjs';
 import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
 import { ImportService } from '../../../import.service';
@@ -107,7 +107,6 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
                 saveAs(content, fileName + '.zip');
             });
     }
-
 
     displayCss() {
         this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
