@@ -1,7 +1,6 @@
 import { LeftMenuItem } from '../types/left-menu-item';
 
 export class LeftMenuAlias {
-    // regular expression used in the order of the groups
     static menu: LeftMenuItem[] = [
         {
             name: 'Basic Settings',
@@ -202,7 +201,7 @@ export class LeftMenuAlias {
         }
     ];
 
-    static getMenu(): any[] {
+    static getMenu(): LeftMenuItem[] {
         return this.menu;
     }
 }
