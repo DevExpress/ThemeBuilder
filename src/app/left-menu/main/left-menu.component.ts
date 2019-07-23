@@ -66,7 +66,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         if(item) {
             this.workArea = item;
 
-            this.workAreaName = name || this.BASE_THEMING_NAME;
+            this.workAreaName = item.name || this.BASE_THEMING_NAME;
             this.menuClosed = true;
         }
     }
@@ -79,8 +79,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
             const getMatchedItems = (regex: RegExp): MetaItem[] => {
-                return metadata
-                    .filter((value) => value.Name && regex.test(value.Key));
+                return metadata.filter((value) => value.Name && regex.test(value.Key));
             };
 
             const fillItems = (menuItem: LeftMenuItem): void => {
