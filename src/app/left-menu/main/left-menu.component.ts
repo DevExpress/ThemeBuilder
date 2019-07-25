@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LeftMenuItem } from '../../types/left-menu-item';
-import { MetaItem } from '../../types/meta-item';
-import { LeftMenuAlias } from '../left-menu.aliases';
-
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
+import { LeftMenuItem } from '../../types/left-menu-item';
+import { MetaItem } from '../../types/meta-item';
+import { LeftMenuAlias } from '../left-menu.aliases';
 
 @Component({
     selector: 'app-left-menu',
@@ -26,12 +25,12 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     subscription: Subscription;
     menuData: LeftMenuItem[];
-    filteredMenuData: LeftMenuItem[];
+    filteredMenuData: LeftMenuItem[] = [];
 
     menuClosed = true;
     searchOpened = false;
     searchKeyword = '';
-    workArea: MetaItem[];
+    workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
@@ -56,100 +55,59 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     menuSearch() {
         const keyword = this.searchKeyword.toLowerCase();
         this.filteredMenuData = this.menuData.filter((value) => {
-            const groupName = value.groupName.toLowerCase();
-            const searchString = groupName + ', ' + value.equivalents;
+            const name = value.name.toLowerCase();
+            const searchString = name + ', ' + value.equivalents;
             return searchString.toLowerCase().indexOf(keyword) !== -1;
         });
     }
 
     changeWidget(widget: string) {
-        const item = this.menuData && this.menuData.find((value) => value.unitedGroupKey === widget);
+        const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
-            this.openWorkArea(item.items, item.groupName);
+            this.workArea = item;
+
+            this.workAreaName = item.name || this.BASE_THEMING_NAME;
+            this.menuClosed = true;
         }
-    }
-
-    openWorkArea(items: MetaItem[], name: string) {
-        const workItems = items || [];
-
-        workItems.forEach((item) => {
-            if(item.TypeValues) {
-                item.TypeValuesArray = item.TypeValues.split('|');
-            }
-        });
-
-        this.workArea = workItems.sort((item1, item2) => this.names.sortNames(item1.Name, item2.Name));
-
-        this.workAreaName = name || this.BASE_THEMING_NAME;
-        this.menuClosed = true;
     }
 
     getRealName = (name) => this.names.getRealName(name);
 
     loadThemeMetadata() {
-        return this.metaRepository.getData().then((metadata) => {
+        return this.metaRepository.getData().then((metadata: MetaItem[]) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
 
-            const widgetGroups: MetaItem[] = [];
-            const itemArray: LeftMenuItem[] = [];
+            const getMatchedItems = (regex: RegExp): MetaItem[] => {
+                return metadata.filter((value) => value.Name && regex.test(value.Key));
+            };
 
-            const processedGroups: any = {};
-
-            metadata.forEach((metaItem) => {
-                const group = metaItem.Group;
-
-                if(processedGroups[group]) return;
-                processedGroups[group] = true;
-
-                const aliasInfo = LeftMenuAlias.getAlias(group);
-                const unitedGroupName = LeftMenuAlias.getUnitedGroupName(group);
-
-                if(!aliasInfo) return;
-
-                const groupName = aliasInfo.name;
-                const groupItems = metadata.filter((i) => i.Group === group);
-
-                if(aliasInfo.widgetGroup) {
-                    const groupKey = group.substring(0, group.indexOf('.'));
-
-                    widgetGroups.push({
-                        Key: null,
-                        Value: null,
-                        Group: groupKey,
-                        GroupHeader: true,
-                        Name: aliasInfo.order + '. ' + groupName,
-                        Items: groupItems
+            const fillItems = (menuItem: LeftMenuItem): void => {
+                if(menuItem.regs) {
+                    menuItem.items = [];
+                    menuItem.regs.forEach((regex) => {
+                        Array.prototype.push.apply(menuItem.items, getMatchedItems(regex));
                     });
-                } else {
-                    itemArray.push({
-                        order: aliasInfo.order,
-                        groupName,
-                        items: groupItems,
-                        equivalents: aliasInfo.equivalents,
-                        unitedGroupKey: unitedGroupName
+
+                    menuItem.items.forEach((metaItem: MetaItem) => {
+                        if(metaItem.TypeValues) {
+                            metaItem.TypeValuesArray = metaItem.TypeValues.split('|');
+                        }
                     });
+
+                    menuItem.items.sort((item1, item2) => this.names.sortNames(item1.Name, item2.Name));
+                }
+            };
+
+            this.menuData = LeftMenuAlias.getMenu();
+
+            this.menuData.forEach((item) => {
+                fillItems(item);
+                if(item.groups) {
+                    item.groups.forEach((groupItem) => fillItems(groupItem));
                 }
             });
 
-            widgetGroups.forEach((groupItem) => {
-                const mainGroupKey = groupItem.Group;
-                if(processedGroups[mainGroupKey]) return;
-                processedGroups[mainGroupKey] = true;
-
-                const aliasInfo = LeftMenuAlias.getAlias(mainGroupKey);
-                const unitedGroupName = LeftMenuAlias.getUnitedGroupName(mainGroupKey);
-
-                itemArray.push({
-                    order: aliasInfo.order,
-                    groupName: aliasInfo.name,
-                    items: widgetGroups.filter((i) => i.Group === mainGroupKey),
-                    equivalents: aliasInfo.equivalents,
-                    unitedGroupKey: unitedGroupName
-                });
-            });
-
-            this.menuData = itemArray.sort((item1, item2) => item1.order - item2.order);
             this.filteredMenuData = this.menuData;
         });
     }
