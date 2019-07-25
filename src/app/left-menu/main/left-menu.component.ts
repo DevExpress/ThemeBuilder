@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LeftMenuItem } from 'src/app/types/left-menu-item';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
+import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
 
