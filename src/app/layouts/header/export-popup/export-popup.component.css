@@ -25,6 +25,14 @@
     margin-top: 20px;
 }
 
+.buttons app-button {
+    display: inline-block;
+}
+
+.buttons app-button:not(:first-child) {
+    margin-left: 20px;
+}
+
 .text {
     text-align: center;
     margin: 20px 0 10px;

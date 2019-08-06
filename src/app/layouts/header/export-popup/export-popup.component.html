@@ -40,7 +40,7 @@
         <dxi-item title="Export Metadata"></dxi-item>
     </dx-tab-panel>
     <div class="buttons">
-        <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button><br>
+        <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button>
         <app-button id="zipButton" [disabled]="saveButtonDisabled" [width]="270" title="Save to File" *ngIf="!selectedIndex" (clicked)=" exportZip()">Save to Zip</app-button>
     </div>
     <div class="text">
