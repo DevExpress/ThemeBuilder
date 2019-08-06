@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
+import { saveAs } from 'file-saver';
+import * as JSZip from 'jszip';
+import * as JSZipUtils from 'jszip-utils';
 import { Subscription } from 'rxjs';
 import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
 import { ImportService } from '../../../import.service';
@@ -85,6 +88,24 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
         fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         this.popup.hide();
+    }
+
+    exportZip(): void {
+        const zip = new JSZip();
+        const fontExtension = ['ttf', 'woff', 'woff2'];
+        const fontFilePath = 'icons/dxicons' + (this.importService.getThemeName() === 'generic' ? '' : 'material');
+
+        fontExtension.forEach((extension) => {
+            zip.file(`${fontFilePath}.${extension}`, JSZipUtils.getBinaryContent(`content/css/${fontFilePath}.${extension}`));
+        });
+
+        const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName;
+        zip.file(fileName + '.css', this.importService.exportCss(this.schemeName, this.makeSwatch));
+
+        zip.generateAsync({type: 'blob'})
+            .then((content) => {
+                saveAs(content, fileName + '.zip');
+            });
     }
 
     displayCss() {
