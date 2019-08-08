@@ -36,7 +36,23 @@ export class BuilderService {
 
     private build(theme: Theme, config: any): Promise<BuilderResult> {
         const baseConfig = {
-            lessCompiler: lessCompiler(window, { math: 'always' }),
+            lessCompiler: lessCompiler(window, {
+                math: 'always',
+
+                //env: 'development',
+                useFileCache: false,
+                // relativeUrls: true,
+                errorReporting: 'console',
+
+                filename: 'http://localhost:4200/devextreme-themebuilder/data/less/bundles/generic/dx.light22.less',
+                rootpath: 'http://localhost:4200/devextreme-themebuilder/data/less/',
+
+                // paths: [
+                //     'http://localhost:4200/devextreme-themebuilder/data/less/bundles/generic/',
+                //     'http://localhost:4200/devextreme-themebuilder/data/less/bundles/material/',
+                //     'http://localhost:4200/devextreme-themebuilder/data/less/'
+                // ]
+            }),
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
             baseTheme: theme.name + '.' + theme.colorScheme.replace(/-/g, '.')
