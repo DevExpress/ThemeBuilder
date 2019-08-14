@@ -12,12 +12,21 @@ import { Theme } from './types/theme';
 @Injectable()
 export class BuilderService {
     private loadLess: any;
+    private lessCompiler: any;
 
     constructor(private http: HttpClient) {
-       this.loadLess = (fileName: string) => {
+        this.loadLess = (fileName: string) => {
             return  this.http.get(fileName, { responseType: 'text' })
                 .toPromise();
         };
+
+        const compilerOptions = { math: 'always', useFileCache: true };
+
+        if(semver.gte(version, '19.2.0-dev')) {
+            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/theme/bundle.less'; // fake path to the bundle
+        }
+
+        this.lessCompiler = lessCompiler(window, compilerOptions);
     }
 
     private scssCompiler: any = {
@@ -37,14 +46,8 @@ export class BuilderService {
     };
 
     private build(theme: Theme, config: any): Promise<BuilderResult> {
-        const compilerOptions = { math: 'always' };
-
-        if(semver.gte(version, '19.2.0-dev')) {
-            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/theme/bundle.less'; // fake path to the bundle
-        }
-
         const baseConfig = {
-            lessCompiler: lessCompiler(window, compilerOptions),
+            lessCompiler: this.lessCompiler,
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
             baseTheme: theme.name + '.' + theme.colorScheme.replace(/-/g, '.')
