@@ -28,6 +28,7 @@
         "less": "^3.8.1",
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
+        "semver": "^6.3.0",
         "smoothscroll-polyfill": "^0.4.3",
         "zone.js": "~0.8.26"
     },

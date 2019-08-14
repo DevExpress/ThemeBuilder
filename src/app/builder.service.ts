@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as builder from 'devextreme-themebuilder';
+import { version } from 'devextreme-themebuilder/package.json';
 import * as lessCompiler from 'less/lib/less-browser';
 import * as Sass from 'sass.js/dist/sass.js';
+import semver from 'semver';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
@@ -35,24 +37,14 @@ export class BuilderService {
     };
 
     private build(theme: Theme, config: any): Promise<BuilderResult> {
+        const compilerOptions = { math: 'always' };
+
+        if(semver.gte(version, '19.2.0-dev')) {
+            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/theme/bundle.less'; // fake path to the bundle
+        }
+
         const baseConfig = {
-            lessCompiler: lessCompiler(window, {
-                math: 'always',
-
-                //env: 'development',
-                useFileCache: false,
-                // relativeUrls: true,
-                errorReporting: 'console',
-
-                filename: 'http://localhost:4200/devextreme-themebuilder/data/less/bundles/generic/dx.light22.less',
-                rootpath: 'http://localhost:4200/devextreme-themebuilder/data/less/',
-
-                // paths: [
-                //     'http://localhost:4200/devextreme-themebuilder/data/less/bundles/generic/',
-                //     'http://localhost:4200/devextreme-themebuilder/data/less/bundles/material/',
-                //     'http://localhost:4200/devextreme-themebuilder/data/less/'
-                // ]
-            }),
+            lessCompiler: lessCompiler(window, compilerOptions),
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
             baseTheme: theme.name + '.' + theme.colorScheme.replace(/-/g, '.')
