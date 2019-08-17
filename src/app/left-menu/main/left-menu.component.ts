@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -25,15 +26,15 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     subscription: Subscription;
     menuData: LeftMenuItem[];
-    filteredMenuData: LeftMenuItem[] = [];
-
-    menuClosed = true;
+    filteredData: LeftMenuItem[] = [];
+    menuClosed = false;
     searchOpened = false;
     searchKeyword = '';
     workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
 
-    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
+    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService,
+                private sanitizer: DomSanitizer) {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
             this.changeWidget(this.widget);
@@ -52,23 +53,112 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         e.stopPropagation();
     }
 
+    changeColor(text: string) {
+       const keyword = this.getRealName(this.searchKeyword.toLowerCase());
+       if (keyword.length >= 3) {
+        text = '<span style="color:#f05b41">' + text.slice(0, keyword.length) + '</span>' + text.slice(keyword.length);
+        return this.sanitizer.bypassSecurityTrustHtml(text);
+       }
+       return text;
+    }
+
     menuSearch() {
-        const keyword = this.searchKeyword.toLowerCase();
-        this.filteredMenuData = this.menuData.filter((value) => {
-            const name = value.name.toLowerCase();
-            const searchString = name + ', ' + value.equivalents;
-            return searchString.toLowerCase().indexOf(keyword) !== -1;
-        });
+        const keyword = this.getRealName(this.searchKeyword.toLowerCase());
+
+        if (keyword.length < 3) {
+            this.filteredData = [];
+            this.filteredData[0] = this.workArea;
+        }
+
+        if (keyword.length >= 3) {
+            this.filteredData = this.deepClone(this.menuData);
+
+            this.filteredData.forEach((data) => {
+                if (data.groups) {
+                    data.groups.forEach((group) => {
+                        if (group.items) {
+                            group.items = group.items.filter((value) => {
+                                const searchString = this.getRealName(value.Name);
+                                if(searchString.toLowerCase() === keyword) {
+                                    return true;
+                                } else if(searchString.toLowerCase().slice(0, keyword.length - searchString.length) === keyword) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    data.items = data.items.filter((value) => {
+                        const searchString = this.getRealName(value.Name);
+                        if (searchString.toLowerCase() === keyword) {
+                            return true;
+                        } else if (searchString.toLowerCase().slice(0, keyword.length - searchString.length) === keyword) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                }
+            });
+
+            for(let i = 0; i < this.filteredData.length; i++) {
+                if(this.filteredData[i].items) {
+                    if(this.filteredData[i].items.length === 0) {
+                        this.filteredData.splice(i, 1);
+                        i--;
+                    }
+                } else {
+                    for(let k = 0; k < this.filteredData[i].groups.length; k++) {
+                        if(this.filteredData[i].groups[k].items) {
+                            if(this.filteredData[i].groups[k].items.length === 0) {
+                                this.filteredData[i].groups.splice(k, 1);
+                                k--;
+                            }
+                        }
+                    }
+                    if(this.filteredData[i].groups.length === 0 || (this.filteredData[i].groups.length === 4 && this.filteredData[i].name === 'Editors')) {
+                        this.filteredData.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+        }
+
+    }
+
+    deepClone(obj: any) {
+        if (typeof (obj) !== 'object' || obj === null) {
+            return obj;
+        }
+
+        let clone;
+
+        if (Array.isArray(obj)) {
+            clone = obj.slice();
+        } else {
+            clone = Object.assign({}, obj);
+        }
+
+        const keys = Object.keys(clone);
+
+        for (let i = 0; i < keys.length; i++) {
+            clone[keys[i]] = this.deepClone(clone[keys[i]]);
+        }
+
+        return clone;
+
     }
 
     changeWidget(widget: string) {
         const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
-
             this.workAreaName = item.name || this.BASE_THEMING_NAME;
             this.menuClosed = true;
         }
+        this.filteredData[0] = this.workArea;
     }
 
     getRealName = (name) => this.names.getRealName(name);
@@ -108,7 +198,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 }
             });
 
-            this.filteredMenuData = this.menuData;
         });
     }
 

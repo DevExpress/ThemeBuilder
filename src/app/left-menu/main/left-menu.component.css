@@ -5,6 +5,10 @@
     border-right: 1px solid #e3e7ea;
 }
 
+.property-header {
+    padding: 20px 20px 3px 0;
+}
+
 .left-menu {
     height: 100%;
     width: 100%;
@@ -63,53 +67,6 @@
     height: 18px;
 }
 
-.left-menu .dark-menu .menu-item.top .search-button {
-    width: 41px;
-    height: 45px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: #505050;
-    border-left: 1px solid #6d6e6f;
-    border-bottom: 1px solid #6d6e6f;
-    left: 200px;
-    top: 0;
-}
-
-.left-menu .dark-menu .menu-item.top .search-container {
-    width: 241px;
-    height: 45px;
-    box-sizing: border-box;
-    position: absolute;
-    left: 200px;
-    top: 0;
-    border-bottom: 1px solid #6d6e6f;
-    background-color: #505050;
-    transition: left 200ms;
-}
-
-.left-menu .dark-menu .menu-item.top .search-container.opened {
-    left: 0;
-}
-
-.left-menu .dark-menu .menu-item.top .search-container .search {
-    background-image: url(/images/search.svg);
-    cursor: default;
-}
-
-.left-menu .dark-menu .menu-item.top .search-container input {
-    height: 44px;
-    width: 170px;
-    border: none;
-    position: absolute;
-    left: 30px;
-    padding: 0;
-    background: transparent;
-    color: #fff;
-}
-.left-menu .dark-menu .menu-item.top .search-container input::placeholder {
-    color: #b5b5b5;
-}
-
 .left-menu .dark-menu .menu-item.active-link {
     background-color: #6f6f6f;
 }
@@ -122,17 +79,81 @@
     width: 240px;
     background-color: #fafbfb;
     height: 100%;
+
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    left: 0;
+    transition: left ease 200ms;
+    overflow: hidden;
 }
 
 .left-menu .working-area .name {
-    padding: 10px 20px 10px 30px;
+    font-size: 14px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.left-menu .working-area .name:first-child{
+    padding-top: 10px;
+}
+
+.left-menu .working-area .name.top{
     font-size: 18px;
     font-weight: bold;
-    cursor: pointer;
     color: #505050;
     border-bottom: 1px solid #e3e7ea;
     font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
     position: relative;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+.left-menu .working-area .name.top .search-button {
+    width: 41px;
+    height: 45px;
+    box-sizing: border-box;
+    position: absolute;
+    border-left: 1px solid #e3e7ea;
+    border-bottom: 1px solid #e3e7ea;
+    left: 200px;
+    top: 0;
+    background-color: #fafbfb
+}
+
+.left-menu .working-area .name.top .search-container {
+    width: 241px;
+    height: 45px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 200px;
+    top: 0;
+    border-bottom: 1px solid #e3e7ea;
+    transition: left 200ms;
+    background-color: #fafbfb
+}
+
+.left-menu .working-area .name.top .search-container.opened {
+    left: 0;
+}
+
+.left-menu .working-area .name.top .search-container .search {
+    background-image: url(/images/search.svg);
+    cursor: default;
+    filter:invert(1);
+}
+
+.left-menu .working-area .name.top .search-container input {
+    height: 44px;
+    width: 170px;
+    border: none;
+    position: absolute;
+    left: 30px;
+    padding: 0;
+    background: transparent;
+    color: #505050;
+}
+.left-menu .working-area .name.top .search-container input::placeholder {
+    color: #505050;
 }
 
 .left-menu .working-area .name .arrow.menu {
