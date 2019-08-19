@@ -25,7 +25,7 @@
         "file-saver": "^2.0.2",
         "jszip": "^3.2.2",
         "jszip-utils": "^0.1.0",
-        "less": "^3.8.1",
+        "less": "3.9.0",
         "rxjs": "^6.0.0",
         "sass.js": "^0.10.11",
         "smoothscroll-polyfill": "^0.4.3",
