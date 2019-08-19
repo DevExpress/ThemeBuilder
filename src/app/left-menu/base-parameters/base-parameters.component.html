@@ -12,6 +12,7 @@
         </div>
     </div>
     <div *ngFor="let item of editorsData" class="work-item">
+        <div class="property-header">{{getRealName(item.Name)}}</div>
         <app-editor [item]="item"></app-editor>
     </div>
 </div>
