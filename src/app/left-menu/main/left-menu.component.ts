@@ -78,14 +78,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                     data.groups.forEach((group) => {
                         if (group.items) {
                             group.items = group.items.filter((value) => {
-                                const searchString = this.getRealName(value.Name);
-                                if(searchString.toLowerCase() === keyword) {
-                                    return true;
-                                } else if(searchString.toLowerCase().slice(0, keyword.length - searchString.length) === keyword) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                const searchString = this.getRealName(value.Name).toLowerCase();
+                                return searchString.indexOf(keyword.toLowerCase()) >= 0;
                             });
                         }
                     });
