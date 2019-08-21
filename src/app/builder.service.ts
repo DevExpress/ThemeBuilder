@@ -23,7 +23,7 @@ export class BuilderService {
         const compilerOptions = { math: 'always', useFileCache: true };
 
         if(semver.gte(version, '19.2.0-dev')) {
-            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/theme/bundle.less'; // fake path to the bundle
+            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/bundle.less'; // fake path to the bundle
         }
 
         this.lessCompiler = lessCompiler(window, compilerOptions);
