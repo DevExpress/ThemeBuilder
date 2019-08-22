@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as builder from 'devextreme-themebuilder';
+import { version } from 'devextreme-themebuilder/package.json';
 import * as lessCompiler from 'less/lib/less-browser';
 import * as Sass from 'sass.js/dist/sass.js';
+import semver from 'semver';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
 import { Theme } from './types/theme';
@@ -10,12 +12,21 @@ import { Theme } from './types/theme';
 @Injectable()
 export class BuilderService {
     private loadLess: any;
+    private lessCompiler: any;
 
     constructor(private http: HttpClient) {
-       this.loadLess = (fileName: string) => {
+        this.loadLess = (fileName: string) => {
             return  this.http.get(fileName, { responseType: 'text' })
                 .toPromise();
         };
+
+        const compilerOptions = { math: 'always', useFileCache: true };
+
+        if(semver.gte(version, '19.2.0-dev')) {
+            compilerOptions['filename'] = '/devextreme-themebuilder/data/less/bundles/bundle.less'; // fake path to the bundle
+        }
+
+        this.lessCompiler = lessCompiler(window, compilerOptions);
     }
 
     private scssCompiler: any = {
@@ -36,7 +47,7 @@ export class BuilderService {
 
     private build(theme: Theme, config: any): Promise<BuilderResult> {
         const baseConfig = {
-            lessCompiler: lessCompiler(window, { math: 'always' }),
+            lessCompiler: this.lessCompiler,
             sassCompiler: this.scssCompiler,
             reader: this.loadLess,
             baseTheme: theme.name + '.' + theme.colorScheme.replace(/-/g, '.')
