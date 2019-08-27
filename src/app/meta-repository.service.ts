@@ -104,8 +104,7 @@ export class MetadataRepositoryService {
         return buildResult.then((result) => {
             this.loading.hide();
 
-            const isLastBuild = savedBuildNumber === this.globalBuildNumber;
-            if(!isLastBuild) return;
+            if(!savedBuildNumber === this.globalBuildNumber) return;
 
             for(const dataKey in result.compiledMetadata) {
                 if(result.compiledMetadata.hasOwnProperty(dataKey)) {
