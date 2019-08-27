@@ -22,6 +22,7 @@ export class MetadataRepositoryService {
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
     forceRebuild = false;
+    globalBuildNumber = 0;
 
     constructor(private router: Router, private builder: BuilderService, private loading: LoadingService) {
         this.build();
@@ -98,7 +99,13 @@ export class MetadataRepositoryService {
             this.builder.buildThemeBootstrap(currentTheme, bootstrapData, bootstrapVersion) :
             this.builder.buildTheme(currentTheme, false, null, this.modifiedMetaCollection);
 
+        const savedBuildNumber = ++this.globalBuildNumber;
+
         return buildResult.then((result) => {
+            this.loading.hide();
+
+            if(savedBuildNumber !== this.globalBuildNumber) return;
+
             for(const dataKey in result.compiledMetadata) {
                 if(result.compiledMetadata.hasOwnProperty(dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, currentTheme);
@@ -115,7 +122,6 @@ export class MetadataRepositoryService {
             }
 
             this.css.next(result.css);
-            this.loading.hide();
             return result;
         });
     }
