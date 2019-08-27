@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -33,8 +32,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
 
-    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService,
-                private sanitizer: DomSanitizer) {
+    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
             this.changeWidget(this.widget);
@@ -53,15 +51,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         e.stopPropagation();
     }
 
-    changeColor(text: string) {
-       const keyword = this.getRealName(this.searchKeyword.toLowerCase());
-       if (keyword.length >= 3) {
-        text = '<span style="color:#f05b41">' + text.slice(0, keyword.length) + '</span>' + text.slice(keyword.length);
-        return this.sanitizer.bypassSecurityTrustHtml(text);
-       }
-       return text;
-    }
-
     menuSearch() {
         const keyword = this.getRealName(this.searchKeyword.toLowerCase());
 
@@ -71,77 +60,44 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         }
 
         if (keyword.length >= 3) {
-            this.filteredData = this.deepClone(this.menuData);
+            this.filteredData = [];
 
-            this.filteredData.forEach((data) => {
-                if (data.groups) {
-                    data.groups.forEach((group) => {
-                        if (group.items) {
-                            group.items = group.items.filter((value) => {
-                                const searchString = this.getRealName(value.Name).toLowerCase();
-                                return searchString.indexOf(keyword.toLowerCase()) >= 0;
-                            });
+            this.menuData.forEach((menuDataItem) => {
+                let filteredDataItem = [];
+
+                if(menuDataItem.items) {
+                    menuDataItem.items.forEach((item) => {
+                        const searchString = this.getRealName(item.Name).toLowerCase();
+                        if(searchString.indexOf(keyword) >= 0) {
+                            filteredDataItem.push(item);
                         }
                     });
-                } else {
-                    data.items = data.items.filter((value) => {
-                        const searchString = this.getRealName(value.Name);
-                        if (searchString.toLowerCase() === keyword) {
-                            return true;
-                        } else if (searchString.toLowerCase().slice(0, keyword.length - searchString.length) === keyword) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    });
-                }
-            });
-
-            for(let i = 0; i < this.filteredData.length; i++) {
-                if(this.filteredData[i].items) {
-                    if(this.filteredData[i].items.length === 0) {
-                        this.filteredData.splice(i, 1);
-                        i--;
+                    if(filteredDataItem.length !== 0) {
+                        this.filteredData.push({name: menuDataItem.name, items: filteredDataItem});
                     }
-                } else {
-                    for(let k = 0; k < this.filteredData[i].groups.length; k++) {
-                        if(this.filteredData[i].groups[k].items) {
-                            if(this.filteredData[i].groups[k].items.length === 0) {
-                                this.filteredData[i].groups.splice(k, 1);
-                                k--;
+                }
+                if(menuDataItem.groups) {
+                    const filteredDataGroups: LeftMenuItem[] = [];
+                    menuDataItem.groups.forEach((group) => {
+                        if(group.items) {
+                            group.items.forEach((item) => {
+                                const searchString = this.getRealName(item.Name).toLowerCase();
+                                if(searchString.indexOf(keyword) >= 0) {
+                                    filteredDataItem.push(item);
+                                }
+                            });
+                            if(filteredDataItem.length !== 0) {
+                                filteredDataGroups.push({name: group.name, items: filteredDataItem});
+                                filteredDataItem = [];
                             }
                         }
-                    }
-                    if(this.filteredData[i].groups.length === 0 || (this.filteredData[i].groups.length === 4 && this.filteredData[i].name === 'Editors')) {
-                        this.filteredData.splice(i, 1);
-                        i--;
+                    });
+                    if(filteredDataGroups.length !== 0) {
+                        this.filteredData.push({name: menuDataItem.name, groups: filteredDataGroups});
                     }
                 }
-            }
+            });
         }
-
-    }
-
-    deepClone(obj: any) {
-        if (typeof (obj) !== 'object' || obj === null) {
-            return obj;
-        }
-
-        let clone;
-
-        if (Array.isArray(obj)) {
-            clone = obj.slice();
-        } else {
-            clone = Object.assign({}, obj);
-        }
-
-        const keys = Object.keys(clone);
-
-        for (let i = 0; i < keys.length; i++) {
-            clone[keys[i]] = this.deepClone(clone[keys[i]]);
-        }
-
-        return clone;
 
     }
 
