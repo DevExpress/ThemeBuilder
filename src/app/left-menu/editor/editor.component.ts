@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
 import { MetaItem } from '../../types/meta-item';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-editor',
