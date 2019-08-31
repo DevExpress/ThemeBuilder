@@ -23,8 +23,6 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
         private router: Router
     ) { }
 
-    getRealName = (name) => this.names.getRealName(name);
-
     updateData() {
         this.metadataRepository.getBaseParameters().then((parameters) => {
             this.editorsData = parameters;
