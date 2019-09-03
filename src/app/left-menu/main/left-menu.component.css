@@ -103,12 +103,14 @@
     position: relative;
     padding-bottom: 10px;
     padding-left: 30px;
+    z-index: 3;
 }
 .left-menu .working-area .name.top .search-button {
     width: 41px;
     height: 45px;
     box-sizing: border-box;
     position: absolute;
+    z-index: 4;
     border-left: 1px solid #e3e7ea;
     border-bottom: 1px solid #e3e7ea;
     left: 200px;
@@ -121,6 +123,7 @@
     height: 45px;
     box-sizing: border-box;
     position: absolute;
+    z-index: 3;
     left: 200px;
     top: 0;
     border-bottom: 1px solid #e3e7ea;
