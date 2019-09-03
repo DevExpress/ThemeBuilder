@@ -12,20 +12,19 @@ import { MetaItem } from '../../types/meta-item';
 export class EditorComponent {
 
     @Input('item') item: MetaItem;
-    @Input() searchText: string;
+    @Input() searchText = '';
 
     constructor(private names: NamesService,
                 private metaRepository: MetadataRepositoryService,
                 private sanitizer: DomSanitizer) { }
 
-    getRealName = (name) => this.names.getRealName(name);
-
-    changeColor(text: string) {
-      if (this.searchText.length >= 3) {
-       text = '<span style="color:#f05b41">' + text.slice(0, this.searchText.length) + '</span>' + text.slice(this.searchText.length);
-       return this.sanitizer.bypassSecurityTrustHtml(text);
-      }
-      return text;
+    highlight(text: string) {
+        text = this.names.getRealName(text);
+        if(this.searchText.length >= 3) {
+            text = '<span style="color:#f05b41">' + text.slice(0, this.searchText.length) + '</span>' + text.slice(this.searchText.length);
+            return this.sanitizer.bypassSecurityTrustHtml(text);
+        }
+        return text;
    }
 
     valueChanged(e: any, key: string) {
