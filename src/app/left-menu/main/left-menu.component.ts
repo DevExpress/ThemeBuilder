@@ -54,46 +54,37 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     menuSearch() {
         const keyword = this.getRealName(this.searchKeyword.toLowerCase());
 
-        if (keyword.length < 3) {
+        const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
+            if(!item.items) return;
+
+            const filteredItems = item.items.filter((metaItem) => {
+                const itemName = this.getRealName(metaItem.Name).toLowerCase();
+                return itemName.indexOf(keyword) >= 0;
+            });
+
+            if(filteredItems.length) {
+                itemsArray.push({ name: item.name, items: filteredItems });
+            }
+        };
+
+        if(keyword.length < 3) {
             this.filteredData = [];
             this.filteredData[0] = this.workArea;
         }
 
-        if (keyword.length >= 3) {
+        if(keyword.length >= 3) {
             this.filteredData = [];
 
             this.menuData.forEach((menuDataItem) => {
-                let filteredDataItem = [];
+                addFilteredMenuItem(menuDataItem, this.filteredData);
 
-                if(menuDataItem.items) {
-                    menuDataItem.items.forEach((item) => {
-                        const searchString = this.getRealName(item.Name).toLowerCase();
-                        if(searchString.indexOf(keyword) >= 0) {
-                            filteredDataItem.push(item);
-                        }
-                    });
-                    if(filteredDataItem.length !== 0) {
-                        this.filteredData.push({name: menuDataItem.name, items: filteredDataItem});
-                    }
-                }
                 if(menuDataItem.groups) {
                     const filteredDataGroups: LeftMenuItem[] = [];
-                    menuDataItem.groups.forEach((group) => {
-                        if(group.items) {
-                            group.items.forEach((item) => {
-                                const searchString = this.getRealName(item.Name).toLowerCase();
-                                if(searchString.indexOf(keyword) >= 0) {
-                                    filteredDataItem.push(item);
-                                }
-                            });
-                            if(filteredDataItem.length !== 0) {
-                                filteredDataGroups.push({name: group.name, items: filteredDataItem});
-                                filteredDataItem = [];
-                            }
-                        }
-                    });
-                    if(filteredDataGroups.length !== 0) {
-                        this.filteredData.push({name: menuDataItem.name, groups: filteredDataGroups});
+
+                    menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
+
+                    if(filteredDataGroups.length) {
+                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
                     }
                 }
             });
