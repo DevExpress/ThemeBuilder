@@ -76,15 +76,19 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             this.filteredData = [];
 
             this.menuData.forEach((menuDataItem) => {
-                addFilteredMenuItem(menuDataItem, this.filteredData);
+                if (menuDataItem.name.toLowerCase().indexOf(keyword) !== -1) {
+                    this.filteredData.push(menuDataItem);
+                } else {
+                    addFilteredMenuItem(menuDataItem, this.filteredData);
 
-                if(menuDataItem.groups) {
-                    const filteredDataGroups: LeftMenuItem[] = [];
+                    if (menuDataItem.groups) {
+                        const filteredDataGroups: LeftMenuItem[] = [];
 
-                    menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
+                        menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
-                    if(filteredDataGroups.length) {
-                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
+                        if (filteredDataGroups.length) {
+                            this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
+                        }
                     }
                 }
             });

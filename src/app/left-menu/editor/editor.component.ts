@@ -20,10 +20,11 @@ export class EditorComponent {
 
     highlight(text: string) {
         text = this.names.getRealName(text);
-        const startText = text.slice(0, text.toLowerCase().indexOf(this.searchText));
-        const colorText = text.slice(text.toLowerCase().indexOf(this.searchText), text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
-        const textEnd = text.slice(text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
-        if(this.searchText.length >= 3) {
+        this.searchText = this.searchText.toLowerCase();
+        if(this.searchText.length >= 3 && text.toLowerCase().indexOf(this.searchText) !== -1) {
+            const startText = text.slice(0, text.toLowerCase().indexOf(this.searchText));
+            const colorText = text.slice(text.toLowerCase().indexOf(this.searchText), text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
+            const textEnd = text.slice(text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
             text = startText + '<span style="color:#f05b41">' + colorText + '</span>' + textEnd;
             return this.sanitizer.bypassSecurityTrustHtml(text);
         }
