@@ -1,7 +1,7 @@
 /*!
 * DevExtreme
-* Version: 19.1.5
-* Build date: Jul 30, 2019
+* Version: 19.1.6
+* Build date: Sep 11, 2019
 *
 * Copyright (c) 2012 - 2019 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -619,56 +619,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
   max-width: 100%;
-}
-.dx-box-flex .dx-box-item > .dx-scrollable,
-.dx-box-flex .dx-box-item-content > .dx-scrollable,
-.dx-box-flex .dx-box-item > .dx-treeview,
-.dx-box-flex .dx-box-item-content > .dx-treeview,
-.dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable,
-.dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: auto;
-}
-.dx-box-flex .dx-box-item > .dx-scrollable > .dx-scrollable-wrapper,
-.dx-box-flex .dx-box-item-content > .dx-scrollable > .dx-scrollable-wrapper,
-.dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable-wrapper,
-.dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable-wrapper,
-.dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper,
-.dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: auto;
-}
-.dx-box-flex .dx-box-item > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container,
-.dx-box-flex .dx-box-item-content > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container,
-.dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable-wrapper > .dx-scrollable-container,
-.dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable-wrapper > .dx-scrollable-container,
-.dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container,
-.dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container {
-  height: auto;
 }
 .dx-button-disabled {
   cursor: default;
@@ -1513,6 +1463,8 @@
 .dx-placeholder:before {
   display: inline-block;
   vertical-align: middle;
+  max-width: 100%;
+  text-overflow: ellipsis;
   overflow: hidden;
   content: attr(DATA-DX_PLACEHOLDER);
   pointer-events: none;
@@ -2029,6 +1981,7 @@
   display: block;
   overflow: auto;
   white-space: pre-wrap;
+  margin: 0;
 }
 .dx-textarea .dx-texteditor-input-auto-resize {
   overflow-y: hidden;
@@ -2507,6 +2460,13 @@
 }
 .dx-dialog-message {
   padding: 10px 10px 5px 10px;
+}
+.dx-prevent-safari-scrolling {
+  position: fixed;
+  margin: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 .dx-popover-wrapper .dx-popover-arrow:after {
   width: 14.14227125px;
@@ -3733,6 +3693,9 @@
 }
 .dx-colorbox-input-container.dx-colorbox-color-is-not-defined .dx-colorbox-color-result-preview {
   border: none;
+}
+.dx-colorbox-input-container .dx-placeholder:before {
+  max-width: calc(100% - 25px);
 }
 .dx-colorbox .dx-texteditor-input-container:before {
   content: "";
