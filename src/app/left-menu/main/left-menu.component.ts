@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { debounceTime } from 'rxjs/operators'; 
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
@@ -29,13 +31,16 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     menuClosed = false;
     searchOpened = false;
     searchKeyword = '';
-    previousSearchKeyword = '';
     workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
+    formGroup = new FormGroup({
+        formControl: new FormControl('')
+    });
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
+            this.searchKeyword = '';
             this.changeWidget(this.widget);
         });
     }
@@ -52,9 +57,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     menuSearch() {
-        if(this.previousSearchKeyword === this.searchKeyword) return;
-
-        this.previousSearchKeyword = this.searchKeyword;
         const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
@@ -66,7 +68,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             });
 
             if(filteredItems.length) {
-                itemsArray.push({ name: item.name, items: filteredItems });
+                itemsArray.push({ name: item.name, items: filteredItems, route: item.route });
             }
         };
 
@@ -79,7 +81,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData = [];
 
         this.menuData.forEach((menuDataItem) => {
-            console.log(menuDataItem.name.toLowerCase(), keyword);
             if(menuDataItem.name.toLowerCase().indexOf(keyword) >= 0) {
                 this.filteredData.push(menuDataItem);
             } else {
@@ -91,7 +92,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                     menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
                     if(filteredDataGroups.length) {
-                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
+                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.name });
                     }
                 }
             }
@@ -157,9 +158,12 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             });
         });
 
-        setInterval(() => {
-            this.menuSearch();
-        }, 500);
+        this.formGroup.valueChanges.pipe(
+            debounceTime(500)
+          ).subscribe((data) => {
+              this.searchKeyword = data.formControl;
+              this.menuSearch();
+        });
     }
 
     ngOnDestroy() {

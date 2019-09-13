@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -119,7 +119,7 @@ import { PreviewModule } from './preview/preview.module';
         DxRadioGroupModule,
         DxValidatorModule,
         DxLoadPanelModule,
-        FormsModule,
+        ReactiveFormsModule,
         PreviewModule,
         AppRoutingModule
     ],

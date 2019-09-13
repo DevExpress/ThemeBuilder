@@ -2,9 +2,9 @@
     <div class="working-area">
         <div class="name top" (click)="openMenu()">
             <span class="arrow menu"></span>{{ workAreaName }}
-            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
+            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()" [formGroup]="formGroup">
                 <span class="arrow search"></span>
-                <input #searchInput type="text" placeholder="Search..." [(ngModel)]="searchKeyword"/>
+                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" formControlName="formControl"/>
             </div>
             <div class="search-button" (click)="toggleSearch($event)">
                 <app-search-opener [opened]="searchOpened"></app-search-opener>
@@ -15,7 +15,11 @@
         <div class="scroll-container" *ngIf="workArea">
             <dx-scroll-view>
             <div *ngFor="let data of filteredData">
-                <div class="name top search-active" *ngIf="searchOpened" [innerHtml]="getRealName(data.name)"></div>
+                <div class="name top search-active"
+                    *ngIf="searchOpened"
+                    [innerHtml]="getRealName(data.name)"
+                    [routerLink]="['/advanced', theme, colorScheme, data.route]">
+                </div>
                 <div *ngFor="let group of data.groups" class="work-item">
                     <div class="group" #groupElement *ngIf="group.items && group.items.length">
                         <div class="group-header" (click)="groupElement.classList.toggle('closed')">
