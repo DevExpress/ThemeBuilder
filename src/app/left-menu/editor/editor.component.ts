@@ -20,15 +20,11 @@ export class EditorComponent {
 
     highlight(text: string) {
         text = this.names.getRealName(text);
-        this.searchText = this.searchText.toLowerCase();
-        if(this.searchText.length >= 3 && text.toLowerCase().indexOf(this.searchText) !== -1) {
-            const startText = text.slice(0, text.toLowerCase().indexOf(this.searchText));
-            const colorText = text.slice(text.toLowerCase().indexOf(this.searchText), text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
-            const textEnd = text.slice(text.toLowerCase().indexOf(this.searchText) + this.searchText.length);
-            text = startText + '<span style="color:#f05b41">' + colorText + '</span>' + textEnd;
-            return this.sanitizer.bypassSecurityTrustHtml(text);
-        }
-        return text;
+        if(!this.searchText) return text;
+
+        const highlightedText = text.replace(new RegExp(`(${this.searchText})`, 'ig'), `<span style="color:#f05b41">$1</span>`);
+
+        return this.sanitizer.bypassSecurityTrustHtml(highlightedText);
    }
 
     valueChanged(e: any, key: string) {

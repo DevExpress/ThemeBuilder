@@ -4,7 +4,7 @@
             <span class="arrow menu"></span>{{ workAreaName }}
             <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()">
                 <span class="arrow search"></span>
-                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" (input)="searchKeyword = $event.target.value;menuSearch();"/>
+                <input #searchInput type="text" placeholder="Search..." [(ngModel)]="searchKeyword"/>
             </div>
             <div class="search-button" (click)="toggleSearch($event)">
                 <app-search-opener [opened]="searchOpened"></app-search-opener>

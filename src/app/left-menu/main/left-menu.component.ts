@@ -29,6 +29,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     menuClosed = false;
     searchOpened = false;
     searchKeyword = '';
+    previousSearchKeyword = '';
     workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
 
@@ -47,11 +48,13 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.searchOpened = !this.searchOpened;
         this.searchKeyword = '';
         setTimeout(() => this.searchInput.nativeElement.focus(), 100);
-        this.menuSearch();
         e.stopPropagation();
     }
 
     menuSearch() {
+        if(this.previousSearchKeyword === this.searchKeyword) return;
+
+        this.previousSearchKeyword = this.searchKeyword;
         const keyword = this.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
@@ -67,33 +70,31 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             }
         };
 
-        if(keyword.length < 3) {
+        if(!keyword.length) {
             this.filteredData = [];
             this.filteredData[0] = this.workArea;
+            return;
         }
 
-        if(keyword.length >= 3) {
-            this.filteredData = [];
+        this.filteredData = [];
 
-            this.menuData.forEach((menuDataItem) => {
-                if (menuDataItem.name.toLowerCase().indexOf(keyword) !== -1) {
-                    this.filteredData.push(menuDataItem);
-                } else {
-                    addFilteredMenuItem(menuDataItem, this.filteredData);
+        this.menuData.forEach((menuDataItem) => {
+            if(menuDataItem.name.toLowerCase().indexOf(keyword) > 0) {
+                this.filteredData.push(menuDataItem);
+            } else {
+                addFilteredMenuItem(menuDataItem, this.filteredData);
 
-                    if (menuDataItem.groups) {
-                        const filteredDataGroups: LeftMenuItem[] = [];
+                if(menuDataItem.groups) {
+                    const filteredDataGroups: LeftMenuItem[] = [];
 
-                        menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
+                    menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
-                        if (filteredDataGroups.length) {
-                            this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
-                        }
+                    if(filteredDataGroups.length) {
+                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups });
                     }
                 }
-            });
-        }
-
+            }
+        });
     }
 
     changeWidget(widget: string) {
@@ -154,6 +155,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 this.changeWidget(this.widget);
             });
         });
+
+        setInterval(() => {
+            this.menuSearch();
+        }, 500);
     }
 
     ngOnDestroy() {
