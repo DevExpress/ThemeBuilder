@@ -80,12 +80,8 @@
 
 .left-menu .working-area .name {
     font-size: 14px;
-    padding: 8px 20px;
+    padding: 10px 20px;
     cursor: pointer;
-}
-
-.left-menu .working-area .name:first-child {
-    padding-top: 10px;
 }
 
 .left-menu .working-area .name.top {
@@ -95,12 +91,21 @@
     border-bottom: 1px solid #e3e7ea;
     font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
     position: relative;
-    padding-bottom: 10px;
     padding-left: 30px;
 }
 
 .left-menu .working-area .name.top.search-active {
     padding-left: 20px;
+    position: relative;
+}
+
+.left-menu .working-area .name.top.search-active .link-handler {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
 }
 
 .left-menu .working-area .name.top .search-button,

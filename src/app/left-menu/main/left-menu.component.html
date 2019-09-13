@@ -1,24 +1,11 @@
 <div class="left-menu">
     <div class="working-area">
-        <div class="name top" (click)="openMenu()">
-            <span class="arrow menu"></span>{{ workAreaName }}
-            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()" [formGroup]="formGroup">
-                <span class="arrow search"></span>
-                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" formControlName="formControl"/>
-            </div>
-            <div class="search-button" (click)="toggleSearch($event)">
-                <app-search-opener [opened]="searchOpened"></app-search-opener>
-            </div>
-        </div>
-        
-
         <div class="scroll-container" *ngIf="workArea">
             <dx-scroll-view>
             <div *ngFor="let data of filteredData">
-                <div class="name top search-active"
-                    *ngIf="searchOpened"
-                    [innerHtml]="getRealName(data.name)"
-                    [routerLink]="['/advanced', theme, colorScheme, data.route]">
+                <div class="name top search-active" *ngIf="searchOpened">
+                    <div class="link-handler" [routerLink]="['/advanced', theme, colorScheme, data.route]"></div>
+                    <div class="link-text" [innerHtml]="getRealName(data.name)"></div>
                 </div>
                 <div *ngFor="let group of data.groups" class="work-item">
                     <div class="group" #groupElement *ngIf="group.items && group.items.length">
@@ -41,6 +28,17 @@
             </div>
             </dx-scroll-view>
         </div>
+
+        <div class="name top" (click)="openMenu()">
+            <span class="arrow menu"></span>{{ workAreaName }}
+            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()" [formGroup]="formGroup">
+                <span class="arrow search"></span>
+                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" formControlName="formControl"/>
+            </div>
+            <div class="search-button" (click)="toggleSearch($event)">
+                <app-search-opener [opened]="searchOpened"></app-search-opener>
+            </div>
+        </div>
     </div>
     <div class="dark-menu closed" [ngClass]="{ 'closed' : menuClosed }">
         <div class="menu-item top" (click)="menuClosed = true;">
@@ -57,7 +55,6 @@
                     class="menu-item"
                     [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"
                     routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="{exact: true}"
                     (click)="menuClosed = true;"
                 >
                     {{ menuItem.name }}

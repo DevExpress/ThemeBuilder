@@ -60,6 +60,12 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
+            if(item.name.toLowerCase().indexOf(keyword) >= 0) {
+                console.log(item);
+                itemsArray.push(item);
+                return;
+            }
+
             if(!item.items) return;
 
             const filteredItems = item.items.filter((metaItem) => {
@@ -81,19 +87,18 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData = [];
 
         this.menuData.forEach((menuDataItem) => {
-            if(menuDataItem.name.toLowerCase().indexOf(keyword) >= 0) {
-                this.filteredData.push(menuDataItem);
-            } else {
-                addFilteredMenuItem(menuDataItem, this.filteredData);
+            addFilteredMenuItem(menuDataItem, this.filteredData);
 
-                if(menuDataItem.groups) {
-                    const filteredDataGroups: LeftMenuItem[] = [];
+            if(menuDataItem.groups) {
+                const filteredDataGroups: LeftMenuItem[] = [];
 
-                    menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
+                menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
-                    if(filteredDataGroups.length) {
+                if(filteredDataGroups.length) {
+                    console.log(menuDataItem.name, filteredDataGroups);
+                    const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
+                    if(!existingGroup.length)
                         this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.name });
-                    }
                 }
             }
         });
@@ -160,9 +165,9 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
         this.formGroup.valueChanges.pipe(
             debounceTime(500)
-          ).subscribe((data) => {
-              this.searchKeyword = data.formControl;
-              this.menuSearch();
+        ).subscribe((data) => {
+            this.searchKeyword = data.formControl;
+            this.menuSearch();
         });
     }
 
