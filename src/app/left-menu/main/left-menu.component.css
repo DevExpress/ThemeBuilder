@@ -90,11 +90,11 @@
     cursor: pointer;
 }
 
-.left-menu .working-area .name:first-child{
+.left-menu .working-area .name:first-child {
     padding-top: 10px;
 }
 
-.left-menu .working-area .name.top{
+.left-menu .working-area .name.top {
     font-size: 18px;
     font-weight: bold;
     color: #505050;
@@ -105,6 +105,11 @@
     padding-left: 30px;
     z-index: 3;
 }
+
+.left-menu .working-area .name.top.search-active {
+    padding-left: 20px;
+}
+
 .left-menu .working-area .name.top .search-button {
     width: 41px;
     height: 45px;

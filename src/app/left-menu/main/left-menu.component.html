@@ -15,11 +15,11 @@
         <div class="scroll-container" *ngIf="workArea">
             <dx-scroll-view>
             <div *ngFor="let data of filteredData">
-                <div class="name top" *ngIf="searchOpened">{{data.name}}</div>
+                <div class="name top search-active" *ngIf="searchOpened" [innerHtml]="getRealName(data.name)"></div>
                 <div *ngFor="let group of data.groups" class="work-item">
                     <div class="group" #groupElement *ngIf="group.items && group.items.length">
                         <div class="group-header" (click)="groupElement.classList.toggle('closed')">
-                            {{ getRealName(group.name) }}
+                            <span [innerHtml]="getRealName(group.name)"></span>
                             <span class="chevron dx-icon-chevronup"></span>
                         </div>
                         <div class="group-items">

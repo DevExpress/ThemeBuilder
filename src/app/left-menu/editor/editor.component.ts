@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
 import { MetaItem } from '../../types/meta-item';
@@ -15,16 +15,10 @@ export class EditorComponent {
     @Input() searchText = '';
 
     constructor(private names: NamesService,
-                private metaRepository: MetadataRepositoryService,
-                private sanitizer: DomSanitizer) { }
+                private metaRepository: MetadataRepositoryService) { }
 
     highlight(text: string) {
-        text = this.names.getRealName(text);
-        if(!this.searchText) return text;
-
-        const highlightedText = text.replace(new RegExp(`(${this.searchText})`, 'ig'), `<span style="color:#f05b41">$1</span>`);
-
-        return this.sanitizer.bypassSecurityTrustHtml(highlightedText);
+        return this.names.getHighlightedForLeftMenuName(text, this.searchText);
    }
 
     valueChanged(e: any, key: string) {

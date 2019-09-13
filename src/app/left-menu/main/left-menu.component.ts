@@ -55,13 +55,13 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         if(this.previousSearchKeyword === this.searchKeyword) return;
 
         this.previousSearchKeyword = this.searchKeyword;
-        const keyword = this.getRealName(this.searchKeyword.toLowerCase());
+        const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
             if(!item.items) return;
 
             const filteredItems = item.items.filter((metaItem) => {
-                const itemName = this.getRealName(metaItem.Name).toLowerCase();
+                const itemName = this.names.getRealName(metaItem.Name).toLowerCase();
                 return itemName.indexOf(keyword) >= 0;
             });
 
@@ -79,7 +79,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData = [];
 
         this.menuData.forEach((menuDataItem) => {
-            if(menuDataItem.name.toLowerCase().indexOf(keyword) > 0) {
+            console.log(menuDataItem.name.toLowerCase(), keyword);
+            if(menuDataItem.name.toLowerCase().indexOf(keyword) >= 0) {
                 this.filteredData.push(menuDataItem);
             } else {
                 addFilteredMenuItem(menuDataItem, this.filteredData);
@@ -107,7 +108,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData[0] = this.workArea;
     }
 
-    getRealName = (name) => this.names.getRealName(name);
+    getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
 
     loadThemeMetadata() {
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
