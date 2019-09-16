@@ -61,7 +61,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
             if(item.name.toLowerCase().indexOf(keyword) >= 0) {
-                console.log(item);
                 itemsArray.push(item);
                 return;
             }
@@ -95,7 +94,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
                 if(filteredDataGroups.length) {
-                    console.log(menuDataItem.name, filteredDataGroups);
                     const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
                     if(!existingGroup.length)
                         this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.name });
