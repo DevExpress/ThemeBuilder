@@ -115,6 +115,11 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
 
     loadThemeMetadata() {
+        if(this.searchOpened) {
+            this.searchOpened = false;
+            this.searchKeyword = '';
+            this.menuSearch();
+        }
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
@@ -154,7 +159,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     ngOnInit() {
         this.loadThemeMetadata();
-
         this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
                 this.changeWidget(this.widget);
