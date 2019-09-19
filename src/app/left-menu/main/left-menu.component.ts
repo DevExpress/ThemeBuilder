@@ -52,7 +52,13 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     toggleSearch(e: any) {
         this.searchOpened = !this.searchOpened;
         this.searchKeyword = '';
-        setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+
+        if(this.searchOpened) {
+            setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+        } else {
+            this.menuSearch();
+        }
+
         e.stopPropagation();
     }
 
@@ -115,11 +121,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
 
     loadThemeMetadata() {
-        if(this.searchOpened) {
-            this.searchOpened = false;
-            this.searchKeyword = '';
-            this.menuSearch();
-        }
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
@@ -153,7 +154,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                     item.groups.forEach((groupItem) => fillItems(groupItem));
                 }
             });
-
         });
     }
 
@@ -161,7 +161,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.loadThemeMetadata();
         this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
-                this.changeWidget(this.widget);
+                if(this.searchKeyword) this.menuSearch();
+                else this.changeWidget(this.widget);
             });
         });
 
