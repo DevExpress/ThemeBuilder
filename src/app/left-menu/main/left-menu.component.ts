@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DxScrollViewComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { debounceTime } from 'rxjs/operators';
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -20,6 +21,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     private BASE_THEMING_NAME = 'Basic Settings';
 
     @ViewChild('searchInput') searchInput: ElementRef;
+    @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
 
     theme: string;
     colorScheme: string;
@@ -40,7 +42,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
-            this.searchKeyword = '';
             this.changeWidget(this.widget);
         });
     }
@@ -102,7 +103,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 if(filteredDataGroups.length) {
                     const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
                     if(!existingGroup.length)
-                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.name });
+                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
                 }
             }
         });
@@ -115,6 +116,13 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             this.workAreaName = item.name || this.BASE_THEMING_NAME;
             this.menuClosed = true;
         }
+
+        if(this.scrollView)
+            this.scrollView.instance.scrollTo(0);
+
+        this.searchKeyword = '';
+        this.searchOpened = false;
+        this.filteredData = [];
         this.filteredData[0] = this.workArea;
     }
 
