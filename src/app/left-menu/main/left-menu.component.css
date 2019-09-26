@@ -201,5 +201,11 @@
     padding-bottom: 20px;
 }
 
+.left-menu .working-area .no-data {
+    margin: 20px 10px 40px 10px;
+    color: #8e979f;
+    font-size: 13px;
+}
+
 
 
