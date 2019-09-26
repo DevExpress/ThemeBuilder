@@ -97,7 +97,7 @@ export class MetadataRepositoryService {
         const currentTheme = this.theme;
         const buildResult = isFirstBootstrapBuild ?
             this.builder.buildThemeBootstrap(currentTheme, bootstrapData, bootstrapVersion) :
-            this.builder.buildTheme(currentTheme, false, null, this.modifiedMetaCollection);
+            this.builder.buildTheme(currentTheme, false, null, this.modifiedMetaCollection, []);
 
         const savedBuildNumber = ++this.globalBuildNumber;
 
