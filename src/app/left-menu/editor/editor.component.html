@@ -1,4 +1,4 @@
-<div class="property-header">{{ getRealName(item.Name) }}</div>
+<div class="property-header" [innerHTML]="highlight(item.Name)"></div>
 <div class="property-widget">
     <dx-select-box *ngIf="item.Type === 'select'" [value]="item.Value" [items]="item.TypeValuesArray" (onValueChanged)="valueChanged($event, item.Key)"></dx-select-box>
     <dx-text-box *ngIf="item.Type === 'text'" [value]="item.Value" (onValueChanged)="valueChanged($event, item.Key)"></dx-text-box>

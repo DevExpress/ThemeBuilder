@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { DxScrollViewComponent } from 'devextreme-angular';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { debounceTime } from 'rxjs/operators';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
@@ -18,6 +21,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     private BASE_THEMING_NAME = 'Basic Settings';
 
     @ViewChild('searchInput') searchInput: ElementRef;
+    @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
 
     theme: string;
     colorScheme: string;
@@ -25,13 +29,15 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     subscription: Subscription;
     menuData: LeftMenuItem[];
-    filteredMenuData: LeftMenuItem[] = [];
-
-    menuClosed = true;
+    filteredData: LeftMenuItem[] = [];
+    menuClosed = false;
     searchOpened = false;
     searchKeyword = '';
     workArea: LeftMenuItem;
     workAreaName = this.BASE_THEMING_NAME;
+    formGroup = new FormGroup({
+        formControl: new FormControl('')
+    });
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
         this.route.params.subscribe((params) => {
@@ -47,17 +53,59 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     toggleSearch(e: any) {
         this.searchOpened = !this.searchOpened;
         this.searchKeyword = '';
-        setTimeout(() => this.searchInput.nativeElement.focus(), 100);
-        this.menuSearch();
+
+        if(this.searchOpened) {
+            setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+        } else {
+            this.menuSearch();
+        }
+
         e.stopPropagation();
     }
 
     menuSearch() {
-        const keyword = this.searchKeyword.toLowerCase();
-        this.filteredMenuData = this.menuData.filter((value) => {
-            const name = value.name.toLowerCase();
-            const searchString = name + ', ' + value.equivalents;
-            return searchString.toLowerCase().indexOf(keyword) !== -1;
+        const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
+
+        const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
+            if(item.name.toLowerCase().indexOf(keyword) >= 0) {
+                itemsArray.push(item);
+                return;
+            }
+
+            if(!item.items) return;
+
+            const filteredItems = item.items.filter((metaItem) => {
+                const itemName = this.names.getRealName(metaItem.Name).toLowerCase();
+                return itemName.indexOf(keyword) >= 0;
+            });
+
+            if(filteredItems.length) {
+                itemsArray.push({ name: item.name, items: filteredItems, route: item.route });
+            }
+        };
+
+        if(!keyword.length) {
+            this.filteredData = [];
+            this.filteredData[0] = this.workArea;
+            return;
+        }
+
+        this.filteredData = [];
+
+        this.menuData.forEach((menuDataItem) => {
+            addFilteredMenuItem(menuDataItem, this.filteredData);
+
+            if(menuDataItem.groups) {
+                const filteredDataGroups: LeftMenuItem[] = [];
+
+                menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
+
+                if(filteredDataGroups.length) {
+                    const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
+                    if(!existingGroup.length)
+                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
+                }
+            }
         });
     }
 
@@ -65,13 +113,20 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
-
             this.workAreaName = item.name || this.BASE_THEMING_NAME;
             this.menuClosed = true;
         }
+
+        if(this.scrollView)
+            this.scrollView.instance.scrollTo(0);
+
+        this.searchKeyword = '';
+        this.searchOpened = false;
+        this.filteredData = [];
+        this.filteredData[0] = this.workArea;
     }
 
-    getRealName = (name) => this.names.getRealName(name);
+    getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
 
     loadThemeMetadata() {
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
@@ -107,18 +162,23 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                     item.groups.forEach((groupItem) => fillItems(groupItem));
                 }
             });
-
-            this.filteredMenuData = this.menuData;
         });
     }
 
     ngOnInit() {
         this.loadThemeMetadata();
-
         this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
-                this.changeWidget(this.widget);
+                if(this.searchKeyword) this.menuSearch();
+                else this.changeWidget(this.widget);
             });
+        });
+
+        this.formGroup.valueChanges.pipe(
+            debounceTime(500)
+        ).subscribe((data) => {
+            this.searchKeyword = data.formControl;
+            this.menuSearch();
         });
     }
 
