@@ -31,4 +31,24 @@ rules:
     '@typescript-eslint/no-floating-promises': 'off' # change to 'warn'
     '@typescript-eslint/no-for-in-array': 'error'
     '@typescript-eslint/no-inferrable-types': 'error'
+    #'no-magic-numbers': 'off'
+    #'@typescript-eslint/no-magic-numbers': ['error', { 'ignoreNumericLiteralTypes': true, 'ignoreEnums': true, 'ignoreReadonlyClassProperties': true }] # TODO
+    '@typescript-eslint/no-misused-new': 'error'
+    '@typescript-eslint/no-misused-promises': 'error'
+    '@typescript-eslint/no-non-null-assertion': 'error'
+    '@typescript-eslint/no-require-imports': 'error'
+    '@typescript-eslint/no-this-alias': 'error'
+    'no-use-before-define': 'off'
+    '@typescript-eslint/no-use-before-define': 'error'
+    '@typescript-eslint/no-useless-constructor': 'error'
+    '@typescript-eslint/prefer-for-of': 'error'
+    '@typescript-eslint/prefer-string-starts-ends-with': 'error'
+    'quotes': 'off'
+    '@typescript-eslint/quotes': ['error', 'single']
+    '@typescript-eslint/restrict-plus-operands': 'error'
+    'semi': 'off'
+    '@typescript-eslint/semi': ['error']
+    '@typescript-eslint/type-annotation-spacing': 'error'
+    '@typescript-eslint/unbound-method': 'error'
+
 

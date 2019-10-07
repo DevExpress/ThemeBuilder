@@ -33,9 +33,10 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         const NOT_EXPAND_CLASS_NAME = 'not-expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
-        const currentWidget = widget.currentValue || widget;
+        const currentWidget: string = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
 
+        /* eslint @typescript-eslint/prefer-for-of: 'off' */
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
             flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);

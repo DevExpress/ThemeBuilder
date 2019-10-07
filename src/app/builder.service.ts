@@ -33,6 +33,7 @@ export class BuilderService {
         render: (scss) => {
             Sass.setWorkerUrl('sass/sass.worker.js');
             const sass = new Sass();
+
             return new Promise((resolve, reject): void => {
                 sass.compile(scss, (result) => {
                     if(result.status === 0) {

@@ -14,13 +14,13 @@ export class NamesService {
         const text = this.getRealName(orderedName);
         if(!searchText) return text;
 
-        const highlightedText = text.replace(new RegExp(`(${searchText})`, 'ig'), `<span style="color:#f05b41">$1</span>`);
+        const highlightedText = text.replace(new RegExp(`(${searchText})`, 'ig'), '<span style="color:#f05b41">$1</span>');
 
         return this.sanitizer.bypassSecurityTrustHtml(highlightedText);
-    }
+    };
 
     sortNames = (name1, name2): number => {
         const orders = [name1, name2].map((value) => Number.parseInt(value.match(this.ORDER_REGEX)[1]));
         return orders[0] - orders[1];
-    }
+    };
 }

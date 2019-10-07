@@ -1,3 +1,4 @@
+/*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';

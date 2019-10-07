@@ -72,6 +72,7 @@ import 'core-js/es7/reflect';
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
+/* eslint @typescript-eslint/unbound-method: 'off' */
 if(!Element.prototype.matches) {
     Element.prototype.matches = (Element as any).prototype.msMatchesSelector;
 }
