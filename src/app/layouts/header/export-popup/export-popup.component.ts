@@ -35,7 +35,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     getFileNameWithoutExt(): string {
         return this.outputFile &&
-               this.outputFile.replace(/^.*[\\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
+               this.outputFile.replace(/^.*[\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
                `dx.${this.importService.getThemeName()}.${this.schemeName}`;
     }
 

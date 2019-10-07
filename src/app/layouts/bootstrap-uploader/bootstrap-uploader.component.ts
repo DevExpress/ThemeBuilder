@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 import { ImportService } from '../../import.service';

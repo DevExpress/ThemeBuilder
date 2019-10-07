@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 
-import { filter } from 'rxjs/operators';
-
 @Component({
     selector: 'app-help-button',
     templateUrl: './help-button.component.html',
