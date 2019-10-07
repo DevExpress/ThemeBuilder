@@ -5,7 +5,8 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod --baseHref=https://devexpress.github.io/ThemeBuilder/",
-        "lint": "ng lint"
+        "lint-fix": "eslint --fix src/**/*.ts",
+        "lint": "eslint src/**/*.ts"
     },
     "private": true,
     "dependencies": {
@@ -42,10 +43,13 @@
         "@angular/language-service": "^7.2.8",
         "@babel/core": "^7.3.4",
         "@types/node": "~8.9.4",
+        "@typescript-eslint/eslint-plugin": "^2.3.2",
+        "@typescript-eslint/parser": "^2.3.2",
         "codelyzer": "~4.2.1",
+        "eslint": "^6.5.1",
+        "eslint-plugin-react": "^7.16.0",
         "protractor": "^5.4.2",
         "ts-node": "~5.0.1",
-        "tslint": "~5.9.1",
         "typescript": "~3.2.4"
     }
 }
