@@ -14,7 +14,7 @@ export class EditorsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-             if(expanded)
+            if(expanded)
                 setTimeout(() => validationEngine.validateGroup());
         });
     }

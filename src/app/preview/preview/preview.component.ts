@@ -96,7 +96,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     }
 
     buttonDetailedClick(e): void {
-       this.isWidgetClosed = e.isClosed;
+        this.isWidgetClosed = e.isClosed;
     }
 
     ngOnChanges(changes: SimpleChanges): void {

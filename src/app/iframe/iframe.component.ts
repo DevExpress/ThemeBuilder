@@ -26,18 +26,18 @@ export class IframeComponent implements OnDestroy, OnInit {
         private sanitizer: DomSanitizer,
         private metadataService: MetadataRepositoryService,
         private loading: LoadingService) {
-            this.route.params.subscribe((params) => {
-                const widget = params['widget'] || params['group'];
-                if(this.widgetName.getValue() !== widget) {
-                    this.widgetName.next(widget);
-                }
-                if(this.theme !== params['theme']) {
-                    this.loading.show();
-                    this.theme = params['theme'];
-                    this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
-                    this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-                }
-            });
+        this.route.params.subscribe((params) => {
+            const widget = params['widget'] || params['group'];
+            if(this.widgetName.getValue() !== widget) {
+                this.widgetName.next(widget);
+            }
+            if(this.theme !== params['theme']) {
+                this.loading.show();
+                this.theme = params['theme'];
+                this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
+                this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+            }
+        });
     }
 
     receiveMessage(e): void {

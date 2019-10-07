@@ -59,7 +59,7 @@ export class MenuComponent implements OnInit, OnDestroy {
                     {
                         text: 'Enterprise Tools',
                         items: [{ text: 'Report Server' },
-                        { text: 'Analytics Dashboard' }]
+                            { text: 'Analytics Dashboard' }]
                     }
                 ]
             },
@@ -137,7 +137,7 @@ export class MenuComponent implements OnInit, OnDestroy {
                     {
                         text: 'Enterprise Tools',
                         items: [{ text: 'Report Server' },
-                        { text: 'Analytics Dashboard' }]
+                            { text: 'Analytics Dashboard' }]
                     }
                 ]
             },

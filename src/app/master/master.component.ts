@@ -38,8 +38,8 @@ export class MasterComponent implements OnInit, OnDestroy {
 
         const themesBySize = this.themes.filter(
             (t) => this.isThemeCompact ?
-            t.group.includes('Compact') :
-            !t.group.includes('Compact'));
+                t.group.includes('Compact') :
+                !t.group.includes('Compact'));
 
         if(this.themeName === 'material') {
             // getting sorted list by background color

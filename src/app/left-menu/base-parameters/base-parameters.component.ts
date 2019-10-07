@@ -32,8 +32,8 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
     themeSizeChanged(e): void {
         const currentColorScheme = this.metadataRepository.theme.colorScheme;
         const newColorScheme = e.value === 'compact' ?
-                                (currentColorScheme +  '-' + e.value) :
-                                currentColorScheme.replace('-compact', '');
+            (currentColorScheme +  '-' + e.value) :
+            currentColorScheme.replace('-compact', '');
 
         this.router.navigate(['master', this.theme, newColorScheme]);
     }

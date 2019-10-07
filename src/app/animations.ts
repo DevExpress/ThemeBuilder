@@ -11,22 +11,22 @@ export const routeAnimation =  trigger('routeAnimation', [
     transition('1 => 2, 2 => 3, * => 3', [
         query('.container', style({  opacity: 0, transform: 'translateY(20%)' }), { optional: true }),
         query('.title-link:not(.master)',  style({ 'font-size': '47px', 'color': '#404040', 'opacity': 0, 'transform': 'translateY(100%)' }),
-        { optional: true }),
+            { optional: true }),
         query('.section.left', style({  opacity: 0, transform: 'translateX(70%)' }), { optional: true }),
         group([
             query(':leave .title-link',  [
                 style({'font-size': '30px', 'color': '#a7a8a9', 'transform': 'translateY(0px)',  'opacity': 1}),
                 animate('.3s ease-in',
-                  style({ 'font-size': '30px', 'color': '#a7a8a9', 'transform': 'translateY(-100%)', 'opacity': 0 }))
+                    style({ 'font-size': '30px', 'color': '#a7a8a9', 'transform': 'translateY(-100%)', 'opacity': 0 }))
             ], { optional: true }),
             query(':enter .container', [
                 style({  opacity: 0, transform: 'translateY(20%)' }),
                 animate('.3s ease-in', style({ opacity: 1, transform: 'translateY(0px)' }))
-              ], { optional: true }),
-              query(':enter .title-link:not(.master)',  [
+            ], { optional: true }),
+            query(':enter .title-link:not(.master)',  [
                 style({ 'opacity': 1, 'font-size': '47px', 'color': '#404040', 'transform': 'translateY(100%)'}),
                 animate('.3s ease-in',
-                  style({ 'opacity': 1, 'font-size': '30px', 'color': '#a7a8a9', 'transform': 'translateY(0px)' }))
+                    style({ 'opacity': 1, 'font-size': '30px', 'color': '#a7a8a9', 'transform': 'translateY(0px)' }))
             ], { optional: true })
         ]),
         group([
@@ -54,16 +54,16 @@ export const routeAnimation =  trigger('routeAnimation', [
             query(':enter .title-link', [
                 style({ opacity: 0, transform: 'translateY(-100%)' }),
                 animate('.3s ease-in',
-                  style({ opacity: 1, transform: 'translateY(0px)' }))
+                    style({ opacity: 1, transform: 'translateY(0px)' }))
             ], { optional: true }),
             query(':enter .title', [
                 style({ 'opacity': 1, 'transform': 'translateY(-7%)', 'font-size': '30px', 'color': '#a7a8a9' }),
                 animate('.3s ease-in',
-                  style({ 'opacity': 1, 'transform': 'translateY(0)', 'font-size': '47px', 'color': '#404040' }))
+                    style({ 'opacity': 1, 'transform': 'translateY(0)', 'font-size': '47px', 'color': '#404040' }))
             ], { optional: true }),
             query(':enter .container', [
-              style({ opacity: 1,  transform: 'scale(0.9) translateY(-15%)' }),
-              animate('.3s ease-in', style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
+                style({ opacity: 1,  transform: 'scale(0.9) translateY(-15%)' }),
+                animate('.3s ease-in', style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
             ], { optional: true })
         ])
     ])

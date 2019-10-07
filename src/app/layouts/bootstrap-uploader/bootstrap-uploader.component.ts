@@ -4,9 +4,9 @@ import { GoogleAnalyticsEventsService } from '../../google-analytics-events.serv
 import { ImportService } from '../../import.service';
 
 @Component({
-  selector: 'app-bootstrap-uploader',
-  templateUrl: './bootstrap-uploader.component.html',
-  styleUrls: ['./bootstrap-uploader.component.css']
+    selector: 'app-bootstrap-uploader',
+    templateUrl: './bootstrap-uploader.component.html',
+    styleUrls: ['./bootstrap-uploader.component.css']
 })
 export class BootstrapUploaderComponent {
     @Input() accept: string;
