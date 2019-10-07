@@ -12,14 +12,14 @@ export class EditorsComponent implements OnInit, OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);
     subscription: Subscription;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
              if(expanded)
                 setTimeout(() => validationEngine.validateGroup());
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

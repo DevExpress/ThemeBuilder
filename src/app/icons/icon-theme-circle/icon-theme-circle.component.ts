@@ -6,15 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./icon-theme-circle.component.css']
 })
 export class IconThemeCircleComponent implements OnInit {
-
-    constructor() { }
-
     @Input() theme: string;
     @Input() small: boolean;
 
     smallClass: string;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.smallClass = this.small ? 'small' : '';
     }
 }

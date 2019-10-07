@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     constructor(private metadataService: MetadataRepositoryService, private route: Router) { }
 
-    themeChanged(e) {
+    themeChanged(e): void {
         if(e.component.canceled) {
             e.component.canceled = false;
             return;
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.switcherData  = new DataSource({
             store: themes.filter((theme) => theme.group !== 'Mobile'),
             key: 'themeId',
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if(this.subscription)
             this.subscription.unsubscribe();
     }

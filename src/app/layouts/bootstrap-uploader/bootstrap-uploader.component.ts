@@ -21,12 +21,11 @@ export class BootstrapUploaderComponent {
         private googleAnalyticsEventsService: GoogleAnalyticsEventsService
     ) {}
 
-    uploaded(e) {
+    uploaded(e): void {
         const file = e.value[0];
         if(file) {
-            let fileReader: FileReader;
-            fileReader = new FileReader();
-            fileReader.onload = () => {
+            const fileReader = new FileReader();
+            fileReader.onload = (): void => {
                 let meta: string;
                 if(typeof fileReader.result === 'string') {
                     meta = fileReader.result;

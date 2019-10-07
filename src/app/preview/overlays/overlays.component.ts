@@ -25,16 +25,16 @@ export class OverlaysComponent implements OnInit, OnDestroy {
         { text: 'Command 4' }
     ];
 
-    toastInit(e) {
+    toastInit(e: any): void {
         const toastContainer = this.isExpanded.getValue() ? '#target-block' : '#toast-block';
         e.component.option('container', toastContainer);
     }
 
-    hiding(e) {
+    hiding(e: any): void {
         e.cancel = true;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe(() => {
             const flexContainer = document.getElementsByTagName('app-overlays')[0].parentElement.parentElement;
             flexContainer.addEventListener('transitionend', () => {
@@ -45,7 +45,7 @@ export class OverlaysComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

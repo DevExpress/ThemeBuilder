@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./back-navigator.component.css']
 })
 export class BackNavigatorComponent {
-    constructor() { }
     @Input() text: string;
 }

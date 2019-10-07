@@ -9,6 +9,7 @@ import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-left-menu',
@@ -46,11 +47,11 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    openMenu() {
+    openMenu(): void {
         this.menuClosed = false;
     }
 
-    toggleSearch(e: any) {
+    toggleSearch(e: MouseEvent): void {
         this.searchOpened = !this.searchOpened;
         this.searchKeyword = '';
 
@@ -63,7 +64,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         e.stopPropagation();
     }
 
-    menuSearch() {
+    menuSearch(): void {
         const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
@@ -109,7 +110,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    changeWidget(widget: string) {
+    changeWidget(widget: string): void {
         const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
@@ -126,9 +127,9 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData[0] = this.workArea;
     }
 
-    getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
+    getRealName = (name): SafeHtml => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
 
-    loadThemeMetadata() {
+    loadThemeMetadata(): Promise<any> {
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
@@ -165,7 +166,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadThemeMetadata();
         this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
@@ -182,7 +183,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

@@ -111,14 +111,14 @@ export class ListComponent implements OnInit, OnDestroy {
         }]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.isExpanded.subscribe((expanded) => {
             this.list.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.list.instance.updateDimensions();
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

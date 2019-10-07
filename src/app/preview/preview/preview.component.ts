@@ -28,7 +28,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
     isWidgetClosed = true;
 
-    createPreviewContent(widget: any) {
+    createPreviewContent(widget: any): void {
         const EXPAND_CLASS_NAME = 'expanded';
         const NOT_EXPAND_CLASS_NAME = 'not-expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
@@ -95,16 +95,16 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         this.isWidgetClosed = true;
     }
 
-    buttonDetailedClick(e) {
+    buttonDetailedClick(e): void {
        this.isWidgetClosed = e.isClosed;
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if(!changes.widgetName.firstChange)
             this.createPreviewContent(changes.widgetName);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.createPreviewContent(this.widgetName);
     }
 }

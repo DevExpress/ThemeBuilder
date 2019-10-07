@@ -40,7 +40,7 @@ export class IframeComponent implements OnDestroy, OnInit {
             });
     }
 
-    receiveMessage(e) {
+    receiveMessage(e): void {
         if(e.data.widget)
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
 
@@ -49,7 +49,7 @@ export class IframeComponent implements OnDestroy, OnInit {
         }
     }
 
-    onIframeLoad() {
+    onIframeLoad(): void {
         if(this.cssSubscription)
             this.cssSubscription.unsubscribe();
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
@@ -69,7 +69,7 @@ export class IframeComponent implements OnDestroy, OnInit {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if(this.cssSubscription)
             this.cssSubscription.unsubscribe();
 
@@ -77,7 +77,7 @@ export class IframeComponent implements OnDestroy, OnInit {
             this.widgetSubscription.unsubscribe();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
     }
 }

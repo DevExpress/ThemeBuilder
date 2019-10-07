@@ -34,7 +34,7 @@ export class DrawerComponent {
         options: {
             icon: 'menu',
             stylingMode: 'text',
-            onClick: () => {
+            onClick: (): void => {
                 this.drawer.instance.toggle();
             }
         },

@@ -179,13 +179,13 @@ export class MenuComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.menu.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

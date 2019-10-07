@@ -39,7 +39,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
                `dx.${this.importService.getThemeName()}.${this.schemeName}`;
     }
 
-    validate() {
+    validate(): any {
         return validationEngine.validateGroup();
     }
 
@@ -52,11 +52,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
-    fileSave(cssContent) {
+    fileSave(cssContent): void {
         fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([cssContent]));
     }
 
-    popupShown() {
+    popupShown(): void {
         this.displayFileContent(0);
     }
 
@@ -108,7 +108,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
             });
     }
 
-    displayCss() {
+    displayCss(): void {
         this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
             this.fileContent[0] = css;
             this.loadIndicatorVisible = false;
@@ -116,11 +116,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         });
     }
 
-    displayMeta() {
+    displayMeta(): void {
         this.fileContent[1] = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
     }
 
-    displayFileContent(timeout: number) {
+    displayFileContent(timeout: number): void {
         if(!this.validate().isValid) return;
 
         this.loadIndicatorVisible = true;
@@ -134,29 +134,29 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.displayMeta();
     }
 
-    copyFileContent() {
+    copyFileContent(): void {
         this.googleAnalyticsEventsService.emitEvent(
             'export',
             'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
     }
 
-    schemeNameChange() {
+    schemeNameChange(): void {
         if(this.makeSwatch)
             this.displayFileContent(1000);
         else
             this.displayMeta();
     }
 
-    swatchChange() {
+    swatchChange(): void {
         this.displayFileContent(0);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setParameters();
         this.importService.changed.subscribe(() => this.setParameters());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if(this.subscription) {
             this.subscription.unsubscribe();
         }

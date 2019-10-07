@@ -11,7 +11,7 @@ export class ButtonComponent {
     @Input() width = 240;
     @Output() clicked = new EventEmitter();
 
-    onClick() {
+    onClick(): void {
         this.clicked.emit();
     }
 }

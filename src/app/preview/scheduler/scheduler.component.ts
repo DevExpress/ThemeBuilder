@@ -109,13 +109,13 @@ export class SchedulerComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.scheduler.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

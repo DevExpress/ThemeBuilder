@@ -12,7 +12,7 @@ export class ImportMetaComponent {
 
     importValue = '';
 
-    applyClick(t) {
+    applyClick(t): void {
         this.importService.importMetadata(t.value, 'advanced').then(null, () => {
             alert('Metadata has a wrong format.', 'Error');
         });

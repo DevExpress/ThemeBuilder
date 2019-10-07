@@ -408,13 +408,13 @@ export class PivotgridComponent implements OnInit, OnDestroy {
         allowFiltering: true
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             const pivotGridInstance = this.pivotGrid.instance;
             const flexItem = this.element.nativeElement.parentElement.parentElement;
             const maxWidthForFieldPanel = 970;
 
-            const fixDimensions = () => {
+            const fixDimensions = (): void => {
                 const width = flexItem.getBoundingClientRect().width;
 
                 if(width < maxWidthForFieldPanel) {
@@ -434,7 +434,7 @@ export class PivotgridComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

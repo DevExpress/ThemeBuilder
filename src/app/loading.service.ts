@@ -7,16 +7,16 @@ export class LoadingService {
     busy = new BehaviorSubject<boolean>(false);
     stack = [];
 
-    toggle(show: boolean) {
+    toggle(show: boolean): void {
         show ? this.stack.push(true) : this.stack.pop();
         this.busy.next(!!this.stack.length);
     }
 
-    show() {
+    show(): void {
         this.toggle(true);
     }
 
-    hide() {
+    hide(): void {
         this.toggle(false);
     }
 }

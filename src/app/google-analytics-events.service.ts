@@ -5,10 +5,9 @@ import { environment } from '../environments/environment';
     providedIn: 'root'
 })
 export class GoogleAnalyticsEventsService {
-
     emitEvent(
         eventAction: string,
-        eventLabel: string) {
+        eventLabel: string): void {
         if(!environment.production) return;
 
         const ga = (window as any).ga;

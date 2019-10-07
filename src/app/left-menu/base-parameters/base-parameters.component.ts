@@ -23,13 +23,13 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
         private router: Router
     ) { }
 
-    updateData() {
+    updateData(): void {
         this.metadataRepository.getBaseParameters().then((parameters) => {
             this.editorsData = parameters;
         });
     }
 
-    themeSizeChanged(e) {
+    themeSizeChanged(e): void {
         const currentColorScheme = this.metadataRepository.theme.colorScheme;
         const newColorScheme = e.value === 'compact' ?
                                 (currentColorScheme +  '-' + e.value) :
@@ -38,7 +38,7 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
         this.router.navigate(['master', this.theme, newColorScheme]);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.updateData();
 
         this.subscription = this.metadataRepository.css.subscribe(() => {
@@ -46,7 +46,7 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

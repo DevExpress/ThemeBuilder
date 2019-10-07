@@ -15,7 +15,7 @@ export class BuilderService {
     private lessCompiler: any;
 
     constructor(private http: HttpClient) {
-        this.loadLess = (fileName: string) => {
+        this.loadLess = (fileName: string): Promise<string> => {
             return  this.http.get(fileName, { responseType: 'text' })
                 .toPromise();
         };
@@ -33,7 +33,7 @@ export class BuilderService {
         render: (scss) => {
             Sass.setWorkerUrl('sass/sass.worker.js');
             const sass = new Sass();
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject): void => {
                 sass.compile(scss, (result) => {
                     if(result.status === 0) {
                         resolve(result.text);

@@ -288,13 +288,13 @@ export class DatagridComponent implements OnInit, OnDestroy {
         }
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.dataGrid.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

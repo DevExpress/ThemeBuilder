@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable()
 export class NamesService {
@@ -8,9 +8,9 @@ export class NamesService {
 
     private ORDER_REGEX = /^(\d+).\s/;
 
-    getRealName = (orderedName) => orderedName.replace(this.ORDER_REGEX, '');
+    getRealName = (orderedName): string => orderedName.replace(this.ORDER_REGEX, '');
 
-    getHighlightedForLeftMenuName = (orderedName, searchText) => {
+    getHighlightedForLeftMenuName = (orderedName, searchText): SafeHtml => {
         const text = this.getRealName(orderedName);
         if(!searchText) return text;
 
@@ -19,7 +19,7 @@ export class NamesService {
         return this.sanitizer.bypassSecurityTrustHtml(highlightedText);
     }
 
-    sortNames = (name1, name2) => {
+    sortNames = (name1, name2): number => {
         const orders = [name1, name2].map((value) => Number.parseInt(value.match(this.ORDER_REGEX)[1]));
         return orders[0] - orders[1];
     }

@@ -13,7 +13,7 @@ export class HelpButtonComponent {
     constructor(private router: Router) {
         this.router.events.subscribe((event) => {
             if(event instanceof ActivationEnd) {
-                if(!(event.snapshot.data.docHash === undefined)) {
+                if(!(event.snapshot.data.docHash === undefined) ) {
                     this.$docUrl = `${this.baseUrl}${event.snapshot.data.docHash}`;
                 }
             }
