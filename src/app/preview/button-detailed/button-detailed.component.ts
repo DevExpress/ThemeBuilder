@@ -14,7 +14,7 @@ export class ButtonDetailedComponent {
     onClick(): void {
         const isClosed = this.widget !== this.currentWidget;
         window.parent.postMessage(
-            { widget: (isClosed ? this.widget  : 'base.common') },
+            { widget: isClosed ? this.widget  : 'base.common' },
             window.parent.location.href
         );
 

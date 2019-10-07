@@ -54,7 +54,7 @@ export class IframeComponent implements OnDestroy, OnInit {
             this.cssSubscription.unsubscribe();
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
             const theme = this.metadataService.theme;
-            const themeSize = theme.name === 'generic' ? (theme.colorScheme.split('-')[1] || 'normal') : '';
+            const themeSize = theme.name === 'generic' ? theme.colorScheme.split('-')[1] || 'normal' : '';
             this.iframe.nativeElement.contentWindow.postMessage({
                 css,
                 themeSize,
