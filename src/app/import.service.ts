@@ -23,7 +23,7 @@ export class ImportService {
         try {
             this.savedMetadata = JSON.parse(meta);
         } catch {
-            return new Promise((_, reject): void => { reject(); });
+            return new Promise((_, reject): void => reject());
         }
 
         this.normalizedMetadata = { ...this.savedMetadata };
