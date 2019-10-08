@@ -60,7 +60,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 }
 
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
-                const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
+                const flexParentContainer = widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
                 if(this.notExpandableWidgets.indexOf(currentWidget) !== -1) {

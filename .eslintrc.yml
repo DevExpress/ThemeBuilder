@@ -64,5 +64,5 @@ rules:
     'no-extra-bind': 'error'
     'no-implicit-globals': 'error'
     'no-invalid-this': 'error'
-    
+    'no-multi-spaces': 'error'
 

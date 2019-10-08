@@ -16,7 +16,7 @@ export class BuilderService {
 
     constructor(private http: HttpClient) {
         this.loadLess = (fileName: string): Promise<string> => {
-            return  this.http.get(fileName, { responseType: 'text' })
+            return this.http.get(fileName, { responseType: 'text' })
                 .toPromise();
         };
 

@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent  {
+export class GalleryComponent {
     widgetGroup = 'gallery';
     isExpanded = new Subject<boolean>();
 

@@ -137,7 +137,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     copyFileContent(): void {
         this.googleAnalyticsEventsService.emitEvent(
             'export',
-            'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
+            'copy ' + (this.selectedIndex ? 'metadata' : 'css') + ' (' + this.importService.getThemeName() + ')');
     }
 
     schemeNameChange(): void {

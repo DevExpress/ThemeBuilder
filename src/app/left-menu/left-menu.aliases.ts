@@ -158,7 +158,7 @@ export class LeftMenuAlias {
             equivalents: 'dxMenu, dx-menu',
             regs: [ /menu/i ],
             route: 'navigations.menu'
-        },  {
+        }, {
             name: 'Navbar',
             equivalents: 'NavigationBar, dxNavBar, dx-nav-bar',
             regs: [ /navbar-/i ],

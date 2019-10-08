@@ -24,7 +24,7 @@ export class FormComponent implements OnInit, OnDestroy {
             {
                 itemType: 'group',
                 caption: 'Personal Data',
-                items: ['ID',  'Full Name']
+                items: ['ID', 'Full Name']
             }
         ]
     };
