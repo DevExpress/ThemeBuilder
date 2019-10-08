@@ -107,13 +107,17 @@ export class MetadataRepositoryService {
             if(savedBuildNumber !== this.globalBuildNumber) return;
 
             for(const dataKey in result.compiledMetadata) {
-                const item = this.metadataRepository.getDataItemByKey(dataKey, currentTheme);
-                item.Value = result.compiledMetadata[dataKey];
+                if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
+                    const item = this.metadataRepository.getDataItemByKey(dataKey, currentTheme);
+                    item.Value = result.compiledMetadata[dataKey];
+                }
             }
 
             if(isFirstBootstrapBuild) {
                 for(const dataKey in result.modifyVars) {
-                    this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
+                    if(Object.prototype.hasOwnProperty.call(result.modifyVars, dataKey)) {
+                        this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
+                    }
                 }
             }
 

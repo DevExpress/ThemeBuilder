@@ -52,5 +52,9 @@ rules:
     '@typescript-eslint/unbound-method': 'error'
 
     'curly': ['error', 'multi-line']
-
+    'default-case': 'error'
+    'default-param-last': ['error']
+    'dot-location': ['error', 'property']
+    'eqeqeq': ['error', 'always']
+    'guard-for-in': 'error'
 
