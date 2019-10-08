@@ -36,7 +36,8 @@ export class BuilderService {
 
             return new Promise((resolve, reject): void => {
                 sass.compile(scss, (result) => {
-                    if(result.status === 0) {
+                    const SUCCESS_STATUS = 0;
+                    if(result.status === SUCCESS_STATUS) {
                         resolve(result.text);
                     } else {
                         reject(result);
@@ -68,9 +69,10 @@ export class BuilderService {
     }
 
     buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number): Promise<BuilderResult> {
+        const SCSS_BOOTSTRAP_VERSION = 4;
         return this.build(theme, {
             data: bootstrapVariables,
-            inputFile: bootstrapVersion === 4 ? '.scss' : '.less'
+            inputFile: bootstrapVersion === SCSS_BOOTSTRAP_VERSION ? '.scss' : '.less'
         });
     }
 }

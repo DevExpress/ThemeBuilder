@@ -15,8 +15,11 @@ export class PreviewIndexComponent implements OnInit {
     typographyClass: string;
 
     constructor(private router: Router) {
-        this.viewName = this.router.url.split('/')[1];
-        this.themeName = this.router.url.split('/')[2];
+        const VIEW_POSITION = 1;
+        const THEME_POSITION = 2;
+        const urlParts = this.router.url.split('/');
+        this.viewName = urlParts[VIEW_POSITION];
+        this.themeName = urlParts[THEME_POSITION];
         this.typographyClass = 'dx-theme-' + this.themeName + '-typography';
     }
 

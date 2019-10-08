@@ -49,6 +49,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         });
 
         if(this.isWidgetClosed) {
+            const PREVIEW_AREA_SCROLL_TIMEOUT = 600;
+            const WIDGET_BLOCK_EXPAND_TIMEOUT = 400;
             setTimeout(() => {
                 if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
                     scrollableContainer.scrollTo({
@@ -63,7 +65,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const flexParentContainer = widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
-                if(this.notExpandableWidgets.indexOf(currentWidget) !== -1) {
+                if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
                     flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
 
                     scrollableContainer.scrollTo({
@@ -91,8 +93,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                             widgetEl.isExpanded.next(true);
                         }
                     });
-                }, 600);
-            }, 400);
+                }, PREVIEW_AREA_SCROLL_TIMEOUT);
+            }, WIDGET_BLOCK_EXPAND_TIMEOUT);
         }
 
         this.isWidgetClosed = true;

@@ -48,7 +48,9 @@ export class ImportService {
             version: this.metaRepository.version()
         };
 
-        return JSON.stringify(exportedObject, null, 4);
+        const SPACES_NUMBER = 4;
+
+        return JSON.stringify(exportedObject, null, SPACES_NUMBER);
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean): Promise<string> {

@@ -32,8 +32,10 @@ export class MetadataRepositoryService {
         this.router.events.subscribe((event) => {
             if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
-            const themeName = urlParts[2];
-            const colorScheme = urlParts[3];
+            const THEME_POSITION = 2;
+            const COLOR_SCHEME_POSITION = 3;
+            const themeName = urlParts[THEME_POSITION];
+            const colorScheme = urlParts[COLOR_SCHEME_POSITION];
 
             if(!colorScheme && this.modifiedMetaCollection.length) {
                 this.forceRebuild = true;
@@ -133,7 +135,7 @@ export class MetadataRepositoryService {
 
             themeData.forEach((item) => {
                 const index = baseParameters.indexOf(item.Key);
-                if(index !== -1) result[index] = item;
+                if(index >= 0) result[index] = item;
             });
 
             return result;

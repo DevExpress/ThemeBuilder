@@ -22,7 +22,7 @@ export class NamesService {
     }
 
     sortNames(name1, name2): number {
-        const orders = [name1, name2].map((value) => Number.parseInt(value.match(this.ORDER_REGEX)[1]));
-        return orders[0] - orders[1];
+        const redix = 10;
+        return Number.parseInt(name1, redix) - Number.parseInt(name2, redix);
     }
 }

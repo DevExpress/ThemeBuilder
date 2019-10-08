@@ -55,7 +55,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.searchKeyword = '';
 
         if(this.searchOpened) {
-            setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+            const FUCUS_SETTING_TIMEOUT = 100;
+            setTimeout(() => this.searchInput.nativeElement.focus(), FUCUS_SETTING_TIMEOUT);
         } else {
             this.menuSearch();
         }
@@ -176,8 +177,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             });
         });
 
+        const SEARCH_DEBOUNCE_TIMEOUT = 500;
+
         this.formGroup.valueChanges.pipe(
-            debounceTime(500)
+            debounceTime(SEARCH_DEBOUNCE_TIMEOUT)
         ).subscribe((data) => {
             this.searchKeyword = data.formControl;
             this.menuSearch();

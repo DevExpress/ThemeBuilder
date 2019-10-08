@@ -32,8 +32,8 @@ rules:
     '@typescript-eslint/no-floating-promises': 'off' # change to 'warn'
     '@typescript-eslint/no-for-in-array': 'error'
     '@typescript-eslint/no-inferrable-types': 'error'
-    #'no-magic-numbers': 'off'
-    #'@typescript-eslint/no-magic-numbers': ['error', { 'ignoreNumericLiteralTypes': true, 'ignoreEnums': true, 'ignoreReadonlyClassProperties': true }] # TODO
+    'no-magic-numbers': 'off'
+    '@typescript-eslint/no-magic-numbers': ['error', { 'ignoreNumericLiteralTypes': true, 'ignoreEnums': true, 'ignoreReadonlyClassProperties': true, 'ignore': [0] }]
     '@typescript-eslint/no-misused-new': 'error'
     '@typescript-eslint/no-misused-promises': 'error'
     '@typescript-eslint/no-non-null-assertion': 'error'
@@ -73,4 +73,25 @@ rules:
     'no-shadow': 'error'
     #codestyle eslint rules
     'array-bracket-spacing': ['error', 'never']
-
+    'comma-dangle': ['error', 'never']
+    'comma-spacing': ['error', { 'before': false, 'after': true }]
+    'comma-style': ['error', 'last']
+    'computed-property-spacing': ['error', 'never']
+    'eol-last': ['error', 'always']
+    'implicit-arrow-linebreak': ['error', 'beside']
+    'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }]
+    'keyword-spacing': ['error', { 'overrides': { 'if': { 'after': false }, 'for': { 'after': false }, 'while': { 'after': false }} }]
+    'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }]
+    'no-trailing-spaces': 'error'
+    'no-unneeded-ternary': 'error'
+    'no-whitespace-before-property': 'error'
+    'semi-spacing': 'error'
+    'semi-style': ['error', 'last']
+    'space-before-function-paren': ['error', 'never']
+    'space-in-parens': 'error'
+    'arrow-parens': ['error', 'always']
+    'arrow-spacing': 'error'
+    'no-var': 'error'
+    'prefer-arrow-callback': 'error'
+    'prefer-const': 'error'
+    'prefer-spread': 'error'

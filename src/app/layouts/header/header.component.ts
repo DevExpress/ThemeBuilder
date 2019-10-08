@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 const theme = newTheme[0].name;
                 const colorScheme = newTheme[0].colorScheme;
                 const urlParts = this.route.url.split('/');
-                const widget = urlParts[urlParts.length - 2];
+                const routeWidgetPosition = 4;
+                const widget = urlParts[routeWidgetPosition];
                 this.route.navigate(['advanced', theme, colorScheme, widget]);
             } else {
                 this.currentThemeId = e.previousValue;
@@ -48,9 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
 
         this.subscription = this.metadataService.css.subscribe(() => {
-            const currentTheme = themes.filter((i) =>
-                i.name === this.metadataService.theme.name &&
-                i.colorScheme === this.metadataService.theme.colorScheme);
+            const currentTheme = themes.filter((i) => i.name === this.metadataService.theme.name && i.colorScheme === this.metadataService.theme.colorScheme);
 
             if(currentTheme.length) {
                 this.currentThemeId = currentTheme[0].themeId;
