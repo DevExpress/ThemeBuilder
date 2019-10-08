@@ -43,8 +43,9 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         }
 
         this.widgetElements.forEach((widgetEl) => {
-            if(!previousWidget || widgetEl.widgetGroup === previousWidget)
+            if(!previousWidget || widgetEl.widgetGroup === previousWidget) {
                 widgetEl.isExpanded.next(false);
+            }
         });
 
         if(this.isWidgetClosed) {
@@ -86,8 +87,9 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                     });
 
                     this.widgetElements.forEach((widgetEl) => {
-                        if(widgetEl.widgetGroup === currentWidget)
+                        if(widgetEl.widgetGroup === currentWidget) {
                             widgetEl.isExpanded.next(true);
+                        }
                     });
                 }, 600);
             }, 400);
@@ -101,8 +103,9 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(!changes.widgetName.firstChange)
+        if(!changes.widgetName.firstChange) {
             this.createPreviewContent(changes.widgetName);
+        }
     }
 
     ngAfterViewInit(): void {

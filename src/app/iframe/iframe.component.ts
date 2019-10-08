@@ -41,8 +41,9 @@ export class IframeComponent implements OnDestroy, OnInit {
     }
 
     receiveMessage(e): void {
-        if(e.data.widget)
+        if(e.data.widget) {
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
+        }
 
         if(e.data.hideLoading) {
             this.loading.hide();
@@ -50,8 +51,8 @@ export class IframeComponent implements OnDestroy, OnInit {
     }
 
     onIframeLoad(): void {
-        if(this.cssSubscription)
-            this.cssSubscription.unsubscribe();
+        if(this.cssSubscription) this.cssSubscription.unsubscribe();
+
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
             const theme = this.metadataService.theme;
             const themeSize = theme.name === 'generic' ? theme.colorScheme.split('-')[1] || 'normal' : '';
@@ -62,19 +63,15 @@ export class IframeComponent implements OnDestroy, OnInit {
             }, this.url);
         });
 
-        if(this.widgetSubscription)
-            this.widgetSubscription.unsubscribe();
+        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
         this.widgetSubscription = this.widgetName.subscribe((widget) => {
             this.iframe.nativeElement.contentWindow.postMessage({ widget }, this.url);
         });
     }
 
     ngOnDestroy(): void {
-        if(this.cssSubscription)
-            this.cssSubscription.unsubscribe();
-
-        if(this.widgetSubscription)
-            this.widgetSubscription.unsubscribe();
+        if(this.cssSubscription) this.cssSubscription.unsubscribe();
+        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
     }
 
     ngOnInit(): void {

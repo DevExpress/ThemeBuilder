@@ -51,4 +51,6 @@ rules:
     '@typescript-eslint/type-annotation-spacing': 'error'
     '@typescript-eslint/unbound-method': 'error'
 
+    'curly': ['error', 'multi-line']
+
 

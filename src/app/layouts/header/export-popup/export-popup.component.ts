@@ -141,10 +141,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     schemeNameChange(): void {
-        if(this.makeSwatch)
+        if(this.makeSwatch) {
             this.displayFileContent(1000);
-        else
+        } else {
             this.displayMeta();
+        }
     }
 
     swatchChange(): void {

@@ -129,8 +129,7 @@ export class MetadataRepositoryService {
 
             themeData.forEach((item) => {
                 const index = baseParameters.indexOf(item.Key);
-                if(index !== -1)
-                    result[index] = item;
+                if(index !== -1) result[index] = item;
             });
 
             return result;

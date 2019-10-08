@@ -103,8 +103,9 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
                 if(filteredDataGroups.length) {
                     const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
-                    if(!existingGroup.length)
+                    if(!existingGroup.length) {
                         this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
+                    }
                 }
             }
         });
@@ -118,8 +119,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             this.menuClosed = true;
         }
 
-        if(this.scrollView)
-            this.scrollView.instance.scrollTo(0);
+        if(this.scrollView) this.scrollView.instance.scrollTo(0);
 
         this.searchKeyword = '';
         this.searchOpened = false;
