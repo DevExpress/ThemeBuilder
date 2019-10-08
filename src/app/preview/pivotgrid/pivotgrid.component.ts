@@ -1,3 +1,4 @@
+/*eslint no-invalid-this: ['Off']*/
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxPivotGridComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';

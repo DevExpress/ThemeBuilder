@@ -11,6 +11,8 @@ import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
 import { SafeHtml } from '@angular/platform-browser';
 
+const BASE_THEMING_NAME = 'Basic Settings';
+
 @Component({
     selector: 'app-left-menu',
     templateUrl: './left-menu.component.html',
@@ -18,9 +20,6 @@ import { SafeHtml } from '@angular/platform-browser';
 })
 
 export class LeftMenuComponent implements OnDestroy, OnInit {
-
-    private BASE_THEMING_NAME = 'Basic Settings';
-
     @ViewChild('searchInput') searchInput: ElementRef;
     @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
 
@@ -35,7 +34,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     searchOpened = false;
     searchKeyword = '';
     workArea: LeftMenuItem;
-    workAreaName = this.BASE_THEMING_NAME;
+    workAreaName = BASE_THEMING_NAME;
     formGroup = new FormGroup({
         formControl: new FormControl('')
     });
@@ -115,7 +114,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
-            this.workAreaName = item.name || this.BASE_THEMING_NAME;
+            this.workAreaName = item.name || BASE_THEMING_NAME;
             this.menuClosed = true;
         }
 
@@ -127,7 +126,9 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData[0] = this.workArea;
     }
 
-    getRealName = (name): SafeHtml => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
+    getRealName(name): SafeHtml {
+        return this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
+    }
 
     loadThemeMetadata(): Promise<any> {
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {

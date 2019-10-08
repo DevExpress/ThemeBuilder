@@ -57,4 +57,12 @@ rules:
     'dot-location': ['error', 'property']
     'eqeqeq': ['error', 'always']
     'guard-for-in': 'error'
+    'no-div-regex': 'error'
+    'no-else-return': ['error', { 'allowElseIf': false }]
+    'no-eq-null': 'error'
+    'no-eval': 'error'
+    'no-extra-bind': 'error'
+    'no-implicit-globals': 'error'
+    'no-invalid-this': 'error'
+    
 

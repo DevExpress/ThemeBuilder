@@ -1,3 +1,4 @@
+/*eslint no-invalid-this: ['Off']*/
 import { Component, ViewChild } from '@angular/core';
 import { DxDrawerComponent } from 'devextreme-angular';
 import { Subject } from 'rxjs';
