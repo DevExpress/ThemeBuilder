@@ -8,7 +8,8 @@ export class LoadingService {
     stack = [];
 
     toggle(show: boolean): void {
-        show ? this.stack.push(true) : this.stack.pop();
+        if(show) this.stack.push(true);
+        else this.stack.pop();
         this.busy.next(!!this.stack.length);
     }
 
