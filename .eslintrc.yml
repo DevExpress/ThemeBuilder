@@ -16,6 +16,7 @@ parserOptions:
 plugins:
   - '@typescript-eslint'
 rules:
+    #typescript-eslint rules
     'no-unused-vars': 'off'
     '@typescript-eslint/no-unused-vars': 'error'
     '@typescript-eslint/no-explicit-any': 'off' # remove to set to warn
@@ -50,7 +51,7 @@ rules:
     '@typescript-eslint/semi': ['error']
     '@typescript-eslint/type-annotation-spacing': 'error'
     '@typescript-eslint/unbound-method': 'error'
-
+    # eslint rules
     'curly': ['error', 'multi-line']
     'default-case': 'error'
     'default-param-last': ['error']
@@ -66,4 +67,10 @@ rules:
     'no-invalid-this': 'error'
     'no-multi-spaces': 'error'
     'no-unused-expressions': 'error'
+    'no-useless-call': 'error'
+    'no-useless-concat': 'error'
+    'no-useless-return': 'error'
+    'no-shadow': 'error'
+    #codestyle eslint rules
+    'array-bracket-spacing': ['error', 'never']
 

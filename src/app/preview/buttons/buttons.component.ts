@@ -17,5 +17,5 @@ export class ButtonsComponent {
         { text: 'Danger', type: 'danger' }
     ];
 
-    modes: string[] = [ 'contained', 'outlined', 'text' ];
+    modes: string[] = ['contained', 'outlined', 'text'];
 }
