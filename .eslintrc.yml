@@ -19,7 +19,7 @@ rules:
     #typescript-eslint rules
     'no-unused-vars': 'off'
     '@typescript-eslint/no-unused-vars': 'error'
-    '@typescript-eslint/no-explicit-any': 'off' # remove to set to warn
+    '@typescript-eslint/no-explicit-any': 'warn'
     'brace-style': 'off'
     '@typescript-eslint/brace-style': ['error']
     '@typescript-eslint/class-name-casing': ['error']
@@ -29,7 +29,7 @@ rules:
     '@typescript-eslint/indent': ['error', 4]
     'no-extra-parens': 'off'
     '@typescript-eslint/no-extra-parens': ['error']
-    '@typescript-eslint/no-floating-promises': 'off' # change to 'warn'
+    '@typescript-eslint/no-floating-promises': 'warn'
     '@typescript-eslint/no-for-in-array': 'error'
     '@typescript-eslint/no-inferrable-types': 'error'
     'no-magic-numbers': 'off'
