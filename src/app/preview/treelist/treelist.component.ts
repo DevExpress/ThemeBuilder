@@ -1,3 +1,5 @@
+/*eslint @typescript-eslint/camelcase: 'off'*/
+/*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxTreeListComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
@@ -487,13 +489,13 @@ export class TreelistComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.treeList.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

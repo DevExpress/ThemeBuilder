@@ -26,35 +26,36 @@ export class IframeComponent implements OnDestroy, OnInit {
         private sanitizer: DomSanitizer,
         private metadataService: MetadataRepositoryService,
         private loading: LoadingService) {
-            this.route.params.subscribe((params) => {
-                const widget = params['widget'] || params['group'];
-                if(this.widgetName.getValue() !== widget) {
-                    this.widgetName.next(widget);
-                }
-                if(this.theme !== params['theme']) {
-                    this.loading.show();
-                    this.theme = params['theme'];
-                    this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
-                    this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-                }
-            });
+        this.route.params.subscribe((params) => {
+            const widget = params['widget'] || params['group'];
+            if(this.widgetName.getValue() !== widget) {
+                this.widgetName.next(widget);
+            }
+            if(this.theme !== params['theme']) {
+                this.loading.show();
+                this.theme = params['theme'];
+                this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
+                this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+            }
+        });
     }
 
-    receiveMessage(e) {
-        if(e.data.widget)
+    receiveMessage(e): void {
+        if(e.data.widget) {
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
+        }
 
         if(e.data.hideLoading) {
             this.loading.hide();
         }
     }
 
-    onIframeLoad() {
-        if(this.cssSubscription)
-            this.cssSubscription.unsubscribe();
+    onIframeLoad(): void {
+        if(this.cssSubscription) this.cssSubscription.unsubscribe();
+
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
             const theme = this.metadataService.theme;
-            const themeSize = theme.name === 'generic' ? (theme.colorScheme.split('-')[1] || 'normal') : '';
+            const themeSize = theme.colorScheme.includes('compact') ? 'normal' : 'compact';
             this.iframe.nativeElement.contentWindow.postMessage({
                 css,
                 themeSize,
@@ -62,22 +63,18 @@ export class IframeComponent implements OnDestroy, OnInit {
             }, this.url);
         });
 
-        if(this.widgetSubscription)
-            this.widgetSubscription.unsubscribe();
+        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
         this.widgetSubscription = this.widgetName.subscribe((widget) => {
             this.iframe.nativeElement.contentWindow.postMessage({ widget }, this.url);
         });
     }
 
-    ngOnDestroy() {
-        if(this.cssSubscription)
-            this.cssSubscription.unsubscribe();
-
-        if(this.widgetSubscription)
-            this.widgetSubscription.unsubscribe();
+    ngOnDestroy(): void {
+        if(this.cssSubscription) this.cssSubscription.unsubscribe();
+        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
     }
 }

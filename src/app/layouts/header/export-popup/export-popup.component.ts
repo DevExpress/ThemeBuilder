@@ -9,6 +9,9 @@ import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.s
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 
+const CSS_INDEX = 0;
+const META_INDEX = 1;
+
 @Component({
     selector: 'app-export-popup',
     templateUrl: './export-popup.component.html',
@@ -35,11 +38,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
     getFileNameWithoutExt(): string {
         return this.outputFile &&
-               this.outputFile.replace(/^.*[\\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
+               this.outputFile.replace(/^.*[\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
                `dx.${this.importService.getThemeName()}.${this.schemeName}`;
     }
 
-    validate() {
+    validate(): any {
         return validationEngine.validateGroup();
     }
 
@@ -52,11 +55,11 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
-    fileSave(cssContent) {
+    fileSave(cssContent): void {
         fileSaver.saveAs(this.getFileNameWithoutExt(), 'CSS', new Blob([cssContent]));
     }
 
-    popupShown() {
+    popupShown(): void {
         this.displayFileContent(0);
     }
 
@@ -69,7 +72,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
 
         const fileContentReady = !this.loadIndicatorVisible;
         if(fileContentReady) {
-            this.fileSave(this.fileContent[0]);
+            this.fileSave(this.fileContent[CSS_INDEX]);
             return;
         }
         this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
@@ -108,19 +111,19 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
             });
     }
 
-    displayCss() {
+    displayCss(): void {
         this.importService.exportCss(this.schemeName, this.makeSwatch).then((css) => {
-            this.fileContent[0] = css;
+            this.fileContent[CSS_INDEX] = css;
             this.loadIndicatorVisible = false;
             this.saveButtonDisabled = false;
         });
     }
 
-    displayMeta() {
-        this.fileContent[1] = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
+    displayMeta(): void {
+        this.fileContent[META_INDEX] = this.importService.exportMetadata(this.schemeName, this.makeSwatch);
     }
 
-    displayFileContent(timeout: number) {
+    displayFileContent(timeout: number): void {
         if(!this.validate().isValid) return;
 
         this.loadIndicatorVisible = true;
@@ -134,29 +137,31 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
         this.displayMeta();
     }
 
-    copyFileContent() {
+    copyFileContent(): void {
         this.googleAnalyticsEventsService.emitEvent(
             'export',
-            'copy ' + (this.selectedIndex ? 'metadata' : 'css')  + ' (' + this.importService.getThemeName() + ')');
+            'copy ' + (this.selectedIndex ? 'metadata' : 'css') + ' (' + this.importService.getThemeName() + ')');
     }
 
-    schemeNameChange() {
-        if(this.makeSwatch)
-            this.displayFileContent(1000);
-        else
+    schemeNameChange(): void {
+        const DEBOUNCE_TIMEOUT = 1000;
+        if(this.makeSwatch) {
+            this.displayFileContent(DEBOUNCE_TIMEOUT);
+        } else {
             this.displayMeta();
+        }
     }
 
-    swatchChange() {
+    swatchChange(): void {
         this.displayFileContent(0);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setParameters();
         this.importService.changed.subscribe(() => this.setParameters());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if(this.subscription) {
             this.subscription.unsubscribe();
         }

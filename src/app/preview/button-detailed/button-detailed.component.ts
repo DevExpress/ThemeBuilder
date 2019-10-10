@@ -7,15 +7,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ButtonDetailedComponent {
     @Input() widget: string;
-    @Input() currentWidget: any;
+    @Input() currentWidget: string;
 
     @Output() clicked = new EventEmitter();
 
-    onClick() {
+    onClick(): void {
         const isClosed = this.widget !== this.currentWidget;
         window.parent.postMessage(
-            { widget: (isClosed ? this.widget  : 'base.common') },
-             window.parent.location.href
+            { widget: isClosed ? this.widget : 'base.common' },
+            window.parent.location.href
         );
 
         this.clicked.emit({ isClosed });

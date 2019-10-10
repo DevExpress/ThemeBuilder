@@ -15,12 +15,15 @@ export class PreviewIndexComponent implements OnInit {
     typographyClass: string;
 
     constructor(private router: Router) {
-       this.viewName = this.router.url.split('/')[1];
-       this.themeName = this.router.url.split('/')[2];
-       this.typographyClass = 'dx-theme-' + this.themeName + '-typography';
+        const VIEW_POSITION = 1;
+        const THEME_POSITION = 2;
+        const urlParts = this.router.url.split('/');
+        this.viewName = urlParts[VIEW_POSITION];
+        this.themeName = urlParts[THEME_POSITION];
+        this.typographyClass = 'dx-theme-' + this.themeName + '-typography';
     }
 
-    receiveMessage(e) {
+    receiveMessage(e: any): void {
         if(e.data.css) {
             this.addHeadStyles(e.data.css);
             this.themeSize = e.data.themeSize;
@@ -31,7 +34,7 @@ export class PreviewIndexComponent implements OnInit {
         }
     }
 
-    addHeadStyles(css: string) {
+    addHeadStyles(css: string): void {
         const head = document.getElementsByTagName('head')[0];
         const style = document.createElement('style');
         const DYNAMIC_STYLES_ID = 'dynamic-styles';
@@ -55,7 +58,7 @@ export class PreviewIndexComponent implements OnInit {
         this.isStylesReady = true;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         const messageListener = this.receiveMessage.bind(this);
         window.removeEventListener('message', messageListener);
         window.addEventListener('message', messageListener, false);

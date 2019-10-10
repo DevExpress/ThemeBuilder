@@ -1,3 +1,4 @@
+/*eslint no-invalid-this: ['Off']*/
 import { Component, ViewChild } from '@angular/core';
 import { DxDrawerComponent } from 'devextreme-angular';
 import { Subject } from 'rxjs';
@@ -34,7 +35,7 @@ export class DrawerComponent {
         options: {
             icon: 'menu',
             stylingMode: 'text',
-            onClick: () => {
+            onClick: (): void => {
                 this.drawer.instance.toggle();
             }
         },

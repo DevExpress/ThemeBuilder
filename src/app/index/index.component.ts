@@ -11,7 +11,8 @@ export class IndexComponent {
 
     constructor(private route: ActivatedRoute) {
         this.route.url.subscribe((u) => {
-            this.url = u[0] ? u[0].path : '';
+            const urlSegment = u.shift();
+            this.url = urlSegment ? urlSegment.path : '';
         });
     }
 }

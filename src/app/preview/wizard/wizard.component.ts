@@ -194,18 +194,18 @@ export class WizardComponent implements AfterViewInit {
     }, {
         location: 'before',
         locateInMenu: 'never',
-        template: () => {
+        template: (): string => {
             return '<span style="font-size: 22px; font-weight: 500;">Theme Preview</span>';
         }
     }, {
         location: 'after',
         locateInMenu: 'never',
-        template: () => {
+        template: (): string => {
             return '<img src="images/person.png" width="30" height="30"/><span>John Heart</span>';
         }
     }];
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.form.instance.validate();
     }
 

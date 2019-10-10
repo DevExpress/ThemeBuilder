@@ -34,7 +34,7 @@ export class ImportPopupComponent {
     selectedIndex = 0;
     importValue = '';
 
-    applyClick(t) {
+    applyClick(t): void {
         this.googleAnalyticsEventsService.emitEvent('import', 'metadata');
 
         this.importService.importMetadata(t.value, 'advanced').then(() => {
@@ -45,7 +45,7 @@ export class ImportPopupComponent {
         });
     }
 
-    imported() {
+    imported(): void {
         this.popup.hide();
     }
 }

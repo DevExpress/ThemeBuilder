@@ -1,0 +1,97 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended'
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+  project: './tsconfig.json'
+plugins:
+  - '@typescript-eslint'
+rules:
+    #typescript-eslint rules
+    'no-unused-vars': 'off'
+    '@typescript-eslint/no-unused-vars': 'error'
+    '@typescript-eslint/no-explicit-any': 'warn'
+    'brace-style': 'off'
+    '@typescript-eslint/brace-style': ['error']
+    '@typescript-eslint/class-name-casing': ['error']
+    'func-call-spacing': 'off'
+    '@typescript-eslint/func-call-spacing': ['error', 'never']
+    'indent': 'off'
+    '@typescript-eslint/indent': ['error', 4]
+    'no-extra-parens': 'off'
+    '@typescript-eslint/no-extra-parens': ['error']
+    '@typescript-eslint/no-floating-promises': 'warn'
+    '@typescript-eslint/no-for-in-array': 'error'
+    '@typescript-eslint/no-inferrable-types': 'error'
+    'no-magic-numbers': 'off'
+    '@typescript-eslint/no-magic-numbers': ['error', { 'ignoreNumericLiteralTypes': true, 'ignoreEnums': true, 'ignoreReadonlyClassProperties': true, 'ignore': [0] }]
+    '@typescript-eslint/no-misused-new': 'error'
+    '@typescript-eslint/no-misused-promises': 'error'
+    '@typescript-eslint/no-non-null-assertion': 'error'
+    '@typescript-eslint/no-require-imports': 'error'
+    '@typescript-eslint/no-this-alias': 'error'
+    'no-use-before-define': 'off'
+    '@typescript-eslint/no-use-before-define': 'error'
+    '@typescript-eslint/no-useless-constructor': 'error'
+    '@typescript-eslint/prefer-for-of': 'error'
+    '@typescript-eslint/prefer-string-starts-ends-with': 'error'
+    'quotes': 'off'
+    '@typescript-eslint/quotes': ['error', 'single']
+    '@typescript-eslint/restrict-plus-operands': 'error'
+    'semi': 'off'
+    '@typescript-eslint/semi': ['error']
+    '@typescript-eslint/type-annotation-spacing': 'error'
+    '@typescript-eslint/unbound-method': 'error'
+    # eslint rules
+    'curly': ['error', 'multi-line']
+    'default-case': 'error'
+    'default-param-last': ['error']
+    'dot-location': ['error', 'property']
+    'eqeqeq': ['error', 'always']
+    'guard-for-in': 'error'
+    'no-div-regex': 'error'
+    'no-else-return': ['error', { 'allowElseIf': false }]
+    'no-eq-null': 'error'
+    'no-eval': 'error'
+    'no-extra-bind': 'error'
+    'no-implicit-globals': 'error'
+    'no-invalid-this': 'error'
+    'no-multi-spaces': 'error'
+    'no-unused-expressions': 'error'
+    'no-useless-call': 'error'
+    'no-useless-concat': 'error'
+    'no-useless-return': 'error'
+    'no-shadow': 'error'
+    #codestyle eslint rules
+    'array-bracket-spacing': ['error', 'never']
+    'comma-dangle': ['error', 'never']
+    'comma-spacing': ['error', { 'before': false, 'after': true }]
+    'comma-style': ['error', 'last']
+    'computed-property-spacing': ['error', 'never']
+    'eol-last': ['error', 'always']
+    'implicit-arrow-linebreak': ['error', 'beside']
+    'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }]
+    'keyword-spacing': ['error', { 'overrides': { 'if': { 'after': false }, 'for': { 'after': false }, 'while': { 'after': false }} }]
+    'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }]
+    'no-trailing-spaces': 'error'
+    'no-unneeded-ternary': 'error'
+    'no-whitespace-before-property': 'error'
+    'semi-spacing': 'error'
+    'semi-style': ['error', 'last']
+    'space-before-function-paren': ['error', 'never']
+    'space-in-parens': 'error'
+    'arrow-parens': ['error', 'always']
+    'arrow-spacing': 'error'
+    'no-var': 'error'
+    'prefer-arrow-callback': 'error'
+    'prefer-const': 'error'
+    'prefer-spread': 'error'

@@ -23,7 +23,7 @@ export class ImportService {
         try {
             this.savedMetadata = JSON.parse(meta);
         } catch {
-            return new Promise((_, reject) => { reject(); });
+            return new Promise((_, reject): void => reject());
         }
 
         this.normalizedMetadata = { ...this.savedMetadata };
@@ -42,13 +42,15 @@ export class ImportService {
         const exportedObject = {
             ...this.savedMetadata,
             items: this.metaRepository.getModifiedItems(),
-            baseTheme: [ this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.') ].join('.'),
+            baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
             outputColorScheme: customSchemeName,
             makeSwatch: useSwatch,
             version: this.metaRepository.version()
         };
 
-        return JSON.stringify(exportedObject, null, 4);
+        const SPACES_NUMBER = 4;
+
+        return JSON.stringify(exportedObject, null, SPACES_NUMBER);
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean): Promise<string> {
@@ -71,7 +73,7 @@ export class ImportService {
         return this.metaRepository.theme.name;
     }
 
-    clearSavedMetadata() {
+    clearSavedMetadata(): void {
         this.savedMetadata = {};
         this.normalizedMetadata = {};
         this.changed.emit();

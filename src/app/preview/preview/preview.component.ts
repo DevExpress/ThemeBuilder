@@ -28,25 +28,29 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
     isWidgetClosed = true;
 
-    createPreviewContent(widget: any) {
+    createPreviewContent(widget: any): void {
         const EXPAND_CLASS_NAME = 'expanded';
         const NOT_EXPAND_CLASS_NAME = 'not-expanded';
         const flexContainers = document.getElementsByClassName('flex-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
-        const currentWidget = widget.currentValue || widget;
+        const currentWidget: string = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
 
+        /* eslint @typescript-eslint/prefer-for-of: 'off' */
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
             flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
-            if(!previousWidget || widgetEl.widgetGroup === previousWidget)
+            if(!previousWidget || widgetEl.widgetGroup === previousWidget) {
                 widgetEl.isExpanded.next(false);
+            }
         });
 
         if(this.isWidgetClosed) {
+            const PREVIEW_AREA_SCROLL_TIMEOUT = 600;
+            const WIDGET_BLOCK_EXPAND_TIMEOUT = 400;
             setTimeout(() => {
                 if(currentWidget === 'base.common' || currentWidget === 'base.typography') {
                     scrollableContainer.scrollTo({
@@ -58,10 +62,10 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 }
 
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
-                const flexParentContainer =  widgetContainer[0].parentElement.parentElement;
+                const flexParentContainer = widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
-                if(this.notExpandableWidgets.indexOf(currentWidget) !== -1) {
+                if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
                     flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
 
                     scrollableContainer.scrollTo({
@@ -85,26 +89,28 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                     });
 
                     this.widgetElements.forEach((widgetEl) => {
-                        if(widgetEl.widgetGroup === currentWidget)
+                        if(widgetEl.widgetGroup === currentWidget) {
                             widgetEl.isExpanded.next(true);
+                        }
                     });
-                }, 600);
-            }, 400);
+                }, PREVIEW_AREA_SCROLL_TIMEOUT);
+            }, WIDGET_BLOCK_EXPAND_TIMEOUT);
         }
 
         this.isWidgetClosed = true;
     }
 
-    buttonDetailedClick(e) {
-       this.isWidgetClosed = e.isClosed;
+    buttonDetailedClick(e): void {
+        this.isWidgetClosed = e.isClosed;
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        if(!changes.widgetName.firstChange)
+    ngOnChanges(changes: SimpleChanges): void {
+        if(!changes.widgetName.firstChange) {
             this.createPreviewContent(changes.widgetName);
+        }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.createPreviewContent(this.widgetName);
     }
 }

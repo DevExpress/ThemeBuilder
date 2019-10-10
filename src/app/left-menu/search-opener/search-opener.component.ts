@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./search-opener.component.css']
 })
 export class SearchOpenerComponent {
-    constructor() { }
     @Input() opened: boolean;
 }

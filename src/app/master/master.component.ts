@@ -33,13 +33,13 @@ export class MasterComponent implements OnInit, OnDestroy {
         });
     }
 
-    changeContent() {
+    changeContent(): void {
         this.themes = themes.filter((t) => t.name === this.themeName);
 
         const themesBySize = this.themes.filter(
             (t) => this.isThemeCompact ?
-            t.group.includes('Compact') :
-            !t.group.includes('Compact'));
+                t.group.includes('Compact') :
+                !t.group.includes('Compact'));
 
         if(this.themeName === 'material') {
             // getting sorted list by background color
@@ -50,13 +50,13 @@ export class MasterComponent implements OnInit, OnDestroy {
         } else this.themesList = themesBySize;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.appLayoutComponent.animationDone.subscribe((value) => {
             this.showIframe = value;
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

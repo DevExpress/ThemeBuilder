@@ -9,6 +9,9 @@ import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
+import { SafeHtml } from '@angular/platform-browser';
+
+const BASE_THEMING_NAME = 'Basic Settings';
 
 @Component({
     selector: 'app-left-menu',
@@ -17,9 +20,6 @@ import { LeftMenuAlias } from '../left-menu.aliases';
 })
 
 export class LeftMenuComponent implements OnDestroy, OnInit {
-
-    private BASE_THEMING_NAME = 'Basic Settings';
-
     @ViewChild('searchInput') searchInput: ElementRef;
     @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
 
@@ -34,7 +34,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     searchOpened = false;
     searchKeyword = '';
     workArea: LeftMenuItem;
-    workAreaName = this.BASE_THEMING_NAME;
+    workAreaName = BASE_THEMING_NAME;
     formGroup = new FormGroup({
         formControl: new FormControl('')
     });
@@ -46,16 +46,17 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    openMenu() {
+    openMenu(): void {
         this.menuClosed = false;
     }
 
-    toggleSearch(e: any) {
+    toggleSearch(e: MouseEvent): void {
         this.searchOpened = !this.searchOpened;
         this.searchKeyword = '';
 
         if(this.searchOpened) {
-            setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+            const FUCUS_SETTING_TIMEOUT = 100;
+            setTimeout(() => this.searchInput.nativeElement.focus(), FUCUS_SETTING_TIMEOUT);
         } else {
             this.menuSearch();
         }
@@ -63,7 +64,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         e.stopPropagation();
     }
 
-    menuSearch() {
+    menuSearch(): void {
         const keyword = this.names.getRealName(this.searchKeyword.toLowerCase());
 
         const addFilteredMenuItem = (item: LeftMenuItem, itemsArray: LeftMenuItem[]): void => {
@@ -102,23 +103,23 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
                 if(filteredDataGroups.length) {
                     const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
-                    if(!existingGroup.length)
+                    if(!existingGroup.length) {
                         this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
+                    }
                 }
             }
         });
     }
 
-    changeWidget(widget: string) {
+    changeWidget(widget: string): void {
         const item = this.menuData && this.menuData.find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
-            this.workAreaName = item.name || this.BASE_THEMING_NAME;
+            this.workAreaName = item.name || BASE_THEMING_NAME;
             this.menuClosed = true;
         }
 
-        if(this.scrollView)
-            this.scrollView.instance.scrollTo(0);
+        if(this.scrollView) this.scrollView.instance.scrollTo(0);
 
         this.searchKeyword = '';
         this.searchOpened = false;
@@ -126,9 +127,11 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData[0] = this.workArea;
     }
 
-    getRealName = (name) => this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
+    getRealName(name): SafeHtml {
+        return this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
+    }
 
-    loadThemeMetadata() {
+    loadThemeMetadata(): Promise<any> {
         return this.metaRepository.getData().then((metadata: MetaItem[]) => {
             this.theme = this.metaRepository.theme.name;
             this.colorScheme = this.metaRepository.theme.colorScheme;
@@ -165,7 +168,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadThemeMetadata();
         this.subscription = this.metaRepository.css.subscribe(() => {
             this.loadThemeMetadata().then(() => {
@@ -174,15 +177,17 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
             });
         });
 
+        const SEARCH_DEBOUNCE_TIMEOUT = 500;
+
         this.formGroup.valueChanges.pipe(
-            debounceTime(500)
+            debounceTime(SEARCH_DEBOUNCE_TIMEOUT)
         ).subscribe((data) => {
             this.searchKeyword = data.formControl;
             this.menuSearch();
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

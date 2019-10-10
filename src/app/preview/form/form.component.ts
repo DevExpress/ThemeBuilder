@@ -24,7 +24,7 @@ export class FormComponent implements OnInit, OnDestroy {
             {
                 itemType: 'group',
                 caption: 'Personal Data',
-                items: ['ID',  'Full Name']
+                items: ['ID', 'Full Name']
             }
         ]
     };
@@ -61,14 +61,14 @@ export class FormComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.form.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.form.instance.updateDimensions();
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

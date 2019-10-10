@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent  {
+export class GalleryComponent {
     widgetGroup = 'gallery';
     isExpanded = new Subject<boolean>();
 

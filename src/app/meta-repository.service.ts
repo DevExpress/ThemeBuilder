@@ -32,8 +32,10 @@ export class MetadataRepositoryService {
         this.router.events.subscribe((event) => {
             if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
-            const themeName = urlParts[2];
-            const colorScheme = urlParts[3];
+            const THEME_POSITION = 2;
+            const COLOR_SCHEME_POSITION = 3;
+            const themeName = urlParts[THEME_POSITION];
+            const colorScheme = urlParts[COLOR_SCHEME_POSITION];
 
             if(!colorScheme && this.modifiedMetaCollection.length) {
                 this.forceRebuild = true;
@@ -107,7 +109,7 @@ export class MetadataRepositoryService {
             if(savedBuildNumber !== this.globalBuildNumber) return;
 
             for(const dataKey in result.compiledMetadata) {
-                if(result.compiledMetadata.hasOwnProperty(dataKey)) {
+                if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
                     const item = this.metadataRepository.getDataItemByKey(dataKey, currentTheme);
                     item.Value = result.compiledMetadata[dataKey];
                 }
@@ -115,7 +117,7 @@ export class MetadataRepositoryService {
 
             if(isFirstBootstrapBuild) {
                 for(const dataKey in result.modifyVars) {
-                    if(result.modifyVars.hasOwnProperty(dataKey)) {
+                    if(Object.prototype.hasOwnProperty.call(result.modifyVars, dataKey)) {
                         this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
                     }
                 }
@@ -133,8 +135,7 @@ export class MetadataRepositoryService {
 
             themeData.forEach((item) => {
                 const index = baseParameters.indexOf(item.Key);
-                if(index !== -1)
-                    result[index] = item;
+                if(index >= 0) result[index] = item;
             });
 
             return result;
@@ -146,7 +147,7 @@ export class MetadataRepositoryService {
     }
 
     export(outColorScheme: string, swatch: boolean, widgets: string[]): Promise<string> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject): void => {
             this.builder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection, widgets).then((result) => {
                 resolve(result.css);
             }, (error) => {

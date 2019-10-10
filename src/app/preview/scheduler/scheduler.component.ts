@@ -1,3 +1,4 @@
+/*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
@@ -109,13 +110,13 @@ export class SchedulerComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             this.scheduler.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

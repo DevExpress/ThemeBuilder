@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 import { ImportService } from '../../import.service';
 
 @Component({
-  selector: 'app-bootstrap-uploader',
-  templateUrl: './bootstrap-uploader.component.html',
-  styleUrls: ['./bootstrap-uploader.component.css']
+    selector: 'app-bootstrap-uploader',
+    templateUrl: './bootstrap-uploader.component.html',
+    styleUrls: ['./bootstrap-uploader.component.css']
 })
 export class BootstrapUploaderComponent {
     @Input() accept: string;
@@ -21,12 +21,11 @@ export class BootstrapUploaderComponent {
         private googleAnalyticsEventsService: GoogleAnalyticsEventsService
     ) {}
 
-    uploaded(e) {
+    uploaded(e): void {
         const file = e.value[0];
         if(file) {
-            let fileReader: FileReader;
-            fileReader = new FileReader();
-            fileReader.onload = () => {
+            const fileReader = new FileReader();
+            fileReader.onload = (): void => {
                 let meta: string;
                 if(typeof fileReader.result === 'string') {
                     meta = fileReader.result;

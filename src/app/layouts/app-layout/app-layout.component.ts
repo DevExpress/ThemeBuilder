@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { routeAnimation } from './../../animations';
+import { RouteId } from 'src/app/types/route-id';
 
 @Component({
     selector: 'app-app-layout',
@@ -21,7 +22,7 @@ export class AppLayoutComponent {
                 const snapshot = event.snapshot;
                 if(snapshot.data.routeId) {
                     this.animationValue = snapshot.data.routeId;
-                    this.themesSwitchEnabled = snapshot.data.routeId === 4;
+                    this.themesSwitchEnabled = snapshot.data.routeId === RouteId.GROUPED_WIDGET;
                 }
             }
         });

@@ -12,15 +12,15 @@ export class PopupComponent {
 
     visible = false;
 
-    shown() {
+    shown(): void {
         this.popupShown.emit();
     }
 
-    show() {
+    show(): void {
         this.visible = true;
     }
 
-    hide() {
+    hide(): void {
         this.visible = false;
     }
 }

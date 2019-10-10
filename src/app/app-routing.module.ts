@@ -11,25 +11,26 @@ import { AdvancedComponent } from './advanced/advanced.component';
 import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
 import { PreviewIndexComponent } from './preview/index.component';
+import { RouteId } from './types/route-id';
 
 const routes: Routes = [
     {
         path: '',
         component: AppLayoutComponent,
         children: [
-            { path: '', component: IndexComponent, data: { routeId: 1, docHash: '' } },
-            { path: 'master', component: IndexComponent, data: { routeId: 2, docHash: '#Get_Started/Create_a_New_Theme' } },
-            { path: 'import', component: IndexComponent, data: { routeId: 2, docHash: '#Get_Started/Import_an_Existing_Theme' } },
-            { path: 'import/bootstrap', component: ImportBootstrapComponent, data: { routeId: 3, docHash: '#Get_Started/Import_an_Existing_Theme' } },
-            { path: 'import/meta', component: ImportMetaComponent, data: { routeId: 3, docHash: '#Get_Started/Import_an_Existing_Theme' } },
-            { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: 3, docHash: '#Get_Started/Create_a_New_Theme' } },
+            { path: '', component: IndexComponent, data: { routeId: RouteId.MAIN_INDEX, docHash: '' } },
+            { path: 'master', component: IndexComponent, data: { routeId: RouteId.NESTED_INDEX, docHash: '#Get_Started/Create_a_New_Theme' } },
+            { path: 'import', component: IndexComponent, data: { routeId: RouteId.NESTED_INDEX, docHash: '#Get_Started/Import_an_Existing_Theme' } },
+            { path: 'import/bootstrap', component: ImportBootstrapComponent, data: { routeId: RouteId.IMPORT_OR_MASTER, docHash: '#Get_Started/Import_an_Existing_Theme' } },
+            { path: 'import/meta', component: ImportMetaComponent, data: { routeId: RouteId.IMPORT_OR_MASTER, docHash: '#Get_Started/Import_an_Existing_Theme' } },
+            { path: 'master/:theme/:color-scheme', component: MasterComponent, data: { routeId: RouteId.IMPORT_OR_MASTER, docHash: '#Get_Started/Create_a_New_Theme' } },
             { path: 'advanced', redirectTo: '/advanced/generic/light/base.common/', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme', redirectTo: 'advanced/:theme/:color-scheme/base.common/', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/grids', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/datagrid', redirectTo: '/advanced/:theme/:color-scheme/grids/datagrid', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/treelist', redirectTo: '/advanced/:theme/:color-scheme/grids/treelist', pathMatch: 'full' },
             { path: 'advanced/:theme/:color-scheme/:widget', redirectTo: '/advanced/:theme/:color-scheme/:widget/', pathMatch: 'full'},
-            { path: 'advanced/:theme/:color-scheme/:group/:widget', component: AdvancedComponent, data: { routeId: 4, docHash: '#Customize_the_Theme' } }
+            { path: 'advanced/:theme/:color-scheme/:group/:widget', component: AdvancedComponent, data: { routeId: RouteId.GROUPED_WIDGET, docHash: '#Customize_the_Theme' } }
         ]
     },
     {
