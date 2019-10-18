@@ -1,65 +1,26 @@
 <app-popup
     title="Theme Export"
-    (popupShown)="popupShown()"
+    (popupShown)="popupShown()" 
     #popup
->   
-    <div class="editor-item first">
-        <label>Color scheme name</label>
-        <dx-text-box 
-            [(value)]="schemeName" 
-            [width]="400" 
-            valueChangeEvent="keyup" 
-            (onValueChanged)="schemeNameChange()">
-            <dx-validator>
-                <dxi-validation-rule 
-                    type="pattern" 
-                    pattern="^[\w-_]*$" 
-                    message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
-                </dxi-validation-rule>
-                <dxi-validation-rule 
-                    type="required" 
-                    message="Color scheme name is required.">
-                </dxi-validation-rule>
-            </dx-validator>
-        </dx-text-box>
+>
+    <div class="indicator">
+        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 0, 'done': viewIndex > 0 }">
+            <div class="line"></div>
+            <div class="circle"></div>
+            <div class="item-text">Basic Settings</div>
+        </div>
+        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 1, 'done': viewIndex > 1 }">
+            <div class="line"></div>
+            <div class="circle"></div>
+            <div class="item-text">Select Widgets</div>
+        </div>
+        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 2 }">
+            <div class="circle"></div>
+            <div class="item-text">Export Type</div>
+        </div>
     </div>
-    <div class="editor-item">
-        <label>Save as a color swatch</label>
-        <dx-check-box [(value)]="makeSwatch" (onValueChanged)="swatchChange()"></dx-check-box>
-    </div>
-    <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
-        <label>Output file path</label>
-        <dx-text-box [value]="outputFile" [readOnly]="true" [width]="400"></dx-text-box>
-    </div>
-    <dx-tab-panel
-        #tabPane 
-        class="tabs first" 
-        [height]="60"
-        [(selectedIndex)]="selectedIndex">
-        <dxi-item title="Export CSS"></dxi-item>
-        <dxi-item title="Export Metadata"></dxi-item>
-    </dx-tab-panel>
-    <div class="buttons">
-        <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button>
-        <app-button id="zipButton" [disabled]="saveButtonDisabled" [width]="270" title="Save to File" *ngIf="!selectedIndex" (clicked)=" exportZip()">Save to Zip</app-button>
-    </div>
-    <div class="text">
-        or copy {{ selectedIndex ? "metadata" : "CSS" }} from the area below.
-    </div>
-    <dx-text-area 
-        id="file-content" 
-        [readOnly]="true" 
-        [height]="150" 
-        [value]="fileContent[selectedIndex]"
-        (onCopy)="copyFileContent()"
-        #textArea>
-    </dx-text-area>
-    <dx-load-panel 
-        [visible]="loadIndicatorVisible" 
-        [position]="{ of: '#file-content' }" 
-        [showPane]="false" 
-        [shading]="true" 
-        shadingColor="rgba(232, 232, 232, 0.5)"
-        message="Generating...">
-    </dx-load-panel>
+
+
+
+
 </app-popup>

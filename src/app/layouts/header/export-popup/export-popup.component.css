@@ -1,39 +1,41 @@
-.first {
-    margin-top: 20px;
-}
-
-.editor-item {
-    height: 34px;
+.indicator {
     display: flex;
-    margin-bottom: 10px;
+    justify-content: space-between; /*remove?*/
 }
 
-.editor-item.hidden {
-    display: none;
+.indicator .indicator-item {
+    position: relative;
 }
 
-.editor-item label {
-    width: 160px;
+.indicator .indicator-item .item-text {
+    color: rgba(64, 64, 64, 0.5);
+    font-size: 16px;
 }
 
-.editor-item > * {
-    align-self: center;
+.indicator .indicator-item .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
 }
 
-.buttons {
-    text-align: center;
-    margin-top: 20px;
+.indicator .indicator-item .circle,
+.indicator .indicator-item .line {
+    background: #c4c4c4;
 }
 
-.buttons app-button {
-    display: inline-block;
+.indicator .indicator-item.active .circle,
+.indicator .indicator-item.active .line {
+    background: #F16850;
 }
 
-.buttons app-button:not(:first-child) {
-    margin-left: 20px;
+.indicator .indicator-item.done .circle {
+    background: #707070;
 }
 
-.text {
-    text-align: center;
-    margin: 20px 0 10px;
+.indicator .indicator-item.active .item-text {
+    color: #F16850;
+}
+
+.indicator .indicator-item.done .item-text {
+    color: #707070;
 }

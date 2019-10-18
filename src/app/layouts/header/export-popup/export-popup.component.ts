@@ -19,8 +19,17 @@ const META_INDEX = 1;
 })
 export class ExportPopupComponent implements OnInit, OnDestroy {
     @ViewChild('popup') popup: PopupComponent;
+    // interface
+    viewIndex = 1;
+
+    // other shit
     schemeName: string;
     makeSwatch = false;
+    
+
+
+
+
     fileContent: string[] = [];
     outputFile: string;
     subscription: Subscription;
@@ -60,7 +69,7 @@ export class ExportPopupComponent implements OnInit, OnDestroy {
     }
 
     popupShown(): void {
-        this.displayFileContent(0);
+        // this.displayFileContent(0);
     }
 
     exportCss(): void {
