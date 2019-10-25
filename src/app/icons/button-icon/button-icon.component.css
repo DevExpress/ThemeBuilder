@@ -18,7 +18,6 @@ svg rect {
 
 :host-context(.button:hover) svg rect {
     stroke: #fff;
-    /* fill: #707070; */
 }
 
 :host-context(.button:active) svg path,
@@ -29,5 +28,4 @@ svg rect {
 :host-context(.button:active) svg rect,
 :host-context(.button:focus) svg rect {
     stroke: #fff;
-    /* fill: #9e9e9e; */
 }

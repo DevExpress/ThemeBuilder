@@ -156,6 +156,7 @@
     justify-content: center;
     cursor: pointer;
     height: 160px;
+    color: #404040;
 }
 
 .view-wrapper .views-container .view .buttons-container .button.orange {
@@ -169,23 +170,18 @@
 
 .view-wrapper .views-container .view .buttons-container .button:hover {
     background: #707070;
+    color: #fff;
 }
 
 .view-wrapper .views-container .view .buttons-container .button:active,
 .view-wrapper .views-container .view .buttons-container .button:focus {
     background: #9e9e9e;
-}
-
-.view-wrapper .views-container .view .buttons-container .button:hover .button-text,
-.view-wrapper .views-container .view .buttons-container .button:active .button-text,
-.view-wrapper .views-container .view .buttons-container .button:focus .button-text {
     color: #fff;
 }
 
 .view-wrapper .views-container .view .buttons-container .button:disabled {
     opacity: 0.5;
 }
-
 
 .view-wrapper .views-container .view .buttons-container.horizontal .button {
     border-radius: 4px;
@@ -203,6 +199,12 @@
 
 .view-wrapper .views-container .view .buttons-container.horizontal .button .button-text {
     padding: 0 16px;
+    line-height: 18px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button .button-icon i {
+    font-size: 18px;
+    display: block;
 }
 
 .view-wrapper .views-container .view .export-text {
