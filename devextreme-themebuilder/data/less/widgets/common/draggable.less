@@ -1,0 +1,17 @@
+.dx-draggable {
+    left: 0;
+    cursor: pointer;
+    .user-select(none);
+
+    &.dx-state-disabled,
+    .dx-state-disabled & {
+        cursor: default;
+    }
+}
+
+.dx-draggable-clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}

@@ -1,0 +1,40 @@
+.dx-sortable {
+    overflow: hidden;
+    cursor: pointer;
+    .user-select(none);
+
+    &.dx-state-disabled,
+    .dx-state-disabled & {
+        cursor: default;
+    }
+}
+
+.dx-sortable-dragging.dx-sortable-clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    opacity: 0.9;
+    z-index: 10000;
+}
+
+.dx-sortable-source {
+    opacity: 0.5;
+}
+
+.dx-sortable-source-hidden {
+    opacity: 0;
+}
+
+.dx-sortable-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    z-index: 10000;
+}
+
+.dx-sortable-placeholder-inside {
+    border-width: 2px;
+}

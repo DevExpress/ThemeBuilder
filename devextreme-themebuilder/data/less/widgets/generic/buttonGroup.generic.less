@@ -1,0 +1,255 @@
+@import (once) "./button.generic.less";
+
+.dx-button-mode-outlined,
+.dx-button-mode-contained {
+    &.dx-buttongroup-item {
+        padding-left: 1px;
+        padding-right: 1px;
+
+        &.dx-state-hover .dx-button-content {
+            border-radius: 0;
+        }
+    }
+
+    &.dx-buttongroup-first-item {
+        padding-left: 0;
+        border-left-width: @GENERIC_BUTTON_BORDER_WEIGHT;
+
+        &.dx-button,
+        &.dx-state-hover .dx-button-content {
+            border-top-left-radius: @button-border-radius;
+            border-bottom-left-radius: @button-border-radius;
+        }
+    }
+
+    &.dx-buttongroup-last-item {
+        padding-right: 0;
+
+        &.dx-button,
+        &.dx-state-hover .dx-button-content {
+            border-top-right-radius: @button-border-radius;
+            border-bottom-right-radius: @button-border-radius;
+        }
+    }
+}
+
+.dx-button-mode-text {
+    &.dx-buttongroup-first-item {
+        margin-left: 0;
+    }
+}
+
+.dx-buttongroup-item-states(@hover-color, @focused-color) {
+    &.dx-state-hover {
+        background-color: @hover-color;
+    }
+
+    &.dx-state-focused {
+        background-color: @focused-color;
+    }
+}
+
+.dx-buttongroup-item {
+    &.dx-button {
+        &.dx-button-mode-outlined,
+        &.dx-button-mode-contained {
+            &.dx-state-disabled {
+                opacity: 1;
+
+                .dx-button-content {
+                    opacity: @button-disabled-icon-opacity;
+                }
+            }
+
+            &.dx-state-hover {
+                background-color: @button-normal-outlined-bg-hover;
+            }
+
+            &.dx-state-focused {
+                background-color: @button-normal-outlined-bg-focused;
+            }
+
+            &.dx-button-default {
+                &.dx-state-hover {
+                    background-color: @button-default-outlined-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-default-outlined-bg-focused;
+                }
+            }
+
+            &.dx-button-success {
+                &.dx-state-hover {
+                    background-color: @button-success-outlined-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-success-outlined-bg-focused;
+                }
+            }
+
+            &.dx-button-danger {
+                &.dx-state-hover {
+                    background-color: @button-danger-outlined-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-danger-outlined-bg-focused;
+                }
+            }
+        }
+
+        &.dx-button-mode-text {
+            &.dx-state-hover {
+                background-color: @button-normal-text-bg-hover;
+            }
+
+            &.dx-state-focused {
+                background-color: @button-normal-text-bg-focused;
+            }
+
+            &.dx-button-default {
+                &.dx-state-hover {
+                    background-color: @button-default-text-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-default-text-bg-focused;
+                }
+            }
+
+            &.dx-button-success {
+                &.dx-state-hover {
+                    background-color: @button-success-text-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-success-text-bg-focused;
+                }
+            }
+
+            &.dx-button-danger {
+                &.dx-state-hover {
+                    background-color: @button-danger-text-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-danger-text-bg-focused;
+                }
+            }
+        }
+
+        &.dx-item-selected {
+            background-color: @button-group-normal-selected-bg;
+
+            &.dx-state-hover {
+                background-color: @button-group-normal-selected-bg-hover;
+            }
+
+            &.dx-state-focused {
+                background-color: @button-group-normal-selected-bg-focused;
+            }
+
+            &.dx-button-success {
+                background-color: @button-group-success-selected-bg;
+
+                &.dx-state-hover {
+                    background-color: @button-group-success-selected-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-group-success-selected-bg-focused;
+                }
+            }
+
+            &.dx-button-default {
+                background-color: @button-group-default-selected-bg;
+
+                &.dx-state-hover {
+                    background-color: @button-group-default-selected-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-group-default-selected-bg-focused;
+                }
+            }
+
+            &.dx-button-danger {
+                background-color: @button-group-danger-selected-bg;
+
+                &.dx-state-hover {
+                    background-color: @button-group-danger-selected-bg-hover;
+                }
+
+                &.dx-state-focused {
+                    background-color: @button-group-danger-selected-bg-focused;
+                }
+            }
+
+            &.dx-button-normal,
+            &.dx-button-normal .dx-icon {
+                color: @button-group-normal-selected-color;
+            }
+
+            &.dx-button-success,
+            &.dx-button-success .dx-icon {
+                color: @button-group-success-selected-color;
+            }
+
+            &.dx-button-default,
+            &.dx-button-default .dx-icon {
+                color: @button-group-default-selected-color;
+            }
+
+            &.dx-button-danger,
+            &.dx-button-danger .dx-icon {
+                color: @button-group-danger-selected-color;
+            }
+        }
+    }
+}
+
+.dx-rtl {
+    &.dx-button-mode-outlined,
+    &.dx-button-mode-contained {
+        &.dx-buttongroup-first-item {
+            border-left-width: 0;
+            padding-left: 1px;
+            padding-right: 0;
+
+            &.dx-button,
+            &.dx-state-hover .dx-button-content {
+                border-radius: 0 @button-border-radius @button-border-radius 0;
+            }
+        }
+
+        &.dx-buttongroup-last-item {
+            border-left-width: @GENERIC_BUTTON_BORDER_WEIGHT;
+            padding-right: 1px;
+            padding-left: 0;
+
+            &.dx-button,
+            &.dx-state-hover .dx-button-content {
+                border-radius: @button-border-radius 0 0 @button-border-radius;
+            }
+
+            &.dx-buttongroup-first-item {
+                &.dx-button,
+                &.dx-state-hover .dx-button-content {
+                    border-radius: @button-border-radius;
+                }
+            }
+        }
+    }
+
+    &.dx-button-mode-text {
+        &.dx-buttongroup-first-item {
+            margin-left: 1px;
+        }
+
+        &.dx-buttongroup-last-item {
+            margin-left: 0;
+        }
+    }
+}
