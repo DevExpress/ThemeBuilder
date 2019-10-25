@@ -1,21 +1,38 @@
 .indicator {
     display: flex;
-    justify-content: space-between; /*remove?*/
+    padding-top: 22px;
 }
 
 .indicator .indicator-item {
     position: relative;
+    flex-grow: 1;
+}
+
+.indicator .indicator-item:last-child {
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .indicator .indicator-item .item-text {
     color: rgba(64, 64, 64, 0.5);
     font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.indicator .indicator-item .line {
+    position: absolute;
+    top: 6px;
+    left: 18px;
+    right: 4px;
+    height: 2px;
 }
 
 .indicator .indicator-item .circle {
     width: 14px;
     height: 14px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .indicator .indicator-item .circle,
@@ -23,8 +40,7 @@
     background: #c4c4c4;
 }
 
-.indicator .indicator-item.active .circle,
-.indicator .indicator-item.active .line {
+.indicator .indicator-item.active .circle {
     background: #F16850;
 }
 
@@ -38,4 +54,247 @@
 
 .indicator .indicator-item.done .item-text {
     color: #707070;
+}
+
+.view-wrapper {
+    height: 360px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.view-wrapper::after,
+.view-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    background: rgb(240,242,243);
+    z-index: 1;
+}
+
+.view-wrapper::after {
+    right: 0;
+    background: linear-gradient(90deg, rgba(240,242,243,0) 0%, rgba(240,242,243,1) 100%);
+}
+
+.view-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(240,242,243,1) 0%, rgba(240,242,243,0) 100%);
+}
+
+.view-wrapper .views-container {
+    margin-top: 30px;
+    height: 330px;
+    width: 2400px;
+    position: absolute;
+    display: flex;
+    transition: left ease-out 230ms;
+}
+
+.view-wrapper .views-container.view-0 {
+    left: 40px;
+}
+
+.view-wrapper .views-container.view-1 {
+    left: -560px;
+}
+
+.view-wrapper .views-container.view-2 {
+    left: -1160px;
+}
+
+.view-wrapper .views-container.view-3 {
+    left: -1760px;
+}
+
+.view-wrapper .views-container .view {
+    width: 560px;
+    height: 330px;
+    color: #404040;
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.view-wrapper .views-container .view .padding-20 {
+    padding-top: 20px;
+}
+
+.view-wrapper .views-container .view .buttons-container {
+    flex-grow: 1;
+    display: flex;
+    margin:20px -10px 5px -10px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal {
+    justify-content: center;
+}
+
+.view-wrapper .views-container .view .buttons-container .button {
+    align-self: center;
+}
+
+.view-wrapper .views-container .view .buttons-container.top .button {
+    align-self: flex-start;
+}
+
+.view-wrapper .views-container .view .buttons-container .button {
+    background: #fff;
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 0 10px;
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 160px;
+}
+
+.view-wrapper .views-container .view .buttons-container .button.orange {
+    background: #F16850;
+    color: #fff;
+}
+
+.view-wrapper .views-container .view .buttons-container .button.disabled {
+    opacity: 0.5;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:hover {
+    background: #707070;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:active,
+.view-wrapper .views-container .view .buttons-container .button:focus {
+    background: #9e9e9e;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:hover .button-text,
+.view-wrapper .views-container .view .buttons-container .button:active .button-text,
+.view-wrapper .views-container .view .buttons-container .button:focus .button-text {
+    color: #fff;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:disabled {
+    opacity: 0.5;
+}
+
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button {
+    border-radius: 4px;
+    height: 46px;
+    flex-basis: 160px;
+    flex-grow: 0;
+    flex-direction: row;
+    font-size: 16px;
+}
+
+.view-wrapper .views-container .view .buttons-container .button .button-text {
+    user-select: none;
+    padding-top: 10px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button .button-text {
+    padding: 0 16px;
+}
+
+.view-wrapper .views-container .view .export-text {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.view-wrapper .views-container .view .widgets {
+    height: 250px;
+    display: flex;
+}
+
+.view-wrapper .views-container .view .widgets .main-widgets {
+    flex-basis: 170px;
+    flex-grow: 0;
+}
+
+.view-wrapper .views-container .view .widgets .main-widgets dx-check-box {
+    padding-top: 10px;
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .main-widgets dx-check-box:first-child {
+    padding: 8px 0;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets dx-text-box {
+    margin-bottom: 10px;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group {
+    margin: 0 0 10px -5px;
+    display: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group.visible {
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group i {
+    font-size: 22px;
+    vertical-align: bottom;
+    color: #707070;
+    cursor: pointer;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group span {
+    line-height: 22px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets {
+    display: none;
+    margin-left: 35px;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group.expanded .group-widgets {
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets dx-check-box {
+    padding-top: 10px;
+    display: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets dx-check-box.visible {
+    display: block;
+}
+
+.view-wrapper .views-container .view dx-text-area {
+    margin-top: 10px;
+}
+
+.view-wrapper .views-container .view .export-loading {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-wrapper .views-container .view .export-loading.hidden {
+    visibility: hidden;
+}
+
+.view-wrapper .views-container .view .export-loading span {
+    line-height: 22px;
+    padding-right: 5px;
 }

@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export class PopupComponent {
     @Input() title: string;
+    @Input() height: number|string;
     @Output() popupShown = new EventEmitter();
 
     visible = false;

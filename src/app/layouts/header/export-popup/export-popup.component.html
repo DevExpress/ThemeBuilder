@@ -1,22 +1,179 @@
 <app-popup
     title="Theme Export"
-    (popupShown)="popupShown()" 
+    [height]="540"
     #popup
 >
     <div class="indicator">
         <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 0, 'done': viewIndex > 0 }">
             <div class="line"></div>
-            <div class="circle"></div>
-            <div class="item-text">Basic Settings</div>
+            <div class="circle" (click)="changeStep(0)"></div>
+            <div class="item-text">
+                <span (click)="changeStep(0)">Basic Settings</span>
+            </div>
         </div>
-        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 1, 'done': viewIndex > 1 }">
+        <div class="indicator-item" (click)="viewIndex = 1" [ngClass]="{ 'active': viewIndex === 1, 'done': viewIndex > 1 }">
             <div class="line"></div>
-            <div class="circle"></div>
-            <div class="item-text">Select Widgets</div>
+            <div class="circle" (click)="changeStep(1)"></div>
+            <div class="item-text">
+                <span (click)="changeStep(1)">Select Widgets</span>
+            </div>
         </div>
-        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 2 }">
-            <div class="circle"></div>
-            <div class="item-text">Export Type</div>
+        <div class="indicator-item" (click)="viewIndex = 2" [ngClass]="{ 'active': viewIndex >= 2 }">
+            <div class="circle" (click)="changeStep(2)"></div>
+            <div class="item-text">
+                <span (click)="changeStep(2)">Export Type</span>
+            </div>
+        </div>
+    </div>
+    <div class="view-wrapper">
+        <div class="views-container" [ngClass]="'view-' + viewIndex">
+            <div class="view">
+                <div>Color Scheme Name</div>
+                <dx-text-box
+                    [(value)]="schemeName"
+                    valueChangeEvent="keyup" 
+                >
+                    <dx-validator>
+                        <dxi-validation-rule 
+                            type="pattern" 
+                            pattern="^[\w-_]*$" 
+                            message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule 
+                            type="required" 
+                            message="Color scheme name is required.">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+                <div class="padding-20"></div>
+                <dx-check-box
+                    text="Save as color swatch"
+                    [(value)]="makeSwatch"
+                ></dx-check-box>
+                <div class="buttons-container">
+                    <button class="button" (click)="needMeta = false;changeStep(1)">
+                        <div class="button-icon">
+                            <app-button-icon name="export-css"></app-button-icon>
+                        </div>
+                        <div class="button-text">Export CSS</div>
+                    </button>
+                    <button class="button" (click)="needMeta = true;changeStep(1)">
+                        <div class="button-icon">
+                            <app-button-icon name="export-meta"></app-button-icon>
+                        </div>
+                        <div class="button-text">Export Metadata</div>
+                    </button>
+                </div>
+            </div>
+            <div class="view">
+                <div class="widgets">
+                    <div class="main-widgets" >
+                        <dx-check-box *ngFor="let item of mainData"
+                            [text]="item.widget"
+                            [(value)]="item.selected"
+                            [disabled]="item.disabled"
+                            (onValueChanged)="selectWidget($event, item)"
+                        ></dx-check-box>
+                    </div>
+                    <div class="all-widgets">
+                        <dx-text-box
+                            [(value)]="searchValue"
+                            valueChangeEvent="keyup"
+                            [showClearButton]="true"
+                            placeholder="Search..."
+                            (onValueChanged)="search()"
+                        ></dx-text-box>
+                        <dx-scroll-view #scrollView>
+                            <div>
+                                <div
+                                    class="group"
+                                    [ngClass]="{'expanded': group.expanded, 'visible': group.visible}"
+                                    *ngFor="let group of treeData"
+                                >
+                                    <i
+                                        (click)="group.expanded = !group.expanded"
+                                        [ngClass]="{'dx-icon-spinright': !group.expanded, 'dx-icon-spindown': group.expanded}"
+                                    ></i>
+                                    <!-- <dx-check-box
+                                        [text]="group.group"
+                                        [value]="groupValue(group.items)"
+                                        [disabled]="groupDisabled(group.items)"
+                                        (onValueChanged)="selectGroup($event, group.items)"
+                                    ></dx-check-box> -->
+                                    <span (click)="group.expanded = !group.expanded">{{group.group}}</span>
+                                    <div class="group-widgets">
+                                        <dx-check-box *ngFor="let groupWidget of group.items"
+                                            [text]="groupWidget.widget"
+                                            [(value)]="groupWidget.selected"
+                                            [disabled]="groupWidget.disabled"
+                                            (onValueChanged)="selectWidget($event, groupWidget)"
+                                            [ngClass]="{'visible': groupWidget.visible}"
+                                        ></dx-check-box>
+                                    </div>
+                                </div>
+                            </div>
+                        </dx-scroll-view>
+                    </div>
+                </div>
+                <div class="buttons-container horizontal">
+                    <button class="button" (click)="changeStep(0)">
+                        <div class="button-icon">
+                            <app-button-icon name="prev"></app-button-icon>
+                        </div>
+                        <div class="button-text">Prev Step</div>
+                    </button>
+                    <button class="button orange" (click)="changeStep(2)">
+                        <div class="button-text">Next Step</div>
+                        <div class="button-icon">
+                            <app-button-icon name="next"></app-button-icon>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="view">
+                <div class="export-text">Choose Export Type</div>
+                <div class="buttons-container top">
+                    <button class="button" [disabled]="!contentReady" (click)="needMeta ? exportMeta(true) : exportCss(true)">
+                        <div class="button-icon">
+                            <app-button-icon name="download"></app-button-icon>
+                        </div>
+                        <div class="button-text">Download {{needMeta ? 'Metadata' : 'CSS'}} File</div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="exportZip()" *ngIf="!needMeta">
+                        <div class="button-icon">
+                            <app-button-icon name="zip"></app-button-icon>
+                        </div>
+                        <div class="button-text">Download ZIP</div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="copy()">
+                        <div class="button-icon">
+                            <app-button-icon name="copy"></app-button-icon>
+                        </div>
+                        <div class="button-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
+                    </button>
+                </div>
+                <div class="export-loading" [ngClass]="{'hidden': contentReady}">
+                    <span>Please wait. {{needMeta ? 'Metadata' : 'CSS'}} is generated.</span>
+                    <app-icon-loading></app-icon-loading>
+                </div>
+            </div>
+            <div class="view">
+                <div class="export-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
+                <dx-text-area
+                    [height]="200"
+                    [value]="textContent"
+                    (onCopy)="copyFileContent()"
+                    [readOnly]="true"
+                ></dx-text-area>
+                <div class="buttons-container horizontal">
+                    <button class="button" (click)="changeStep(2)">
+                        <div class="button-icon">
+                            <app-button-icon name="prev"></app-button-icon>
+                        </div>
+                        <div class="button-text">Prev Step</div>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
