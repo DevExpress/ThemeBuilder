@@ -6,16 +6,48 @@ import { BehaviorSubject } from 'rxjs';
     templateUrl: './buttons.component.html',
     styleUrls: ['./buttons.component.css']
 })
+
 export class ButtonsComponent {
     widgetGroup = 'buttons';
     isExpanded = new BehaviorSubject<boolean>(false);
 
     baseOptions: any[] = [
-        { text: 'Normal', type: 'normal' },
-        { text: 'Success', type: 'success' },
-        { text: 'Default', type: 'default' },
-        { text: 'Danger', type: 'danger' }
+        { text: 'Normal', type: 'normal', fontStyles: this.getFontStyles('normal') },
+        { text: 'Success', type: 'success', fontStyles: this.getFontStyles('success') },
+        { text: 'Default', type: 'default', fontStyles: this.getFontStyles('default') },
+        { text: 'Danger', type: 'danger', fontStyles: this.getFontStyles('danger') }
     ];
 
-    modes: string[] = ['contained', 'outlined', 'text'];
+    buttonModes: string[] = ['contained', 'outlined', 'text'];
+    buttonGroupModes: string[] = ['contained', 'outlined', 'text'];
+
+    getFontStyles(type: string): FontStyle[] {
+        return [
+            {
+                icon: "bold",
+                style: "bold",
+                hint: "Bold",
+                type: type
+            },
+            {
+                icon: "italic",
+                style: "italic",
+                hint: "Italic",
+                type: type
+            },
+            {
+                icon: "underline",
+                style: "underline",
+                hint: "Underlined",
+                type: type
+            }
+        ];
+    }
+}
+
+export class FontStyle {
+    icon: string;
+    style: string;
+    hint: string;
+    type: string;
 }

@@ -32,23 +32,19 @@ export class LeftMenuAlias {
             groups: [{
                 name: 'Default Type',
                 equivalents: 'dxButton, dx-button',
-                regs: [/button-default-/i]
+                regs: [/button-(group-)?default-/i]
             }, {
                 name: 'Normal Type',
                 equivalents: 'dxButton, dx-button',
-                regs: [/button-normal-/i]
+                regs: [/button-(group-)?normal-/i]
             }, {
                 name: 'Success Type',
                 equivalents: 'dxButton, dx-button',
-                regs: [/button-success-/i]
+                regs: [/button-(group-)?success-/i]
             }, {
                 name: 'Danger Type',
                 equivalents: 'dxButton, dx-button',
-                regs: [/button-danger-/i]
-            }, {
-                name: 'Flat Button',
-                equivalents: 'dxButton, dx-button',
-                regs: [/button-flat-/i]
+                regs: [/button-(group-)?danger-/i]
             }]
         }, {
             name: 'Editors',
