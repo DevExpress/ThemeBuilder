@@ -87,7 +87,7 @@
 .view-wrapper .views-container {
     margin-top: 30px;
     height: 330px;
-    width: 2400px;
+    width: 3000px;
     position: absolute;
     display: flex;
     transition: left ease-out 230ms;
@@ -109,6 +109,10 @@
     left: -1760px;
 }
 
+.view-wrapper .views-container.view-4 {
+    left: -2360px;
+}
+
 .view-wrapper .views-container .view {
     width: 560px;
     height: 330px;
@@ -116,6 +120,13 @@
     display: flex;
     flex-direction: column;
     margin-right: 40px;
+    transition: opacity 100ms ease-out 150ms;
+    opacity: 1;
+}
+
+.view-wrapper .views-container .view.hide-content {
+    transition: opacity 100ms ease-out 0ms;
+    opacity: 0;
 }
 
 .view-wrapper .views-container .view .padding-20 {
@@ -129,14 +140,10 @@
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal {
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .view-wrapper .views-container .view .buttons-container .button {
-    align-self: center;
-}
-
-.view-wrapper .views-container .view .buttons-container.top .button {
     align-self: flex-start;
 }
 
@@ -159,10 +166,10 @@
     color: #404040;
 }
 
-.view-wrapper .views-container .view .buttons-container .button.orange {
+/* .view-wrapper .views-container .view .buttons-container .button.orange {
     background: #F16850;
     color: #fff;
-}
+} */
 
 .view-wrapper .views-container .view .buttons-container .button.disabled {
     opacity: 0.5;
@@ -190,6 +197,7 @@
     flex-grow: 0;
     flex-direction: row;
     font-size: 16px;
+    align-self: flex-end;
 }
 
 .view-wrapper .views-container .view .buttons-container .button .button-text {
@@ -299,4 +307,43 @@
 .view-wrapper .views-container .view .export-loading span {
     line-height: 22px;
     padding-right: 5px;
+}
+
+
+.copy-area {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 40px 40px 40px;
+    position: absolute;
+    background: #fff;
+    left: 0;
+    right: 0;
+    top: 180px;
+    opacity: 1;
+    z-index: 1;
+    height: 360px;
+    transition: all 150ms ease-out 0ms;
+}
+
+.copy-area.hidden {
+    transition: all 150ms ease-out 100ms;
+    opacity: 1;
+    top: 540px;
+}
+
+.copy-area .close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.copy-area .close-button i {
+    font-size: 20px;
+    color: #C9D3D8;
+}
+
+.copy-area .copy-text {
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 20px;
 }

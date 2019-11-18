@@ -73,6 +73,7 @@ export class ExportPopupComponent implements OnInit {
     outputFile: string;
     textContent: string;
     contentReady = true;
+    copyAreaActive = false;
 
     // unused?
     //fileContent: string[] = [];
@@ -291,13 +292,12 @@ export class ExportPopupComponent implements OnInit {
     }
 
     copy(): void {
-        const COPY_PAGE_INDEX = 3;
         if(this.needMeta) {
             this.exportMeta(false);
-            this.changeStep(COPY_PAGE_INDEX);
+            this.copyAreaActive = true;
         } else {
             this.exportCss(false)
-                .then(() => this.changeStep(COPY_PAGE_INDEX))
+                .then(() => this.copyAreaActive = true)
                 .catch((e) => {
                     console.log(e);
                 });

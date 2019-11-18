@@ -4,27 +4,18 @@
     #popup
 >
     <div class="indicator">
-        <div class="indicator-item" [ngClass]="{ 'active': viewIndex === 0, 'done': viewIndex > 0 }">
-            <div class="line"></div>
-            <div class="circle" (click)="changeStep(0)"></div>
+        <div class="indicator-item"
+            *ngFor="let step of ['Basic Settings', 'Select Widgets', 'Export Format', 'Export Type']; index as i; last as isLast"
+            [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i }"
+        >
+            <div class="line" *ngIf="!isLast"></div>
+            <div class="circle" (click)="changeStep(i)"></div>
             <div class="item-text">
-                <span (click)="changeStep(0)">Basic Settings</span>
-            </div>
-        </div>
-        <div class="indicator-item" (click)="viewIndex = 1" [ngClass]="{ 'active': viewIndex === 1, 'done': viewIndex > 1 }">
-            <div class="line"></div>
-            <div class="circle" (click)="changeStep(1)"></div>
-            <div class="item-text">
-                <span (click)="changeStep(1)">Select Widgets</span>
-            </div>
-        </div>
-        <div class="indicator-item" (click)="viewIndex = 2" [ngClass]="{ 'active': viewIndex >= 2 }">
-            <div class="circle" (click)="changeStep(2)"></div>
-            <div class="item-text">
-                <span (click)="changeStep(2)">Export Type</span>
+                <span (click)="changeStep(i)">{{step}}</span>
             </div>
         </div>
     </div>
+
     <div class="view-wrapper">
         <div class="views-container" [ngClass]="'view-' + viewIndex">
             <div class="view">
@@ -50,18 +41,13 @@
                     text="Save as color swatch"
                     [(value)]="makeSwatch"
                 ></dx-check-box>
-                <div class="buttons-container">
-                    <button class="button" (click)="needMeta = false;changeStep(1)">
+                <div class="buttons-container horizontal">
+                    <div></div>
+                    <button class="button" (click)="changeStep(1)">
+                        <div class="button-text">Next Step</div>
                         <div class="button-icon">
-                            <app-button-icon name="export-css"></app-button-icon>
+                            <i class="dx-icon-chevronright"></i>
                         </div>
-                        <div class="button-text">Export CSS</div>
-                    </button>
-                    <button class="button" (click)="needMeta = true;changeStep(1)">
-                        <div class="button-icon">
-                            <app-button-icon name="export-meta"></app-button-icon>
-                        </div>
-                        <div class="button-text">Export Metadata</div>
                     </button>
                 </div>
             </div>
@@ -122,7 +108,7 @@
                         </div>
                         <div class="button-text">Prev Step</div>
                     </button>
-                    <button class="button orange" (click)="changeStep(2)">
+                    <button class="button" (click)="changeStep(2)">
                         <div class="button-text">Next Step</div>
                         <div class="button-icon">
                             <i class="dx-icon-chevronright"></i>
@@ -131,8 +117,25 @@
                 </div>
             </div>
             <div class="view">
+                <div class="export-text">Choose Export Format</div>
+                <div class="buttons-container">
+                    <button class="button" (click)="needMeta = false;changeStep(3)">
+                        <div class="button-icon">
+                            <app-button-icon name="export-css"></app-button-icon>
+                        </div>
+                        <div class="button-text">Export CSS</div>
+                    </button>
+                    <button class="button" (click)="needMeta = true;changeStep(3)">
+                        <div class="button-icon">
+                            <app-button-icon name="export-meta"></app-button-icon>
+                        </div>
+                        <div class="button-text">Export Metadata</div>
+                    </button>
+                </div>
+            </div>
+            <div class="view" [ngClass]="{'hide-content': copyAreaActive}">
                 <div class="export-text">Choose Export Type</div>
-                <div class="buttons-container top">
+                <div class="buttons-container">
                     <button class="button" [disabled]="!contentReady" (click)="needMeta ? exportMeta(true) : exportCss(true)">
                         <div class="button-icon">
                             <app-button-icon name="download"></app-button-icon>
@@ -157,24 +160,20 @@
                     <app-icon-loading></app-icon-loading>
                 </div>
             </div>
-            <div class="view">
-                <div class="export-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
-                <dx-text-area
-                    [height]="200"
-                    [value]="textContent"
-                    (onCopy)="copyFileContent()"
-                    [readOnly]="true"
-                ></dx-text-area>
-                <div class="buttons-container horizontal">
-                    <button class="button" (click)="changeStep(2)">
-                        <div class="button-icon">
-                            <i class="dx-icon-chevronleft"></i>
-                        </div>
-                        <div class="button-text">Prev Step</div>
-                    </button>
-                </div>
-            </div>
         </div>
+    </div>
+    <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive}">
+        <div class="copy-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
+        <div class="close-button" (click)="copyAreaActive = false">
+            <i class="dx-icon-arrowdown"></i>
+        </div>
+        <dx-text-area
+            [height]="256"
+            [value]="textContent"
+            (onCopy)="copyFileContent()"
+            [readOnly]="true"
+        ></dx-text-area>
+        
     </div>
 
 
