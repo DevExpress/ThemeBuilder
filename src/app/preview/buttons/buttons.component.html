@@ -1,16 +1,27 @@
 <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
 <ng-template #collapsedBlock>
-    <dx-button text="Normal" type="normal"></dx-button>
-    <dx-button text="Default" type="default"></dx-button>
-    <dx-button text="Success" type="success"></dx-button>
+    <dx-button text="Normal" type="normal" class="button-indent"></dx-button>
+    <dx-button text="Default" type="default" class="button-indent"></dx-button>
+    <dx-button text="Success" type="success" class="button-indent"></dx-button>
     <dx-button text="Danger" type="danger"></dx-button>
+    <div class="vertical-separator"></div>
+    <dx-button-group stylingMode="text" [items]="baseOptions[0].fontStyles" keyExpr="style" selectionMode="multiple" [selectedItemKeys]="['underline']"></dx-button-group>
 </ng-template>
 <ng-template  #expandedBlock>
-    <ng-template ngFor let-mode [ngForOf]="modes">
+    <ng-template ngFor let-mode [ngForOf]="buttonModes">
         <div class="buttons">
             <div class="type"> {{mode | titlecase}}</div>
             <div *ngFor="let options of baseOptions">
                 <dx-button [stylingMode]="mode" [type]="options.type" [text]="options.text"></dx-button>
+            </div>
+        </div>
+    </ng-template>
+    <div class="horizontal-separator"></div>
+    <ng-template ngFor let-mode [ngForOf]="buttonGroupModes">
+        <div class="buttons">
+            <div class="type"> {{mode | titlecase}}</div>
+            <div *ngFor="let options of baseOptions">
+                <dx-button-group [stylingMode]="mode" [items]="options.fontStyles" keyExpr="style" selectionMode="multiple" [selectedItemKeys]="['bold', 'italic']"></dx-button-group>
             </div>
         </div>
     </ng-template>

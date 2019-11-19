@@ -1,4 +1,4 @@
-:host ::ng-deep .dx-button {
+.button-indent {
     margin-right: 20px;
 }
 
@@ -11,6 +11,7 @@
 
 .buttons > div {
     display: inline-flex;
+    flex: 1 0 100px;
     align-items: center;
     height: 50px;
 }
@@ -20,10 +21,25 @@
     color: #737272;
 }
 
-.buttons > div {
-    flex: 1 0 100px;
+.buttons dx-button,
+.buttons dx-button-group {
+    margin: 0 auto;
 }
 
 :host ::ng-deep  .buttons .dx-button {
     margin-right: 0;
+}
+
+.horizontal-separator {
+    max-width: 700px;
+    margin: 30px auto;
+    border-bottom: 1px solid rgba(156, 156, 156, 0.35);
+}
+
+.vertical-separator {
+    display: inline-block;
+    height: 25px;
+    vertical-align: middle;
+    margin: 0 30px;
+    border-right: 1px solid rgba(156, 156, 156, 0.35);
 }
