@@ -8,6 +8,7 @@ import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.s
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 import { DxTreeViewComponent, DxScrollViewComponent } from 'devextreme-angular';
+import { dependencies } from 'devextreme-themebuilder/data/metadata/dx-theme-builder-metadata';
 
 class WidgetData {
     widget: string;
@@ -35,13 +36,11 @@ export class ExportPopupComponent implements OnInit {
     @ViewChild('popup') popup: PopupComponent;
     @ViewChild('widgetsTreeView') treeView: DxTreeViewComponent;
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
-    // interface
+
     viewIndex = 0;
     allWidgetsText = 'All Widgets';
 
-    // data for interface
-    // TODO get from package
-    dependencies: any = { 'Box': [], 'ResponsiveBox': [], 'Button': [], 'ButtonGroup': ['Button'], 'ScrollView': ['LoadPanel', 'LoadIndicator'], 'LoadPanel': ['LoadIndicator'], 'LoadIndicator': [], 'CheckBox': ['Validation'], 'Validation': [], 'Switch': ['Validation'], 'Tabs': ['Button'], 'Map': [], 'NavBar': ['Tabs', 'Button'], 'TextBox': ['Validation', 'Button'], 'DropDownBox': ['TextBox', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'List', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Popover', 'Box', 'Calendar', 'TreeView', 'NumberBox'], 'DropDownButton': ['ButtonGroup', 'Popup', 'List', 'Button', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'LoadPanel', 'LoadIndicator', 'Popover', 'Validation', 'Box', 'Calendar', 'TreeView', 'DropDownBox', 'NumberBox'], 'Popup': ['Button', 'Toolbar', 'List', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Popover', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'Toolbar': ['List', 'ActionSheet', 'Button', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Popup', 'Popover', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'List': ['Button', 'ScrollView', 'LoadPanel', 'LoadIndicator'], 'ActionSheet': ['Button', 'Popup', 'Popover', 'Toolbar', 'List', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'Autocomplete': ['DropDownBox', 'List', 'TextBox', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'Toolbar', 'ScrollView', 'ActionSheet', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Popover', 'Box', 'Calendar', 'TreeView', 'NumberBox'], 'Menu': ['Button', 'TreeView', 'CheckBox', 'LoadIndicator', 'Validation'], 'DateBox': ['Box', 'Calendar', 'List', 'NumberBox', 'SelectBox', 'Validation', 'Button', 'ScrollView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'TextBox', 'DropDownButton', 'Popup', 'ButtonGroup', 'Toolbar', 'ActionSheet', 'Autocomplete', 'CheckBox', 'Menu', 'Tabs', 'Popover', 'TreeView'], 'SelectBox': ['DropDownBox', 'List', 'TextBox', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Popover', 'Box', 'Calendar', 'TreeView', 'NumberBox'], 'Popover': ['Popup', 'Button', 'Toolbar', 'List', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'Calendar': ['Button'], 'TreeView': ['CheckBox', 'LoadIndicator', 'Validation'], 'NumberBox': ['Validation', 'Button'], 'TextArea': ['TextBox', 'Validation', 'Button'], 'TileView': ['ScrollView', 'LoadPanel', 'LoadIndicator'], 'Toast': [], 'ProgressBar': [], 'Tooltip': ['Popover', 'Popup', 'Button', 'Toolbar', 'List', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'Slider': [], 'RangeSlider': ['Slider'], 'Gallery': [], 'Lookup': ['Popover', 'TextBox', 'DropDownBox', 'List', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Box', 'Calendar', 'TreeView', 'NumberBox'], 'TagBox': ['SelectBox', 'DropDownBox', 'List', 'TextBox', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Popover', 'Box', 'Calendar', 'TreeView', 'NumberBox'], 'RadioGroup': [], 'Accordion': [], 'SlideOutView': [], 'SlideOut': ['SlideOutView', 'List', 'Button', 'ScrollView', 'LoadPanel', 'LoadIndicator'], 'ColorBox': ['DropDownBox', 'NumberBox', 'TextBox', 'DropDownButton', 'Popup', 'Validation', 'Button', 'ButtonGroup', 'List', 'Toolbar', 'ScrollView', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'LoadPanel', 'LoadIndicator', 'Popover', 'Box', 'Calendar', 'TreeView'], 'DataGrid': ['Form', 'Button', 'TreeView', 'Popup', 'ContextMenu', 'ScrollView', 'FilterBuilder', 'CheckBox', 'Menu', 'List', 'Toolbar', 'LoadIndicator', 'LoadPanel', 'Validation', 'Tooltip', 'TextBox', 'NumberBox', 'SelectBox', 'DateBox', 'ResponsiveBox', 'TabPanel', 'ActionSheet', 'Autocomplete', 'Tabs', 'ButtonGroup', 'DropDownButton', 'Popover', 'Box', 'Calendar', 'DropDownBox', 'MultiView'], 'Form': ['ResponsiveBox', 'TabPanel', 'Validation', 'TextBox', 'NumberBox', 'DateBox', 'Button', 'MultiView', 'Tabs', 'Box', 'Calendar', 'List', 'SelectBox', 'ScrollView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'DropDownButton', 'Popup', 'ButtonGroup', 'Toolbar', 'ActionSheet', 'Autocomplete', 'CheckBox', 'Menu', 'Popover', 'TreeView'], 'ContextMenu': [], 'FilterBuilder': ['TreeView', 'Popup', 'TextBox', 'NumberBox', 'CheckBox', 'SelectBox', 'DateBox', 'LoadIndicator', 'Validation', 'Button', 'Toolbar', 'List', 'ActionSheet', 'Autocomplete', 'Menu', 'Tabs', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Popover', 'Box', 'Calendar', 'LoadPanel', 'DropDownBox'], 'TabPanel': ['MultiView', 'Tabs', 'Button'], 'MultiView': [], 'PivotGrid': ['Popup', 'ContextMenu', 'TreeView', 'Button', 'Toolbar', 'List', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Popover', 'Validation', 'Box', 'Calendar', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox'], 'TreeList': ['Form', 'Button', 'TreeView', 'Popup', 'ContextMenu', 'ScrollView', 'FilterBuilder', 'CheckBox', 'Menu', 'List', 'Toolbar', 'LoadIndicator', 'LoadPanel', 'Validation', 'Tooltip', 'TextBox', 'NumberBox', 'SelectBox', 'DateBox', 'ResponsiveBox', 'TabPanel', 'ActionSheet', 'Autocomplete', 'Tabs', 'ButtonGroup', 'DropDownButton', 'Popover', 'Box', 'Calendar', 'DropDownBox', 'MultiView'], 'FileUploader': ['Button', 'ProgressBar'], 'Scheduler': ['Popup', 'Popover', 'Tooltip', 'Button', 'List', 'LoadPanel', 'Form', 'Tabs', 'Calendar', 'Toolbar', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Validation', 'Box', 'TreeView', 'LoadIndicator', 'DropDownBox', 'NumberBox', 'ResponsiveBox', 'TabPanel', 'MultiView', 'RadioGroup'], 'Drawer': [], 'HtmlEditor': ['Popup', 'List', 'Toolbar', 'SelectBox', 'ColorBox', 'Form', 'Button', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'ScrollView', 'Popover', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'LoadIndicator', 'DropDownBox', 'NumberBox', 'ResponsiveBox', 'TabPanel', 'MultiView'], 'SpeedDialAction': [], 'FileManager': ['Toast', 'Drawer', 'Menu', 'ContextMenu', 'Popup', 'TextBox', 'Button', 'TreeView', 'DataGrid', 'ProgressBar', 'ScrollView', 'Toolbar', 'CheckBox', 'LoadIndicator', 'Validation', 'List', 'ActionSheet', 'Autocomplete', 'DateBox', 'SelectBox', 'Tabs', 'ButtonGroup', 'DropDownButton', 'Popover', 'Box', 'Calendar', 'LoadPanel', 'DropDownBox', 'NumberBox', 'Form', 'FilterBuilder', 'Tooltip', 'ResponsiveBox', 'TabPanel', 'MultiView'], 'Diagram': ['Drawer', 'LoadIndicator', 'Tooltip', 'Accordion', 'ScrollView', 'Form', 'Toolbar', 'ContextMenu', 'FileUploader', 'Popup', 'Popover', 'Button', 'List', 'ActionSheet', 'Autocomplete', 'CheckBox', 'DateBox', 'Menu', 'SelectBox', 'Tabs', 'TextBox', 'ButtonGroup', 'DropDownButton', 'Validation', 'Box', 'Calendar', 'TreeView', 'LoadPanel', 'DropDownBox', 'NumberBox', 'ResponsiveBox', 'TabPanel', 'MultiView', 'ProgressBar'], 'Gantt': ['ScrollView', 'TreeList', 'LoadPanel', 'LoadIndicator', 'Form', 'Button', 'TreeView', 'Popup', 'ContextMenu', 'FilterBuilder', 'CheckBox', 'Menu', 'List', 'Toolbar', 'Validation', 'Tooltip', 'TextBox', 'NumberBox', 'SelectBox', 'DateBox', 'ResponsiveBox', 'TabPanel', 'ActionSheet', 'Autocomplete', 'Tabs', 'ButtonGroup', 'DropDownButton', 'Popover', 'Box', 'Calendar', 'DropDownBox', 'MultiView'], 'Splitter': [], 'Sortable': [] };
+    dependencies = dependencies || {};
     mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList'];
     widgetGroups: any[] = [{
         group: 'Navigation and Layout',
@@ -67,7 +66,6 @@ export class ExportPopupComponent implements OnInit {
     mainData: WidgetData[] = [];
     searchValue = '';
 
-    // data for export
     schemeName: string;
     makeSwatch = false;
     needMeta = false;
@@ -75,18 +73,6 @@ export class ExportPopupComponent implements OnInit {
     textContent: string;
     contentReady = true;
     copyAreaActive = false;
-
-    // unused?
-    //fileContent: string[] = [];
-    //
-    //subscription: Subscription;
-    //showOutputFile: boolean;
-    //loadIndicatorVisible = false;
-    //saveButtonDisabled = false;
-
-
-    //selectedIndex = 0;
-    //timerId = null;
 
     constructor(
         private importService: ImportService,
@@ -102,6 +88,8 @@ export class ExportPopupComponent implements OnInit {
         });
 
         const widgetComparer = (a: WidgetData, b: WidgetData): number => a.widget.localeCompare(b.widget);
+
+        this.dependencies[this.allWidgetsText] = Array.prototype.concat.apply(this.mainWidgets, this.widgetGroups.map((i) => i.items));
 
         this.treeData = this.widgetGroups.map((group) => {
             group.expanded = false;
@@ -124,8 +112,6 @@ export class ExportPopupComponent implements OnInit {
             linksCount: 0,
             visible: true
         });
-
-        this.dependencies[this.allWidgetsText] = Object.keys(this.dependencies);
     }
 
     changeStep(index: number): void {
@@ -134,29 +120,14 @@ export class ExportPopupComponent implements OnInit {
             if(!this.validate().isValid) return;
         }
 
+        this.copyAreaActive = false;
         this.viewIndex = index;
     }
-
-    // groupDisabled(groupItems: WidgetData[]): boolean {
-    //     return groupItems.findIndex((i) => !i.disabled) < 0;
-    // }
-
-    // groupValue(groupItems: WidgetData[]): boolean {
-    //     // TODO refactor
-    //     let value: boolean = undefined;
-    //     if(groupItems.filter((i) => i.selected).length === groupItems.length) {
-    //         value = true;
-    //     } else if(groupItems.filter((i) => !i.selected).length === groupItems.length) {
-    //         value = false;
-    //     }
-
-    //     return value;
-    // }
 
     setDependensies(widgetName: string, selected: boolean): void {
         const dependencySetter = (items: WidgetData[], widget: string): void => {
             items.forEach((widgetData) => {
-                if(this.dependencies[widget].includes(widgetData.widget)) {
+                if(this.dependencies[widget] && this.dependencies[widget].includes(widgetData.widget)) {
                     if(selected) {
                         widgetData.linksCount++;
                         widgetData.selected = true;
@@ -186,15 +157,6 @@ export class ExportPopupComponent implements OnInit {
         this.setDependensies(item.widget, selected);
     }
 
-    // selectGroup(e: any, widgetsInGroup: WidgetData[]): void {
-    //     if(!e.event) return;
-    //     widgetsInGroup.forEach((item) => {
-    //         item.selected = e.value;
-    //         item.selectByUser = e.value;
-    //         this.setDependensies(item.widget, e.value);
-    //     });
-    // }
-
     getSelectedWidgets(): string[] {
         const getSelected = (widgetData: WidgetData[]): string[] => widgetData
             .filter((w) => w.selected)
@@ -218,7 +180,9 @@ export class ExportPopupComponent implements OnInit {
             treeItem.items.forEach((item: WidgetData) => {
                 item.visible = isSearchMatch(groupName) || isSearchMatch(item.widget);
             });
-            treeItem.visible = treeItem.items.findIndex((i) => i.visible) >= 0;
+            const hasChildItems = treeItem.items.findIndex((i) => i.visible) >= 0;
+            treeItem.visible = hasChildItems;
+            treeItem.expanded = hasChildItems && this.searchValue.length > 0;
         });
     }
 
@@ -237,7 +201,6 @@ export class ExportPopupComponent implements OnInit {
         this.schemeName = this.importService.getColorSchemeName();
         this.outputFile = savedMeta.outputFile;
         this.makeSwatch = !!savedMeta.makeSwatch;
-        //this.showOutputFile = this.outputFile && this.outputFile.length > 0;
     }
 
     fileSave(cssContent): void {

@@ -80,12 +80,6 @@
                                         (click)="group.expanded = !group.expanded"
                                         [ngClass]="{'dx-icon-spinright': !group.expanded, 'dx-icon-spindown': group.expanded}"
                                     ></i>
-                                    <!-- <dx-check-box
-                                        [text]="group.group"
-                                        [value]="groupValue(group.items)"
-                                        [disabled]="groupDisabled(group.items)"
-                                        (onValueChanged)="selectGroup($event, group.items)"
-                                    ></dx-check-box> -->
                                     <span (click)="group.expanded = !group.expanded">{{group.group}}</span>
                                     <div class="group-widgets">
                                         <dx-check-box *ngFor="let groupWidget of group.items"
@@ -175,8 +169,4 @@
         ></dx-text-area>
         
     </div>
-
-
-
-
 </app-popup>
