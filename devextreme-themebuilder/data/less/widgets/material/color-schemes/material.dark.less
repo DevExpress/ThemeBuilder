@@ -87,7 +87,7 @@
 
 // Button
 
-@button-icon-color: @base-text-color;
+@button-icon-color: @base-icon-color;
 @button-inverted-icon-color: @base-inverted-icon-color;
 
 @button-border-radius: @base-border-radius;
@@ -109,7 +109,7 @@
 @button-normal-focused-bg: lighten(@button-normal-bg, 8%);
 @button-normal-active-bg: lighten(@button-normal-bg, 30%);
 
-@button-normal-icon-color: @button-icon-color;
+@button-normal-icon-color: @button-normal-color;
 
 @button-normal-bg-inverted: lighten(@button-normal-bg, 100%);
 
@@ -124,10 +124,10 @@
 // Default button
 @button-default-color: @base-inverted-text-color;
 @button-default-bg: @base-accent;
-@button-default-hover-bg: lighten(@button-default-bg, 18%);
-@button-default-focused-bg: lighten(@button-default-bg, 18%);
-@button-default-active-bg: lighten(@button-default-focused-bg, 40%);
-@button-default-icon-color: @button-inverted-icon-color;
+@button-default-hover-bg: lighten(@button-default-bg, 8.5%);
+@button-default-focused-bg: lighten(@button-default-bg, 8.5%);
+@button-default-active-bg: lighten(@button-default-focused-bg, 19.5%);
+@button-default-icon-color: @button-default-color;
 
 @button-default-outlined-hover-bg: fade(@button-default-bg, 8%);
 @button-default-outlined-focused-bg: fade(@button-default-bg, 8%);
@@ -140,10 +140,10 @@
 // Danger button
 @button-danger-color: @base-inverted-text-color;
 @button-danger-bg: @base-danger;
-@button-danger-hover-bg: lighten(@button-danger-bg, 18%);
-@button-danger-focused-bg: lighten(@button-danger-bg, 18%);
-@button-danger-active-bg: lighten(@button-danger-bg, 40%);
-@button-danger-icon-color: @button-inverted-icon-color;
+@button-danger-hover-bg: lighten(@button-danger-bg, 8.5%);
+@button-danger-focused-bg: lighten(@button-danger-bg, 8.5%);
+@button-danger-active-bg: lighten(@button-danger-bg, 19.5%);
+@button-danger-icon-color: @button-danger-color;
 
 @button-danger-outlined-hover-bg: fade(@button-danger-bg, 8%);
 @button-danger-outlined-focused-bg: fade(@button-danger-bg, 8%);
@@ -156,10 +156,10 @@
 // Success button
 @button-success-color: @base-inverted-text-color;
 @button-success-bg: @base-success;
-@button-success-hover-bg: lighten(@button-success-bg, 18%);
-@button-success-focused-bg: lighten(@button-success-bg, 18%);
-@button-success-active-bg: lighten(@button-success-bg, 40%);
-@button-success-icon-color: @button-inverted-icon-color;
+@button-success-hover-bg: lighten(@button-success-bg, 8.5%);
+@button-success-focused-bg: lighten(@button-success-bg, 8.5%);
+@button-success-active-bg: lighten(@button-success-bg, 19.5%);
+@button-success-icon-color: @button-success-color;
 
 @button-success-outlined-hover-bg: fade(@button-success-bg, 8%);
 @button-success-outlined-focused-bg: fade(@button-success-bg, 8%);
@@ -169,34 +169,32 @@
 @button-success-text-focused-bg: fade(@button-success-bg, 8%);
 @button-success-text-active-bg: fade(@button-success-bg, 36%);
 
-// Flat button
-@button-flat-color: @base-text-color;
 
 // ButtonGroup
 
 // Normal Button
-@button-group-normal-selected-color: @base-inverted-text-color;
+@button-group-normal-selected-color: @base-text-color;
 @button-group-normal-selected-bg: fade(lighten(@button-normal-bg, 100%), 18%);
 
 @button-group-normal-selected-bg-hover: fade(@button-group-normal-selected-bg, 12%);
 @button-group-normal-selected-bg-focused: fade(@button-group-normal-selected-bg, 12%);
 
 // Default Button
-@button-group-default-selected-color: @base-inverted-text-color;
+@button-group-default-selected-color: @button-default-bg;
 @button-group-default-selected-bg: fade(@button-default-bg, 22%);
 
 @button-group-default-selected-bg-hover: fade(@button-group-default-selected-bg, 14%);
 @button-group-default-selected-bg-focused: fade(@button-group-default-selected-bg, 14%);
 
 // Danger Button
-@button-group-danger-selected-color: @base-inverted-text-color;
+@button-group-danger-selected-color: @button-danger-bg;
 @button-group-danger-selected-bg: fade(@button-danger-bg, 22%);
 
 @button-group-danger-selected-bg-hover: fade(@button-group-danger-selected-bg, 14%);
 @button-group-danger-selected-bg-focused: fade(@button-group-danger-selected-bg, 14%);
 
 // Success Button
-@button-group-success-selected-color: @base-inverted-text-color;
+@button-group-success-selected-color: @button-success-bg;
 @button-group-success-selected-bg: fade(@button-success-bg, 22%);
 
 @button-group-success-selected-bg-hover: fade(@button-group-success-selected-bg, 14%);
