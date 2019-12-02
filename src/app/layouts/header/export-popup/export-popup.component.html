@@ -5,7 +5,7 @@
 >
     <div class="indicator">
         <div class="indicator-item"
-            *ngFor="let step of ['Basic Settings', 'Select Widgets', 'Export Format', 'Export Type']; index as i; last as isLast"
+            *ngFor="let step of ['Basic Settings', 'Select Widgets', 'Export Type']; index as i; last as isLast"
             [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i }"
         >
             <div class="line" *ngIf="!isLast"></div>
@@ -19,28 +19,39 @@
     <div class="view-wrapper">
         <div class="views-container" [ngClass]="'view-' + viewIndex">
             <div class="view">
-                <div>Color Scheme Name</div>
-                <dx-text-box
-                    [(value)]="schemeName"
-                    valueChangeEvent="keyup" 
-                >
-                    <dx-validator>
-                        <dxi-validation-rule 
-                            type="pattern" 
-                            pattern="^[\w-_]*$" 
-                            message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
-                        </dxi-validation-rule>
-                        <dxi-validation-rule 
-                            type="required" 
-                            message="Color scheme name is required.">
-                        </dxi-validation-rule>
-                    </dx-validator>
-                </dx-text-box>
+                <div class="export-text">Color Scheme Name</div>
+                <div class="scheme-name">
+                    <dx-text-box
+                        [(value)]="schemeName"
+                        valueChangeEvent="keyup"
+                        width="533"
+                    >
+                        <dx-validator>
+                            <dxi-validation-rule 
+                                type="pattern" 
+                                pattern="^[\w-_]*$" 
+                                message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
+                            </dxi-validation-rule>
+                            <dxi-validation-rule 
+                                type="required" 
+                                message="Color scheme name is required.">
+                            </dxi-validation-rule>
+                        </dx-validator>
+                    </dx-text-box>
+                    <div class="tooltip-container">
+                        <app-help-tooltip>TODO2</app-help-tooltip>
+                    </div>
+                </div>
                 <div class="padding-20"></div>
-                <dx-check-box
-                    text="Save as color swatch"
-                    [(value)]="makeSwatch"
-                ></dx-check-box>
+                <div>
+                    <dx-check-box
+                        text="Save as color swatch"
+                        [(value)]="makeSwatch"
+                    ></dx-check-box>
+                    <div class="tooltip-container swatch">
+                        <app-help-tooltip>TODO</app-help-tooltip>
+                    </div>
+                </div>
                 <div class="buttons-container horizontal">
                     <div></div>
                     <button class="button" (click)="changeStep(1)">
@@ -53,7 +64,10 @@
             </div>
             <div class="view">
                 <div class="widgets">
-                    <div class="main-widgets" >
+                    <div class="main-widgets">
+                        <div class="tooltip-container-widgets">
+                            <app-help-tooltip>TODO1</app-help-tooltip>
+                        </div>
                         <dx-check-box *ngFor="let item of mainData"
                             [text]="item.widget"
                             [(value)]="item.selected"
@@ -110,54 +124,77 @@
                     </button>
                 </div>
             </div>
-            <div class="view">
-                <div class="export-text">Choose Export Format</div>
-                <div class="buttons-container">
-                    <button class="button" (click)="needMeta = false;changeStep(3)">
-                        <div class="button-icon">
-                            <app-button-icon name="export-css"></app-button-icon>
-                        </div>
-                        <div class="button-text">Export CSS</div>
-                    </button>
-                    <button class="button" (click)="needMeta = true;changeStep(3)">
-                        <div class="button-icon">
-                            <app-button-icon name="export-meta"></app-button-icon>
-                        </div>
-                        <div class="button-text">Export Metadata</div>
-                    </button>
-                </div>
-            </div>
             <div class="view" [ngClass]="{'hide-content': copyAreaActive}">
-                <div class="export-text">Choose Export Type</div>
+                <div>
+                    <div class="export-text">Export CSS</div>
+                    <div class="tooltip-container export">
+                        <app-help-tooltip>TODO</app-help-tooltip>
+                    </div>
+                </div>
                 <div class="buttons-container">
-                    <button class="button" [disabled]="!contentReady" (click)="needMeta ? exportMeta(true) : exportCss(true)">
+                    <button class="button" [disabled]="!contentReady" (click)="exportCss(true)">
                         <div class="button-icon">
                             <app-button-icon name="download"></app-button-icon>
                         </div>
-                        <div class="button-text">Download {{needMeta ? 'Metadata' : 'CSS'}} File</div>
+                        <div class="button-text">
+                            Download<br>
+                            CSS File
+                        </div>
                     </button>
-                    <button class="button" [disabled]="!contentReady" (click)="exportZip()" *ngIf="!needMeta">
+                    <button class="button" [disabled]="!contentReady" (click)="exportZip()">
                         <div class="button-icon">
                             <app-button-icon name="zip"></app-button-icon>
                         </div>
-                        <div class="button-text">Download ZIP</div>
-                    </button>
-                    <button class="button" [disabled]="!contentReady" (click)="copy()">
-                        <div class="button-icon">
-                            <app-button-icon name="copy"></app-button-icon>
+                        <div class="button-text">
+                            Download<br>
+                            ZIP archive
                         </div>
-                        <div class="button-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="needMeta = false;copy()">
+                        <div class="button-icon">
+                            <app-button-icon name="copy-css"></app-button-icon>
+                        </div>
+                        <div class="button-text">Copy CSS</div>
                     </button>
                 </div>
-                <div class="export-loading" [ngClass]="{'hidden': contentReady}">
-                    <span>Please wait. {{needMeta ? 'Metadata' : 'CSS'}} is generated.</span>
-                    <app-icon-loading></app-icon-loading>
+
+                <div>
+                    <div class="export-text">Export Metadata</div>
+                    <div class="tooltip-container export">
+                        <app-help-tooltip>TODO</app-help-tooltip>
+                    </div>
                 </div>
+                <div class="buttons-container">
+                    <button class="button" [disabled]="!contentReady" (click)="exportMeta(true)">
+                        <div class="button-icon">
+                            <app-button-icon name="download"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Download<br>
+                            Metadata File
+                        </div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="needMeta = true;copy()">
+                        <div class="button-icon">
+                            <app-button-icon name="copy-meta"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Copy<br>
+                            Metadata
+                        </div>
+                    </button>
+                    <div class="export-loading" [ngClass]="{'hidden': contentReady}">
+                        <app-icon-loading></app-icon-loading>
+                        <div>Please wait.</div>
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
     <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive}">
-        <div class="copy-text">Copy {{needMeta ? 'Metadata' : 'CSS'}}</div>
+        <div class="copy-text">Copy {{ needMeta ? 'Metadata' : 'CSS' }}</div>
         <div class="close-button" (click)="copyAreaActive = false">
             <i class="dx-icon-arrowdown"></i>
         </div>

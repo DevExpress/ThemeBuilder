@@ -136,7 +136,7 @@
 .view-wrapper .views-container .view .buttons-container {
     flex-grow: 1;
     display: flex;
-    margin:20px -10px 5px -10px;
+    margin: 10px -5px 5px -5px;
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal {
@@ -154,22 +154,18 @@
     font-size: 14px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    margin: 0 10px;
-    flex-grow: 1;
-    flex-basis: 0;
+    margin: 0 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 180px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    height: 160px;
+    height: 100px;
+    width: 180px;
     color: #404040;
 }
-
-/* .view-wrapper .views-container .view .buttons-container .button.orange {
-    background: #F16850;
-    color: #fff;
-} */
 
 .view-wrapper .views-container .view .buttons-container .button.disabled {
     opacity: 0.5;
@@ -193,8 +189,6 @@
 .view-wrapper .views-container .view .buttons-container.horizontal .button {
     border-radius: 4px;
     height: 46px;
-    flex-basis: 160px;
-    flex-grow: 0;
     flex-direction: row;
     font-size: 16px;
     align-self: flex-end;
@@ -202,7 +196,8 @@
 
 .view-wrapper .views-container .view .buttons-container .button .button-text {
     user-select: none;
-    padding-top: 10px;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal .button .button-text {
@@ -215,9 +210,29 @@
     display: block;
 }
 
+.view-wrapper .views-container .view .scheme-name dx-text-box {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.tooltip-container {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.tooltip-container.export {
+    height: 24px;
+}
+
+.tooltip-container.swatch {
+    height: 18px;
+}
+
 .view-wrapper .views-container .view .export-text {
     font-size: 18px;
     line-height: 24px;
+    display: inline-block;
 }
 
 .view-wrapper .views-container .view .widgets {
@@ -228,6 +243,7 @@
 .view-wrapper .views-container .view .widgets .main-widgets {
     flex-basis: 170px;
     flex-grow: 0;
+    position: relative;
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets dx-check-box {
@@ -237,6 +253,12 @@
 
 .view-wrapper .views-container .view .widgets .main-widgets dx-check-box:first-child {
     padding: 8px 0;
+}
+
+.tooltip-container-widgets {
+    position: absolute;
+    right: 48px;
+    top: 14px;
 }
 
 .view-wrapper .views-container .view .widgets .all-widgets {
@@ -295,9 +317,11 @@
 
 .view-wrapper .views-container .view .export-loading {
     height: 100px;
+    width: 180px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .view-wrapper .views-container .view .export-loading.hidden {
@@ -308,7 +332,6 @@
     line-height: 22px;
     padding-right: 5px;
 }
-
 
 .copy-area {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -347,3 +370,4 @@
     line-height: 24px;
     padding-bottom: 20px;
 }
+
