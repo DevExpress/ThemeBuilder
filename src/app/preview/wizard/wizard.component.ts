@@ -188,7 +188,6 @@ export class WizardComponent implements AfterViewInit {
         widget: 'dxButton',
         options: {
             icon: 'menu',
-            type: 'default',
             stylingMode: 'text'
         }
     }, {
