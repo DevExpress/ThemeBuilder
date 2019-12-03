@@ -5,7 +5,7 @@
 >
     <div class="indicator">
         <div class="indicator-item"
-            *ngFor="let step of ['Basic Settings', 'Select Widgets', 'Export Type']; index as i; last as isLast"
+            *ngFor="let step of ['Enter Name', 'Select Widgets', 'Choose Export Format']; index as i; last as isLast"
             [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i }"
         >
             <div class="line" *ngIf="!isLast"></div>
@@ -39,7 +39,7 @@
                         </dx-validator>
                     </dx-text-box>
                     <div class="tooltip-container">
-                        <app-help-tooltip>TODO2</app-help-tooltip>
+                        <app-help-tooltip>The name can contain letters, digits, and hyphens.</app-help-tooltip>
                     </div>
                 </div>
                 <div class="padding-20"></div>
@@ -49,7 +49,12 @@
                         [(value)]="makeSwatch"
                     ></dx-check-box>
                     <div class="tooltip-container swatch">
-                        <app-help-tooltip>TODO</app-help-tooltip>
+                        <app-help-tooltip>
+                                A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used<br>
+                                to&nbsp;stylize a&nbsp;part of&nbsp;your application differently.<br>
+                                To&nbsp;apply swatch styles, add the `dx-swatch-{{schemeName}}`<br>
+                                class to&nbsp;a&nbsp;container that nests the elements being stylized.
+                        </app-help-tooltip>
                     </div>
                 </div>
                 <div class="buttons-container horizontal">
@@ -65,9 +70,6 @@
             <div class="view">
                 <div class="widgets">
                     <div class="main-widgets">
-                        <div class="tooltip-container-widgets">
-                            <app-help-tooltip>TODO1</app-help-tooltip>
-                        </div>
                         <dx-check-box *ngFor="let item of mainData"
                             [text]="item.widget"
                             [(value)]="item.selected"
@@ -128,7 +130,11 @@
                 <div>
                     <div class="export-text">Export CSS</div>
                     <div class="tooltip-container export">
-                        <app-help-tooltip>TODO</app-help-tooltip>
+                        <app-help-tooltip>
+                                Download the theme as&nbsp;a&nbsp;CSS file or&nbsp;as&nbsp;a&nbsp;ZIP archive<br>
+                                that contains this file and icons.<br>
+                                Alternatively, you can copy theme styles.
+                        </app-help-tooltip>
                     </div>
                 </div>
                 <div class="buttons-container">
@@ -147,7 +153,7 @@
                         </div>
                         <div class="button-text">
                             Download<br>
-                            ZIP archive
+                            ZIP Archive
                         </div>
                     </button>
                     <button class="button" [disabled]="!contentReady" (click)="needMeta = false;copy()">
@@ -161,7 +167,10 @@
                 <div>
                     <div class="export-text">Export Metadata</div>
                     <div class="tooltip-container export">
-                        <app-help-tooltip>TODO</app-help-tooltip>
+                        <app-help-tooltip>
+                                Metadata is&nbsp;a&nbsp;JSON object that describes a&nbsp;theme.<br>
+                                You can copy the metadata or&nbsp;download it&nbsp;as&nbsp;a&nbsp;JSON file.
+                        </app-help-tooltip>
                     </div>
                 </div>
                 <div class="buttons-container">

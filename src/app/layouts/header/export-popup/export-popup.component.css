@@ -255,12 +255,6 @@
     padding: 8px 0;
 }
 
-.tooltip-container-widgets {
-    position: absolute;
-    right: 48px;
-    top: 14px;
-}
-
 .view-wrapper .views-container .view .widgets .all-widgets {
     flex-grow: 1;
     display: flex;
