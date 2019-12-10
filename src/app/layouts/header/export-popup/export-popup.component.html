@@ -4,11 +4,11 @@
     #popup
 >
     <div class="indicator">
+        <div class="line"></div>
         <div class="indicator-item"
-            *ngFor="let step of ['Enter Name', 'Select Widgets', 'Choose Export Format']; index as i; last as isLast"
-            [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i }"
+            *ngFor="let step of ['Enter Name', 'Select Widgets', 'Choose Format']; index as i; last as isLast; first as isFirst"
+            [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i, 'first': isFirst, 'last': isLast }"
         >
-            <div class="line" *ngIf="!isLast"></div>
             <div class="circle" (click)="changeStep(i)"></div>
             <div class="item-text">
                 <span (click)="changeStep(i)">{{step}}</span>
@@ -50,10 +50,10 @@
                     ></dx-check-box>
                     <div class="tooltip-container swatch">
                         <app-help-tooltip>
-                                A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used<br>
-                                to&nbsp;stylize a&nbsp;part of&nbsp;your application differently.<br>
-                                To&nbsp;apply swatch styles, add the `dx-swatch-{{schemeName}}`<br>
-                                class to&nbsp;a&nbsp;container that nests the elements being stylized.
+                            A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used to&nbsp;style<br>
+                            portions of&nbsp;an&nbsp;application. To&nbsp;apply swatch styles, add the<br>
+                            `dx-swatch-{{schemeName}}` class to&nbsp;the container<br>
+                            that nests the elements being stylized.<br>
                         </app-help-tooltip>
                     </div>
                 </div>
@@ -131,9 +131,9 @@
                     <div class="export-text">Export CSS</div>
                     <div class="tooltip-container export">
                         <app-help-tooltip>
-                                Download the theme as&nbsp;a&nbsp;CSS file or&nbsp;as&nbsp;a&nbsp;ZIP archive<br>
-                                that contains this file and icons.<br>
-                                Alternatively, you can copy theme styles.
+                            Download theme as&nbsp;a&nbsp;CSS file,<br>
+                            a&nbsp;ZIP archive (includes this file and icons),<br>
+                            or&nbsp;simply copy the theme styles.
                         </app-help-tooltip>
                     </div>
                 </div>
@@ -168,8 +168,8 @@
                     <div class="export-text">Export Metadata</div>
                     <div class="tooltip-container export">
                         <app-help-tooltip>
-                                Metadata is&nbsp;a&nbsp;JSON object that describes a&nbsp;theme.<br>
-                                You can copy the metadata or&nbsp;download it&nbsp;as&nbsp;a&nbsp;JSON file.
+                            Metadata is&nbsp;a&nbsp;JSON object that describes a&nbsp;theme.<br>
+                            You can copy the metadata or&nbsp;download it&nbsp;as&nbsp;a&nbsp;JSON file.
                         </app-help-tooltip>
                     </div>
                 </div>

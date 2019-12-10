@@ -1,16 +1,24 @@
 .indicator {
     display: flex;
     padding-top: 22px;
+    position: relative;
+}
+
+.indicator .line {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #c4c4c4;
+    z-index: -1;
 }
 
 .indicator .indicator-item {
-    position: relative;
     flex-grow: 1;
-}
-
-.indicator .indicator-item:last-child {
-    flex-grow: 0;
-    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
 }
 
 .indicator .indicator-item .item-text {
@@ -18,14 +26,16 @@
     font-size: 16px;
     cursor: pointer;
     user-select: none;
+    align-self: center;
 }
 
-.indicator .indicator-item .line {
-    position: absolute;
-    top: 6px;
-    left: 18px;
-    right: 4px;
-    height: 2px;
+.indicator .indicator-item.last .item-text {
+    align-self: flex-end;
+
+}
+
+.indicator .indicator-item.first .item-text {
+    align-self: flex-start;
 }
 
 .indicator .indicator-item .circle {
@@ -33,10 +43,12 @@
     height: 14px;
     border-radius: 50%;
     cursor: pointer;
+    border: 2px solid #f0f2f3;
+    box-sizing: content-box;
+    align-self: center;
 }
 
-.indicator .indicator-item .circle,
-.indicator .indicator-item .line {
+.indicator .indicator-item .circle{
     background: #c4c4c4;
 }
 
@@ -46,6 +58,14 @@
 
 .indicator .indicator-item.done .circle {
     background: #707070;
+}
+
+.indicator .indicator-item.first .circle {
+    align-self: flex-start;
+}
+
+.indicator .indicator-item.last .circle {
+    align-self: flex-end;
 }
 
 .indicator .indicator-item.active .item-text {
