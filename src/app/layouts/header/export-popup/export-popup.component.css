@@ -261,9 +261,10 @@
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets {
-    flex-basis: 170px;
+    flex-basis: 130px;
     flex-grow: 0;
     position: relative;
+    margin-right: 40px;
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets dx-check-box {
