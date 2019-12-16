@@ -70,11 +70,14 @@
             <div class="view">
                 <div class="widgets">
                     <div class="main-widgets">
+                        <dx-check-box
+                            text="All Widgets"
+                            [value]="allWidgetsSelected(treeData, mainData)"
+                            (onValueChanged)="selectAll($event)"
+                        ></dx-check-box>
                         <dx-check-box *ngFor="let item of mainData"
                             [text]="item.widget"
                             [(value)]="item.selected"
-                            [disabled]="item.disabled"
-                            (onValueChanged)="selectWidget($event, item)"
                         ></dx-check-box>
                     </div>
                     <div class="all-widgets">
@@ -96,13 +99,16 @@
                                         (click)="group.expanded = !group.expanded"
                                         [ngClass]="{'dx-icon-spinright': !group.expanded, 'dx-icon-spindown': group.expanded}"
                                     ></i>
+                                    <dx-check-box
+                                        [text]="group.group"
+                                        [value]="groupValue(group.items)"
+                                        (onValueChanged)="selectGroup($event, group.items)"
+                                    ></dx-check-box>
                                     <span (click)="group.expanded = !group.expanded">{{group.group}}</span>
                                     <div class="group-widgets">
                                         <dx-check-box *ngFor="let groupWidget of group.items"
                                             [text]="groupWidget.widget"
                                             [(value)]="groupWidget.selected"
-                                            [disabled]="groupWidget.disabled"
-                                            (onValueChanged)="selectWidget($event, groupWidget)"
                                             [ngClass]="{'visible': groupWidget.visible}"
                                         ></dx-check-box>
                                     </div>

@@ -8,14 +8,10 @@ import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.s
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 import { DxTreeViewComponent, DxScrollViewComponent } from 'devextreme-angular';
-import { dependencies } from 'devextreme-themebuilder/data/metadata/dx-theme-builder-metadata';
 
 class WidgetData {
     widget: string;
     selected: boolean;
-    disabled: boolean;
-    selectByUser: boolean;
-    linksCount: number;
     visible: boolean;
 }
 
@@ -38,9 +34,7 @@ export class ExportPopupComponent implements OnInit {
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
 
     viewIndex = 0;
-    allWidgetsText = 'All Widgets';
 
-    dependencies = dependencies || {};
     mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList'];
     widgetGroups: any[] = [{
         group: 'Navigation and Layout',
@@ -81,15 +75,10 @@ export class ExportPopupComponent implements OnInit {
         const defaultWidgetConfig = (widget): WidgetData => ({
             widget,
             selected: true,
-            disabled: true,
-            selectByUser: false,
-            linksCount: 0,
             visible: true
         });
 
         const widgetComparer = (a: WidgetData, b: WidgetData): number => a.widget.localeCompare(b.widget);
-
-        this.dependencies[this.allWidgetsText] = Array.prototype.concat.apply(this.mainWidgets, this.widgetGroups.map((i) => i.items));
 
         this.treeData = this.widgetGroups.map((group) => {
             group.expanded = false;
@@ -103,15 +92,6 @@ export class ExportPopupComponent implements OnInit {
         this.mainData = this.mainWidgets
             .map(defaultWidgetConfig)
             .sort(widgetComparer);
-
-        this.mainData.unshift({
-            widget: this.allWidgetsText,
-            selected: true,
-            disabled: false,
-            selectByUser: true,
-            linksCount: 0,
-            visible: true
-        });
     }
 
     changeStep(index: number): void {
@@ -124,37 +104,44 @@ export class ExportPopupComponent implements OnInit {
         this.viewIndex = index;
     }
 
-    setDependensies(widgetName: string, selected: boolean): void {
-        const dependencySetter = (items: WidgetData[], widget: string): void => {
-            items.forEach((widgetData) => {
-                if(this.dependencies[widget] && this.dependencies[widget].includes(widgetData.widget)) {
-                    if(selected) {
-                        widgetData.linksCount++;
-                        widgetData.selected = true;
-                        widgetData.disabled = true;
-                    } else {
-                        if(widgetData.linksCount > 0) widgetData.linksCount--;
-                        if(!widgetData.linksCount) {
-                            widgetData.disabled = false;
-                            if(!widgetData.selectByUser) {
-                                widgetData.selected = false;
-                            }
-                        }
-                    }
-                }
-            });
-        };
-
-        dependencySetter(this.mainData, widgetName);
-        this.treeData.forEach((treeItem) => dependencySetter(treeItem.items, widgetName));
+    selectGroup(e: any, groupItems: WidgetData[]): void {
+        if(e.event === undefined) return;
+        groupItems.forEach((item) => {
+            item.selected = e.value;
+        });
     }
 
-    selectWidget(e: any, item: WidgetData): void {
-        if(!e.event) return;
-        const selected = item.selected;
-        item.selectByUser = selected;
+    selectAll(e: any): void {
+        if(e.event === undefined) return;
 
-        this.setDependensies(item.widget, selected);
+        const select = (item: WidgetData, value: boolean): boolean => item.selected = value;
+
+        this.mainData.forEach((item) => select(item, e.value));
+
+        this.treeData.forEach((g) => {
+            g.items.forEach((item) => select(item, e.value));
+        });
+    }
+
+    groupValue(groupItems: WidgetData[]): boolean {
+        const count = groupItems.length;
+        const selectedCount = groupItems.filter((w) => w.selected).length;
+
+        if(selectedCount === 0) return false;
+        if(selectedCount === count) return true;
+        return undefined;
+    }
+
+    allWidgetsSelected(treeData: TreeData[], mainData: WidgetData[]): boolean {
+        const groupsCount = treeData.length;
+        const selectedGroupsCount = treeData.filter((g) => this.groupValue(g.items)).length;
+
+        const mainCount = mainData.length;
+        const selectedMainCount = mainData.filter((w) => w.selected).length;
+
+        if(selectedGroupsCount === 0 && selectedMainCount === 0) return false;
+        if(selectedGroupsCount === groupsCount && selectedMainCount === mainCount) return true;
+        return undefined;
     }
 
     getSelectedWidgets(): string[] {
@@ -167,7 +154,7 @@ export class ExportPopupComponent implements OnInit {
             result.push(...getSelected(treeItem.items));
         });
 
-        if(result.includes(this.allWidgetsText)) result = [];
+        if(this.allWidgetsSelected(this.treeData, this.mainData)) result = [];
 
         return result;
     }
