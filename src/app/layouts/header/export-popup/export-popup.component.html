@@ -104,7 +104,6 @@
                                         [value]="groupValue(group.items)"
                                         (onValueChanged)="selectGroup($event, group.items)"
                                     ></dx-check-box>
-                                    <span (click)="group.expanded = !group.expanded">{{group.group}}</span>
                                     <div class="group-widgets">
                                         <dx-check-box *ngFor="let groupWidget of group.items"
                                             [text]="groupWidget.widget"
