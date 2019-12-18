@@ -96,6 +96,7 @@
                                     *ngFor="let group of treeData"
                                 >
                                     <i
+                                        class="dx-icon"
                                         (click)="group.expanded = !group.expanded"
                                         [ngClass]="{'dx-icon-spinright': !group.expanded, 'dx-icon-spindown': group.expanded}"
                                     ></i>

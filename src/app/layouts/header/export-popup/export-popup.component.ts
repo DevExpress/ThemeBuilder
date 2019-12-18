@@ -134,7 +134,7 @@ export class ExportPopupComponent implements OnInit {
 
     allWidgetsSelected(treeData: TreeData[], mainData: WidgetData[]): boolean {
         const groupsCount = treeData.length;
-        const selectedGroupsCount = treeData.filter((g) => this.groupValue(g.items)).length;
+        const selectedGroupsCount = treeData.filter((g) => this.groupValue(g.items) !== false).length;
 
         const mainCount = mainData.length;
         const selectedMainCount = mainData.filter((w) => w.selected).length;
