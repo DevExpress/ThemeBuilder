@@ -48,7 +48,7 @@
     align-self: center;
 }
 
-.indicator .indicator-item .circle{
+.indicator .indicator-item .circle {
     background: #c4c4c4;
 }
 
@@ -165,9 +165,6 @@
 
 .view-wrapper .views-container .view .buttons-container .button {
     align-self: flex-start;
-}
-
-.view-wrapper .views-container .view .buttons-container .button {
     background: #fff;
     border: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -187,10 +184,6 @@
     color: #404040;
 }
 
-.view-wrapper .views-container .view .buttons-container .button.disabled {
-    opacity: 0.5;
-}
-
 .view-wrapper .views-container .view .buttons-container .button:hover {
     background: #707070;
     color: #fff;
@@ -202,7 +195,8 @@
     color: #fff;
 }
 
-.view-wrapper .views-container .view .buttons-container .button:disabled {
+.view-wrapper .views-container .view .buttons-container .button:disabled,
+.view-wrapper .views-container .view .buttons-container .button.disabled {
     opacity: 0.5;
 }
 
