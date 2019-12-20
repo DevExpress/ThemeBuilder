@@ -1,39 +1,382 @@
-.first {
-    margin-top: 20px;
-}
-
-.editor-item {
-    height: 34px;
+.indicator {
     display: flex;
-    margin-bottom: 10px;
+    padding-top: 22px;
+    position: relative;
 }
 
-.editor-item.hidden {
-    display: none;
+.indicator .line {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #c4c4c4;
+    z-index: -1;
 }
 
-.editor-item label {
-    width: 160px;
+.indicator .indicator-item {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
 }
 
-.editor-item > * {
+.indicator .indicator-item .item-text {
+    color: rgba(64, 64, 64, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
     align-self: center;
 }
 
-.buttons {
-    text-align: center;
-    margin-top: 20px;
+.indicator .indicator-item.last .item-text {
+    align-self: flex-end;
+
 }
 
-.buttons app-button {
+.indicator .indicator-item.first .item-text {
+    align-self: flex-start;
+}
+
+.indicator .indicator-item .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #f0f2f3;
+    box-sizing: content-box;
+    align-self: center;
+}
+
+.indicator .indicator-item .circle {
+    background: #c4c4c4;
+}
+
+.indicator .indicator-item.active .circle {
+    background: #F16850;
+}
+
+.indicator .indicator-item.done .circle {
+    background: #707070;
+}
+
+.indicator .indicator-item.first .circle {
+    align-self: flex-start;
+}
+
+.indicator .indicator-item.last .circle {
+    align-self: flex-end;
+}
+
+.indicator .indicator-item.active .item-text {
+    color: #F16850;
+}
+
+.indicator .indicator-item.done .item-text {
+    color: #707070;
+}
+
+.view-wrapper {
+    height: 360px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.view-wrapper::after,
+.view-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    background: rgb(240,242,243);
+    z-index: 1;
+}
+
+.view-wrapper::after {
+    right: 0;
+    background: linear-gradient(90deg, rgba(240,242,243,0) 0%, rgba(240,242,243,1) 100%);
+}
+
+.view-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(240,242,243,1) 0%, rgba(240,242,243,0) 100%);
+}
+
+.view-wrapper .views-container {
+    margin-top: 30px;
+    height: 330px;
+    width: 3000px;
+    position: absolute;
+    display: flex;
+    transition: left ease-out 230ms;
+}
+
+.view-wrapper .views-container.view-0 {
+    left: 40px;
+}
+
+.view-wrapper .views-container.view-1 {
+    left: -560px;
+}
+
+.view-wrapper .views-container.view-2 {
+    left: -1160px;
+}
+
+.view-wrapper .views-container.view-3 {
+    left: -1760px;
+}
+
+.view-wrapper .views-container.view-4 {
+    left: -2360px;
+}
+
+.view-wrapper .views-container .view {
+    width: 560px;
+    height: 330px;
+    color: #404040;
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+    transition: opacity 100ms ease-out 150ms;
+    opacity: 1;
+}
+
+.view-wrapper .views-container .view.hide-content {
+    transition: opacity 100ms ease-out 0ms;
+    opacity: 0;
+}
+
+.view-wrapper .views-container .view .padding-20 {
+    padding-top: 20px;
+}
+
+.view-wrapper .views-container .view .buttons-container {
+    flex-grow: 1;
+    display: flex;
+    margin: 10px -5px 5px -5px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal {
+    justify-content: space-between;
+}
+
+.view-wrapper .views-container .view .buttons-container .button {
+    align-self: flex-start;
+    background: #fff;
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 0 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100px;
+    width: 180px;
+    color: #404040;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:hover {
+    background: #707070;
+    color: #fff;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:active,
+.view-wrapper .views-container .view .buttons-container .button:focus {
+    background: #9e9e9e;
+    color: #fff;
+}
+
+.view-wrapper .views-container .view .buttons-container .button:disabled,
+.view-wrapper .views-container .view .buttons-container .button.disabled {
+    opacity: 0.5;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button {
+    border-radius: 4px;
+    height: 46px;
+    flex-direction: row;
+    font-size: 16px;
+    align-self: flex-end;
+}
+
+.view-wrapper .views-container .view .buttons-container .button .button-text {
+    user-select: none;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button .button-text {
+    padding: 0 16px;
+    line-height: 18px;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .button .button-icon i {
+    font-size: 18px;
+    display: block;
+}
+
+.view-wrapper .views-container .view .scheme-name dx-text-box {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.tooltip-container {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.tooltip-container.export {
+    height: 24px;
+}
+
+.tooltip-container.swatch {
+    height: 18px;
+}
+
+.view-wrapper .views-container .view .export-text {
+    font-size: 18px;
+    line-height: 24px;
     display: inline-block;
 }
 
-.buttons app-button:not(:first-child) {
-    margin-left: 20px;
+.view-wrapper .views-container .view .widgets {
+    height: 250px;
+    display: flex;
 }
 
-.text {
-    text-align: center;
-    margin: 20px 0 10px;
+.view-wrapper .views-container .view .widgets .main-widgets {
+    flex-basis: 130px;
+    flex-grow: 0;
+    position: relative;
+    margin-right: 40px;
 }
+
+.view-wrapper .views-container .view .widgets .main-widgets dx-check-box {
+    padding-top: 10px;
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .main-widgets dx-check-box:first-child {
+    padding: 8px 0;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets dx-text-box {
+    margin-bottom: 10px;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group {
+    margin: 0 0 10px -5px;
+    display: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group.visible {
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group i {
+    font-size: 22px;
+    vertical-align: bottom;
+    color: #707070;
+    cursor: pointer;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group span {
+    line-height: 22px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets {
+    display: none;
+    margin-left: 35px;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group.expanded .group-widgets {
+    display: block;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets dx-check-box {
+    padding-top: 10px;
+    display: none;
+}
+
+.view-wrapper .views-container .view .widgets .all-widgets .group .group-widgets dx-check-box.visible {
+    display: block;
+}
+
+.view-wrapper .views-container .view dx-text-area {
+    margin-top: 10px;
+}
+
+.view-wrapper .views-container .view .export-loading {
+    height: 100px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.view-wrapper .views-container .view .export-loading.hidden {
+    visibility: hidden;
+}
+
+.view-wrapper .views-container .view .export-loading span {
+    line-height: 22px;
+    padding-right: 5px;
+}
+
+.copy-area {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 40px 40px 40px;
+    position: absolute;
+    background: #fff;
+    left: 0;
+    right: 0;
+    top: 180px;
+    opacity: 1;
+    z-index: 1;
+    height: 360px;
+    transition: all 150ms ease-out 0ms;
+}
+
+.copy-area.hidden {
+    transition: all 150ms ease-out 100ms;
+    opacity: 1;
+    top: 540px;
+}
+
+.copy-area .close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.copy-area .close-button i {
+    font-size: 20px;
+    color: #C9D3D8;
+}
+
+.copy-area .copy-text {
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 20px;
+}
+

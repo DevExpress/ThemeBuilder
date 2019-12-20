@@ -38,14 +38,15 @@ export class ImportService {
         });
     }
 
-    exportMetadata(customSchemeName: string, useSwatch: boolean): string {
+    exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[]): string {
         const exportedObject = {
             ...this.savedMetadata,
             items: this.metaRepository.getModifiedItems(),
             baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
             outputColorScheme: customSchemeName,
             makeSwatch: useSwatch,
-            version: this.metaRepository.version()
+            version: this.metaRepository.version(),
+            widgets
         };
 
         const SPACES_NUMBER = 4;

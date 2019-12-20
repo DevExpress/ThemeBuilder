@@ -49,6 +49,10 @@
     border-color: #d4d8da;
 }
 
+::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox .dx-checkbox-text {
+    color: #404040;
+}
+
 ::ng-deep .dx-popup-wrapper.export-import-popup .dx-popup-content .dx-checkbox-icon {
     color: #f05b41;
     border: 2px solid #d4d8da;

@@ -22,6 +22,7 @@ import {
     DxTabPanelModule,
     DxTextAreaModule,
     DxTextBoxModule,
+    DxTooltipModule,
     DxValidatorModule
 } from 'devextreme-angular';
 
@@ -65,6 +66,9 @@ import { ImportPopupComponent } from './layouts/header/import-popup/import-popup
 import { PopupComponent } from './layouts/header/popup/popup.component';
 import { LoadingComponent } from './layouts/loading/loading.component';
 import { PreviewModule } from './preview/preview.module';
+import { ButtonIconComponent } from './icons/button-icon/button-icon.component';
+import { IconLoadingComponent } from './icons/icon-loading/icon-loading.component';
+import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip/help-tooltip.component';
 
 @NgModule({
     declarations: [
@@ -98,7 +102,10 @@ import { PreviewModule } from './preview/preview.module';
         PopupComponent,
         ButtonComponent,
         BootstrapUploaderComponent,
-        LoadingComponent
+        LoadingComponent,
+        ButtonIconComponent,
+        IconLoadingComponent,
+        HelpTooltipComponent
     ],
     imports: [
         BrowserModule,
@@ -108,6 +115,7 @@ import { PreviewModule } from './preview/preview.module';
         DxFileUploaderModule,
         DxTextBoxModule,
         DxTextAreaModule,
+        DxTooltipModule,
         DxSelectBoxModule,
         DxNumberBoxModule,
         DxColorBoxModule,

@@ -1,65 +1,224 @@
 <app-popup
     title="Theme Export"
-    (popupShown)="popupShown()"
+    [height]="540"
     #popup
->   
-    <div class="editor-item first">
-        <label>Color scheme name</label>
-        <dx-text-box 
-            [(value)]="schemeName" 
-            [width]="400" 
-            valueChangeEvent="keyup" 
-            (onValueChanged)="schemeNameChange()">
-            <dx-validator>
-                <dxi-validation-rule 
-                    type="pattern" 
-                    pattern="^[\w-_]*$" 
-                    message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
-                </dxi-validation-rule>
-                <dxi-validation-rule 
-                    type="required" 
-                    message="Color scheme name is required.">
-                </dxi-validation-rule>
-            </dx-validator>
-        </dx-text-box>
+>
+    <div class="indicator">
+        <div class="line"></div>
+        <div class="indicator-item"
+            *ngFor="let step of ['Enter Name', 'Select Widgets', 'Choose Format']; index as i; last as isLast; first as isFirst"
+            [ngClass]="{ 'active': viewIndex === i, 'done': viewIndex > i, 'first': isFirst, 'last': isLast }"
+        >
+            <div class="circle" (click)="changeStep(i)"></div>
+            <div class="item-text">
+                <span (click)="changeStep(i)">{{step}}</span>
+            </div>
+        </div>
     </div>
-    <div class="editor-item">
-        <label>Save as a color swatch</label>
-        <dx-check-box [(value)]="makeSwatch" (onValueChanged)="swatchChange()"></dx-check-box>
+
+    <div class="view-wrapper">
+        <div class="views-container" [ngClass]="'view-' + viewIndex">
+            <div class="view">
+                <div class="export-text">Color Scheme Name</div>
+                <div class="scheme-name">
+                    <dx-text-box
+                        [(value)]="schemeName"
+                        valueChangeEvent="keyup"
+                        width="533"
+                    >
+                        <dx-validator>
+                            <dxi-validation-rule 
+                                type="pattern" 
+                                pattern="^[\w-_]*$" 
+                                message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
+                            </dxi-validation-rule>
+                            <dxi-validation-rule 
+                                type="required" 
+                                message="Color scheme name is required.">
+                            </dxi-validation-rule>
+                        </dx-validator>
+                    </dx-text-box>
+                    <div class="tooltip-container">
+                        <app-help-tooltip>The name can contain letters, digits, and hyphens.</app-help-tooltip>
+                    </div>
+                </div>
+                <div class="padding-20"></div>
+                <div>
+                    <dx-check-box
+                        text="Save as color swatch"
+                        [(value)]="makeSwatch"
+                    ></dx-check-box>
+                    <div class="tooltip-container swatch">
+                        <app-help-tooltip>
+                            A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used to&nbsp;style<br>
+                            portions of&nbsp;an&nbsp;application. To&nbsp;apply swatch styles, add the<br>
+                            `dx-swatch-{{schemeName}}` class to&nbsp;the container<br>
+                            that nests the elements being stylized.<br>
+                        </app-help-tooltip>
+                    </div>
+                </div>
+                <div class="buttons-container horizontal">
+                    <div></div>
+                    <button class="button" (click)="changeStep(1)">
+                        <div class="button-text">Next Step</div>
+                        <div class="button-icon">
+                            <i class="dx-icon-chevronright"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="view">
+                <div class="widgets">
+                    <div class="main-widgets">
+                        <dx-check-box
+                            text="All Widgets"
+                            [value]="allWidgetsSelected(treeData, mainData)"
+                            (onValueChanged)="selectAll($event)"
+                        ></dx-check-box>
+                        <dx-check-box *ngFor="let item of mainData"
+                            [text]="item.widget"
+                            [(value)]="item.selected"
+                        ></dx-check-box>
+                    </div>
+                    <div class="all-widgets">
+                        <dx-text-box
+                            [(value)]="searchValue"
+                            valueChangeEvent="keyup"
+                            [showClearButton]="true"
+                            placeholder="Search..."
+                            (onValueChanged)="search()"
+                        ></dx-text-box>
+                        <dx-scroll-view #scrollView>
+                            <div>
+                                <div
+                                    class="group"
+                                    [ngClass]="{'expanded': group.expanded, 'visible': group.visible}"
+                                    *ngFor="let group of treeData"
+                                >
+                                    <i
+                                        class="dx-icon"
+                                        (click)="group.expanded = !group.expanded"
+                                        [ngClass]="{'dx-icon-spinright': !group.expanded, 'dx-icon-spindown': group.expanded}"
+                                    ></i>
+                                    <dx-check-box
+                                        [text]="group.group"
+                                        [value]="groupValue(group.items)"
+                                        (onValueChanged)="selectGroup($event, group.items)"
+                                    ></dx-check-box>
+                                    <div class="group-widgets">
+                                        <dx-check-box *ngFor="let groupWidget of group.items"
+                                            [text]="groupWidget.widget"
+                                            [(value)]="groupWidget.selected"
+                                            [ngClass]="{'visible': groupWidget.visible}"
+                                        ></dx-check-box>
+                                    </div>
+                                </div>
+                            </div>
+                        </dx-scroll-view>
+                    </div>
+                </div>
+                <div class="buttons-container horizontal">
+                    <button class="button" (click)="changeStep(0)">
+                        <div class="button-icon">
+                            <i class="dx-icon-chevronleft"></i>
+                        </div>
+                        <div class="button-text">Prev Step</div>
+                    </button>
+                    <button class="button" (click)="changeStep(2)">
+                        <div class="button-text">Next Step</div>
+                        <div class="button-icon">
+                            <i class="dx-icon-chevronright"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="view" [ngClass]="{'hide-content': copyAreaActive}">
+                <div>
+                    <div class="export-text">Export CSS</div>
+                    <div class="tooltip-container export">
+                        <app-help-tooltip>
+                            Download theme as&nbsp;a&nbsp;CSS file,<br>
+                            a&nbsp;ZIP archive (includes this file and icons),<br>
+                            or&nbsp;simply copy the theme styles.
+                        </app-help-tooltip>
+                    </div>
+                </div>
+                <div class="buttons-container">
+                    <button class="button" [disabled]="!contentReady" (click)="exportCss(true)">
+                        <div class="button-icon">
+                            <app-button-icon name="download"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Download<br>
+                            CSS File
+                        </div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="exportZip()">
+                        <div class="button-icon">
+                            <app-button-icon name="zip"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Download<br>
+                            ZIP Archive
+                        </div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="needMeta = false;copy()">
+                        <div class="button-icon">
+                            <app-button-icon name="copy-css"></app-button-icon>
+                        </div>
+                        <div class="button-text">Copy CSS</div>
+                    </button>
+                </div>
+
+                <div>
+                    <div class="export-text">Export Metadata</div>
+                    <div class="tooltip-container export">
+                        <app-help-tooltip>
+                            Metadata is&nbsp;a&nbsp;JSON object that describes a&nbsp;theme.<br>
+                            You can copy the metadata or&nbsp;download it&nbsp;as&nbsp;a&nbsp;JSON file.
+                        </app-help-tooltip>
+                    </div>
+                </div>
+                <div class="buttons-container">
+                    <button class="button" [disabled]="!contentReady" (click)="exportMeta(true)">
+                        <div class="button-icon">
+                            <app-button-icon name="download"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Download<br>
+                            Metadata File
+                        </div>
+                    </button>
+                    <button class="button" [disabled]="!contentReady" (click)="needMeta = true;copy()">
+                        <div class="button-icon">
+                            <app-button-icon name="copy-meta"></app-button-icon>
+                        </div>
+                        <div class="button-text">
+                            Copy<br>
+                            Metadata
+                        </div>
+                    </button>
+                    <div class="export-loading" [ngClass]="{'hidden': contentReady}">
+                        <app-icon-loading></app-icon-loading>
+                        <div>Please wait.</div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
-    <div class="editor-item" [ngClass]="{ hidden: !showOutputFile }">
-        <label>Output file path</label>
-        <dx-text-box [value]="outputFile" [readOnly]="true" [width]="400"></dx-text-box>
+    <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive}">
+        <div class="copy-text">Copy {{ needMeta ? 'Metadata' : 'CSS' }}</div>
+        <div class="close-button" (click)="copyAreaActive = false">
+            <i class="dx-icon-arrowdown"></i>
+        </div>
+        <dx-text-area
+            [height]="256"
+            [value]="textContent"
+            (onCopy)="copyFileContent()"
+            [readOnly]="true"
+        ></dx-text-area>
+        
     </div>
-    <dx-tab-panel
-        #tabPane 
-        class="tabs first" 
-        [height]="60"
-        [(selectedIndex)]="selectedIndex">
-        <dxi-item title="Export CSS"></dxi-item>
-        <dxi-item title="Export Metadata"></dxi-item>
-    </dx-tab-panel>
-    <div class="buttons">
-        <app-button [disabled]="saveButtonDisabled" [width]="270" title="Save to File" (clicked)="selectedIndex ? exportMeta() : exportCss()">Save to File</app-button>
-        <app-button id="zipButton" [disabled]="saveButtonDisabled" [width]="270" title="Save to File" *ngIf="!selectedIndex" (clicked)=" exportZip()">Save to Zip</app-button>
-    </div>
-    <div class="text">
-        or copy {{ selectedIndex ? "metadata" : "CSS" }} from the area below.
-    </div>
-    <dx-text-area 
-        id="file-content" 
-        [readOnly]="true" 
-        [height]="150" 
-        [value]="fileContent[selectedIndex]"
-        (onCopy)="copyFileContent()"
-        #textArea>
-    </dx-text-area>
-    <dx-load-panel 
-        [visible]="loadIndicatorVisible" 
-        [position]="{ of: '#file-content' }" 
-        [showPane]="false" 
-        [shading]="true" 
-        shadingColor="rgba(232, 232, 232, 0.5)"
-        message="Generating...">
-    </dx-load-panel>
 </app-popup>

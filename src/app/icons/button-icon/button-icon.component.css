@@ -1,0 +1,31 @@
+svg {
+    display: block;
+}
+
+svg path {
+    fill: #707070;
+}
+
+svg rect {
+    stroke: #707070;
+    fill: transparent;
+}
+
+:host-context(.button:hover) svg path,
+:host-context(.button.orange) svg path {
+    fill: #fff;
+}
+
+:host-context(.button:hover) svg rect {
+    stroke: #fff;
+}
+
+:host-context(.button:active) svg path,
+:host-context(.button:focus) svg path {
+    fill: #fff;
+}
+
+:host-context(.button:active) svg rect,
+:host-context(.button:focus) svg rect {
+    stroke: #fff;
+}
