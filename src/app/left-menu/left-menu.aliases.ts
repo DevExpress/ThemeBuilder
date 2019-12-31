@@ -64,7 +64,7 @@ export class LeftMenuAlias {
             }, {
                 name: 'Check Box',
                 equivalents: 'Switch, CheckBox, dxCheckBox, dx-check-box',
-                regs: [/switch-/i]
+                regs: [/checkbox-/i]
             }, {
                 name: 'Color Box',
                 equivalents: 'ColorBox, ColorPicker, dxColorBox, dx-color-box',
