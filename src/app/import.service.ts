@@ -54,10 +54,9 @@ export class ImportService {
         return JSON.stringify(exportedObject, null, SPACES_NUMBER);
     }
 
-    exportCss(customSchemeName: string, useSwatch: boolean): Promise<string> {
+    exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
         const schemeName = customSchemeName || this.getColorSchemeName();
         const swatch = useSwatch || this.normalizedMetadata.makeSwatch;
-        const widgets = this.normalizedMetadata.widgets;
 
         return this.metaRepository.export(schemeName, swatch, widgets);
     }
@@ -72,6 +71,10 @@ export class ImportService {
 
     getThemeName(): string {
         return this.metaRepository.theme.name;
+    }
+
+    getWidgets(): Array<string> {
+        return this.normalizedMetadata.widgets;
     }
 
     clearSavedMetadata(): void {
