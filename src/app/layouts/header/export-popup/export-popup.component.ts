@@ -38,22 +38,22 @@ export class ExportPopupComponent implements OnInit {
     mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList'];
     widgetGroups: any[] = [{
         group: 'Navigation and Layout',
-        items: ['Tabs', 'NavBar', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'SlideOutView', 'SlideOut', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox']
+        widgets: ['Tabs', 'NavBar', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'SlideOutView', 'SlideOut', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox']
     }, {
         group: 'Forms and Editors',
-        items: ['Form', 'CheckBox', 'Calendar', 'Validation', 'Switch', 'TextBox', 'DropDownBox', 'Autocomplete', 'DateBox', 'SelectBox', 'NumberBox', 'Slider', 'RangeSlider', 'Lookup', 'TagBox', 'RadioGroup', 'ColorBox', 'HtmlEditor']
+        widgets: ['Form', 'CheckBox', 'Calendar', 'Validation', 'Switch', 'TextBox', 'DropDownBox', 'Autocomplete', 'DateBox', 'SelectBox', 'NumberBox', 'Slider', 'RangeSlider', 'Lookup', 'TagBox', 'RadioGroup', 'ColorBox', 'HtmlEditor']
     }, {
         group: 'Actions and Buttons',
-        items: ['Button', 'ButtonGroup', 'DropDownButton', 'ActionSheet', 'SpeedDialAction']
+        widgets: ['Button', 'ButtonGroup', 'DropDownButton', 'ActionSheet', 'SpeedDialAction']
     }, {
         group: 'Overlays and Utilities',
-        items: ['LoadPanel', 'LoadIndicator', 'ProgressBar', 'ScrollView', 'Sortable', 'FilterBuilder', 'Popup', 'Popover', 'Toast', 'Tooltip']
+        widgets: ['LoadPanel', 'LoadIndicator', 'ProgressBar', 'ScrollView', 'Sortable', 'FilterBuilder', 'Popup', 'Popover', 'Toast', 'Tooltip']
     }, {
         group: 'File Management',
-        items: ['FileUploader', 'FileManager']
+        widgets: ['FileUploader', 'FileManager']
     }, {
         group: 'Lists and Collections',
-        items: ['List', 'Gallery']
+        widgets: ['List', 'Gallery']
     }];
 
     treeData: TreeData[] = [];
@@ -71,28 +71,7 @@ export class ExportPopupComponent implements OnInit {
     constructor(
         private importService: ImportService,
         private googleAnalyticsEventsService: GoogleAnalyticsEventsService
-    ) {
-        const defaultWidgetConfig = (widget): WidgetData => ({
-            widget,
-            selected: true,
-            visible: true
-        });
-
-        const widgetComparer = (a: WidgetData, b: WidgetData): number => a.widget.localeCompare(b.widget);
-
-        this.treeData = this.widgetGroups.map((group) => {
-            group.expanded = false;
-            group.visible = true;
-            group.items = group.items
-                .map(defaultWidgetConfig)
-                .sort(widgetComparer);
-            return group;
-        });
-
-        this.mainData = this.mainWidgets
-            .map(defaultWidgetConfig)
-            .sort(widgetComparer);
-    }
+    ) {}
 
     changeStep(index: number): void {
         const START_PAGE_INDEX = 0;
@@ -188,6 +167,33 @@ export class ExportPopupComponent implements OnInit {
         this.schemeName = this.importService.getColorSchemeName();
         this.outputFile = savedMeta.outputFile;
         this.makeSwatch = !!savedMeta.makeSwatch;
+
+        const selectedWidgets = this.importService.getWidgets();
+        const isWidgetSelected = (widget: string): boolean => {
+            if(!selectedWidgets || selectedWidgets.length === 0) return true;
+            return selectedWidgets.findIndex((selectedWidget) => selectedWidget.toLowerCase() === widget.toLowerCase()) >= 0;
+        };
+
+        const defaultWidgetConfig = (widget: string): WidgetData => ({
+            widget,
+            selected: isWidgetSelected(widget),
+            visible: true
+        });
+
+        const widgetComparer = (a: WidgetData, b: WidgetData): number => a.widget.localeCompare(b.widget);
+
+        this.treeData = this.widgetGroups.map((group) => {
+            group.expanded = false;
+            group.visible = true;
+            group.items = group.widgets
+                .map(defaultWidgetConfig)
+                .sort(widgetComparer);
+            return group;
+        });
+
+        this.mainData = this.mainWidgets
+            .map(defaultWidgetConfig)
+            .sort(widgetComparer);
     }
 
     fileSave(cssContent): void {
@@ -200,7 +206,7 @@ export class ExportPopupComponent implements OnInit {
             'save css (' + this.importService.getThemeName() + ')');
 
         this.contentReady = false;
-        return this.importService.exportCss(this.schemeName, this.makeSwatch)
+        return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets())
             .then((css) => {
                 this.contentReady = true;
                 this.textContent = css;
@@ -233,7 +239,7 @@ export class ExportPopupComponent implements OnInit {
         });
 
         const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName;
-        zip.file(fileName + '.css', this.importService.exportCss(this.schemeName, this.makeSwatch));
+        zip.file(fileName + '.css', this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets()));
 
         zip.generateAsync({type: 'blob'})
             .then((content) => {
