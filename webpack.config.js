@@ -1,5 +1,6 @@
 module.exports = {
     node: {
-        path: 'empty'
+        path: true,
+        fs: 'empty'
     }
 };
