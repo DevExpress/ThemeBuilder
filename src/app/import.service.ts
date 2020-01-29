@@ -55,10 +55,7 @@ export class ImportService {
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
-        const schemeName = customSchemeName || this.getColorSchemeName();
-        const swatch = useSwatch || this.normalizedMetadata.makeSwatch;
-
-        return this.metaRepository.export(schemeName, swatch, widgets);
+        return this.metaRepository.export(customSchemeName, useSwatch, widgets);
     }
 
     getSavedMetadata(): any {
