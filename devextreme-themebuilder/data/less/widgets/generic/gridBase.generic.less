@@ -155,6 +155,9 @@
             & > td,
             & > tr > td {
                 background-color: ~"@{@{widgetName}-row-alternation-bg}";
+                // T838734
+                border-top: ~"1px solid @{@{widgetName}-row-alternation-bg}";
+                border-bottom: ~"1px solid @{@{widgetName}-row-alternation-bg}";
             }
 
             &.dx-row:not(.dx-row-removed) {
@@ -277,14 +280,6 @@
 
             .dx-texteditor-input {
                 background: ~"@{@{widgetName}-editor-bg}";
-            }
-
-            &.dx-numberbox-spin .dx-texteditor-input {
-                padding-right: @GENERIC_NUMBERBOX_SPIN_CONTAINER_WIDTH;
-            }
-
-            &.dx-numberbox-spin-touch-friendly .dx-texteditor-input {
-                padding-right: @GENERIC_NUMBERBOX_TOUCH_FRIENDLY_SPIN_CONTAINER_WIDTH;
             }
         }
 
