@@ -148,7 +148,7 @@ export class MetadataRepositoryService {
 
     export(outColorScheme: string, swatch: boolean, widgets: string[]): Promise<string> {
         return new Promise((resolve, reject): void => {
-            this.builder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection, widgets).then((result) => {
+            this.builder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection, widgets, false).then((result) => {
                 resolve(result.css);
             }, (error) => {
                 reject(error);

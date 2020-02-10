@@ -59,12 +59,13 @@ export class BuilderService {
         return builder.buildTheme(extendedConfig);
     }
 
-    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: ExportedItem[], widgets: string[]): Promise<BuilderResult> {
+    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: ExportedItem[], widgets: string[], noClean = true): Promise<BuilderResult> {
         return this.build(theme, {
             makeSwatch,
             widgets,
             outputColorScheme: outColorScheme,
-            items: modifiedData
+            items: modifiedData,
+            noClean
         });
     }
 
