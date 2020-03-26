@@ -531,7 +531,7 @@
 @datagrid-row-selected-border-color: @base-selected-border;
 @datagrid-row-selected-color: @datagrid-base-color;
 @datagrid-row-focused-color: @base-inverted-text-color;
-@datagrid-row-focused-bg: @base-accent;
+@datagrid-row-focused-bg: mix(@base-bg, @base-accent, 15%);
 @datagrid-hover-bg: @base-hover-bg;
 @datagrid-row-hovered-color: @datagrid-base-color;
 @datagrid-menu-icon-color: @base-icon-color;
@@ -549,7 +549,7 @@
 @datagrid-row-error-color: @base-inverted-text-color;
 @datagrid-row-error-bg: mix(@base-invalid-color, @datagrid-base-background-color, 60%);
 @datagrid-link-color: @base-link-color;
-@datagrid-focused-border-color: @base-focus-bg;
+@datagrid-focused-border-color: mix(@base-bg, @base-focus-bg, 20%);
 @datagrid-editor-bg: @datagrid-base-background-color;
 
 @datagrid-drop-highlight-bg: @base-accent;

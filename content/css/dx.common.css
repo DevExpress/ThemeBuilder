@@ -1,7 +1,7 @@
 /**
 * DevExtreme (dx.common.css)
-* Version: 19.2.6
-* Build date: Thu Jan 30 2020
+* Version: 19.2.7
+* Build date: Thu Mar 26 2020
 *
 * Copyright (c) 2012 - 2020 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -438,7 +438,7 @@
 .dx-icon {
   background-position: 50% 50%;
 }
-.dx-svg-icon {
+.dx-svg-icon svg {
   pointer-events: none;
 }
 .dx-color-scheme {
@@ -495,11 +495,6 @@
 }
 .dx-sortable {
   overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
 }
 .dx-sortable-dragging.dx-sortable-clone {
   position: absolute;
@@ -3369,11 +3364,8 @@
   -webkit-touch-callout: none;
 }
 .dx-accordion-item-title .dx-icon {
-  width: 16px;
-  height: 16px;
   background-size: contain;
   display: inline-block;
-  margin-right: 5px;
 }
 .dx-accordion-item-title:before {
   content: '';
@@ -3563,13 +3555,13 @@
 }
 .dx-colorview-palette-gradient-white {
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear,right top,left top,from(rgba(255,255,255,0)),to(rgba(255,255,255,1)));
-  background-image: linear-gradient(270deg,rgba(255,255,255,0),rgba(255,255,255,1));
+  background-image: -webkit-gradient(linear,right top,left top,from(rgba(255,255,255,0)),to(#fff));
+  background-image: linear-gradient(270deg,rgba(255,255,255,0),#fff);
 }
 .dx-colorview-palette-gradient-black {
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,1)));
-  background-image: linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,1));
+  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(#000));
+  background-image: linear-gradient(180deg,rgba(0,0,0,0),#000);
 }
 .dx-colorview-palette {
   position: relative;
@@ -6525,6 +6517,11 @@ input.dx-hidden {
 .dx-rtl .dx-scheduler-appointment-collector {
   margin: 3px 3px 0 0;
 }
+@media (max-width:450px) {
+  .dx-scheduler-adaptive .dx-scheduler-view-switcher-label {
+    display: none;
+  }
+}
 .dx-scheduler-adaptive .dx-scheduler-work-space-week .dx-scheduler-header-panel-cell {
   white-space: pre-wrap;
   line-height: 1.3;
@@ -7419,7 +7416,7 @@ input.dx-hidden {
 .dx-splitter-wrapper .dx-splitter-border {
   z-index: 997;
   height: 100%;
-  display: table;
+  width: 3px;
 }
 .dx-splitter-wrapper .dx-splitter-border .dx-splitter {
   height: 100%;
@@ -8037,6 +8034,7 @@ input.dx-hidden {
 .dx-gantt .dx-gantt-treelist-wrapper .dx-treelist .dx-treelist-headers + .dx-treelist-rowsview {
   border-top: none;
 }
+.dx-gantt .dx-splitter-wrapper .dx-splitter-border,
 .dx-gantt .dx-splitter-wrapper .dx-splitter-border .dx-splitter {
   width: 2px;
 }

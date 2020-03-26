@@ -1,5 +1,5 @@
 @MATERIAL_COLOR_POSTFIX: ".@{MATERIAL_COLOR_ACCENT_MODIFICATOR}.light";
-@base-font-family: "Roboto", "RobotoFallback", "Helvetica", "Arial", sans-serif;
+@base-font-family: "Roboto", "RobotoFallback", "Noto Kufi Arabic", "Helvetica",  "Arial", sans-serif;
 @base-label-color: @base-text-color;
 @base-link-color: @base-accent;
 @base-icon-color: fade(@base-text-color, 54%);
@@ -172,8 +172,8 @@
 @button-group-normal-selected-color: @base-text-color;
 
 @button-group-normal-contained-selected-bg: darken(@button-normal-bg, 18%);
-@button-group-normal-contained-selected-bg-hover: darken(@button-group-normal-contained-selected-bg, -6%);
-@button-group-normal-contained-selected-bg-focused: darken(@button-group-normal-contained-selected-bg, -6%);
+@button-group-normal-contained-selected-bg-hover: lighten(@button-group-normal-contained-selected-bg, 6%);
+@button-group-normal-contained-selected-bg-focused: lighten(@button-group-normal-contained-selected-bg, 6%);
 @button-group-normal-selected-bg: fade(darken(@button-normal-bg, 100%), 18%);
 
 @button-group-normal-selected-bg-hover: fade(@button-group-normal-selected-bg, 12%);
@@ -461,7 +461,7 @@
 @datagrid-row-selected-border-color: @datagrid-border-color;
 @datagrid-row-selected-color: @datagrid-base-color;
 @datagrid-row-focused-color: @base-inverted-text-color;
-@datagrid-row-focused-bg: @base-accent;
+@datagrid-row-focused-bg: mix(@base-bg, @base-accent, 20%);
 @datagrid-hover-bg: @base-hover-bg;
 @datagrid-row-hovered-color: @datagrid-base-color;
 @datagrid-menu-icon-color: lighten(@base-icon-color, 33.7%);
@@ -479,7 +479,7 @@
 @datagrid-row-error-color: @base-inverted-text-color;
 @datagrid-row-error-bg: mix(@base-invalid-color, @datagrid-base-background-color, 60%);
 @datagrid-link-color: @base-link-color;
-@datagrid-focused-border-color: @base-accent;
+@datagrid-focused-border-color: mix(@base-bg, @base-accent, 20%);
 @datagrid-editor-bg: fade(@datagrid-base-background-color, 0%);
 
 @datagrid-drop-highlight-bg: @base-accent;
