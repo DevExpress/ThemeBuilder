@@ -5,8 +5,8 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod --baseHref=https://devexpress.github.io/ThemeBuilder/",
-        "lint-fix": "eslint --fix \"src/**/*.ts\"",
-        "lint": "eslint \"src/**/*.ts\""
+        "lint-fix": "cross-env NODE_OPTIONS=--max_old_space_size=4092 eslint --fix \"src/**/*.ts\"",
+        "lint": "cross-env NODE_OPTIONS=--max_old_space_size=4092 eslint \"src/**/*.ts\""
     },
     "private": true,
     "dependencies": {
@@ -46,6 +46,7 @@
         "@typescript-eslint/eslint-plugin": "^2.3.2",
         "@typescript-eslint/parser": "^2.3.2",
         "codelyzer": "~4.2.1",
+        "cross-env": "^7.0.2",
         "eslint": "^6.5.1",
         "protractor": "^5.4.2",
         "ts-node": "~5.0.1",
