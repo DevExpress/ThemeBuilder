@@ -5,8 +5,8 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod --baseHref=https://devexpress.github.io/ThemeBuilder/",
-        "lint-fix": "cross-env NODE_OPTIONS=--max_old_space_size=4092 eslint --fix \"src/**/*.ts\"",
-        "lint": "cross-env NODE_OPTIONS=--max_old_space_size=4092 eslint \"src/**/*.ts\""
+        "lint-fix": "eslint --fix \"src/**/*.ts\"",
+        "lint": "eslint \"src/**/*.ts\""
     },
     "private": true,
     "dependencies": {
