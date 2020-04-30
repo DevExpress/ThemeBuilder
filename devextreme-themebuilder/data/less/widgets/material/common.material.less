@@ -1,5 +1,5 @@
 .dx-theme-marker {
-    font-family: "dx.material@{MATERIAL_COLOR_POSTFIX}@{MATERIAL_SIZE_POSTFIX}";
+    font-family: "dx.material.@{MATERIAL_COLOR_ACCENT_MODIFICATOR}.@{MATERIAL_COLOR_THEME_MODIFICATOR}@{MATERIAL_SIZE_POSTFIX}";
 }
 
 // stylelint-disable declaration-no-important
@@ -70,7 +70,7 @@
     }
 }
 
-.disabled-widget(@opacity: @texteditor-disabled-opacity) { // stylelint-disable-line selector-class-pattern
+.disabled-widget(@opacity: @base-disabled-opacity) { // stylelint-disable-line selector-class-pattern
     opacity: @opacity;
     .user-select(none);
 
@@ -88,6 +88,7 @@
 @MATERIAL_INVALID_BADGE_HALFHORIZONTAL_PADDING: @MATERIAL_INVALID_BADGE_HORIZONTAL_PADDING / 2;
 
 @MATERIAL_VALID_BADGE_FONT_SIZE: @MATERIAL_BASE_FONT_SIZE + 6px;
+@badge-invalid-bg: @base-invalid-color;
 
 .badge-settings() {
     pointer-events: none;

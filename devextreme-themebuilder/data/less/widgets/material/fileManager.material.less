@@ -18,23 +18,33 @@
 
     .dx-filemanager-notification-common {
         border-color: @filemanager-border-color;
+        color: @base-danger;
+    }
+
+    .dx-drawer-shrink .dx-filemanager-progress-panel {
+        border-left-color: @filemanager-border-color;
     }
 
     .dx-filemanager-progress-panel {
         background-color: @base-bg;
 
-        .dx-filemanager-progress-panel-details {
-            border-color: @filemanager-border-color;
-
-            & > .dx-filemanager-progress-box {
-                box-shadow: 0 4px 8px 0 @filemanager-progressbox-shadow-color;
-            }
+        .dx-filemanager-progress-panel-title {
+            padding-top: @FILEMANAGER_PROGRESS_PANEL_TITLE_PADDING;
+            padding-bottom: @FILEMANAGER_PROGRESS_PANEL_TITLE_PADDING;
         }
+    }
+
+    .dx-filemanager-progress-box-image {
+        font-size: @MATERIAL_BASE_ICON_SIZE;
     }
 
     .dx-filemanager-progress-box-error {
         color: @base-inverted-text-color;
         background: @base-danger;
+    }
+
+    .dx-filemanager-progress-box .dx-filemanager-progress-box-close-button {
+        margin-top: @FILEMANAGER_PROGRESS_BOX_BUTTON_CLOSE_MARGIN_TOP;
     }
 
     .dx-filemanager-toolbar {
@@ -77,6 +87,11 @@
                 }
             }
         }
+
+        .dx-toolbar .dx-filemanager-toolbar-viewmode-item .dx-button-content {
+            padding-left: @FILEMANAGER_TOOLBAR_VIEWMODE_PADDING;
+            padding-right: @FILEMANAGER_TOOLBAR_VIEWMODE_PADDING;
+        }
     }
 
     .dx-filemanager-container {
@@ -95,6 +110,11 @@
                 background: @filemanager-breadcrumbs-item-focus-bg;
                 color: @filemanager-breadcrumbs-item-focus-color;
             }
+        }
+
+        .dx-menu-item-content {
+            padding-top: @FILEMANAGER_BREADCRUMBS_ITEM_PADDING_TOP;
+            padding-bottom: @FILEMANAGER_BREADCRUMBS_ITEM_PADDING_BOTTOM;
         }
 
         .dx-filemanager-breadcrumbs-separator-item .dx-menu-item-content {
@@ -116,13 +136,28 @@
         }
 
         .dx-filemanager-thumbnails-item {
-            &.dx-filemanager-item-selected {
+            &.dx-item-selected {
                 color: @filemanager-file-item-select-color;
                 background: @filemanager-file-item-select-bg;
             }
 
-            &.dx-filemanager-item-focused {
-                border-color: @base-text-color;
+            &.dx-state-hover:not(.dx-state-focused):not(.dx-item-selected) {
+                background: @filemanager-file-item-hover-bg;
+            }
+
+            &.dx-state-focused {
+                border: @filemanager-file-item-focused-border 1px solid;
+            }
+
+            &.dx-item-selected.dx-state-focused {
+                color: @filemanager-file-item-select-focus-color;
+                background: @filemanager-file-item-select-focus-bg;
+            }
+
+            .dx-filemanager-thumbnails-item-thumbnail {
+                width: @MATERIAL_BASE_ICON_SIZE * 2;
+                height: @MATERIAL_BASE_ICON_SIZE * 2;
+                font-size: @MATERIAL_BASE_ICON_SIZE * 2;
             }
 
             .dx-filemanager-item-custom-thumbnail {
@@ -137,6 +172,26 @@
         &.dx-filemanager-details {
             .dx-filemanager-details-item-thumbnail {
                 font-size: @MATERIAL_BASE_ICON_SIZE;
+                width: @MATERIAL_BASE_ICON_SIZE;
+                height: @MATERIAL_BASE_ICON_SIZE;
+            }
+
+            .dx-datagrid .dx-datagrid-content .dx-datagrid-table {
+                .dx-command-select {
+                    padding: 0;
+                    width: @FILEMANAGER_DETAILS_VIEW_CHECKBOX_COLUMN_WIDTH;
+                    min-width: @FILEMANAGER_DETAILS_VIEW_CHECKBOX_COLUMN_WIDTH;
+                    max-width: @FILEMANAGER_DETAILS_VIEW_CHECKBOX_COLUMN_WIDTH;
+                }
+
+                .dx-filemanager-details-item-is-directory {
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+            }
+
+            .dx-row-focused .dx-filemanager-file-actions-button .dx-button .dx-icon {
+                color: @filemanager-item-focused-color;
             }
         }
     }
@@ -149,6 +204,11 @@
 }
 
 .dx-filemanager-dirs-tree.dx-treeview {
+    .dx-treeview-item {
+        padding-top: @FILEMANAGER_TREEVIEW_ITEM_TOP_BOTTOM_PADDING;
+        padding-bottom: @FILEMANAGER_TREEVIEW_ITEM_TOP_BOTTOM_PADDING;
+    }
+
     .dx-state-focused > .dx-treeview-item {
         background: transparent;
 
@@ -170,19 +230,24 @@
     }
 }
 
-.dx-filemanager { // stylelint-disable-line no-duplicate-selectors
-    .dx-filemanager-container { // stylelint-disable-line no-duplicate-selectors
-        .dx-filemanager-dirs-panel {
-            min-width: 300px;
-            max-width: 350px;
-        }
+.dx-filemanager-view-switcher-popup {
+    width: 2 * @FILEMANAGER_TOOLBAR_VIEWMODE_PADDING + @MATERIAL_BASE_ICON_SIZE;
+
+    .dx-dropdownbutton-popup-wrapper.dx-dropdownbutton-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
+        padding-left: @FILEMANAGER_TOOLBAR_VIEWMODE_PADDING - 1px;
+        padding-right: @FILEMANAGER_TOOLBAR_VIEWMODE_PADDING;
+        text-overflow: clip;
     }
+}
+
+.dx-filemanager-dirs-tree.dx-treeview .dx-filemanager-file-actions-button .dx-button .dx-button-content {
+    padding: 0;
 }
 
 .dx-filemanager-file-actions-button {
     .dx-button {
-        min-width: @FILEMANAGER_FILE_ACTIONS_BUTTON_WIDTH;
-        height: @FILEMANAGER_FILE_ACTIONS_BUTTON_HEIGHT;
+        min-width: @FILEMANAGER_FILE_ACTIONS_BUTTON_SIZE;
+        height: @FILEMANAGER_FILE_ACTIONS_BUTTON_SIZE;
 
         .dx-button-content {
             padding: @FILEMANAGER_FILE_ACTIONS_BUTTON_TOP_BOTTOM_PADDING 6px;

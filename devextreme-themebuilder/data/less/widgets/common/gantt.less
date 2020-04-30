@@ -4,7 +4,21 @@
 
 .dx-gantt {
     display: flex;
+    flex-direction: column;
     position: relative;
+    width: 100%;
+
+    .dx-gantt-main-wrapper {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        height: 100%;
+    }
+
+    .dx-gantt-toolbar-separator {
+        height: 100%;
+        border-left: 1px solid transparent;
+    }
 
     .dx-gantt-si {
         text-align: center;
@@ -25,18 +39,15 @@
         }
     }
 
-    .dx-splitter-wrapper .dx-splitter-border {
+    .dx-splitter-wrapper .dx-splitter-border .dx-splitter {
         width: 2px;
-
-        .dx-splitter {
-            width: 2px;
-        }
     }
 
     .dx-gantt-view {
         -webkit-user-select: none; // stylelint-disable-line property-no-vendor-prefix
         user-select: none;
         width: 100%;
+        min-width: 1px;
 
         .dx-gantt-tac-hb {
             margin-top: -1px;
