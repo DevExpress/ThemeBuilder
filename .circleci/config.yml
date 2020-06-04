@@ -11,8 +11,8 @@ jobs:
           name: Install packages
           command: npm install
       - run:
-          name: Run linter
-          command: npm run lint
+          name: Run linter and build
+          command: npm run test
 
 workflows:
   version: 2
