@@ -136,7 +136,7 @@
 }
 
 .left-menu .working-area .name.top .search-container .search {
-    background-image: url(/images/search.svg);
+    background-image: url(~/images/search.svg);
     cursor: default;
     left: 7px;
 }
@@ -156,7 +156,7 @@
 }
 
 .left-menu .working-area .name .arrow.menu {
-    background-image: url(/images/sandwich.svg);
+    background-image: url(~/images/sandwich.svg);
 }
 
 .left-menu .working-area .scroll-container {
