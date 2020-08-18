@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as themes from 'devextreme-themebuilder/modules/themes.js';
+import { default as themes } from 'devextreme-themebuilder/modules/themes.js';
 import { Subscription } from 'rxjs';
 import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
 

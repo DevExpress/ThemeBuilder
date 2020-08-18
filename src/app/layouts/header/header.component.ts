@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as themes from 'devextreme-themebuilder/modules/themes';
+import { default as themes } from 'devextreme-themebuilder/modules/themes';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
 import { Subscription } from 'rxjs';

@@ -69,6 +69,7 @@ import { PreviewModule } from './preview/preview.module';
 import { ButtonIconComponent } from './icons/button-icon/button-icon.component';
 import { IconLoadingComponent } from './icons/icon-loading/icon-loading.component';
 import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip/help-tooltip.component';
+import { ThemeBuilder } from './themebuilder.service';
 
 @NgModule({
     declarations: [
@@ -136,7 +137,8 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         MetadataRepositoryService,
         NamesService,
         ImportService,
-        LoadingService
+        LoadingService,
+        ThemeBuilder
     ],
     bootstrap: [AppComponent]
 })
