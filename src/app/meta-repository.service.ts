@@ -7,13 +7,14 @@ import { LoadingService } from './loading.service';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
 import { MetaItem } from './types/meta-item';
-import { Theme } from './types/theme';
+import { Theme, ThemeConfig } from './types/theme';
 import { Metadata } from './types/metadata';
 
 @Injectable()
 export class MetadataRepositoryService {
     private modifiedMetaCollection: ExportedItem[] = [];
     private metadata: Metadata;
+    private themesConfig: ThemeConfig[];
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
@@ -21,9 +22,8 @@ export class MetadataRepositoryService {
     globalBuildNumber = 0;
 
     constructor(private router: Router, private themeBuilder: ThemeBuilderService, private loading: LoadingService) {
-        this.themeBuilder.getMetadata().then((data) => {
-            this.metadata = data;
-        });
+        this.getMetadata();
+        this.getThemes();
 
         this.build();
 
@@ -57,13 +57,21 @@ export class MetadataRepositoryService {
         this.modifiedMetaCollection = [];
     }
 
-    getData(): Promise<MetaItem[]> {
+    private getMetadata(): Promise<Metadata> {
         if(this.metadata) {
-            return Promise.resolve(this.metadata[this.theme.name]);
+            return Promise.resolve(this.metadata);
         }
 
         return this.themeBuilder.getMetadata().then((metadata) => {
             if(!this.metadata) this.metadata = metadata;
+            return metadata;
+        });
+    }
+
+    getData(): Promise<MetaItem[]> {
+        const promiseMetadata = this.getMetadata();
+
+        return promiseMetadata.then((metadata) => {
             return metadata[this.theme.name];
         });
     }
@@ -109,19 +117,6 @@ export class MetadataRepositoryService {
 
             if(savedBuildNumber !== this.globalBuildNumber) return;
 
-            const items = [];
-            Object.keys(result.compiledMetadata).forEach((dataKey) => {
-                if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
-                    items.push(this.getDataItemByKey(dataKey));
-                }
-            });
-
-            Promise.all(items).then((resolveItems) => {
-                resolveItems.forEach((item) => {
-                    item.Value = result.compiledMetadata[item.Key];
-                });
-            });
-
             if(isFirstBootstrapBuild) {
                 for(const dataKey in result.modifyVars) {
                     if(Object.prototype.hasOwnProperty.call(result.modifyVars, dataKey)) {
@@ -130,8 +125,21 @@ export class MetadataRepositoryService {
                 }
             }
 
-            this.css.next(result.css);
-            return result;
+            const itemPromises = [];
+            Object.keys(result.compiledMetadata).forEach((dataKey) => {
+                if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
+                    itemPromises.push(this.getDataItemByKey(dataKey));
+                }
+            });
+
+            return Promise.all(itemPromises).then((resolveItems) => {
+                resolveItems.forEach((item) => {
+                    item.Value = result.compiledMetadata[item.Key];
+                });
+
+                this.css.next(result.css);
+                return result;
+            });
         });
     }
 
@@ -177,5 +185,16 @@ export class MetadataRepositoryService {
 
     getVersion(): string {
         return this.metadata.version;
+    }
+
+    getThemes(): Promise<ThemeConfig[]> {
+        if(this.themesConfig) {
+            return Promise.resolve(this.themesConfig);
+        }
+
+        return this.themeBuilder.getThemes().then((themesConfig) => {
+            if(!this.themesConfig) this.themesConfig = themesConfig;
+            return themesConfig;
+        });
     }
 }

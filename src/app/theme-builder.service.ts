@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
-import { Theme } from './types/theme';
+import { Theme, ThemeConfig } from './types/theme';
 import { Metadata } from './types/metadata';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class ThemeBuilderService {
 
     constructor(private http: HttpClient) {}
 
-    private getTheme(theme: Theme, config: any): Promise<BuilderResult> {
+    private build(theme: Theme, config: any): Promise<BuilderResult> {
         config.baseTheme = theme.name + '.' + theme.colorScheme.replace(/-/g, '.');
 
         const postBuilder: Promise<any> = this.http.post(`${this.url}/buildtheme`, config).toPromise();
@@ -19,7 +19,7 @@ export class ThemeBuilderService {
     }
 
     buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: ExportedItem[], widgets: string[], noClean = true): Promise<BuilderResult> {
-        return this.getTheme(theme, {
+        return this.build(theme, {
             makeSwatch,
             widgets,
             outputColorScheme: outColorScheme,
@@ -30,7 +30,7 @@ export class ThemeBuilderService {
 
     buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number): Promise<BuilderResult> {
         const SCSS_BOOTSTRAP_VERSION = 4;
-        return this.getTheme(theme, {
+        return this.build(theme, {
             data: bootstrapVariables,
             inputFile: bootstrapVersion === SCSS_BOOTSTRAP_VERSION ? '.scss' : '.less'
         });
@@ -38,6 +38,11 @@ export class ThemeBuilderService {
 
     getMetadata(): Promise<Metadata> {
         const promise: Promise<any> = this.http.get(`${this.url}/metadata`).toPromise();
+        return promise;
+    }
+
+    getThemes(): Promise<ThemeConfig[]> {
+        const promise: Promise<any> = this.http.get(`${this.url}/themes`).toPromise();
         return promise;
     }
 }

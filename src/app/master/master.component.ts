@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { default as themes } from 'devextreme-themebuilder/modules/themes.js';
 import { Subscription } from 'rxjs';
 import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
+import { MetadataRepositoryService } from '../meta-repository.service';
+import { ThemeConfig } from '../types/theme';
 
 @Component({
     templateUrl: './master.component.html',
@@ -11,7 +12,6 @@ import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
 
 export class MasterComponent implements OnInit, OnDestroy {
     showIframe = false;
-    themes: any[];
     themeName: string;
     colorScheme: string;
     isThemeCompact: boolean;
@@ -21,7 +21,8 @@ export class MasterComponent implements OnInit, OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
-        private appLayoutComponent: AppLayoutComponent
+        private appLayoutComponent: AppLayoutComponent,
+        private metadataService: MetadataRepositoryService
     ) {
         this.route.params.subscribe((params) => {
             this.themeName = params['theme'] || '';
@@ -34,20 +35,24 @@ export class MasterComponent implements OnInit, OnDestroy {
     }
 
     changeContent(): void {
-        this.themes = themes.filter((t) => t.name === this.themeName);
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        this.metadataService.getThemes().then((dataThemes: ThemeConfig[]) => {
+            const themes = dataThemes.filter((t) => t.name === this.themeName);
 
-        const themesBySize = this.themes.filter(
-            (t) => this.isThemeCompact ?
-                t.group.includes('Compact') :
-                !t.group.includes('Compact'));
-
-        if(this.themeName === 'material') {
-            // getting sorted list by background color
-            this.themesList = [].concat(
-                themesBySize.filter((t) => t.text.includes('Light')),
-                themesBySize.filter((t) => t.text.includes('Dark'))
-            );
-        } else this.themesList = themesBySize;
+            const themesBySize = themes.filter(
+                (t) => this.isThemeCompact ?
+                    t.group.includes('Compact') :
+                    !t.group.includes('Compact'));
+            if(this.themeName === 'material') {
+                // getting sorted list by background color
+                this.themesList = [].concat(
+                    themesBySize.filter((t) => t.text.includes('Light')),
+                    themesBySize.filter((t) => t.text.includes('Dark'))
+                );
+            } else {
+                this.themesList = themesBySize;
+            }
+        });
     }
 
     ngOnInit(): void {
