@@ -7,7 +7,7 @@ import { Metadata } from './types/metadata';
 
 @Injectable()
 export class ThemeBuilderService {
-    private url = 'http://localhost:3000';
+    private url = 'https://js.devexpress.com/api/themebuilder';
 
     constructor(private http: HttpClient) {}
 

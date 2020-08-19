@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import * as baseParameters from 'devextreme-themebuilder/modules/base-parameters';
 import { BehaviorSubject } from 'rxjs';
-import { ThemeBuilderService } from './builder.service';
+import { ThemeBuilderService } from './theme-builder.service';
 import { LoadingService } from './loading.service';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';

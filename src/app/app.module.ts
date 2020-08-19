@@ -50,7 +50,7 @@ import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.c
 import { MasterComponent } from './master/master.component';
 import { PreviewIndexComponent } from './preview/index.component';
 
-import { ThemeBuilderService } from './builder.service';
+import { ThemeBuilderService } from './theme-builder.service';
 import { ImportService } from './import.service';
 import { LoadingService } from './loading.service';
 import { MetadataRepositoryService } from './meta-repository.service';
