@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import * as baseParameters from 'devextreme-themebuilder/modules/base-parameters';
 import { BehaviorSubject } from 'rxjs';
 import { ThemeBuilderService } from './theme-builder.service';
 import { LoadingService } from './loading.service';
@@ -148,7 +147,7 @@ export class MetadataRepositoryService {
 
         this.getData().then((items) => {
             items.forEach((item) => {
-                const index = baseParameters.indexOf(item.Key.replace('$', '@'));
+                const index = this.metadata.baseParameters.indexOf(item.Key.replace('$', '@'));
                 if(index >= 0) result[index] = item;
             });
         });

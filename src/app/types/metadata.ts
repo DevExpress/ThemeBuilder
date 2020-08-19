@@ -4,4 +4,5 @@ export class Metadata {
     generic: MetaItem[];
     material: MetaItem[];
     version: string;
+    baseParameters: string[];
 }
