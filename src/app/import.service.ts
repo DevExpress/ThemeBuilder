@@ -2,12 +2,11 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { MetadataRepositoryService } from './meta-repository.service';
-import { ThemeBuilder } from './themebuilder.service';
 
 @Injectable()
 export class ImportService {
 
-    constructor(private metaRepository: MetadataRepositoryService, private route: Router, private themeBuilder: ThemeBuilder) {}
+    constructor(private metaRepository: MetadataRepositoryService, private route: Router) {}
     private savedMetadata: any = {};
     private normalizedMetadata: any = {};
     changed = new EventEmitter();
@@ -46,7 +45,7 @@ export class ImportService {
             baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
             outputColorScheme: customSchemeName,
             makeSwatch: useSwatch,
-            version: this.themeBuilder.getVersion(),
+            version: this.metaRepository.getVersion(),
             widgets
         };
 

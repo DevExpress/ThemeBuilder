@@ -50,7 +50,7 @@ import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.c
 import { MasterComponent } from './master/master.component';
 import { PreviewIndexComponent } from './preview/index.component';
 
-import { BuilderService } from './builder.service';
+import { ThemeBuilderService } from './builder.service';
 import { ImportService } from './import.service';
 import { LoadingService } from './loading.service';
 import { MetadataRepositoryService } from './meta-repository.service';
@@ -69,7 +69,6 @@ import { PreviewModule } from './preview/preview.module';
 import { ButtonIconComponent } from './icons/button-icon/button-icon.component';
 import { IconLoadingComponent } from './icons/icon-loading/icon-loading.component';
 import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip/help-tooltip.component';
-import { ThemeBuilder } from './themebuilder.service';
 
 @NgModule({
     declarations: [
@@ -133,12 +132,11 @@ import { ThemeBuilder } from './themebuilder.service';
         AppRoutingModule
     ],
     providers: [
-        BuilderService,
+        ThemeBuilderService,
         MetadataRepositoryService,
         NamesService,
         ImportService,
-        LoadingService,
-        ThemeBuilder
+        LoadingService
     ],
     bootstrap: [AppComponent]
 })
