@@ -17,10 +17,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     currentThemeId: number;
 
-    private themes: Promise<ThemeConfig[]>;
+    private themeConfigs: ThemeConfig[];
 
-    constructor(private metadataService: MetadataRepositoryService, private route: Router) {
-        this.themes = this.metadataService.getThemes();
+    constructor(private metadataService: MetadataRepositoryService, private route: Router) {}
+
+    private getThemesConfig(): Promise<ThemeConfig[]> {
+        if(this.themeConfigs) {
+            return Promise.resolve(this.themeConfigs);
+        }
+
+        return this.metadataService.getThemes().then((themes) => {
+            if(!this.themeConfigs) this.themeConfigs = themes;
+            return themes;
+        });
     }
 
     themeChanged(e): void {
@@ -30,7 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.themes.then((themes) => {
+        this.getThemesConfig().then((themes) => {
             const newTheme = themes.filter((i) => i.themeId === e.value);
 
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -53,9 +62,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.themes.then((themes) => {
+        this.getThemesConfig().then((themes) => {
             this.switcherData = new DataSource({
-                store: themes.filter((theme) => theme.group !== 'Mobile'),
+                store: themes,
                 key: 'themeId',
                 group: 'group'
             });

@@ -8,7 +8,7 @@
 
     <ng-template #switcherBlock>
         <div class="separator first"></div>
-        <div class="switcher">
+        <div *ngIf="switcherData" class="switcher">
             <dx-select-box
                 class="switcher-editor"
                 [dataSource]="switcherData"
