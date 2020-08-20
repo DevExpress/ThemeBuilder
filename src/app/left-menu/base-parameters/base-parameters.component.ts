@@ -24,7 +24,9 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
     ) { }
 
     updateData(): void {
-        this.editorsData = this.metadataRepository.getBaseParameters();
+        this.metadataRepository.getBaseParameters().then((baseParameters) => {
+            this.editorsData = baseParameters;
+        });
     }
 
     themeSizeChanged(e): void {

@@ -142,17 +142,15 @@ export class MetadataRepositoryService {
         });
     }
 
-    getBaseParameters(): MetaItem[] {
-        const result: MetaItem[] = [];
-
-        this.getData().then((items) => {
+    getBaseParameters(): Promise<MetaItem[]> {
+        return this.getData().then((items) => {
+            const result: MetaItem[] = [];
             items.forEach((item) => {
                 const index = this.metadata.baseParameters.indexOf(item.Key.replace('$', '@'));
                 if(index >= 0) result[index] = item;
             });
+            return result;
         });
-
-        return result;
     }
 
     getModifiedItems(): ExportedItem[] {
