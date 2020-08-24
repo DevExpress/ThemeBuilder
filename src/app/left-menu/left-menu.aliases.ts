@@ -194,6 +194,11 @@ export class LeftMenuAlias {
             equivalents: 'dxScrollView, dx-scroll-view',
             regs: [/scrollable-/i],
             route: 'scrollview'
+        }, {
+            name: 'FieldSet',
+            equivalents: 'field set',
+            regs: [/fieldset-/i],
+            route: 'fieldset'
         }
     ];
 
