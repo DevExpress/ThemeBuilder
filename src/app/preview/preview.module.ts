@@ -9,6 +9,7 @@ import { DatagridComponent } from './datatgrid/datatgrid.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { EditorsComponent } from './editors/editors.component';
 import { FilterbuilderComponent } from './filterbuilder/filterbuilder.component';
+import { FieldSetComponent } from './fieldset/fieldset.component';
 import { FormComponent } from './form/form.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ListComponent } from './list/list.component';
@@ -40,6 +41,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ButtonsComponent,
         EditorsComponent,
         FilterbuilderComponent,
+        FieldSetComponent,
         FormComponent,
         GalleryComponent,
         ListComponent,
@@ -66,6 +68,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ButtonsComponent,
         EditorsComponent,
         FilterbuilderComponent,
+        FieldSetComponent,
         FormComponent,
         GalleryComponent,
         ListComponent,

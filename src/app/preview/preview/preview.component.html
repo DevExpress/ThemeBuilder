@@ -158,6 +158,13 @@
                 <app-drawer #widget></app-drawer>
             </div>
         </div>
+        <div class="flex-item">
+            <app-button-detailed widget="fieldset" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-label">FIELDSET</div>
+            <div class="flex-value">
+                <app-fieldset #widget></app-fieldset>
+            </div>
+        </div>
         <div class="flex-item empty"></div>
     </div>
 </dx-scroll-view>

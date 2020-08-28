@@ -23,7 +23,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         'progressbars',
         'sliders',
         'scrollview',
-        'filterbuilder'
+        'filterbuilder',
+        'fieldset'
     ];
 
     isWidgetClosed = true;
