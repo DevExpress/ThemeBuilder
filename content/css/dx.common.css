@@ -1,7 +1,7 @@
 /**
 * DevExtreme (dx.common.css)
-* Version: 20.1.6
-* Build date: Fri Jul 17 2020
+* Version: 20.1.7
+* Build date: Tue Aug 25 2020
 *
 * Copyright (c) 2012 - 2020 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -3911,6 +3911,8 @@
   visibility: hidden;
   background-color: transparent;
   pointer-events: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
 }
 .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table .dx-header-row td.dx-pointer-events-none {
   border-bottom-color: transparent;
@@ -4198,17 +4200,16 @@
   text-overflow: clip;
   width: 100px;
   min-width: 100px;
+  white-space: nowrap;
 }
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit.dx-command-edit-with-icons {
   width: 80px;
   min-width: 80px;
-  line-height: 1;
-  white-space: nowrap;
 }
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit.dx-command-edit-with-icons .dx-link {
   text-decoration: none;
 }
-.dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit .dx-link-icon {
+.dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit .dx-link {
   display: inline-block;
 }
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-expand {
@@ -4225,6 +4226,10 @@
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-adaptive {
   padding: 0;
   vertical-align: middle;
+}
+.dx-datagrid-content .dx-datagrid-table .dx-data-row .dx-command-edit-with-icons {
+  line-height: 1;
+  white-space: nowrap;
 }
 .dx-datagrid-content .dx-datagrid-table .dx-filter-range-content {
   padding: 7px 7px 7px 32px;
@@ -4981,6 +4986,8 @@
   visibility: hidden;
   background-color: transparent;
   pointer-events: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
 }
 .dx-treelist .dx-treelist-content-fixed .dx-treelist-table .dx-header-row td.dx-pointer-events-none {
   border-bottom-color: transparent;
@@ -5285,17 +5292,16 @@ input.dx-hidden {
   text-overflow: clip;
   width: 100px;
   min-width: 100px;
+  white-space: nowrap;
 }
 .dx-treelist-content .dx-treelist-table .dx-row .dx-command-edit.dx-command-edit-with-icons {
   width: 80px;
   min-width: 80px;
-  line-height: 1;
-  white-space: nowrap;
 }
 .dx-treelist-content .dx-treelist-table .dx-row .dx-command-edit.dx-command-edit-with-icons .dx-link {
   text-decoration: none;
 }
-.dx-treelist-content .dx-treelist-table .dx-row .dx-command-edit .dx-link-icon {
+.dx-treelist-content .dx-treelist-table .dx-row .dx-command-edit .dx-link {
   display: inline-block;
 }
 .dx-treelist-content .dx-treelist-table .dx-row .dx-command-expand {
@@ -5312,6 +5318,10 @@ input.dx-hidden {
 .dx-treelist-content .dx-treelist-table .dx-row .dx-command-adaptive {
   padding: 0;
   vertical-align: middle;
+}
+.dx-treelist-content .dx-treelist-table .dx-data-row .dx-command-edit-with-icons {
+  line-height: 1;
+  white-space: nowrap;
 }
 .dx-treelist-content .dx-treelist-table .dx-filter-range-content {
   padding: 7px 7px 7px 32px;
@@ -6448,6 +6458,7 @@ input.dx-hidden {
   line-height: normal;
   word-wrap: break-word;
 }
+.dx-dropdownbox.dx-dropdowneditor-active .dx-invalid-message-auto .dx-overlay-wrapper,
 .dx-invalid-message-always .dx-overlay-wrapper,
 .dx-invalid-message-visible.dx-invalid .dx-invalid-message-auto .dx-overlay-wrapper,
 .dx-lookup.dx-dropdowneditor-active .dx-invalid-message-auto .dx-overlay-wrapper,
@@ -6850,6 +6861,7 @@ input.dx-hidden {
   top: 0;
 }
 .dx-drawer-shader {
+  z-index: 1001;
   position: absolute;
   top: 0;
   height: 100%;
@@ -7269,6 +7281,11 @@ input.dx-hidden {
   pointer-events: none;
   position: absolute;
   right: 15px;
+}
+.dx-htmleditor-content.ql-blank::after {
+  content: attr(data-placeholder);
+  z-index: -1;
+  visibility: hidden;
 }
 .dx-htmleditor-content pre {
   white-space: pre-wrap;
@@ -7904,11 +7921,17 @@ input.dx-hidden {
   min-height: 300px;
   max-height: 400px;
 }
-.dx-filemanager-dialog-delete-item-popup>.dx-overlay-content,
-.dx-filemanager-dialog-name-editor-popup>.dx-overlay-content {
+.dx-filemanager-dialog-name-editor-popup > .dx-overlay-content {
   max-width: 340px;
   min-height: 180px;
   max-height: 180px;
+}
+.dx-filemanager-dialog-delete-item-popup > .dx-overlay-content {
+  max-width: 340px;
+  min-height: 180px;
+}
+.dx-filemanager-dialog-delete-item-popup > .dx-overlay-content .dx-popup-content .dx-filemanager-dialog-delete-item {
+  overflow-wrap: break-word;
 }
 .dx-filemanager-progresspanel {
   -webkit-box-sizing: border-box;
@@ -8325,6 +8348,14 @@ input.dx-hidden {
 }
 .dx-gantt .dx-gantt-view .dx-scrollable-scrollbar {
   z-index: 100;
+}
+.dx-gantt .dx-gantt-view .dx-gantt-parent:before {
+  border-left-color: inherit;
+  border-top-color: inherit;
+}
+.dx-gantt .dx-gantt-view .dx-gantt-parent:after {
+  border-right-color: inherit;
+  border-top-color: inherit;
 }
 .dx-deferrendering .dx-deferrendering-loadindicator-container {
   width: 100%;
