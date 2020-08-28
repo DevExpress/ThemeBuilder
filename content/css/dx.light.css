@@ -1,7 +1,7 @@
 /**
 * DevExtreme (dx.light.css)
-* Version: 20.1.6
-* Build date: Fri Jul 17 2020
+* Version: 20.1.7
+* Build date: Tue Aug 25 2020
 *
 * Copyright (c) 2012 - 2020 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -11342,12 +11342,9 @@
   width: 100%;
   height: 0;
 }
-.dx-scheduler-small .dx-scheduler-agenda .dx-scheduler-scrollable-appointments {
-  padding-left: 35px;
-}
 .dx-scheduler-small .dx-scheduler-agenda .dx-scheduler-scrollable-appointments.dx-rtl {
   padding-left: 0;
-  padding-right: 35px;
+  padding-right: 70px;
 }
 .dx-scheduler-agenda .dx-scheduler-time-panel-cell:after {
   display: none;
@@ -13961,6 +13958,12 @@
 .dx-gantt .dx-gantt-toolbar-wrapper .dx-gantt-toolbar-separator {
   border-left-color: #ddd;
 }
+.dx-gantt .dx-treelist-text-content {
+  min-height: 19px;
+}
+.dx-gantt .dx-treelist-icon-container {
+  max-height: 19px;
+}
 .dx-gantt .dx-treelist .dx-treelist-rowsview .dx-selection.dx-row > td,
 .dx-gantt .dx-treelist .dx-treelist-rowsview .dx-selection.dx-row > tr > td,
 .dx-gantt .dx-treelist .dx-treelist-rowsview .dx-selection.dx-row:hover > td,
@@ -14045,6 +14048,9 @@
   height: 19px;
   line-height: 19px;
   background-color: #5cb85c;
+  border-left-color: #5cb85c;
+  border-right-color: #5cb85c;
+  border-top-color: #5cb85c;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -14067,10 +14073,6 @@
   border-right-color: transparent;
   border-bottom-color: transparent;
 }
-.dx-gantt .dx-gantt-taskWrapper .dx-gantt-task.dx-gantt-parent::before {
-  border-left-color: #5cb85c;
-  border-top-color: #5cb85c;
-}
 .dx-gantt .dx-gantt-taskWrapper .dx-gantt-task.dx-gantt-parent:not(.dx-gantt-noPrg) .dx-gantt-tPrg::before {
   border-left-color: rgba(255,255,255,.2);
   border-top-color: rgba(255,255,255,.2);
@@ -14080,10 +14082,6 @@
   right: 0;
   border-left-color: transparent;
   border-bottom-color: transparent;
-}
-.dx-gantt .dx-gantt-taskWrapper .dx-gantt-task.dx-gantt-parent::after {
-  border-right-color: #5cb85c;
-  border-top-color: #5cb85c;
 }
 .dx-gantt .dx-gantt-taskWrapper .dx-gantt-task.dx-gantt-parent.dx-gantt-cmpl::after {
   border-right-color: rgba(255,255,255,.2);
