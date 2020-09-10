@@ -4,7 +4,6 @@ import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
-import { ThemeConfig } from '../../types/theme';
 
 @Component({
     selector: 'app-header',
@@ -17,20 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     currentThemeId: number;
 
-    private themeConfigs: ThemeConfig[];
-
     constructor(private metadataService: MetadataRepositoryService, private route: Router) {}
-
-    private getThemesConfig(): Promise<ThemeConfig[]> {
-        if(this.themeConfigs) {
-            return Promise.resolve(this.themeConfigs);
-        }
-
-        return this.metadataService.getThemes().then((themes) => {
-            if(!this.themeConfigs) this.themeConfigs = themes;
-            return themes;
-        });
-    }
 
     themeChanged(e): void {
         if(e.component.canceled) {
@@ -39,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.getThemesConfig().then((themes) => {
+        this.metadataService.getThemes().then((themes) => {
             const newTheme = themes.filter((i) => i.themeId === e.value);
 
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -57,12 +43,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 }
             });
         });
-
     }
 
     ngOnInit(): void {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.getThemesConfig().then((themes) => {
+        this.metadataService.getThemes().then((themes) => {
             this.switcherData = new DataSource({
                 store: themes,
                 key: 'themeId',

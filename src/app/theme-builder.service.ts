@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
-import { Theme, ThemeConfig } from './types/theme';
+import { Theme } from './types/theme';
 import { Metadata } from './types/metadata';
 
 @Injectable()
@@ -37,12 +37,7 @@ export class ThemeBuilderService {
     }
 
     getMetadata(): Promise<Metadata> {
-        const promise: Promise<any> = this.http.get(`${this.url}/metadata`).toPromise();
-        return promise;
-    }
-
-    getThemes(): Promise<ThemeConfig[]> {
-        const promise: Promise<any> = this.http.get(`${this.url}/themes`).toPromise();
+        const promise = this.http.get(`${this.url}/metadata`).toPromise() as Promise<Metadata>;
         return promise;
     }
 }

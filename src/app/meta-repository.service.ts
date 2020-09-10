@@ -13,7 +13,6 @@ import { Metadata } from './types/metadata';
 export class MetadataRepositoryService {
     private modifiedMetaCollection: ExportedItem[] = [];
     private metadata: Metadata;
-    private themesConfig: ThemeConfig[];
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
@@ -21,9 +20,6 @@ export class MetadataRepositoryService {
     globalBuildNumber = 0;
 
     constructor(private router: Router, private themeBuilder: ThemeBuilderService, private loading: LoadingService) {
-        this.getMetadata();
-        this.getThemes();
-
         this.build();
 
         this.router.events.subscribe((event) => {
@@ -185,13 +181,13 @@ export class MetadataRepositoryService {
     }
 
     getThemes(): Promise<ThemeConfig[]> {
-        if(this.themesConfig) {
-            return Promise.resolve(this.themesConfig);
+        if(this.metadata) {
+            return Promise.resolve(this.metadata.themes);
         }
 
-        return this.themeBuilder.getThemes().then((themesConfig) => {
-            if(!this.themesConfig) this.themesConfig = themesConfig;
-            return themesConfig;
+        return this.getMetadata().then((metadata) => {
+            if(!this.metadata) this.metadata = metadata;
+            return metadata.themes;
         });
     }
 }
