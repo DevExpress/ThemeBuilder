@@ -39,6 +39,8 @@ export class ImportService {
     }
 
     exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
+        const SPACES_NUMBER = 4;
+
         return this.metaRepository.getVersion().then((version) => {
             const exportedObject = {
                 ...this.savedMetadata,
@@ -46,11 +48,9 @@ export class ImportService {
                 baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
                 outputColorScheme: customSchemeName,
                 makeSwatch: useSwatch,
-                version: version,
+                version,
                 widgets
             };
-
-            const SPACES_NUMBER = 4;
 
             return JSON.stringify(exportedObject, null, SPACES_NUMBER);
         });
