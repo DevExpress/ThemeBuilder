@@ -176,8 +176,15 @@ export class MetadataRepositoryService {
         return this.build(bootstrapData, bootstrapVersion);
     }
 
-    getVersion(): string {
-        return this.metadata.version;
+    getVersion(): Promise<string> {
+        if(this.metadata) {
+            return Promise.resolve(this.metadata.version);
+        }
+
+        return this.getMetadata().then((metadata) => {
+            if(!this.metadata) this.metadata = metadata;
+            return metadata.version;
+        });
     }
 
     getThemes(): Promise<ThemeConfig[]> {

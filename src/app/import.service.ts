@@ -38,20 +38,22 @@ export class ImportService {
         });
     }
 
-    exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[]): string {
-        const exportedObject = {
-            ...this.savedMetadata,
-            items: this.metaRepository.getModifiedItems(),
-            baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
-            outputColorScheme: customSchemeName,
-            makeSwatch: useSwatch,
-            version: this.metaRepository.getVersion(),
-            widgets
-        };
+    exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
+        return this.metaRepository.getVersion().then((version) => {
+            const exportedObject = {
+                ...this.savedMetadata,
+                items: this.metaRepository.getModifiedItems(),
+                baseTheme: [this.metaRepository.theme.name, this.metaRepository.theme.colorScheme.replace(/-/g, '.')].join('.'),
+                outputColorScheme: customSchemeName,
+                makeSwatch: useSwatch,
+                version: version,
+                widgets
+            };
 
-        const SPACES_NUMBER = 4;
+            const SPACES_NUMBER = 4;
 
-        return JSON.stringify(exportedObject, null, SPACES_NUMBER);
+            return JSON.stringify(exportedObject, null, SPACES_NUMBER);
+        });
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
