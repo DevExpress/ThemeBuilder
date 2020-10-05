@@ -103,7 +103,12 @@ export class MetadataRepositoryService {
         const currentTheme = this.theme;
         const buildResult = isFirstBootstrapBuild ?
             this.themeBuilder.buildThemeBootstrap(currentTheme, bootstrapData, bootstrapVersion) :
-            this.themeBuilder.buildTheme(currentTheme, false, null, this.modifiedMetaCollection, []);
+            this.themeBuilder.buildTheme(currentTheme, {
+                makeSwatch: false,
+                items: this.modifiedMetaCollection,
+                widgets: [],
+                noClean: true
+            });
 
         const savedBuildNumber = ++this.globalBuildNumber;
 
@@ -153,9 +158,16 @@ export class MetadataRepositoryService {
         return this.modifiedMetaCollection;
     }
 
-    export(outColorScheme: string, swatch: boolean, widgets: string[]): Promise<string> {
+    export(outColorScheme: string, swatch: boolean, widgets: string[], assetsBasePath: string): Promise<string> {
         return new Promise((resolve, reject): void => {
-            this.themeBuilder.buildTheme(this.theme, swatch, outColorScheme, this.modifiedMetaCollection, widgets, false).then((result) => {
+            this.themeBuilder.buildTheme(this.theme, {
+                makeSwatch: swatch,
+                outputColorScheme: outColorScheme,
+                items: this.modifiedMetaCollection,
+                widgets,
+                noClean: false,
+                assetsBasePath
+            }).then((result) => {
                 resolve(result.css);
             }, (error) => {
                 reject(error);

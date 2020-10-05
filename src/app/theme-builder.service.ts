@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BuilderResult } from './types/builder-result';
-import { ExportedItem } from './types/exported-item';
+import { BuilderConfig } from './types/builder-config';
 import { Theme } from './types/theme';
 import { Metadata } from './types/metadata';
 
@@ -11,21 +11,15 @@ export class ThemeBuilderService {
 
     constructor(private http: HttpClient) {}
 
-    private build(theme: Theme, config: any): Promise<BuilderResult> {
+    private build(theme: Theme, config: BuilderConfig): Promise<BuilderResult> {
         config.baseTheme = theme.name + '.' + theme.colorScheme.replace(/-/g, '.');
 
         const postBuilder: Promise<any> = this.http.post(`${this.url}/buildtheme`, config).toPromise();
         return postBuilder;
     }
 
-    buildTheme(theme: Theme, makeSwatch: boolean, outColorScheme: string, modifiedData: ExportedItem[], widgets: string[], noClean = true): Promise<BuilderResult> {
-        return this.build(theme, {
-            makeSwatch,
-            widgets,
-            outputColorScheme: outColorScheme,
-            items: modifiedData,
-            noClean
-        });
+    buildTheme(theme, config: BuilderConfig): Promise<BuilderResult> {
+        return this.build(theme, config);
     }
 
     buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number): Promise<BuilderResult> {

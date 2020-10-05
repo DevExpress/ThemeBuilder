@@ -4,11 +4,11 @@ export class LeftMenuAlias {
     static menu: LeftMenuItem[] = [
         {
             name: 'Basic Settings',
-            regs: [/badge-/i, /base-(?!(icon|label|link|spin|font|border-radius-small|border-radius-large))/i, /pager-/i],
+            regs: [/^\$badge-/i, /^\$base-(?!(icon|label|link|spin|font|border-radius-small|border-radius-large))/i, /pager-/i],
             route: 'base.common'
         }, {
             name: 'Typography Settings',
-            regs: [/base-(icon|label|link|spin|font)/i],
+            regs: [/^\$base-(icon|label|link|spin|font)/i],
             route: 'base.typography'
         }, {
             name: 'Data Grid / Tree List',

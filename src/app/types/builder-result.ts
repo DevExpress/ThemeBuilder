@@ -1,5 +1,7 @@
+import { MetaItem } from './meta-item';
+
 export class BuilderResult {
     css: string;
-    compiledMetadata: any;
-    modifyVars?: any;
+    compiledMetadata: Array<MetaItem>;
+    modifyVars?: { [key: string]: string };
 }
