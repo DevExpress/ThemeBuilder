@@ -49,8 +49,8 @@ export class PreviewIndexComponent implements OnInit {
         style.id = DYNAMIC_STYLES_ID;
 
         css = css
-            .replace(/url\(icons\/dxicons/gi, 'url(content/css/icons/dxicons')
-            .replace(/url\(fonts\/Roboto/gi, 'url(content/css/fonts/Roboto');
+            .replace(/icons\/dxicons/gi, 'content/css/icons/dxicons')
+            .replace(/fonts\/Roboto/gi, 'content/css/fonts/Roboto');
 
         style.appendChild(document.createTextNode(css));
         head.appendChild(style);

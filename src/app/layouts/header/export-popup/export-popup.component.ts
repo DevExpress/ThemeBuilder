@@ -223,9 +223,11 @@ export class ExportPopupComponent implements OnInit {
             'export',
             'save metadata (' + this.importService.getThemeName() + ')');
 
-        const metaString = this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets());
-        this.textContent = metaString;
-        if(save) fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets()).then((metaString) => {
+            this.textContent = metaString;
+            if(save) fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
+        });
     }
 
     exportZip(): void {
