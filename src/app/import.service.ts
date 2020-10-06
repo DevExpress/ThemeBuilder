@@ -2,16 +2,17 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { MetadataRepositoryService } from './meta-repository.service';
+import { BuilderConfig } from './types/builder-config';
 
 @Injectable()
 export class ImportService {
 
     constructor(private metaRepository: MetadataRepositoryService, private route: Router) {}
-    private savedMetadata: any = {};
-    private normalizedMetadata: any = {};
+    private savedMetadata: BuilderConfig = {};
+    private normalizedMetadata: BuilderConfig = {};
     changed = new EventEmitter();
 
-    importBootstrapVariables(variables: string, bootstrapVersion: number, redirectView: string): Promise<any> {
+    importBootstrapVariables(variables: string, bootstrapVersion: number, redirectView: string): Promise<void> {
         this.clearSavedMetadata();
         return this.metaRepository.importBootstrap(variables, bootstrapVersion).then(() => {
             this.route.navigate([redirectView, this.metaRepository.theme.name, this.metaRepository.theme.colorScheme]);
@@ -57,10 +58,10 @@ export class ImportService {
     }
 
     exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
-        return this.metaRepository.export(customSchemeName, useSwatch, widgets);
+        return this.metaRepository.export(customSchemeName, useSwatch, widgets, this.savedMetadata.assetsBasePath);
     }
 
-    getSavedMetadata(): any {
+    getSavedMetadata(): BuilderConfig {
         return this.savedMetadata;
     }
 

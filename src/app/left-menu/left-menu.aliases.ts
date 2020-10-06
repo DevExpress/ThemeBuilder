@@ -4,11 +4,11 @@ export class LeftMenuAlias {
     static menu: LeftMenuItem[] = [
         {
             name: 'Basic Settings',
-            regs: [/badge-/i, /base-(?!(icon|label|link|spin|font|border-radius-small|border-radius-large))/i, /pager-/i],
+            regs: [/^\$badge-/i, /^\$base-(?!(icon|label|link|spin|font|border-radius-small|border-radius-large|invalid))/i, /pager-/i],
             route: 'base.common'
         }, {
             name: 'Typography Settings',
-            regs: [/base-(icon|label|link|spin|font)/i],
+            regs: [/^\$base-(icon|label|link|spin|font)/i],
             route: 'base.typography'
         }, {
             name: 'Data Grid / Tree List',
@@ -93,7 +93,8 @@ export class LeftMenuAlias {
                 regs: [/tagbox-/i]
             }, {
                 name: 'Validation',
-                equivalents: 'dxValidator, dx-validator'
+                equivalents: 'dxValidator, dx-validator',
+                regs: [/^\$base-invalid/i]
             }, {
                 name: 'File Uploader',
                 equivalents: 'dxFileUploader, dx-file-uploader',
