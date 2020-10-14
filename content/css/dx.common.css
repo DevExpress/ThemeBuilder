@@ -1,7 +1,7 @@
 /**
 * DevExtreme (dx.common.css)
-* Version: 20.1.7
-* Build date: Tue Aug 25 2020
+* Version: 20.1.8
+* Build date: Fri Oct 09 2020
 *
 * Copyright (c) 2012 - 2020 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -2458,24 +2458,33 @@
   backface-visibility: visible;
 }
 .dx-toast-content {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 10px;
-  vertical-align: middle;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .dx-toast-icon {
-  display: table-cell;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   background-size: contain;
   width: 35px;
   height: 35px;
   margin-right: 10px;
-  vertical-align: middle;
   background-position: left center;
   background-repeat: no-repeat;
 }
 .dx-toast-message {
-  display: table-cell;
-  vertical-align: middle;
-  padding-left: 10px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 .dx-toast-info {
   background-color: #80b9e4;
@@ -2489,9 +2498,9 @@
 .dx-toast-success {
   background-color: #6ec881;
 }
-.dx-rtl .dx-toast-message {
-  padding-left: 0;
-  padding-right: 10px;
+.dx-rtl .dx-toast-icon {
+  margin-left: 10px;
+  margin-right: 0;
 }
 .dx-popup-title {
   padding: 10px;
@@ -3574,6 +3583,7 @@
   cursor: crosshair;
   border-radius: 100%;
   z-index: 5;
+  position: absolute;
 }
 .dx-colorview-alpha-channel-handle,
 .dx-colorview-hue-scale-handle {
@@ -6451,7 +6461,6 @@ input.dx-hidden {
 }
 .dx-invalid-message > .dx-overlay-content {
   display: inline-block;
-  position: relative;
   border-width: 0;
   padding: 10px;
   font-size: .85em;
@@ -7601,7 +7610,7 @@ input.dx-hidden {
   align-items: center;
 }
 .dx-filemanager .dx-filemanager-progress-box.dx-filemanager-progress-box-without-close-button {
-  padding-right: 41px;
+  padding-right: 10px;
 }
 .dx-filemanager .dx-filemanager-progress-box .dx-filemanager-progress-box-image {
   margin-right: 10px;
