@@ -51,12 +51,13 @@ export class IframeComponent implements OnDestroy, OnInit {
     }
 
     onIframeLoad(): void {
-        if(this.cssSubscription) this.cssSubscription.unsubscribe();
+        const frameWindow = this.iframe.nativeElement.contentWindow;
 
+        if(this.cssSubscription) this.cssSubscription.unsubscribe();
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
             const theme = this.metadataService.theme;
             const themeSize = theme.colorScheme.includes('compact') ? 'compact' : 'normal';
-            this.iframe.nativeElement.contentWindow.postMessage({
+            frameWindow.postMessage({
                 css,
                 themeSize,
                 widget: this.widgetName.getValue()
@@ -65,7 +66,7 @@ export class IframeComponent implements OnDestroy, OnInit {
 
         if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
         this.widgetSubscription = this.widgetName.subscribe((widget) => {
-            this.iframe.nativeElement.contentWindow.postMessage({ widget }, this.url);
+            frameWindow.postMessage({ widget }, this.url);
         });
     }
 
@@ -76,5 +77,14 @@ export class IframeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
+    }
+
+    ngAfterViewInit(): void {
+        const frameWindow = this.iframe.nativeElement.contentWindow;
+        if(frameWindow.document.readyState !== 'complete') {
+            frameWindow.onload = this.onIframeLoad.bind(this);
+        } else {
+            this.onIframeLoad();
+        }
     }
 }
