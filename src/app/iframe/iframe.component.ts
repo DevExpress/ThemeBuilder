@@ -46,12 +46,16 @@ export class IframeComponent implements OnDestroy, OnInit {
         }
 
         if(e.data.hideLoading) {
+            this.onIframeLoad();
             this.loading.hide();
         }
     }
 
     onIframeLoad(): void {
         const frameWindow = this.iframe.nativeElement.contentWindow;
+
+        // frameWindow can be null if iframe reloaded (wizard -> preview navigation)
+        if(frameWindow === null) return;
 
         if(this.cssSubscription) this.cssSubscription.unsubscribe();
         this.cssSubscription = this.metadataService.css.subscribe((css) => {
@@ -77,14 +81,5 @@ export class IframeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         window.addEventListener('message', this.receiveMessage.bind(this), false);
-    }
-
-    ngAfterViewInit(): void {
-        const frameWindow = this.iframe.nativeElement.contentWindow;
-        if(frameWindow.document.readyState !== 'complete') {
-            frameWindow.onload = this.onIframeLoad.bind(this);
-        } else {
-            this.onIframeLoad();
-        }
     }
 }

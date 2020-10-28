@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class PreviewIndexComponent implements OnInit {
+export class PreviewIndexComponent {
     isStylesReady = false;
     viewName: string;
     themeName: string;
@@ -58,7 +58,7 @@ export class PreviewIndexComponent implements OnInit {
         this.isStylesReady = true;
     }
 
-    ngOnInit(): void {
+    ngAfterViewInit(): void {
         const messageListener = this.receiveMessage.bind(this);
         window.removeEventListener('message', messageListener);
         window.addEventListener('message', messageListener, false);
