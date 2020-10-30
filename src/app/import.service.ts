@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as normalize from 'devextreme-themebuilder/modules/config-normalizer';
+import normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { MetadataRepositoryService } from './meta-repository.service';
 import { BuilderConfig } from './types/builder-config';
 

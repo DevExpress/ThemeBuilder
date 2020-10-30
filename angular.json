@@ -23,22 +23,6 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/images",
-                            "src/_config.yml",
-                            {
-                                "glob": "**/*",
-                                "input": "./node_modules/devextreme-themebuilder/data/less",
-                                "output": "devextreme-themebuilder/data/less"
-                            },
-                            {
-                                "glob": "_variables.scss",
-                                "input": "./node_modules/bootstrap/scss/",
-                                "output": "bootstrap/scss/"
-                            },
-                            {
-                                "glob": "_functions.scss",
-                                "input": "./node_modules/bootstrap/scss/",
-                                "output": "bootstrap/scss/"
-                            },
                             {
                                 "glob": "dx.common.css",
                                 "input": "./node_modules/devextreme/dist/css",
@@ -58,11 +42,6 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/devextreme/dist/css/fonts",
                                 "output": "content/css/fonts"
-                            },
-                            {
-                                "glob": "sass.worker.js",
-                                "input": "./node_modules/sass.js/dist/",
-                                "output": "sass"
                             }
                         ],
                         "styles": [
