@@ -237,11 +237,18 @@ export class ExportPopupComponent implements OnInit {
         this.contentReady = false;
 
         fontExtension.forEach((extension) => {
-            zip.file(`${fontFilePath}.${extension}`, JSZipUtils.getBinaryContent(`content/css/${fontFilePath}.${extension}`));
+            zip.file(
+                `${fontFilePath}.${extension}`,
+                JSZipUtils.getBinaryContent(`content/css/${fontFilePath}.${extension}`)
+            );
         });
 
         const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName;
-        zip.file(fileName + '.css', this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets()));
+        zip.file(
+            fileName + '.css',
+            this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets()),
+            { binary: false }
+        );
 
         zip.generateAsync({type: 'blob'})
             .then((content) => {
