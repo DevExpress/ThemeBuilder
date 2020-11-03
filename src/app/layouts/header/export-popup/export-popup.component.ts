@@ -243,9 +243,9 @@ export class ExportPopupComponent implements OnInit {
             );
         });
 
-        const fileName = 'dx.' + this.importService.getThemeName() + '.' + this.schemeName;
+        const fileName = `dx.${this.importService.getThemeName()}.${this.schemeName}`;
         zip.file(
-            fileName + '.css',
+            `${fileName}.css`,
             this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets()),
             { binary: false }
         );
