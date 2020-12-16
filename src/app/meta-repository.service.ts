@@ -25,12 +25,14 @@ export class MetadataRepositoryService {
         this.router.events.subscribe((event) => {
             if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
+            const MAIN_VIEW_POSITION = 1;
             const THEME_POSITION = 2;
             const COLOR_SCHEME_POSITION = 3;
+            const mainView = urlParts[MAIN_VIEW_POSITION];
             const themeName = urlParts[THEME_POSITION];
             const colorScheme = urlParts[COLOR_SCHEME_POSITION];
 
-            if(!colorScheme && this.modifiedMetaCollection.length) {
+            if(mainView === 'master' && this.modifiedMetaCollection.length) {
                 this.forceRebuild = true;
             }
 
