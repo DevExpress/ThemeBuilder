@@ -120,9 +120,9 @@ export class MetadataRepositoryService {
             if(savedBuildNumber !== this.globalBuildNumber) return;
 
             if(isFirstBootstrapBuild) {
-                for(const dataKey in result.modifyVars) {
-                    if(Object.prototype.hasOwnProperty.call(result.modifyVars, dataKey)) {
-                        this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
+                for(const dataKey in result.compiledMetadata) {
+                    if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
+                        this.modifiedMetaCollection.push({ key: dataKey, value: result.compiledMetadata[dataKey] });
                     }
                 }
             }
