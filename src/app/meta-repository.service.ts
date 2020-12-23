@@ -25,12 +25,14 @@ export class MetadataRepositoryService {
         this.router.events.subscribe((event) => {
             if(!(event instanceof NavigationEnd)) return;
             const urlParts = event.url.split('/');
+            const MAIN_VIEW_POSITION = 1;
             const THEME_POSITION = 2;
             const COLOR_SCHEME_POSITION = 3;
+            const mainView = urlParts[MAIN_VIEW_POSITION];
             const themeName = urlParts[THEME_POSITION];
             const colorScheme = urlParts[COLOR_SCHEME_POSITION];
 
-            if(!colorScheme && this.modifiedMetaCollection.length) {
+            if(mainView === 'master' && this.modifiedMetaCollection.length) {
                 this.forceRebuild = true;
             }
 
@@ -118,9 +120,9 @@ export class MetadataRepositoryService {
             if(savedBuildNumber !== this.globalBuildNumber) return;
 
             if(isFirstBootstrapBuild) {
-                for(const dataKey in result.modifyVars) {
-                    if(Object.prototype.hasOwnProperty.call(result.modifyVars, dataKey)) {
-                        this.modifiedMetaCollection.push({ key: dataKey, value: result.modifyVars[dataKey] });
+                for(const dataKey in result.compiledMetadata) {
+                    if(Object.prototype.hasOwnProperty.call(result.compiledMetadata, dataKey)) {
+                        this.modifiedMetaCollection.push({ key: dataKey, value: result.compiledMetadata[dataKey] });
                     }
                 }
             }
