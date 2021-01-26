@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DevExtreme ThemeBuilder</title>
+    <base href="https://devexpress.github.io/ThemeBuilder/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="content/css/dx.common.css" />
+
+    <script>
+        function isIframe() {
+            return /preview|wizard/.test(window.location.pathname);
+        }
+
+        if(isIframe()) {
+            var themeMarker = "dx." + /generic|material/.exec(window.location.pathname)[0];
+            document.write('<style>.dx-theme-marker { font-family: "' + themeMarker + '"; }</style>');
+        } else {
+            document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.light.css" />');
+        }
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l='+l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WQWSD3L');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQWSD3L" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        body.hide-loading .loading {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -136px;
+            height: 272px;
+        }
+
+        .loading img {
+            transition-property: transform;
+            backface-visibility: hidden;
+            animation: rotate 2s linear infinite;
+            transform-origin: 50% 50%;
+            will-change: transform;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform:rotate(-360deg);
+            }
+        }
+    </style>
+<link rel="stylesheet" href="styles.92cf75e5fd06a500c21b.css"></head>
+
+<body>
+    <script>
+        if(isIframe()) {
+            document.body.classList.add("hide-loading");
+        }
+    </script>
+    <app-root>
+        <div class="loading">
+            <img src="images/loading.svg" alt="loading..." />
+        </div>
+    </app-root>
+<script src="runtime.c51bd5b1c616d9ffddc1.js" defer></script><script src="polyfills-es5.1bb0b25e99c839e745af.js" nomodule defer></script><script src="polyfills.c88001029ea52642c37f.js" defer></script><script src="main.2df265143310e0eae072.js" defer></script></body>
+</html>
