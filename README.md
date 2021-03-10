@@ -1,10 +1,10 @@
 [![CircleCI](https://circleci.com/gh/DevExpress/ThemeBuilder.svg?style=svg)](https://circleci.com/gh/DevExpress/ThemeBuilder)
 
-# DevExtreme ThemeBuilder
+# DevExtreme ThemeBuilder UI
  
-The DevExtreme ThemeBuilder allows you to modify themes shipped with DevExtreme or create custom themes. This tool is available [online](https://devexpress.github.io/ThemeBuilder/).
+The DevExtreme ThemeBuilder UI allows you to modify themes shipped with DevExtreme or create custom themes. This tool is available [online](https://devexpress.github.io/ThemeBuilder/).
  
-If you need to run the ThemeBuilder locally (for example, when working with a pre-release version or a version with a hotfix applied), clone this repository and follow the instructions below.
+If you need to run the ThemeBuilder UI locally, clone this repository and follow the instructions below.
 
 ## Prerequisites
 
@@ -22,3 +22,5 @@ npm start
 Go to http://localhost:4200/.
 
 If you need a specific version of the `devextreme` package, change it in the package.json file. Note that the `devextreme-themebuilder` and `devextreme-angular` packages' version should also be the same.
+
+NOTE: The ThemeBuilder UI creates themes for the latest minor DevExtreme version. If you want to create a theme for a specific version, use the [ThemeBuilder CLI](https://js.devexpress.com/Documentation/Guide/Common/DevExtreme_CLI/#ThemeBuilder).
