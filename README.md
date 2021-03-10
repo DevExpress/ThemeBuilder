@@ -21,6 +21,4 @@ npm start
 
 Go to http://localhost:4200/.
 
-If you need a specific version of the `devextreme` package, change it in the package.json file. Note that the `devextreme-themebuilder` and `devextreme-angular` packages' version should also be the same.
-
 NOTE: The ThemeBuilder UI creates themes for the latest minor DevExtreme version. If you want to create a theme for a specific version, use the [ThemeBuilder CLI](https://js.devexpress.com/Documentation/Guide/Common/DevExtreme_CLI/#ThemeBuilder).
