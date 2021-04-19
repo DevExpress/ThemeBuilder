@@ -232,8 +232,11 @@ export class DatagridComponent implements OnInit, OnDestroy {
             visible: true
         },
         selection: {
-            mode: 'multiple'
+            mode: 'multiple',
+            showCheckBoxesMode: 'always'
         },
+        focusedRowEnabled: true,
+        focusedRowIndex: 1,
         hoverStateEnabled: true,
         allowColumnResizing: true,
         allowColumnReordering: true,
