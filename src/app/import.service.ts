@@ -39,7 +39,7 @@ export class ImportService {
         });
     }
 
-    exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
+    exportMetadata(customSchemeName: string, useSwatch: boolean, widgets: string[], removeExternalResources: boolean): Promise<string> {
         const SPACES_NUMBER = 4;
 
         return this.metaRepository.getVersion().then((version) => {
@@ -50,15 +50,16 @@ export class ImportService {
                 outputColorScheme: customSchemeName,
                 makeSwatch: useSwatch,
                 version,
-                widgets
+                widgets,
+                removeExternalResources
             };
 
             return JSON.stringify(exportedObject, null, SPACES_NUMBER);
         });
     }
 
-    exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[]): Promise<string> {
-        return this.metaRepository.export(customSchemeName, useSwatch, widgets, this.savedMetadata.assetsBasePath);
+    exportCss(customSchemeName: string, useSwatch: boolean, widgets: string[], removeExternalResources: boolean): Promise<string> {
+        return this.metaRepository.export(customSchemeName, useSwatch, widgets, this.savedMetadata.assetsBasePath, removeExternalResources);
     }
 
     getSavedMetadata(): BuilderConfig {

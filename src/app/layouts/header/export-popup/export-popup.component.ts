@@ -67,6 +67,7 @@ export class ExportPopupComponent implements OnInit {
     textContent: string;
     contentReady = true;
     copyAreaActive = false;
+    removeExternalResources = false;
 
     constructor(
         private importService: ImportService,
@@ -167,6 +168,7 @@ export class ExportPopupComponent implements OnInit {
         this.schemeName = this.importService.getColorSchemeName();
         this.outputFile = savedMeta.outputFile;
         this.makeSwatch = !!savedMeta.makeSwatch;
+        this.removeExternalResources = !!savedMeta.removeExternalResources;
 
         const selectedWidgets = this.importService.getWidgets();
         const isWidgetSelected = (widget: string): boolean => {
@@ -206,7 +208,7 @@ export class ExportPopupComponent implements OnInit {
             'save css (' + this.importService.getThemeName() + ')');
 
         this.contentReady = false;
-        return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets())
+        return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources)
             .then((css) => {
                 this.contentReady = true;
                 this.textContent = css;
@@ -224,7 +226,7 @@ export class ExportPopupComponent implements OnInit {
             'save metadata (' + this.importService.getThemeName() + ')');
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets()).then((metaString) => {
+        this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources).then((metaString) => {
             this.textContent = metaString;
             if(save) fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         });
@@ -246,7 +248,7 @@ export class ExportPopupComponent implements OnInit {
         const fileName = `dx.${this.importService.getThemeName()}.${this.schemeName}`;
         zip.file(
             `${fileName}.css`,
-            this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets()),
+            this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources),
             { binary: false }
         );
 

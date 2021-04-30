@@ -160,7 +160,7 @@ export class MetadataRepositoryService {
         return this.modifiedMetaCollection;
     }
 
-    export(outColorScheme: string, swatch: boolean, widgets: string[], assetsBasePath: string): Promise<string> {
+    export(outColorScheme: string, swatch: boolean, widgets: string[], assetsBasePath: string, removeExternalResources: boolean): Promise<string> {
         return new Promise((resolve, reject): void => {
             this.themeBuilder.buildTheme(this.theme, {
                 makeSwatch: swatch,
@@ -168,7 +168,8 @@ export class MetadataRepositoryService {
                 items: this.modifiedMetaCollection,
                 widgets,
                 noClean: false,
-                assetsBasePath
+                assetsBasePath,
+                removeExternalResources
             }).then((result) => {
                 resolve(result.css);
             }, (error) => {

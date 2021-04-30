@@ -57,6 +57,19 @@
                         </app-help-tooltip>
                     </div>
                 </div>
+                <div class="padding-20"></div>
+                <div>
+                    <dx-check-box
+                        text="Remove external resources"
+                        [(value)]="removeExternalResources"
+                    ></dx-check-box>
+                    <div class="tooltip-container swatch">
+                        <app-help-tooltip>
+                            Removes links to external resources, such as fonts.<br>
+                            This theme will use local fallbacks instead.<br>
+                        </app-help-tooltip>
+                    </div>
+                </div>
                 <div class="buttons-container horizontal">
                     <div></div>
                     <button class="button" (click)="changeStep(1)">

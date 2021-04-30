@@ -14,4 +14,5 @@ export class BuilderConfig {
     assetsBasePath?: string;
     themeName?: string;
     colorScheme?: string;
+    removeExternalResources?: boolean;
 }
