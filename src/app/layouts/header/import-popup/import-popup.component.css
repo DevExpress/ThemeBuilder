@@ -3,9 +3,13 @@
 }
 
 .radio-group {
-    width: 240px;
+    width: 380px;
     display: block;
     margin: 0 auto;
+}
+
+::ng-deep .radio-group .dx-item {
+    margin-right: 30px;
 }
 
 .tabs {

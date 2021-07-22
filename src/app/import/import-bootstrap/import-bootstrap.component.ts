@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 
 export class ImportBootstrapComponent {
     tabPanelData = [{
+        name: 'Bootstrap 5',
+        version: 5,
+        acceptFormat: '.scss',
+        uploadButtonText: 'Upload SCSS Variables'
+    }, {
         name: 'Bootstrap 4',
         version: 4,
         acceptFormat: '.scss',

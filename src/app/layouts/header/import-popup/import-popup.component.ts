@@ -18,14 +18,20 @@ export class ImportPopupComponent {
     ) { }
 
     radioGroupData = [{
-        text: 'Bootstrap 4',
+        text: 'Bootstrap 5',
         value: 0,
+        version: 5,
+        acceptFormat: '.scss',
+        uploadButtonText: 'Upload SCSS Variables'
+    }, {
+        text: 'Bootstrap 4',
+        value: 1,
         version: 4,
         acceptFormat: '.scss',
         uploadButtonText: 'Upload SCSS Variables'
     }, {
         text: 'Bootstrap 3',
-        value: 1,
+        value: 2,
         version: 3,
         acceptFormat: '.less',
         uploadButtonText: 'Upload LESS Variables'
