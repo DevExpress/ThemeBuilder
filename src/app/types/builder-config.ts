@@ -15,4 +15,5 @@ export class BuilderConfig {
     themeName?: string;
     colorScheme?: string;
     removeExternalResources?: boolean;
+    bootstrapVersion?: number;
 }

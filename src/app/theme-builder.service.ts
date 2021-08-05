@@ -23,10 +23,11 @@ export class ThemeBuilderService {
     }
 
     buildThemeBootstrap(theme: Theme, bootstrapVariables: string, bootstrapVersion: number): Promise<BuilderResult> {
-        const SCSS_BOOTSTRAP_VERSION = 4;
+        const LESS_BOOTSTRAP_VERSION = 3;
         return this.build(theme, {
             data: bootstrapVariables,
-            inputFile: bootstrapVersion === SCSS_BOOTSTRAP_VERSION ? '.scss' : '.less'
+            inputFile: bootstrapVersion === LESS_BOOTSTRAP_VERSION ? '.less' : '.scss',
+            bootstrapVersion
         });
     }
 
