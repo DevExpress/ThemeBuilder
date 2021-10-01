@@ -346,7 +346,7 @@ isarray
 MIT
 
 jszip
-(MIT OR GPL-3.0-or-later)
+(MIT OR GPL-3.0)
 JSZip is dual licensed. You may use it under the MIT license *or* the GPLv3
 license.
 

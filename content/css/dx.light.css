@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 21.1.5
-* Build date: Mon Aug 02 2021
+* Version: 21.1.6
+* Build date: Mon Sep 27 2021
 *
 * Copyright (c) 2012 - 2021 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -9322,20 +9322,11 @@
   padding-right: 5px;
   padding-left: 10px;
 }
-.dx-radiogroup-horizontal::after,
-.dx-radiogroup-horizontal::before {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.dx-radiogroup-horizontal::after {
-  clear: both;
-}
-.dx-rtl .dx-radiogroup-horizontal .dx-radiobutton,
-.dx-rtl.dx-radiogroup-horizontal .dx-radiobutton {
-  float: right;
-  margin-right: 0;
-  margin-left: 17px;
+.dx-radiogroup-horizontal .dx-collection {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .dx-radiogroup-horizontal .dx-radiobutton:last-of-type {
   margin-right: 0;
@@ -9411,8 +9402,12 @@
   background-color: #fff;
 }
 .dx-radiogroup-horizontal .dx-radiobutton {
-  float: left;
   margin-right: 17px;
+}
+.dx-rtl .dx-radiogroup-horizontal .dx-radiobutton,
+.dx-rtl.dx-radiogroup-horizontal .dx-radiobutton {
+  margin-right: 0;
+  margin-left: 17px;
 }
 .dx-accordion-item-title {
   cursor: pointer;
@@ -20093,6 +20088,11 @@ input.dx-hidden {
 .dx-htmleditor-content .ql-code-block-container {
   font-family: monospace;
 }
+.dx-htmleditor-content .ql-code-block-container,
+.dx-htmleditor-content code {
+  background-color: rgba(191,191,191,.15);
+  color: rgba(51,51,51,.8);
+}
 .dx-htmleditor-content .ql-video {
   display: block;
   max-width: 100%;
@@ -20126,11 +20126,6 @@ input.dx-hidden {
   content: attr(data-placeholder);
   z-index: -1;
   visibility: hidden;
-}
-.dx-htmleditor-content pre {
-  white-space: pre-wrap;
-  background-color: rgba(191,191,191,.15);
-  color: rgba(51,51,51,.8);
 }
 .dx-htmleditor-content blockquote {
   padding-left: 12px;
@@ -22112,6 +22107,11 @@ input.dx-hidden {
   width: 1px;
   height: 30px;
   margin: 0;
+}
+.dx-diagram-i-selectbox-null-icon {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2028%2018%22%20style%3D%22enable-background%3Anew%200%200%2028%2018%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3C%2Fsvg%3E%0A");
+  width: 28.08px;
+  height: 18px;
 }
 .dx-diagram-i-connector-begin-none {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22%D0%A1%D0%BB%D0%BE%D0%B9_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2028%2018%22%20style%3D%22enable-background%3Anew%200%200%2028%2018%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bfill%3A%23FF0000%3B%7D%0A%09.st1%7Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%0A%3C%2Fstyle%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M1%2C13l9-9l1%2C1l-9%2C9L1%2C13z%22%20fill%3D%22%23333%22%2F%3E%0A%3Cpath%20class%3D%22st1%22%20d%3D%22M12%2C8V3H0v12h12v-5h16V8H12z%20M10%2C13H2V5h8V13z%22%20fill%3D%22%23333%22%2F%3E%0A%3C%2Fsvg%3E%0A");
