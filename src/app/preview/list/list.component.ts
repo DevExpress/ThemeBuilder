@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxListComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/list';
 
 @Component({
     selector: 'app-list',
@@ -14,13 +15,9 @@ export class ListComponent implements OnInit, OnDestroy {
 
     @ViewChild('list') list: DxListComponent;
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         grouped: true,
-        editEnabled: true,
-        editConfig: {
-            deleteEnabled: true,
-            selectionEnabled: true
-        },
+        allowItemDeleting: true,
         selectionMode: 'single',
         items: [{
             key: 'Ship Country: Germany',
@@ -63,13 +60,9 @@ export class ListComponent implements OnInit, OnDestroy {
         }]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         grouped: true,
-        editEnabled: true,
-        editConfig: {
-            deleteEnabled: true,
-            selectionEnabled: true
-        },
+        allowItemDeleting: true,
         selectionMode: 'single',
         items: [{
             key: 'Ship Country: Germany',

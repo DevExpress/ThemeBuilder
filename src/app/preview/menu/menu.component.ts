@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxMenuComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/menu';
 
 @Component({
     selector: 'app-menu',
@@ -14,11 +15,11 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     @ViewChild('menu') menu: DxMenuComponent;
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         showFirstSubmenuMode: 'onHover',
         animation: {
-            show: false,
-            hide: false
+            show: null,
+            hide: null
         },
         items: [
             {
@@ -92,11 +93,11 @@ export class MenuComponent implements OnInit, OnDestroy {
         ]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         showFirstSubmenuMode: 'onHover',
         animation: {
-            show: false,
-            hide: false
+            show: null,
+            hide: null
         },
         items: [
             {
