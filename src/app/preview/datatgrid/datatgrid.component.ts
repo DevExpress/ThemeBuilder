@@ -1,6 +1,7 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
+import { Properties } from 'devextreme/ui/data_grid';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -138,7 +139,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
         }
     ];
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         height: '100%',
         columnChooser: { enabled: false },
         rowAlternationEnabled: false,
@@ -211,7 +212,7 @@ export class DatagridComponent implements OnInit, OnDestroy {
         ]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         height: 460,
         columnChooser: { enabled: true },
         rowAlternationEnabled: true,

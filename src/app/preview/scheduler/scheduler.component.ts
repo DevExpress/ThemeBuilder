@@ -2,6 +2,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/scheduler';
 
 @Component({
     selector: 'app-scheduler',
@@ -15,7 +16,7 @@ export class SchedulerComponent implements OnInit, OnDestroy {
 
     @ViewChild('scheduler') scheduler: DxSchedulerComponent;
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         views: ['day'],
         currentView: 'day',
         currentDate: new Date(2017, 4, 22),
@@ -30,10 +31,9 @@ export class SchedulerComponent implements OnInit, OnDestroy {
         ]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         views: ['month', 'week', 'day'],
         currentDate: new Date(2017, 4, 25),
-        indicatorTime: new Date(2017, 4, 24),
         currentView: 'week',
         startDayHour: 9,
         endDayHour: 13,
@@ -112,7 +112,12 @@ export class SchedulerComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
-            this.scheduler.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
+            const expandedOptionsCopy: any = this.expandedOptions;
+            expandedOptionsCopy.indicatorTime = new Date(2017, 4, 24);
+
+            this.scheduler.instance.option(expanded ?
+                expandedOptionsCopy :
+                this.collapsedOptions);
         });
     }
 

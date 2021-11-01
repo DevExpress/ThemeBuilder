@@ -2,6 +2,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxPivotGridComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/pivot_grid';
 
 @Component({
     selector: 'app-pivotgrid',
@@ -260,7 +261,7 @@ export class PivotgridComponent implements OnInit, OnDestroy {
         }
     ];
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         dataSource: {
             store: this.dataSourceStore,
             fields: [
@@ -335,7 +336,7 @@ export class PivotgridComponent implements OnInit, OnDestroy {
         allowFiltering: true
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         dataSource: {
             store: this.dataSourceStore,
             fields: [

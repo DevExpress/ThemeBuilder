@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/form';
 
 @Component({
     selector: 'app-form',
@@ -14,7 +15,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     @ViewChild('form') form: DxFormComponent;
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         labelLocation: 'top',
         formData: {
             'ID': 1,
@@ -24,12 +25,12 @@ export class FormComponent implements OnInit, OnDestroy {
             {
                 itemType: 'group',
                 caption: 'Personal Data',
-                items: ['ID', 'Full Name']
+                items: [{dataField: 'ID'}, {dataField: 'Full Name'}]
             }
         ]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         labelLocation: 'top',
         formData: {
             Address: '351 S Hill St.',
@@ -42,14 +43,14 @@ export class FormComponent implements OnInit, OnDestroy {
             {
                 itemType: 'group',
                 caption: 'Personal Data',
-                items: ['FirstName', 'LastName']
+                items: [{dataField: 'FirstName'}, {dataField: 'LastName'}]
             },
             {
                 itemType: 'group',
                 colCount: 2,
                 caption: 'Home Address',
                 items: [
-                    'Address',
+                    {dataField: 'Address'},
                     {
                         dataField: 'City',
                         label: {
