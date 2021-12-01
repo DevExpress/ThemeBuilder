@@ -12,24 +12,16 @@
     <div class="editors">
         <div class="block outlined">
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="outlined" value="Outlined" label="Text Box" [labelMode]="labelMode"></dx-text-box>
-                </div>
+                <dx-text-box stylingMode="outlined" value="Outlined" label="Text Box" [labelMode]="labelMode"></dx-text-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-select-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Select Box" [labelMode]="labelMode"></dx-select-box>
-                </div>
+                <dx-select-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Select Box" [labelMode]="labelMode"></dx-select-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-color-box stylingMode="outlined" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
-                </div>
+                <dx-color-box stylingMode="outlined" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-number-box stylingMode="outlined" [showSpinButtons]="true" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
-                </div>
+                <dx-number-box stylingMode="outlined" [showSpinButtons]="true" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
             </div>
             <div class="field">
                 <div class="value">
@@ -37,85 +29,59 @@
                 </div>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="outlined" [value]="invalidValue" label="Validated" [labelMode]="labelMode">
-                        <dx-validator>
-                            <dxi-validation-rule type="stringLength" [min]="1"  message="Field is required"></dxi-validation-rule>
-                        </dx-validator>
-                    </dx-text-box>
-                </div>
+                <dx-text-box stylingMode="outlined" [value]="invalidValue" label="Validated" [labelMode]="labelMode">
+                    <dx-validator>
+                        <dxi-validation-rule type="stringLength" [min]="1"  message="Field is required"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
             </div>
         </div>
         <div class="block filled">
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="filled" value="Filled" label="Text Box" [labelMode]="labelMode"></dx-text-box>
-                </div>
+                <dx-text-box stylingMode="filled" value="Filled" label="Text Box" [labelMode]="labelMode"></dx-text-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-select-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" value="Filled" label="Select Box" [labelMode]="labelMode"></dx-select-box>
-                </div>
+                <dx-select-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" value="Filled" label="Select Box" [labelMode]="labelMode"></dx-select-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-color-box stylingMode="filled" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
-                </div>
+                <dx-color-box stylingMode="filled" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-number-box [showSpinButtons]="true" stylingMode="filled" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
-                </div>
+                <dx-number-box [showSpinButtons]="true" stylingMode="filled" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-tag-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Filled']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
-                </div>
+                <dx-tag-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Filled']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="filled" value="" label="Validated" [labelMode]="labelMode">
-                        <dx-validator>
-                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required" label="Validated"></dxi-validation-rule>
-                        </dx-validator>
-                    </dx-text-box>
-                </div>
+                <dx-text-box stylingMode="filled" value="" label="Validated" [labelMode]="labelMode">
+                    <dx-validator>
+                        <dxi-validation-rule type="stringLength" [min]="1" message="Field is required" label="Validated"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
             </div>
         </div>
         <div class="block underlined">
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="underlined" value="Underlined" label="Text Box" [labelMode]="labelMode"></dx-text-box>
-                </div>
+                <dx-text-box stylingMode="underlined" value="Underlined" label="Text Box" [labelMode]="labelMode"></dx-text-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-select-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Underlined" label="Select Box" [labelMode]="labelMode"></dx-select-box>
-                </div>
+                <dx-select-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Underlined" label="Select Box" [labelMode]="labelMode"></dx-select-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-color-box stylingMode="underlined" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
-                </div>
+                <dx-color-box stylingMode="underlined" value="#333" label="Color Box" [labelMode]="labelMode"></dx-color-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-number-box [showSpinButtons]="true" stylingMode="underlined" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
-                </div>
+                <dx-number-box [showSpinButtons]="true" stylingMode="underlined" value="123" label="Number Box" [labelMode]="labelMode"></dx-number-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-tag-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Underlined']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
-                </div>
+                <dx-tag-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Underlined']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
             </div>
             <div class="field">
-                <div class="value">
-                    <dx-text-box stylingMode="underlined" value="" label="Validated" [labelMode]="labelMode">
-                        <dx-validator>
-                            <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
-                        </dx-validator>
-                    </dx-text-box>
-                </div>
+                <dx-text-box stylingMode="underlined" value="" label="Validated" [labelMode]="labelMode">
+                    <dx-validator>
+                        <dxi-validation-rule type="stringLength" [min]="1" message="Field is required"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
             </div>
         </div>
     </div>
