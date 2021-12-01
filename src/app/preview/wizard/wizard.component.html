@@ -8,7 +8,6 @@
             width="100%" 
             [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) : 200" 
             colCount="2"
-            labelLocation="top"
             labelMode="floating">
                 <dxi-item dataField="FirstName" ></dxi-item>
                 <dxi-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
