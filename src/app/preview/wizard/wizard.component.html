@@ -6,7 +6,7 @@
             #form
             [formData]="employee"
             width="100%" 
-            [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) : 200" 
+            [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) :247"   
             colCount="2"
             labelMode="floating">
                 <dxi-item dataField="FirstName" ></dxi-item>
@@ -17,6 +17,8 @@
                 <dxi-item dataField="HireDate" editorType="dxDateBox" [editorOptions]="{ value: null, width: '100%' }">
                     <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
                 </dxi-item>
+                <dxi-item dataField="Phone" ></dxi-item>
+                <dxi-item dataField="Email" ></dxi-item>
             </dx-form>
             <dx-button text="Cancel" width="90"></dx-button>
             <dx-button text="Done" type="default" width="90"></dx-button>
