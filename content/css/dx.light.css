@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 21.2.3
-* Build date: Thu Oct 28 2021
+* Version: 21.2.4
+* Build date: Mon Dec 06 2021
 *
 * Copyright (c) 2012 - 2021 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -1490,6 +1490,78 @@
 .dx-icon-deletetable::before {
   content: "\f131";
 }
+.dx-icon-edittableheader {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-edittableheader::before {
+  content: "\f142";
+}
+.dx-icon-addtableheader {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-addtableheader::before {
+  content: "\f143";
+}
+.dx-icon-pasteplaintext {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-pasteplaintext::before {
+  content: "\f144";
+}
+.dx-icon-importselected {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-importselected::before {
+  content: "\f145";
+}
+.dx-icon-import {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-import::before {
+  content: "\f146";
+}
+.dx-icon-textdocument {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-textdocument::before {
+  content: "\f147";
+}
+.dx-icon-jpgfile {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-jpgfile::before {
+  content: "\f148";
+}
+.dx-icon-bmpfile {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-bmpfile::before {
+  content: "\f149";
+}
+.dx-icon-svgfile {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-svgfile::before {
+  content: "\f150";
+}
+.dx-icon-attach {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-attach::before {
+  content: "\f151";
+}
+.dx-icon-return {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-return::before {
+  content: "\f152";
+}
+.dx-icon-indeterminatestate {
+  font: 14px/1 DXIcons;
+}
+.dx-icon-indeterminatestate::before {
+  content: "\f153";
+}
 .dx-tab .dx-icon,
 .dx-tab.dx-tab-selected .dx-icon {
   background-size: 100% 100%;
@@ -2859,6 +2931,12 @@
 .dx-buttongroup-item.dx-button.dx-button-mode-text.dx-item-selected.dx-button-normal.dx-state-focused {
   background-color: rgba(0,0,0,.14);
 }
+.dx-buttongroup-item.dx-button.dx-button-mode-outlined.dx-item-selected.dx-button-normal,
+.dx-buttongroup-item.dx-button.dx-button-mode-outlined.dx-item-selected.dx-button-normal .dx-icon,
+.dx-buttongroup-item.dx-button.dx-button-mode-text.dx-item-selected.dx-button-normal,
+.dx-buttongroup-item.dx-button.dx-button-mode-text.dx-item-selected.dx-button-normal .dx-icon {
+  color: #333;
+}
 .dx-buttongroup-item.dx-button.dx-button-mode-outlined.dx-item-selected.dx-button-success,
 .dx-buttongroup-item.dx-button.dx-button-mode-text.dx-item-selected.dx-button-success {
   background-color: rgba(92,184,92,.3);
@@ -3002,8 +3080,9 @@
   -ms-touch-action: auto;
   touch-action: auto;
 }
-.dx-scrollable-native.dx-scrollable-scrollbars-hidden ::-webkit-scrollbar {
-  opacity: 0;
+.dx-scrollable-native.dx-scrollable-scrollbars-hidden > .dx-scrollable-wrapper > .dx-scrollable-container,
+.dx-scrollable-native.dx-scrollable-scrollbars-hidden > div > .dx-scrollable-wrapper > .dx-scrollable-container {
+  overflow: hidden;
 }
 .dx-scrollable-native.dx-scrollable-native-ios .dx-scrollable-content {
   min-height: 101%;
@@ -3133,13 +3212,6 @@
 .dx-rtl .dx-scrollable .dx-scrollable-scrollbar.dx-scrollbar-horizontal,
 .dx-rtl.dx-scrollable .dx-scrollable-scrollbar.dx-scrollbar-horizontal {
   direction: ltr;
-}
-.dx-device-ios-6 .dx-scrollable-content {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.dx-device-android .dx-scrollable-native.dx-scrollable-scrollbars-hidden ::-webkit-scrollbar {
-  display: none;
 }
 .dx-scrollable-simulated .dx-scrollable-content {
   overflow-anchor: none;
@@ -4334,7 +4406,10 @@
   user-select: text;
 }
 .dx-texteditor-input:-webkit-autofill + .dx-placeholder {
-  display: none;
+  display: none!important;
+}
+.dx-texteditor-input:autofill + .dx-placeholder {
+  display: none!important;
 }
 .dx-texteditor-input:-moz-ui-invalid {
   box-shadow: none;
@@ -4633,10 +4708,12 @@
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-textarea .dx-placeholder {
   display: none;
 }
+.dx-editor-filled.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-placeholder,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-state-focused .dx-placeholder,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-placeholder {
   display: block;
 }
+.dx-editor-filled.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label {
   font-size: 12px;
@@ -4645,6 +4722,7 @@
   height: 19px;
   line-height: 1.35715;
 }
+.dx-editor-filled.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-textarea .dx-texteditor-label,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-state-focused.dx-textarea .dx-texteditor-label,
 .dx-editor-filled.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-textarea .dx-texteditor-label {
   top: 0;
@@ -5467,10 +5545,14 @@
   border-radius: 4px 0 0 4px;
   border-right: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused,
@@ -5478,20 +5560,28 @@
   border: 0;
   outline: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label {
   height: 100%;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused .dx-texteditor-label .dx-label,
@@ -5501,10 +5591,14 @@
   height: 100%;
   padding: 0 2px;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused .dx-texteditor-label .dx-label span,
@@ -5517,6 +5611,10 @@
   margin-top: 0;
   top: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-after,
@@ -5525,6 +5623,10 @@
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-after,
@@ -5539,10 +5641,14 @@
   border-bottom: 1px solid #337ab7;
   height: 100%;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-before,
@@ -5551,10 +5657,14 @@
   border-radius: 0 4px 4px 0;
   border-left: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-rtl .dx-texteditor-label .dx-label-after,
@@ -5563,10 +5673,14 @@
   border-radius: 4px 0 0 4px;
   border-right: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid,
@@ -5574,20 +5688,28 @@
   border: 0;
   outline: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label {
   height: 100%;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label,
@@ -5597,10 +5719,14 @@
   height: 100%;
   padding: 0 2px;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label span,
@@ -5613,6 +5739,10 @@
   margin-top: 0;
   top: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-after,
@@ -5621,6 +5751,10 @@
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label-after,
@@ -5635,10 +5769,14 @@
   border-bottom: 1px solid #d9534f;
   height: 100%;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-before,
@@ -5647,10 +5785,14 @@
   border-radius: 0 4px 4px 0;
   border-left: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused.dx-invalid.dx-rtl .dx-texteditor-label .dx-label-after,
@@ -5659,10 +5801,14 @@
   border-radius: 4px 0 0 4px;
   border-right: 0;
 }
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-placeholder,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-state-hover .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-state-hover .dx-placeholder,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active .dx-placeholder,
+.dx-editor-outlined.dx-texteditor-with-label.dx-dropdowneditor-active.dx-state-hover .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused.dx-state-hover .dx-placeholder,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea.dx-state-focused .dx-placeholder,
@@ -5745,10 +5891,12 @@
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-textarea .dx-placeholder {
   display: none;
 }
+.dx-editor-underlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-placeholder,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-state-focused .dx-placeholder,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-placeholder {
   display: block;
 }
+.dx-editor-underlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active .dx-texteditor-label,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused .dx-texteditor-label {
   -webkit-transform: translate(0,0);
@@ -5759,6 +5907,7 @@
   height: 19px;
   line-height: 1.35715;
 }
+.dx-editor-underlined.dx-texteditor-with-floating-label.dx-dropdowneditor-active.dx-textarea .dx-texteditor-label,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-state-focused.dx-textarea .dx-texteditor-label,
 .dx-editor-underlined.dx-texteditor-with-floating-label.dx-textarea.dx-state-focused.dx-textarea .dx-texteditor-label {
   top: 0;
@@ -11973,6 +12122,9 @@
 .dx-datagrid-rowsview .dx-datagrid-content:not(.dx-datagrid-content-fixed) {
   min-height: 100%;
 }
+.dx-datagrid-rowsview .dx-datagrid-content.dx-scrollable-container {
+  width: auto;
+}
 .dx-datagrid-rowsview:focus {
   outline: 0;
 }
@@ -12005,8 +12157,12 @@
   padding-top: 0;
   padding-bottom: 0;
 }
-.dx-datagrid-rowsview .dx-row > .dx-master-detail-cell {
-  padding: 30px;
+.dx-datagrid-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
+  display: none;
+}
+.dx-datagrid-rowsview .dx-select-checkboxes-hidden>tbody>tr.dx-selection>td>.dx-select-checkbox,
+.dx-datagrid-rowsview .dx-select-checkboxes-hidden>tbody>tr>td:hover>.dx-select-checkbox {
+  display: inline-block;
 }
 .dx-datagrid-rowsview .dx-row > .dx-master-detail-cell:focus {
   outline: 0;
@@ -12774,11 +12930,10 @@
   height: 16px;
   width: 16px;
 }
+.dx-datagrid-checkbox-size.dx-checkbox-indeterminate .dx-checkbox-icon {
+  font-size: 6px;
+}
 .dx-datagrid-checkbox-size.dx-checkbox-indeterminate .dx-checkbox-icon::before {
-  height: 6px;
-  width: 6px;
-  margin-top: -3px;
-  margin-left: -3px;
   border-radius: 0;
 }
 .dx-datagrid-column-chooser-list .dx-empty-message,
@@ -13067,6 +13222,9 @@
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
+.dx-datagrid-rowsview .dx-row:focus {
+  outline: 0;
+}
 .dx-datagrid-rowsview .dx-row.dx-edit-row:first-child > td {
   border-top-width: 0;
   border-bottom: 1px solid #ddd;
@@ -13077,6 +13235,9 @@
 }
 .dx-datagrid-rowsview .dx-row.dx-datagrid-edit-form {
   white-space: normal;
+}
+.dx-datagrid-rowsview .dx-master-detail-row > .dx-master-detail-cell {
+  padding: 20px;
 }
 .dx-datagrid-rowsview .dx-master-detail-row .dx-master-detail-cell,
 .dx-datagrid-rowsview .dx-master-detail-row > .dx-datagrid-group-space {
@@ -13108,13 +13269,6 @@
   border-bottom: 1px solid #ddd;
   color: #959595;
 }
-.dx-datagrid-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
-  display: none;
-}
-.dx-datagrid-rowsview .dx-select-checkboxes-hidden>tbody>tr.dx-selection>td>.dx-select-checkbox,
-.dx-datagrid-rowsview .dx-select-checkboxes-hidden>tbody>tr>td:hover>.dx-select-checkbox {
-  display: inline-block;
-}
 .dx-datagrid-rowsview .dx-adaptive-detail-row .dx-adaptive-item-text {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -13136,9 +13290,6 @@
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 6px;
-}
-.dx-datagrid-rowsview .dx-row-focused:focus {
-  outline: 0;
 }
 .dx-datagrid-rowsview .dx-row-focused.dx-data-row .dx-command-edit:not(.dx-focused) .dx-link,
 .dx-datagrid-rowsview .dx-row-focused.dx-data-row > td:not(.dx-focused),
@@ -14090,6 +14241,9 @@ input.dx-hidden {
 .dx-treelist-rowsview .dx-treelist-content:not(.dx-treelist-content-fixed) {
   min-height: 100%;
 }
+.dx-treelist-rowsview .dx-treelist-content.dx-scrollable-container {
+  width: auto;
+}
 .dx-treelist-rowsview:focus {
   outline: 0;
 }
@@ -14122,8 +14276,12 @@ input.dx-hidden {
   padding-top: 0;
   padding-bottom: 0;
 }
-.dx-treelist-rowsview .dx-row > .dx-master-detail-cell {
-  padding: 30px;
+.dx-treelist-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
+  display: none;
+}
+.dx-treelist-rowsview .dx-select-checkboxes-hidden>tbody>tr.dx-selection>td>.dx-select-checkbox,
+.dx-treelist-rowsview .dx-select-checkboxes-hidden>tbody>tr>td:hover>.dx-select-checkbox {
+  display: inline-block;
 }
 .dx-treelist-rowsview .dx-row > .dx-master-detail-cell:focus {
   outline: 0;
@@ -14865,11 +15023,10 @@ input.dx-hidden {
   height: 16px;
   width: 16px;
 }
+.dx-treelist-checkbox-size.dx-checkbox-indeterminate .dx-checkbox-icon {
+  font-size: 6px;
+}
 .dx-treelist-checkbox-size.dx-checkbox-indeterminate .dx-checkbox-icon::before {
-  height: 6px;
-  width: 6px;
-  margin-top: -3px;
-  margin-left: -3px;
   border-radius: 0;
 }
 .dx-device-mobile .dx-treelist-column-chooser-list .dx-empty-message,
@@ -15196,6 +15353,9 @@ input.dx-hidden {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
+.dx-treelist-rowsview .dx-row:focus {
+  outline: 0;
+}
 .dx-treelist-rowsview .dx-row.dx-edit-row:first-child > td {
   border-top-width: 0;
   border-bottom: 1px solid #ddd;
@@ -15206,6 +15366,9 @@ input.dx-hidden {
 }
 .dx-treelist-rowsview .dx-row.dx-treelist-edit-form {
   white-space: normal;
+}
+.dx-treelist-rowsview .dx-master-detail-row > .dx-master-detail-cell {
+  padding: 20px;
 }
 .dx-treelist-rowsview .dx-master-detail-row .dx-master-detail-cell,
 .dx-treelist-rowsview .dx-master-detail-row > .dx-treelist-group-space {
@@ -15237,13 +15400,6 @@ input.dx-hidden {
   border-bottom: 1px solid #ddd;
   color: #959595;
 }
-.dx-treelist-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
-  display: none;
-}
-.dx-treelist-rowsview .dx-select-checkboxes-hidden>tbody>tr.dx-selection>td>.dx-select-checkbox,
-.dx-treelist-rowsview .dx-select-checkboxes-hidden>tbody>tr>td:hover>.dx-select-checkbox {
-  display: inline-block;
-}
 .dx-treelist-rowsview .dx-adaptive-detail-row .dx-adaptive-item-text {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -15265,9 +15421,6 @@ input.dx-hidden {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 6px;
-}
-.dx-treelist-rowsview .dx-row-focused:focus {
-  outline: 0;
 }
 .dx-treelist-rowsview .dx-row-focused.dx-data-row .dx-command-edit:not(.dx-focused) .dx-link,
 .dx-treelist-rowsview .dx-row-focused.dx-data-row > td:not(.dx-focused),
@@ -16829,20 +16982,19 @@ input.dx-hidden {
 }
 .dx-fileuploader-dragover .dx-fileuploader-input-container {
   display: block;
-  border: 3px dashed #ddd;
   width: 100%;
 }
 .dx-fileuploader-dragover .dx-fileuploader-input {
   display: block;
   width: 100%;
-  padding: 14px 3px;
-  margin-bottom: 1px;
+  padding: 17px 3px 18px;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 .dx-fileuploader-dragover .dx-fileuploader-input-label {
   text-align: center;
   padding: 14px 9px;
+  border: 3px dashed #ddd;
 }
 .dx-fileuploader-file-size,
 .dx-fileuploader-file-status-message {
@@ -16917,15 +17069,15 @@ input.dx-hidden {
   cursor: pointer;
   margin: 3px 0 0 3px;
 }
+.dx-scheduler-appointment-collector .dx-button-content,
 .dx-scheduler-appointment-collector .dx-scheduler-appointment-collector-content {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0 4px;
-}
-.dx-scheduler-appointment-collector .dx-scheduler-appointment-collector-content.dx-button-content {
   padding: 0;
 }
+.dx-scheduler-appointment-collector .dx-button-content span:last-child,
 .dx-scheduler-appointment-collector .dx-scheduler-appointment-collector-content span:last-child {
   display: inline-block;
   vertical-align: middle;
@@ -16955,6 +17107,7 @@ input.dx-hidden {
 .dx-scheduler-adaptive .dx-scheduler-appointment-collector {
   margin: 0;
 }
+.dx-scheduler-adaptive .dx-scheduler-appointment-collector .dx-button-content span:last-child,
 .dx-scheduler-adaptive .dx-scheduler-appointment-collector .dx-scheduler-appointment-collector-content span:last-child {
   line-height: 20px;
 }
@@ -17816,7 +17969,7 @@ input.dx-hidden {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
-.dx-scheduler.dx-scheduler-native .dx-scheduler-timeline.dx-scheduler-work-space-both-scrollbar .dx-scheduler-timeline:not(.dx-scheduler-work-space-both-scrollbar) .dx-scheduler-date-table .dx-scheduler-date-table-row {
+.dx-scheduler.dx-scheduler-native .dx-scheduler-timeline:not(.dx-scheduler-work-space-both-scrollbar) .dx-scheduler-date-table .dx-scheduler-date-table-row {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -18948,10 +19101,12 @@ input.dx-hidden {
   background-color: rgba(0,0,0,.3);
   opacity: .98;
 }
+.dx-scheduler-appointment-collector.dx-button.dx-state-hover .dx-button-content,
 .dx-scheduler-appointment-collector.dx-button.dx-state-hover .dx-scheduler-appointment-collector-content {
   color: #fff;
   opacity: .99;
 }
+.dx-scheduler-appointment-collector-compact .dx-button-content span:last-child,
 .dx-scheduler-appointment-collector-compact .dx-scheduler-appointment-collector-content span:last-child {
   padding-left: 0;
 }
@@ -18982,6 +19137,9 @@ input.dx-hidden {
 .dx-rtl .dx-scheduler-work-space-work-week .dx-scheduler-appointment-reduced .dx-scheduler-appointment-content {
   padding-right: 5px;
   padding-left: 40px;
+}
+.dx-rtl .dx-scheduler-scrollable-appointments {
+  left: 0;
 }
 .dx-scheduler-small.dx-rtl .dx-scheduler-date-time-shader-bottom::before,
 .dx-scheduler-small.dx-rtl .dx-scheduler-date-time-shader-top::before {
@@ -19185,6 +19343,7 @@ input.dx-hidden {
 .dx-scheduler-appointment-collector {
   height: 20px;
 }
+.dx-scheduler-appointment-collector .dx-button-content span:last-child,
 .dx-scheduler-appointment-collector .dx-scheduler-appointment-collector-content span:last-child {
   line-height: 13.3333333333px;
   height: 20px;
