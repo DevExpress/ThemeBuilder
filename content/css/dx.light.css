@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 21.2.5
-* Build date: Mon Jan 17 2022
+* Version: 21.2.6
+* Build date: Tue Mar 01 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -5384,6 +5384,7 @@
   border: 0;
   outline: 0;
   position: relative;
+  margin-top: 7.5px;
 }
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-textarea .dx-texteditor-input-container,
 .dx-editor-outlined.dx-texteditor-with-label.dx-textarea .dx-texteditor-input-container {
@@ -8529,7 +8530,7 @@
 }
 .dx-treeview.dx-rtl .dx-treeview-select-all-item .dx-checkbox-text {
   padding-left: 0;
-  padding-right: 31px;
+  padding-right: 9px;
 }
 .dx-treeview.dx-rtl .dx-treeview-toggle-item-visibility {
   right: -4px;
@@ -8555,7 +8556,7 @@
   padding: 9px 0 11px 20px;
 }
 .dx-treeview-select-all-item .dx-checkbox-text {
-  padding-left: 31px;
+  padding-left: 9px;
 }
 .dx-treeview-node {
   padding-left: 15px;
@@ -9330,6 +9331,14 @@
 }
 .dx-toolbar-menu-section .dx-toolbar-item-auto-hide {
   padding: 5px 10px;
+}
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-danger,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-danger .dx-icon,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-default,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-default .dx-icon,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-success,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-success .dx-icon {
+  color: #333;
 }
 .dx-toolbar-text-auto-hide .dx-button .dx-button-content {
   padding: 8px;
@@ -16874,6 +16883,8 @@ input.dx-hidden {
   position: absolute;
   overflow: hidden;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
 }
@@ -16886,6 +16897,10 @@ input.dx-hidden {
 }
 .dx-multiview-item-hidden {
   top: -9999px;
+  left: -9999px;
+  visibility: hidden;
+}
+.dx-multiview-item-hidden .dx-accordion-item-opened .dx-accordion-item-body {
   visibility: hidden;
 }
 .dx-tabpanel-tabs {
@@ -17800,6 +17815,7 @@ input.dx-hidden {
 .dx-scheduler-timeline-work-week .dx-scheduler-date-table-scrollable-content {
   min-height: 100%;
   height: 100%;
+  width: 100%;
 }
 .dx-scheduler-timeline-day .dx-scheduler-header-panel,
 .dx-scheduler-timeline-month .dx-scheduler-header-panel,
@@ -18322,6 +18338,7 @@ input.dx-hidden {
 }
 .dx-scheduler-header-tables-container {
   overflow: hidden;
+  width: 100%;
 }
 .dx-scheduler-date-table-container {
   position: relative;
@@ -18329,7 +18346,10 @@ input.dx-hidden {
 .dx-scheduler-work-space-month:not(.dx-scheduler-work-space-count) .dx-scheduler-date-table-container {
   height: 100%;
 }
-.dx-scheduler-date-table-scrollable,
+.dx-scheduler-date-table-scrollable {
+  width: 100%;
+  overflow: hidden;
+}
 .dx-scheduler-date-table-scrollable .dx-scrollable-content {
   overflow: hidden;
 }
