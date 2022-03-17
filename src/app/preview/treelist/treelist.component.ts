@@ -3,6 +3,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxTreeListComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
+import { Properties } from 'devextreme/ui/tree_list';
 
 @Component({
     selector: 'app-treelist',
@@ -409,7 +410,7 @@ export class TreelistComponent implements OnInit, OnDestroy {
         }
     ];
 
-    collapsedOptions = {
+    collapsedOptions: Properties = {
         height: '100%',
         expandedRowKeys: [1],
         selectedRowKeys: [2],
@@ -449,7 +450,7 @@ export class TreelistComponent implements OnInit, OnDestroy {
         ]
     };
 
-    expandedOptions = {
+    expandedOptions: Properties = {
         height: 460,
         columnChooser: { enabled: true },
         rowAlternationEnabled: true,

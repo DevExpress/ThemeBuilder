@@ -12,6 +12,8 @@ export class EditorsComponent implements OnInit, OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);
     subscription: Subscription;
 
+    labelMode = 'floating';
+
     ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {
             if(expanded) setTimeout(() => validationEngine.validateGroup());
