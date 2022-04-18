@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 21.2.6
-* Build date: Tue Mar 01 2022
+* Version: 21.2.7
+* Build date: Mon Apr 11 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -3134,13 +3134,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.dx-scrollable-content::after,
-.dx-scrollable-content::before {
-  display: table;
-  content: "";
-  line-height: 0;
-}
 .dx-scrollable-content::after {
+  display: block;
+  content: "";
   clear: both;
 }
 .dx-scrollable-both .dx-scrollable-content,
@@ -9105,7 +9101,8 @@
   display: none;
 }
 .dx-dropdownmenu-popup-wrapper .dx-toolbar-menu-custom > .dx-list-item-content,
-.dx-toolbar-menu-section .dx-toolbar-hidden-button > .dx-list-item-content {
+.dx-toolbar-menu-section .dx-toolbar-hidden-button > .dx-list-item-content,
+.dx-toolbar-menu-section .dx-toolbar-hidden-button-group > .dx-list-item-content {
   padding: 0;
 }
 .dx-toolbar-menu-section.dx-toolbar-menu-last-section {
@@ -9117,7 +9114,6 @@
   margin: 0;
   width: 100%;
   text-align: left;
-  padding: 10px;
 }
 .dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button .dx-button-text {
   line-height: normal;
@@ -9322,15 +9318,16 @@
 .dx-toolbar-menu-section {
   border-bottom: 1px solid #ddd;
 }
-.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-content,
-.dx-toolbar-menu-section .dx-toolbar-item-auto-hide .dx-button-content {
+.dx-toolbar-menu-section .dx-list-item-content,
+.dx-toolbar-menu-section .dx-toolbar-item-auto-hide {
+  padding: 10px;
+}
+.dx-toolbar-menu-section .dx-list-item-content > .dx-button .dx-button-content,
+.dx-toolbar-menu-section .dx-toolbar-item-auto-hide > .dx-button .dx-button-content {
   padding: 0;
 }
-.dx-toolbar-menu-section .dx-button-content {
-  padding: 4px;
-}
-.dx-toolbar-menu-section .dx-toolbar-item-auto-hide {
-  padding: 5px 10px;
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button {
+  padding: 10px;
 }
 .dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-danger,
 .dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button-danger .dx-icon,
@@ -9386,7 +9383,7 @@
   margin-bottom: 5px;
 }
 .dx-toolbar-hidden-button-group .dx-buttongroup-wrapper .dx-buttongroup-item.dx-button .dx-button-content {
-  padding: 5px 10px;
+  padding: 10px;
 }
 .dx-popup-draggable .dx-popup-title {
   cursor: move;
@@ -11035,6 +11032,9 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .dx-radiogroup-horizontal .dx-radiobutton:last-of-type {
   margin-right: 0;
@@ -20504,6 +20504,9 @@ input.dx-hidden {
   content: attr(data-placeholder);
   z-index: -1;
   visibility: hidden;
+}
+.dx-htmleditor-content.ql-blank[data-placeholder] > p {
+  height: .1px;
 }
 .dx-htmleditor-content blockquote {
   padding-left: 12px;
