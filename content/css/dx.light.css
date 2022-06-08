@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 21.2.7
-* Build date: Mon Apr 11 2022
+* Version: 21.2.8
+* Build date: Tue Jun 07 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -1593,8 +1593,7 @@
   -webkit-touch-callout: none;
   padding: 0;
   outline: 0;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  print-color-adjust: exact;
   color: #333;
   font-weight: 400;
   font-size: 14px;
@@ -9114,6 +9113,8 @@
   margin: 0;
   width: 100%;
   text-align: left;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button .dx-button-text {
   line-height: normal;
@@ -12354,6 +12355,9 @@
 .dx-datagrid-rowsview .dx-datagrid-content.dx-scrollable-container {
   width: auto;
 }
+.dx-datagrid-rowsview .dx-datagrid-content.dx-datagrid-content-fixed.dx-scrollable-container {
+  height: auto;
+}
 .dx-datagrid-rowsview:focus {
   outline: 0;
 }
@@ -14472,6 +14476,9 @@ input.dx-hidden {
 }
 .dx-treelist-rowsview .dx-treelist-content.dx-scrollable-container {
   width: auto;
+}
+.dx-treelist-rowsview .dx-treelist-content.dx-treelist-content-fixed.dx-scrollable-container {
+  height: auto;
 }
 .dx-treelist-rowsview:focus {
   outline: 0;
@@ -22049,6 +22056,7 @@ input.dx-hidden {
   padding-right: 0;
 }
 .dx-diagram-toolbar .dx-diagram-toolbar-separator {
+  display: table;
   height: 100%;
   border-left: 1px solid transparent;
 }
@@ -22708,6 +22716,7 @@ input.dx-hidden {
   height: 100%;
 }
 .dx-gantt .dx-gantt-toolbar-separator {
+  display: table;
   height: 100%;
   border-left: 1px solid transparent;
 }
