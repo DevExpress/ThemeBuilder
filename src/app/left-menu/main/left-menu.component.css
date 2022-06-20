@@ -136,7 +136,7 @@
 }
 
 .left-menu .working-area .name.top .search-container .search {
-    background-image: url(~/images/search.svg);
+    background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ctitle%3ESearch%3C/title%3E%3Cpath d='M17.71 16.29l-1.42 1.42-4.12-4.12A7 7 0 1 1 15 8a6.94 6.94 0 0 1-1.41 4.17ZM8 3a5 5 0 1 0 5 5A5 5 0 0 0 8 3Z' fill='%23505050' fill-rule='evenodd'/%3E%3C/svg%3E");
     cursor: default;
     left: 7px;
 }
@@ -156,7 +156,7 @@
 }
 
 .left-menu .working-area .name .arrow.menu {
-    background-image: url(~/images/sandwich.svg);
+    background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ctitle%3EMenu%3C/title%3E%3Cpath d='M4 4V6H14V4Zm0 6H14V8H4Zm0 4H14V12H4Z' fill='%23505050' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 .left-menu .working-area .scroll-container {
