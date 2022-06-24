@@ -67,6 +67,14 @@
                             "vendorChunk": false,
                             "buildOptimizer": true
                         },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
                     }
                 },
                 "serve": {
@@ -76,9 +84,13 @@
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "devextreme-themebuilder-app:build:production",
+                            "browserTarget": "devextreme-themebuilder-app:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "devextreme-themebuilder-app:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
