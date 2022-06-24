@@ -23,8 +23,10 @@ export class EditorComponent implements OnInit {
 
     ngOnInit(): void {
         this.header = this.highlight(this.item.Name);
-        if(this.item.Type === 'color') {
-            this.item.Value = this.hexToRgba(this.item.Value);
+        if(this.item.Value) {
+            if(this.item.Type === 'color') {
+                this.item.Value = this.hexToRgba(this.item.Value);
+            }
         }
     }
 
@@ -37,7 +39,7 @@ export class EditorComponent implements OnInit {
     }
 
     hexToRgba = (hex: string): string => {
-        if(!hex) return null;
+        if(!hex || !hex.startsWith('#')) return hex;
 
         hex = hex.replace('#', '');
 
