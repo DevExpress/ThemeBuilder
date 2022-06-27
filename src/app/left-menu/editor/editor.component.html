@@ -1,6 +1,19 @@
-<div class="property-header" [innerHTML]="highlight(item.Name)"></div>
+<div class="property-header" [innerHTML]="header"></div>
 <div class="property-widget">
-    <dx-select-box *ngIf="item.Type === 'select'" [value]="item.Value" [items]="item.TypeValuesArray" (onValueChanged)="valueChanged($event, item.Key)"></dx-select-box>
-    <dx-text-box *ngIf="item.Type === 'text'" [value]="item.Value" (onValueChanged)="valueChanged($event, item.Key)"></dx-text-box>
-    <dx-color-box *ngIf="item.Type === 'color'" [editAlphaChannel]="true" [value]="item.Value" (onValueChanged)="valueChanged($event, item.Key)"></dx-color-box>
+    <dx-select-box *ngIf="item.Type === 'select'"
+        [value]="item.Value"
+        [items]="item.TypeValuesArray"
+        (onValueChanged)="valueChanged($event, item.Key)"
+    ></dx-select-box>
+
+    <dx-text-box *ngIf="item.Type === 'text'"
+        [value]="item.Value"
+        (onValueChanged)="valueChanged($event, item.Key)"
+    ></dx-text-box>
+
+    <dx-color-box *ngIf="item.Type === 'color'"
+        [editAlphaChannel]="true"
+        [value]="item.Value"
+        (onValueChanged)="valueChanged($event, item.Key)"
+    ></dx-color-box>
 </div>
