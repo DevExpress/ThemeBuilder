@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 22.1.3
-* Build date: Mon Jun 13 2022
+* Version: 22.1.4
+* Build date: Fri Jul 22 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -3658,13 +3658,20 @@
 }
 .dx-checkbox-checked .dx-checkbox-icon::before {
   content: "\f005";
-  position: absolute;
+  position: relative;
   display: block;
   width: 1em;
   top: 50%;
   margin-top: -.5em;
   left: 50%;
   margin-left: -.5em;
+}
+.dx-rtl .dx-checkbox-checked .dx-checkbox-icon::before,
+.dx-rtl.dx-checkbox-checked .dx-checkbox-icon::before {
+  left: 0;
+  margin-left: 0;
+  right: 50%;
+  margin-right: -.5em;
 }
 .dx-checkbox-indeterminate .dx-checkbox-icon {
   color: #337ab7;
@@ -3673,7 +3680,7 @@
   font-size: 12px;
 }
 .dx-checkbox-indeterminate .dx-checkbox-icon::before {
-  position: absolute;
+  position: relative;
   display: block;
   width: 1em;
   top: 50%;
@@ -3684,6 +3691,13 @@
   background-color: #337ab7;
   border-radius: 2px;
   height: 1em;
+}
+.dx-rtl .dx-checkbox-indeterminate .dx-checkbox-icon::before,
+.dx-rtl.dx-checkbox-indeterminate .dx-checkbox-icon::before {
+  left: 0;
+  margin-left: 0;
+  right: 50%;
+  margin-right: -.5em;
 }
 .dx-state-disabled .dx-checkbox .dx-checkbox-icon,
 .dx-state-disabled .dx-checkbox-text,
@@ -18364,18 +18378,13 @@ input.dx-hidden {
   border-top: none;
 }
 .dx-scheduler-all-day-table-cell,
-.dx-scheduler-date-table-cell,
-.dx-scheduler-header-panel-cell {
+.dx-scheduler-date-table-cell {
+  border-top: 1px solid rgba(221,221,221,.6);
   border-left: 1px solid rgba(221,221,221,.6);
 }
 .dx-scheduler-all-day-table-cell:first-child,
-.dx-scheduler-date-table-cell:first-child,
-.dx-scheduler-header-panel-cell:first-child {
+.dx-scheduler-date-table-cell:first-child {
   border-left: none;
-}
-.dx-scheduler-all-day-table-cell,
-.dx-scheduler-date-table-cell {
-  border-top: 1px solid rgba(221,221,221,.6);
 }
 .dx-scheduler-date-table-cell,
 .dx-scheduler-header-panel-cell {
@@ -18461,8 +18470,7 @@ input.dx-hidden {
   flex-shrink: 0;
 }
 .dx-scheduler-work-space-both-scrollbar .dx-scheduler-all-day-table-row .dx-scheduler-all-day-table-cell:first-child,
-.dx-scheduler-work-space-both-scrollbar .dx-scheduler-date-table-row .dx-scheduler-date-table-cell:first-child,
-.dx-scheduler-work-space-both-scrollbar .dx-scheduler-header-row .dx-scheduler-header-panel-cell:first-child {
+.dx-scheduler-work-space-both-scrollbar .dx-scheduler-date-table-row .dx-scheduler-date-table-cell:first-child {
   border-left: none;
 }
 .dx-scheduler-header-panel-cell {
@@ -18472,9 +18480,13 @@ input.dx-hidden {
   vertical-align: middle;
   text-align: center;
   font-weight: 400;
+  border-left: 1px solid rgba(221,221,221,.6);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.dx-scheduler-header-panel-cell:first-child {
+  border-left: 1px solid transparent;
 }
 .dx-scheduler-all-day-panel {
   width: 100%;
