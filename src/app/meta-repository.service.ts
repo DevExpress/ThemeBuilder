@@ -3,12 +3,14 @@ import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ThemeBuilderService } from './theme-builder.service';
 import { LoadingService } from './loading.service';
+import { NotificationsService } from './notification.service';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
 import { MetaItem } from './types/meta-item';
 import { Theme, ThemeConfig } from './types/theme';
 import { Metadata } from './types/metadata';
 import { hexToRgba } from './color';
+import { alert } from 'devextreme/ui/dialog';
 
 @Injectable()
 export class MetadataRepositoryService {
@@ -20,7 +22,10 @@ export class MetadataRepositoryService {
     forceRebuild = false;
     globalBuildNumber = 0;
 
-    constructor(private router: Router, private themeBuilder: ThemeBuilderService, private loading: LoadingService) {
+    constructor(private router: Router,
+        private themeBuilder: ThemeBuilderService,
+        private loading: LoadingService,
+        private notifications: NotificationsService) {
         this.build();
 
         this.router.events.subscribe((event) => {
@@ -143,6 +148,18 @@ export class MetadataRepositoryService {
                 this.css.next(result.css);
                 return result;
             });
+        }).catch((error) => {
+            const message = 'ThemeBuilder couldn\'t create a theme. The file may be corrupt or have an unsupported format.';
+            const type = 'Error';
+
+            const isWizard = location.pathname.endsWith('bootstrap');
+            if(isWizard) {
+                this.notifications.error(message);
+            } else {
+                alert(message, type);
+            }
+
+            throw new Error(error);
         });
     }
 
