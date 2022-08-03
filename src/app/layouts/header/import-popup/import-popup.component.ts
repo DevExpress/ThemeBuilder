@@ -46,8 +46,6 @@ export class ImportPopupComponent {
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();
             t.value = '';
-        }, () => {
-            alert('Metadata has a wrong format.', 'Error');
         });
     }
 

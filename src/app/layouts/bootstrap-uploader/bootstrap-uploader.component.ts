@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
+import { NotificationsService } from 'src/app/notification.service';
 import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 import { ImportService } from '../../import.service';
 
@@ -18,7 +19,8 @@ export class BootstrapUploaderComponent {
 
     constructor(
         private importService: ImportService,
-        private googleAnalyticsEventsService: GoogleAnalyticsEventsService
+        private googleAnalyticsEventsService: GoogleAnalyticsEventsService,
+        private notifications: NotificationsService
     ) {}
 
     uploaded(e): void {
@@ -33,11 +35,26 @@ export class BootstrapUploaderComponent {
                     throw new Error('FileReader.readAsText set FileReader.result to a value which is not a string');
                 }
 
+                const isWizard = location.pathname.startsWith('/import');
                 if(this.version) {
-                    this.importService.importBootstrapVariables(meta, this.version, 'advanced');
+                    this.importService.importBootstrapVariables(meta, this.version, 'advanced').catch(() => {
+                        const message = 'ThemeBuilder couldn\'t create a theme. The file may be corrupt or have an unsupported format.';
+
+                        if(isWizard) {
+                            this.notifications.error(message);
+                        } else {
+                            alert(message, 'Import Error');
+                        }
+                    });
                 } else {
                     this.importService.importMetadata(meta, 'advanced').catch(() => {
-                        alert('Metadata has a wrong format.', 'Error');
+                        const message = 'Metadata has a wrong format.';
+
+                        if(isWizard) {
+                            this.notifications.error(message);
+                        } else {
+                            alert(message, 'Error');
+                        }
                     });
                 }
 

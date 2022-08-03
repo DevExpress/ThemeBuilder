@@ -148,18 +148,6 @@ export class MetadataRepositoryService {
                 this.css.next(result.css);
                 return result;
             });
-        }).catch((error) => {
-            const message = 'ThemeBuilder couldn\'t create a theme. The file may be corrupt or have an unsupported format.';
-            const type = 'Error';
-
-            const isWizard = location.pathname.endsWith('bootstrap');
-            if(isWizard) {
-                this.notifications.error(message);
-            } else {
-                alert(message, type);
-            }
-
-            throw new Error(error);
         });
     }
 
