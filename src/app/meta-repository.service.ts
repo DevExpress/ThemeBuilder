@@ -10,7 +10,6 @@ import { MetaItem } from './types/meta-item';
 import { Theme, ThemeConfig } from './types/theme';
 import { Metadata } from './types/metadata';
 import { hexToRgba } from './color';
-import { alert } from 'devextreme/ui/dialog';
 
 @Injectable()
 export class MetadataRepositoryService {
