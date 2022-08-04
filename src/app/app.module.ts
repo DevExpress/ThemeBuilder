@@ -49,12 +49,14 @@ import { LeftMenuComponent } from './left-menu/main/left-menu.component';
 import { SearchOpenerComponent } from './left-menu/search-opener/search-opener.component';
 import { MasterComponent } from './master/master.component';
 import { PreviewIndexComponent } from './preview/index.component';
+import { NotifyErrorComponent } from './notify-error/notify-error.component';
 
 import { ThemeBuilderService } from './theme-builder.service';
 import { ImportService } from './import.service';
 import { LoadingService } from './loading.service';
 import { MetadataRepositoryService } from './meta-repository.service';
 import { NamesService } from './names.service';
+import { NotificationsService } from './notification.service';
 
 import { ImportMetaComponent } from './import/import-meta/import-meta.component';
 import { BootstrapUploaderComponent } from './layouts/bootstrap-uploader/bootstrap-uploader.component';
@@ -105,7 +107,8 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         LoadingComponent,
         ButtonIconComponent,
         IconLoadingComponent,
-        HelpTooltipComponent
+        HelpTooltipComponent,
+        NotifyErrorComponent
     ],
     imports: [
         BrowserModule,
@@ -136,7 +139,8 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         MetadataRepositoryService,
         NamesService,
         ImportService,
-        LoadingService
+        LoadingService,
+        NotificationsService
     ],
     bootstrap: [AppComponent]
 })

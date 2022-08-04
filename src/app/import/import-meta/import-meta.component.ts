@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { alert } from 'devextreme/ui/dialog';
+import { mutePromise } from 'src/app/promise-helper';
 import { ImportService } from '../../import.service';
 
 @Component({
@@ -13,8 +13,6 @@ export class ImportMetaComponent {
     importValue = '';
 
     applyClick(t): void {
-        this.importService.importMetadata(t.value, 'advanced').then(null, () => {
-            alert('Metadata has a wrong format.', 'Error');
-        });
+        mutePromise(this.importService.importMetadata(t.value, 'advanced'));
     }
 }

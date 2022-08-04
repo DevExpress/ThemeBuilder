@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { alert } from 'devextreme/ui/dialog';
 import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
@@ -46,8 +45,6 @@ export class ImportPopupComponent {
         this.importService.importMetadata(t.value, 'advanced').then(() => {
             this.popup.hide();
             t.value = '';
-        }, () => {
-            alert('Metadata has a wrong format.', 'Error');
         });
     }
 
