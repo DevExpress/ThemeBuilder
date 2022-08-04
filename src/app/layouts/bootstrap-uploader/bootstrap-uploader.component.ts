@@ -36,7 +36,7 @@ export class BootstrapUploaderComponent {
                     throw new Error('FileReader.readAsText set FileReader.result to a value which is not a string');
                 }
 
-                const isWizard = location.pathname.startsWith('/import');
+                const isWizard = location.pathname.startsWith('/import') || location.pathname.startsWith('/ThemeBuilder');
                 if(this.version) {
                     this.importService.importBootstrapVariables(meta, this.version, 'advanced').catch(() => {
                         const message = 'ThemeBuilder couldn\'t create a theme. The file may be corrupt or have an unsupported format.';
