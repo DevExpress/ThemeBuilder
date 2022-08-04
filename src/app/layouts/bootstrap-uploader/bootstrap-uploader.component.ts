@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { NotificationsService } from 'src/app/notification.service';
+import { mutePromise } from 'src/app/promise-helper';
 import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 import { ImportService } from '../../import.service';
 
@@ -43,7 +44,7 @@ export class BootstrapUploaderComponent {
                         if(isWizard) {
                             this.notifications.error(message);
                         } else {
-                            alert(message, 'Import Error');
+                            mutePromise(alert(message, 'Import Error'));
                         }
                     });
                 } else {
@@ -53,7 +54,7 @@ export class BootstrapUploaderComponent {
                         if(isWizard) {
                             this.notifications.error(message);
                         } else {
-                            alert(message, 'Error');
+                            mutePromise(alert(message, 'Error'));
                         }
                     });
                 }

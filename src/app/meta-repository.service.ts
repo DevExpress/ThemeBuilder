@@ -3,7 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ThemeBuilderService } from './theme-builder.service';
 import { LoadingService } from './loading.service';
-import { NotificationsService } from './notification.service';
 import { BuilderResult } from './types/builder-result';
 import { ExportedItem } from './types/exported-item';
 import { MetaItem } from './types/meta-item';
@@ -23,8 +22,7 @@ export class MetadataRepositoryService {
 
     constructor(private router: Router,
         private themeBuilder: ThemeBuilderService,
-        private loading: LoadingService,
-        private notifications: NotificationsService) {
+        private loading: LoadingService) {
         this.build();
 
         this.router.events.subscribe((event) => {

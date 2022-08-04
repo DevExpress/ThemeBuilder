@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { INotify } from './types/notify';
+import { Notification } from './types/notify';
 
 @Injectable()
 export class NotificationsService {
-    private $notifications: Subject<INotify>;
+    private $notification: Subject<Notification>;
 
     constructor() {
-        this.$notifications = new BehaviorSubject(null);
+        this.$notification = new BehaviorSubject(null);
     }
 
     error(message: string): void {
@@ -15,10 +15,10 @@ export class NotificationsService {
     }
 
     private notify(message: string, type: string): void {
-        this.$notifications.next({ message, type } as INotify);
+        this.$notification.next({ message, type } as Notification);
     }
 
-    get notification(): Observable<INotify> {
-        return this.$notifications.asObservable();
+    get notification(): Observable<Notification> {
+        return this.$notification.asObservable();
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from '../notification.service';
-import { INotify } from '../types/notify';
+import { Notification } from '../types/notify';
 
 @Component({
     selector: 'app-notifications',
@@ -24,12 +24,12 @@ export class NotifyErrorComponent implements OnInit {
         this.notifyMessage = '';
     }
 
-    render(notify: INotify): void {
+    render(notify: Notification): void {
         this.notifyMessage = notify.message;
         this.visible = true;
     }
 
     closeNotify(): void {
-        this.visible = !this.visible;
+        this.visible = false;
     }
 }

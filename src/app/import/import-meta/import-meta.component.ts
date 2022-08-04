@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { mutePromise } from 'src/app/promise-helper';
 import { ImportService } from '../../import.service';
 
 @Component({
@@ -12,6 +13,6 @@ export class ImportMetaComponent {
     importValue = '';
 
     applyClick(t): void {
-        this.importService.importMetadata(t.value, 'advanced');
+        mutePromise(this.importService.importMetadata(t.value, 'advanced'));
     }
 }
