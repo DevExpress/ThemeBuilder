@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 22.1.4
-* Build date: Fri Jul 22 2022
+* Version: 22.1.5
+* Build date: Fri Sep 02 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -9883,6 +9883,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 9500;
 }
 .dx-toast-stack .dx-toast-wrapper {
   -webkit-transform: translate(0)!important;
@@ -16525,6 +16526,9 @@ input.dx-hidden {
 .dx-pivotgrid .dx-popup-content .dx-pivotgrid-fields-area-head td {
   padding: 0 2px;
 }
+.dx-pivotgrid.dx-context-menu .dx-pivotgrid.dx-submenu {
+  width: auto;
+}
 .dx-pivotgridfieldchooser .dx-area-fields {
   overflow: hidden;
 }
@@ -21264,6 +21268,9 @@ input.dx-hidden {
 .dx-filemanager .dx-filemanager-container .dx-drawer-panel-content.dx-drawer-panel-content-adaptive {
   max-width: 100%;
 }
+.dx-filemanager .dx-filemanager-dirs-panel {
+  height: 100%;
+}
 .dx-filemanager .dx-filemanager-breadcrumbs {
   padding: 2px 11px;
   border-bottom: 1px solid;
@@ -21580,6 +21587,8 @@ input.dx-hidden {
   padding-top: 6px;
 }
 .dx-filemanager .dx-filemanager-progress-box-image {
+  width: 36px;
+  height: 36px;
   font-size: 36px;
 }
 .dx-filemanager .dx-filemanager-progress-box-error {
@@ -21638,7 +21647,6 @@ input.dx-hidden {
   border-top-color: #ddd;
 }
 .dx-filemanager .dx-filemanager-dirs-panel {
-  height: 100%;
   border-right-color: #ddd;
 }
 .dx-filemanager .dx-filemanager-breadcrumbs {
