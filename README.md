@@ -8,7 +8,7 @@ If you need to run the ThemeBuilder UI locally, clone this repository and follow
 
 ## Prerequisites
 
-You will need Node.js 12.16 or higher and npm 5.5.1 or higher. The app is built using angular-cli. Run `npm install @angular/cli -g` to install it.
+You will need Node.js 16 or higher and npm 8 or higher. The app is built using angular-cli. Run `npm install @angular/cli -g` to install it.
 
 ## Install required packages and Launch
 
