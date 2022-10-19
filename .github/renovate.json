@@ -1,32 +1,37 @@
 {
-  "extends": [
-    "config:js-lib"
-  ],
-  "prConcurrentLimit": 2,
-  "semanticCommits": "enabled",
-  "labels": [
-    "dependencies"
-  ],
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "automerge": true
-  },
-  "packageRules": [
-    {
-      "matchPackagePatterns": [ "*" ],
-      "matchUpdateTypes": [ "minor", "patch" ],
-      "automerge": true
+    "extends": [
+        "config:js-app"
+    ],
+    "prConcurrentLimit": 2,
+    "semanticCommits": "enabled",
+    "labels": [
+        "dependencies"
+    ],
+    "vulnerabilityAlerts": {
+        "enabled": true,
+        "automerge": true
     },
-    {
-      "matchPackagePatterns": [ "*" ],
-      "matchUpdateTypes": [ "major" ],
-      "enabled": false
+    "packageRules": [
+        {
+            "matchPackageNames": [ "typescript" ],
+            "matchUpdateTypes": [ "major", "minor" ],
+            "enabled": false
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "minor", "patch" ],
+            "automerge": true
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "major" ],
+            "enabled": false
+        }
+    ],
+    "reviewers": [
+        "team:devextreme-devops"
+    ],
+    "constraints": {
+        "node": "^16.18.0"
     }
-  ],
-  "reviewers": [
-    "team:devextreme-devops"
-  ],
-  "constraints": {
-    "node": "^16.18.0"
-  }
 }
