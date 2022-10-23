@@ -4,6 +4,7 @@
     <dx-text-box width="140" value="Text Box"></dx-text-box>
     <dx-tag-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
     <dx-select-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
+    <dx-lookup width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-lookup>
     <dx-check-box [value]="true"></dx-check-box>
     <dx-radio-group [items]="['']" value=""></dx-radio-group>
 </ng-template>
@@ -27,6 +28,9 @@
                 <div class="value">
                     <dx-tag-box stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Outlined']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
                 </div>
+            </div>
+            <div class="field">
+                <dx-lookup stylingMode="outlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Lookup" [labelMode]="labelMode"></dx-lookup>
             </div>
             <div class="field">
                 <dx-text-box stylingMode="outlined" [value]="invalidValue" label="Validated" [labelMode]="labelMode">
@@ -53,6 +57,9 @@
                 <dx-tag-box stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Filled']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
             </div>
             <div class="field">
+                <dx-lookup stylingMode="filled" [items]="['Outlined', 'Filled', 'Underlined']" value="Filled" label="Lookup" [labelMode]="labelMode"></dx-lookup>
+            </div>
+            <div class="field">
                 <dx-text-box stylingMode="filled" value="" label="Validated" [labelMode]="labelMode">
                     <dx-validator>
                         <dxi-validation-rule type="stringLength" [min]="1" message="Field is required" label="Validated"></dxi-validation-rule>
@@ -75,6 +82,9 @@
             </div>
             <div class="field">
                 <dx-tag-box stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Underlined']" label="Tag Box" [labelMode]="labelMode"></dx-tag-box>
+            </div>
+            <div class="field">
+                <dx-lookup stylingMode="underlined" [items]="['Outlined', 'Filled', 'Underlined']" value="Underlined" label="Lookup" [labelMode]="labelMode"></dx-lookup>
             </div>
             <div class="field">
                 <dx-text-box stylingMode="underlined" value="" label="Validated" [labelMode]="labelMode">
