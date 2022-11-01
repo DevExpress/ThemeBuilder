@@ -14,7 +14,6 @@ import { FormComponent } from './form/form.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ListComponent } from './list/list.component';
 import { MenuComponent } from './menu/menu.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { OverlaysComponent } from './overlays/overlays.component';
 import { PivotgridComponent } from './pivotgrid/pivotgrid.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
@@ -47,7 +46,6 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ListComponent,
         AccordionComponent,
         MenuComponent,
-        NavbarComponent,
         TabsComponent,
         TreeviewComponent,
         OverlaysComponent,
@@ -74,7 +72,6 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ListComponent,
         AccordionComponent,
         MenuComponent,
-        NavbarComponent,
         TabsComponent,
         TreeviewComponent,
         OverlaysComponent,
