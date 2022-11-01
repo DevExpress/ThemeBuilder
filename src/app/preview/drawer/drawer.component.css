@@ -11,8 +11,3 @@
 .drawer-content {
     padding: 15px;
 }
-
-:host ::ng-deep .dx-toolbar .dx-toolbar-items-container {
-    height: 36px;
-    line-height: 36px
-}
