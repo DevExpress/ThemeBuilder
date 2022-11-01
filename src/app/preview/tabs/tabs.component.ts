@@ -13,7 +13,7 @@ export class TabsComponent {
     dataSource: any[] = [
         { text: 'user', icon: 'user' },
         { text: 'comment', icon: 'comment' },
-        { text: 'find', icon: 'find' },
+        { text: 'find', icon: 'find', badge: 7 },
         { text: 'disabled', disabled: true }
     ];
 }
