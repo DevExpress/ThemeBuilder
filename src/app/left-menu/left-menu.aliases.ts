@@ -172,7 +172,7 @@ export class LeftMenuAlias {
             route: 'navigations.treeview'
         }, {
             name: 'Drawer',
-            equivalents: 'dxDrawer, dx-drawer, Slideout, Panel, Slideview, Layout',
+            equivalents: 'dxDrawer, dx-drawer, Panel, Layout',
             regs: [/drawer-/i],
             route: 'navigations.drawer'
         }, {
