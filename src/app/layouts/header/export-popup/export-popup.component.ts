@@ -38,7 +38,7 @@ export class ExportPopupComponent implements OnInit {
     mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList'];
     widgetGroups: any[] = [{
         group: 'Navigation and Layout',
-        widgets: ['Tabs', 'NavBar', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'SlideOutView', 'SlideOut', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox']
+        widgets: ['Tabs', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox']
     }, {
         group: 'Forms and Editors',
         widgets: ['Form', 'CheckBox', 'Calendar', 'Validation', 'Switch', 'TextBox', 'DropDownBox', 'Autocomplete', 'DateBox', 'SelectBox', 'NumberBox', 'Slider', 'RangeSlider', 'Lookup', 'TagBox', 'RadioGroup', 'ColorBox', 'HtmlEditor']

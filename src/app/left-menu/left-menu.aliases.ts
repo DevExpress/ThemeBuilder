@@ -156,11 +156,6 @@ export class LeftMenuAlias {
             regs: [/menu/i],
             route: 'navigations.menu'
         }, {
-            name: 'Navbar',
-            equivalents: 'NavigationBar, dxNavBar, dx-nav-bar',
-            regs: [/navbar-/i],
-            route: 'navigations.navbar'
-        }, {
             name: 'Tabs',
             equivalents: 'TabBar, Segmented Control, dxTabs, dx-tabs',
             regs: [/tabs-/i],
@@ -177,7 +172,7 @@ export class LeftMenuAlias {
             route: 'navigations.treeview'
         }, {
             name: 'Drawer',
-            equivalents: 'dxDrawer, dx-drawer, Slideout, Panel, Slideview, Layout',
+            equivalents: 'dxDrawer, dx-drawer, Panel, Layout',
             regs: [/drawer-/i],
             route: 'navigations.drawer'
         }, {

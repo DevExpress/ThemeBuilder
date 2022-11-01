@@ -13,7 +13,6 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
     notExpandableWidgets: string[] = [
         'navigations.menu',
-        'navigations.navbar',
         'navigations.tabs',
         'navigations.toolbar',
         'navigations.drawer',
