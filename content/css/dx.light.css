@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 22.2.3
-* Build date: Mon Dec 05 2022
+* Version: 22.2.4
+* Build date: Thu Jan 19 2023
 *
-* Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
+* Copyright (c) 2012 - 2023 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
 */
 .dx-validationsummary-item {
@@ -8621,8 +8621,8 @@
   height: 100%;
 }
 .dx-toolbar-item {
-  display: table-cell;
   padding: 0 5px;
+  display: table-cell;
   vertical-align: middle;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -8635,7 +8635,6 @@
 }
 .dx-toolbar-menu-container {
   display: table-cell;
-  padding: 0 5px;
   vertical-align: middle;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -9505,6 +9504,7 @@
   border-radius: 0;
 }
 .dx-popup-title {
+  padding: 10px;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -9513,7 +9513,6 @@
   -webkit-touch-callout: none;
   white-space: normal;
   position: relative;
-  padding: 6px 20px;
   min-height: 28px;
   border-bottom: 1px solid #ddd;
   background: 0 0;
@@ -9522,8 +9521,6 @@
 .dx-popup-title.dx-toolbar {
   padding: 6px 20px;
   overflow: visible;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 .dx-popup-title.dx-toolbar .dx-toolbar-before {
   padding-right: 15px;
@@ -9569,35 +9566,13 @@
 .dx-popup-title.dx-toolbar .dx-toolbar-label {
   font-size: 20px;
 }
-.dx-popup-title.dx-toolbar.dx-has-close-button .dx-toolbar-after .dx-toolbar-button:nth-last-child(2) {
-  padding-right: 0;
-}
-.dx-rtl .dx-popup-title.dx-toolbar.dx-has-close-button .dx-toolbar-after .dx-toolbar-button:nth-last-child(2) {
-  padding-left: 0;
-}
-.dx-popup-title .dx-closebutton {
-  display: block;
+.dx-popup-title.dx-toolbar .dx-closebutton {
   position: relative;
   left: 10px;
-  border-radius: 4px;
-  border-width: 1px;
-  border-style: solid;
 }
-.dx-rtl .dx-popup-title .dx-closebutton {
+.dx-rtl .dx-popup-title.dx-toolbar .dx-closebutton {
   left: 0;
   right: 10px;
-}
-.dx-popup-title .dx-closebutton .dx-icon {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.dx-state-disabled .dx-popup-title .dx-closebutton .dx-icon,
-.dx-state-disabled.dx-popup-title .dx-closebutton .dx-icon {
-  opacity: .6;
-}
-.dx-state-disabled .dx-popup-title .dx-closebutton .dx-button-text,
-.dx-state-disabled.dx-popup-title .dx-closebutton .dx-button-text {
-  opacity: .5;
 }
 .dx-popup-content {
   -webkit-user-drag: none;
@@ -10060,19 +10035,12 @@
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
-.dx-popover-wrapper .dx-popup-title.dx-toolbar {
-  padding-left: 15px;
-}
 .dx-popover-wrapper .dx-popover-arrow::after,
 .dx-popover-wrapper.dx-popover-without-title .dx-popover-arrow::after {
   background: #fff;
 }
 .dx-popover-arrow::after {
   border: 1px solid #ddd;
-}
-.dx-popover-wrapper .dx-rtl.dx-popup-title.dx-toolbar {
-  padding-right: 15px;
-  padding-left: 0;
 }
 .dx-progressbar .dx-position-left .dx-progressbar-range-container,
 .dx-progressbar .dx-position-left .dx-progressbar-status,
@@ -16451,7 +16419,8 @@ input.dx-hidden {
   overflow: hidden;
 }
 .dx-pivotgridfieldchooser .dx-treeview-item .dx-icon {
-  margin-bottom: 1px;
+  vertical-align: middle;
+  margin: 0 5px 1px 0;
   width: 16px;
   height: 16px;
   background-position: 0 0;
@@ -22548,6 +22517,10 @@ input.dx-hidden {
   -ms-flex-direction: row;
   flex-direction: row;
   height: 100%;
+}
+.dx-gantt .dx-toolbar .dx-toolbar-items-container {
+  height: auto;
+  min-height: 36px;
 }
 .dx-gantt .dx-gantt-toolbar-separator {
   display: table;
