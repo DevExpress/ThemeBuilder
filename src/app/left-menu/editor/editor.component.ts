@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
 import { MetadataRepositoryService } from '../../meta-repository.service';
