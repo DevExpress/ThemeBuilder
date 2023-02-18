@@ -16,9 +16,8 @@ ul, li {
 
 html,
 body {
-    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 13px;
-    background-color: #f0f2f3;
     width: 100%;
     height: 100%;
 }

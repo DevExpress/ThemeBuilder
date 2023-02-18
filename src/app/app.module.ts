@@ -38,6 +38,7 @@ import { IconGenericComponent } from './icons/icon-generic/icon-generic.componen
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
 import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.component';
 import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-circle.component';
+import { IconLogoComponent } from './icons/icon-logo/icon-logo.component';
 import { IconThemesComponent } from './icons/icon-themes/icon-themes.component';
 import { IframeComponent } from './iframe/iframe.component';
 import { ImportBootstrapComponent } from './import/import-bootstrap/import-bootstrap.component';
@@ -95,6 +96,7 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         HeaderComponent,
         SearchOpenerComponent,
         BackNavigatorComponent,
+        IconLogoComponent,
         IconThemeCircleComponent,
         HeaderButtonComponent,
         HelpButtonComponent,
