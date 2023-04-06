@@ -1,8 +1,8 @@
 :host ::ng-deep .content {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     bottom: 0;
-    width: 100%;
+    width: 100%; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -11,24 +11,23 @@
 }
 
 :host ::ng-deep .title {
-    font-weight: 100;
-    font-size: 47px;
+    font-weight: 700;
+    font-size: 52px;
     margin: 0 auto;
-    border-top: 1px solid #dadada;
     display: inline-block;
-}
-
-:host ::ng-deep .title.index {
-    border-top: none;
+    line-height: 100%;
 }
 
 :host ::ng-deep .title-link {
+    border-radius: 9999px;
+    color: #222222;
     cursor: pointer;
-    font-weight: 100;
-    margin: 0 auto;
-    color: #a7a8a9;
-    font-size: 30px;
-    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 125%;
+    margin: 0 auto 32px auto;
+    opacity: 0.35;
+    padding: 16px 32px;
 }
 
 :host ::ng-deep .title span {
@@ -39,12 +38,22 @@
 }
 
 :host ::ng-deep .title-link:hover {
-    color: #f05b41;
+    background: #F1F1F1;
 }
 
 :host ::ng-deep .text { 
-    font-size: 16px;
-    color: #505050;
-    width: 520px;
+    font-size: 18px;
+    color: #000000;
+    line-height: 125%;
+    max-width: 859px;
 }
 
+:host ::ng-deep .footer  {
+    /* display: none; */
+}
+
+@media only screen and (max-width: 768px) {
+    main {
+        border: orange 1px solid;
+    }
+}

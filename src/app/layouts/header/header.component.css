@@ -1,14 +1,15 @@
 :host {
     display: block;
-    height: 64px;
+    height: 74px;
 }
 
 .header {
-    height: 60px;
+    height: 70px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
     display: flex;
-    min-width: 1000px;
+    /* min-width: 1000px;
     position: relative;
-    z-index: 3;
+    z-index: 3; */
 }
 
 .header.filled {
@@ -23,28 +24,23 @@
 }
 
 .logo {
-    color: #4e4e4e;
-    padding-left: 20px;
-    font-size: 18px;
+    display: flex;
+    gap: 12px;
+    margin-left: 48px;
     width: 220px;
-    height: 40px;
     cursor: pointer;
 }
 
-.logo span {
-    font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
+.logo .header-logo-js,
+.logo .header-logo-devextreme {
+    height: 40px;
+}
+.logo .header-logo-js {
+    margin-top: -1px;
 }
 
-.logo span:first-child {
-    color: #f05b41;
-    font-size: 19px;
-}
-
-.logo span:last-child {
-    color: #a2a2a2;
-    font-size: 13px;
-    margin-top: -5px;
-    display: block;
+:host ::ng-deep .logo .header-logo-devextreme svg path {
+    fill: #596C7D;
 }
 
 .header .separator {
@@ -96,3 +92,4 @@
     align-self: center;
     padding-left: 10px;
 }
+

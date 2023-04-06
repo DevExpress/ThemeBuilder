@@ -28,6 +28,7 @@ import {
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 
 import { AdvancedComponent } from './advanced/advanced.component';
@@ -94,6 +95,7 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         IframeComponent,
         PreviewIndexComponent,
         HeaderComponent,
+        FooterComponent,
         SearchOpenerComponent,
         BackNavigatorComponent,
         IconLogoComponent,

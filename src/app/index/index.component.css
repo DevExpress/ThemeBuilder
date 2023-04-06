@@ -1,45 +1,43 @@
 .blocks {
-    width: 780px;
-    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
 }
 
 .blocks .block {
-    background-color: #fff;
-    width: 380px;
-    height: 260px;
-    display: inline-block;
+    align-items: center;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 0;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+    color: #596C7D;
     cursor: pointer;
 }
 
 .blocks .block .block-image {
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+    width: 80px;
+    height: 80px;
 }
 
 .blocks .block:hover {
-    background-color: #f05b41;
+    background-color: #2190F7;
     color: #fff;
 }
 
-
-.blocks .block:focus {
-    background-color: #d0442c;
-} 
-
-.blocks .block:first-child {
-    margin-right: 15px;
-}
-
 .blocks .block .block-title {
-    margin: 40px 0 30px;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
 }
 
-
-:host ::ng-deep .blocks .block:hover .block-image .st0,
-:host ::ng-deep .blocks .block:hover .block-image .st1  {
+:host ::ng-deep .blocks .block:hover .block-image .st0  {
     fill: #fff;
+}
+:host ::ng-deep .blocks .block:hover .block-image .st1  {
+    fill: #2190F7;
 }
 
 :host ::ng-deep .blocks .block:hover .block-image .icon-material .st1,
@@ -48,5 +46,5 @@
 }
 
 .text { 
-    margin: 45px auto;
+    margin: 50px auto 80px auto;
 }

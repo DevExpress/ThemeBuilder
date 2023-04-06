@@ -5,7 +5,7 @@
 
 :host ::ng-deep .master .loading {
     width: calc(100% - 750px);
-    left: 750px;
+    left: 750px; /*!*/
 }
 
 .master .section {
@@ -19,14 +19,15 @@
 .master .section.left {
     position: relative;
     width: 750px;
-    padding-top: 40px;
+    padding-top: 56px;
 }
 
 .master .section.right {
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    margin: 40px 0;
+    margin-top: 120px;
+    margin-bottom: 40px;
     height: 800px;
     min-width: 1160px;
     background-color: #e2e5e7; 
@@ -39,9 +40,11 @@
 }
 
 .master .title {
-    width: 310px;
+    font-size: 32px;
+    font-weight: 600;
+    /* width: 310px; */
     text-align: left; 
-    margin-left: 100px;
+    margin-left: 48px;
     display: block;  
 }
 
@@ -50,18 +53,26 @@
 }
 
 .master .title-link {
-    margin-left: 100px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 0 16px;
     width: 310px;
+}
+.master .title-link:hover {
+    background: none;
+    color: #158BFF;
+    text-decoration: underline;
+    opacity: 1;
 }
 
 .master .schemes-container {
     width: 180px;
     position: absolute;
-    left: 90px;
+    left: 48px;
     right: 300px;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 50px;
+    margin-top: 48px;
 }
 
 .schemes .color-name {
@@ -88,16 +99,29 @@
 .base-theming {
     width: 310px;
     float: right;
-}
+    /* margin-top: -95px; */
+}   
+
+
 
 @media (min-width: 1950px) { 
     .master .section.right {
-        margin-right: 40px;
+        margin-right: 48px;
     }
 }
 
 @media (max-width: 1000px) { 
     .master .section.left {
         flex-basis: 700px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .master {
+        flex-direction: column;
+    }
+    .master .section.right {
+        min-width: auto;
+        width: auto;
     }
 }
