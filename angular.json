@@ -24,12 +24,7 @@
                             "src/assets",
                             "src/images",
                             {
-                                "glob": "dx.common.css",
-                                "input": "./node_modules/devextreme/dist/css",
-                                "output": "content/css"
-                            },
-                            {
-                                "glob": "dx.light.css",
+                                "glob": "dx.material.blue.light.compact.css",
                                 "input": "./node_modules/devextreme/dist/css",
                                 "output": "content/css"
                             },
@@ -97,7 +92,7 @@
                     "options": {
                         "browserTarget": "devextreme-themebuilder-app:build"
                     }
-                },              
+                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {

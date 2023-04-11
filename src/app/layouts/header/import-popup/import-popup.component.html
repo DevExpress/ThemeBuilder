@@ -1,6 +1,6 @@
 <app-popup
     title="Theme Import"
-    height="auto"
+    height="600px"
     #popup
 >
     <dx-tab-panel class="tabs">
@@ -15,7 +15,7 @@
                 height="65"
                 (imported)="imported()"
             ></app-bootstrap-uploader>
-            <div class="text">
+            <div class="text additional-text">
                 or paste metadata in the area below.
             </div>
             <dx-text-area
@@ -27,10 +27,10 @@
                 placeholder="Paste metadata here"
             >
             </dx-text-area>
-            <app-button [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
+            <app-button class="upload-meta" [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
         </dxi-item>
         <dxi-item title="Bootstrap Variables">
-            <div class="text">
+            <div class="text second-tab">
                 Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.
                 Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4.
             </div>

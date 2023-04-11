@@ -17,7 +17,7 @@
 }
 
 .flex-item:not(.group):not(.expanded):not(.not-expanded):not(.empty):hover {
-    border: 2px solid rgba(240, 91, 65, 0.3);
+    border: 2px solid #158BFF;
 }
 
 :host ::ng-deep .flex-item:not(.expanded) button {
@@ -30,7 +30,7 @@
 
 :host ::ng-deep .flex-item:not(.group):not(.expanded):hover button {
     display: block;
-} 
+}
 
 .group .flex-item.expanded,
 .flex-item.expanded {
@@ -116,10 +116,10 @@
     background-color: rgba(191, 191, 191, 0.7);
 }
 
-@media (max-width: 1400px) { 
+@media (max-width: 1400px) {
     .flex-item {
-        flex: 1 1 100%; 
-        padding: 10px 20px; 
+        flex: 1 1 100%;
+        padding: 10px 20px;
     }
 
     .group .flex-item.expanded,

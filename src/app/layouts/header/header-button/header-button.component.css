@@ -19,9 +19,9 @@
 }
 
 .header-button:hover .icon path {
-    fill: #f05b41;
+    fill: #158BFF;
 }
 
 .header-button:hover .button-text {
-    color: #f05b41;
+    color: #158BFF;
 }

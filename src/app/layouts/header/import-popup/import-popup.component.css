@@ -1,11 +1,12 @@
 .text-area {
-    margin: 10px 0 15px;
+    margin: 32px 0 32px;
 }
 
 .radio-group {
     width: 380px;
     display: block;
     margin: 0 auto;
+    padding-bottom: 27px;
 }
 
 ::ng-deep .radio-group .dx-item {
@@ -13,14 +14,36 @@
 }
 
 .tabs {
-    margin-top: 20px;
+    margin-top: 48px;
+    padding: 0 16px;
 }
 
 .tabs .text {
     text-align: center;
-    margin: 20px 0 10px;
 }
 
-.tabs .text.first-tab {
-    margin-bottom: 0;
+.tabs .text.first-tab, .tabs .text.second-tab {
+    margin-top: 48px;
+    margin-bottom: 20px;
+}
+
+.tabs .text.second-tab {
+    margin-bottom: 42px;
+}
+
+app-bootstrap-uploader {
+    margin-bottom: 32px;
+}
+
+.upload-meta {
+    padding-bottom: 16px;
+}
+
+::ng-deep .upload-meta .button {
+    box-shadow: none;
+}
+
+
+.additional-text {
+    opacity: 0.5;
 }

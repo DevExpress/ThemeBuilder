@@ -1,11 +1,10 @@
 .tabs {
     margin: 40px auto 0;
-    height: 50px;
     border-color: #d4d8da;
     border-bottom-color: transparent;
 }
 
-.file-uploader { 
+.file-uploader {
     margin: 20px auto 0;
 }
 
@@ -23,7 +22,7 @@
 
 :host ::ng-deep .tabs.dx-tabpanel .dx-tab {
     width: 280px;
-    height: 50px;
+    height: 56px;
 }
 
 :host ::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
@@ -34,7 +33,7 @@
 
 :host ::ng-deep .tabs .dx-tab-selected {
     background-color: #f0f2f3;
-    color: #f05b41;
+    color: #158BFF;
 }
 
 :host ::ng-deep .tabs.dx-tabpanel .dx-tab-selected:before {
@@ -50,10 +49,6 @@
     border-width: 2px;
     border-top-style: solid;
     height: 51px;
-}
-
-:host ::ng-deep .tabs .dx-tab.dx-item:not(.dx-tab-selected) {
-    background-color: #d4d8da;
 }
 
 :host ::ng-deep .tabs.dx-tabpanel .dx-multiview-wrapper,

@@ -14,6 +14,7 @@
     <div *ngFor="let item of editorsData" class="work-item">
         <app-editor [item]="item"></app-editor>
     </div>
+    <ng-content></ng-content>
     <!-- <div class="base-theming">
         <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
         <app-button type="apply" (clicked)="export.popup.show();">Export</app-button>

@@ -42,9 +42,9 @@
 
 :host ::ng-deep .blocks .block:hover .block-image .icon-material .st1,
 :host ::ng-deep .blocks .block:hover .block-image .icon-material .st2  {
-    fill:#f05b41;
+    fill:#158BFF;
 }
 
-.text { 
+.text {
     margin: 50px auto 80px auto;
 }

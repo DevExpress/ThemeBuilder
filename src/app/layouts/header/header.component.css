@@ -82,10 +82,14 @@
     padding: 3px;
     height: 30px;
     align-self: center;
+    align-items: center;
+    display: flex;
 }
 
 .switcher-template .switcher-icon.editor {
     margin-left: 11px;
+    display: flex;
+    align-items: center;
 }
 
 .switcher-template .item-template-text {

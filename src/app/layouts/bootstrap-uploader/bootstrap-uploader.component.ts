@@ -13,6 +13,7 @@ import { ImportService } from '../../import.service';
 export class BootstrapUploaderComponent {
     @Input() accept: string;
     @Input() buttonText: string;
+    @Input() type: string;
     @Input() version: number;
     @Input() height: number;
     @Input() labelText = 'or Drop the file here';
