@@ -3,13 +3,14 @@
 }
 
 .file-uploader {
-    margin: -5px auto 0;
+    margin: 0 auto 0;
 }
 
 :host ::ng-deep .file-uploader .dx-fileuploader-input-container {
     float: left;
     text-align: center;
     margin-top: 27px;
+    opacity: 0.5;
 }
 
 :host ::ng-deep .file-uploader .dx-button {
@@ -26,8 +27,8 @@
     text-transform: none;
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 /* :host ::ng-deep .file-uploader .dx-button.dx-state-hover {

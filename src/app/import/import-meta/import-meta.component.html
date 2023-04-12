@@ -1,5 +1,8 @@
-<div class="content">
-    <div class="title-link" [routerLink]="['/import']">Import a Theme</div>
+<div class="content import-meta">
+    <div class="title-link" [routerLink]="['/import']">
+        <img class="arrow-back" src="../../../assets/arrow-left.svg">
+        Import a Theme
+    </div>
     <div class="container">
         <div class="title">
             DevExtreme Metadata
@@ -25,6 +28,6 @@
             [(value)]="importValue"
             placeholder="Paste metadata here">
         </dx-text-area>
-        <app-button [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
+        <app-button class="upload-meta" [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
     </div>
 </div>

@@ -22,17 +22,34 @@ body {
     height: 100%;
 }
 
+.dx-textbox.dx-editor-outlined {
+    border-radius: 4px;
+}
+
+.dx-textarea.dx-editor-outlined {
+    border-radius: 4px;
+}
+
 :focus {
     outline: none;
 }
 
-@media (min-height: 1000px) { 
+.title-link {
+    display: flex;
+    align-items: center;
+}
+
+.title-link .arrow-back {
+    margin-right: 16px;
+}
+
+@media (min-height: 1000px) {
     body {
         overflow-y: hidden;
     }
 }
 
-@media (min-width: 1000px) { 
+@media (min-width: 1000px) {
     body {
         overflow-x: hidden;
     }

@@ -36,7 +36,7 @@
 
 .left-menu .dark-menu .menu-item {
     font-size: 14px;
-    padding: 8px 20px;
+    padding: 8px 24px;
     cursor: pointer;
 }
 
@@ -45,11 +45,11 @@
 }
 
 .left-menu .dark-menu .menu-item.top {
-    font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
+    font-family: 'Roboto', 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
     padding-bottom: 10px;
-    padding-left: 30px;
+    padding-left: 24px;
     border-bottom: 1px solid #6d6e6f;
     position: relative;
 }
@@ -58,7 +58,7 @@
     position: absolute;
     top: 50%;
     margin-top: -9px;
-    left: 5px;
+    left: 24px;
     width: 18px;
     height: 18px;
 }
@@ -68,7 +68,7 @@
 }
 
 .left-menu .dark-menu .menu-item:not(.top):hover {
-    color: #f05b41;
+    color: #2190F6;
 }
 
 .left-menu .working-area {
@@ -85,13 +85,13 @@
 }
 
 .left-menu .working-area .name.top {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
     color: #505050;
     border-bottom: 1px solid #e3e7ea;
-    font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
+    font-family: 'Roboto', 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
     position: relative;
-    padding-left: 30px;
+    padding-left: 50px;
 }
 
 .left-menu .working-area .name.top.search-active {
@@ -112,7 +112,7 @@
 .left-menu .working-area .name.top .search-container {
     box-sizing: border-box;
     position: absolute;
-    height: 45px;
+    height: 40px;
     left: 200px;
     top: 0;
     background-color: #fafbfb
@@ -120,7 +120,7 @@
 
 
 .left-menu .working-area .name.top .search-button {
-    width: 41px;
+    width: 40px;
     border-left: 1px solid #e3e7ea;
     border-bottom: 1px solid #e3e7ea;
 }

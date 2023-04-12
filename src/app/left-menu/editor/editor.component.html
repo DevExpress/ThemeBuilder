@@ -1,17 +1,20 @@
 <div class="property-header" [innerHTML]="header"></div>
 <div class="property-widget">
     <dx-select-box *ngIf="item.Type === 'select'"
+        stylingMode="filled"
         [value]="item.Value"
         [items]="item.TypeValuesArray"
         (onValueChanged)="valueChanged($event, item.Key)"
     ></dx-select-box>
 
     <dx-text-box *ngIf="item.Type === 'text'"
+        stylingMode="filled"
         [value]="item.Value"
         (onValueChanged)="valueChanged($event, item.Key)"
     ></dx-text-box>
 
     <dx-color-box *ngIf="item.Type === 'color'"
+        stylingMode="filled"
         [editAlphaChannel]="true"
         [value]="item.Value"
         (onValueChanged)="valueChanged($event, item.Key)"

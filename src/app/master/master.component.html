@@ -1,6 +1,11 @@
 <div class="master">
     <div class="section left">
-        <div class="title-link master" [routerLink]="['/master']">Select a Theme</div>
+        <div class="title-link theme-selection master" [routerLink]="['/master']">
+            <div>
+                <img class="arrow-back" src="../../assets/arrow-left.svg">
+                Select a Theme
+            </div>
+        </div>
         <div class="title">
             {{themeName | titlecase}} Theme
         </div>

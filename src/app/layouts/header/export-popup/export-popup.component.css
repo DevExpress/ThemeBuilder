@@ -76,7 +76,6 @@
 
 .view-wrapper {
     height: 452px;
-    overflow: hidden;
 }
 
 ::ng-deep .view-wrapper .dx-checkbox-text {
@@ -146,8 +145,22 @@
     opacity: 0;
 }
 
-.view-wrapper .views-container .view .padding-20 {
-    padding-top: 20px;
+.view-wrapper .views-container .view .padding-16 {
+    padding-top: 16px;
+}
+
+.view-wrapper .views-container .view .buttons-container .prev-step.button {
+    background-color: #fff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+    color: #596C7D;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .prev-step.button:focus,
+.view-wrapper .views-container .view .buttons-container.horizontal .prev-step.button:hover
+{
+    background-color: #E9E9E9;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+    color: #596C7D;
 }
 
 .view-wrapper .views-container .view .buttons-container {
@@ -179,43 +192,22 @@
     color: #fff;
 }
 
-.view-wrapper .views-container.view-2 .view .buttons-container.horizontal .button {
-    background: #2190F7;
-    color: #fff;
-    border: none;
-}
-
-.view-wrapper .views-container.view-2 .view .buttons-container.horizontal .button:active .button-text,
-.view-wrapper .views-container.view-2 .view .buttons-container.horizontal .button:focus .button-text {
-    background: #2190F7;
-    color: #fff;
-}
-
-.view-wrapper .views-container.view-2 .view .buttons-container.horizontal .button .button-text {
-    color: #fff;
-    font-size: 16px;
-}
-
-.view-wrapper .views-container.view-2 .view .buttons-container .button {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button {
     background-color: #fff;
     border: 1px solid #E9E9E9;
     box-shadow: none;
 }
 
-.view-wrapper .views-container.view-2 .view .buttons-container.horizontal .button:hover {
-    background: #2190F7;
-}
-
-.view-wrapper .views-container.view-2 .view .buttons-container .button:hover {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:hover {
     background-color: #E9E9E9;
 }
 
-.view-wrapper .views-container.view-2 .view .buttons-container {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons {
     margin-bottom: 0;
 }
 
 
-.view-wrapper .views-container.view-2 .view .buttons-container .button .button-text {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button .button-text {
     color: #596C7D;
     font-style: normal;
     font-weight: 400;
@@ -223,13 +215,13 @@
     line-height: 100%;
 }
 
-.view-wrapper .views-container.view-2 .view .buttons-container .button:active,
-.view-wrapper .views-container.view-2 .view .buttons-container .button:focus {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:active,
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:focus {
     background-color: #E9E9E9;
 }
 
-.view-wrapper .views-container.view-2 .view .buttons-container .button:active .button-text,
-.view-wrapper .views-container.view-2 .view .buttons-container .button:focus .button-text {
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:active .button-text,
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:focus .button-text {
     color: #596C7D;
 }
 
@@ -240,8 +232,9 @@
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal .button:active,
+.view-wrapper .views-container .view .buttons-container.horizontal .button:hover,
 .view-wrapper .views-container .view .buttons-container.horizontal .button:focus {
-    background: #2190F7;
+    background: #1188f6;
 }
 
 .view-wrapper .views-container .view .buttons-container .button:disabled,
@@ -291,11 +284,18 @@
 }
 
 .tooltip-container.export {
-    height: 24px;
+    height: 16px;
 }
 
 .tooltip-container.swatch {
-    height: 18px;
+    height: 16px;
+}
+
+.export-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-left: 8px;
 }
 
 .view-wrapper .views-container .view .export-text {
@@ -304,10 +304,15 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-left: 8px;
     color: #899097;
+}
+
+.view-0 .export-text {
+    margin-bottom: 8px;
+}
+
+.view-wrapper .views-container .view .export-text .tooltip-container {
+    padding-left: 0;
 }
 
 .view-wrapper .views-container .view .widgets {

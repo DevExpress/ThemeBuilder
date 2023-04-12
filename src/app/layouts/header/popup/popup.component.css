@@ -25,12 +25,12 @@
     height: 20px;
     width: 20px;
     font-size: 20px;
-    color: #d6d5d5;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .close-button:hover .dx-icon {
-    color: #2190F6;
+    opacity: 1;
 }
 
 ::ng-deep .dx-overlay-content.dx-popup-normal.dx-resizable {

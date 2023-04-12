@@ -26,7 +26,7 @@
 .logo {
     display: flex;
     gap: 12px;
-    margin-left: 48px;
+    margin-left: 24px;
     width: 220px;
     cursor: pointer;
 }

@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './help-tooltip.component.html',
     styles: [`span {
         display: flex;
+        cursor: pointer;
     }`]
 })
 export class HelpTooltipComponent {}

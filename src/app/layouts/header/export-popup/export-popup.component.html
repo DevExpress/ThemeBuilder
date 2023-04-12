@@ -19,11 +19,16 @@
     <div class="view-wrapper">
         <div class="views-container" [ngClass]="'view-' + viewIndex">
             <div class="view" *ngIf="viewIndex === 0">
-                <div class="export-text">Color Scheme Name</div>
+                <div class="export-text">Color Scheme Name
+                    <div class="tooltip-container">
+                        <app-help-tooltip>The name can contain letters, digits, and hyphens.</app-help-tooltip>
+                    </div>
+                </div>
                 <div class="scheme-name">
                     <dx-text-box
                         [(value)]="schemeName"
                         valueChangeEvent="keyup"
+                        stylingMode="outlined"
                     >
                         <dx-validator>
                             <dxi-validation-rule
@@ -37,11 +42,8 @@
                             </dxi-validation-rule>
                         </dx-validator>
                     </dx-text-box>
-                    <div class="tooltip-container">
-                        <app-help-tooltip>The name can contain letters, digits, and hyphens.</app-help-tooltip>
-                    </div>
                 </div>
-                <div class="padding-20"></div>
+                <div class="padding-16"></div>
                 <div>
                     <dx-check-box
                         text="Save as color swatch"
@@ -56,7 +58,7 @@
                         </app-help-tooltip>
                     </div>
                 </div>
-                <div class="padding-20"></div>
+                <div class="padding-16"></div>
                 <div>
                     <dx-check-box
                         text="Remove external resources"
@@ -82,6 +84,7 @@
             <div class="view" *ngIf="viewIndex === 1">
                 <dx-text-box
                     [(value)]="searchValue"
+                    stylingMode="outlined"
                     valueChangeEvent="keyup"
                     [showClearButton]="true"
                     placeholder="Search..."
@@ -131,7 +134,7 @@
                     </div>
                 </div>
                 <div class="buttons-container horizontal">
-                    <button class="button" (click)="changeStep(0)">
+                    <button class="button prev-step" (click)="changeStep(0)">
                         <div class="button-icon">
                             <i class="dx-icon-chevronleft"></i>
                         </div>
@@ -146,7 +149,7 @@
                 </div>
             </div>
             <div class="view" *ngIf="viewIndex === 2" [ngClass]="{'hide-content': copyAreaActive}">
-                <div>
+                <div class="export-label">
                     <div class="export-text">Export CSS</div>
                     <div class="tooltip-container export">
                         <app-help-tooltip>
@@ -156,7 +159,7 @@
                         </app-help-tooltip>
                     </div>
                 </div>
-                <div class="buttons-container">
+                <div class="buttons-container export-buttons">
                     <button class="button" [disabled]="!contentReady" (click)="exportCss(true)">
                         <div class="button-icon">
                             <app-button-icon name="download"></app-button-icon>
@@ -183,7 +186,7 @@
                     </button>
                 </div>
 
-                <div>
+                <div class="export-label">
                     <div class="export-text">Export Metadata</div>
                     <div class="tooltip-container export">
                         <app-help-tooltip>
@@ -192,7 +195,7 @@
                         </app-help-tooltip>
                     </div>
                 </div>
-                <div class="buttons-container">
+                <div class="buttons-container export-buttons">
                     <button class="button" [disabled]="!contentReady" (click)="exportMeta(true)">
                         <div class="button-icon">
                             <app-button-icon name="download"></app-button-icon>
@@ -218,7 +221,7 @@
                     </div>
                 </div>
                 <div class="buttons-container horizontal">
-                    <button class="button" (click)="changeStep(1)">
+                    <button class="button prev-step" (click)="changeStep(1)">
                         <div class="button-icon">
                             <i class="dx-icon-chevronleft"></i>
                         </div>

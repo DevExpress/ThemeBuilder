@@ -1,6 +1,21 @@
 .master {
-    display: flex;
     position: relative;
+    display: flex;
+}
+
+.theme-selection {
+    display: inline-block;
+    padding: 12px 24px;
+}
+
+.theme-selection > div {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-back {
+    margin-right: 12px;
+    height: 18px;
 }
 
 :host ::ng-deep .master .loading {
@@ -26,7 +41,7 @@
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    margin-top: 120px;
+    margin-top: 123px;
     margin-bottom: 118px;
     height: 800px;
     min-width: 1160px;
@@ -42,7 +57,6 @@
 .master .title {
     font-size: 32px;
     font-weight: 600;
-    /* width: 310px; */
     text-align: left;
     margin-left: 48px;
     display: block;
@@ -53,15 +67,11 @@
 }
 
 .master .title-link {
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 0 0 16px;
-    width: 310px;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 16px 48px;
 }
 .master .title-link:hover {
-    background: none;
-    color: #158BFF;
-    text-decoration: underline;
     opacity: 1;
 }
 

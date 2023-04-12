@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-const DEFAULT_BUTTON_WIDTH = 240;
+const DEFAULT_BUTTON_WIDTH = 200;
 const DEFAULT_BUTTON_HEIGHT = 44;
 
 @Component({

@@ -1,11 +1,17 @@
 <div class="content">
-    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">ThemeBuilder</div>
+    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">
+        <img class="arrow-back" src="../../assets/arrow-left.svg">
+        Theme Builder
+    </div>
     <ng-container [ngSwitch]="url">
         <ng-container *ngSwitchCase="''" >
             <div class="container">
-                <div class="title index">ThemeBuilder</div>
+                <div class="title index">
+                    <div class="arrow-icon"></div>
+                    Theme Builder
+                </div>
                 <div class="text">
-                    The DevExtreme ThemeBuilder allows you to customize and create new custom themes with absolute ease.&nbsp;To modify a theme included in our distribution, select one of the following options:
+                    The DevExtreme Theme Builder allows you to customize and create new custom themes with absolute ease.&nbsp;To modify a theme included in our distribution, select one of the following options:
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master']">

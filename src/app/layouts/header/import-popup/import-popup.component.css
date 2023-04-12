@@ -3,9 +3,8 @@
 }
 
 .radio-group {
-    width: 380px;
-    display: block;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     padding-bottom: 27px;
 }
 
@@ -39,8 +38,12 @@ app-bootstrap-uploader {
     padding-bottom: 16px;
 }
 
-::ng-deep .upload-meta .button {
+::ng-deep .dx-multiview-item .upload-meta .button {
     box-shadow: none;
+}
+
+::ng-deep .dx-multiview-item .upload-meta .button:enabled {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
 }
 
 

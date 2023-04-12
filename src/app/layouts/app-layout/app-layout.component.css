@@ -18,8 +18,8 @@
 }
 
 :host ::ng-deep .title {
-    font-weight: 700;
-    font-size: 52px;
+    font-weight: 600;
+    font-size: 48px;
     margin: 0 auto;
     display: inline-block;
     line-height: 100%;
@@ -27,14 +27,14 @@
 
 :host ::ng-deep .title-link {
     border-radius: 9999px;
-    color: #222222;
+    color: #899097;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 200;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 125%;
-    margin: 0 auto 32px auto;
-    opacity: 0.35;
+    margin: 0 auto 48px auto;
     padding: 16px 32px;
+    background: #F1F1F1;
 }
 
 :host ::ng-deep .title span {
@@ -45,7 +45,7 @@
 }
 
 :host ::ng-deep .title-link:hover {
-    background: #F1F1F1;
+    background: #E9E9E9;
 }
 
 :host ::ng-deep .text {

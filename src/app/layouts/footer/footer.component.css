@@ -2,6 +2,10 @@
     display: block;
 }
 
+.licensing {
+    padding-left: 16px;
+}
+
 .footer {
     background-color: #667788;
     bottom: 0;
@@ -50,7 +54,6 @@
 
 .footer-links a {
     color: white;
-    text-decoration: none;
 }
 
 .footer-links a:hover {

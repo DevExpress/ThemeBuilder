@@ -22,14 +22,23 @@
     height: 80px;
 }
 
+.arrow-back {
+    margin-right: 16px;
+}
+
+.title-link {
+    display: flex;
+    align-items: center;
+}
+
 .blocks .block:hover {
     background-color: #2190F7;
     color: #fff;
 }
 
 .blocks .block .block-title {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     line-height: 32px;
 }
 
@@ -46,5 +55,5 @@
 }
 
 .text {
-    margin: 50px auto 80px auto;
+    margin: 32px auto 64px auto;
 }
