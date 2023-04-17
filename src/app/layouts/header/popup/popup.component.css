@@ -2,7 +2,7 @@
     background: #f0f2f3;
 }
 
-::ng-deep .dx-popup-wrapper .dx-popup-content {
+:host ::ng-deep .dx-popup-wrapper .dx-popup-content {
     padding: 32px;
 }
 
@@ -33,7 +33,7 @@
     opacity: 1;
 }
 
-::ng-deep .dx-overlay-content.dx-popup-normal.dx-resizable {
+:host ::ng-deep .dx-overlay-content.dx-popup-normal.dx-resizable {
     border-radius: 16px;
 }
 

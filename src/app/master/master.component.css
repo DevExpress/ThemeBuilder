@@ -4,7 +4,7 @@
 }
 
 .theme-selection {
-    display: inline-block;
+    width: 126px;
     padding: 12px 24px;
 }
 
@@ -41,17 +41,18 @@
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    margin-top: 123px;
+    margin-top: 56px;
     margin-bottom: 118px;
     height: 800px;
     min-width: 1160px;
     background-color: #e2e5e7;
-    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px #0000004d;
     z-index: 1;
 }
 
 .master .section.right > * {
     height: 100%;
+    border-radius: 8px;
 }
 
 .master .title {
@@ -59,7 +60,7 @@
     font-weight: 600;
     text-align: left;
     margin-left: 48px;
-    display: block;
+    display: inline-block;
 }
 
 .master .title span {

@@ -7,9 +7,6 @@
     height: 70px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
     display: flex;
-    /* min-width: 1000px;
-    position: relative;
-    z-index: 3; */
 }
 
 .header.filled {
@@ -27,7 +24,6 @@
     display: flex;
     gap: 12px;
     margin-left: 24px;
-    width: 220px;
     cursor: pointer;
 }
 
@@ -41,6 +37,15 @@
 
 :host ::ng-deep .logo .header-logo-devextreme svg path {
     fill: #596C7D;
+}
+
+.product-name {
+    font-size: 24px;
+    line-height: 100%;
+    font-weight: 700;
+    font-stretch: 75%;
+    font-family: 'Open Sans',sans-serif;
+    color: #2190F6;
 }
 
 .header .separator {
@@ -80,7 +85,6 @@
 
 .switcher-template .switcher-icon {
     padding: 3px;
-    height: 30px;
     align-self: center;
     align-items: center;
     display: flex;

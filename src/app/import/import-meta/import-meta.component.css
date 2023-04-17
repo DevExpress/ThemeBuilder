@@ -28,9 +28,5 @@ dx-text-area {
 }
 
 ::ng-deep .import-meta .upload-meta .button {
-    box-shadow: none;
-}
-
-::ng-deep .import-meta .upload-meta .button:enabled {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
 }
