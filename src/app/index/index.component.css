@@ -6,7 +6,7 @@
 
 .blocks .block {
     align-items: center;
-    width: 370px;
+    width: 320px;
     display: flex;
     flex-direction: column;
     padding: 32px 0;
