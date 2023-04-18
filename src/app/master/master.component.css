@@ -48,6 +48,7 @@
     background-color: #e2e5e7;
     box-shadow: 0 4px 12px #0000004d;
     z-index: 1;
+    border-radius: 8px;
 }
 
 .master .section.right > * {

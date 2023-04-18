@@ -24,7 +24,7 @@ export const routeAnimation = trigger('routeAnimation', [
                 animate('.25s ease-out', style({ opacity: 1, transform: 'translateY(0px)' }))
             ], { optional: true }),
             query(':enter .title-link:not(.master)', [
-                style({ 'opacity': 1, 'font-size': '32px', 'color': '#404040', 'transform': 'translateY(100%)'}),
+                style({ 'opacity': 0, 'font-size': '32px', 'color': '#404040', 'transform': 'translateY(100%)'}),
                 animate('.25s ease-out',
                     style({ 'opacity': 1, 'font-size': '16px', 'color': '#a7a8a9', 'transform': 'translateY(0px)' }))
             ], { optional: true })
