@@ -1,3 +1,7 @@
+::ng-deep .dx-popup-wrapper > .dx-overlay-content {
+    border-radius: 16px;
+}
+
 .indicator {
     display: flex;
     padding: 48px 24px 0 24px;
@@ -16,7 +20,7 @@
     border-top: 2px dashed #E9E9E9;
     position: absolute;
     width: 210px;
-    left: 50%;
+    left: 58%;
     z-index: -1;
     top: 16px;
 }
@@ -75,7 +79,7 @@
 }
 
 .view-wrapper {
-    height: 452px;
+    height: 468px;
 }
 
 ::ng-deep .view-wrapper .dx-checkbox-text {

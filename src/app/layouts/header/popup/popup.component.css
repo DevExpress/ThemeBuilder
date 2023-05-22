@@ -2,8 +2,8 @@
     background: #f0f2f3;
 }
 
-:host ::ng-deep .dx-popup-wrapper .dx-popup-content {
-    padding: 32px;
+::ng-deep .dx-popup-wrapper .dx-popup-content {
+    padding: 24px;
 }
 
 .title {
