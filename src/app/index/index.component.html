@@ -5,11 +5,11 @@
             <div class="container">
                 <div class="title index">ThemeBuilder</div>
                 <div class="text">
-                    The DevExpress ThemeBuilder allows you to modify themes shipped inside DevExtreme or create custom themes.
+                    The DevExtreme ThemeBuilder allows you to customize and create new custom themes with absolute ease. To modify a theme included in our distribution, select one of the following options:
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master']">
-                        <div class="block-title">Choose a Base Theme</div>
+                        <div class="block-title">Select a Base Theme</div>
                         <div class="block-image">
                             <app-icon-themes></app-icon-themes>
                         </div>
@@ -47,8 +47,8 @@
         </ng-container>
         <ng-container *ngSwitchCase="'master'" >
                 <div class="container">
-                <div class="title">Choose a Base Theme</div>
-                <div class="text">DevExtreme provides both a Generic and Material theme. Both are available in various color schemes.</div>
+                <div class="title">Select a Base Theme</div>
+                <div class="text">DevExtreme supports Generic and Material themes. Multiple color schemes are available for both themes.</div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master/generic/light']">
                         <div class="block-title">Generic</div>
