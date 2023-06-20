@@ -41,7 +41,7 @@ export class ExportPopupComponent implements OnInit {
         widgets: ['Tabs', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox']
     }, {
         group: 'Forms and Editors',
-        widgets: ['Form', 'CheckBox', 'Calendar', 'Validation', 'Switch', 'TextBox', 'DropDownBox', 'Autocomplete', 'DateBox', 'SelectBox', 'NumberBox', 'Slider', 'RangeSlider', 'Lookup', 'TagBox', 'RadioGroup', 'ColorBox', 'HtmlEditor']
+        widgets: ['Form', 'CheckBox', 'Calendar', 'Validation', 'Switch', 'TextBox', 'DropDownBox', 'Autocomplete', 'DateBox', 'DateRangeBox', 'SelectBox', 'NumberBox', 'Slider', 'RangeSlider', 'Lookup', 'TagBox', 'RadioGroup', 'ColorBox', 'HtmlEditor']
     }, {
         group: 'Actions and Buttons',
         widgets: ['Button', 'ButtonGroup', 'DropDownButton', 'ActionSheet', 'SpeedDialAction']
