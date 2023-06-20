@@ -39,6 +39,9 @@
                     </dx-validator>
                 </dx-text-box>
             </div>
+            <div class="field daterangebox">
+                <dx-date-range-box stylingMode="outline"></dx-date-range-box>
+            </div>
         </div>
         <div class="block filled">
             <div class="field">
@@ -65,6 +68,9 @@
                         <dxi-validation-rule type="stringLength" [min]="1" message="Field is required" label="Validated"></dxi-validation-rule>
                     </dx-validator>
                 </dx-text-box>
+            </div>
+            <div class="field daterangebox">
+                <dx-date-range-box stylingMode="filled"></dx-date-range-box>
             </div>
         </div>
         <div class="block underlined">
@@ -93,17 +99,14 @@
                     </dx-validator>
                 </dx-text-box>
             </div>
+            <div class="field daterangebox">
+                <dx-date-range-box stylingMode="underlined"></dx-date-range-box>
+            </div>
         </div>
     </div>
     <div class="block calendar">
         <div class="header">Calendar</div>
         <dx-calendar></dx-calendar>
-    </div>
-    <div class="block daterangebox">
-        <div class="header">DateRangeBox</div>
-        <dx-date-range-box stylingMode="outline"></dx-date-range-box>
-        <dx-date-range-box stylingMode="filled"></dx-date-range-box>
-        <dx-date-range-box stylingMode="underlined"></dx-date-range-box>
     </div>
     <div class="block checkbox">
         <div class="header">CheckBox</div>

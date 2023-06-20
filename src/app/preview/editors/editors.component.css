@@ -40,6 +40,12 @@
     justify-content: space-between;
 }
 
+.editors .block .field.daterangebox {
+    display: block;
+    max-width: initial;
+    margin-right: 0;
+}
+
 ::ng-deep .dx-theme-material-typography .editors .block .field {
     min-height: 90px;
 }
