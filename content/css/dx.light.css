@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 23.1.3
-* Build date: Fri Jun 09 2023
+* Version: 23.1.4
+* Build date: Fri Jul 14 2023
 *
 * Copyright (c) 2012 - 2023 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -6920,15 +6920,15 @@
   height: calc(100% - 41px);
 }
 .dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-hover .dx-checkbox-icon,
-.dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-hover .dx-radiobutton-icon::before,
+.dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-hover .dx-radiobutton-icon,
 .dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-hover .dx-checkbox-icon,
-.dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-hover .dx-radiobutton-icon::before {
+.dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-hover .dx-radiobutton-icon {
   border-color: #265a87;
 }
 .dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-focused .dx-checkbox-icon,
-.dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-focused .dx-radiobutton-icon::before,
+.dx-list.dx-list-select-decorator-enabled .dx-list-item.dx-state-focused .dx-radiobutton-icon,
 .dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-focused .dx-checkbox-icon,
-.dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-focused .dx-radiobutton-icon::before {
+.dx-list.dx-list-select-decorator-enabled .dx-list-select-all.dx-state-focused .dx-radiobutton-icon {
   border: 1px solid #337ab7;
 }
 .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-hover {
@@ -11754,26 +11754,9 @@
   right: auto;
   left: 5px;
 }
-.dx-radiobutton {
-  display: table;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  line-height: 22px;
-}
 .dx-radio-value-container {
-  display: table-cell;
-  padding-right: 10px;
-  vertical-align: middle;
-  padding-left: 0;
-}
-.dx-rtl .dx-radio-value-container,
-.dx-rtl.dx-radio-value-container {
-  padding-right: 5px;
-  padding-left: 10px;
+  -webkit-padding-end: 10px;
+  padding-inline-end: 10px;
 }
 .dx-radiogroup-horizontal .dx-collection {
   display: -webkit-box;
@@ -11781,87 +11764,78 @@
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-column-gap: 17px;
+  -moz-column-gap: 17px;
+  column-gap: 17px;
 }
-.dx-radiogroup-horizontal .dx-radiobutton:last-of-type {
-  margin-right: 0;
-}
-.dx-state-disabled .dx-radiobutton {
-  cursor: default;
-}
-.dx-state-disabled.dx-radiobutton {
-  cursor: default;
-}
-.dx-radiobutton-icon {
-  width: 22px;
-  height: 22px;
-}
-.dx-radiobutton-icon::before {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  content: "";
-  border-radius: 11px;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-.dx-radiobutton-icon-checked .dx-radiobutton-icon-dot {
-  display: block;
-  margin-top: -16px;
-  margin-left: 6px;
-  width: 10px;
-  height: 10px;
-  background: #337ab7;
-  content: "";
-  border-radius: 5px;
-}
-.dx-radiobutton.dx-state-readonly .dx-radiobutton-icon::before {
-  border-color: #f4f4f4;
-  background-color: #fff;
-}
-.dx-radiobutton.dx-state-hover .dx-radiobutton-icon::before {
-  border-color: rgba(51,122,183,.4);
-}
-.dx-radiobutton.dx-state-active .dx-radiobutton-icon::before {
-  background-color: rgba(96,96,96,.2);
-}
-.dx-radiobutton.dx-state-focused:not(.dx-state-active) .dx-radiobutton-icon::before {
-  border: 1px solid #337ab7;
+.dx-radiobutton {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
 }
 .dx-radiobutton.dx-state-disabled {
+  cursor: default;
   opacity: .5;
-}
-.dx-invalid .dx-radiobutton-icon::before {
-  border-color: rgba(217,83,79,.4);
-}
-.dx-invalid .dx-state-focused.dx-radiobutton .dx-radiobutton-icon::before,
-.dx-invalid .dx-state-hover.dx-radiobutton .dx-radiobutton-icon::before {
-  border-color: #d9534f;
 }
 .dx-state-disabled .dx-radiobutton.dx-state-disabled {
   opacity: 1;
 }
-.dx-rtl .dx-radiobutton.dx-radiobutton-checked .dx-radiobutton-icon-dot,
-.dx-rtl.dx-radiobutton.dx-radiobutton-checked .dx-radiobutton-icon-dot {
-  margin-right: 6px;
-  margin-left: 0;
+.dx-radiobutton-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.dx-radiobutton-icon .dx-radiobutton-icon-dot {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 0 solid #fff;
+}
+.dx-radiobutton-icon-checked .dx-radiobutton-icon-dot {
+  background-color: #337ab7;
+  border-width: 5px;
+}
+.dx-radiobutton.dx-state-readonly .dx-radiobutton-icon {
+  border-color: #f4f4f4;
+}
+.dx-radiobutton.dx-state-hover .dx-radiobutton-icon {
+  border-color: rgba(51,122,183,.4);
+}
+.dx-radiobutton.dx-state-active .dx-radiobutton-icon {
+  background-color: rgba(96,96,96,.2);
+}
+.dx-radiobutton.dx-state-active .dx-radiobutton-icon-dot {
+  border-color: #ddd;
+}
+.dx-radiobutton.dx-state-focused .dx-radiobutton-icon {
+  border-color: #337ab7;
+}
+.dx-invalid .dx-radiobutton-icon {
+  border-color: rgba(217,83,79,.4);
+}
+.dx-invalid .dx-state-focused.dx-radiobutton .dx-radiobutton-icon,
+.dx-invalid .dx-state-hover.dx-radiobutton .dx-radiobutton-icon {
+  border-color: #d9534f;
+}
+.dx-state-readonly .dx-radiobutton-icon {
+  border-color: #f4f4f4;
 }
 .dx-radiogroup .dx-radiobutton,
 .dx-radiogroup .dx-radiobutton-icon {
-  margin: 1px 0;
-}
-.dx-radiogroup.dx-state-readonly .dx-radiobutton-icon::before {
-  border-color: #f4f4f4;
-  background-color: #fff;
-}
-.dx-radiogroup-horizontal .dx-radiobutton {
-  margin-right: 17px;
-}
-.dx-rtl .dx-radiogroup-horizontal .dx-radiobutton,
-.dx-rtl.dx-radiogroup-horizontal .dx-radiobutton {
-  margin-right: 0;
-  margin-left: 17px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 .dx-accordion-item-title {
   cursor: pointer;
