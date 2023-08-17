@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DxScrollViewComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -35,8 +35,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     searchKeyword = '';
     workArea: LeftMenuItem;
     workAreaName = BASE_THEMING_NAME;
-    formGroup = new FormGroup({
-        formControl: new FormControl('')
+    formGroup = new UntypedFormGroup({
+        formControl: new UntypedFormControl('')
     });
 
     constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {

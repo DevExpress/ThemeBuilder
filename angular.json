@@ -112,6 +112,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "devextreme-themebuilder-app"
+    }
 }
