@@ -1,4 +1,4 @@
-import { Component, afterRender } from '@angular/core';
+import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 
@@ -10,15 +10,6 @@ import { DxButtonTypes } from 'devextreme-angular/ui/button';
 
 export class ButtonsComponent {
     constructor() {
-        afterRender(() => this.initState())
-    }
-
-    initState() {
-        console.log('Set hover state')
-        document.querySelectorAll('dx-qr-hover').forEach(btn => {
-            console.log(btn);
-            btn.classList.add('dx-state-hover');
-        })
     }
 
     initStateHover(event: DxButtonTypes.ClickEvent) {

@@ -1,0 +1,46 @@
+:host ::ng-deep {
+    height: auto;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+::ng-deep .dx-button {
+    pointer-events: none !important;
+}
+
+span {
+    color: #505050;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 40px;
+}
+
+.btn-cell:first-child {
+    width: 10%;
+    justify-content: flex-start;
+}
+
+.btn-cell {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-list {
+    display: flex;
+    gap: 16px;
+}

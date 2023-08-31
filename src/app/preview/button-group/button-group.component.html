@@ -1,0 +1,55 @@
+<!-- <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div> -->
+<ng-container #collapsedBlock>
+    <div class="btn-container">
+        <div class="btn-row">
+            <div class="btn-cell btn-cell--empty"></div>
+            <div class="btn-cell">
+                <span>Contained button</span>
+            </div>
+            <div class="btn-cell">
+                <span>Outlined button</span>
+            </div>
+            <div class="btn-cell">
+                <span>Text button</span>
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell btn-cell--empty"></div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, items: buttonItems}"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
+<!-- <ng-template  #expandedBlock>
+    <div class="btn-container">
+        <div class="btn-row">
+            <div class="btn-cell btn-cell--empty"></div>
+            <div class="btn-cell">
+                <span>Contained button</span>
+            </div>
+            <div class="btn-cell">
+                <span>Outlined button</span>
+            </div>
+            <div class="btn-cell">
+                <span>Text button</span>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<ng-template #buttonTemplate let-mode="mode" let-items="items">
+    <div class="btn-cell">
+      <div class="btn-list">
+          <dx-button-group
+              keyExpr="style"
+              selectionMode="multiple"
+              [items]="items"
+              [stylingMode]="mode"
+              [selectedItemKeys]="['bold', 'italic']"
+          ></dx-button-group>
+      </div>
+    </div>
+  </ng-template>

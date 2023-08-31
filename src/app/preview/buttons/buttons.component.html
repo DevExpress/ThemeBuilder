@@ -17,15 +17,9 @@
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
 
-            <ng-template ngFor let-mode [ngForOf]="buttonModes">
-                <div class="btn-cell">
-                    <div class="btn-list">
-                        <dx-button [stylingMode]="mode" text="BUTTON" type="default"></dx-button>
-                        <dx-button [stylingMode]="mode" text="BUTTON" icon="check" type="default"></dx-button>
-                        <dx-button [stylingMode]="mode" icon="check" type="default"></dx-button>
-                    </div>
-                </div>
-            </ng-template>
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
         </div>
     </div>
 </ng-template>
