@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, afterRender } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
 
 @Component({
     selector: 'app-buttons',
@@ -9,45 +10,32 @@ import { BehaviorSubject } from 'rxjs';
 
 export class ButtonsComponent {
     constructor() {
-        this.baseOptions = [
-            { text: 'Normal', type: 'normal', fontStyles: this.getFontStyles('normal') },
-            { text: 'Success', type: 'success', fontStyles: this.getFontStyles('success') },
-            { text: 'Default', type: 'default', fontStyles: this.getFontStyles('default') },
-            { text: 'Danger', type: 'danger', fontStyles: this.getFontStyles('danger') }
-        ];
+        afterRender(() => this.initState())
+    }
+
+    initState() {
+        console.log('Set hover state')
+        document.querySelectorAll('dx-qr-hover').forEach(btn => {
+            console.log(btn);
+            btn.classList.add('dx-state-hover');
+        })
+    }
+
+    initStateHover(event: DxButtonTypes.ClickEvent) {
+        event.component.element().classList.add('dx-state-hover');
+    }
+
+    initStateActive(event: DxButtonTypes.ClickEvent) {
+        event.component.element().classList.add('dx-state-active');
+    }
+
+    initStateFocused(event: DxButtonTypes.ClickEvent) {
+        event.component.element().classList.add('dx-state-focused');
     }
 
     widgetGroup = 'buttons';
     isExpanded = new BehaviorSubject<boolean>(false);
-    baseOptions: any[];
-    buttonModes: string[] = ['contained', 'outlined', 'text'];
-    buttonGroupModes: string[] = ['contained', 'outlined', 'text'];
 
-    getFontStyles = (type: string) => [
-        {
-            icon: 'bold',
-            style: 'bold',
-            hint: 'Bold',
-            type: type
-        },
-        {
-            icon: 'italic',
-            style: 'italic',
-            hint: 'Italic',
-            type: type
-        },
-        {
-            icon: 'underline',
-            style: 'underline',
-            hint: 'Underlined',
-            type: type
-        }
-    ];
-}
-
-export class FontStyle {
-    icon: string;
-    style: string;
-    hint: string;
-    type: string;
+    buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
+    buttonStates: string[] = ['normal', 'hover', 'active', 'focused', 'disable'];
 }

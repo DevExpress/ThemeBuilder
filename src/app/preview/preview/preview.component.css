@@ -50,6 +50,24 @@
     position: static;
     padding: 0;
     margin: 0 20px;
+    border-color: transparent;
+}
+
+.flex-item.full {
+    flex: 1 1 100%;
+    height: auto;
+}
+
+.flex-item.full .flex-value {
+    height: auto;
+}
+
+.flex-title {
+    color: #505050;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0 20px;
 }
 
 .group .flex-item {
@@ -95,6 +113,11 @@
 .flex-value,
 .flex-value > * {
     height: 230px;
+}
+
+.height-auto .flex-value,
+.height-auto .flex-value > * {
+    height: auto;
 }
 
 .group .flex-value,

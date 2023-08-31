@@ -1,18 +1,18 @@
 <dx-scroll-view #scrollView class="preview-scrollview">
     <div class="flex-container">
+        <div class="flex-title">BUTTONS</div>
+        <div class="flex-item full height-auto">
+            <app-button-detailed widget="buttons" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+            <div class="flex-value">
+                <app-buttons #widget></app-buttons>
+            </div>
+        </div>
         <div class="flex-item group">
             <div class="flex-item">
                 <app-button-detailed widget="editors" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <div class="flex-label">EDITORS</div>
                 <div class="flex-value">
                     <app-editors #widget></app-editors>
-                </div>
-            </div>
-            <div class="flex-item">
-                <app-button-detailed widget="buttons" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">BUTTONS</div>
-                <div class="flex-value">
-                    <app-buttons #widget></app-buttons>
                 </div>
             </div>
         </div>
