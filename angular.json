@@ -19,6 +19,15 @@
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.app.json",
+                        "allowedCommonJsDependencies": [
+                            "devexpress-diagram",
+                            "devexpress-gantt",
+                            "devextreme-quill",
+                            "file-saver",
+                            "jszip",
+                            "jszip-utils",
+                            "devextreme-themebuilder"
+                        ],
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
@@ -55,7 +64,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -107,6 +115,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "devextreme-themebuilder-app"
+    }
 }
