@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -112,7 +112,6 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
     ],
     imports: [
         BrowserModule,
-        BrowserTransferStateModule,
         HttpClientModule,
         BrowserAnimationsModule,
         DxTabPanelModule,

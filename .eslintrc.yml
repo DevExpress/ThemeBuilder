@@ -22,7 +22,6 @@ rules:
     '@typescript-eslint/no-explicit-any': 'warn'
     'brace-style': 'off'
     '@typescript-eslint/brace-style': ['error']
-    '@typescript-eslint/class-name-casing': ['error']
     'func-call-spacing': 'off'
     '@typescript-eslint/func-call-spacing': ['error', 'never']
     'indent': 'off'
@@ -51,6 +50,54 @@ rules:
     '@typescript-eslint/semi': ['error']
     '@typescript-eslint/type-annotation-spacing': 'error'
     '@typescript-eslint/unbound-method': 'error'
+    "@typescript-eslint/no-shadow": "error"
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "classProperty",
+        "format": ["UPPER_CASE", "camelCase", "PascalCase"]
+      },
+      {
+        "selector": ["enumMember", "variable"],
+        "format": ["UPPER_CASE", "PascalCase", "camelCase"]
+      },
+      {
+        "selector": ["variable", "parameter"],
+        "format": null,
+        "filter": {
+          "regex": "^_.*$",
+          "match": true
+        }
+      },
+      {
+        "selector": "variable",
+        "format": ["UPPER_CASE", "PascalCase", "camelCase"],
+        "filter": {
+          "regex": "^__Zone_enable_cross_context_check$",
+          "match": false
+        }
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "objectLiteralProperty",
+        "format": ["camelCase", "PascalCase", "snake_case"]
+      },
+      {
+        "selector": "objectLiteralProperty",
+        "format": null,
+        "filter": {
+          "regex": "^[A-Z][a-z]+_[A-Z][a-z]+$|^[A-Z][a-z]+_ID$|^[a-z]+-[a-z]+$|^[A-Z][a-z]+ [A-Z][a-z]+$",
+          "match": true
+        }
+      }
+    ]
     # eslint rules
     'curly': ['error', 'multi-line']
     'default-case': 'error'
@@ -70,7 +117,7 @@ rules:
     'no-useless-call': 'error'
     'no-useless-concat': 'error'
     'no-useless-return': 'error'
-    'no-shadow': 'error'
+    'no-shadow': 'off'
     #codestyle eslint rules
     'array-bracket-spacing': ['error', 'never']
     'comma-dangle': ['error', 'never']
