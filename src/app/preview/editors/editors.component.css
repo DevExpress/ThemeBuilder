@@ -74,8 +74,9 @@
 
 .radiogroup > *,
 .checkbox > *,
-.calendar > * {
-    display: block;
+.calendar > *,
+.daterangebox > * {
+    display: flex;
     width: auto;
     margin-bottom: 10px;
 }
