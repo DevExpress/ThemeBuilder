@@ -1,4 +1,3 @@
-/*eslint @typescript-eslint/camelcase: 'off'*/
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxTreeListComponent } from 'devextreme-angular';
