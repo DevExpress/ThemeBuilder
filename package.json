@@ -28,7 +28,7 @@
     "file-saver": "^2.0.2",
     "jszip": "^3.2.2",
     "jszip-utils": "^0.1.0",
-    "rxjs": "^6.0.0",
+    "rxjs": "^7.0.0",
     "smoothscroll-polyfill": "^0.4.3",
     "zone.js": "^0.13.1"
   },
