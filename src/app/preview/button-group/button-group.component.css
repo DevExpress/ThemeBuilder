@@ -42,5 +42,6 @@ span {
 
 .btn-list {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 0 16px;
 }

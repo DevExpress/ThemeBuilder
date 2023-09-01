@@ -1,5 +1,5 @@
-<!-- <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div> -->
-<ng-container #collapsedBlock>
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+<ng-template #collapsedBlock>
     <div class="btn-container">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
@@ -18,12 +18,12 @@
             <div class="btn-cell btn-cell--empty"></div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, items: buttonItems}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
             </ng-container>
         </div>
     </div>
-</ng-container>
-<!-- <ng-template  #expandedBlock>
+</ng-template>
+<ng-template  #expandedBlock>
     <div class="btn-container">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
@@ -37,19 +37,76 @@
                 <span>Text button</span>
             </div>
         </div>
-    </div>
-</ng-template> -->
 
-<ng-template #buttonTemplate let-mode="mode" let-items="items">
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Normal</span>
+                {{ logging('Normal') }}
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Hover</span>
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Active</span>
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Focused</span>
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Disable</span>
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #buttonTemplate let-mode="mode">
     <div class="btn-cell">
       <div class="btn-list">
           <dx-button-group
               keyExpr="style"
               selectionMode="multiple"
-              [items]="items"
+              [items]="fullButtonItems"
               [stylingMode]="mode"
-              [selectedItemKeys]="['bold', 'italic']"
+          ></dx-button-group>
+          <br/>
+          <dx-button-group
+              keyExpr="style"
+              selectionMode="multiple"
+              [items]="shortButtonItems"
+              [stylingMode]="mode"
           ></dx-button-group>
       </div>
     </div>
-  </ng-template>
+</ng-template>

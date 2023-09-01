@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-// import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
-
-type ButtonGroupItem = DxButtonGroupTypes.Item & {
-    style: string;
-};
 
 @Component({
     selector: 'app-button-group',
@@ -13,29 +9,48 @@ type ButtonGroupItem = DxButtonGroupTypes.Item & {
     styleUrls: ['./button-group.component.css']
 })
 export class ButtonGroupComponent {
-    // isExpanded = new BehaviorSubject<boolean>(false);
+    constructor() {
+    }
+
+    isExpanded = new BehaviorSubject<boolean>(false);
+
     buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
-    buttonItems: ButtonGroupItem[] = [
+    buttonStates: string[] = ['normal', 'hover', 'active', 'focused', 'disable'];
+
+    fullButtonItems: DxButtonGroupTypes.Item[] = [
         {
-            icon: 'bold',
-            style: 'bold',
-            hint: 'Bold',
+            icon: 'alignleft',
+            text: 'Left',
             type: 'default'
         },
         {
-            icon: 'italic',
-            style: 'italic',
-            hint: 'Italic',
+            icon: 'aligncenter',
+            text: 'Center',
             type: 'default'
         },
         {
-            icon: 'underline',
-            style: 'underline',
-            hint: 'Underlined',
+            icon: 'alignright',
+            text: 'Right',
             type: 'default'
         }
     ];
 
-    constructor() {
+    shortButtonItems: DxButtonGroupTypes.Item[] = [
+        {
+            icon: 'alignleft',
+            type: 'default'
+        },
+        {
+            icon: 'aligncenter',
+            type: 'default'
+        },
+        {
+            icon: 'alignright',
+            type: 'default'
+        }
+    ];
+
+    logging(text: string) {
+        console.log(text);
     }
 }
