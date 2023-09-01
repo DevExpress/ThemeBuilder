@@ -92,7 +92,7 @@
 
 <ng-template #buttonTemplate let-mode="mode" let-initState="initState" let-disabled="disabled">
     <div class="btn-cell">
-      <div class="btn-list">
+        <div class="btn-list">
         <dx-button
             text="BUTTON"
             type="default"
@@ -102,19 +102,19 @@
         ></dx-button>
         <dx-button
             text="BUTTON"
-            icon="check"
+            icon="favorites"
             type="default"
             [stylingMode]="mode"
             [disabled]="disabled"
             (onContentReady)="initState ? initState($event) : null"
         ></dx-button>
         <dx-button
-            icon="check"
+            icon="favorites"
             type="default"
             [stylingMode]="mode"
             [disabled]="disabled"
             (onContentReady)="initState ? initState($event) : null"
         ></dx-button>
-      </div>
+        </div>
     </div>
-  </ng-template>
+</ng-template>

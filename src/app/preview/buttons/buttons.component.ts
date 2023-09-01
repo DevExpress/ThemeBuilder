@@ -24,9 +24,7 @@ export class ButtonsComponent {
         event.component.element().classList.add('dx-state-focused');
     }
 
-    widgetGroup = 'buttons';
     isExpanded = new BehaviorSubject<boolean>(false);
 
     buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
-    buttonStates: string[] = ['normal', 'hover', 'active', 'focused', 'disable'];
 }
