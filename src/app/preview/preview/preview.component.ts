@@ -29,9 +29,9 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     isWidgetClosed = true;
 
     createPreviewContent(widget: any): void {
-        const EXPAND_CLASS_NAME = 'expanded';
+        const EXPAND_CLASS_NAME = 'component-display--active';
         const NOT_EXPAND_CLASS_NAME = 'not-expanded';
-        const flexContainers = document.getElementsByClassName('flex-item');
+        const flexContainers = document.getElementsByClassName('component-display');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget: string = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
@@ -62,7 +62,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 }
 
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
-                const flexParentContainer = widgetContainer[0].parentElement.parentElement;
+                const flexParentContainer = widgetContainer[0].parentElement;
                 const scrollTop = 30;
 
                 if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
@@ -84,7 +84,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
                 setTimeout(() => {
                     scrollableContainer.scrollTo({
-                        top: flexParentContainer.offsetTop - scrollTop,
+                        top: flexParentContainer.parentElement.offsetTop - scrollTop,
                         behavior: 'smooth'
                     });
 

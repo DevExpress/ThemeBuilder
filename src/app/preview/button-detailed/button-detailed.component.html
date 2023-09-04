@@ -1,8 +1,15 @@
 <button (click)="onClick()" [ngClass]="widget === currentWidget ? 'close': ''">
-    <svg *ngIf="widget !== currentWidget" viewBox="0 0 12 12" width="12px" height="12px">
-        <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M9,0L0,9v3h3l9-9L9,0z M1,11V9l2,2H1z" />
-    </svg>
-    <svg *ngIf="widget === currentWidget" fill="#FFFFFF" width="16px" height="16px" viewBox="0 0 18 18">
-        <polygon points="14.99 13.62 13.62 14.99 9 10.36 4.38 14.99 3.01 13.62 7.64 9 3.01 4.38 4.38 3.01 9 7.64 13.62 3.01 14.99 4.38 10.36 9 14.99 13.62" fill-rule="evenodd"/>
-    </svg>
+    <ng-container *ngIf="widget !== currentWidget; then btnPen; else btnClose"></ng-container>
 </button>
+
+<ng-template #btnPen>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M1.77783 11.7779V14.2223H4.22228L11.3867 7.05786L8.94228 4.61341L1.77783 11.7779ZM13.9645 4.48008C14.3112 4.13341 14.3112 3.57341 13.9645 3.22675L12.7734 2.03563C12.4267 1.68897 11.8667 1.68897 11.5201 2.03563L9.89339 3.6623L12.3378 6.10675L13.9645 4.48008Z" fill="white"/>
+      </svg>
+</ng-template>
+
+<ng-template #btnClose>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3247 12.1066L12.1069 13.3244L8.00023 9.20887L3.89356 13.3244L2.67578 12.1066L6.79134 7.99998L2.67578 3.89331L3.89356 2.67554L8.00023 6.79109L12.1069 2.67554L13.3247 3.89331L9.20911 7.99998L13.3247 12.1066Z" fill="white"/>
+      </svg>
+</ng-template>

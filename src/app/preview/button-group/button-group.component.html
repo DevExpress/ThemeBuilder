@@ -41,7 +41,6 @@
         <div class="btn-row">
             <div class="btn-cell">
                 <span>Normal</span>
-                {{ logging('Normal') }}
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
@@ -55,7 +54,7 @@
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateHover}"></ng-container>
             </ng-container>
         </div>
 
@@ -65,7 +64,7 @@
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateActive}"></ng-container>
             </ng-container>
         </div>
 
@@ -75,7 +74,7 @@
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateFocused}"></ng-container>
             </ng-container>
         </div>
 
@@ -85,27 +84,25 @@
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateDisabled}"></ng-container>
             </ng-container>
         </div>
     </div>
 </ng-template>
 
-<ng-template #buttonTemplate let-mode="mode">
+<ng-template #buttonTemplate let-mode="mode" let-initState="initState">
     <div class="btn-cell">
       <div class="btn-list">
           <dx-button-group
-              keyExpr="style"
-              selectionMode="multiple"
               [items]="fullButtonItems"
               [stylingMode]="mode"
+              (onContentReady)="initState ? initState($event) : null"
           ></dx-button-group>
           <br/>
           <dx-button-group
-              keyExpr="style"
-              selectionMode="multiple"
               [items]="shortButtonItems"
               [stylingMode]="mode"
+              (onContentReady)="initState ? initState($event) : null"
           ></dx-button-group>
       </div>
     </div>

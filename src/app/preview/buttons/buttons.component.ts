@@ -27,4 +27,6 @@ export class ButtonsComponent {
     isExpanded = new BehaviorSubject<boolean>(false);
 
     buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
+
+    widgetGroup = 'buttons';
 }

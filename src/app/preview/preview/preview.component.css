@@ -1,3 +1,41 @@
+.component-container {
+    padding: 40px;
+}
+
+.component-item {
+    margin: 20px 0;
+}
+
+.component-title {
+    color: #999999;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0 0 24px;
+}
+
+.component-display {
+    position: relative;
+    border: 2px dashed #999999;
+    border-radius: 4px;
+    transition: height 1s ease;
+}
+
+.component-display:hover,
+.component-display.component-display--active {
+    border-color: #2190F7;
+}
+
+:host ::ng-deep .component-display:not(.component-display--active) button {
+    display: none;
+}
+
+:host ::ng-deep .component-display:not(.component-display--active):hover button {
+    display: block;
+}
+
+/* ============ */
+
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -12,12 +50,13 @@
     margin: 10px 20px;
     transition: flex-basis .3s ease-in, height .3s ease-in;
     box-sizing: border-box;
-    border: 2px solid transparent;
+    border: 2px dashed #E3E7EA;
+    border-radius: 4px;
     position: relative;
 }
 
 .flex-item:not(.group):not(.expanded):not(.not-expanded):not(.empty):hover {
-    border: 2px solid #158BFF;
+    border: 2px dashed #158BFF;
 }
 
 :host ::ng-deep .flex-item:not(.expanded) button {
@@ -36,13 +75,13 @@
 .flex-item.expanded {
     flex: 1 1 100%;
     height: auto;
-    border: 2px solid rgba(156, 156, 156, 0.35);
+    border: 2px dashed #E3E7EA;
     padding: 20px;
     margin: 10px 20px;
 }
 
 .flex-item.not-expanded {
-    border: 2px solid rgba(156, 156, 156, 0.35);
+    border: 2px dashed #E3E7EA;
 }
 
 .flex-item.group {

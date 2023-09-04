@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
+
+type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
+    key: string
+};
 
 @Component({
     selector: 'app-button-group',
@@ -12,23 +16,43 @@ export class ButtonGroupComponent {
     constructor() {
     }
 
+    initStateHover(event: DxButtonGroupTypes.ContentReadyEvent) {
+        event.element.querySelector('.dx-button:first-child').classList.add('dx-state-hover');
+    }
+
+    initStateActive(event: DxButtonGroupTypes.ContentReadyEvent) {
+        event.element.querySelector('.dx-button:first-child').classList.add('dx-state-active');
+    }
+
+    initStateFocused(event: DxButtonGroupTypes.ContentReadyEvent) {
+        event.element.querySelector('.dx-button:first-child').classList.add('dx-state-focused');
+    }
+
+    initStateDisabled(event: DxButtonGroupTypes.ContentReadyEvent) {
+        event.element.querySelectorAll('.dx-button').forEach((button) => {
+            button.classList.add('dx-state-disabled');
+        });
+    }
+
     isExpanded = new BehaviorSubject<boolean>(false);
 
     buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
-    buttonStates: string[] = ['normal', 'hover', 'active', 'focused', 'disable'];
 
-    fullButtonItems: DxButtonGroupTypes.Item[] = [
+    fullButtonItems: CustomButtonGroupItem[] = [
         {
+            key: 'left',
             icon: 'alignleft',
             text: 'Left',
             type: 'default'
         },
         {
+            key: 'center',
             icon: 'aligncenter',
             text: 'Center',
             type: 'default'
         },
         {
+            key: 'right',
             icon: 'alignright',
             text: 'Right',
             type: 'default'
@@ -50,7 +74,5 @@ export class ButtonGroupComponent {
         }
     ];
 
-    logging(text: string) {
-        console.log(text);
-    }
+    widgetGroup = 'button-group';
 }
