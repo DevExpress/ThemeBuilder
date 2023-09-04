@@ -1,9 +1,24 @@
 .component-container {
     padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 24px;
 }
 
 .component-item {
-    margin: 20px 0;
+    flex: 1 1 100%;
+}
+
+.component-item--half {
+    flex: 1 1 45%;
+}
+
+.component-item--active {
+    flex: 1 1 100%;
+}
+
+.component-item--active .component-display {
+    max-height: max-content;
 }
 
 .component-title {
@@ -16,159 +31,27 @@
 
 .component-display {
     position: relative;
+    height: calc(100% - 88px);
+    max-height: 320px;
+    padding: 24px;
     border: 2px dashed #999999;
     border-radius: 4px;
-    transition: height 1s ease;
 }
 
 .component-display:hover,
-.component-display.component-display--active {
+.component-item.component-item--active .component-display {
     border-color: #2190F7;
 }
 
-:host ::ng-deep .component-display:not(.component-display--active) button {
+:host ::ng-deep .component-item:not(.component-item--active) button {
     display: none;
 }
 
-:host ::ng-deep .component-display:not(.component-display--active):hover button {
+:host ::ng-deep .component-item:not(.component-item--active) .component-display:hover button {
     display: block;
 }
 
-/* ============ */
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.flex-item {
-    flex:  1 1 760px;
-    height: 340px;
-    padding: 20px;
-    margin: 10px 20px;
-    transition: flex-basis .3s ease-in, height .3s ease-in;
-    box-sizing: border-box;
-    border: 2px dashed #E3E7EA;
-    border-radius: 4px;
-    position: relative;
-}
-
-.flex-item:not(.group):not(.expanded):not(.not-expanded):not(.empty):hover {
-    border: 2px dashed #158BFF;
-}
-
-:host ::ng-deep .flex-item:not(.expanded) button {
-    display: none;
-}
-
-:host ::ng-deep .flex-item.not-expanded button {
-    display: block;
-}
-
-:host ::ng-deep .flex-item:not(.group):not(.expanded):hover button {
-    display: block;
-}
-
-.group .flex-item.expanded,
-.flex-item.expanded {
-    flex: 1 1 100%;
-    height: auto;
-    border: 2px dashed #E3E7EA;
-    padding: 20px;
-    margin: 10px 20px;
-}
-
-.flex-item.not-expanded {
-    border: 2px dashed #E3E7EA;
-}
-
-.flex-item.group {
-    height: 360px;
-    position: static;
-    padding: 0;
-    margin: 0 20px;
-    border-color: transparent;
-}
-
-.flex-item.full {
-    flex: 1 1 100%;
-    height: auto;
-}
-
-.flex-item.full .flex-value {
-    height: auto;
-}
-
-.flex-title {
-    color: #505050;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 20px;
-    margin: 0 20px;
-}
-
-.group .flex-item {
-    min-height: 160px;
-    height: auto;
-    padding: 20px;
-}
-
-.group .flex-item:first-child {
-    margin: 10px 0 20px 0;
-}
-
-.group .flex-item:last-child {
-    margin: 20px 0 10px 0;
-}
-
-.group.expanded {
-    height: auto;
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-.group.expanded .flex-item {
-    flex: 1 1 100%;
-    padding: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-.flex-label {
-    line-height: 20px;
-    margin-bottom: 10px;
-    display: inline-block;
-    color: #999999;
-}
-
-.expanded > .flex-label,
-.not-expanded > .flex-label {
-    font-size: 18px;
-}
-
-.flex-value,
-.flex-value > * {
-    height: 230px;
-}
-
-.height-auto .flex-value,
-.height-auto .flex-value > * {
-    height: auto;
-}
-
-.group .flex-value,
-.group .flex-value > * {
-    height: auto;
-}
-
-
-.expanded > .flex-value,
-.expanded > .flex-value > * {
-    height: auto;
-}
+/* =========== */
 
 :host ::ng-deep .dx-scrollview.preview-scrollview > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollbar-vertical.dx-scrollbar-hoverable.dx-state-hover {
     background-color: rgba(191, 191, 191, 0.2);
@@ -176,21 +59,4 @@
 
 :host ::ng-deep .dx-scrollview.preview-scrollview > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollbar-vertical.dx-scrollbar-hoverable .dx-scrollable-scroll .dx-scrollable-scroll-content {
     background-color: rgba(191, 191, 191, 0.7);
-}
-
-@media (max-width: 1400px) {
-    .flex-item {
-        flex: 1 1 100%;
-        padding: 10px 20px;
-    }
-
-    .group .flex-item.expanded,
-    .flex-item.expanded {
-        height: auto;
-    }
-
-    .expanded > .flex-value,
-    .expanded > .flex-value > * {
-        height: auto;
-    }
 }

@@ -29,9 +29,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     isWidgetClosed = true;
 
     createPreviewContent(widget: any): void {
-        const EXPAND_CLASS_NAME = 'component-display--active';
-        const NOT_EXPAND_CLASS_NAME = 'not-expanded';
-        const flexContainers = document.getElementsByClassName('component-display');
+        const EXPAND_CLASS_NAME = 'component-item--active';
+        const flexContainers = document.getElementsByClassName('component-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget: string = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
@@ -39,7 +38,6 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         /* eslint @typescript-eslint/prefer-for-of: 'off' */
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
-            flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
@@ -62,12 +60,10 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 }
 
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
-                const flexParentContainer = widgetContainer[0].parentElement;
+                const flexParentContainer = widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
 
                 if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
-                    flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
-
                     scrollableContainer.scrollTo({
                         top: flexParentContainer.offsetTop - scrollTop,
                         behavior: 'smooth'
@@ -76,15 +72,11 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                     return;
                 }
 
-                if(flexParentContainer.parentElement.classList.contains('group')) {
-                    flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
-                }
-
                 flexParentContainer.classList.add(EXPAND_CLASS_NAME);
 
                 setTimeout(() => {
                     scrollableContainer.scrollTo({
-                        top: flexParentContainer.parentElement.offsetTop - scrollTop,
+                        top: flexParentContainer.offsetTop - scrollTop,
                         behavior: 'smooth'
                     });
 

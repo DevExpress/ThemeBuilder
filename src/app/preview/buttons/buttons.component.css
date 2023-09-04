@@ -1,15 +1,3 @@
-:host ::ng-deep {
-    height: auto;
-    padding: 24px 32px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-::ng-deep .dx-button {
-    pointer-events: none !important;
-}
-
 span {
     color: #505050;
     font-size: 14px;
@@ -38,6 +26,7 @@ span {
     width: 30%;
     display: flex;
     justify-content: center;
+    pointer-events: none;
 }
 
 .btn-list {
