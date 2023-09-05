@@ -26,11 +26,11 @@ span {
     width: 30%;
     display: flex;
     justify-content: center;
-    pointer-events: none;
 }
 
 .btn-list {
     display: flex;
     flex-direction: column;
     gap: 0 16px;
+    pointer-events: none;
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
+import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import dxButtonGroup from 'devextreme/ui/button_group';
 
 type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
     key: string
@@ -13,6 +15,8 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
     styleUrls: ['./button-group.component.css']
 })
 export class ButtonGroupComponent {
+    listButtonGroup: dxButtonGroup[] = [];
+
     constructor() {
     }
 
@@ -32,6 +36,22 @@ export class ButtonGroupComponent {
         event.element.querySelectorAll('.dx-button').forEach((button) => {
             button.classList.add('dx-state-disabled');
         });
+    }
+
+    toogleIcons(event: DxCheckBoxTypes.ValueChangedEvent) {
+        this.listButtonGroup.forEach((component) => {
+            const items = component.option('items');
+            const changedItems = items.map((item: CustomButtonGroupItem) => {
+                item.icon = event.value ? 'align' + item.key : undefined;
+                return item;
+            });
+
+            component.option('items', changedItems);
+        });
+    }
+
+    saveStateButtonGroup(event: DxButtonGroupTypes.InitializedEvent) {
+        this.listButtonGroup.push(event.component);
     }
 
     isExpanded = new BehaviorSubject<boolean>(false);

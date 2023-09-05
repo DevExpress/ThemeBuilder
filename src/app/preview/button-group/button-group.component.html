@@ -26,7 +26,13 @@
 <ng-template  #expandedBlock>
     <div class="btn-container">
         <div class="btn-row">
-            <div class="btn-cell btn-cell--empty"></div>
+            <div class="btn-cell">
+                <dx-check-box
+                    text="Show icons"
+                    [value]="true"
+                    (onValueChanged)="toogleIcons($event)"
+                ></dx-check-box>
+            </div>
             <div class="btn-cell">
                 <span>Contained button</span>
             </div>
@@ -97,12 +103,7 @@
               [items]="fullButtonItems"
               [stylingMode]="mode"
               (onContentReady)="initState ? initState($event) : null"
-          ></dx-button-group>
-          <br/>
-          <dx-button-group
-              [items]="shortButtonItems"
-              [stylingMode]="mode"
-              (onContentReady)="initState ? initState($event) : null"
+              (onInitialized)="saveStateButtonGroup($event)"
           ></dx-button-group>
       </div>
     </div>
