@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 23.1.4
-* Build date: Fri Jul 14 2023
+* Version: 23.1.5
+* Build date: Wed Aug 30 2023
 *
 * Copyright (c) 2012 - 2023 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -2433,6 +2433,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   vertical-align: middle;
+  background-size: contain;
   width: 18px;
   height: 18px;
   font-size: 18px;
@@ -9160,7 +9161,7 @@
   display: none;
   z-index: 2000;
   cursor: pointer;
-  background-color: #fff;
+  border: 1px solid transparent;
 }
 .dx-menu-adaptive-mode .dx-treeview-toggle-item-visibility {
   left: auto;
@@ -9208,6 +9209,13 @@
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+}
+.dx-context-menu-content-delimiter::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
 }
 .dx-menu .dx-menu-item-expanded {
   background-color: #fff;
@@ -13883,10 +13891,10 @@
   width: 85px;
   min-width: 85px;
 }
-.dx-datagrid-table .dx-row .dx-command-edit .dx-link.dx-state-disabled {
+.dx-datagrid-table .dx-row .dx-command-edit .dx-state-disabled.dx-link {
   opacity: .5;
 }
-.dx-datagrid-table .dx-row .dx-command-edit .dx-link.dx-state-disabled.dx-link-icon {
+.dx-datagrid-table .dx-row .dx-command-edit .dx-state-disabled.dx-link-icon {
   opacity: .6;
 }
 .dx-datagrid-table .dx-row .dx-command-expand {
@@ -15962,10 +15970,10 @@ input.dx-hidden {
   width: 85px;
   min-width: 85px;
 }
-.dx-treelist-table .dx-row .dx-command-edit .dx-link.dx-state-disabled {
+.dx-treelist-table .dx-row .dx-command-edit .dx-state-disabled.dx-link {
   opacity: .5;
 }
-.dx-treelist-table .dx-row .dx-command-edit .dx-link.dx-state-disabled.dx-link-icon {
+.dx-treelist-table .dx-row .dx-command-edit .dx-state-disabled.dx-link-icon {
   opacity: .6;
 }
 .dx-treelist-table .dx-row .dx-command-expand {
