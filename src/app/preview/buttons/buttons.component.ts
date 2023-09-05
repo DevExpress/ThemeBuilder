@@ -9,9 +9,6 @@ import { DxButtonTypes } from 'devextreme-angular/ui/button';
 })
 
 export class ButtonsComponent {
-    constructor() {
-    }
-
     initStateHover(event: DxButtonTypes.ClickEvent) {
         event.component.element().classList.add('dx-state-hover');
     }

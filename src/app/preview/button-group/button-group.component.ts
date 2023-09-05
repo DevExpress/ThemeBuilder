@@ -17,9 +17,6 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
 export class ButtonGroupComponent {
     listButtonGroup: dxButtonGroup[] = [];
 
-    constructor() {
-    }
-
     initStateHover(event: DxButtonGroupTypes.ContentReadyEvent) {
         event.element.querySelector('.dx-button:first-child').classList.add('dx-state-hover');
     }
