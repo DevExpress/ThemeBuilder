@@ -17,6 +17,10 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
 export class ButtonGroupComponent {
     listButtonGroup: dxButtonGroup[] = [];
 
+    capitalizeFirstLetter(str: string) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     initStateHover(event: DxButtonGroupTypes.ContentReadyEvent) {
         event.element.querySelector('.dx-button:first-child').classList.add('dx-state-hover');
     }
@@ -40,6 +44,18 @@ export class ButtonGroupComponent {
             const items = component.option('items');
             const changedItems = items.map((item: CustomButtonGroupItem) => {
                 item.icon = event.value ? 'align' + item.key : undefined;
+                return item;
+            });
+
+            component.option('items', changedItems);
+        });
+    }
+
+    toogleText(event: DxCheckBoxTypes.ValueChangedEvent) {
+        this.listButtonGroup.forEach((component) => {
+            const items = component.option('items');
+            const changedItems = items.map((item: CustomButtonGroupItem) => {
+                item.text = event.value ? this.capitalizeFirstLetter(item.key) : undefined;
                 return item;
             });
 

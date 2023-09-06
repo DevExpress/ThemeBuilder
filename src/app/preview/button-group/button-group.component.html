@@ -24,15 +24,22 @@
     </div>
 </ng-template>
 <ng-template  #expandedBlock>
+    <div class="component-options">
+        <dx-check-box
+            text="Show icons"
+            [value]="true"
+            (onValueChanged)="toogleIcons($event)"
+        ></dx-check-box>
+        <dx-check-box
+            text="Show text"
+            [value]="true"
+            (onValueChanged)="toogleText($event)"
+        ></dx-check-box>
+    </div>
+
     <div class="btn-container">
         <div class="btn-row">
-            <div class="btn-cell">
-                <dx-check-box
-                    text="Show icons"
-                    [value]="true"
-                    (onValueChanged)="toogleIcons($event)"
-                ></dx-check-box>
-            </div>
+            <div class="btn-cell btn-cell--empty"></div>
             <div class="btn-cell">
                 <span>Contained button</span>
             </div>

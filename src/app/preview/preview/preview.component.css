@@ -41,6 +41,12 @@
     border-color: #2190F7;
 }
 
+:host ::ng-deep .component-options {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
 :host ::ng-deep .component-item:not(.component-item--active) button {
     display: none;
 }
