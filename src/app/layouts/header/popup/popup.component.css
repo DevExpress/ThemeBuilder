@@ -2,7 +2,7 @@
     background: #f0f2f3;
 }
 
-::ng-deep .dx-popup-wrapper .dx-popup-content {
+::ng-deep .dx-popup-wrapper.wrappper-export-import-popup .dx-popup-content {
     padding: 24px;
 }
 

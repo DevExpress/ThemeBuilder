@@ -35,7 +35,7 @@ app-bootstrap-uploader {
 }
 
 .upload-meta {
-    padding-bottom: 16px;
+    padding-bottom: 5px;
 }
 
 ::ng-deep .dx-multiview-item .upload-meta .button {

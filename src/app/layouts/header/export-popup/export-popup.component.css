@@ -1,4 +1,4 @@
-::ng-deep .dx-popup-wrapper > .dx-overlay-content {
+::ng-deep .dx-popup-wrapper.wrappper-export-import-popup > .dx-overlay-content {
     border-radius: 16px;
 }
 
