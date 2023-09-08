@@ -18,6 +18,7 @@ export class ButtonGroupComponent {
     listButtonGroup: dxButtonGroup[] = [];
 
     capitalizeFirstLetter(str: string) {
+        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
