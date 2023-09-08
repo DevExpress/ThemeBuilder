@@ -1,163 +1,179 @@
 <dx-scroll-view #scrollView class="preview-scrollview">
-    <div class="flex-container">
-        <div class="flex-item group">
-            <div class="flex-item">
-                <app-button-detailed widget="editors" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">EDITORS</div>
-                <div class="flex-value">
-                    <app-editors #widget></app-editors>
-                </div>
-            </div>
-            <div class="flex-item">
+    <div class="component-container">
+        <div class="component-item">
+            <h1 class="component-title">Buttons</h1>
+            <div class="component-display">
                 <app-button-detailed widget="buttons" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">BUTTONS</div>
-                <div class="flex-value">
-                    <app-buttons #widget></app-buttons>
-                </div>
+                <app-buttons #widget></app-buttons>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">PIVOTGRID</div>
-            <div class="flex-value">
+
+        <div class="component-item">
+            <h1 class="component-title">Button group</h1>
+            <div class="component-display">
+                <app-button-detailed widget="button-group" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-button-group #widget></app-button-group>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Editors</h1>
+            <div class="component-display">
+                <app-button-detailed widget="editors" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-editors #widget></app-editors>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">PivotGrid</h1>
+            <div class="component-display">
+                <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-pivotgrid #widget></app-pivotgrid>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="datagrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">DATAGRID</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">DataGrid</h1>
+            <div class="component-display">
+                <app-button-detailed widget="datagrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-datagrid #widget></app-datagrid>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="treelist" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">TREELIST</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">TreeList</h1>
+            <div class="component-display">
+                <app-button-detailed widget="treelist" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-treelist #widget></app-treelist>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">SCHEDULER</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Scheduler</h1>
+            <div class="component-display">
+                <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-scheduler #widget></app-scheduler>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">FORM</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Form</h1>
+            <div class="component-display">
+                <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-form #widget></app-form>
             </div>
         </div>
-        <div class="flex-item"> 
-            <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">LIST</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">List</h1>
+            <div class="component-display">
+                <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-list #widget></app-list>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="filterbuilder" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">FILTER BUILDER</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Filter Builder</h1>
+            <div class="component-display">
+                <app-button-detailed widget="filterbuilder" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-filterbuilder #widget></app-filterbuilder>
             </div>
         </div>
-        <div class="flex-item group">
-            <div class="flex-item">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Overlays</h1>
+            <div class="component-display">
                 <app-button-detailed widget="overlays" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">OVERLAYS</div>
-                <div class="flex-value">
-                    <app-overlays #widget></app-overlays>
-                </div>
-            </div>
-            <div class="flex-item">
-                <app-button-detailed widget="navigations.menu" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">MENU</div>
-                <div class="flex-value">
-                    <app-menu #widget></app-menu>
-                </div>
+                <app-overlays #widget></app-overlays>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="navigations.treeview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">TREEVIEW</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Menu</h1>
+            <div class="component-display">
+                <app-button-detailed widget="navigations.menu" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-menu #widget></app-menu>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">TreeView</h1>
+            <div class="component-display">
+                <app-button-detailed widget="navigations.treeview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-treeview #widget></app-treeview>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="navigations.accordion" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">ACCORDION</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Accordion</h1>
+            <div class="component-display">
+                <app-button-detailed widget="navigations.accordion" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-accordion #widget></app-accordion>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="gallery" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">GALLERY</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Gallery</h1>
+            <div class="component-display">
+                <app-button-detailed widget="gallery" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-gallery #widget></app-gallery>
             </div>
         </div>
-        <div class="flex-item group">
-            <div class="flex-item">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Tabs</h1>
+            <div class="component-display">
                 <app-button-detailed widget="navigations.tabs" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">TABS</div>
-                <div class="flex-value">
-                    <app-tabs #widget></app-tabs>
-                </div>
-            </div>
-        </div> 
-        <div class="flex-item group">
-            <div class="flex-item">
-                <app-button-detailed widget="progressbars" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">PROGRESS BAR</div>
-                <div class="flex-value">
-                    <app-progressbars #widget></app-progressbars>
-                </div>
-            </div>
-            <div class="flex-item">
-                <app-button-detailed widget="sliders" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">SLIDERS</div>
-                <div class="flex-value">
-                    <app-sliders #widget></app-sliders>
-                </div>
+                <app-tabs #widget></app-tabs>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="scrollview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">SCROLL VIEW</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Progress Bar</h1>
+            <div class="component-display">
+                <app-button-detailed widget="progressbars" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-progressbars #widget></app-progressbars>
+            </div>
+        </div>
+        
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Sliders</h1>
+            <div class="component-display">
+                <app-button-detailed widget="sliders" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-sliders #widget></app-sliders>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Scroll View</h1>
+            <div class="component-display">
+                <app-button-detailed widget="scrollview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-scrollview #widget></app-scrollview>
             </div>
         </div>
-        <div class="flex-item group">
-            <div class="flex-item">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Toolbar</h1>
+            <div class="component-display">
                 <app-button-detailed widget="navigations.toolbar" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <div class="flex-label">TOOLBAR</div>
-                <div class="flex-value">
-                    <app-toolbar #widget></app-toolbar>
-                </div>
+                <app-toolbar #widget></app-toolbar>
             </div>
-            <div class="flex-item empty"></div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="navigations.drawer" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">DRAWER</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Drawer</h1>
+            <div class="component-display">
+                <app-button-detailed widget="navigations.drawer" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-drawer #widget></app-drawer>
             </div>
         </div>
-        <div class="flex-item">
-            <app-button-detailed widget="fieldset" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-            <div class="flex-label">FIELDSET</div>
-            <div class="flex-value">
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Fieldset</h1>
+            <div class="component-display">
+                <app-button-detailed widget="fieldset" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-fieldset #widget></app-fieldset>
             </div>
         </div>
-        <div class="flex-item empty"></div>
     </div>
 </dx-scroll-view>
