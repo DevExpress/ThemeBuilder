@@ -187,6 +187,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         });
     }
 
+    fireScrollEventForClosingDropdowns() {
+        document.body.dispatchEvent(new Event('scroll'));
+    }
+
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }

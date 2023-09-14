@@ -1,7 +1,7 @@
 <div class="left-menu">
     <div class="working-area">
         <div class="scroll-container" *ngIf="workArea">
-            <dx-scroll-view>
+            <dx-scroll-view (onScroll)="fireScrollEventForClosingDropdowns()">
             <div *ngFor="let data of filteredData">
                 <div class="name top search-active" *ngIf="searchOpened">
                     <div class="link-handler" [routerLink]="['/advanced', theme, colorScheme, data.route]"></div>
@@ -46,7 +46,7 @@
             <div>
                 <app-back-navigator text="Back"></app-back-navigator>
             </div>
-            
+
         </div>
         <div class="separator"></div>
         <div class="scroll-container">

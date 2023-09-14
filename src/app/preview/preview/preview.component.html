@@ -1,4 +1,4 @@
-<dx-scroll-view #scrollView class="preview-scrollview">
+<dx-scroll-view #scrollView class="preview-scrollview" (onScroll)="fireScrollEventForClosingDropdowns()">
     <div class="flex-container">
         <div class="flex-item group">
             <div class="flex-item">
@@ -51,7 +51,7 @@
                 <app-form #widget></app-form>
             </div>
         </div>
-        <div class="flex-item"> 
+        <div class="flex-item">
             <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
             <div class="flex-label">LIST</div>
             <div class="flex-value">
@@ -110,7 +110,7 @@
                     <app-tabs #widget></app-tabs>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="flex-item group">
             <div class="flex-item">
                 <app-button-detailed widget="progressbars" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
