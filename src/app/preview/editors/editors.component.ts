@@ -11,7 +11,7 @@ export class EditorsComponent implements OnInit, OnDestroy {
     widgetGroup = 'editors';
     isExpanded = new BehaviorSubject<boolean>(false);
     subscription: Subscription;
-
+    dropDownOptions = {hideOnParentScroll: true};
     labelMode = 'floating';
 
     ngOnInit(): void {
