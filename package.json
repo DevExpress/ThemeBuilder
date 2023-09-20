@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration=production --base-href https://olegkipchatov.github.io/ThemeBuilder/ && node ./copyfile.js",
+    "build": "ng build --configuration=production --base-href https://devexpress.github.io/ThemeBuilder/ && node ./copyfile.js",
     "lint-fix": "eslint --fix \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "npm run lint && npm run build"
