@@ -1,14 +1,17 @@
+:host {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
 .notify {
     width: 500px;
     background-color: #d9534f;
     box-shadow: 0px 4px 16px rgb(0,0,0,.15);
     padding: 25px;
     border-radius: 5px;
-    position: absolute;
-    bottom: -100px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
     transition: bottom .5s;
     visibility: hidden;
 }
@@ -31,4 +34,10 @@
     height: 14px;
     color: white;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .notify {
+        width: auto;
+    }
 }

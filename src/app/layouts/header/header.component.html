@@ -1,17 +1,27 @@
 <div class="header" [ngClass]="{ 'filled': switchEnabled }">
     <div class="logo" [routerLink]="['/']">
-        <span>DevExtreme</span> ThemeBuilder
-        <span>by DevExpress</span>
+        <div class="header-logo-js">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M37 0H3C2.20525 0.00292728 1.44389 0.319938 0.881914 0.881914C0.319938 1.44389 0.00292728 2.20525 0 3L0 37C0.00292728 37.7948 0.319938 38.5561 0.881914 39.1181C1.44389 39.6801 2.20525 39.9971 3 40H37C37.7948 39.9971 38.5561 39.6801 39.1181 39.1181C39.6801 38.5561 39.9971 37.7948 40 37V3C39.9971 2.20525 39.6801 1.44389 39.1181 0.881914C38.5561 0.319938 37.7948 0.00292728 37 0V0ZM18.1389 24.4944C18.2161 25.4701 18.024 26.4483 17.5833 27.3222C17.2719 27.7586 16.8516 28.1057 16.3642 28.3289C15.8768 28.5521 15.3394 28.6437 14.8056 28.5944C14.1403 28.6142 13.4809 28.4652 12.8889 28.1611V25.9056C13.3338 26.2107 13.8471 26.4015 14.3833 26.4611C15.3759 26.4611 15.8722 25.763 15.8722 24.3667V11.6333H18.1389V24.4944ZM26.0167 27.3667C25.6674 27.7657 25.2344 28.0827 24.7484 28.295C24.2625 28.5072 23.7356 28.6095 23.2056 28.5944C22.3159 28.6118 21.4472 28.3235 20.7444 27.7778V25.5556C21.3643 26.0699 22.1298 26.3769 22.9333 26.4333C23.2047 26.4475 23.4756 26.3998 23.7259 26.2939C23.9761 26.1881 24.199 26.0268 24.3778 25.8222C24.7479 25.3482 24.9335 24.756 24.9 24.1556C24.9142 23.5746 24.7763 23.0001 24.5 22.4889C24.3336 22.2114 24.148 21.946 23.9444 21.6944C23.7 21.3944 23.3889 21.0556 23.0222 20.6889C22.4667 20.1333 21.9778 19.6278 21.6 19.1889C21.2843 18.8485 21.005 18.4762 20.7667 18.0778C20.3926 17.3328 20.2129 16.5053 20.2444 15.6722C20.182 14.5419 20.5469 13.4294 21.2667 12.5556C21.6146 12.1681 22.0444 11.863 22.5248 11.6622C23.0052 11.4613 23.5243 11.3699 24.0444 11.3944C24.845 11.3892 25.6346 11.5799 26.3444 11.95V14.1722C25.8024 13.7375 25.1381 13.4831 24.4444 13.4444C24.1701 13.4362 23.8974 13.4887 23.6458 13.5981C23.3941 13.7076 23.1698 13.8714 22.9889 14.0778C22.6011 14.5155 22.4015 15.0883 22.4333 15.6722C22.4175 16.203 22.5586 16.7267 22.8389 17.1778C23.0383 17.4865 23.2651 17.7765 23.5167 18.0444C23.8278 18.4 24.2389 18.8278 24.7389 19.3278C25.4836 20.0343 26.1151 20.8513 26.6111 21.75C26.966 22.5049 27.1373 23.333 27.1111 24.1667C27.1549 25.332 26.765 26.4722 26.0167 27.3667Z" fill="#2190F7"/>
+            </svg>
+        </div>
+        <div class="header-logo-devextreme">
+            <app-icon-logo></app-icon-logo>
+        </div>
+        <div class="product-name">
+            Theme Builder
+        </div>
     </div>
 
     <div *ngIf="switchEnabled; then switcherBlock;"></div>
 
     <ng-template #switcherBlock>
-        <div class="separator first"></div>
+        <div class="first"></div>
         <div *ngIf="switcherData" class="switcher">
             <dx-select-box
                 class="switcher-editor"
                 [dataSource]="switcherData"
+                stylingMode="filled"
                 [grouped]="true"
                 displayExpr="text"
                 valueExpr="themeId"
@@ -40,11 +50,10 @@
         <app-header-button text="Import" icon="import" (click)="import.popup.show();"></app-header-button>
         <div class="separator"></div>
         <app-header-button text="Export" icon="export" (click)="export.popup.show();"></app-header-button>
-        <div class="separator"></div>
 
         <app-import-popup #import></app-import-popup>
         <app-export-popup #export></app-export-popup>
-        <div class="separator help"></div>
+        <div class="help"></div>
     </ng-template>
 
     <app-help-button></app-help-button>

@@ -1,14 +1,12 @@
 :host {
     display: block;
-    height: 64px;
+    height: 74px;
 }
 
 .header {
-    height: 60px;
+    height: 70px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
     display: flex;
-    min-width: 1000px;
-    position: relative;
-    z-index: 3;
 }
 
 .header.filled {
@@ -23,28 +21,32 @@
 }
 
 .logo {
-    color: #4e4e4e;
-    padding-left: 20px;
-    font-size: 18px;
-    width: 220px;
-    height: 40px;
+    display: flex;
+    gap: 6px;
+    margin-left: 24px;
     cursor: pointer;
 }
 
-.logo span {
-    font-family: 'OpenSansCondensedBold', 'HelveticaNeue-CondensedBold', Helvetica, 'Arial Narrow', Calibri, Arial, 'Lucida Grande', sans-serif;
+.logo .header-logo-js,
+.logo .header-logo-devextreme {
+    height: 40px;
+}
+.logo .header-logo-js {
+    margin-top: -1px;
+    margin-right: 6px;
 }
 
-.logo span:first-child {
-    color: #f05b41;
-    font-size: 19px;
+:host ::ng-deep .logo .header-logo-devextreme svg path {
+    fill: #596C7D;
 }
 
-.logo span:last-child {
-    color: #a2a2a2;
-    font-size: 13px;
-    margin-top: -5px;
-    display: block;
+.product-name {
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: 700;
+    font-stretch: 75%;
+    font-family: 'Open Sans',sans-serif;
+    color: #2190F6;
 }
 
 .header .separator {
@@ -66,6 +68,10 @@
     margin-left: 0;
 }
 
+.switcher {
+    margin-left: 40px;
+}
+
 .switcher-editor {
     border: none;
 }
@@ -84,15 +90,19 @@
 
 .switcher-template .switcher-icon {
     padding: 3px;
-    height: 30px;
     align-self: center;
+    align-items: center;
+    display: flex;
 }
 
 .switcher-template .switcher-icon.editor {
     margin-left: 11px;
+    display: flex;
+    align-items: center;
 }
 
 .switcher-template .item-template-text {
     align-self: center;
     padding-left: 10px;
 }
+

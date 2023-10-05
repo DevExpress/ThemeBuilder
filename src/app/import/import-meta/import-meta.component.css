@@ -1,12 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .text {
     margin: 15px auto 10px;
 }
 
+.container .text.upload-desc {
+    margin: 48px 0;
+    align-self: center;
+}
+
 .text.first {
     margin-bottom: 0;
-} 
+}
 
 dx-text-area {
     display: block;
     margin: 0 auto 20px;
+}
+
+.content .text {
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+::ng-deep .import-meta .upload-meta .button {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
 }

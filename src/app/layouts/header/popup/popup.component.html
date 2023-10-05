@@ -2,10 +2,12 @@
     [(visible)]="visible"
     shadingColor="rgba(0, 0, 0, 0.5)"
     class="export-import-popup"
+    [wrapperAttr]="{ class: 'wrappper-export-import-popup' }"
     [showTitle]="false"
     (onShown)="shown()"
-    [width]="642"
+    [width]="640"
     [height]="height"
+    [title]="title"
 >
     <div class="title">{{title}}</div>
     <div class="close-button" (click)="visible = false;">

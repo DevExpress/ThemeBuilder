@@ -1,13 +1,17 @@
-<div class="master"> 
+<div class="master">
     <div class="section left">
-        <div class="title-link master" [routerLink]="['/master']">Select a Theme</div>
+        <div class="title-link theme-selection master" [routerLink]="['/master']">
+            <div>
+                <img class="arrow-back" src="images/arrow-left.svg">
+                Select a Theme
+            </div>
+        </div>
         <div class="title">
             {{themeName | titlecase}} Theme
-            <span>Select a color scheme</span>
         </div>
         <div class="schemes-container">
             <ul class="schemes">
-                <li *ngFor="let theme of themesList" 
+                <li *ngFor="let theme of themesList"
                     routerLinkActive="active"
                     [routerLink]="['/master', theme.name, theme.colorScheme]">
                     <app-icon-theme-circle [theme]="theme.text | lowercase" [small]="false"></app-icon-theme-circle>
@@ -16,9 +20,10 @@
             </ul>
         </div>
         <div class="base-theming">
-            <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
-            <app-button type="apply" (clicked)="export.popup.show();">Export</app-button>
-            <app-button type="advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Settings</app-button>
+            <app-base-parameters [theme]="themeName" [themeSize]="themeSize">
+                <app-button width="195px" type="apply" (clicked)="export.popup.show();">Export</app-button>
+                <app-button width="195px" type="advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Settings</app-button>
+            </app-base-parameters>
         </div>
     </div>
     <div class="section right">

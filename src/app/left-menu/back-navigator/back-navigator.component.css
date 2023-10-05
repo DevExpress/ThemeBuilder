@@ -1,15 +1,24 @@
 :host:hover {
-    color: #f05b41;
-}
-
-:host:hover .back {
-    fill: #f05b41;
+    color: #2190F6;
 }
 
 .back {
+    padding-right: 8px;
+}
+
+:host:hover .back path {
+    fill: #2190F6;
+}
+
+.back path {
     position: absolute;
     top: 50%;
     margin-top: -9px;
     left: -2px;
     fill: #fff;
+}
+
+:host {
+    display: flex;
+    align-items: center;
 }

@@ -1,11 +1,14 @@
 <div class="content">
-    <div class="title-link" [routerLink]="['/import']">Import a Theme</div>
+    <div class="title-link" [routerLink]="['/import']">
+        <img class="arrow-back" src="images/arrow-left.svg">
+        Import a Theme
+    </div>
     <div class="container">
         <div class="title">
             Bootstrap Variables
         </div>
         <div class="text">
-            Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.  
+            Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.
             Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4/5.
         </div>
         <dx-tab-panel class="tabs" [width]="560" [height]="200" [dataSource]="tabPanelData" [loop]="false">
@@ -15,6 +18,7 @@
             <div *dxTemplate="let data of 'item'">
                 <div class="tabpanel-item">
                     <app-bootstrap-uploader
+                    type="default"
                     [accept]="data.acceptFormat"
                     [buttonText]="data.uploadButtonText"
                     [version]="data.version"

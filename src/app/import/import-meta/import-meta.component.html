@@ -1,10 +1,13 @@
-<div class="content">
-    <div class="title-link" [routerLink]="['/import']">Import a Theme</div>
+<div class="content import-meta">
+    <div class="title-link" [routerLink]="['/import']">
+        <img class="arrow-back" src="images/arrow-left.svg">
+        Import a Theme
+    </div>
     <div class="container">
         <div class="title">
             DevExtreme Metadata
         </div>
-        <div class="text first">
+        <div class="text first upload-desc">
             Upload a .json file with DevExtreme metadata
         </div>
         <app-bootstrap-uploader
@@ -17,13 +20,14 @@
             or paste metadata in the area below.
         </div>
         <dx-text-area
-            #textArea 
-            [width]="560" 
+            #textArea
+            [width]="560"
             [height]="200"
+            stylingMode="outlined"
             valueChangeEvent="keyup"
-            [(value)]="importValue" 
+            [(value)]="importValue"
             placeholder="Paste metadata here">
         </dx-text-area>
-        <app-button [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
-    </div> 
+        <app-button class="upload-meta" [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
+    </div>
 </div>

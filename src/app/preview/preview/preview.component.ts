@@ -29,9 +29,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     isWidgetClosed = true;
 
     createPreviewContent(widget: any): void {
-        const EXPAND_CLASS_NAME = 'expanded';
-        const NOT_EXPAND_CLASS_NAME = 'not-expanded';
-        const flexContainers = document.getElementsByClassName('flex-item');
+        const EXPAND_CLASS_NAME = 'component-item--active';
+        const flexContainers = document.getElementsByClassName('component-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget: string = widget.currentValue || widget;
         const previousWidget = widget.previousValue || '';
@@ -39,7 +38,6 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         /* eslint @typescript-eslint/prefer-for-of: 'off' */
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
-            flexContainers[i].classList.remove(NOT_EXPAND_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
@@ -66,18 +64,12 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const scrollTop = 30;
 
                 if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
-                    flexParentContainer.classList.add(NOT_EXPAND_CLASS_NAME);
-
                     scrollableContainer.scrollTo({
                         top: flexParentContainer.offsetTop - scrollTop,
                         behavior: 'smooth'
                     });
 
                     return;
-                }
-
-                if(flexParentContainer.parentElement.classList.contains('group')) {
-                    flexParentContainer.parentElement.classList.add(EXPAND_CLASS_NAME);
                 }
 
                 flexParentContainer.classList.add(EXPAND_CLASS_NAME);

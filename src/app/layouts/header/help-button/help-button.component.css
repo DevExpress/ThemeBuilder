@@ -1,14 +1,16 @@
 :host {
     align-self: center;
-    margin-right: 20px;
+    margin-right: 48px;
     margin-left: auto;
 }
 
 .header-button {
-    height: 60px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 135%;
     display: flex;
     cursor: pointer;
-    color: #000;
+    color: #596C7D;
     text-decoration: none;
 }
 
@@ -18,10 +20,16 @@
 }
 
 .header-button svg {
-    height: 18px;
-    padding-right: 10px;
+    width: 24px;
+    height: 24px;
+    padding-right: 12px;
 }
 
-.header-button:hover .button-text {
-    color: #f05b41;
+@media only screen and (max-width: 768px) {
+    .header-button svg {
+        padding-right: 0;
+    }
+    .header-button .button-text {
+        display: none;
+    }
 }

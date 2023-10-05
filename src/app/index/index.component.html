@@ -1,24 +1,30 @@
 <div class="content">
-    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">ThemeBuilder</div>
+    <div class="title-link" *ngIf="url !== ''" [routerLink]="['/']">
+        <img class="arrow-back" src="images/arrow-left.svg">
+        Theme Builder
+    </div>
     <ng-container [ngSwitch]="url">
         <ng-container *ngSwitchCase="''" >
             <div class="container">
-                <div class="title index">ThemeBuilder</div>
+                <div class="title index">
+                    <div class="arrow-icon"></div>
+                    Theme Builder
+                </div>
                 <div class="text">
-                    The DevExtreme ThemeBuilder allows you to customize and create new custom themes with absolute ease. To modify a theme included in our distribution, select one of the following options:
+                    The DevExtreme Theme Builder allows you to customize and create new custom themes with absolute ease.&nbsp;To modify a theme included in our distribution, select one of the following options:
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master']">
-                        <div class="block-title">Select a Base Theme</div>
                         <div class="block-image">
                             <app-icon-themes></app-icon-themes>
                         </div>
+                        <div class="block-title">Select a Base Theme</div>
                     </div>
                     <div class="block" [routerLink]="['/import']">
-                        <div class="block-title">Import a Theme</div>
                         <div class="block-image">
                             <app-icon-metadata></app-icon-metadata>
                         </div>
+                        <div class="block-title">Import a Theme</div>
                     </div>
                 </div>
             </div>
@@ -31,16 +37,16 @@
                 </div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/import', 'meta']">
-                        <div class="block-title">DevExtreme Metadata</div>
                         <div class="block-image">
-                            <app-icon-export></app-icon-export>
+                            <app-icon-metadata></app-icon-metadata>
                         </div>
+                        <div class="block-title">DevExtreme Metadata</div>
                     </div>
                     <div class="block" [routerLink]="['/import', 'bootstrap']">
-                        <div class="block-title">Bootstrap Variables</div>
                         <div class="block-image">
                             <app-icon-bootstrap></app-icon-bootstrap>
                         </div>
+                        <div class="block-title">Bootstrap Variables</div>
                     </div>
                 </div>
             </div>
@@ -51,16 +57,16 @@
                 <div class="text">DevExtreme supports Generic and Material themes. Multiple color schemes are available for both themes.</div>
                 <div class="blocks">
                     <div class="block" [routerLink]="['/master/generic/light']">
-                        <div class="block-title">Generic</div>
                         <div class="block-image">
                             <app-icon-generic></app-icon-generic>
                         </div>
+                        <div class="block-title">Generic</div>
                     </div>
                     <div class="block" [routerLink]="['/master/material/blue-light']">
-                        <div class="block-title">Material</div>
                         <div class="block-image">
-                            <app-icon-material></app-icon-material> 
-                        </div> 
+                            <app-icon-material></app-icon-material>
+                        </div>
+                        <div class="block-title">Material</div>
                     </div>
                 </div>
             </div>

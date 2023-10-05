@@ -1,98 +1,92 @@
-.indicator {
-    display: flex;
-    padding-top: 22px;
-    position: relative;
+::ng-deep .dx-popup-wrapper.wrappper-export-import-popup > .dx-overlay-content {
+    border-radius: 16px;
 }
 
-.indicator .line {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #c4c4c4;
-    z-index: -1;
+.indicator {
+    display: flex;
+    padding: 48px 24px 0 24px;
+    position: relative;
+    justify-content: space-between;
 }
 
 .indicator .indicator-item {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    flex-basis: 30%;
+    position: relative;
+}
+
+.indicator .indicator-item .step-line {
+    height: 2px;
+    border-top: 2px dashed #E9E9E9;
+    position: absolute;
+    width: 210px;
+    left: 58%;
+    z-index: -1;
+    top: 16px;
 }
 
 .indicator .indicator-item .item-text {
-    color: rgba(64, 64, 64, 0.5);
-    font-size: 16px;
+    margin-top: 16px;
+    color: #222222;
     cursor: pointer;
     user-select: none;
     align-self: center;
-}
-
-.indicator .indicator-item.last .item-text {
-    align-self: flex-end;
-
-}
-
-.indicator .indicator-item.first .item-text {
-    align-self: flex-start;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .indicator .indicator-item .circle {
-    width: 14px;
-    height: 14px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid #f0f2f3;
     box-sizing: content-box;
     align-self: center;
-}
-
-.indicator .indicator-item .circle {
-    background: #c4c4c4;
+    background: #F1F1F1;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: #596C7D;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
 }
 
 .indicator .indicator-item.active .circle {
-    background: #F16850;
+    background: #2190F6;
+    color: #fff;
 }
 
 .indicator .indicator-item.done .circle {
-    background: #707070;
+    background: #2190F6;
+    color: #fff;
 }
 
-.indicator .indicator-item.first .circle {
-    align-self: flex-start;
-}
-
-.indicator .indicator-item.last .circle {
-    align-self: flex-end;
+.indicator .indicator-item.done .step-line {
+    border-top: 2px dashed #2190F6;
 }
 
 .indicator .indicator-item.active .item-text {
-    color: #F16850;
+    color: #2190F6;
 }
 
 .indicator .indicator-item.done .item-text {
-    color: #707070;
+    color: #2190F6;
 }
 
 .view-wrapper {
-    height: 360px;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    right: 0;
+    height: 468px;
 }
 
-.view-wrapper::after,
-.view-wrapper::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 100%;
-    background: rgb(240,242,243);
-    z-index: 1;
+::ng-deep .view-wrapper .dx-checkbox-text {
+    padding-left: 12px;
+    color: #596C7D;
 }
+
 
 .view-wrapper::after {
     right: 0;
@@ -105,10 +99,8 @@
 }
 
 .view-wrapper .views-container {
-    margin-top: 30px;
-    height: 330px;
-    width: 3000px;
-    position: absolute;
+    height: 100%;
+    padding-top: 48px;
     display: flex;
     transition: left ease-out 230ms;
 }
@@ -117,12 +109,16 @@
     left: 40px;
 }
 
+.view-wrapper .views-container.view-0 .dx-checkbox {
+    padding-left: 10px;
+}
+
 .view-wrapper .views-container.view-1 {
-    left: -560px;
+    left: -577px;
 }
 
 .view-wrapper .views-container.view-2 {
-    left: -1160px;
+    left: -1187px;
 }
 
 .view-wrapper .views-container.view-3 {
@@ -134,14 +130,18 @@
 }
 
 .view-wrapper .views-container .view {
-    width: 560px;
-    height: 330px;
+    width: 100%;
+    height: 100%;
     color: #404040;
     display: flex;
     flex-direction: column;
-    margin-right: 40px;
     transition: opacity 100ms ease-out 150ms;
     opacity: 1;
+}
+
+.view  .select-all {
+    padding: 16px 8px;
+    border-bottom: 1px solid #E9E9E9;
 }
 
 .view-wrapper .views-container .view.hide-content {
@@ -149,14 +149,28 @@
     opacity: 0;
 }
 
-.view-wrapper .views-container .view .padding-20 {
-    padding-top: 20px;
+.view-wrapper .views-container .view .padding-16 {
+    padding-top: 16px;
+}
+
+.view-wrapper .views-container .view .buttons-container .prev-step.button {
+    background-color: #fff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+    color: #596C7D;
+}
+
+.view-wrapper .views-container .view .buttons-container.horizontal .prev-step.button:focus,
+.view-wrapper .views-container .view .buttons-container.horizontal .prev-step.button:hover
+{
+    background-color: #E9E9E9;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+    color: #596C7D;
 }
 
 .view-wrapper .views-container .view .buttons-container {
     flex-grow: 1;
     display: flex;
-    margin: 10px -5px 5px -5px;
+    justify-content: space-between;
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal {
@@ -165,28 +179,54 @@
 
 .view-wrapper .views-container .view .buttons-container .button {
     align-self: flex-start;
-    background: #fff;
+    background: #2190F7;
     border: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    margin: 0 5px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     height: 100px;
     width: 180px;
-    color: #404040;
+    color: #fff;
 }
 
-.view-wrapper .views-container .view .buttons-container .button:hover {
-    background: #707070;
-    color: #fff;
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button {
+    background-color: #fff;
+    border: 1px solid #E9E9E9;
+    box-shadow: none;
+}
+
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:hover {
+    background-color: #E9E9E9;
+}
+
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons {
+    margin-bottom: 0;
+}
+
+
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button .button-text {
+    color: #596C7D;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+}
+
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:active,
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:focus {
+    background-color: #E9E9E9;
+}
+
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:active .button-text,
+.view-wrapper .views-container.view-2 .view .buttons-container.export-buttons .button:focus .button-text {
+    color: #596C7D;
 }
 
 .view-wrapper .views-container .view .buttons-container .button:active,
@@ -195,14 +235,21 @@
     color: #fff;
 }
 
+.view-wrapper .views-container .view .buttons-container.horizontal .button:active,
+.view-wrapper .views-container .view .buttons-container.horizontal .button:hover,
+.view-wrapper .views-container .view .buttons-container.horizontal .button:focus {
+    background: #1188f6;
+}
+
 .view-wrapper .views-container .view .buttons-container .button:disabled,
 .view-wrapper .views-container .view .buttons-container .button.disabled {
     opacity: 0.5;
 }
 
 .view-wrapper .views-container .view .buttons-container.horizontal .button {
-    border-radius: 4px;
-    height: 46px;
+    border-radius: 40px;
+    width: 132px;
+    height: 44px;
     flex-direction: row;
     font-size: 16px;
     align-self: flex-end;
@@ -224,9 +271,14 @@
     display: block;
 }
 
+.view-wrapper .views-container .view .scheme-name {
+    display: flex;
+    align-items: center;
+}
+
 .view-wrapper .views-container .view .scheme-name dx-text-box {
     display: inline-block;
-    margin-top: 10px;
+    width: 100%;
 }
 
 .tooltip-container {
@@ -236,38 +288,57 @@
 }
 
 .tooltip-container.export {
-    height: 24px;
+    height: 16px;
 }
 
 .tooltip-container.swatch {
-    height: 18px;
+    height: 16px;
+}
+
+.export-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-left: 8px;
 }
 
 .view-wrapper .views-container .view .export-text {
-    font-size: 18px;
-    line-height: 24px;
-    display: inline-block;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #899097;
+}
+
+.view-0 .export-text {
+    margin-bottom: 8px;
+}
+
+.view-wrapper .views-container .view .export-text .tooltip-container {
+    padding-left: 0;
 }
 
 .view-wrapper .views-container .view .widgets {
     height: 250px;
     display: flex;
+    margin-left: 8px;
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets {
     flex-basis: 130px;
     flex-grow: 0;
     position: relative;
-    margin-right: 40px;
+    margin-right: 162px;
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets dx-check-box {
-    padding-top: 10px;
+    padding-top: 16px;
     display: block;
 }
 
 .view-wrapper .views-container .view .widgets .main-widgets dx-check-box:first-child {
-    padding: 8px 0;
+    padding-top: 16px;
 }
 
 .view-wrapper .views-container .view .widgets .all-widgets {
@@ -281,19 +352,21 @@
 }
 
 .view-wrapper .views-container .view .widgets .all-widgets .group {
-    margin: 0 0 10px -5px;
-    display: none;
+    margin: 16px 0 0 -5px;
+    line-height: 1;
 }
 
-.view-wrapper .views-container .view .widgets .all-widgets .group.visible {
-    display: block;
-}
+/* .view-wrapper .views-container .view .widgets .all-widgets .group.visible {
+    display: flex;
+    align-items: center;
+} */
 
 .view-wrapper .views-container .view .widgets .all-widgets .group i {
-    font-size: 22px;
+    font-size: 16px;
     vertical-align: bottom;
     color: #707070;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .view-wrapper .views-container .view .widgets .all-widgets .group span {
@@ -359,7 +432,7 @@
 .copy-area.hidden {
     transition: all 150ms ease-out 100ms;
     opacity: 1;
-    top: 540px;
+    top: 660px;
 }
 
 .copy-area .close-button {

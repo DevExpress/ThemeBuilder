@@ -1,25 +1,23 @@
 .editors {
-    background-color: #e2e5e7;
+    background-color: #f5f5f5;
     width: 100%;
-    padding: 30px 50px 30px 60px;
-    margin-bottom: 30px;
-    margin-top: 50px; 
+    padding: 64px 32px 64px 88px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     position: relative;
     box-sizing: border-box;
+    margin-top: 23px;
 }
 
 .editors:after {
     content: "Basic Settings";
-    text-transform: uppercase;
     color: #aaa;
     position: absolute;
     transform: rotate(-90deg);
-    top: 45%;
-    left: -30px;
-    font-size: 14px;
-    font-weight: 500;
+    top: 50%;
+    left: -5px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .work-item {

@@ -24,6 +24,19 @@
     </div>
 </ng-template>
 <ng-template  #expandedBlock>
+    <div class="component-options">
+        <dx-check-box
+            text="Show icons"
+            [value]="true"
+            (onValueChanged)="toogleIcons($event)"
+        ></dx-check-box>
+        <dx-check-box
+            text="Show text"
+            [value]="true"
+            (onValueChanged)="toogleText($event)"
+        ></dx-check-box>
+    </div>
+
     <div class="btn-container">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
@@ -84,37 +97,21 @@
             </div>
 
             <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, disabled: true}"></ng-container>
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateDisabled}"></ng-container>
             </ng-container>
         </div>
     </div>
 </ng-template>
 
-<ng-template #buttonTemplate let-mode="mode" let-initState="initState" let-disabled="disabled">
+<ng-template #buttonTemplate let-mode="mode" let-initState="initState">
     <div class="btn-cell">
-        <div class="btn-list">
-        <dx-button
-            text="BUTTON"
-            type="default"
-            [stylingMode]="mode"
-            [disabled]="disabled"
-            (onContentReady)="initState ? initState($event) : null"
-        ></dx-button>
-        <dx-button
-            text="BUTTON"
-            icon="favorites"
-            type="default"
-            [stylingMode]="mode"
-            [disabled]="disabled"
-            (onContentReady)="initState ? initState($event) : null"
-        ></dx-button>
-        <dx-button
-            icon="favorites"
-            type="default"
-            [stylingMode]="mode"
-            [disabled]="disabled"
-            (onContentReady)="initState ? initState($event) : null"
-        ></dx-button>
-        </div>
+      <div class="btn-list">
+          <dx-button-group
+              [items]="fullButtonItems"
+              [stylingMode]="mode"
+              (onContentReady)="initState ? initState($event) : null"
+              (onInitialized)="saveStateButtonGroup($event)"
+          ></dx-button-group>
+      </div>
     </div>
 </ng-template>

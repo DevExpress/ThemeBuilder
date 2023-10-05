@@ -3,6 +3,7 @@
         <div class="property-header">Base size</div>
         <div class="property-widget">
             <dx-select-box
+                stylingMode="filled"
                 [items]="[{key: 'normal', text: 'Normal'}, {key: 'compact', text: 'Compact'}]"
                 displayExpr="text"
                 valueExpr="key"
@@ -14,4 +15,10 @@
     <div *ngFor="let item of editorsData" class="work-item">
         <app-editor [item]="item"></app-editor>
     </div>
+    <ng-content></ng-content>
+    <!-- <div class="base-theming">
+        <app-base-parameters [theme]="themeName" [themeSize]="themeSize"></app-base-parameters>
+        <app-button type="apply" (clicked)="export.popup.show();">Export</app-button>
+        <app-button type="advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Settings</app-button>
+    </div> -->
 </div>

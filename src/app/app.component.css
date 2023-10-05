@@ -1,5 +1,6 @@
 :host {
     display: block;
-    min-width: 1000px;
-    overflow: hidden;
+    height: 100%;
+    /* min-width: 1000px; */
+    /* overflow: hidden; */
 }

@@ -3,28 +3,41 @@
 }
 
 .file-uploader {
-    margin: -5px auto 0;
+    margin: 0 auto 0;
 }
 
 :host ::ng-deep .file-uploader .dx-fileuploader-input-container {
     float: left;
     text-align: center;
+    margin-top: 27px;
+    opacity: 0.5;
 }
 
 :host ::ng-deep .file-uploader .dx-button {
     width: 100%;
-    height: 45px;
+    height: 44px;
     font-weight: bold;
     font-size: 16px;
+    border-radius: 40px;
+    background-color: #158BFF;
 }
 
-:host ::ng-deep .file-uploader .dx-button.dx-state-hover {
+:host ::ng-deep .file-uploader .dx-button .dx-button-text {
+    color: #fff;
+    text-transform: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* :host ::ng-deep .file-uploader .dx-button.dx-state-hover {
     background-color: #707070;
     color: #fff;
-}
+} */
 
-:host ::ng-deep .file-uploader .dx-button.dx-state-active,
+/* :host ::ng-deep .file-uploader .dx-button.dx-state-active,
 :host ::ng-deep .file-uploader .dx-button.dx-state-focused {
     background-color: #9e9e9e;
     color: #fff;
-}
+} */

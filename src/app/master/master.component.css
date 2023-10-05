@@ -1,11 +1,26 @@
 .master {
-    display: flex;
     position: relative;
+    display: flex;
+}
+
+.theme-selection {
+    width: 126px;
+    padding: 12px 24px;
+}
+
+.theme-selection > div {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-back {
+    margin-right: 12px;
+    height: 18px;
 }
 
 :host ::ng-deep .master .loading {
     width: calc(100% - 750px);
-    left: 750px;
+    left: 750px; /*!*/
 }
 
 .master .section {
@@ -19,30 +34,34 @@
 .master .section.left {
     position: relative;
     width: 750px;
-    padding-top: 40px;
+    padding-top: 56px;
 }
 
 .master .section.right {
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    margin: 40px 0;
+    margin-top: 56px;
+    margin-bottom: 118px;
     height: 800px;
     min-width: 1160px;
-    background-color: #e2e5e7; 
-    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
-    z-index: 1; 
+    background-color: #fff;
+    box-shadow: 0 4px 12px #0000004d;
+    z-index: 1;
+    border-radius: 8px;
 }
 
 .master .section.right > * {
     height: 100%;
+    border-radius: 8px;
 }
 
 .master .title {
-    width: 310px;
-    text-align: left; 
-    margin-left: 100px;
-    display: block;  
+    font-size: 32px;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 48px;
+    display: inline-block;
 }
 
 .master .title span {
@@ -50,18 +69,22 @@
 }
 
 .master .title-link {
-    margin-left: 100px;
-    width: 310px;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 16px 48px;
+}
+.master .title-link:hover {
+    opacity: 1;
 }
 
 .master .schemes-container {
     width: 180px;
     position: absolute;
-    left: 90px;
+    left: 48px;
     right: 300px;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 50px;
+    margin-top: 48px;
 }
 
 .schemes .color-name {
@@ -88,16 +111,29 @@
 .base-theming {
     width: 310px;
     float: right;
+    /* margin-top: -95px; */
 }
 
-@media (min-width: 1950px) { 
+
+
+@media (min-width: 1950px) {
     .master .section.right {
-        margin-right: 40px;
+        margin-right: 48px;
     }
 }
 
-@media (max-width: 1000px) { 
+@media (max-width: 1000px) {
     .master .section.left {
         flex-basis: 700px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .master {
+        flex-direction: column;
+    }
+    .master .section.right {
+        min-width: auto;
+        width: auto;
     }
 }
