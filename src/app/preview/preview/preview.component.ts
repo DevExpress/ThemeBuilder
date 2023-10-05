@@ -105,4 +105,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
     ngAfterViewInit(): void {
         this.createPreviewContent(this.widgetName);
     }
+
+    fireScrollEventForClosingDropdowns() {
+        document.body.dispatchEvent(new Event('scroll'));
+    }
 }

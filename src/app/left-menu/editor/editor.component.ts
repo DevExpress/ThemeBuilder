@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -11,19 +11,13 @@ import { MetaItem } from '../../types/meta-item';
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent {
     @Input('item') item: MetaItem;
 
     @Input() searchText = '';
 
-    header: SafeHtml;
-
     constructor(private names: NamesService,
         private metaRepository: MetadataRepositoryService) { }
-
-    ngOnInit(): void {
-        this.header = this.highlight(this.item.Name);
-    }
 
     highlight(text: string): SafeHtml {
         return this.names.getHighlightedForLeftMenuName(text, this.searchText);

@@ -1,4 +1,4 @@
-<div class="property-header" [innerHTML]="header"></div>
+<div class="property-header" [innerHTML]="highlight(this.item.Name)"></div>
 <div class="property-widget">
     <dx-select-box *ngIf="item.Type === 'select'"
         stylingMode="filled"
