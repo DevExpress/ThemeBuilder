@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.material.blue.light.compact.css)
-* Version: 23.1.5
-* Build date: Wed Aug 30 2023
+* Version: 23.1.6
+* Build date: Fri Oct 13 2023
 *
 * Copyright (c) 2012 - 2023 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -10353,7 +10353,7 @@
 .dx-rtl .dx-treeview-node-container:first-child>.dx-treeview-node {
   padding-left: 0;
 }
-.dx-rtl .dx-treeview-node-container .dx-treeview-node .dx-treeview-item .dx-treeview-item-content > .dx-icon {
+.dx-rtl .dx-treeview-node-container .dx-treeview-node .dx-treeview-item .dx-treeview-item-content .dx-icon {
   margin-right: 0;
 }
 .dx-rtl .dx-treeview-custom-collapse-icon,
@@ -10400,7 +10400,7 @@
 .dx-rtl .dx-treeview-node {
   padding-right: 16px;
 }
-.dx-rtl .dx-treeview-item .dx-treeview-item-content > .dx-icon {
+.dx-rtl .dx-treeview-item .dx-treeview-item-content .dx-icon {
   margin-left: 5px;
 }
 .dx-rtl .dx-treeview-item-with-checkbox .dx-treeview-item {
@@ -10478,7 +10478,7 @@
   min-height: 36px;
   line-height: 16px;
 }
-.dx-treeview-item .dx-treeview-item-content > .dx-icon {
+.dx-treeview-item .dx-treeview-item-content .dx-icon {
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
@@ -15157,7 +15157,9 @@
   font-size: 0!important;
 }
 .dx-datagrid-group-panel {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   white-space: nowrap;
   width: 100%;
   -ms-touch-action: pinch-zoom;
@@ -16590,6 +16592,7 @@
   padding: 7px 0;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  line-height: normal;
 }
 .dx-datagrid-group-panel .dx-group-panel-item {
   margin-right: 8px;

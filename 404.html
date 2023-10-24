@@ -19,7 +19,7 @@
         }
 
         if(isIframe()) {
-            var themeMarker = "dx." + /generic|material/.exec(window.location.pathname)[0];
+            var themeMarker = "dx." + /generic|material|fluent/.exec(window.location.pathname)[0];
             document.write('<style>.dx-theme-marker { font-family: "' + themeMarker + '"; }</style>');
         } else {
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.material.blue.light.compact.css" />');
@@ -80,5 +80,5 @@
             <img src="images/loading.svg" alt="loading...">
         </div>
     </app-root>
-<script src="runtime.7d56b6bf4b724a1d.js" type="module"></script><script src="polyfills.732196c3cfe64f3d.js" type="module"></script><script src="main.2a704face676cce2.js" type="module"></script></body>
+<script src="runtime.7d56b6bf4b724a1d.js" type="module"></script><script src="polyfills.732196c3cfe64f3d.js" type="module"></script><script src="main.06f620dd80dd0e09.js" type="module"></script></body>
 </html>
