@@ -36,7 +36,6 @@ import { AppComponent } from './app.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconGenericComponent } from './icons/icon-generic/icon-generic.component';
-import { IconFluentComponent } from './icons/icon-fluent/icon-fluent.component';
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
 import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.component';
 import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-circle.component';
@@ -84,7 +83,6 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         IconThemesComponent,
         IconGenericComponent,
         IconMaterialComponent,
-        IconFluentComponent,
         IconMetadataComponent,
         IconExportComponent,
         IconBootstrapComponent,
