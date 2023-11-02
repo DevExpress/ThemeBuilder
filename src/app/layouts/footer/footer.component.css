@@ -18,10 +18,6 @@
     /* z-index: 3; */
 }
 
-:host ::ng-deep .footer svg path {
-    fill: white;
-}
-
 .footer.content-width {
     padding-top: 0;
     padding-bottom: 0;
@@ -38,13 +34,18 @@
     gap: 40px;
 }
 
-.footer-logo {
-    display: flex;
-    gap: 12px;
+.footer-text {
+    margin: 0 0 16px 0;
+    font-size: 12px;
+    line-height: 14px;
 }
 
-.footer-text {
-    margin: 0;
+.footer-text a {
+    color: white;
+}
+
+.footer-text a:hover {
+    opacity: .8;
 }
 
 .footer-links {
@@ -83,6 +84,34 @@
 
 .footer-socials-link svg:hover {
     opacity: 0.6;
+}
+
+#ot-sdk-btn.ot-sdk-show-settings,
+#ot-sdk-btn.optanon-show-settings {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: inherit;
+    font-size: inherit;
+    background-color: transparent !important;
+    text-decoration: underline;
+    color: white;
+
+    &:visited {
+        color: white;
+    }
+
+    &:hover, &:visited:hover {
+        color: #d9d9d9;
+    }
+
+    &:active {
+        color: #b3b3b3;
+    }
+
+    &:focus {
+        outline-color: white;
+    }
 }
 
 @media only screen and (max-width: 768px) {
