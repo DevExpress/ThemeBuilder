@@ -43,20 +43,15 @@ body {
     margin-right: 16px;
 }
 
+@media only screen and (max-width: 768px) {
+    .content-width {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
 @media (min-height: 1000px) {
     body {
         overflow-y: hidden;
-    }
-}
-
-@media (min-width: 1000px) {
-    body {
-        overflow-x: hidden;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    body {
-        border: red 1px solid;
     }
 }

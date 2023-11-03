@@ -86,52 +86,43 @@
     opacity: 0.6;
 }
 
-#ot-sdk-btn.ot-sdk-show-settings,
-#ot-sdk-btn.optanon-show-settings {
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    line-height: inherit;
-    font-size: inherit;
-    background-color: transparent !important;
-    text-decoration: underline;
-    color: white;
-
-    &:visited {
-        color: white;
-    }
-
-    &:hover, &:visited:hover {
-        color: #d9d9d9;
-    }
-
-    &:active {
-        color: #b3b3b3;
-    }
-
-    &:focus {
-        outline-color: white;
-    }
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
     .footer {
+        padding: 32px 0;
         height: auto;
-        border: solid 1px yellow;
+        font-size: 12px;
     }
-    .footer-container, .footer-about {
-        flex-direction: column;
-        gap: 12px;
-    }
+
     .footer-about {
+        flex-direction: column;
         align-items: center;
     }
-    .footer-text, .footer-links  {
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-text, .footer-links {
         text-align: center;
     }
+
+    .footer-text {
+        margin-bottom: 16px;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
     .footer-socials-title {
         display: none;
     }
+
     .footer-socials-links {
         justify-content: center;
     }
