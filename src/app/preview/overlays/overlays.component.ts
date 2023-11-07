@@ -18,6 +18,8 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);
     isExpandedValue = false;
 
+    ofValue = '#loadpanel-target';
+
     actionSheetData: any[] = [
         { text: 'Command 1' },
         { text: 'Command 2' },
@@ -35,13 +37,14 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe(() => {
+        this.subscription = this.isExpanded.subscribe((value) => {
             const flexContainer = document.getElementsByTagName('app-overlays')[0].parentElement.parentElement;
             flexContainer.addEventListener('transitionend', () => {
                 if(this.tooltip) this.tooltip.instance.repaint();
                 if(this.toast) this.toast.instance.repaint();
                 if(this.loadPanel) this.loadPanel.instance.repaint();
             }, false);
+            this.ofValue = value ? '#loadpanel-target-expanded' : '#loadpanel-target';
         });
     }
 

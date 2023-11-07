@@ -11,8 +11,7 @@
 }
 
 :host ::ng-deep  .dx-button:not(.dx-closebutton) {
-    margin-right: 30px;
-    margin-bottom: 10px;
+    margin: 0 15px 10px 15px;
 }
 
 :host ::ng-deep .dx-overlay-wrapper.dx-toast-wrapper {
@@ -41,7 +40,7 @@
 #target-block {
     display: inline-block;
     text-align: center;
-    padding: 100px 0 50px;
+    padding: 120px 0 50px;
     height: 200px;
     width: 100%;
 }
