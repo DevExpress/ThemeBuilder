@@ -49,10 +49,9 @@
         <dx-button text="ActionSheet" width="135" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
         <dx-button id="tooltip-button" width="135" text="Tooltip" type="normal" (onClick)="tooltip.visible = true"></dx-button>
     </div>
-
+    <div id="loadpanel-target-expanded"></div>
     <div id="target-block">
         <div id="target-element"></div>
-        <div id="loadpanel-target"></div>
     </div>
 
     <dx-popup #popup 
@@ -70,7 +69,7 @@
         [shading]="false"
         (onHiding)="hiding($event)"
         container="#target-block"
-        [position]="{ of: '#loadpanel-target', at: 'center', my: 'center' }">
+        [position]="{ of: ofValue, at: 'center', my: 'center' }">
     </dx-load-panel>
     <dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
     <dx-tooltip #tooltip  target="#tooltip-button" position="top" [visible]="false"> 
