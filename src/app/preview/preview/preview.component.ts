@@ -30,6 +30,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
     createPreviewContent(widget: any): void {
         const EXPAND_CLASS_NAME = 'component-item--active';
+        const SELECTED_ITEM_CLASS_NAME = 'selected-component-item';
         const flexContainers = document.getElementsByClassName('component-item');
         const scrollableContainer = this.scrollView.instance.element().querySelector('.dx-scrollable-container');
         const currentWidget: string = widget.currentValue || widget;
@@ -38,6 +39,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
         /* eslint @typescript-eslint/prefer-for-of: 'off' */
         for(let i = 0; i < flexContainers.length; i++) {
             flexContainers[i].classList.remove(EXPAND_CLASS_NAME);
+            flexContainers[i].classList.remove(SELECTED_ITEM_CLASS_NAME);
         }
 
         this.widgetElements.forEach((widgetEl) => {
@@ -62,6 +64,8 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
                 const widgetContainer = document.getElementsByTagName('app-' + currentWidget.replace('navigations.', ''));
                 const flexParentContainer = widgetContainer[0].parentElement.parentElement;
                 const scrollTop = 30;
+
+                flexParentContainer.classList.add(SELECTED_ITEM_CLASS_NAME);
 
                 if(this.notExpandableWidgets.indexOf(currentWidget) >= 0) {
                     scrollableContainer.scrollTo({
