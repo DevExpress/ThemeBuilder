@@ -51,13 +51,3 @@
     line-height: 125%;
     max-width: 780px;
 }
-
-:host ::ng-deep .footer  {
-    /* display: none; */
-}
-
-@media only screen and (max-width: 768px) {
-    main {
-        border: orange 1px solid;
-    }
-}

@@ -1,5 +1,5 @@
 <app-header [switchEnabled]="themesSwitchEnabled"></app-header>
-<main [@routeAnimation]="getRouteAnimation()" (@routeAnimation.done)="routeAnimationDone()">
+<main class="content-width" [@routeAnimation]="getRouteAnimation()" (@routeAnimation.done)="routeAnimationDone()">
     <router-outlet></router-outlet>
 </main>
 <app-footer></app-footer>

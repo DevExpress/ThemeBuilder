@@ -27,22 +27,9 @@
     cursor: pointer;
 }
 
-.logo .header-logo-js,
-.logo .header-logo-devextreme {
-    height: 40px;
-}
-.logo .header-logo-js {
-    margin-top: -1px;
-    margin-right: 6px;
-}
-
-:host ::ng-deep .logo .header-logo-devextreme svg path {
-    fill: #596C7D;
-}
-
 .product-name {
     font-size: 24px;
-    line-height: 22px;
+    line-height: 28px;
     font-weight: 700;
     font-stretch: 75%;
     font-family: 'Open Sans',sans-serif;
