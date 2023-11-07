@@ -2,7 +2,7 @@
 
 <ng-template #collapsedBlock>
     <dx-text-box width="140" value="Text Box"></dx-text-box>
-    <dx-tag-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
+    <dx-tag-box width="140" [multiline]="false" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
     <dx-select-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
     <dx-lookup width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-lookup>
     <dx-check-box [value]="true"></dx-check-box>
@@ -40,7 +40,7 @@
                 </dx-text-box>
             </div>
             <div class="field daterangebox">
-                <dx-date-range-box stylingMode="outlined" [dropDownOptions]="dropDownOptions"></dx-date-range-box>
+                <dx-date-range-box stylingMode="outlined" [dropDownOptions]="dropDownOptions" [labelMode]="labelMode"></dx-date-range-box>
             </div>
         </div>
         <div class="block filled">
