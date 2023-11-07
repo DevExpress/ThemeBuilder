@@ -25,34 +25,7 @@
     height: 56px;
 }
 
-:host ::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-tab-selected:after {
-    border-color: #d4d8da;
-    border-width: 2px;
-    border-bottom: 0;
-}
 
-:host ::ng-deep .tabs .dx-tab-selected {
-    background-color: #f0f2f3;
-    color: #158BFF;
-}
 
-:host ::ng-deep .tabs.dx-tabpanel .dx-tab-selected:before {
-    border-bottom: 0;
-}
 
-:host ::ng-deep .tabs .dx-tab.dx-state-focused:after {
-    border-color: transparent;
-}
-
-:host ::ng-deep .tabs .dx-tab-selected:after {
-    border-color: #d4d8da;
-    border-width: 2px;
-    border-top-style: solid;
-    height: 51px;
-}
-
-:host ::ng-deep .tabs.dx-tabpanel .dx-multiview-wrapper,
-:host ::ng-deep .tabs.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
-    border: none;
-}
 

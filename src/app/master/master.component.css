@@ -43,7 +43,7 @@
     flex-shrink: 1;
     margin-top: 56px;
     margin-bottom: 118px;
-    height: 800px;
+    height: 820px;
     min-width: 1160px;
     background-color: #fff;
     box-shadow: 0 4px 12px #0000004d;
@@ -98,6 +98,7 @@
     text-align: left;
     color: #505050;
     cursor: pointer;
+    margin-bottom: 2px;
 }
 
 .schemes li:hover {
