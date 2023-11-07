@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DevExtreme ThemeBuilder</title>
     <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="icon" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,700;100,700&amp;display=swap" rel="stylesheet" type="text/css">
@@ -24,6 +25,25 @@
         } else {
             document.write('<link rel="stylesheet" type="text/css" href="content/css/dx.material.blue.light.compact.css" />');
         }
+
+        const changeMetaContent = function () {
+            const meta = document.head.querySelector('meta[name=viewport]');
+
+            const changeMeta = function (e) {
+                if (window.innerWidth <= 768) {
+                    meta.content = 'width=500, user-scalable=no';
+                } else {
+                    meta.content = 'width=device-width';
+                }
+
+                e.stopPropagation();
+            }
+
+            window.addEventListener('DOMContentLoaded', changeMeta);
+            window.addEventListener('resize', changeMeta);
+        }
+
+        changeMetaContent();
     </script>
 
     <!-- Matomo Tag Manager -->

@@ -1,0 +1,23 @@
+:host {
+    height: min-content;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+:host.blue-colored svg path#top-square {
+    fill: rgb(33, 144, 247);
+}
+
+:host.blue-colored svg path#bottom-square {
+    fill: #667788;
+}
+
+:host.blue-colored svg path#first-letter,
+:host.blue-colored svg path#second-letter {
+    fill: white;
+}
+
+:host.white-colored svg#devextreme-logo path {
+    fill: white;
+}
