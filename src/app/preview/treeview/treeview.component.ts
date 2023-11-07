@@ -19,7 +19,6 @@ export class TreeviewComponent {
                 {
                     id: 11,
                     text: 'Individual Platforms',
-                    selected: true,
                     items: [
                         { id: 111, text: 'WinForms' },
                         { id: 112, text: 'ASP.NET' },

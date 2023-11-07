@@ -37,7 +37,7 @@
 }
 
 .component-display:hover,
-.component-item.component-item--active .component-display {
+.component-item.selected-component-item .component-display {
     border-color: #2190F7;
 }
 
