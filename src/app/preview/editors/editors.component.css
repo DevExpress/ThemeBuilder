@@ -14,27 +14,19 @@
     margin-right: 10px;
 }
 
-:host ::ng-deep .dx-radiogroup { 
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .editors {
-    width: 100%;
     margin-bottom: 30px;
+    flex-direction: column;
 }
 
 .editors .block {
-    width: 480px;
     display: inline-flex;
     flex-wrap: wrap;
-    margin-right: 30px;
 }
 
 .editors .block .field {
     margin: 0 10px 20px 0;
-    flex: 1 0 150px;
-    max-width: 150px;
+    flex: 1 0 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -47,7 +39,7 @@
 }
 
 ::ng-deep .dx-theme-material-typography .editors .block .field {
-    min-height: 90px;
+    min-height: 60px;
 }
 
 :host ::ng-deep .editors .dx-texteditor {
@@ -72,8 +64,6 @@
     font-size: 14px;
 }
 
-.radiogroup > *,
-.checkbox > *,
 .calendar > *,
 .daterangebox > * {
     display: flex;
@@ -81,15 +71,22 @@
     margin-bottom: 10px;
 }
 
+.checkbox > * {
+    display: flex;;
+}
+
+::ng-deep .dx-radiogroup .dx-radiobutton {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.daterangebox {
+    min-width: 270px;
+}
+
 .calendar {
     margin-right: 30px;
     min-width: 280px;
-}
-
-.radiogroup,
-.checkbox,
-.switch {
-    margin: 0 30px;
 }
 
 :host ::ng-deep .checkbox .dx-checkbox {
@@ -101,18 +98,34 @@
 }
 
 .switch .field {
-    width: auto;
-    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
 }
 
-.switch .field > div {
-    display: inline-block;
-    margin-right: 10px;
+.switch .value {
+    display: flex;
+}
+
+.switchers {
+    gap: 24px;
+}
+
+.component-container {
+    height: 32px;
+    display: flex;
+    align-items: center;
 }
 
 .fileuploader {
     width: 250px;
 }
 
+.component-section {
+    display: flex;
+    gap: 48px;
+}
 
-
+.component-section .block {
+    flex: 1;
+    display: flex;
+}

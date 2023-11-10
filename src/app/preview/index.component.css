@@ -5,3 +5,23 @@
     left: 0;
     right: 0;
 }
+
+
+::ng-deep .options-block {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+::ng-deep .options-block .option {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+::ng-deep .options-block .option span {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
