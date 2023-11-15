@@ -1,12 +1,14 @@
 <div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
 
 <ng-template #collapsedBlock>
-    <dx-text-box width="140" value="Text Box"></dx-text-box>
-    <dx-tag-box width="140" [multiline]="false" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
-    <dx-select-box width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
-    <dx-lookup width="140" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-lookup>
-    <dx-check-box [value]="true"></dx-check-box>
-    <dx-radio-group [items]="['']" value=""></dx-radio-group>
+    <div class="collapsed-block">
+        <dx-text-box width="130" value="Text Box"></dx-text-box>
+        <dx-tag-box width="130" [multiline]="false" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']" [value]="['Monday']"></dx-tag-box>
+        <dx-select-box width="130" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-select-box>
+        <dx-lookup width="130" [items]="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']"></dx-lookup>
+        <dx-check-box [value]="true"></dx-check-box>
+        <dx-radio-group [items]="['']" value=""></dx-radio-group>
+    </div>
 </ng-template>
 
 <ng-template #expandedBlock>
@@ -40,15 +42,17 @@
                 <div class="field">
                     <dx-lookup [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Lookup"></dx-lookup>
                 </div>
-                <div class="field">
-                    <dx-text-box [stylingMode]="stylingModeValue" [value]="invalidValue" label="Validated">
-                        <dx-validator>
-                            <dxi-validation-rule type="stringLength" [min]="1"  message="Field is required"></dxi-validation-rule>
-                        </dx-validator>
-                    </dx-text-box>
-                </div>
-                <div class="field daterangebox">
-                    <dx-date-range-box [stylingMode]="stylingModeValue" [dropDownOptions]="dropDownOptions"></dx-date-range-box>
+                <div class="last-fields">
+                    <div class="field validation">
+                        <dx-text-box [stylingMode]="stylingModeValue" [value]="invalidValue" label="Validated">
+                            <dx-validator>
+                                <dxi-validation-rule type="stringLength" [min]="1"  message="Field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                    <div class="field daterangebox">
+                        <dx-date-range-box [stylingMode]="stylingModeValue" [dropDownOptions]="dropDownOptions"></dx-date-range-box>
+                    </div>
                 </div>
             </div>
         </div>
