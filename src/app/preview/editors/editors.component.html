@@ -22,27 +22,31 @@
         <div class="block editors">
             <div class="header">Text Editors</div>
             <div class="block outlined">
-                <div class="field">
-                    <dx-text-box [stylingMode]="stylingModeValue" value="Outlined" label="Text Box"></dx-text-box>
-                </div>
-                <div class="field">
-                    <dx-select-box [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Select Box"></dx-select-box>
-                </div>
-                <div class="field">
-                    <dx-color-box [stylingMode]="stylingModeValue" value="#333" label="Color Box"></dx-color-box>
-                </div>
-                <div class="field">
-                    <dx-number-box [stylingMode]="stylingModeValue" [showSpinButtons]="true" value="123" label="Number Box"></dx-number-box>
-                </div>
-                <div class="field">
-                    <div class="value">
-                        <dx-tag-box [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Outlined']" label="Tag Box"></dx-tag-box>
+                <div class="grouped-fields">
+                    <div class="field">
+                        <dx-text-box [stylingMode]="stylingModeValue" value="Outlined" label="Text Box"></dx-text-box>
+                    </div>
+                    <div class="field">
+                        <dx-select-box [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Select Box"></dx-select-box>
+                    </div>
+                    <div class="field">
+                        <dx-color-box [stylingMode]="stylingModeValue" value="#333" label="Color Box"></dx-color-box>
                     </div>
                 </div>
-                <div class="field">
-                    <dx-lookup [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Lookup"></dx-lookup>
+                <div class="grouped-fields">
+                    <div class="field">
+                        <dx-number-box [stylingMode]="stylingModeValue" [showSpinButtons]="true" value="123" label="Number Box"></dx-number-box>
+                    </div>
+                    <div class="field">
+                        <div class="value">
+                            <dx-tag-box [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" [value]="['Outlined']" label="Tag Box"></dx-tag-box>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <dx-lookup [stylingMode]="stylingModeValue" [items]="['Outlined', 'Filled', 'Underlined']" value="Outlined" label="Lookup"></dx-lookup>
+                    </div>
                 </div>
-                <div class="last-fields">
+                <div class="grouped-fields">
                     <div class="field validation">
                         <dx-text-box [stylingMode]="stylingModeValue" [value]="invalidValue" label="Validated">
                             <dx-validator>
