@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import dxButtonGroup from 'devextreme/ui/button_group';
 
 type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
@@ -16,6 +17,8 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
 })
 export class ButtonGroupComponent {
     listButtonGroup: dxButtonGroup[] = [];
+
+    typeValue = 'default';
 
     capitalizeFirstLetter(str: string) {
         // eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -37,6 +40,18 @@ export class ButtonGroupComponent {
     initStateDisabled(event: DxButtonGroupTypes.ContentReadyEvent) {
         event.element.querySelectorAll('.dx-button').forEach((button) => {
             button.classList.add('dx-state-disabled');
+        });
+    }
+
+    changeType(event: DxSelectBoxTypes.ValueChangedEvent) {
+        this.listButtonGroup.forEach((component) => {
+            const items = component.option('items');
+            const changedItems = items.map((item: CustomButtonGroupItem) => {
+                item.type = event.value;
+                return item;
+            });
+
+            component.option('items', changedItems);
         });
     }
 
