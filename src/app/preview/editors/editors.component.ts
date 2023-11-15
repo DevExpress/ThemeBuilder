@@ -13,6 +13,7 @@ export class EditorsComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     dropDownOptions = {hideOnParentScroll: true};
     labelMode = 'floating';
+    stylingModeValue = 'outlined';
 
     ngOnInit(): void {
         this.subscription = this.isExpanded.subscribe((expanded) => {

@@ -24,7 +24,19 @@
     </div>
 </ng-template>
 <ng-template  #expandedBlock>
-    <div class="component-options">
+    <div class="options-block">
+        <div class="option">
+            <span>Buttons Style</span>
+            <div>
+                <dx-select-box
+                    width="200px"
+                    [(value)]="typeValue"
+                    [items]="['default', 'normal', 'success', 'danger']"
+                    (onValueChanged)="changeType($event)"
+                    stylingMode="outlined">
+                </dx-select-box>
+            </div>
+        </div>
         <dx-check-box
             text="Show icons"
             [value]="true"
@@ -36,7 +48,6 @@
             (onValueChanged)="toogleText($event)"
         ></dx-check-box>
     </div>
-
     <div class="btn-container">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>

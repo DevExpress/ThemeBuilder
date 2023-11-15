@@ -24,6 +24,19 @@
     </div>
 </ng-template>
 <ng-template  #expandedBlock>
+    <div class="options-block">
+        <div class="option">
+            <span>Buttons Style</span>
+            <div>
+                <dx-select-box
+                    width="200px"
+                    [(value)]="typeValue"
+                    [items]="['default', 'normal', 'success', 'danger']"
+                    stylingMode="outlined">
+                </dx-select-box>
+            </div>
+        </div>
+    </div>
     <div class="btn-container">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
@@ -95,7 +108,7 @@
         <div class="btn-list">
         <dx-button
             text="Button"
-            type="default"
+            [type]="typeValue"
             [stylingMode]="mode"
             [disabled]="disabled"
             (onContentReady)="initState ? initState($event) : null"
@@ -103,14 +116,14 @@
         <dx-button
             text="Button"
             icon="favorites"
-            type="default"
+            [type]="typeValue"
             [stylingMode]="mode"
             [disabled]="disabled"
             (onContentReady)="initState ? initState($event) : null"
         ></dx-button>
         <dx-button
             icon="favorites"
-            type="default"
+            [type]="typeValue"
             [stylingMode]="mode"
             [disabled]="disabled"
             (onContentReady)="initState ? initState($event) : null"
