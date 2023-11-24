@@ -7,8 +7,7 @@
             [formData]="employee"
             width="100%" 
             [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) :247"   
-            colCount="2"
-            labelMode="floating">
+            colCount="2">
                 <dxi-item dataField="FirstName" ></dxi-item>
                 <dxi-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
                     <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
