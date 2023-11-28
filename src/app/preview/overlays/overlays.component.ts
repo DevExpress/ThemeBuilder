@@ -11,7 +11,7 @@ const UPDATE_TOOLTIP_VISIBILITY_INTERVAL = 50;
 })
 export class OverlaysComponent implements OnInit, OnDestroy {
     subscription: Subscription;
-    updateTooltipVisibilityInterval: number;
+    updateTooltipVisibilityIntervalHandler: number;
 
     @ViewChild('tooltipPreview') tooltipPreview: DxTooltipComponent;
     @ViewChild('tooltipPreviewBlock') tooltipPreviewBlock: ElementRef;
@@ -60,7 +60,7 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.updateTooltipVisibilityInterval = setInterval(() => {
+        this.updateTooltipVisibilityIntervalHandler = setInterval(() => {
             this.updateVisibilityPreviewTooltip();
         }, UPDATE_TOOLTIP_VISIBILITY_INTERVAL);
 
@@ -78,6 +78,6 @@ export class OverlaysComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
-        clearInterval(this.updateTooltipVisibilityInterval);
+        clearInterval(this.updateTooltipVisibilityIntervalHandler);
     }
 }
