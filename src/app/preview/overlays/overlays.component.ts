@@ -9,7 +9,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 })
 export class OverlaysComponent implements OnInit, OnDestroy {
     subscription: Subscription;
-    updateTooltipVisibilityInterval = -1;
+    updateTooltipVisibilityInterval: number = -1;
 
     @ViewChild('tooltipPreview') tooltipPreview: DxTooltipComponent;
     @ViewChild('tooltipPreviewBlock') tooltipPreviewBlock: ElementRef;
