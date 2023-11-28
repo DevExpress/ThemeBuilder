@@ -19,8 +19,6 @@ export class OverlaysComponent implements OnInit, OnDestroy {
 
     widgetGroup = 'overlays';
     isExpanded = new BehaviorSubject<boolean>(false);
-    isExpandedValue = false;
-
     ofValue = '#loadpanel-target';
 
     actionSheetData: any[] = [
@@ -40,7 +38,7 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     }
 
     isElementInViewport(el) {
-        var rect = el.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
 
         return (
             rect.top >= 0 &&
