@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/co
 import { DxLoadPanelComponent, DxToastComponent, DxTooltipComponent } from 'devextreme-angular';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
+const UPDATE_TOOLTIP_VISIBILITY_INTERVAL = 50;
+
 @Component({
     selector: 'app-overlays',
     templateUrl: './overlays.component.html',
@@ -9,7 +11,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 })
 export class OverlaysComponent implements OnInit, OnDestroy {
     subscription: Subscription;
-    updateTooltipVisibilityInterval: number = -1;
+    updateTooltipVisibilityInterval: number;
 
     @ViewChild('tooltipPreview') tooltipPreview: DxTooltipComponent;
     @ViewChild('tooltipPreviewBlock') tooltipPreviewBlock: ElementRef;
@@ -60,7 +62,7 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.updateTooltipVisibilityInterval = setInterval(() => {
             this.updateVisibilityPreviewTooltip();
-        }, 50);
+        }, UPDATE_TOOLTIP_VISIBILITY_INTERVAL);
 
         this.subscription = this.isExpanded.subscribe((value) => {
             const flexContainer = document.getElementsByTagName('app-overlays')[0].parentElement.parentElement;
