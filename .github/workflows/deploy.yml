@@ -7,36 +7,112 @@ on:
       - preyskurantov/re-design
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    build-dx-npm-and-dx-angular-npm:
+        runs-on: ubuntu-latest
+        steps:
+            #Build Devextreme latest
+            -   name: Checkout Devextreme
+                run: git clone https://github.com/DevExpress/DevExtreme.git devextreme
 
-    steps:
-    - name: Get sources
-      uses: actions/checkout@v3
+            -   name: Use Node.js 18
+                uses: actions/setup-node@v3
+                with:
+                    node-version: '18.16.1'
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+            -   name: Set NPM version
+                run: npm i npm@8 -g
 
-    - name: Restore npm cache
-      uses: actions/cache@v3
-      with:
-        path: ./node_modules
-        key: ${{ runner.os }}-node-modules
+            -   name: DevExtreme - Restore npm cache
+                uses: actions/cache@v3
+                with:
+                    path: 'devextreme/**/node_modules'
+                    key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
 
-    - name: Run npm install
-      run: npm install --no-package-lock --no-audit --no-fund
+            -   name: DevExtreme - Install packages
+                working-directory: devextreme
+                run: npm install --no-audit --no-fund
 
-    - name: Build
-      run: npm run build
+            -   name: DevExtreme - Build
+                working-directory: devextreme/packages/devextreme
+                run: npm run build-npm-devextreme
 
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_SECRET }}
-        BRANCH: gh-pages
-        FOLDER: dist/devextreme-themebuilder-app
-        CLEAN: true
+            -   name: DevExtreme - Pack
+                working-directory: devextreme/packages/devextreme/artifacts/npm/devextreme
+                run: npm pack
 
+            -   name: DevExtreme dist - Pack
+                working-directory: devextreme/packages/devextreme/artifacts/npm/devextreme-dist
+                run: npm pack
+
+            -   name: Upload devextreme Artifact
+                uses: actions/upload-artifact@v3
+                with:
+                    name: devextreme-npm
+                    path: |
+                        devextreme/packages/devextreme/artifacts/npm/devextreme/devextreme-*.tgz
+                        devextreme/packages/devextreme/artifacts/npm/devextreme-dist/devextreme-dist*.tgz
+
+            -   name: DevExtreme-angular - Build
+                working-directory: devextreme/packages/devextreme-angular
+                run: npm run build
+
+            -   name: DevExtreme-angular - Pack
+                working-directory: devextreme/packages/devextreme-angular
+                run: npm run pack
+
+            -   name: Upload devextreme-angular Artifact
+                uses: actions/upload-artifact@v2
+                with:
+                    name: devextreme-angular-npm
+                    path: devextreme/packages/devextreme-angular/npm/dist/devextreme-angular*.tgz
+    dev-deploy:
+        needs: [build-dx-npm-and-dx-angular-npm]
+        runs-on: ubuntu-latest
+        timeout-minutes: 20
+
+        steps:
+            - name: Get sources
+              uses: actions/checkout@v3
+
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '18'
+
+            - name: Restore npm cache
+              uses: actions/cache@v3
+              with:
+                  path: ./node_modules
+                  key: ${{ runner.os }}-node-modules
+
+            - name: Run npm install
+              run: npm install --no-package-lock --no-audit --no-fund
+
+            -   name: Download devextreme Artifact
+                uses: actions/download-artifact@v2
+                with:
+                    name: devextreme-npm
+                    path: devextreme-npm-latest
+
+            -   name: Download devextreme-angular Artifact
+                uses: actions/download-artifact@v2
+                with:
+                    name: devextreme-angular-npm
+                    path: devextreme-angular-npm-latest
+
+            -   name: Install latest devextreme DX packages
+                run: |
+                    npm install $(find ./devextreme-npm-latest/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
+                    npm install $(find ./devextreme-npm-latest/devextreme-dist/ -maxdepth 1 -name "devextreme-dist*.tgz")
+                    npm install $(find ./devextreme-angular-npm-latest -maxdepth 1 -name "devextreme-angular*.tgz")
+
+            - name: Build
+              run: npm run build
+
+            -   name: Deploy in gh-pages
+                uses: JamesIves/github-pages-deploy-action@v4
+                with:
+                    clean: true
+                    branch: gh-pages
+                    folder: dist/devextreme-themebuilder-app
+                    target-folder: devextreme-themebuilder
