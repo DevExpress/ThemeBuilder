@@ -1,4 +1,4 @@
-<dx-toolbar class="header" [items]="toolbarItems">
+<dx-toolbar class="header dx-theme-background-color" [items]="toolbarItems">
 </dx-toolbar>
 <div class="flex-blocks {{theme}} {{themeSize}}">
     <div class="left flex-block dx-card">
@@ -8,7 +8,7 @@
             width="100%" 
             [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) :247"   
             colCount="2"
-            labelMode="floating">
+            [labelMode]="this.theme === 'fluent' ? 'outside' : 'floating'">
                 <dxi-item dataField="FirstName" ></dxi-item>
                 <dxi-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
                     <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
