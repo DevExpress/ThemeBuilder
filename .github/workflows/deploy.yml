@@ -38,11 +38,17 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
       with:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_SECRET }}
-        BRANCH: gh-pages
-        FOLDER: dist/devextreme-themebuilder-app
-        CLEAN: true
+        name: build-artifacts
+        path: dist/devextreme-themebuilder-app
+
+    # - name: Deploy
+    #   uses: JamesIves/github-pages-deploy-action@3.7.1
+    #   with:
+    #     GITHUB_TOKEN: ${{ secrets.DEPLOY_SECRET }}
+    #     BRANCH: gh-pages
+    #     FOLDER: dist/devextreme-themebuilder-app
+    #     CLEAN: true
 
