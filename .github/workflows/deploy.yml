@@ -33,8 +33,21 @@ jobs:
     - name: Get DevExtreme Version
       run: export DEVEXTREME_INTERNAL_VERSION=$(npm pkg get dependencies.devextreme | tr -d '"')
 
-    - name: Install devextreme-internal
-      run: npm i devextreme@npm:@devexpress/devextreme-internal@$DEVEXTREME_INTERNAL_VERSION --no-save
+    - name: Download devextreme-internal
+      run: npm pack @devexpress/devextreme-internal@$DEVEXTREME_INTERNAL_VERSION --registry https://npm.pkg.github.com
+
+    - name: Unpack devextreme-internal
+      run: |
+        export DEVEXTREME_FILE_NAME=$(find . -name DevExpress-devextreme-internal-*.tgz)
+        mkdir devextreme-internal-package
+        cd ./devextreme-internal-package
+        tar -xvzf ../$DEVEXTREME_FILE_NAME
+
+    - name: Copy devextreme-internal
+      run: |
+        rm -rf ./node_modules/devextreme/*
+        mv ./devextreme-internal-package/package/* ./node_modules/devextreme
+        rm -rf ./devextreme-internal-package
 
     - name: Build
       run: npm run build
