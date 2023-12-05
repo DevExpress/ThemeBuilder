@@ -32,8 +32,8 @@ export class EditorComponent {
     }
 
     valueChanged(e: any, key: string): void {
-        if (this.isValueCanBePixels() && this.isPositiveNumber(e.value)) {
-          e.value = e.value + 'px';
+        if(typeof e.value === 'string' && this.isValueCanBePixels() && this.isPositiveNumber(e.value)) {
+            e.value = e.value + 'px';
         }
 
         this.metaRepository.updateSingleVariable(e, key);
