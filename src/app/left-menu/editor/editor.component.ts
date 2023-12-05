@@ -19,11 +19,23 @@ export class EditorComponent {
     constructor(private names: NamesService,
         private metaRepository: MetadataRepositoryService) { }
 
+    private isValueCanBePixels() {
+        return this.item.Key.endsWith('border-radius');
+    }
+
+    private isPositiveNumber(value) {
+        return /^[1-9]\d*$/.test(value);
+    }
+
     highlight(text: string): SafeHtml {
         return this.names.getHighlightedForLeftMenuName(text, this.searchText);
     }
 
     valueChanged(e: any, key: string): void {
+        if (this.isValueCanBePixels() && this.isPositiveNumber(e.value)) {
+          e.value = e.value + 'px';
+        }
+
         this.metaRepository.updateSingleVariable(e, key);
     }
 }
