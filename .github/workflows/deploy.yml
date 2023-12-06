@@ -7,35 +7,36 @@ on:
       - preyskurantov/re-design
 
 jobs:
-    dev-deploy:
-        runs-on: ubuntu-latest
-        timeout-minutes: 20
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
 
-        steps:
-            - name: Get sources
-              uses: actions/checkout@v3
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v3
 
-            - name: Use Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-            - name: Restore npm cache
-              uses: actions/cache@v3
-              with:
-                  path: ./node_modules
-                  key: ${{ runner.os }}-node-modules
+    - name: Restore npm cache
+      uses: actions/cache@v3
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-node-modules
 
-            - name: Run npm install
-              run: npm install --no-package-lock --no-audit --no-fund
+    - name: Run npm install
+      run: npm install --no-package-lock --no-audit --no-fund
 
-            - name: Build
-              run: npm run build
+    - name: Build
+      run: npm run build
 
-            -   name: Deploy in gh-pages
-                uses: JamesIves/github-pages-deploy-action@v4
-                with:
-                    clean: true
-                    branch: gh-pages
-                    folder: dist/devextreme-themebuilder-app
-                    target-folder: devextreme-themebuilder
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_SECRET }}
+        BRANCH: gh-pages
+        FOLDER: dist/devextreme-themebuilder-app
+        CLEAN: true
+
