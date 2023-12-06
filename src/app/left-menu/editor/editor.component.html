@@ -10,7 +10,7 @@
     <dx-text-box *ngIf="item.Type === 'text'"
         stylingMode="filled"
         [value]="item.Value"
-        (onValueChanged)="valueChanged($event, item.Key)"
+        (onValueChanged)="valueTextChanged($event, item.Key)"
     ></dx-text-box>
 
     <dx-color-box *ngIf="item.Type === 'color'"
