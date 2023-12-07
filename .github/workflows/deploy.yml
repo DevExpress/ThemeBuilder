@@ -26,6 +26,13 @@ jobs:
     - name: Run npm install
       run: npm install --no-package-lock --no-audit --no-fund
 
+    - name: Install Internal Package
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+        DEVEXTREME_INTERNAL_VERSION=$(npm pkg get dependencies.devextreme --workspaces=false | tr -d '"')
+        npm pack @devexpress/devextreme-internal@$DEVEXTREME_INTERNAL_VERSION --registry https://npm.pkg.github.com
+        npm i devextreme@$(find . -name DevExpress-devextreme-internal-*.tgz)
+
     - name: Build
       run: npm run build
 
