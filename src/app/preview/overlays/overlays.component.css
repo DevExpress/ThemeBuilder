@@ -25,11 +25,24 @@
     width: 250px;
 }
 
+#tooltip-block  {
+    position: relative;
+}
+
+#tooltip-block::ng-deep  .dx-tooltip-wrapper {
+    position: initial !important;
+}
+
 #loadpanel-block {
     width: 240px;
 }
 
+:host-context(.dx-theme-fluent-typography) #loadpanel-block {
+    width: 140px;
+}
+
 #tooltip-block {
+    height: auto;
     width: 140px;
 }
 

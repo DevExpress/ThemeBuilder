@@ -16,8 +16,6 @@ export class OverlaysComponent implements OnInit, OnDestroy {
 
     widgetGroup = 'overlays';
     isExpanded = new BehaviorSubject<boolean>(false);
-    isExpandedValue = false;
-
     ofValue = '#loadpanel-target';
 
     actionSheetData: any[] = [
