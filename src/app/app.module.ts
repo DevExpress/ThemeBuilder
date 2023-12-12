@@ -27,7 +27,7 @@ import {
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
-import {HeaderComponent, IncludesPipe} from './layouts/header/header.component';
+import { HeaderComponent, IncludesPipe } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 

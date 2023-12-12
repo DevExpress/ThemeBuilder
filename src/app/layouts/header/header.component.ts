@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, Pipe, PipeTransform} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
