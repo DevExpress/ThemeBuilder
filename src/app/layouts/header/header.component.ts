@@ -1,14 +1,24 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { Router } from '@angular/router';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 
+@Pipe({
+    name: 'includes'
+})
+export class IncludesPipe implements PipeTransform {
+    transform(value: string, str: string): boolean {
+        return value.toLowerCase().includes(str.toLowerCase());
+    }
+}
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css']
+    styleUrls: ['./header.component.css'],
+    providers: [ IncludesPipe ]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     @Input() switchEnabled: boolean;

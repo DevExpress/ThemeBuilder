@@ -4,3 +4,7 @@
     /* min-width: 1000px; */
     /* overflow: hidden; */
 }
+
+::ng-deep .info-color {
+    color: #158BFF;
+}

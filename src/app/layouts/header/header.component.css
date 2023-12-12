@@ -20,6 +20,16 @@
     align-self: center;
 }
 
+.theme-group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-tm-tooltip {
+    padding: 8px;
+}
+
 .logo {
     display: flex;
     gap: 6px;

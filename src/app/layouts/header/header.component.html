@@ -7,7 +7,6 @@
             Theme Builder
         </div>
     </div>
-
     <div *ngIf="switchEnabled; then switcherBlock;"></div>
 
     <ng-template #switcherBlock>
@@ -18,12 +17,29 @@
                 [dataSource]="switcherData"
                 stylingMode="filled"
                 [grouped]="true"
+                groupTemplate="group"
                 displayExpr="text"
                 valueExpr="themeId"
                 fieldTemplate="field"
                 [(value)]="currentThemeId"
                 (onValueChanged)="themeChanged($event)"
             >
+                <div *dxTemplate="let data of 'group'; index as i;">
+                    <div class="theme-group-header">
+                        {{ data.key }}
+                        <app-icon-tm-info *ngIf="data.key | includes: 'fluent'"
+                                          id="fluent-tm-info-{{i}}" class="info-color"
+                    ></app-icon-tm-info>
+                        <dx-tooltip
+                            target="#fluent-tm-info-{{i}}"
+                            showEvent="dxhoverstart"
+                            hideEvent="dxhoverend">
+                            <div *dxTemplate="let data of 'content'">
+                                <div class="theme-tm-tooltip">All trademarks or registered trademarks are property of their respective owners</div>
+                            </div>
+                        </dx-tooltip>
+                    </div>
+                </div>
                 <div *dxTemplate="let data of 'field'">
                     <div class="switcher-template">
                         <app-icon-theme-circle [theme]="data.text | lowercase" [small]="true" class="switcher-icon editor"></app-icon-theme-circle>
