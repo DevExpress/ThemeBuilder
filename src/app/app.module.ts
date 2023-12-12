@@ -117,7 +117,7 @@ import { IconTmInfoComponent } from './icons/icon-tm-info/icon-tm-info.component
         IconLoadingComponent,
         HelpTooltipComponent,
         NotifyErrorComponent,
-        IncludesPipe,
+        IncludesPipe
     ],
     imports: [
         BrowserModule,
