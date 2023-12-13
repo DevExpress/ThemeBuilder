@@ -43,6 +43,10 @@ body {
     margin-right: 16px;
 }
 
+.info-color {
+    color: #03a9f4;
+}
+
 @media only screen and (max-width: 768px) {
     .content-width {
         padding-left: 24px;

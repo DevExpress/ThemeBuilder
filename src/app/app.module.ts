@@ -27,7 +27,7 @@ import {
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
-import { HeaderComponent } from './layouts/header/header.component';
+import { HeaderComponent, IncludesPipe } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 
@@ -73,6 +73,7 @@ import { PreviewModule } from './preview/preview.module';
 import { ButtonIconComponent } from './icons/button-icon/button-icon.component';
 import { IconLoadingComponent } from './icons/icon-loading/icon-loading.component';
 import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip/help-tooltip.component';
+import { IconTmInfoComponent } from './icons/icon-tm-info/icon-tm-info.component';
 
 @NgModule({
     declarations: [
@@ -85,6 +86,7 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         IconMaterialComponent,
         IconMetadataComponent,
         IconExportComponent,
+        IconTmInfoComponent,
         IconBootstrapComponent,
         AdvancedComponent,
         LeftMenuComponent,
@@ -112,7 +114,8 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         ButtonIconComponent,
         IconLoadingComponent,
         HelpTooltipComponent,
-        NotifyErrorComponent
+        NotifyErrorComponent,
+        IncludesPipe
     ],
     imports: [
         BrowserModule,
