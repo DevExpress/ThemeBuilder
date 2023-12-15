@@ -18,6 +18,8 @@ export class OverlaysComponent implements OnInit, OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);
     ofValue = '#loadpanel-target';
 
+    ofValue = '#loadpanel-target';
+
     actionSheetData: any[] = [
         { text: 'Command 1' },
         { text: 'Command 2' },
