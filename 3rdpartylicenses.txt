@@ -1,3 +1,6 @@
+@DevExpress/devextreme-internal
+SEE LICENSE IN README.md
+
 @angular/animations
 MIT
 
@@ -46,9 +49,6 @@ devexpress-diagram
 SEE LICENSE IN README.md
 
 devexpress-gantt
-SEE LICENSE IN README.md
-
-devextreme
 SEE LICENSE IN README.md
 
 devextreme-angular
