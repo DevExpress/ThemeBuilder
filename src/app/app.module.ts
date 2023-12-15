@@ -27,7 +27,7 @@ import {
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
-import { HeaderComponent } from './layouts/header/header.component';
+import { HeaderComponent, IncludesPipe } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PreviewLayoutComponent } from './layouts/preview-layout/preview-layout.component';
 
@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
 import { IconBootstrapComponent } from './icons/icon-bootstrap/icon-bootstrap.component';
 import { IconExportComponent } from './icons/icon-export/icon-export.component';
 import { IconGenericComponent } from './icons/icon-generic/icon-generic.component';
+import { IconFluentComponent } from './icons/icon-fluent/icon-fluent.component';
 import { IconMaterialComponent } from './icons/icon-material/icon-material.component';
 import { IconMetadataComponent } from './icons/icon-metadata/icon-metadata.component';
 import { IconThemeCircleComponent } from './icons/icon-theme-circle/icon-theme-circle.component';
@@ -73,6 +74,7 @@ import { PreviewModule } from './preview/preview.module';
 import { ButtonIconComponent } from './icons/button-icon/button-icon.component';
 import { IconLoadingComponent } from './icons/icon-loading/icon-loading.component';
 import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip/help-tooltip.component';
+import { IconTmInfoComponent } from './icons/icon-tm-info/icon-tm-info.component';
 
 @NgModule({
     declarations: [
@@ -83,8 +85,10 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         IconThemesComponent,
         IconGenericComponent,
         IconMaterialComponent,
+        IconFluentComponent,
         IconMetadataComponent,
         IconExportComponent,
+        IconTmInfoComponent,
         IconBootstrapComponent,
         AdvancedComponent,
         LeftMenuComponent,
@@ -112,7 +116,8 @@ import { HelpTooltipComponent } from './layouts/header/export-popup/help-tooltip
         ButtonIconComponent,
         IconLoadingComponent,
         HelpTooltipComponent,
-        NotifyErrorComponent
+        NotifyErrorComponent,
+        IncludesPipe
     ],
     imports: [
         BrowserModule,
