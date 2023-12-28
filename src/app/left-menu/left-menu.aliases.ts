@@ -53,7 +53,7 @@ export class LeftMenuAlias {
             groups: [{
                 name: 'Text Editors',
                 equivalents: 'TextBox, dxTextBox, dx-text-box, dxTextArea, dx-text-area',
-                regs: [/texteditor-|textbox-|dropdowneditor-/i, /base-border-radius-small/i]
+                regs: [/texteditor-|textbox-|dropdowneditor-/i]
             }, {
                 name: 'Autocomplete',
                 equivalents: 'SuggestBox, AutoSuggestBox, dxAutocomplete, dx-autocomplete'
@@ -122,11 +122,11 @@ export class LeftMenuAlias {
             groups: [{
                 name: 'Overlays',
                 equivalents: 'dxPopup, dx-popup, dxPopover, dx-popover, dxActionSheet, dx-action-sheet, dxTooltip, dx-tooltip, dxToast, dx-toast',
-                regs: [/overlay-content-bg/i, /overlay-shader-bg/i, /base-border-radius-large/i]
+                regs: [/overlay-/i]
             }, {
                 name: 'Popup',
                 equivalents: 'dxPopup, dx-popup',
-                regs: [/popup-/i, /overlay-focus-border-color/i]
+                regs: [/popup-/i]
             }, {
                 name: 'Load Panel',
                 equivalents: 'dxLoadPanel, dx-load-panel',
