@@ -236,9 +236,9 @@ export class ExportPopupComponent implements OnInit {
         const zip = new JSZip();
         const fontExtension = ['ttf', 'woff', 'woff2'];
         const theme = {
-            generic: 'generic',
+            material: 'material',
             fluent: 'fluent'
-        }[this.importService.getThemeName()] || 'material';
+        }[this.importService.getThemeName()] || '';
         const fontFilePath = `icons/dxicons${theme}`;
         this.contentReady = false;
 
