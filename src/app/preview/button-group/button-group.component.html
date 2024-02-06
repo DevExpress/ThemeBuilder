@@ -48,7 +48,7 @@
             (onValueChanged)="toogleText($event)"
         ></dx-check-box>
     </div>
-    <div class="btn-container">
+    <div class="btn-container btn-container-click-disabled">
         <div class="btn-row">
             <div class="btn-cell btn-cell--empty"></div>
             <div class="btn-cell">
@@ -99,6 +99,16 @@
 
             <ng-container *ngFor="let mode of buttonModes">
                 <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateFocused}"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="btn-row">
+            <div class="btn-cell">
+                <span>Selected</span>
+            </div>
+
+            <ng-container *ngFor="let mode of buttonModes">
+                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateSelected}"></ng-container>
             </ng-container>
         </div>
 
