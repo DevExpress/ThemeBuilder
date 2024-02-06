@@ -37,6 +37,10 @@ export class ButtonGroupComponent {
         event.element.querySelector('.dx-button:first-child').classList.add('dx-state-focused');
     }
 
+    initStateSelected(event: DxButtonGroupTypes.ContentReadyEvent) {
+        event.element.querySelector('.dx-button:first-child').classList.add('dx-state-selected');
+    }
+
     initStateDisabled(event: DxButtonGroupTypes.ContentReadyEvent) {
         event.element.querySelectorAll('.dx-button').forEach((button) => {
             button.classList.add('dx-state-disabled');

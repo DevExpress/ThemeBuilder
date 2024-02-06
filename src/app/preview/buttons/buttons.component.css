@@ -31,5 +31,8 @@ span {
 .btn-list {
     display: flex;
     gap: 16px;
+}
+
+.btn-container-click-disabled {
     pointer-events: none;
 }
