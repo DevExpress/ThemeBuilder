@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 interface PaneContentTemplate {
     name: string;
