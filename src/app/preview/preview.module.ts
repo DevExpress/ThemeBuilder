@@ -20,6 +20,7 @@ import { PivotgridComponent } from './pivotgrid/pivotgrid.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { ScrollviewComponent } from './scrollview/scrollview.component';
+import { SplitterComponent } from './splitter/splitter.component';
 import { SlidersComponent } from './sliders/sliders.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -55,6 +56,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ProgressbarComponent,
         SchedulerComponent,
         ScrollviewComponent,
+        SplitterComponent,
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
@@ -82,6 +84,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         ProgressbarComponent,
         SchedulerComponent,
         ScrollviewComponent,
+        SplitterComponent,
         TreelistComponent,
         SlidersComponent,
         WizardComponent,

@@ -1,0 +1,27 @@
+
+::ng-deep #splitter {
+  border: 1px solid var(--dx-color-border);
+  overflow: hidden;
+}
+  
+::ng-deep .pane-content {
+  padding: 12px;
+}
+  
+::ng-deep .pane-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+  
+::ng-deep .pane-state {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 0.7);
+  margin-bottom: 4px;
+}
+  
+::ng-deep .pane-option {
+  color: rgba(51, 51, 51, 1);
+  font-size: 14px;
+  font-weight: 600;
+}
