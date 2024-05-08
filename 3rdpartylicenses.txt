@@ -16,6 +16,9 @@ MIT
 @angular/router
 MIT
 
+@devexpress/devextreme-internal
+SEE LICENSE IN README.md
+
 @devextreme/runtime
 SEE LICENSE IN LICENSE
 
@@ -46,9 +49,6 @@ devexpress-diagram
 SEE LICENSE IN README.md
 
 devexpress-gantt
-SEE LICENSE IN README.md
-
-devextreme
 SEE LICENSE IN README.md
 
 devextreme-angular
