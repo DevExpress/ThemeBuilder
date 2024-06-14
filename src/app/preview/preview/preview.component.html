@@ -73,6 +73,14 @@
         </div>
 
         <div class="component-item component-item--half">
+            <h1 class="component-title">Splitter</h1>
+            <div class="component-display">
+                <app-button-detailed widget="splitter" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-splitter #widget></app-splitter>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
             <h1 class="component-title">Filter Builder</h1>
             <div class="component-display">
                 <app-button-detailed widget="filterbuilder" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>

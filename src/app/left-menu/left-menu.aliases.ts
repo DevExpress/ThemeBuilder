@@ -146,6 +146,11 @@ export class LeftMenuAlias {
             regs: [/list-/i],
             route: 'list'
         }, {
+            name: 'Splitter',
+            equivalents: 'Splitter, dxSplitter, dx-splitter',
+            regs: [/splitter-/i],
+            route: 'splitter'
+        }, {
             name: 'Accordion',
             equivalents: 'dxAccordion, dx-accordion',
             regs: [/accordion-/i],
