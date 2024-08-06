@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { NotificationsService } from 'src/app/notification.service';
 import { mutePromise } from 'src/app/promise-helper';
-import { GoogleAnalyticsEventsService } from '../../google-analytics-events.service';
 import { ImportService } from '../../import.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class BootstrapUploaderComponent {
 
     constructor(
         private importService: ImportService,
-        private googleAnalyticsEventsService: GoogleAnalyticsEventsService,
         private notifications: NotificationsService
     ) {}
 
@@ -59,10 +57,6 @@ export class BootstrapUploaderComponent {
                         }
                     });
                 }
-
-                this.googleAnalyticsEventsService.emitEvent(
-                    'import',
-                    this.version ? 'bootstrap variables (file)' : 'metadata (file)');
 
                 this.imported.emit();
                 e.component.reset();
