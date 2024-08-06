@@ -11,7 +11,7 @@ export class ImportPopupComponent {
     @ViewChild('popup') popup: PopupComponent;
 
     constructor(
-        private importService: ImportService,
+        private importService: ImportService
     ) { }
 
     radioGroupData = [{

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { analyticsEventsService } from '../../../app/analytics-events.service';
+import { AnalyticsEventsService } from '../../../app/analytics-events.service';
 
 @Component({
     selector: 'app-button-detailed',
@@ -14,7 +14,7 @@ export class ButtonDetailedComponent {
     @Output() clicked = new EventEmitter();
 
     constructor(
-        private analyticsEventsService: analyticsEventsService,
+        private analyticsEventsService: AnalyticsEventsService
     ) { }
 
     onClick(): void {

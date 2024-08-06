@@ -4,7 +4,7 @@ import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
 import * as JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
-import { analyticsEventsService } from '../../../analytics-events.service';
+import { AnalyticsEventsService } from '../../../analytics-events.service';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 import { DxTreeViewComponent, DxScrollViewComponent } from 'devextreme-angular';
@@ -71,7 +71,7 @@ export class ExportPopupComponent implements OnInit {
 
     constructor(
         private importService: ImportService,
-        private analyticsEventsService: analyticsEventsService
+        private analyticsEventsService: AnalyticsEventsService
     ) { }
 
     changeStep(index: number): void {
@@ -203,7 +203,7 @@ export class ExportPopupComponent implements OnInit {
     }
 
     exportCss(save: boolean): Promise<void> {
-        if (save) {
+        if(save) {
             this.analyticsEventsService.trackEvent(
                 'TB: Export',
                 'Tb download css',
@@ -278,7 +278,7 @@ export class ExportPopupComponent implements OnInit {
     }
 
     copy(): void {
-        if (this.needMeta) {
+        if(this.needMeta) {
             this.analyticsEventsService.trackEvent(
                 'TB: Export',
                 'Tb copy metadata',
