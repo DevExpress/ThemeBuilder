@@ -9,6 +9,7 @@ import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
+import { AnalyticsEventsService } from '../../analytics-events.service';
 import { SafeHtml } from '@angular/platform-browser';
 
 const BASE_THEMING_NAME = 'Basic Settings';
@@ -39,7 +40,11 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         formControl: new UntypedFormControl('')
     });
 
-    constructor(private route: ActivatedRoute, private metaRepository: MetadataRepositoryService, private names: NamesService) {
+    constructor(private route: ActivatedRoute,
+        private metaRepository: MetadataRepositoryService,
+        private names: NamesService,
+        private analyticsEventsService: AnalyticsEventsService
+    ) {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
             this.changeWidget(this.widget);
@@ -47,6 +52,10 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     openMenu(): void {
+        this.analyticsEventsService.trackEvent(
+            'TB: settings menu',
+            `TB open settings menu`,
+        );
         this.menuClosed = false;
     }
 
@@ -62,6 +71,15 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         }
 
         e.stopPropagation();
+    }
+
+    selectComponent(componentName: string): void {
+        this.analyticsEventsService.trackEvent(
+            'TB: settings menu',
+            `TB select subgroup`,
+            componentName
+        );
+        this.menuClosed = true;
     }
 
     menuSearch(): void {

@@ -56,7 +56,7 @@
                     class="menu-item"
                     [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"
                     routerLinkActive="active-link"
-                    (click)="menuClosed = true;"
+                    (click)="selectComponent(menuItem.route)"
                 >
                     {{ menuItem.name }}
                 </div>
