@@ -52,10 +52,6 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     openMenu(): void {
-        this.analyticsEventsService.trackEvent(
-            'TB: settings menu',
-            `TB open settings menu`,
-        );
         this.menuClosed = false;
     }
 
@@ -75,8 +71,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
     selectComponent(componentName: string): void {
         this.analyticsEventsService.trackEvent(
-            'TB: settings menu',
-            `TB select subgroup`,
+            'TB: Settings',
+            `Tb select subgroup`,
             componentName
         );
         this.menuClosed = true;

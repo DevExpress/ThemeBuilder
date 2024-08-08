@@ -43,10 +43,8 @@ export class EditorComponent {
 
     valueTextChanged(e: { value: string, component: any }, key: string): void {
         this.analyticsEventsService.trackEvent(
-            'TB: settings menu',
-            `TB change property of ${this.getSettingsName()}`,
-            key,
-            e.value
+            'TB: Settings',
+            `Tb ${this.getSettingsName()} - ${key}`
         )
         if(this.isValueCanBePixels() && this.isPositiveNumber(e.value)) {
             e.value = e.value + 'px';
@@ -57,10 +55,8 @@ export class EditorComponent {
 
     valueChanged(e: any, key: string): void {
         this.analyticsEventsService.trackEvent(
-            'TB: settings menu',
-            `TB change property of ${this.getSettingsName()}`,
-            key,
-            e.value
+            'TB: Settings',
+            `Tb ${this.getSettingsName()} - ${key}`
         )
         this.metaRepository.updateSingleVariable(e, key);
     }
