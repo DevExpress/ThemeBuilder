@@ -4,10 +4,10 @@ import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
 import * as JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
-import { GoogleAnalyticsEventsService } from '../../../google-analytics-events.service';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 import { DxTreeViewComponent, DxScrollViewComponent } from 'devextreme-angular';
+import { AnalyticsEventsService } from '../../../analytics-events.service';
 
 class WidgetData {
     widget: string;
@@ -71,8 +71,8 @@ export class ExportPopupComponent implements OnInit {
 
     constructor(
         private importService: ImportService,
-        private googleAnalyticsEventsService: GoogleAnalyticsEventsService
-    ) {}
+        private analyticsEventsService: AnalyticsEventsService
+    ) { }
 
     changeStep(index: number): void {
         const START_PAGE_INDEX = 0;
@@ -151,6 +151,12 @@ export class ExportPopupComponent implements OnInit {
             treeItem.visible = hasChildItems;
             treeItem.expanded = hasChildItems && this.searchValue.length > 0;
         });
+
+        this.analyticsEventsService.trackEvent(
+            'TB: Export',
+            'Tb export search',
+            this.searchValue
+        );
     }
 
     getFileNameWithoutExt(): string {
@@ -203,9 +209,13 @@ export class ExportPopupComponent implements OnInit {
     }
 
     exportCss(save: boolean): Promise<void> {
-        this.googleAnalyticsEventsService.emitEvent(
-            'export',
-            'save css (' + this.importService.getThemeName() + ')');
+        if(save) {
+            this.analyticsEventsService.trackEvent(
+                'TB: Export',
+                'Tb download css',
+                this.importService.getThemeName()
+            );
+        }
 
         this.contentReady = false;
         return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources)
@@ -221,9 +231,13 @@ export class ExportPopupComponent implements OnInit {
     }
 
     exportMeta(save: boolean): void {
-        this.googleAnalyticsEventsService.emitEvent(
-            'export',
-            'save metadata (' + this.importService.getThemeName() + ')');
+        if(save) {
+            this.analyticsEventsService.trackEvent(
+                'TB: Export',
+                'Tb download metadata',
+                this.importService.getThemeName()
+            );
+        }
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources).then((metaString) => {
@@ -233,6 +247,12 @@ export class ExportPopupComponent implements OnInit {
     }
 
     exportZip(): void {
+        this.analyticsEventsService.trackEvent(
+            'TB: Export',
+            'Tb download zip',
+            this.importService.getThemeName()
+        );
+
         const zip = new JSZip();
         const fontExtension = ['ttf', 'woff', 'woff2'];
         const theme = {
@@ -265,9 +285,19 @@ export class ExportPopupComponent implements OnInit {
 
     copy(): void {
         if(this.needMeta) {
+            this.analyticsEventsService.trackEvent(
+                'TB: Export',
+                'Tb copy metadata',
+                this.importService.getThemeName()
+            );
             this.exportMeta(false);
             this.copyAreaActive = true;
         } else {
+            this.analyticsEventsService.trackEvent(
+                'TB: Export',
+                'Tb copy css',
+                this.importService.getThemeName()
+            );
             this.exportCss(false)
                 .then(() => this.copyAreaActive = true)
                 .catch((e) => {
@@ -277,9 +307,11 @@ export class ExportPopupComponent implements OnInit {
     }
 
     copyFileContent(): void {
-        this.googleAnalyticsEventsService.emitEvent(
-            'export',
-            'copy ' + (this.needMeta ? 'metadata' : 'css') + ' (' + this.importService.getThemeName() + ')');
+        this.analyticsEventsService.trackEvent(
+            'TB: Export',
+            'Tb copy ' + (this.needMeta ? 'metadata' : 'css'),
+            this.importService.getThemeName()
+        );
     }
 
     ngOnInit(): void {
