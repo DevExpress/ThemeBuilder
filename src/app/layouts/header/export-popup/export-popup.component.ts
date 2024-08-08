@@ -4,10 +4,10 @@ import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
 import * as JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
-import { AnalyticsEventsService } from '../../../analytics-events.service';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 import { DxTreeViewComponent, DxScrollViewComponent } from 'devextreme-angular';
+import { AnalyticsEventsService } from '../../../analytics-events.service';
 
 class WidgetData {
     widget: string;
