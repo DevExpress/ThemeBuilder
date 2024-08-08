@@ -72,7 +72,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     selectComponent(componentName: string): void {
         this.analyticsEventsService.trackEvent(
             'TB: Settings',
-            `Tb select subgroup`,
+            'Tb select subgroup',
             componentName
         );
         this.menuClosed = true;

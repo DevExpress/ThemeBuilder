@@ -37,7 +37,7 @@ export class EditorComponent {
     }
 
     getSettingsName(): string {
-        const routeParts = this.router.url.split('/').filter(part => part !== '');
+        const routeParts = this.router.url.split('/').filter((part) => part !== '');
         return routeParts[routeParts.length - 1];
     }
 
@@ -45,7 +45,7 @@ export class EditorComponent {
         this.analyticsEventsService.trackEvent(
             'TB: Settings',
             `Tb ${this.getSettingsName()} - ${key}`
-        )
+        );
         if(this.isValueCanBePixels() && this.isPositiveNumber(e.value)) {
             e.value = e.value + 'px';
         }
@@ -57,7 +57,7 @@ export class EditorComponent {
         this.analyticsEventsService.trackEvent(
             'TB: Settings',
             `Tb ${this.getSettingsName()} - ${key}`
-        )
+        );
         this.metaRepository.updateSingleVariable(e, key);
     }
 }
