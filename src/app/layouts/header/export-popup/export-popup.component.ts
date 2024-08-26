@@ -151,12 +151,14 @@ export class ExportPopupComponent implements OnInit {
             treeItem.visible = hasChildItems;
             treeItem.expanded = hasChildItems && this.searchValue.length > 0;
         });
-
+        /*
+        // valueChangeEvent="keyup"
         this.analyticsEventsService.trackEvent(
             'TB: Export',
             'Tb export search',
             this.searchValue
         );
+        */
     }
 
     getFileNameWithoutExt(): string {
