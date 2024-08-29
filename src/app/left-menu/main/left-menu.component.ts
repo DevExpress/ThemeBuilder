@@ -123,6 +123,12 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 }
             }
         });
+
+        this.analyticsEventsService.trackEvent(
+            'TB: Settings',
+            'Tb search',
+            keyword
+        );
     }
 
     changeWidget(widget: string): void {
