@@ -11,15 +11,5 @@ export class ImportBootstrapComponent {
         version: 5,
         acceptFormat: '.scss',
         uploadButtonText: 'Upload SCSS Variables'
-    }, {
-        name: 'Bootstrap 4',
-        version: 4,
-        acceptFormat: '.scss',
-        uploadButtonText: 'Upload SCSS Variables'
-    }, {
-        name: 'Bootstrap 3',
-        version: 3,
-        acceptFormat: '.less',
-        uploadButtonText: 'Upload LESS Variables'
     }];
 }
