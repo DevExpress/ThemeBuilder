@@ -1,7 +1,11 @@
-.tabs {
-    margin: 40px auto 0;
-    border-color: #d4d8da;
-    border-bottom-color: transparent;
+.radio-group {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 27px;
+}
+
+::ng-deep .radio-group .dx-item {
+    margin-right: 30px;
 }
 
 .file-uploader {
@@ -14,15 +18,6 @@
 
 .apply {
     width: 270px;
-}
-
-.tabpanel-item {
-    padding-top: 20px;
-}
-
-:host ::ng-deep .tabs.dx-tabpanel .dx-tab {
-    width: 280px;
-    height: 56px;
 }
 
 

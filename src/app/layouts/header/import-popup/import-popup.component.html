@@ -32,18 +32,10 @@
         </dxi-item>
         <dxi-item title="Bootstrap Variables">
             <div class="text second-tab">
-                Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.
-                Choose the "_variables.scss" file for Bootstrap 5.
+                Upload a Bootstrap 5 theme file to apply its colors to a base DevExtreme theme.
+                <br/>
+                Choose the "_variables.scss" file.
             </div>
-
-            <dx-radio-group
-                [dataSource]="radioGroupData"
-                displayExpr="text"
-                valueExpr="value"
-                layout="horizontal"
-                [(value)]="selectedIndex"
-                class="radio-group"
-            ></dx-radio-group>
 
             <app-bootstrap-uploader
                 [accept]="radioGroupData[selectedIndex].acceptFormat"
