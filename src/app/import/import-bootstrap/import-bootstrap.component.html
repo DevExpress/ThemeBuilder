@@ -8,23 +8,15 @@
             Bootstrap Variables
         </div>
         <div class="text">
-            Upload a Bootstrap theme file to apply its colors to a base DevExtreme theme.
-            Choose the "variables.less" file for Bootstrap 3 and the "_variables.scss" file for Bootstrap 4/5.
+            Upload a Bootstrap 5 theme file to apply its colors to a base DevExtreme theme.
+            <br/>
+            Choose the "_variables.scss" file.
         </div>
-        <dx-tab-panel class="tabs" [width]="560" [height]="200" [dataSource]="tabPanelData" [loop]="false">
-            <div *dxTemplate="let data of 'title'">
-                <span>{{data.name}}</span>
-            </div>
-            <div *dxTemplate="let data of 'item'">
-                <div class="tabpanel-item">
-                    <app-bootstrap-uploader
-                    type="default"
-                    [accept]="data.acceptFormat"
-                    [buttonText]="data.uploadButtonText"
-                    [version]="data.version"
-                    ></app-bootstrap-uploader>
-                </div>
-            </div>
-        </dx-tab-panel>
+        <app-bootstrap-uploader
+            type="default"
+            [accept]="bootstrapVariantsData[selectedIndex].acceptFormat"
+            [buttonText]="bootstrapVariantsData[selectedIndex].uploadButtonText"
+            [version]="bootstrapVariantsData[selectedIndex].version"
+        ></app-bootstrap-uploader>
     </div>
 </div>
