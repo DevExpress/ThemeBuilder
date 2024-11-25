@@ -161,7 +161,7 @@ export class LeftMenuAlias {
                 name: 'MESSAGE BUBBLE',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-bubble-color-primary/i, /chat-bubble-background-color-primary/i, /chat-bubble-color-secondary/i, /chat-bubble-background-color-secondary/i, /chat-information-color/i]
-            },{
+            }, {
                 name: 'SYSTEM INFO',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-information-author-name-color/i, /chat-information-timestamp-color/i, /chat-messagelist-day-header-color/i, /chat-alertlist-color/i]
