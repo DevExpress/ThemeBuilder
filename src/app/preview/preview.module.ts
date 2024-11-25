@@ -6,6 +6,7 @@ import { DevExtremeModule } from 'devextreme-angular';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonGroupComponent } from './button-group/button-group.component';
+import { ChatComponent } from './chat/chat.component';
 import { DatagridComponent } from './datatgrid/datatgrid.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { EditorsComponent } from './editors/editors.component';
@@ -41,6 +42,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         DatagridComponent,
         ButtonsComponent,
         ButtonGroupComponent,
+        ChatComponent,
         EditorsComponent,
         FilterbuilderComponent,
         FieldSetComponent,
@@ -69,6 +71,7 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         DatagridComponent,
         ButtonsComponent,
         ButtonGroupComponent,
+        ChatComponent,
         EditorsComponent,
         FilterbuilderComponent,
         FieldSetComponent,
