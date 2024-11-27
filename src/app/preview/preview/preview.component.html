@@ -65,10 +65,10 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">List</h1>
+            <h1 class="component-title">Chat</h1>
             <div class="component-display">
-                <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <app-list #widget></app-list>
+                <app-button-detailed widget="chat" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-chat #widget></app-chat>
             </div>
         </div>
 
@@ -77,6 +77,14 @@
             <div class="component-display">
                 <app-button-detailed widget="splitter" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-splitter #widget></app-splitter>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">List</h1>
+            <div class="component-display">
+                <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-list #widget></app-list>
             </div>
         </div>
 

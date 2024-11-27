@@ -10,7 +10,7 @@
 ::ng-deep .options-block {
     display: flex;
     gap: 24px;
-    margin-bottom: 48px;
+    margin-bottom: 20px;
 }
 
 ::ng-deep .options-block .option {
