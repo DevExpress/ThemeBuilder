@@ -1,0 +1,48 @@
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+
+<ng-template #collapsedBlock>
+  <dx-chat
+    id="chat"
+    width="100%"
+    height="100%"
+    [showDayHeaders]="false"
+    [items]="previewMessages"
+    [user]="johnDoe"
+  >
+  </dx-chat>
+    
+</ng-template>
+
+<ng-template #expandedBlock>
+  <div class="options-block">
+    <dx-check-box
+        text="Show Typing Indicator"
+        [value]="showTyping"
+        (onValueChanged)="toogleTyping($event)"
+    ></dx-check-box>
+    <dx-check-box
+        text="Show Alert"
+        [value]="showAlert"
+        (onValueChanged)="toogleErrors($event)"
+    ></dx-check-box>
+  </div>
+  <div class="chat-container">
+    <dx-chat
+      class="full-chat"
+      width="100%"
+      height="100%"
+      [typingUsers]="showTyping ? [supportAgent] : []"
+      [items]="messages"
+      [user]="johnDoe"
+    >
+      <dxi-chat-alert *ngIf="showAlert" message="You have been disconnected"></dxi-chat-alert>
+    </dx-chat>
+    <dx-chat
+      class="empty-chat"
+      width="100%"
+      height="auto"
+    >
+      <dxi-chat-alert *ngIf="showAlert" message="You have been disconnected"></dxi-chat-alert>
+    </dx-chat>
+  </div>
+</ng-template>

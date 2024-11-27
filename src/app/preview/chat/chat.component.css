@@ -1,0 +1,8 @@
+.chat-container {
+  display: flex;
+  justify-content: center;
+}
+
+.full-chat {
+  margin-right: 40px;
+}

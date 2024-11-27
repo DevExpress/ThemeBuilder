@@ -146,6 +146,35 @@ export class LeftMenuAlias {
             regs: [/list-/i],
             route: 'list'
         }, {
+            name: 'Chat',
+            equivalents: 'Chat, dxChat, dx-chat',
+            route: 'chat',
+            groups: [{
+                name: 'BASIC SETTINGS',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-background-color/i, /chat-border-color/i]
+            }, {
+                name: 'AVATAR',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-avatar-color/i, /chat-avatar-background-color/i]
+            }, {
+                name: 'MESSAGE BUBBLE',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-bubble-color-primary/i, /chat-bubble-background-color-primary/i, /chat-bubble-color-secondary/i, /chat-bubble-background-color-secondary/i, /chat-information-color/i]
+            }, {
+                name: 'SYSTEM INFO',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-information-author-name-color/i, /chat-information-timestamp-color/i, /chat-messagelist-day-header-color/i, /chat-alertlist-color/i]
+            }, {
+                name: 'EMPTY VIEW',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-messagelist-empty-icon-color/i, /chat-messagelist-empty-icon-background-color/i, /chat-messagelist-empty-message-color/i, /chat-messagelist-empty-prompt-color/i]
+            }, {
+                name: 'TYPING INDICATOR',
+                equivalents: 'Chat, dxChat, dx-chat',
+                regs: [/chat-typingindicator-color/i, /chat-typingindicator-bubble-bg-color/i, /chat-typingindicator-circle-bg-color-center/, /chat-typingindicator-circle-bg-color$/]
+            }]
+        }, {
             name: 'Splitter',
             equivalents: 'Splitter, dxSplitter, dx-splitter',
             regs: [/splitter-/i],
