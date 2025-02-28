@@ -46,7 +46,7 @@
                     <div class="switcher-template">
                         <app-icon-theme-circle [theme]="data.text | lowercase" [small]="true" class="switcher-icon editor"></app-icon-theme-circle>
                         <dx-text-box
-                            [value]="data.name + ' ' + data.text | titlecase"
+                            [value]="(data.name | titlecase) + ' ' + data.text"
                             [readOnly]="true"
                         ></dx-text-box>
                     </div>
