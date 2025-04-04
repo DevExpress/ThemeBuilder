@@ -180,6 +180,35 @@ export class LeftMenuAlias {
             regs: [/splitter-/i],
             route: 'splitter'
         }, {
+            name: 'Stepper',
+            equivalents: 'Stepper, dxStepper, dx-stepper',
+            route: 'stepper',
+            groups: [{
+                name: 'BASIC SETTINGS',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-accent-/i, /stepper-step-danger-/i, /stepper-step-shadow-/i]
+            }, {
+                name: 'BASE STEP',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-base-/i]
+            }, {
+                name: 'SELECTED / COMPLETED STEP',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-selected-/i]
+            }, {
+                name: 'INVALID STEP',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-invalid-/i]
+            }, {
+                name: 'DISABLED STEP',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-disabled-/i]
+            }, {
+                name: 'CONNECTOR',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-connector-/i]
+            }]
+        }, {
             name: 'Accordion',
             equivalents: 'dxAccordion, dx-accordion',
             regs: [/accordion-/i],
