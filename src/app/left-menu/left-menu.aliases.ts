@@ -184,15 +184,15 @@ export class LeftMenuAlias {
             equivalents: 'Stepper, dxStepper, dx-stepper',
             route: 'stepper',
             groups: [{
-                name: 'BASIC SETTINGS',
+                name: 'COMMON SETTINGS',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-accent-/i, /stepper-step-danger-/i, /stepper-step-shadow-/i]
             }, {
-                name: 'BASE STEP',
+                name: 'PENDING STEP',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-base-/i]
             }, {
-                name: 'SELECTED / COMPLETED STEP',
+                name: 'COMPLETED STEP',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-selected-/i]
             }, {
