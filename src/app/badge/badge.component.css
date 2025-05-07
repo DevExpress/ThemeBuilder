@@ -1,0 +1,16 @@
+
+.badge {
+    width: 28px;
+    height: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: #DD1144 !important;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    font-family: Roboto, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+

@@ -22,6 +22,7 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { ScrollviewComponent } from './scrollview/scrollview.component';
 import { SplitterComponent } from './splitter/splitter.component';
+import { StepperComponent } from './stepper/stepper.component';
 import { SlidersComponent } from './sliders/sliders.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -32,6 +33,7 @@ import { PreviewComponent } from './preview/preview.component';
 import { WizardComponent } from './wizard/wizard.component';
 
 import { ButtonDetailedComponent } from './button-detailed/button-detailed.component';
+import { BadgeComponent } from '../badge/badge.component';
 
 @NgModule({
     imports: [
@@ -59,13 +61,15 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         SchedulerComponent,
         ScrollviewComponent,
         SplitterComponent,
+        StepperComponent,
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
         PreviewComponent,
         ToolbarComponent,
         DrawerComponent,
-        ButtonDetailedComponent
+        ButtonDetailedComponent,
+        BadgeComponent
     ],
     exports: [
         DatagridComponent,
@@ -88,11 +92,13 @@ import { ButtonDetailedComponent } from './button-detailed/button-detailed.compo
         SchedulerComponent,
         ScrollviewComponent,
         SplitterComponent,
+        StepperComponent,
         TreelistComponent,
         SlidersComponent,
         WizardComponent,
         PreviewComponent,
-        ButtonDetailedComponent
+        ButtonDetailedComponent,
+        BadgeComponent
     ]
 })
 export class PreviewModule { }

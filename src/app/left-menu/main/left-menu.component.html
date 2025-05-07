@@ -59,6 +59,7 @@
                     (click)="selectComponent(menuItem.route)"
                 >
                     {{ menuItem.name }}
+                    <app-badge *ngIf="menuItem.isNew">New</app-badge>
                 </div>
             </dx-scroll-view>
         </div>

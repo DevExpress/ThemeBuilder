@@ -1,0 +1,24 @@
+.chat-container {
+    display: flex;
+    justify-content: center;
+}
+
+.stepper-wrapper{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepper-wrapper-extended{
+    height: 320px;
+}
+  
+::ng-deep .dx-buttongroup .dx-button .dx-button-text {
+    text-transform: none;
+}
+
+#stepperOptionsBlock {
+    display: flex;
+    align-items: center;
+}

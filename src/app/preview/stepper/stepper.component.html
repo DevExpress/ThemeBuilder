@@ -1,0 +1,77 @@
+<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
+
+<ng-template #collapsedBlock>
+    <div class="stepper-wrapper">
+        <dx-stepper
+            id="stepper"
+            [selectedIndex]="2"
+            [orientation]="'horizontal'"
+            [linear]="'linear'"
+            [selectOnFocus]="false"
+            [rtlEnabled]="false"
+        >
+            <dxi-item
+                *ngFor="let step of steps"
+                [label]="step.label"
+                [icon]="step.icon"
+                [optional]="step.optional"
+            ></dxi-item>
+        </dx-stepper>
+    </div>
+</ng-template>
+
+<ng-template #expandedBlock>
+    <div class="options-block" id="stepperOptionsBlock">
+        <label class="group-label">Step Type:</label>
+        <dx-button-group
+            keyExpr="showIcons"
+            [items]="stepperTypes"
+            [width]="200"
+            [selectedItemKeys]="[selectedStepperType]"
+            (onItemClick)="toggleStepperType($event)"
+        />
+        <label class="group-label">isValid:</label>
+        <dx-select-box
+            [items]="isValidOptions"
+            [(value)]="selectedOption"
+            keyExpr="id"
+            [width]="120"
+            displayExpr="text"
+            (onValueChanged)="toggleValidation($event)"
+        ></dx-select-box>
+        <dx-check-box
+            text="Show Label"
+            [value]="showLabel"
+            (onValueChanged)="toggleLabel($event)"
+        ></dx-check-box>
+        <dx-check-box
+            text="Show Optional Text"
+            [value]="showOptionalText"
+            (onValueChanged)="toggleOptionalText($event)"
+        ></dx-check-box>
+        <dx-check-box
+            text="Step Disabled State"
+            [value]="disabledSteps"
+            (onValueChanged)="toggleDisabledSteps($event)"
+        ></dx-check-box>
+    </div>
+    <div class="stepper-wrapper stepper-wrapper-extended">
+        <dx-stepper
+            id="stepper"
+            [selectedIndex]="2"
+            [orientation]="'horizontal'"
+            [linear]="'linear'"
+            [selectOnFocus]="false"
+            [rtlEnabled]="false"
+        >
+            <dxi-item
+                *ngFor="let step of steps"
+                [label]="showLabel ? step.label : ''"
+                [icon]="selectedStepperType ? step.icon : ''"
+                [optional]="showOptionalText ? step.optional : ''"
+                [isValid]="step.isValid"
+                [disabled]="step.disabled"
+            ></dxi-item>
+        </dx-stepper>
+    </div>
+</ng-template>

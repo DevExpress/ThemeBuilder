@@ -129,10 +129,14 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Gallery</h1>
+            <div class="badge-wrapper">
+                <h1 class="component-title">Stepper</h1>
+                <app-badge>New</app-badge>
+            </div>
+            
             <div class="component-display">
-                <app-button-detailed widget="gallery" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <app-gallery #widget></app-gallery>
+                <app-button-detailed widget="stepper" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-stepper #widget></app-stepper>
             </div>
         </div>
 
@@ -189,6 +193,14 @@
             <div class="component-display">
                 <app-button-detailed widget="fieldset" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-fieldset #widget></app-fieldset>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
+            <h1 class="component-title">Gallery</h1>
+            <div class="component-display">
+                <app-button-detailed widget="gallery" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-gallery #widget></app-gallery>
             </div>
         </div>
     </div>

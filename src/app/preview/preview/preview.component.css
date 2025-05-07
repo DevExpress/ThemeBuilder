@@ -41,6 +41,16 @@
     border-color: #2190F7;
 }
 
+.badge-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge-wrapper ::ng-deep .badge{
+    margin: 0 0 20px;
+}
+
 :host ::ng-deep .component-options {
     display: flex;
     gap: 24px;
