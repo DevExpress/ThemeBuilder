@@ -129,11 +129,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <div class="badge-wrapper">
-                <h1 class="component-title">Stepper</h1>
-                <app-badge>New</app-badge>
-            </div>
-            
+            <h1 class="component-title">Stepper <app-badge>New</app-badge></h1>
             <div class="component-display">
                 <app-button-detailed widget="stepper" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-stepper #widget></app-stepper>
