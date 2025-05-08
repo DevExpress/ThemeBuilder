@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Item } from 'devextreme/ui/stepper';
+import { DxStepperTypes } from 'devextreme-angular/ui/stepper';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 
@@ -28,7 +28,7 @@ export class StepperComponent implements OnDestroy {
         {id: 3, text: 'False', value: false}
     ];
 
-    steps: Item[] = [
+    steps: DxStepperTypes.Item[] = [
         {
             text: 'A',
             label: 'Cart',
