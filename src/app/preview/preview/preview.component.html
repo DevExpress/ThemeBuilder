@@ -1,7 +1,7 @@
 <dx-scroll-view #scrollView class="preview-scrollview" (onScroll)="fireScrollEventForClosingDropdowns()">
     <div class="component-container">
         <div class="component-item">
-            <h1 class="component-title">Buttons</h1>
+            <app-preview-title>Buttons</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="buttons" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-buttons #widget></app-buttons>
@@ -9,7 +9,7 @@
         </div>
 
         <div class="component-item">
-            <h1 class="component-title">Button group</h1>
+            <app-preview-title>Button group</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="button-group" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-button-group #widget></app-button-group>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Editors</h1>
+            <app-preview-title>Editors</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="editors" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-editors #widget></app-editors>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">PivotGrid</h1>
+            <app-preview-title>PivotGrid</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="pivotgrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-pivotgrid #widget></app-pivotgrid>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">DataGrid</h1>
+            <app-preview-title>DataGrid</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="datagrid" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-datagrid #widget></app-datagrid>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">TreeList</h1>
+            <app-preview-title>TreeList</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="treelist" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-treelist #widget></app-treelist>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Scheduler</h1>
+            <app-preview-title>Scheduler</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-scheduler #widget></app-scheduler>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Form</h1>
+            <app-preview-title>Form</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-form #widget></app-form>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Chat</h1>
+            <app-preview-title>Chat</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="chat" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-chat #widget></app-chat>
@@ -73,7 +73,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Splitter</h1>
+            <app-preview-title>Splitter</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="splitter" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-splitter #widget></app-splitter>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">List</h1>
+            <app-preview-title>List</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="list" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-list #widget></app-list>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Filter Builder</h1>
+            <app-preview-title>Filter Builder</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="filterbuilder" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-filterbuilder #widget></app-filterbuilder>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Overlays</h1>
+            <app-preview-title>Overlays</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="overlays" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-overlays #widget></app-overlays>
@@ -105,7 +105,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Menu</h1>
+            <app-preview-title>Menu</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.menu" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-menu #widget></app-menu>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">TreeView</h1>
+            <app-preview-title>TreeView</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.treeview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-treeview #widget></app-treeview>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Accordion</h1>
+            <app-preview-title>Accordion</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.accordion" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-accordion #widget></app-accordion>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Stepper <app-badge>New</app-badge></h1>
+            <app-preview-title [isNew]="true">Stepper</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="stepper" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-stepper #widget></app-stepper>
@@ -137,7 +137,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Tabs</h1>
+            <app-preview-title>Tabs</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.tabs" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-tabs #widget></app-tabs>
@@ -145,7 +145,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Progress Bar</h1>
+            <app-preview-title>Progress Bar</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="progressbars" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-progressbars #widget></app-progressbars>
@@ -153,7 +153,7 @@
         </div>
         
         <div class="component-item component-item--half">
-            <h1 class="component-title">Sliders</h1>
+            <app-preview-title>Sliders</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="sliders" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-sliders #widget></app-sliders>
@@ -161,7 +161,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Scroll View</h1>
+            <app-preview-title>Scroll View</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="scrollview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-scrollview #widget></app-scrollview>
@@ -169,7 +169,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Toolbar</h1>
+            <app-preview-title>Toolbar</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.toolbar" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-toolbar #widget></app-toolbar>
@@ -177,7 +177,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Drawer</h1>
+            <app-preview-title>Drawer</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="navigations.drawer" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-drawer #widget></app-drawer>
@@ -185,7 +185,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Fieldset</h1>
+            <app-preview-title>Fieldset</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="fieldset" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-fieldset #widget></app-fieldset>
@@ -193,7 +193,7 @@
         </div>
 
         <div class="component-item component-item--half">
-            <h1 class="component-title">Gallery</h1>
+            <app-preview-title>Gallery</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="gallery" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
                 <app-gallery #widget></app-gallery>

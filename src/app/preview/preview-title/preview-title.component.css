@@ -1,0 +1,11 @@
+.preview-title-wrapper{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-title {
+    line-height: 100%;
+    font-size: 24px;
+    font-weight: 500;
+}

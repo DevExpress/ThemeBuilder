@@ -34,6 +34,7 @@ import { WizardComponent } from './wizard/wizard.component';
 
 import { ButtonDetailedComponent } from './button-detailed/button-detailed.component';
 import { BadgeComponent } from '../shared/badge/badge.component';
+import { PreviewTitleComponent } from './preview-title/preview-title.component';
 
 @NgModule({
     imports: [
@@ -69,7 +70,8 @@ import { BadgeComponent } from '../shared/badge/badge.component';
         ToolbarComponent,
         DrawerComponent,
         ButtonDetailedComponent,
-        BadgeComponent
+        BadgeComponent,
+        PreviewTitleComponent
     ],
     exports: [
         DatagridComponent,
@@ -98,7 +100,8 @@ import { BadgeComponent } from '../shared/badge/badge.component';
         WizardComponent,
         PreviewComponent,
         ButtonDetailedComponent,
-        BadgeComponent
+        BadgeComponent,
+        PreviewTitleComponent
     ]
 })
 export class PreviewModule { }
