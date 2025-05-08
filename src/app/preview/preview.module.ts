@@ -33,7 +33,7 @@ import { PreviewComponent } from './preview/preview.component';
 import { WizardComponent } from './wizard/wizard.component';
 
 import { ButtonDetailedComponent } from './button-detailed/button-detailed.component';
-import { BadgeComponent } from '../badge/badge.component';
+import { BadgeComponent } from '../shared/badge/badge.component';
 
 @NgModule({
     imports: [
