@@ -30,6 +30,7 @@
             [selectedItemKeys]="[selectedStepperType]"
             (onItemClick)="toggleStepperType($event)"
         />
+        <div class="vertical-separator"></div>
         <label class="group-label">isValid:</label>
         <dx-select-box
             [items]="isValidOptions"
@@ -39,6 +40,7 @@
             displayExpr="text"
             (onValueChanged)="toggleValidation($event)"
         ></dx-select-box>
+        <div class="vertical-separator"></div>
         <dx-check-box
             text="Show Label"
             [value]="showLabel"
@@ -49,6 +51,7 @@
             [value]="showOptionalText"
             (onValueChanged)="toggleOptionalText($event)"
         ></dx-check-box>
+        <div class="vertical-separator"></div>
         <dx-check-box
             text="Step Disabled State"
             [value]="disabledSteps"
