@@ -38,6 +38,8 @@
     font-size: 14px;
     padding: 8px 24px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
 
 .left-menu .dark-menu .menu-item:first-child {
