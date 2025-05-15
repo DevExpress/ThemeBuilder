@@ -31,7 +31,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     subscription: Subscription;
     menuData: LeftMenuItem[];
     filteredData: LeftMenuItem[] = [];
-    menuClosed = false;
+    menuClosed = true;
     searchOpened = false;
     searchKeyword = '';
     workArea: LeftMenuItem;
