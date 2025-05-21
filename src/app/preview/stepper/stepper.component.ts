@@ -58,7 +58,7 @@ export class StepperComponent implements OnDestroy {
     ];
 
     selectedOption = this.isValidOptions[0];
-    selectedStepperType = this.stepperTypes[0].showIcons;
+    showIcons = this.stepperTypes[0].showIcons;
 
     toggleLabel() {
         this.showLabel = !this.showLabel;
@@ -69,7 +69,7 @@ export class StepperComponent implements OnDestroy {
     }
 
     toggleStepperType(e: DxButtonGroupTypes.ItemClickEvent) {
-        this.selectedStepperType = e.itemData.showIcons;
+        this.showIcons = e.itemData.showIcons;
     }
 
     toggleValidation(e: DxSelectBoxTypes.ValueChangedEvent) {

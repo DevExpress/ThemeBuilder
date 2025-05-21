@@ -6,16 +6,17 @@
             id="stepper"
             [selectedIndex]="2"
             [orientation]="'horizontal'"
-            [linear]="'linear'"
+            [linear]="false"
             [selectOnFocus]="false"
             [rtlEnabled]="false"
         >
-            <dxi-item
+            <dxi-stepper-item
                 *ngFor="let step of steps"
                 [label]="step.label"
                 [icon]="step.icon"
+                [text]="step.text"
                 [optional]="step.optional"
-            ></dxi-item>
+            ></dxi-stepper-item>
         </dx-stepper>
     </div>
 </ng-template>
@@ -27,7 +28,7 @@
             keyExpr="showIcons"
             [items]="stepperTypes"
             [width]="200"
-            [selectedItemKeys]="[selectedStepperType]"
+            [selectedItemKeys]="[showIcons]"
             (onItemClick)="toggleStepperType($event)"
         />
         <div class="vertical-separator"></div>
@@ -63,18 +64,19 @@
             id="stepper"
             [selectedIndex]="2"
             [orientation]="'horizontal'"
-            [linear]="'linear'"
+            [linear]="false"
             [selectOnFocus]="false"
             [rtlEnabled]="false"
         >
-            <dxi-item
+            <dxi-stepper-item
                 *ngFor="let step of steps"
                 [label]="showLabel ? step.label : ''"
-                [icon]="selectedStepperType ? step.icon : ''"
+                [icon]="showIcons ? step.icon : ''"
+                [text]="step.text"
                 [optional]="showOptionalText ? step.optional : ''"
                 [isValid]="step.isValid"
                 [disabled]="step.disabled"
-            ></dxi-item>
+            ></dxi-stepper-item>
         </dx-stepper>
     </div>
 </ng-template>
