@@ -21,12 +21,6 @@
     max-height: max-content;
 }
 
-.component-title {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0 0 24px;
-}
-
 .component-display {
     position: relative;
     height: calc(100% - 88px);

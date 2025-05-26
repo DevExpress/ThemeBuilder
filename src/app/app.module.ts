@@ -23,7 +23,8 @@ import {
     DxTextAreaModule,
     DxTextBoxModule,
     DxTooltipModule,
-    DxValidatorModule
+    DxValidatorModule,
+    DxStepperModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
@@ -138,6 +139,7 @@ import { IconTmInfoComponent } from './icons/icon-tm-info/icon-tm-info.component
         DxCheckBoxModule,
         DxRadioGroupModule,
         DxValidatorModule,
+        DxStepperModule,
         DxLoadPanelModule,
         ReactiveFormsModule,
         PreviewModule,
