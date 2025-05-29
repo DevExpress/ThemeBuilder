@@ -17,7 +17,7 @@ export class LeftMenuAlias {
             route: 'grids'
         }, {
             name: 'Card View',
-            // isNew: true, TODO
+            isNew: true,
             equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
             route: 'cardview',
             groups: [{

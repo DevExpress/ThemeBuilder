@@ -139,39 +139,39 @@ export class CardviewComponent implements OnInit, OnDestroy {
         }
     ];
 
-    // TODO
     collapsedOptions: Properties = {
-        height: '100%',
-        columnChooser: { enabled: false },
-        paging: {
-            pageSize: 10
+        height: "100%",
+        cardsPerRow: 2,
+        columnChooser: { 
+            enabled: false,
+        },
+        pager: {
+            visible: false,
+        },
+        sorting: {
+            mode: 'multiple'
         },
         searchPanel: {
+            visible: false
+        },
+        selection: {
+            mode: 'none'
+        },
+        filterPanel: {
+            visible: false
+        },
+        headerFilter: {
             visible: false
         },
         editing: {
             allowUpdating: false,
             allowDeleting: false,
+            allowAdding: false,
         },
-        hoverStateEnabled: false,
-        allowColumnReordering: false,
-        pager: {
-            showPageSizeSelector: true
-        },
-        selection: {
-            mode: 'multiple'
-        },
-        keyExpr: 'orderId',
+        cardCover: undefined,
         columns: [
             {
-                dataField: 'orderId',
-                caption: 'Order ID',
-            },
-            'city', {
                 dataField: 'country',
-            }, {
-                dataField: 'region',
-                sortOrder: 'desc'
             }, {
                 dataField: 'date',
                 dataType: 'date'
@@ -183,28 +183,39 @@ export class CardviewComponent implements OnInit, OnDestroy {
     };
 
     expandedOptions: Properties = {
-        height: 460,
-        columnChooser: { enabled: true },
-        paging: {
-            pageSize: 10
+        dataSource: this.dataSource,
+        height: 800,
+        cardsPerRow: 4,
+        columnChooser: { 
+            enabled: true,
         },
         pager: {
-            showPageSizeSelector: true
+            visible: true,
+        },
+        sorting: {
+            mode: 'multiple'
         },
         searchPanel: {
             visible: true
         },
         selection: {
             mode: 'multiple',
-            showCheckBoxesMode: 'always'
         },
-        hoverStateEnabled: true,
-        allowColumnReordering: true,
+        filterPanel: {
+            visible: true
+        },
+        headerFilter: {
+            visible: true
+        },
         editing: {
             allowUpdating: true,
             allowDeleting: true,
+            allowAdding: true,
         },
-        keyExpr: 'orderId',
+        cardCover: {
+            imageExpr: 'image',
+            altExpr: 'image',
+        },
         columns: [
             {
                 dataField: 'orderId',
@@ -212,10 +223,13 @@ export class CardviewComponent implements OnInit, OnDestroy {
             },
             'city', {
                 dataField: 'country',
+                sortIndex: 0,
+                sortOrder: 'asc',
             },
             {
                 dataField: 'region',
-                sortOrder: 'desc',
+                sortIndex: 1,
+                sortOrder: 'asc',
             }, {
                 dataField: 'date',
                 dataType: 'date',

@@ -49,18 +49,18 @@
         </div>
 
         <div class="component-item component-item--half">
-            <app-preview-title>Scheduler</app-preview-title>
+            <app-preview-title [isNew]="true">CardView</app-preview-title>
             <div class="component-display">
-                <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <app-scheduler #widget></app-scheduler>
+                <app-button-detailed widget="cardview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-cardview #widget></app-cardview>
             </div>
         </div>
 
         <div class="component-item component-item--half">
-            <app-preview-title>CardView</app-preview-title>
+            <app-preview-title>Scheduler</app-preview-title>
             <div class="component-display">
-                <app-button-detailed widget="cardview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
-                <app-cardview #widget></app-cardview>
+                <app-button-detailed widget="scheduler" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-scheduler #widget></app-scheduler>
             </div>
         </div>
 

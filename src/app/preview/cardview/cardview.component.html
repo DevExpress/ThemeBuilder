@@ -1,1 +1,12 @@
-<dx-card-view #cardView [dataSource]="dataSource"></dx-card-view>
+<dx-card-view 
+    #cardView
+    keyExpr="orderId"
+    [dataSource]="dataSource"
+    [hoverStateEnabled]="true"
+    [allowColumnReordering]="true"
+>
+    <dxo-paging [pageSize]="10"/>
+    <dxo-pager [showPageSizeSelector]="true"/>
+    <dxo-selection showCheckBoxesMode="always"/>
+    <dxo-column-chooser mode="select"/>
+</dx-card-view>
