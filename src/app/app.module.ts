@@ -25,7 +25,7 @@ import {
     DxTooltipModule,
     DxValidatorModule,
     DxStepperModule,
-    DxCardViewModule,
+    DxCardViewModule
 } from 'devextreme-angular';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
