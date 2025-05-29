@@ -23,47 +23,91 @@ export class LeftMenuAlias {
             groups: [{
                 name: 'COMMON SETTINGS',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-common/i],
+                regs: [
+                    /cardview-fluent-common/i, 
+                    /cardview-generic-common/i, 
+                    /cardview-material-common/i
+                ],
             }, {
                 name: 'CARD',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-card(?!--)(?!.*--highlighted)/i],
+                regs: [
+                    /cardview-fluent-card(?!--)(?!.*--highlighted)/i,
+                    /cardview-generic-card(?!--)(?!.*--highlighted)/i,
+                    /cardview-material-card(?!--)(?!.*--highlighted)/i,
+                ],
             }, {
                 name: 'CARD (SELECTED)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-card--selected/i],
+                regs: [
+                    /cardview-fluent-card--selected/i,
+                    /cardview-generic-card--selected/i,
+                    /cardview-material-card--selected/i
+                ],
             }, {
                 name: 'HEADER PANEL ITEM',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-header-panel__item(?!--)/i],
+                regs: [
+                    /cardview-fluent-header-panel__item(?!--)/i,
+                    /cardview-generic-header-panel__item(?!--)/i,
+                    /cardview-material-header-panel__item(?!--)/i,
+                ],
             }, {
                 name: 'HEADER PANEL ITEM (HOVERED)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-header-panel__item--hovered/i],
+                regs: [
+                    /cardview-fluent-header-panel__item--hovered/i,
+                    /cardview-generic-header-panel__item--hovered/i,
+                    /cardview-material-header-panel__item--hovered/i,
+                ],
             }, {
                 name: 'HEADER PANEL ITEM (DISABLED)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-header-panel__item--disabled/i],
+                regs: [
+                    /cardview-fluent-header-panel__item--disabled/i,
+                    /cardview-generic-header-panel__item--disabled/i,
+                    /cardview-material-header-panel__item--disabled/i
+                ],
             }, {
                 name: 'HEADER PANEL ITEM (ON DRAG)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-header-panel__item--dragged/i],
+                regs: [
+                    /cardview-fluent-header-panel__item--dragged/i,
+                    /cardview-generic-header-panel__item--dragged/i,
+                    /cardview-material-header-panel__item--dragged/i
+                ],
             }, {
                 name: 'HEADER PANEL DROP ZONE',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-header-panel__dropzone/i],
+                regs: [
+                    /cardview-fluent-header-panel__dropzone/i,
+                    /cardview-generic-header-panel__dropzone/i,
+                    /cardview-material-header-panel__dropzone/i,
+                ],
             }, {
                 name: 'FILTER PANEL',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-filter-panel/i],
+                regs: [
+                    /cardview-fluent-filter-panel/i,
+                    /cardview-generic-filter-panel/i,
+                    /cardview-material-filter-panel/i
+                ],
             }, {
                 name: 'EMPTY VIEW',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-nodata-view/i],
+                regs: [
+                    /cardview-fluent-nodata-view/i,
+                    /cardview-generic-nodata-view/i,
+                    /cardview-material-nodata-view/i,
+                ],
             }, {
                 name: 'HIGHLIGHTS IN SEARCH',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
-                regs: [/cardview-fluent-card__content__field-value--highlighted/i],
+                regs: [
+                    /cardview-fluent-card__content__field-value--highlighted/i,
+                    /cardview-generic-card__content__field-value--highlighted/i,
+                    /cardview-material-card__content__field-value--highlighted/i
+                ],
             }]
         }, {
             name: 'Pivot Grid',
