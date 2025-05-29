@@ -16,127 +16,205 @@ export class CardviewComponent implements OnInit, OnDestroy {
 
     @ViewChild('cardView') cardView: DxCardViewComponent;
 
-    dataSource: any[] = [ // TODO change datasource data
+    dataSource: any[] = [
+          {
+            id: 3,
+            firstName: "Arthur",
+            lastName: "Miller",
+            title: "CTO",
+            email: "arthurm@dx-email.com",
+            mobilePhone: "3105558583",
+            department: "Management",
+            pictureName: "Arthur Miller.jpg",
+            picture: undefined
+        },
         {
-            orderId: 10248,
-            region: 'North America',
-            country: 'United States',
-            city: 'New York',
-            amount: 1740,
-            date: '2013/01/06'
-        }, {
-            orderId: 10249,
-            region: 'North America',
-            country: 'United States',
-            city: 'Los Angeles',
-            amount: 850,
-            date: '2013/01/13'
-        }, {
-            orderId: 10250,
-            region: 'North America',
-            country: 'United States',
-            city: 'Denver',
-            amount: 2235,
-            date: '2013/01/07'
-        }, {
-            orderId: 10251,
-            region: 'North America',
-            country: 'Canada',
-            city: 'Vancouver',
-            amount: 1965,
-            date: '2013/01/03'
-        }, {
-            orderId: 10252,
-            region: 'North America',
-            country: 'Canada',
-            city: 'Edmonton',
-            amount: 880,
-            date: '2013/01/10'
-        }, {
-            orderId: 10256,
-            region: 'Europe',
-            country: 'United Kingdom',
-            city: 'London',
-            amount: 6175,
-            date: '2013/01/24'
-        }, {
-            orderId: 10257,
-            region: 'Europe',
-            country: 'Germany',
-            city: 'Berlin',
-            amount: 4575,
-            date: '2013/01/11'
-        }, {
-            orderId: 10258,
-            region: 'Europe',
-            country: 'Spain',
-            city: 'Madrid',
-            amount: 3680,
-            date: '2013/01/12'
-        }, {
-            orderId: 10259,
-            region: 'Europe',
-            country: 'Russian Federation',
-            city: 'Moscow',
-            amount: 2260,
-            date: '2013/01/01'
-        }, {
-            orderId: 10260,
-            region: 'Asia',
-            country: 'China',
-            city: 'Beijing',
-            amount: 2910,
-            date: '2013/01/26'
-        }, {
-            orderId: 10261,
-            region: 'Asia',
-            country: 'Japan',
-            city: 'Tokyo',
-            amount: 8400,
-            date: '2013/01/05'
-        }, {
-            orderId: 10262,
-            region: 'Asia',
-            country: 'Korea (Republic of)',
-            city: 'Seoul',
-            amount: 1325,
-            date: '2013/01/14'
-        }, {
-            orderId: 10263,
-            region: 'Australia',
-            country: 'Australia',
-            city: 'Sydney',
-            amount: 3920,
-            date: '2013/01/05'
-        }, {
-            orderId: 10264,
-            region: 'Australia',
-            country: 'Australia',
-            city: 'Melbourne',
-            amount: 2220,
-            date: '2013/01/15'
-        }, {
-            orderId: 10265,
-            region: 'Africa',
-            country: 'South Africa',
-            city: 'Pretoria',
-            amount: 940,
-            date: '2013/01/01'
-        }, {
-            orderId: 10266,
-            region: 'Africa',
-            country: 'Egypt',
-            city: 'Cairo',
-            amount: 1630,
-            date: '2013/01/10'
-        }, {
-            orderId: 10267,
-            region: 'North America',
-            country: 'Canada',
-            city: 'Edmonton',
-            amount: 2910,
-            date: '2013/01/23'
-        }
+            id: 4,
+            firstName: "Robert",
+            lastName: "Reagan",
+            title: "CMO",
+            email: "robertr@dx-email.com",
+            mobilePhone: "8185552387",
+            department: "Management",
+            pictureName: "Robert Reagan.jpg",
+            picture: "images/employees/Robert Reagan.jpg"
+        },
+        {
+            id: 5,
+            firstName: "Greta",
+            lastName: "Sims",
+            title: "HR Manager",
+            email: "gretas@dx-email.com",
+            mobilePhone: "8185556546",
+            department: "Human Resources",
+            pictureName: "Greta Sims.jpg",
+            picture: "images/employees/Greta Sims.jpg"
+        },
+        {
+            id: 6,
+            firstName: "Brett",
+            lastName: "Wade",
+            title: "IT Manager",
+            email: "brettw@dx-email.com",
+            mobilePhone: "6265550358",
+            department: "IT",
+            pictureName: "Brett Wade.jpg",
+            picture: "images/employees/Brett Wade.jpg"
+        },
+        {
+            id: 7,
+            firstName: "Sandra",
+            lastName: "Johnson",
+            title: "Controller",
+            email: "sandraj@dx-email.com",
+            mobilePhone: "5625552082",
+            department: "Human Resources",
+            pictureName: "Sandra Johnson.jpg",
+            picture: "images/employees/Sandra Johnson.jpg"
+        },
+        {
+            id: 8,
+            firstName: "Edward",
+            lastName: "Holmes",
+            title: "Sales Manager",
+            email: "edwardh@dx-email.com",
+            mobilePhone: "3105551288",
+            department: "Sales",
+            pictureName: "Ed Holmes.jpg",
+            picture: undefined
+        },
+        {
+            id: 9,
+            firstName: "Barbara",
+            lastName: "Banks",
+            title: "Support Manager",
+            email: "barbarab@dx-email.com",
+            mobilePhone: "3105553355",
+            department: "Support",
+            pictureName: "Barb Banks.jpg",
+            picture: "images/employees/Barb Banks.jpg"
+        },
+        {
+            id: 10,
+            firstName: "Kevin",
+            lastName: "Carter",
+            title: "Shipping Manager",
+            email: "kevinc@dx-email.com",
+            mobilePhone: "2135552840",
+            department: "Shipping",
+            pictureName: "Kevin Carter.jpg",
+            picture: "images/employees/Kevin Carter.jpg"
+        },
+        {
+            id: 11,
+            firstName: "Cynthia",
+            lastName: "Stanwick",
+            title: "HR Assistant",
+            email: "cindys@dx-email.com",
+            mobilePhone: "8185556655",
+            department: "Human Resources",
+            pictureName: "Cindy Stanwick.jpg",
+            picture: "images/employees/Cindy Stanwick.jpg"
+        },
+        {
+            id: 12,
+            firstName: "Sam",
+            lastName: "Hill",
+            title: "Sales Assistant",
+            email: "sammyh@dx-email.com",
+            mobilePhone: "6265557292",
+            department: "Sales",
+            pictureName: "Sammy Hill.jpg",
+            picture: "images/employees/Sammy Hill.jpg"
+        },
+        {
+            id: 13,
+            firstName: "David",
+            lastName: "Jones",
+            title: "Shipping Assistant",
+            email: "davidj@dx-email.com",
+            mobilePhone: "6265550281",
+            department: "Shipping",
+            pictureName: "Davey Jones.jpg",
+            picture: "images/employees/Davey Jones.jpg"
+        },
+        {
+            id: 14,
+            firstName: "Victor",
+            lastName: "Norris",
+            title: "Shipping Assistant",
+            email: "victorn@dx-email.com",
+            mobilePhone: "2135559278",
+            department: "Shipping",
+            pictureName: "Victor Norris.jpg",
+            picture: "images/employees/Victor Norris.jpg"
+        },
+        {
+            id: 15,
+            firstName: "Mary",
+            lastName: "Stern",
+            title: "Shipping Assistant",
+            email: "marys@dx-email.com",
+            mobilePhone: "8185557857",
+            department: "Shipping",
+            pictureName: "Mary Stern.jpg",
+            picture: "images/employees/Mary Stern.jpg"
+        },
+        {
+            id: 16,
+            firstName: "Robin",
+            lastName: "Cosworth",
+            title: "Shipping Assistant",
+            email: "robinc@dx-email.com",
+            mobilePhone: "8185550942",
+            department: "Shipping",
+            pictureName: "Robin Cosworth.jpg",
+            picture: "images/employees/Robin Cosworth.jpg"
+        },
+        {
+            id: 17,
+            firstName: "Kelly",
+            lastName: "Rodriguez",
+            title: "Support Assistant",
+            email: "kellyr@dx-email.com",
+            mobilePhone: "8185559248",
+            department: "Support",
+            pictureName: "Kelly Rodriguez.jpg",
+            picture: "images/employees/Kelly Rodriguez.jpg"
+        },
+        {
+            id: 18,
+            firstName: "James",
+            lastName: "Anderson",
+            title: "Support Assistant",
+            email: "jamesa@dx-email.com",
+            mobilePhone: "3235554702",
+            department: "Support",
+            pictureName: "James Anderson.jpg",
+            picture: undefined
+        },
+        {
+            id: 19,
+            firstName: "Anthony",
+            lastName: "Remmen",
+            title: "Support Assistant",
+            email: "anthonyr@dx-email.com",
+            mobilePhone: "3105556625",
+            department: "Support",
+            pictureName: "Antony Remmen.jpg",
+            picture: "images/employees/Antony Remmen.jpg"
+        },
+        {
+            id: 20,
+            firstName: "Olivia",
+            lastName: "Peyton",
+            title: "Sales Assistant",
+            email: "oliviap@dx-email.com",
+            mobilePhone: "3105552728",
+            department: "Sales",
+            pictureName: "Olivia Peyton.jpg",
+            picture: "images/employees/Olivia Peyton.jpg"
+        },
     ];
 
     collapsedOptions: Properties = {
@@ -171,15 +249,19 @@ export class CardviewComponent implements OnInit, OnDestroy {
         cardCover: undefined,
         columns: [
             {
-                dataField: 'country',
-            }, {
-                dataField: 'date',
-                dataType: 'date'
-            }, {
-                dataField: 'amount',
-                format: 'currency',
-            }
-        ]
+                dataField: 'firstName',
+                sortIndex: 0,
+                sortOrder: 'asc',
+            },
+            {
+                dataField: 'lastName',
+                sortIndex: 1,
+                sortOrder: 'asc',
+            },
+            {
+                dataField: 'title'
+            },
+        ],
     };
 
     expandedOptions: Properties = {
@@ -213,29 +295,34 @@ export class CardviewComponent implements OnInit, OnDestroy {
             allowAdding: true,
         },
         cardCover: {
-            imageExpr: 'image',
-            altExpr: 'image',
+            imageExpr: 'picture',
+            altExpr: 'picutreName',
         },
         columns: [
             {
-                dataField: 'orderId',
-                caption: 'Order ID',
+                dataField: 'id',
             },
-            'city', {
-                dataField: 'country',
+            {
+                dataField: 'firstName',
                 sortIndex: 0,
                 sortOrder: 'asc',
             },
             {
-                dataField: 'region',
+                dataField: 'lastName',
                 sortIndex: 1,
                 sortOrder: 'asc',
-            }, {
-                dataField: 'date',
-                dataType: 'date',
-            }, {
-                dataField: 'amount',
-                format: 'currency',
+            },
+            {
+                dataField: 'title'
+            },
+            {
+                dataField: 'email'
+            },
+            {
+                dataField: 'mobilePhone'
+            },
+            {
+                dataField: 'department'
             }
         ],
     };
