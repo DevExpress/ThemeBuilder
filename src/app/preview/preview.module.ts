@@ -6,6 +6,7 @@ import { DevExtremeModule } from 'devextreme-angular';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonGroupComponent } from './button-group/button-group.component';
+import { CardviewComponent } from './cardview/cardview.component';
 import { ChatComponent } from './chat/chat.component';
 import { DatagridComponent } from './datatgrid/datatgrid.component';
 import { DrawerComponent } from './drawer/drawer.component';
@@ -45,6 +46,7 @@ import { PreviewTitleComponent } from './preview-title/preview-title.component';
         DatagridComponent,
         ButtonsComponent,
         ButtonGroupComponent,
+        CardviewComponent,
         ChatComponent,
         EditorsComponent,
         FilterbuilderComponent,
@@ -77,6 +79,7 @@ import { PreviewTitleComponent } from './preview-title/preview-title.component';
         DatagridComponent,
         ButtonsComponent,
         ButtonGroupComponent,
+        CardviewComponent,
         ChatComponent,
         EditorsComponent,
         FilterbuilderComponent,

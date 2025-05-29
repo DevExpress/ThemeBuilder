@@ -57,6 +57,14 @@
         </div>
 
         <div class="component-item component-item--half">
+            <app-preview-title>CardView</app-preview-title>
+            <div class="component-display">
+                <app-button-detailed widget="cardview" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
+                <app-cardview #widget></app-cardview>
+            </div>
+        </div>
+
+        <div class="component-item component-item--half">
             <app-preview-title>Form</app-preview-title>
             <div class="component-display">
                 <app-button-detailed widget="form" [currentWidget]="widgetName" (clicked)="buttonDetailedClick($event)"></app-button-detailed>
