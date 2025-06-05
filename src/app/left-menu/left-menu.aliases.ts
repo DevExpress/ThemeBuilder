@@ -45,7 +45,7 @@ export class LeftMenuAlias {
                     /cardview-material-card--selected/i
                 ]
             }, {
-                name: 'HEADER PANEL ITEM',
+                name: 'HEADER ITEM',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item(?!--)/i,
@@ -53,7 +53,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item(?!--)/i
                 ]
             }, {
-                name: 'HEADER PANEL ITEM (HOVERED)',
+                name: 'HEADER ITEM (HOVERED)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item--hovered/i,
@@ -61,7 +61,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item--hovered/i
                 ]
             }, {
-                name: 'HEADER PANEL ITEM (DISABLED)',
+                name: 'HEADER ITEM (DISABLED)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item--disabled/i,
@@ -69,7 +69,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item--disabled/i
                 ]
             }, {
-                name: 'HEADER PANEL ITEM (ON DRAG)',
+                name: 'HEADER ITEM (ON DRAG)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item--dragged/i,
@@ -77,7 +77,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item--dragged/i
                 ]
             }, {
-                name: 'HEADER PANEL DROP ZONE',
+                name: 'HEADER DROP ZONE',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__dropzone/i,

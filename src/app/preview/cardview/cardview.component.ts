@@ -171,7 +171,25 @@ export class CardviewComponent implements OnInit, OnDestroy {
         editing: {
             allowUpdating: true,
             allowDeleting: true,
-            allowAdding: true
+            allowAdding: true,
+            popup: {
+                title: 'Employee Info',
+                showTitle: true,
+            },
+            form: {
+                items: [{
+                    itemType: 'group',
+                    colCount: 2,
+                    colSpan: 2,
+                    caption: 'Main Info',
+                    items: [
+                        { dataField: 'FullName' }, 
+                        { dataField: 'Title' },
+                        { dataField: 'Email' }, 
+                        { dataField: 'Department' },
+                    ],
+                }]
+            },
         },
         cardCover: {
             imageExpr: 'picture',
