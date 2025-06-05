@@ -5,8 +5,12 @@
     [hoverStateEnabled]="true"
     [allowColumnReordering]="true"
 >
-    <dxo-paging [pageSize]="10"/>
-    <dxo-pager [showPageSizeSelector]="true"/>
+    <dxo-paging [pageSize]="4"/>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[4, 8]"/>
     <dxo-selection showCheckBoxesMode="always"/>
-    <dxo-column-chooser mode="select"/>
+
+    <dxi-column dataField="FullName" [sortIndex]="0" sortOrder="asc"/>
+    <dxi-column dataField="title" [sortIndex]="1" sortOrder="asc"/>
+    <dxi-column dataField="email"/>
+    <dxi-column dataField="department"/>
 </dx-card-view>

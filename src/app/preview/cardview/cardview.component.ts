@@ -19,12 +19,10 @@ export class CardviewComponent implements OnInit, OnDestroy {
     dataSource: any[] = [
         {
             id: 3,
-            firstName: 'Arthur',
-            lastName: 'Miller',
+            fullName: 'Arthur Miller',
             title: 'CTO',
-            email: 'arthurm@dx-email.com',
-            mobilePhone: '3105558583',
             department: 'Management',
+            email: 'arthurm@dx-email.com',
             pictureName: 'Arthur Miller.jpg',
             picture: undefined
         },
@@ -41,180 +39,58 @@ export class CardviewComponent implements OnInit, OnDestroy {
         },
         {
             id: 5,
-            firstName: 'Greta',
-            lastName: 'Sims',
+            fullName: 'Greta Sims',
             title: 'HR Manager',
-            email: 'gretas@dx-email.com',
-            mobilePhone: '8185556546',
             department: 'Human Resources',
+            email: 'gretas@dx-email.com',
             pictureName: 'Greta Sims.jpg',
             picture: 'images/employees/Greta Sims.jpg'
         },
         {
             id: 6,
-            firstName: 'Brett',
-            lastName: 'Wade',
+            fullName: 'Brett Wade',
             title: 'IT Manager',
-            email: 'brettw@dx-email.com',
-            mobilePhone: '6265550358',
             department: 'IT',
+            email: 'brettw@dx-email.com',
             pictureName: 'Brett Wade.jpg',
             picture: 'images/employees/Brett Wade.jpg'
         },
         {
             id: 7,
-            firstName: 'Sandra',
-            lastName: 'Johnson',
+            fullName: 'Sandra Johnson',
             title: 'Controller',
-            email: 'sandraj@dx-email.com',
-            mobilePhone: '5625552082',
             department: 'Human Resources',
+            email: 'sandraj@dx-email.com',
             pictureName: 'Sandra Johnson.jpg',
             picture: 'images/employees/Sandra Johnson.jpg'
         },
         {
             id: 8,
-            firstName: 'Edward',
-            lastName: 'Holmes',
+            fullName: 'Edward Holmes',
             title: 'Sales Manager',
-            email: 'edwardh@dx-email.com',
-            mobilePhone: '3105551288',
             department: 'Sales',
+            email: 'edwardh@dx-email.com',
             pictureName: 'Ed Holmes.jpg',
-            picture: undefined
+            picture: 'images/employees/Ed Holmes.jpg'
         },
         {
             id: 9,
-            firstName: 'Barbara',
-            lastName: 'Banks',
+            fullName: 'Barbara Banks',
             title: 'Support Manager',
-            email: 'barbarab@dx-email.com',
-            mobilePhone: '3105553355',
             department: 'Support',
+            email: 'barbarab@dx-email.com',
             pictureName: 'Barb Banks.jpg',
             picture: 'images/employees/Barb Banks.jpg'
         },
         {
             id: 10,
-            firstName: 'Kevin',
-            lastName: 'Carter',
+            fullName: 'Kevin Carter',
             title: 'Shipping Manager',
-            email: 'kevinc@dx-email.com',
-            mobilePhone: '2135552840',
             department: 'Shipping',
+            email: 'kevinc@dx-email.com',
             pictureName: 'Kevin Carter.jpg',
             picture: 'images/employees/Kevin Carter.jpg'
         },
-        {
-            id: 11,
-            firstName: 'Cynthia',
-            lastName: 'Stanwick',
-            title: 'HR Assistant',
-            email: 'cindys@dx-email.com',
-            mobilePhone: '8185556655',
-            department: 'Human Resources',
-            pictureName: 'Cindy Stanwick.jpg',
-            picture: 'images/employees/Cindy Stanwick.jpg'
-        },
-        {
-            id: 12,
-            firstName: 'Sam',
-            lastName: 'Hill',
-            title: 'Sales Assistant',
-            email: 'sammyh@dx-email.com',
-            mobilePhone: '6265557292',
-            department: 'Sales',
-            pictureName: 'Sammy Hill.jpg',
-            picture: 'images/employees/Sammy Hill.jpg'
-        },
-        {
-            id: 13,
-            firstName: 'David',
-            lastName: 'Jones',
-            title: 'Shipping Assistant',
-            email: 'davidj@dx-email.com',
-            mobilePhone: '6265550281',
-            department: 'Shipping',
-            pictureName: 'Davey Jones.jpg',
-            picture: 'images/employees/Davey Jones.jpg'
-        },
-        {
-            id: 14,
-            firstName: 'Victor',
-            lastName: 'Norris',
-            title: 'Shipping Assistant',
-            email: 'victorn@dx-email.com',
-            mobilePhone: '2135559278',
-            department: 'Shipping',
-            pictureName: 'Victor Norris.jpg',
-            picture: 'images/employees/Victor Norris.jpg'
-        },
-        {
-            id: 15,
-            firstName: 'Mary',
-            lastName: 'Stern',
-            title: 'Shipping Assistant',
-            email: 'marys@dx-email.com',
-            mobilePhone: '8185557857',
-            department: 'Shipping',
-            pictureName: 'Mary Stern.jpg',
-            picture: 'images/employees/Mary Stern.jpg'
-        },
-        {
-            id: 16,
-            firstName: 'Robin',
-            lastName: 'Cosworth',
-            title: 'Shipping Assistant',
-            email: 'robinc@dx-email.com',
-            mobilePhone: '8185550942',
-            department: 'Shipping',
-            pictureName: 'Robin Cosworth.jpg',
-            picture: 'images/employees/Robin Cosworth.jpg'
-        },
-        {
-            id: 17,
-            firstName: 'Kelly',
-            lastName: 'Rodriguez',
-            title: 'Support Assistant',
-            email: 'kellyr@dx-email.com',
-            mobilePhone: '8185559248',
-            department: 'Support',
-            pictureName: 'Kelly Rodriguez.jpg',
-            picture: 'images/employees/Kelly Rodriguez.jpg'
-        },
-        {
-            id: 18,
-            firstName: 'James',
-            lastName: 'Anderson',
-            title: 'Support Assistant',
-            email: 'jamesa@dx-email.com',
-            mobilePhone: '3235554702',
-            department: 'Support',
-            pictureName: 'James Anderson.jpg',
-            picture: undefined
-        },
-        {
-            id: 19,
-            firstName: 'Anthony',
-            lastName: 'Remmen',
-            title: 'Support Assistant',
-            email: 'anthonyr@dx-email.com',
-            mobilePhone: '3105556625',
-            department: 'Support',
-            pictureName: 'Antony Remmen.jpg',
-            picture: 'images/employees/Antony Remmen.jpg'
-        },
-        {
-            id: 20,
-            firstName: 'Olivia',
-            lastName: 'Peyton',
-            title: 'Sales Assistant',
-            email: 'oliviap@dx-email.com',
-            mobilePhone: '3105552728',
-            department: 'Sales',
-            pictureName: 'Olivia Peyton.jpg',
-            picture: 'images/employees/Olivia Peyton.jpg'
-        }
     ];
 
     collapsedOptions: Properties = {
@@ -249,17 +125,20 @@ export class CardviewComponent implements OnInit, OnDestroy {
         cardCover: undefined,
         columns: [
             {
-                dataField: 'firstName',
+                dataField: 'fullName',
                 sortIndex: 0,
                 sortOrder: 'asc'
             },
             {
-                dataField: 'lastName',
+                dataField: 'title',
                 sortIndex: 1,
                 sortOrder: 'asc'
             },
             {
-                dataField: 'title'
+                dataField: 'email'
+            },
+            {
+                dataField: 'department'
             }
         ]
     };
@@ -300,26 +179,17 @@ export class CardviewComponent implements OnInit, OnDestroy {
         },
         columns: [
             {
-                dataField: 'id'
-            },
-            {
-                dataField: 'firstName',
+                dataField: 'fullName',
                 sortIndex: 0,
                 sortOrder: 'asc'
             },
             {
-                dataField: 'lastName',
+                dataField: 'title',
                 sortIndex: 1,
                 sortOrder: 'asc'
             },
             {
-                dataField: 'title'
-            },
-            {
                 dataField: 'email'
-            },
-            {
-                dataField: 'mobilePhone'
             },
             {
                 dataField: 'department'
