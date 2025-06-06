@@ -175,6 +175,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
             popup: {
                 title: 'Employee Info',
                 showTitle: true,
+                height: 500,
             },
             form: {
                 items: [{
