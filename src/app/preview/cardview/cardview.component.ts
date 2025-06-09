@@ -1,7 +1,7 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DxCardViewComponent } from 'devextreme-angular';
-import { Properties } from 'devextreme/ui/card_view';
+import { DxCardViewTypes } from 'devextreme-angular/ui/card-view';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -93,7 +93,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
         },
     ];
 
-    collapsedOptions: Properties = {
+    collapsedOptions: DxCardViewTypes.Properties = {
         height: '100%',
         cardsPerRow: 2,
         columnChooser: {
@@ -143,7 +143,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
         ]
     };
 
-    expandedOptions: Properties = {
+    expandedOptions: DxCardViewTypes.Properties = {
         dataSource: this.dataSource,
         height: 800,
         cardsPerRow: 4,
