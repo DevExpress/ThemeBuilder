@@ -1,0 +1,39 @@
+<dx-card-view 
+    #cardView
+    keyExpr="id"
+    [dataSource]="dataSource"
+    [hoverStateEnabled]="true"
+    [allowColumnReordering]="true"
+>
+    <dxo-paging [pageSize]="4"/>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[4, 8]"/>
+    <dxo-selection showCheckBoxesMode="always"/>
+    <dxo-filter-builder-popup [width]="700" [height]="525"/>
+    <dxo-editing>
+        <dxo-popup
+            title="Employee Info"
+            [showTitle]="true"
+            [width]="700"
+            [height]="525"
+        />
+
+        <dxo-form>
+            <dxi-item
+                itemType="group"
+                [colCount]="2"
+                [colSpan]="2"
+                caption="Main Info"
+            >
+                <dxi-item dataField="FullName"/>
+                <dxi-item dataField="Title"/>
+                <dxi-item dataField="Email"/>
+                <dxi-item dataField="Department"/>
+            </dxi-item>
+        </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="FullName" [sortIndex]="0" sortOrder="asc"/>
+    <dxi-column dataField="title" [sortIndex]="1" sortOrder="asc"/>
+    <dxi-column dataField="email"/>
+    <dxi-column dataField="department"/>
+</dx-card-view>

@@ -35,7 +35,7 @@ export class ExportPopupComponent implements OnInit {
 
     viewIndex = 0;
 
-    mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList', 'Chat'];
+    mainWidgets: string[] = ['Scheduler', 'Diagram', 'Gantt', 'DataGrid', 'PivotGrid', 'TreeList', 'CardView', 'Chat'];
     widgetGroups: any[] = [{
         group: 'Navigation and Layout',
         widgets: ['Tabs', 'Toolbar', 'Menu', 'TreeView', 'TileView', 'Accordion', 'ContextMenu', 'TabPanel', 'MultiView', 'Drawer', 'Box', 'ResponsiveBox', 'Splitter', 'Map', 'Stepper']
