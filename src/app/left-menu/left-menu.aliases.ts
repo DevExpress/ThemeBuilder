@@ -16,6 +16,100 @@ export class LeftMenuAlias {
             regs: [/datagrid-/i],
             route: 'grids'
         }, {
+            name: 'Card View',
+            isNew: true,
+            equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+            route: 'cardview',
+            groups: [{
+                name: 'Common Settings',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-common/i,
+                    /cardview-generic-common/i,
+                    /cardview-material-common/i
+                ]
+            }, {
+                name: 'Card',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-card(?!--)(?!.*--highlighted)/i,
+                    /cardview-generic-card(?!--)(?!.*--highlighted)/i,
+                    /cardview-material-card(?!--)(?!.*--highlighted)/i
+                ]
+            }, {
+                name: 'Card (Selected)',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-card--selected/i,
+                    /cardview-generic-card--selected/i,
+                    /cardview-material-card--selected/i
+                ]
+            }, {
+                name: 'Header Item',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-header-panel__item(?!--)/i,
+                    /cardview-generic-header-panel__item(?!--)/i,
+                    /cardview-material-header-panel__item(?!--)/i
+                ]
+            }, {
+                name: 'Header Item (Hovered)',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-header-panel__item--hovered/i,
+                    /cardview-generic-header-panel__item--hovered/i,
+                    /cardview-material-header-panel__item--hovered/i
+                ]
+            }, {
+                name: 'Header Item (Disabled)',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-header-panel__item--disabled/i,
+                    /cardview-generic-header-panel__item--disabled/i,
+                    /cardview-material-header-panel__item--disabled/i
+                ]
+            }, {
+                name: 'Header Item (On Drag)',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-header-panel__item--dragged/i,
+                    /cardview-generic-header-panel__item--dragged/i,
+                    /cardview-material-header-panel__item--dragged/i
+                ]
+            }, {
+                name: 'Header Drop Zone',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-header-panel__dropzone/i,
+                    /cardview-generic-header-panel__dropzone/i,
+                    /cardview-material-header-panel__dropzone/i
+                ]
+            }, {
+                name: 'Filter Panel',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-filter-panel/i,
+                    /cardview-generic-filter-panel/i,
+                    /cardview-material-filter-panel/i
+                ]
+            }, {
+                name: 'Empty View',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-nodata-view/i,
+                    /cardview-generic-nodata-view/i,
+                    /cardview-material-nodata-view/i
+                ]
+            }, {
+                name: 'Highlights In Search',
+                equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
+                regs: [
+                    /cardview-fluent-card__content__field-value--highlighted/i,
+                    /cardview-generic-card__content__field-value--highlighted/i,
+                    /cardview-material-card__content__field-value--highlighted/i
+                ]
+            }]
+        }, {
             name: 'Pivot Grid',
             equivalents: 'dxPivotGrid, dx-pivot-grid',
             regs: [/pivotgrid[-_]/i],
@@ -150,27 +244,27 @@ export class LeftMenuAlias {
             equivalents: 'Chat, dxChat, dx-chat',
             route: 'chat',
             groups: [{
-                name: 'BASIC SETTINGS',
+                name: 'Basic Settings',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-background-color/i, /chat-border-color/i]
             }, {
-                name: 'AVATAR',
+                name: 'Avatar',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-avatar-color/i, /chat-avatar-background-color/i]
             }, {
-                name: 'MESSAGE BUBBLE',
+                name: 'Message bubble',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-bubble-color-primary/i, /chat-bubble-background-color-primary/i, /chat-bubble-color-secondary/i, /chat-bubble-background-color-secondary/i, /chat-information-color/i]
             }, {
-                name: 'SYSTEM INFO',
+                name: 'System Info',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-information-author-name-color/i, /chat-information-timestamp-color/i, /chat-messagelist-day-header-color/i, /chat-alertlist-color/i]
             }, {
-                name: 'EMPTY VIEW',
+                name: 'Empty View',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-messagelist-empty-icon-color/i, /chat-messagelist-empty-icon-background-color/i, /chat-messagelist-empty-message-color/i, /chat-messagelist-empty-prompt-color/i]
             }, {
-                name: 'TYPING INDICATOR',
+                name: 'Typing Indicator',
                 equivalents: 'Chat, dxChat, dx-chat',
                 regs: [/chat-typingindicator-color/i, /chat-typingindicator-bubble-bg-color/i, /chat-typingindicator-circle-bg-color-center/, /chat-typingindicator-circle-bg-color$/]
             }]
@@ -195,27 +289,27 @@ export class LeftMenuAlias {
             equivalents: 'Stepper, dxStepper, dx-stepper',
             route: 'stepper',
             groups: [{
-                name: 'COMMON SETTINGS',
+                name: 'Common Settings',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-accent-/i, /stepper-step-danger-/i, /stepper-step-shadow-/i]
             }, {
-                name: 'PENDING STEP',
+                name: 'Pending Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-base-/i]
             }, {
-                name: 'COMPLETED STEP',
+                name: 'Completed Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-selected-/i]
             }, {
-                name: 'INVALID STEP',
+                name: 'Invalid Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-invalid-/i]
             }, {
-                name: 'DISABLED STEP',
+                name: 'Disabled Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-disabled-/i]
             }, {
-                name: 'CONNECTOR',
+                name: 'Connector',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-connector-/i]
             }]
