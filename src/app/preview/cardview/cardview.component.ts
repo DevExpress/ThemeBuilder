@@ -149,6 +149,9 @@ export class CardviewComponent implements OnInit, OnDestroy {
                 sortIndex: 1,
                 sortOrder: 'asc'
             },
+            {
+                dataField: 'email'
+            },
         ]
     };
 
