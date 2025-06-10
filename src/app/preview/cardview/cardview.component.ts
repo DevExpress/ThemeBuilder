@@ -102,8 +102,8 @@ export class CardviewComponent implements OnInit, OnDestroy {
             pageSize: 4
         },
         filterBuilderPopup: {
-            width: 700,
-            height: 525,
+            width: 560,
+            height: 320,
         },
     };
 
@@ -190,12 +190,8 @@ export class CardviewComponent implements OnInit, OnDestroy {
             popup: {
                 title: "Employee Info",
                 showTitle: true,
-                width: 700,
-                height: 525,
-                onShown: (e) => {
-                    (window as any).x = e.component;
-                    console.log(e.component);
-                }
+                width: 560,
+                height: 320,
             },
         },
         cardCover: {
