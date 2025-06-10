@@ -90,7 +90,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
             email: 'kevinc@dx-email.com',
             pictureName: 'Kevin Carter.jpg',
             picture: 'images/employees/Kevin Carter.jpg'
-        },
+        }
     ];
 
     collapsedOptions: DxCardViewTypes.Properties = {
@@ -171,7 +171,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
         editing: {
             allowUpdating: true,
             allowDeleting: true,
-            allowAdding: true,
+            allowAdding: true
         },
         cardCover: {
             imageExpr: 'picture',
