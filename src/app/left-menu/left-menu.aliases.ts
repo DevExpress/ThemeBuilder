@@ -305,7 +305,7 @@ export class LeftMenuAlias {
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-invalid-(?!selected-|label-color)/i]
             }, {
-                name: 'Completer Invalid Step',
+                name: 'Completed Invalid Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-invalid-selected-/i]
             }, {
