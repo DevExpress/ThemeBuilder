@@ -101,6 +101,11 @@ export class CardviewComponent implements OnInit, OnDestroy {
         paging: {
             pageSize: 4
         },
+        pager: {
+            visible: true,
+            showPageSizeSelector: true,
+            allowedPageSizes: [4, 8],
+        },
         filterBuilderPopup: {
             width: 700,
             height: 525,
@@ -113,9 +118,6 @@ export class CardviewComponent implements OnInit, OnDestroy {
         cardsPerRow: 2,
         columnChooser: {
             enabled: false
-        },
-        pager: {
-            visible: false
         },
         sorting: {
             mode: 'multiple'
@@ -149,9 +151,6 @@ export class CardviewComponent implements OnInit, OnDestroy {
                 sortIndex: 1,
                 sortOrder: 'asc'
             },
-            {
-                dataField: 'email'
-            },
         ]
     };
 
@@ -161,11 +160,6 @@ export class CardviewComponent implements OnInit, OnDestroy {
         cardsPerRow: 4,
         columnChooser: {
             enabled: true
-        },
-        pager: {
-            visible: true,
-            showPageSizeSelector: true,
-            allowedPageSizes: [4, 8],
         },
         sorting: {
             mode: 'multiple'
