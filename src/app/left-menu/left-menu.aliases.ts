@@ -291,7 +291,7 @@ export class LeftMenuAlias {
             groups: [{
                 name: 'Common Settings',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
-                regs: [/stepper-step-accent-/i, /stepper-step-danger-/i, /stepper-step-shadow-/i]
+                regs: [/stepper-step-accent-/i, /stepper-step-danger-/i, /stepper-step-invalid-label-color/i, /stepper-step-shadow-/i]
             }, {
                 name: 'Pending Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
@@ -301,9 +301,13 @@ export class LeftMenuAlias {
                 equivalents: 'Stepper, dxStepper, dx-stepper',
                 regs: [/stepper-step-selected-/i]
             }, {
-                name: 'Invalid Step',
+                name: 'Pending Invalid Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
-                regs: [/stepper-step-invalid-/i]
+                regs: [/stepper-step-invalid-(?!selected-|label-color)/i]
+            }, {
+                name: 'Completed Invalid Step',
+                equivalents: 'Stepper, dxStepper, dx-stepper',
+                regs: [/stepper-step-invalid-selected-/i]
             }, {
                 name: 'Disabled Step',
                 equivalents: 'Stepper, dxStepper, dx-stepper',
