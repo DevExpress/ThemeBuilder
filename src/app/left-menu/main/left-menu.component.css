@@ -1,7 +1,7 @@
 :host {
     display: block;
     height: 100%;
-    width: 240px;
+    width: 250px;
     border-right: 1px solid #e3e7ea;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .left-menu .working-area {
-    width: 240px;
+    width: 250px;
     background-color: #fafbfb;
     height: 100%;
     overflow: hidden;
@@ -164,7 +164,7 @@
 .left-menu .working-area .scroll-container {
     top: 44px;
     bottom: 0;
-    width: 240px;
+    width: 250px;
     position: absolute;
 }
 
