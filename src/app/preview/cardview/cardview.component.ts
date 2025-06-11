@@ -93,7 +93,22 @@ export class CardviewComponent implements OnInit, OnDestroy {
         }
     ];
 
+    commonOptions: DxCardViewTypes.Properties = {
+        keyExpr: "id",
+        dataSource: this.dataSource,
+        hoverStateEnabled: true,
+        allowColumnReordering: true,
+        paging: {
+            pageSize: 4
+        },
+        filterBuilderPopup: {
+            width: 560,
+            height: 320,
+        },
+    };
+
     collapsedOptions: DxCardViewTypes.Properties = {
+        ...this.commonOptions,
         height: '100%',
         cardsPerRow: 2,
         columnChooser: {
@@ -137,21 +152,20 @@ export class CardviewComponent implements OnInit, OnDestroy {
             {
                 dataField: 'email'
             },
-            {
-                dataField: 'department'
-            }
         ]
     };
 
     expandedOptions: DxCardViewTypes.Properties = {
-        dataSource: this.dataSource,
+        ...this.commonOptions,
         height: 800,
         cardsPerRow: 4,
         columnChooser: {
             enabled: true
         },
         pager: {
-            visible: true
+            visible: true,
+            showPageSizeSelector: true,
+            allowedPageSizes: [4, 8],
         },
         sorting: {
             mode: 'multiple'
@@ -160,7 +174,8 @@ export class CardviewComponent implements OnInit, OnDestroy {
             visible: true
         },
         selection: {
-            mode: 'multiple'
+            mode: 'multiple',
+            showCheckBoxesMode: "always",
         },
         filterPanel: {
             visible: true
@@ -171,7 +186,13 @@ export class CardviewComponent implements OnInit, OnDestroy {
         editing: {
             allowUpdating: true,
             allowDeleting: true,
-            allowAdding: true
+            allowAdding: true,
+            popup: {
+                title: "Employee Info",
+                showTitle: true,
+                width: 560,
+                height: 320,
+            },
         },
         cardCover: {
             imageExpr: 'picture',
