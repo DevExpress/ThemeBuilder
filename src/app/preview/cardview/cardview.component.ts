@@ -90,7 +90,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
             email: 'kevinc@dx-email.com',
             pictureName: 'Kevin Carter.jpg',
             picture: 'images/employees/Kevin Carter.jpg'
-        },
+        }
     ];
 
     commonOptions: DxCardViewTypes.Properties = {
