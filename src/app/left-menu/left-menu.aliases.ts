@@ -61,7 +61,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item--hovered/i
                 ]
             }, {
-                name: 'Header Item (Disabled)',
+                name: 'Header Item (Drag Ghost)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item--disabled/i,
@@ -69,7 +69,7 @@ export class LeftMenuAlias {
                     /cardview-material-header-panel__item--disabled/i
                 ]
             }, {
-                name: 'Header Item (On Drag)',
+                name: 'Header Item (Drag Active)',
                 equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
                 regs: [
                     /cardview-fluent-header-panel__item--dragged/i,
