@@ -94,7 +94,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
     ];
 
     commonOptions: DxCardViewTypes.Properties = {
-        keyExpr: "id",
+        keyExpr: 'id',
         dataSource: this.dataSource,
         hoverStateEnabled: true,
         allowColumnReordering: true,
@@ -103,8 +103,8 @@ export class CardviewComponent implements OnInit, OnDestroy {
         },
         filterBuilderPopup: {
             width: 560,
-            height: 320,
-        },
+            height: 320
+        }
     };
 
     collapsedOptions: DxCardViewTypes.Properties = {
@@ -151,7 +151,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
             },
             {
                 dataField: 'email'
-            },
+            }
         ]
     };
 
@@ -165,7 +165,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
         pager: {
             visible: true,
             showPageSizeSelector: true,
-            allowedPageSizes: [4, 8],
+            allowedPageSizes: [4, 8]
         },
         sorting: {
             mode: 'multiple'
@@ -175,7 +175,7 @@ export class CardviewComponent implements OnInit, OnDestroy {
         },
         selection: {
             mode: 'multiple',
-            showCheckBoxesMode: "always",
+            showCheckBoxesMode: 'always'
         },
         filterPanel: {
             visible: true
@@ -188,11 +188,11 @@ export class CardviewComponent implements OnInit, OnDestroy {
             allowDeleting: true,
             allowAdding: true,
             popup: {
-                title: "Employee Info",
+                title: 'Employee Info',
                 showTitle: true,
                 width: 560,
-                height: 320,
-            },
+                height: 320
+            }
         },
         cardCover: {
             imageExpr: 'picture',
