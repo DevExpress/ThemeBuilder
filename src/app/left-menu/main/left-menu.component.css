@@ -15,7 +15,7 @@
     top: 0;
     z-index: 2;
     left: 0;
-    width: 241px;
+    width: 251px;
     height: 100%;
     background-color: #505050;
     color: #fff;
@@ -24,7 +24,7 @@
 }
 
 .left-menu .dark-menu.closed {
-    left: -241px;
+    left: -251px;
 }
 
 .left-menu .dark-menu .scroll-container {
@@ -115,7 +115,7 @@
     box-sizing: border-box;
     position: absolute;
     height: 40px;
-    left: 200px;
+    left: 210px;
     top: 0;
     background-color: #fafbfb
 }
@@ -128,7 +128,7 @@
 }
 
 .left-menu .working-area .name.top .search-container {
-    width: 241px;
+    width: 251px;
     border-bottom: 1px solid #e3e7ea;
     transition: left 200ms;
 }
