@@ -7,4 +7,5 @@ export class LeftMenuItem {
     groups?: LeftMenuItem[];
     items?: MetaItem[];
     route?: string;
+    isNew?: boolean;
 }
