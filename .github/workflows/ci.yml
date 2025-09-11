@@ -22,8 +22,8 @@ jobs:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules
 
-    - name: Run npm install
-      run: npm install --no-package-lock --no-audit --no-fund
+    - name: Run npm ci
+      run: npm ci --no-audit --no-fund
 
     - name: Build
       run: npm run test
