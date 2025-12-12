@@ -42,7 +42,6 @@
     "@babel/core": "^7.3.4",
     "@types/node": "ts5.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "codelyzer": "^6.0.2",
     "eslint": "^8.0.0",
     "path-browserify": "^1.0.1",
     "ts-node": "~5.0.1",
