@@ -7,7 +7,8 @@ import { Subject, Subscription } from 'rxjs';
 @Component({
     selector: 'app-datagrid',
     templateUrl: './datatgrid.component.html',
-    styleUrls: ['./datatgrid.component.css']
+    styleUrls: ['./datatgrid.component.css'],
+    standalone: false
 })
 export class DatagridComponent implements OnInit, OnDestroy {
     widgetGroup = 'datagrid';

@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
-    styleUrls: ['./tabs.component.css']
+    styleUrls: ['./tabs.component.css'],
+    standalone: false
 })
 export class TabsComponent {
     widgetGroup = 'tabs';

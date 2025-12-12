@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-accordion',
     templateUrl: './accordion.component.html',
-    styleUrls: ['./accordion.component.css']
+    styleUrls: ['./accordion.component.css'],
+    standalone: false
 })
 export class AccordionComponent {
     widgetGroup = 'accordion';

@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-treeview',
     templateUrl: './treeview.component.html',
-    styleUrls: ['./treeview.component.css']
+    styleUrls: ['./treeview.component.css'],
+    standalone: false
 })
 export class TreeviewComponent {
     widgetGroup = 'treeview';

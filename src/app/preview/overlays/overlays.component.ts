@@ -5,7 +5,8 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 @Component({
     selector: 'app-overlays',
     templateUrl: './overlays.component.html',
-    styleUrls: ['./overlays.component.css']
+    styleUrls: ['./overlays.component.css'],
+    standalone: false
 })
 export class OverlaysComponent implements OnInit, OnDestroy {
     subscription: Subscription;

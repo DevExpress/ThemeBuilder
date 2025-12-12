@@ -5,7 +5,8 @@ import { PopupComponent } from '../popup/popup.component';
 @Component({
     selector: 'app-import-popup',
     templateUrl: './import-popup.component.html',
-    styleUrls: ['./import-popup.component.css']
+    styleUrls: ['./import-popup.component.css'],
+    standalone: false
 })
 export class ImportPopupComponent {
     @ViewChild('popup') popup: PopupComponent;

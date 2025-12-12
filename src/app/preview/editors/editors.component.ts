@@ -5,7 +5,8 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 @Component({
     selector: 'app-editors',
     templateUrl: './editors.component.html',
-    styleUrls: ['./editors.component.css']
+    styleUrls: ['./editors.component.css'],
+    standalone: false
 })
 export class EditorsComponent implements OnInit, OnDestroy {
     widgetGroup = 'editors';

@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-toolbar',
     templateUrl: './toolbar.component.html',
-    styleUrls: ['./toolbar.component.css']
+    styleUrls: ['./toolbar.component.css'],
+    standalone: false
 })
 export class ToolbarComponent {
     widgetGroup = 'toolbar';

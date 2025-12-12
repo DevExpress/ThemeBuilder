@@ -5,7 +5,8 @@ import { Notification } from '../types/notify';
 @Component({
     selector: 'app-notifications',
     templateUrl: './notify-error.component.html',
-    styleUrls: ['./notify-error.component.css']
+    styleUrls: ['./notify-error.component.css'],
+    standalone: false
 })
 
 export class NotifyErrorComponent implements OnInit {

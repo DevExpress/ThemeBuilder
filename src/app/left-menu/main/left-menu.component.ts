@@ -17,7 +17,8 @@ const BASE_THEMING_NAME = 'Basic Settings';
 @Component({
     selector: 'app-left-menu',
     templateUrl: './left-menu.component.html',
-    styleUrls: ['./left-menu.component.css']
+    styleUrls: ['./left-menu.component.css'],
+    standalone: false
 })
 
 export class LeftMenuComponent implements OnDestroy, OnInit {

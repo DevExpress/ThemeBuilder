@@ -8,7 +8,8 @@ import { MetaItem } from '../../types/meta-item';
 @Component({
     selector: 'app-base-parameters',
     templateUrl: './base-parameters.component.html',
-    styleUrls: ['./base-parameters.component.css']
+    styleUrls: ['./base-parameters.component.css'],
+    standalone: false
 })
 export class BaseParametersComponent implements OnDestroy, OnInit {
     @Input() theme: string;

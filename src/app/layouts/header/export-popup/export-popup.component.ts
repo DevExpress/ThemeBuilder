@@ -26,7 +26,8 @@ class TreeData {
 @Component({
     selector: 'app-export-popup',
     templateUrl: './export-popup.component.html',
-    styleUrls: ['./export-popup.component.css']
+    styleUrls: ['./export-popup.component.css'],
+    standalone: false
 })
 export class ExportPopupComponent implements OnInit {
     @ViewChild('popup') popup: PopupComponent;

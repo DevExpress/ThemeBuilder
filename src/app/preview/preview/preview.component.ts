@@ -4,7 +4,8 @@ import { DxScrollViewComponent } from 'devextreme-angular';
 @Component({
     selector: 'app-preview',
     templateUrl: './preview.component.html',
-    styleUrls: ['./preview.component.css']
+    styleUrls: ['./preview.component.css'],
+    standalone: false
 })
 export class PreviewComponent implements AfterViewInit, OnChanges {
     @ViewChildren('widget') widgetElements: QueryList<any>;

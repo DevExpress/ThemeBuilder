@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     templateUrl: './import-bootstrap.component.html',
-    styleUrls: ['./import-bootstrap.component.css']
+    styleUrls: ['./import-bootstrap.component.css'],
+    standalone: false
 })
 export class ImportBootstrapComponent {
     bootstrapVariantsData = [{

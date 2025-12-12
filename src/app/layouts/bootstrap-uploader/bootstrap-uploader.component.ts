@@ -7,7 +7,8 @@ import { ImportService } from '../../import.service';
 @Component({
     selector: 'app-bootstrap-uploader',
     templateUrl: './bootstrap-uploader.component.html',
-    styleUrls: ['./bootstrap-uploader.component.css']
+    styleUrls: ['./bootstrap-uploader.component.css'],
+    standalone: false
 })
 export class BootstrapUploaderComponent {
     @Input() accept: string;

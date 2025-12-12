@@ -7,7 +7,8 @@ import { Properties } from 'devextreme/ui/pivot_grid';
 @Component({
     selector: 'app-pivotgrid',
     templateUrl: './pivotgrid.component.html',
-    styleUrls: ['./pivotgrid.component.css']
+    styleUrls: ['./pivotgrid.component.css'],
+    standalone: false
 })
 export class PivotgridComponent implements OnInit, OnDestroy {
     widgetGroup = 'pivotgrid';

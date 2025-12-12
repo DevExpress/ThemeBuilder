@@ -4,7 +4,8 @@ import { DxFormComponent } from 'devextreme-angular';
 @Component({
     selector: 'app-wizard',
     templateUrl: './wizard.component.html',
-    styleUrls: ['./wizard.component.css']
+    styleUrls: ['./wizard.component.css'],
+    standalone: false
 })
 export class WizardComponent implements AfterViewInit {
     @ViewChild('form') form: DxFormComponent;

@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
-    styleUrls: ['./gallery.component.css']
+    styleUrls: ['./gallery.component.css'],
+    standalone: false
 })
 export class GalleryComponent {
     widgetGroup = 'gallery';

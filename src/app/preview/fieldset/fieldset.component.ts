@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-fieldset',
     templateUrl: './fieldset.component.html',
-    styleUrls: ['./fieldset.component.css']
+    styleUrls: ['./fieldset.component.css'],
+    standalone: false
 })
 export class FieldSetComponent {
     widgetGroup = 'fieldset';

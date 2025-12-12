@@ -13,7 +13,8 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
 @Component({
     selector: 'app-button-group',
     templateUrl: './button-group.component.html',
-    styleUrls: ['./button-group.component.css']
+    styleUrls: ['./button-group.component.css'],
+    standalone: false
 })
 export class ButtonGroupComponent {
     listButtonGroup: dxButtonGroup[] = [];
