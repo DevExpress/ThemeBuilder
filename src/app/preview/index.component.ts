@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-preview-index',
     templateUrl: './index.component.html',
-    styleUrls: ['./index.component.css']
+    styleUrls: ['./index.component.css'],
+    standalone: false
 })
 export class PreviewIndexComponent {
     isStylesReady = false;

@@ -9,7 +9,8 @@ interface PaneContentTemplate {
 @Component({
     selector: 'app-splitter',
     templateUrl: './splitter.component.html',
-    styleUrls: ['./splitter.component.css']
+    styleUrls: ['./splitter.component.css'],
+    standalone: false
 })
 export class SplitterComponent implements OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);

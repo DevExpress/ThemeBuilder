@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-drawer',
     templateUrl: './drawer.component.html',
-    styleUrls: ['./drawer.component.css']
+    styleUrls: ['./drawer.component.css'],
+    standalone: false
 })
 export class DrawerComponent {
     widgetGroup = 'drawer';

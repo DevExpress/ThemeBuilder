@@ -4,7 +4,8 @@ import { ActivationEnd, Router } from '@angular/router';
 @Component({
     selector: 'app-help-button',
     templateUrl: './help-button.component.html',
-    styleUrls: ['./help-button.component.css']
+    styleUrls: ['./help-button.component.css'],
+    standalone: false
 })
 export class HelpButtonComponent {
     readonly baseUrl: string = 'https://js.devexpress.com/Documentation/Guide/Themes_and_Styles/ThemeBuilder/';

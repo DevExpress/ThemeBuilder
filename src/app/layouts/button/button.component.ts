@@ -6,7 +6,8 @@ const DEFAULT_BUTTON_HEIGHT = 44;
 @Component({
     selector: 'app-button',
     templateUrl: './button.component.html',
-    styleUrls: ['./button.component.css']
+    styleUrls: ['./button.component.css'],
+    standalone: false
 })
 export class ButtonComponent {
     @Input() type: string;

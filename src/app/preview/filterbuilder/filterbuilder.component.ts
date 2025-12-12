@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 @Component({
     selector: 'app-filterbuilder',
     templateUrl: './filterbuilder.component.html',
-    styleUrls: ['./filterbuilder.component.css']
+    styleUrls: ['./filterbuilder.component.css'],
+    standalone: false
 })
 export class FilterbuilderComponent {
     widgetGroup = 'filterbuilder';

@@ -5,7 +5,8 @@ import { ImportService } from '../../import.service';
 @Component({
     selector: 'app-import-meta',
     templateUrl: './import-meta.component.html',
-    styleUrls: ['./import-meta.component.css']
+    styleUrls: ['./import-meta.component.css'],
+    standalone: false
 })
 export class ImportMetaComponent {
     constructor(private importService: ImportService) {}

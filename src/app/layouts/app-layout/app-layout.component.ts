@@ -8,7 +8,8 @@ import { RouteId } from 'src/app/types/route-id';
     selector: 'app-app-layout',
     templateUrl: './app-layout.component.html',
     styleUrls: ['./app-layout.component.css'],
-    animations: [routeAnimation]
+    animations: [routeAnimation],
+    standalone: false
 })
 
 export class AppLayoutComponent {

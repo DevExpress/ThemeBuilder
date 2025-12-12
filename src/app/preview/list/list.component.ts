@@ -6,7 +6,8 @@ import { Properties } from 'devextreme/ui/list';
 @Component({
     selector: 'app-list',
     templateUrl: './list.component.html',
-    styleUrls: ['./list.component.css']
+    styleUrls: ['./list.component.css'],
+    standalone: false
 })
 export class ListComponent implements OnInit, OnDestroy {
     widgetGroup = 'list';

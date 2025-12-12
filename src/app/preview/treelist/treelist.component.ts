@@ -7,7 +7,8 @@ import { Properties } from 'devextreme/ui/tree_list';
 @Component({
     selector: 'app-treelist',
     templateUrl: './treelist.component.html',
-    styleUrls: ['./treelist.component.css']
+    styleUrls: ['./treelist.component.css'],
+    standalone: false
 })
 export class TreelistComponent implements OnInit, OnDestroy {
     widgetGroup = 'treelist';

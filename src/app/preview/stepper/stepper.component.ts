@@ -7,7 +7,8 @@ import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 @Component({
     selector: 'app-stepper',
     templateUrl: './stepper.component.html',
-    styleUrls: ['./stepper.component.css']
+    styleUrls: ['./stepper.component.css'],
+    standalone: false
 })
 export class StepperComponent implements OnDestroy {
     isExpanded = new BehaviorSubject<boolean>(false);

@@ -6,7 +6,8 @@ import { Properties } from 'devextreme/ui/form';
 @Component({
     selector: 'app-form',
     templateUrl: './form.component.html',
-    styleUrls: ['./form.component.css']
+    styleUrls: ['./form.component.css'],
+    standalone: false
 })
 export class FormComponent implements OnInit, OnDestroy {
     widgetGroup = 'form';

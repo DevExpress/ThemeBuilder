@@ -7,7 +7,8 @@ import { Subject, Subscription } from 'rxjs';
 @Component({
     selector: 'app-cardview',
     templateUrl: './cardview.component.html',
-    styleUrls: ['./cardview.component.css']
+    styleUrls: ['./cardview.component.css'],
+    standalone: false
 })
 export class CardviewComponent implements OnInit, OnDestroy {
     widgetGroup = 'cardview';

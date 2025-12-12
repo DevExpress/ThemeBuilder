@@ -7,7 +7,8 @@ import { ThemeConfig } from '../types/theme';
 
 @Component({
     templateUrl: './master.component.html',
-    styleUrls: ['./master.component.css']
+    styleUrls: ['./master.component.css'],
+    standalone: false
 })
 
 export class MasterComponent implements OnInit, OnDestroy {

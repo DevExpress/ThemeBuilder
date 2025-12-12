@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-icon-bootstrap',
     templateUrl: './icon-bootstrap.component.html',
-    styleUrls: ['./icon-bootstrap.component.css']
+    styleUrls: ['./icon-bootstrap.component.css'],
+    standalone: false
 })
 export class IconBootstrapComponent { }
