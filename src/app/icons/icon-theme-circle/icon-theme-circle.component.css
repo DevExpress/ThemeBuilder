@@ -29,7 +29,7 @@
 }
 
 .color-circle.blue {
-    background-color: #1564C0;
+    background-color: var(--dx-color-primary);
 }
 
 .color-circle.blue.dark {
