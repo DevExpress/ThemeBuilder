@@ -1,3 +1,7 @@
+.dx-chat {
+  min-height: 50px;
+}
+
 .chat-container {
   display: flex;
   justify-content: center;

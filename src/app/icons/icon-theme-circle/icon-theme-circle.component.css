@@ -19,8 +19,8 @@
 }
 
 .color-circle.light {
-    border-color: #fff; 
-    background-color: #337ab7;  
+    border-color: #fff;
+    background-color: #337ab7;
 }
 
 .color-circle.dark {
@@ -29,7 +29,11 @@
 }
 
 .color-circle.blue {
-    background-color: #03a9f4;
+    background-color: var(--dx-color-primary);
+}
+
+.color-circle.blue.dark {
+    background-color: #90CAF9;
 }
 
 .color-circle.orange {
