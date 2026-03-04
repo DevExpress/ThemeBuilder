@@ -11,16 +11,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/schematics": "^20.3.14",
-    "@angular/animations": "^20.3.16",
-    "@angular/common": "^20.3.16",
-    "@angular/compiler": "^20.3.16",
-    "@angular/core": "^20.3.16",
-    "@angular/forms": "^20.3.16",
-    "@angular/platform-browser": "^20.3.16",
-    "@angular/platform-browser-dynamic": "^20.3.16",
-    "@angular/router": "^20.3.16",
-    "@ngtools/webpack": "^20.3.14",
+    "@angular-devkit/schematics": "^20.3.17",
+    "@angular/animations": "^20.3.17",
+    "@angular/common": "^20.3.17",
+    "@angular/compiler": "^20.3.17",
+    "@angular/core": "^20.3.17",
+    "@angular/forms": "^20.3.17",
+    "@angular/platform-browser": "^20.3.17",
+    "@angular/platform-browser-dynamic": "^20.3.17",
+    "@angular/router": "^20.3.17",
+    "@ngtools/webpack": "^20.3.17",
     "core-js": "^2.5.4",
     "devextreme": "25.2.4",
     "devextreme-angular": "25.2.4",
@@ -34,11 +34,11 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^20.0.0",
-    "@angular-devkit/build-angular": "^20.3.14",
-    "@angular-devkit/core": "^20.3.14",
-    "@angular/cli": "^20.3.14",
-    "@angular/compiler-cli": "^20.3.16",
-    "@angular/language-service": "^20.3.16",
+    "@angular-devkit/build-angular": "^20.3.17",
+    "@angular-devkit/core": "^20.3.17",
+    "@angular/cli": "^20.3.17",
+    "@angular/compiler-cli": "^20.3.17",
+    "@angular/language-service": "^20.3.17",
     "@babel/core": "^7.3.4",
     "@types/node": "ts5.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -48,6 +48,7 @@
     "typescript": "~5.8.0"
   },
   "overrides": {
-    "form-data": "~2.5.4"
+    "form-data": "~2.5.4",
+    "serialize-javascript": "^7.0.4"
   }
 }
