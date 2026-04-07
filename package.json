@@ -49,6 +49,7 @@
   },
   "overrides": {
     "form-data": "~2.5.4",
-    "serialize-javascript": "^7.0.4"
+    "serialize-javascript": "^7.0.4",
+    "vite@<7.3.2": "7.3.2"
   }
 }
