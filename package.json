@@ -1,13 +1,14 @@
 {
   "name": "devextreme-themebuilder-app",
   "version": "0.0.0",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration=production --base-href https://devexpress.github.io/ThemeBuilder/ && node ./copyfile.js",
     "lint-fix": "eslint --fix \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
-    "test": "npm run lint && npm run build"
+    "test": "pnpm run lint && pnpm run build"
   },
   "private": true,
   "dependencies": {
@@ -47,9 +48,11 @@
     "ts-node": "~5.0.1",
     "typescript": "~5.8.0"
   },
-  "overrides": {
-    "form-data": "~2.5.4",
-    "serialize-javascript": "^7.0.4",
-    "vite@<7.3.2": "7.3.2"
+  "pnpm": {
+    "overrides": {
+      "form-data": "~2.5.4",
+      "serialize-javascript": "^7.0.4",
+      "vite@<7.3.2": "7.3.2"
+    }
   }
 }
