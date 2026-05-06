@@ -50,8 +50,6 @@
   },
   "pnpm": {
     "overrides": {
-      "serialize-javascript": "^7.0.4",
-      "vite@<7.3.2": "7.3.2",
       "ip-address@<=10.1.0": ">=10.1.1"
     }
   }
