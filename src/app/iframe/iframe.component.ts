@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoadingService } from '../loading.service';
@@ -11,11 +10,10 @@ import { MetadataRepositoryService } from '../meta-repository.service';
     styleUrls: ['./iframe.component.css'],
     standalone: false
 })
-export class IframeComponent implements OnDestroy, OnInit {
+export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
     @ViewChild('iframe') iframe: ElementRef;
 
     url: string;
-    iframeUrl: SafeResourceUrl;
     cssSubscription: Subscription;
     widgetSubscription: Subscription;
     theme: string;
@@ -24,7 +22,6 @@ export class IframeComponent implements OnDestroy, OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private sanitizer: DomSanitizer,
         private metadataService: MetadataRepositoryService,
         private loading: LoadingService) {
         this.route.params.subscribe((params) => {
@@ -36,12 +33,20 @@ export class IframeComponent implements OnDestroy, OnInit {
                 this.loading.show();
                 this.theme = params['theme'];
                 this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
-                this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+                if(this.iframe) {
+                    this.iframe.nativeElement.src = this.url;
+                }
             }
         });
     }
 
-    receiveMessage(e): void {
+    ngAfterViewInit(): void {
+        if(this.url) {
+            this.iframe.nativeElement.src = this.url;
+        }
+    }
+
+    receiveMessage(e: MessageEvent): void {
         if(e.data.widget) {
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
         }
