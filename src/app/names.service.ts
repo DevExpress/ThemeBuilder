@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable()
 export class NamesService {
-
-    constructor(private sanitizer: DomSanitizer) { }
 
     private ORDER_REGEX = /^(\d+).\s/;
 
@@ -12,13 +9,12 @@ export class NamesService {
         return orderedName.replace(this.ORDER_REGEX, '');
     }
 
-    getHighlightedForLeftMenuName(orderedName, searchText): SafeHtml {
+    getHighlightedForLeftMenuName(orderedName, searchText): string {
         const text = this.getRealName(orderedName);
         if(!searchText) return text;
 
-        const highlightedText = text.replace(new RegExp(`(${searchText})`, 'ig'), '<span style="color:#f05b41">$1</span>');
-
-        return this.sanitizer.bypassSecurityTrustHtml(highlightedText);
+        const escapedSearch = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return text.replace(new RegExp(`(${escapedSearch})`, 'ig'), '<span class="search-highlight">$1</span>');
     }
 
     sortNames(name1, name2): number {

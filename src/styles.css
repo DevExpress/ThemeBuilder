@@ -59,3 +59,8 @@ body {
         overflow-y: hidden;
     }
 }
+
+
+.search-highlight {
+    color: #f05b41;
+}

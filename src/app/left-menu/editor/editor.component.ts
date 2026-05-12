@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Component, Input } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -33,7 +32,7 @@ export class EditorComponent {
         return /^[1-9]\d*$/.test(value);
     }
 
-    highlight(text: string): SafeHtml {
+    highlight(text: string): string {
         return this.names.getHighlightedForLeftMenuName(text, this.searchText);
     }
 

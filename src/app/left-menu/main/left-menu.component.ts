@@ -9,7 +9,6 @@ import { NamesService } from '../../names.service';
 import { LeftMenuItem } from '../../types/left-menu-item';
 import { MetaItem } from '../../types/meta-item';
 import { LeftMenuAlias } from '../left-menu.aliases';
-import { SafeHtml } from '@angular/platform-browser';
 import { AnalyticsEventsService } from '../../analytics-events.service';
 
 const BASE_THEMING_NAME = 'Basic Settings';
@@ -148,7 +147,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.filteredData[0] = this.workArea;
     }
 
-    getRealName(name): SafeHtml {
+    getRealName(name): string {
         return this.names.getHighlightedForLeftMenuName(name, this.searchKeyword);
     }
 
