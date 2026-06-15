@@ -6,7 +6,12 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
 
+minimumReleaseAgeExclude:
+  - shell-quote@1.8.4
+  - esbuild@0.28.1
+
 overrides:
+  esbuild@>=0.27.3 <0.28.1: ^0.28.1
   ip-address@<=10.1.0: '>=10.1.1'
   qs@>=6.11.1 <=6.15.1: ^6.15.2
   uuid@<11.1.1: ^11.1.1
