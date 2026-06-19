@@ -15,7 +15,6 @@ minimumReleaseAgeExclude:
 
 overrides:
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
-  hono@<4.12.25: ^4.12.25
   http-proxy-middleware@>=3.0.4 <3.0.7 : ^3.0.7
   ip-address@<=10.1.0: '>=10.1.1'
   qs@>=6.11.1 <=6.15.1: ^6.15.2
