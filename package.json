@@ -49,6 +49,6 @@
     "eslint": "^8.57.1",
     "path-browserify": "^1.0.1",
     "ts-node": "~5.0.1",
-    "typescript": "~5.8.3"
+    "typescript": "~5.9.0"
   }
 }
