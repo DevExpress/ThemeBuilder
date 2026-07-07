@@ -17,7 +17,7 @@ export class LeftMenuAlias {
             route: 'grids'
         }, {
             name: 'Card View',
-            isNew: true,
+            isNew: false,
             equivalents: 'dxCardView, card view, dx-card-view, dxCardView, dx-card-view',
             route: 'cardview',
             groups: [{
@@ -285,7 +285,7 @@ export class LeftMenuAlias {
             route: 'navigations.menu'
         }, {
             name: 'Stepper',
-            isNew: true,
+            isNew: false,
             equivalents: 'Stepper, dxStepper, dx-stepper',
             route: 'stepper',
             groups: [{
