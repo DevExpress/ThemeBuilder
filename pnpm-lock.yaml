@@ -13,7 +13,7 @@ overrides:
   qs@>=6.11.1 <=6.15.1: ^6.15.2
   uuid@<11.1.1: ^11.1.1
   vite@>=7.0.0 <=7.3.4: ^7.3.5
-  webpack-dev-server@<=5.2.4: ^5.2.5
+  webpack-dev-server@<=5.2.5: ^5.2.6
 
 importers:
 
@@ -251,7 +251,7 @@ packages:
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
       webpack: ^5.30.0
-      webpack-dev-server: ^5.2.5
+      webpack-dev-server: ^5.2.6
 
   '@angular-devkit/core@19.2.27':
     resolution: {integrity: sha512-3amNzoCVSKd7ah6l6lBQL4onwwJvqvam7FMoQBILrxtW5LB5ezh8gMSPuA4zJjKjoRzf9uoWdlzqv/84I52xZA==}
@@ -2142,9 +2142,6 @@ packages:
 
   '@types/node@25.9.3':
     resolution: {integrity: sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==}
-
-  '@types/node@26.1.1':
-    resolution: {integrity: sha512-nxAkRSVkN1Y0JC1W8ky/fTfkGsMmcrRsbx+3XoZE+rMOX71kLYTV7fLXpqud1GpbpP5TuffXFqfX7fH2GgZREw==}
 
   '@types/qs@6.15.1':
     resolution: {integrity: sha512-GZHUBZR9hckSUhrxmp1nG6NwdpM9fCunJwyThLW1X3AyHgd9IlHb6VANpQQqDr2o/qQp6McZ3y/IA2rVzKzSbw==}
@@ -4956,9 +4953,6 @@ packages:
   undici-types@7.24.6:
     resolution: {integrity: sha512-WRNW+sJgj5OBN4/0JpHFqtqzhpbnV0GuB+OozA9gCL7a993SmU+1JBZCzLNxYsbMfIeDL+lTsphD5jN5N+n0zg==}
 
-  undici-types@8.3.0:
-    resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
-
   undici@6.27.0:
     resolution: {integrity: sha512-YmfV3YnEDzXRC5lZ2jWtWWHKGUm1zIt8AhesR1tens+HTNv+YZlN/dp6G727LOvMJ8xjP9Be7Y2Sdr96LDm+pg==}
     engines: {node: '>=18.17'}
@@ -5087,8 +5081,8 @@ packages:
       webpack:
         optional: true
 
-  webpack-dev-server@5.2.5:
-    resolution: {integrity: sha512-4wZtCquSuv9CKX8oybo+mqxtxZqWz47uM1Ch94lxowBztOhWCbhqvRbfC/mODOwxgV2brY+JGZpHq58/SuVFYg==}
+  webpack-dev-server@5.2.6:
+    resolution: {integrity: sha512-HNLRmamRvVavZQ+avceZifmv8hmdUjg43t6MI4SqJDwFdW7RPQwH5vzGhDRZSX59SgfbeHhLnq3g+uooWo7pVw==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     peerDependencies:
@@ -5417,7 +5411,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.2003.29(chokidar@4.0.3)
-      '@angular-devkit/build-webpack': 0.2003.29(chokidar@4.0.3)(webpack-dev-server@5.2.5(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)))(webpack@5.105.0(postcss@8.5.15))
+      '@angular-devkit/build-webpack': 0.2003.29(chokidar@4.0.3)(webpack-dev-server@5.2.6(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)))(webpack@5.105.0(postcss@8.5.15))
       '@angular-devkit/core': 20.3.29(chokidar@4.0.3)
       '@angular/build': 20.3.29(@angular/compiler-cli@20.3.25(@angular/compiler@20.3.25)(typescript@5.8.3))(@angular/compiler@20.3.25)(@angular/core@20.3.25(@angular/compiler@20.3.25)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.25(@angular/animations@20.3.25(@angular/core@20.3.25(@angular/compiler@20.3.25)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.3.25(@angular/core@20.3.25(@angular/compiler@20.3.25)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.25(@angular/compiler@20.3.25)(rxjs@7.8.2)(zone.js@0.15.1)))(@types/node@25.9.3)(chokidar@4.0.3)(jiti@1.21.7)(less@4.4.0)(postcss@8.5.12)(sass-embedded@1.93.3)(terser@5.43.1)(tslib@2.8.1)(typescript@5.8.3)
       '@angular/compiler-cli': 20.3.25(@angular/compiler@20.3.25)(typescript@5.8.3)
@@ -5468,7 +5462,7 @@ snapshots:
       typescript: 5.8.3
       webpack: 5.105.0(esbuild@0.28.1)(postcss@8.5.12)
       webpack-dev-middleware: 7.4.2(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15))
-      webpack-dev-server: 5.2.5(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15))
+      webpack-dev-server: 5.2.6(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15))
       webpack-merge: 6.0.1
       webpack-subresource-integrity: 5.1.0(webpack@5.105.0(postcss@8.5.15))
     optionalDependencies:
@@ -5504,12 +5498,12 @@ snapshots:
       - webpack-cli
       - yaml
 
-  '@angular-devkit/build-webpack@0.2003.29(chokidar@4.0.3)(webpack-dev-server@5.2.5(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)))(webpack@5.105.0(postcss@8.5.15))':
+  '@angular-devkit/build-webpack@0.2003.29(chokidar@4.0.3)(webpack-dev-server@5.2.6(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)))(webpack@5.105.0(postcss@8.5.15))':
     dependencies:
       '@angular-devkit/architect': 0.2003.29(chokidar@4.0.3)
       rxjs: 7.8.2
       webpack: 5.105.0(postcss@8.5.15)
-      webpack-dev-server: 5.2.5(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15))
+      webpack-dev-server: 5.2.6(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15))
     transitivePeerDependencies:
       - chokidar
 
@@ -7498,10 +7492,6 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/node@26.1.1':
-    dependencies:
-      undici-types: 8.3.0
-
   '@types/qs@6.15.1': {}
 
   '@types/range-parser@1.2.7': {}
@@ -9059,7 +9049,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 26.1.1
+      '@types/node': 25.9.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -10529,8 +10519,6 @@ snapshots:
 
   undici-types@7.24.6: {}
 
-  undici-types@8.3.0: {}
-
   undici@6.27.0: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
@@ -10649,7 +10637,7 @@ snapshots:
     transitivePeerDependencies:
       - tslib
 
-  webpack-dev-server@5.2.5(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)):
+  webpack-dev-server@5.2.6(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.15)):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4
