@@ -16,6 +16,7 @@ minimumReleaseAgeExclude:
 
 overrides:
   "@babel/core@<7.29.1": ^7.29.1
+  '@hono/node-server@<2.0.5': ^2.0.5
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
   http-proxy-middleware@>=0.16.0 <=3.0.6: ^3.0.7
   ip-address@<=10.1.0: ^10.1.1
