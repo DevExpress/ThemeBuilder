@@ -1,5 +1,5 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { Properties } from 'devextreme/ui/data_grid';
 import { Subject, Subscription } from 'rxjs';
@@ -8,6 +8,7 @@ import { Subject, Subscription } from 'rxjs';
     selector: 'app-datagrid',
     templateUrl: './datatgrid.component.html',
     styleUrls: ['./datatgrid.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DatagridComponent implements OnInit, OnDestroy {

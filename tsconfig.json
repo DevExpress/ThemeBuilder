@@ -11,6 +11,8 @@
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "resolveJsonModule": true,
+      "strict": false,
+      "ignoreDeprecations": "6.0",
       "target": "ES2022",
       "typeRoots": [
         "node_modules/@types"

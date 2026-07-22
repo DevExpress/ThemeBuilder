@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -9,6 +9,7 @@ import { MetaItem } from '../../types/meta-item';
     selector: 'app-base-parameters',
     templateUrl: './base-parameters.component.html',
     styleUrls: ['./base-parameters.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BaseParametersComponent implements OnDestroy, OnInit {

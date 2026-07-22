@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, Input, OnChanges, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, QueryList, SimpleChanges, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { DxScrollViewComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-preview',
     templateUrl: './preview.component.html',
     styleUrls: ['./preview.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PreviewComponent implements AfterViewInit, OnChanges {

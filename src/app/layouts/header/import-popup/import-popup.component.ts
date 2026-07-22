@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
 
@@ -6,6 +6,7 @@ import { PopupComponent } from '../popup/popup.component';
     selector: 'app-import-popup',
     templateUrl: './import-popup.component.html',
     styleUrls: ['./import-popup.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ImportPopupComponent {

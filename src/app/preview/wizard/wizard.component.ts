@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-wizard',
     templateUrl: './wizard.component.html',
     styleUrls: ['./wizard.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class WizardComponent implements AfterViewInit {

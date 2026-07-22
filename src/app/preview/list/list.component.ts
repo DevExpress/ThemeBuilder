@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxListComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
 import { Properties } from 'devextreme/ui/list';
@@ -7,6 +7,7 @@ import { Properties } from 'devextreme/ui/list';
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ListComponent implements OnInit, OnDestroy {

@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxPivotGridComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
 import { Properties } from 'devextreme/ui/pivot_grid';
@@ -8,6 +8,7 @@ import { Properties } from 'devextreme/ui/pivot_grid';
     selector: 'app-pivotgrid',
     templateUrl: './pivotgrid.component.html',
     styleUrls: ['./pivotgrid.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PivotgridComponent implements OnInit, OnDestroy {

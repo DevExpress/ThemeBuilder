@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 interface PaneContentTemplate {
@@ -10,6 +10,7 @@ interface PaneContentTemplate {
     selector: 'app-splitter',
     templateUrl: './splitter.component.html',
     styleUrls: ['./splitter.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SplitterComponent implements OnDestroy {

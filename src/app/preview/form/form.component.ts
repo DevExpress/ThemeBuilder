@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
 import { Properties } from 'devextreme/ui/form';
@@ -7,6 +7,7 @@ import { Properties } from 'devextreme/ui/form';
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FormComponent implements OnInit, OnDestroy {

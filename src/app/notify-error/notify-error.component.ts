@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NotificationsService } from '../notification.service';
 import { Notification } from '../types/notify';
 
@@ -6,6 +6,7 @@ import { Notification } from '../types/notify';
     selector: 'app-notifications',
     templateUrl: './notify-error.component.html',
     styleUrls: ['./notify-error.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

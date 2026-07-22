@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxDrawerComponent } from 'devextreme-angular';
 import { Subject } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
     selector: 'app-drawer',
     templateUrl: './drawer.component.html',
     styleUrls: ['./drawer.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DrawerComponent {

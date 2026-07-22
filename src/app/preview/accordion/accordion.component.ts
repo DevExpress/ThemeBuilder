@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-accordion',
     templateUrl: './accordion.component.html',
     styleUrls: ['./accordion.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AccordionComponent {

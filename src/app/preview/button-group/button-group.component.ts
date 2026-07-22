@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
@@ -14,6 +14,7 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
     selector: 'app-button-group',
     templateUrl: './button-group.component.html',
     styleUrls: ['./button-group.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ButtonGroupComponent {

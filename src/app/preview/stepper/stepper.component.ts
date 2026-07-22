@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DxStepperTypes } from 'devextreme-angular/ui/stepper';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
@@ -8,6 +8,7 @@ import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
     selector: 'app-stepper',
     templateUrl: './stepper.component.html',
     styleUrls: ['./stepper.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class StepperComponent implements OnDestroy {
