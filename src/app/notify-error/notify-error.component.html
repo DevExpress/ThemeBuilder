@@ -1,6 +1,8 @@
-<div *ngIf="visible" class="notify">
+@if (visible) {
+  <div class="notify">
     <div class="notify-container">
-        <p class="notify-message">{{notifyMessage}}</p>
-        <span class="dx-icon dx-icon-close notify-close" (click)="closeNotify()"></span>
+      <p class="notify-message">{{notifyMessage}}</p>
+      <span class="dx-icon dx-icon-close notify-close" (click)="closeNotify()"></span>
     </div>
-</div>
+  </div>
+}

@@ -1,138 +1,122 @@
-<div *ngIf="isExpanded.getValue(); then expandedBlock; else collapsedBlock"></div>
-<ng-template #collapsedBlock>
-    <div class="btn-container">
-        <div class="btn-row">
-            <div class="btn-cell btn-cell--empty"></div>
-            <div class="btn-cell">
-                <span>Contained button</span>
-            </div>
-            <div class="btn-cell">
-                <span>Outlined button</span>
-            </div>
-            <div class="btn-cell">
-                <span>Text button</span>
-            </div>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell btn-cell--empty"></div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
-            </ng-container>
-        </div>
-    </div>
-</ng-template>
-<ng-template  #expandedBlock>
-    <div class="options-block">
-        <div class="option">
-            <span>Buttons Style</span>
-            <div>
-                <dx-select-box
-                    width="200px"
-                    [(value)]="typeValue"
-                    [items]="['default', 'normal', 'success', 'danger']"
-                    (onValueChanged)="changeType($event)"
-                    stylingMode="outlined">
-                </dx-select-box>
-            </div>
-        </div>
-        <dx-check-box
-            text="Show icons"
-            [value]="true"
-            (onValueChanged)="toogleIcons($event)"
-        ></dx-check-box>
-        <dx-check-box
-            text="Show text"
-            [value]="true"
-            (onValueChanged)="toogleText($event)"
-        ></dx-check-box>
-    </div>
-    <div class="btn-container btn-container-click-disabled">
-        <div class="btn-row">
-            <div class="btn-cell btn-cell--empty"></div>
-            <div class="btn-cell">
-                <span>Contained button</span>
-            </div>
-            <div class="btn-cell">
-                <span>Outlined button</span>
-            </div>
-            <div class="btn-cell">
-                <span>Text button</span>
-            </div>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Normal</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
-            </ng-container>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Hover</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateHover}"></ng-container>
-            </ng-container>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Active</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateActive}"></ng-container>
-            </ng-container>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Focused</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateFocused}"></ng-container>
-            </ng-container>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Selected</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateSelected}"></ng-container>
-            </ng-container>
-        </div>
-
-        <div class="btn-row">
-            <div class="btn-cell">
-                <span>Disabled</span>
-            </div>
-
-            <ng-container *ngFor="let mode of buttonModes">
-                <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateDisabled}"></ng-container>
-            </ng-container>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #buttonTemplate let-mode="mode" let-initState="initState">
-    <div class="btn-cell">
-      <div class="btn-list">
-          <dx-button-group
-              [items]="fullButtonItems"
-              [stylingMode]="mode"
-              (onContentReady)="initState ? initState($event) : null"
-              (onInitialized)="saveStateButtonGroup($event)"
-          ></dx-button-group>
+@if (isExpanded.getValue()) {
+  <div class="options-block">
+    <div class="option">
+      <span>Buttons Style</span>
+      <div>
+        <dx-select-box
+          width="200px"
+          [(value)]="typeValue"
+          [items]="['default', 'normal', 'success', 'danger']"
+          (onValueChanged)="changeType($event)"
+          stylingMode="outlined">
+        </dx-select-box>
       </div>
     </div>
+    <dx-check-box
+      text="Show icons"
+      [value]="true"
+      (onValueChanged)="toogleIcons($event)"
+    ></dx-check-box>
+    <dx-check-box
+      text="Show text"
+      [value]="true"
+      (onValueChanged)="toogleText($event)"
+    ></dx-check-box>
+  </div>
+  <div class="btn-container btn-container-click-disabled">
+    <div class="btn-row">
+      <div class="btn-cell btn-cell--empty"></div>
+      <div class="btn-cell">
+        <span>Contained button</span>
+      </div>
+      <div class="btn-cell">
+        <span>Outlined button</span>
+      </div>
+      <div class="btn-cell">
+        <span>Text button</span>
+      </div>
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Normal</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+      }
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Hover</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateHover}"></ng-container>
+      }
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Active</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateActive}"></ng-container>
+      }
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Focused</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateFocused}"></ng-container>
+      }
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Selected</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateSelected}"></ng-container>
+      }
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell">
+        <span>Disabled</span>
+      </div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode, initState: initStateDisabled}"></ng-container>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="btn-container">
+    <div class="btn-row">
+      <div class="btn-cell btn-cell--empty"></div>
+      <div class="btn-cell">
+        <span>Contained button</span>
+      </div>
+      <div class="btn-cell">
+        <span>Outlined button</span>
+      </div>
+      <div class="btn-cell">
+        <span>Text button</span>
+      </div>
+    </div>
+    <div class="btn-row">
+      <div class="btn-cell btn-cell--empty"></div>
+      @for (mode of buttonModes; track mode) {
+        <ng-container *ngTemplateOutlet="buttonTemplate; context: {mode: mode}"></ng-container>
+      }
+    </div>
+  </div>
+}
+
+<ng-template #buttonTemplate let-mode="mode" let-initState="initState">
+  <div class="btn-cell">
+    <div class="btn-list">
+      <dx-button-group
+        [items]="fullButtonItems"
+        [stylingMode]="mode"
+        (onContentReady)="initState ? initState($event) : null"
+        (onInitialized)="saveStateButtonGroup($event)"
+      ></dx-button-group>
+    </div>
+  </div>
 </ng-template>
