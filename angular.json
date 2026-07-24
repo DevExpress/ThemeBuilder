@@ -11,13 +11,16 @@
             "schematics": {},
             "architect": {
                 "build": {
-                    "builder": "@angular-builders/custom-webpack:browser",
+                    "builder": "@angular/build:application",
                     "options": {
-                        "customWebpackConfig": { "path": "./webpack.config.js" },
-                        "outputPath": "dist/devextreme-themebuilder-app",
+                        "outputPath": {
+                          "base": "dist/devextreme-themebuilder-app",
+                          "browser": ""
+                        },
                         "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                          "src/polyfills.ts"
+                        ],
                         "tsConfig": "src/tsconfig.app.json",
                         "allowedCommonJsDependencies": [
                             "devexpress-diagram",
@@ -51,7 +54,8 @@
                         "styles": [
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "browser": "src/main.ts"
                     },
                     "configurations": {
                         "production": {
@@ -65,15 +69,10 @@
                             "outputHashing": "all",
                             "sourceMap": false,
                             "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true
+                            "extractLicenses": true
                         },
                         "development": {
-                            "buildOptimizer": false,
-                            "optimization": false,
-                            "vendorChunk": true,
+                          "optimization": false,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -81,7 +80,7 @@
                     }
                 },
                 "serve": {
-                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "builder": "@angular/build:dev-server",
                     "options": {
                         "buildTarget": "devextreme-themebuilder-app:build"
                     },
@@ -96,21 +95,9 @@
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@angular/build:extract-i18n",
                     "options": {
                         "buildTarget": "devextreme-themebuilder-app:build"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "src/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
                     }
                 }
             }

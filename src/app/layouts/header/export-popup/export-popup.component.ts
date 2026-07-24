@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
