@@ -4,19 +4,18 @@
       "baseUrl": "./",
       "outDir": "./dist/out-tsc",
       "sourceMap": true,
+      "esModuleInterop": true,
       "declaration": false,
       "module": "es2015",
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "resolveJsonModule": true,
+      "strict": false,
+      "ignoreDeprecations": "6.0",
       "target": "ES2022",
       "typeRoots": [
         "node_modules/@types"
-      ],
-      "lib": [
-        "es2017",
-        "dom"
       ],
       "paths": {
         "jszip": [

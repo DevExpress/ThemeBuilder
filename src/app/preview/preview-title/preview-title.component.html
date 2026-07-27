@@ -1,6 +1,8 @@
 <div class="preview-title-wrapper">
-    <h1 class="preview-title">
-        <ng-content></ng-content>
-    </h1>
-    <app-badge *ngIf="isNew">New</app-badge>
+  <h1 class="preview-title">
+    <ng-content></ng-content>
+  </h1>
+  @if (isNew) {
+    <app-badge>New</app-badge>
+  }
 </div>

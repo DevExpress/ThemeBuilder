@@ -1,5 +1,5 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxTreeListComponent } from 'devextreme-angular';
 import { Subject, Subscription } from 'rxjs';
 import { Properties } from 'devextreme/ui/tree_list';
@@ -8,6 +8,7 @@ import { Properties } from 'devextreme/ui/tree_list';
     selector: 'app-treelist',
     templateUrl: './treelist.component.html',
     styleUrls: ['./treelist.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TreelistComponent implements OnInit, OnDestroy {

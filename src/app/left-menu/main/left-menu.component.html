@@ -1,67 +1,84 @@
 <div class="left-menu">
-    <div class="working-area">
-        <div class="scroll-container" *ngIf="workArea">
-            <dx-scroll-view (onScroll)="fireScrollEventForClosingDropdowns()">
-            <div *ngFor="let data of filteredData">
-                <div class="name top search-active" *ngIf="searchOpened">
-                    <div class="link-handler" [routerLink]="['/advanced', theme, colorScheme, data.route]"></div>
-                    <div class="link-text" [innerHtml]="getRealName(data.name)"></div>
-                </div>
-                <div *ngFor="let group of data.groups" class="work-item">
-                    <div class="group" #groupElement *ngIf="group.items && group.items.length">
-                        <div class="group-header" (click)="groupElement.classList.toggle('closed')">
-                            <span [innerHtml]="getRealName(group.name)"></span>
-                            <span class="chevron dx-icon-chevronup"></span>
-                        </div>
-                        <div class="group-items">
-                            <ng-container *ngFor="let item of group.items">
-                                <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
-                            </ng-container>
-                        </div>
-                    </div>
-                </div>
-                <div *ngFor="let item of data.items" class="work-item">
-                    <div>
-                        <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
-                    </div>
-                </div>
-            </div>
-            <div class="no-data" *ngIf="!filteredData.length">Your search did not match any results.</div>
-            </dx-scroll-view>
-        </div>
-
-        <div class="name top" (click)="openMenu()">
-            <span class="arrow menu"></span>{{ workAreaName }}
-            <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()" [formGroup]="formGroup">
-                <span class="arrow search"></span>
-                <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" formControlName="formControl"/>
-            </div>
-            <div class="search-button" (click)="toggleSearch($event)">
-                <app-search-opener [opened]="searchOpened"></app-search-opener>
-            </div>
-        </div>
-    </div>
-    <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">
-        <div class="menu-item top" (click)="menuClosed = true;">
+  <div class="working-area">
+    @if (workArea) {
+      <div class="scroll-container">
+        <dx-scroll-view (onScroll)="fireScrollEventForClosingDropdowns()">
+          @for (data of filteredData; track data) {
             <div>
-                <app-back-navigator text="Back"></app-back-navigator>
-            </div>
-
-        </div>
-        <div class="separator"></div>
-        <div class="scroll-container">
-            <dx-scroll-view>
-                <div
-                    *ngFor="let menuItem of menuData"
-                    class="menu-item"
-                    [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"
-                    routerLinkActive="active-link"
-                    (click)="selectComponent(menuItem.route)"
-                >
-                    {{ menuItem.name }}
-                    <app-badge *ngIf="menuItem.isNew">New</app-badge>
+              @if (searchOpened) {
+                <div class="name top search-active">
+                  <div class="link-handler" [routerLink]="['/advanced', theme, colorScheme, data.route]"></div>
+                  <div class="link-text" [innerHtml]="getRealName(data.name)"></div>
                 </div>
-            </dx-scroll-view>
-        </div>
+              }
+              @for (group of data.groups; track group) {
+                <div class="work-item">
+                  @if (group.items && group.items.length) {
+                    <div class="group" #groupElement>
+                      <div class="group-header" (click)="groupElement.classList.toggle('closed')">
+                        <span [innerHtml]="getRealName(group.name)"></span>
+                        <span class="chevron dx-icon-chevronup"></span>
+                      </div>
+                      <div class="group-items">
+                        @for (item of group.items; track item) {
+                          <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+              @for (item of data.items; track item) {
+                <div class="work-item">
+                  <div>
+                    <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+          @if (!filteredData.length) {
+            <div class="no-data">Your search did not match any results.</div>
+          }
+        </dx-scroll-view>
+      </div>
+    }
+
+    <div class="name top" (click)="openMenu()">
+      <span class="arrow menu"></span>{{ workAreaName }}
+      <div class="search-container" [ngClass]="{'opened': searchOpened}" (click)="$event.stopPropagation()" [formGroup]="formGroup">
+        <span class="arrow search"></span>
+        <input #searchInput type="text" placeholder="Search..." [value]="searchKeyword" formControlName="formControl"/>
+      </div>
+      <div class="search-button" (click)="toggleSearch($event)">
+        <app-search-opener [opened]="searchOpened"></app-search-opener>
+      </div>
     </div>
+  </div>
+  <div class="dark-menu" [ngClass]="{ 'closed' : menuClosed }">
+    <div class="menu-item top" (click)="menuClosed = true;">
+      <div>
+        <app-back-navigator text="Back"></app-back-navigator>
+      </div>
+
+    </div>
+    <div class="separator"></div>
+    <div class="scroll-container">
+      <dx-scroll-view>
+        @for (menuItem of menuData; track menuItem) {
+          <div
+            class="menu-item"
+            [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"
+            routerLinkActive="active-link"
+            (click)="selectComponent(menuItem.route)"
+            >
+            {{ menuItem.name }}
+            @if (menuItem.isNew) {
+              <app-badge>New</app-badge>
+            }
+          </div>
+        }
+      </dx-scroll-view>
+    </div>
+  </div>
 </div>

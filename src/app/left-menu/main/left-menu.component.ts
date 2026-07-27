@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DxScrollViewComponent } from 'devextreme-angular';
@@ -17,6 +17,7 @@ const BASE_THEMING_NAME = 'Basic Settings';
     selector: 'app-left-menu',
     templateUrl: './left-menu.component.html',
     styleUrls: ['./left-menu.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

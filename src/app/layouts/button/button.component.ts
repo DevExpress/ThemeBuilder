@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 const DEFAULT_BUTTON_WIDTH = 200;
 const DEFAULT_BUTTON_HEIGHT = 44;
@@ -7,6 +7,7 @@ const DEFAULT_BUTTON_HEIGHT = 44;
     selector: 'app-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ButtonComponent {

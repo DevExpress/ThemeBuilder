@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoadingService } from '../loading.service';
@@ -8,6 +8,7 @@ import { MetadataRepositoryService } from '../meta-repository.service';
     selector: 'app-iframe',
     templateUrl: './iframe.component.html',
     styleUrls: ['./iframe.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {

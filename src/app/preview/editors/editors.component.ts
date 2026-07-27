@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
     selector: 'app-editors',
     templateUrl: './editors.component.html',
     styleUrls: ['./editors.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditorsComponent implements OnInit, OnDestroy {

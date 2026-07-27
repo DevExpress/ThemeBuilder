@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 import * as JSZipUtils from 'jszip-utils';
 import { ImportService } from '../../../import.service';
 import { PopupComponent } from '../popup/popup.component';
@@ -27,6 +27,7 @@ class TreeData {
     selector: 'app-export-popup',
     templateUrl: './export-popup.component.html',
     styleUrls: ['./export-popup.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ExportPopupComponent implements OnInit {

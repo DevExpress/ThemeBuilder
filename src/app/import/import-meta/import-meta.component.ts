@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { mutePromise } from 'src/app/promise-helper';
 import { ImportService } from '../../import.service';
 
@@ -6,6 +6,7 @@ import { ImportService } from '../../import.service';
     selector: 'app-import-meta',
     templateUrl: './import-meta.component.html',
     styleUrls: ['./import-meta.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ImportMetaComponent {

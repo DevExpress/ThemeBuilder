@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
@@ -8,6 +8,7 @@ import { ThemeConfig } from '../types/theme';
 @Component({
     templateUrl: './master.component.html',
     styleUrls: ['./master.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

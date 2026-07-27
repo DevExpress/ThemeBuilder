@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-help-tooltip',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
         display: flex;
         cursor: pointer;
     }`],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HelpTooltipComponent {}

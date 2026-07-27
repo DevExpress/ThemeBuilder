@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { NotificationsService } from 'src/app/notification.service';
 import { mutePromise } from 'src/app/promise-helper';
@@ -8,6 +8,7 @@ import { ImportService } from '../../import.service';
     selector: 'app-bootstrap-uploader',
     templateUrl: './bootstrap-uploader.component.html',
     styleUrls: ['./bootstrap-uploader.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BootstrapUploaderComponent {
