@@ -21,7 +21,6 @@
     "@angular/core": "^22.0.8",
     "@angular/forms": "^22.0.8",
     "@angular/platform-browser": "^22.0.8",
-    "@angular/platform-browser-dynamic": "^22.0.8",
     "@angular/router": "^22.0.8",
     "core-js": "^2.6.12",
     "devextreme": "26.1.3",
