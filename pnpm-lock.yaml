@@ -44,14 +44,14 @@ importers:
         specifier: ^2.6.12
         version: 2.6.12
       devextreme:
-        specifier: 26.1.3
-        version: 26.1.3
+        specifier: 26.1.4
+        version: 26.1.4
       devextreme-angular:
-        specifier: 26.1.3
-        version: 26.1.3(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/forms@22.0.8(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(devextreme@26.1.3)
+        specifier: 26.1.4
+        version: 26.1.4(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/forms@22.0.8(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(devextreme@26.1.4)
       devextreme-themebuilder:
-        specifier: 26.1.3
-        version: 26.1.3(bootstrap@5.3.8(@popperjs/core@2.11.8))
+        specifier: 26.1.4
+        version: 26.1.4(bootstrap@5.3.8(@popperjs/core@2.11.8))
       file-saver:
         specifier: ^2.0.5
         version: 2.0.5
@@ -1709,27 +1709,27 @@ packages:
   devexpress-gantt@4.1.69:
     resolution: {integrity: sha512-UPrVT/U7voNRYLP1Kk5DEM7OB7WT2XwDiJi6zzAZOqhFu6sCuAViwth+WVQ7HmgWDNIyCxc/+cB13qq1p244lg==}
 
-  devextreme-angular@26.1.3:
-    resolution: {integrity: sha512-4VR+8VgtKrzu5BQW6Vh6CzWvdHxrXFdruadmFWMcET36lS2StM0rXCcNRrDD+1KXM4j2pYK2+l/5aht1+dzqwg==}
+  devextreme-angular@26.1.4:
+    resolution: {integrity: sha512-nb95UBXTqLXXA2E7CpHX456qve2L5FFzdJmzozE6LMwcdb29jWb9byBA7jUpCwDD9TI8GlsFJ9YivByIUKr2lg==}
     peerDependencies:
       '@angular/common': '>=20.0.0'
       '@angular/core': '>=20.0.0'
       '@angular/forms': '>=20.0.0'
-      devextreme: 26.1.3
+      devextreme: 26.1.4
 
-  devextreme-quill@1.7.9:
-    resolution: {integrity: sha512-UEkR16+I/7P/4+7dUmc65lv+VRdRGk0kFvZXgHnM2UFcEBKqm1kVDdVPBolGRFwuOFuDttJxp2SXUAyiuSC8wA==}
+  devextreme-quill@1.7.10:
+    resolution: {integrity: sha512-AsbMuYAON87Xk77bY4wjjtniONrgQe/WV7LSFxdU58z+bBn0gCkH3hZOJorSwfotThcwRLb150oTJ2ABJcO6DQ==}
 
   devextreme-schematics@1.15.0:
     resolution: {integrity: sha512-XyWEtSiJ2EsYqPhtoDeFt9wP29Wei3XWwxYBMVUhyHvPwK0x7zzbMDlQEJkDa2wZ7ftyRPKYtoE6dMiKwLOyog==}
 
-  devextreme-themebuilder@26.1.3:
-    resolution: {integrity: sha512-jAUhuMh1vnDuUp39le81z72GkNxXH4lV0GYN8ElLJpTJJ99uBhoClXO1qyKEtTCciGNSLuMvW+6ESNpN1UsxFw==}
+  devextreme-themebuilder@26.1.4:
+    resolution: {integrity: sha512-44HFIwauPvrJRX+awzL4bH7qRS+x6XYPuTUcyc2vmURytLsAhD8RbEmhFd8RxDCY3icypevNXU08pQDJZgMrvg==}
     peerDependencies:
       bootstrap: ^5.3.8
 
-  devextreme@26.1.3:
-    resolution: {integrity: sha512-XTR/1DNffJ4h5V/h20usx/b7WcWfoFoV8ZtMDA6l1r/eDE7IiM42Nw5AnEw9Ozyu9JO0CiB4GBs6cvt2x8AUlg==}
+  devextreme@26.1.4:
+    resolution: {integrity: sha512-7e5drKicFKUnlEhqfK53sLEViKUR044HJwRG2KPSK16lgPTwWNtw3BVBnkF4JPRzd7/a9EBqgbZbTt6Ofrf7oQ==}
     hasBin: true
 
   dom-serializer@2.0.0:
@@ -4527,7 +4527,7 @@ snapshots:
 
   autoprefixer@10.5.0(postcss@8.5.23):
     dependencies:
-      browserslist: 4.28.6
+      browserslist: 4.28.7
       caniuse-lite: 1.0.30001806
       fraction.js: 5.3.4
       picocolors: 1.1.1
@@ -4770,20 +4770,20 @@ snapshots:
       '@devexpress/utils': 2.1.1
       tslib: 2.3.1
 
-  devextreme-angular@26.1.3(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/forms@22.0.8(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(devextreme@26.1.3):
+  devextreme-angular@26.1.4(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/forms@22.0.8(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(devextreme@26.1.4):
     dependencies:
       '@angular-devkit/schematics': 20.3.29
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)
       '@angular/forms': 22.0.8(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
-      devextreme: 26.1.3
+      devextreme: 26.1.4
       devextreme-schematics: 1.15.0
       inferno-server: 8.2.3
       tslib: 2.8.1
     transitivePeerDependencies:
       - chokidar
 
-  devextreme-quill@1.7.9:
+  devextreme-quill@1.7.10:
     dependencies:
       core-js: 3.49.0
       eventemitter3: 4.0.7
@@ -4803,7 +4803,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  devextreme-themebuilder@26.1.3(bootstrap@5.3.8(@popperjs/core@2.11.8)):
+  devextreme-themebuilder@26.1.4(bootstrap@5.3.8(@popperjs/core@2.11.8)):
     dependencies:
       autoprefixer: 10.5.0(postcss@8.5.23)
       bootstrap: 5.3.8(@popperjs/core@2.11.8)
@@ -4811,13 +4811,13 @@ snapshots:
       postcss: 8.5.23
       sass-embedded: 1.93.3
 
-  devextreme@26.1.3:
+  devextreme@26.1.4:
     dependencies:
       '@babel/runtime': 7.29.7
       '@preact/signals-core': 1.14.3
       devexpress-diagram: 2.2.29
       devexpress-gantt: 4.1.69
-      devextreme-quill: 1.7.9
+      devextreme-quill: 1.7.10
       inferno: 8.2.3
       inferno-create-element: 8.2.3
       inferno-hydrate: 8.2.3

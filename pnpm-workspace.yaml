@@ -6,6 +6,11 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
 
+minimumReleaseAgeExclude:
+  - devextreme-angular@26.1.4
+  - devextreme-themebuilder@26.1.4
+  - devextreme@26.1.4
+
 overrides:
   '@hono/node-server@<2.0.5': ^2.0.5
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
