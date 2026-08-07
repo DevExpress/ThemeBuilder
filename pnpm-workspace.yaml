@@ -6,13 +6,11 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
 
+minimumReleaseAgeExclude:
+  - devextreme-angular@26.1.4
+  - devextreme-themebuilder@26.1.4
+  - devextreme@26.1.4
+
 overrides:
   '@hono/node-server@<2.0.5': ^2.0.5
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
-  http-proxy-middleware@>=0.16.0 <=3.0.6: ^3.0.7
-  ip-address@<=10.3.0: ^10.3.1
-  piscina@>=5.0.0 <=5.1.4: ^5.1.5
-  qs@>=6.11.1 <=6.15.1: ^6.15.2
-  uuid@<11.1.1: ^11.1.1
-  "vite@>=7.0.0 <=7.3.4": ^7.3.5
-  webpack-dev-server@<=5.2.5: ^5.2.6
