@@ -13,4 +13,5 @@ minimumReleaseAgeExclude:
 
 overrides:
   '@hono/node-server@<2.0.5': ^2.0.5
+  less@<4.8.1: ^4.8.1
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
