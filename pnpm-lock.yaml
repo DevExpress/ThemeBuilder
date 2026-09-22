@@ -4,12 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@hono/node-server@<2.0.5': ^2.0.5
-  less@<4.8.1: ^4.8.1
-  esbuild@>=0.27.3 <0.28.1: ^0.28.1
-  nanoid@<3.3.18: ^3.3.18
-
 importers:
 
   .:
@@ -165,7 +159,7 @@ packages:
       '@angular/ssr': ^22.1.7
       istanbul-lib-instrument: ^6.0.0
       karma: ^6.4.0
-      less: ^4.8.1
+      less: ^4.2.0
       ng-packagr: ^22.0.0
       postcss: ^8.4.0
       rollup: ^4.0.0
@@ -3205,9 +3199,9 @@ packages:
     peerDependencies:
       '@types/node': ^20.19.0 || >=22.12.0
       '@vitejs/devtools': ^0.3.0
-      esbuild: ^0.28.1
+      esbuild: ^0.27.0 || ^0.28.0
       jiti: '>=1.21.0'
-      less: ^4.8.1
+      less: ^4.0.0
       sass: ^1.70.0
       sass-embedded: ^1.70.0
       stylus: '>=0.54.8'
