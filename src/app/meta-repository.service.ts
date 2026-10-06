@@ -13,6 +13,7 @@ import { Metadata } from './types/metadata';
 export class MetadataRepositoryService {
     private modifiedMetaCollection: ExportedItem[] = [];
     private metadata: Metadata;
+    private metadataPromise: Promise<Metadata> | null = null;
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
     css = new BehaviorSubject<string>('');
@@ -57,14 +58,17 @@ export class MetadataRepositoryService {
     }
 
     private getMetadata(): Promise<Metadata> {
-        if(this.metadata) {
-            return Promise.resolve(this.metadata);
+        if(this.metadataPromise === null) {
+            this.metadataPromise = this.themeBuilder.getMetadata().then((metadata) => {
+                this.metadata = metadata;
+                return metadata;
+            }, (error) => {
+                this.metadataPromise = null;
+                throw error;
+            });
         }
 
-        return this.themeBuilder.getMetadata().then((metadata) => {
-            if(!this.metadata) this.metadata = metadata;
-            return metadata;
-        });
+        return this.metadataPromise;
     }
 
     getData(): Promise<MetaItem[]> {
@@ -194,24 +198,10 @@ export class MetadataRepositoryService {
     }
 
     getVersion(): Promise<string> {
-        if(this.metadata) {
-            return Promise.resolve(this.metadata.version);
-        }
-
-        return this.getMetadata().then((metadata) => {
-            if(!this.metadata) this.metadata = metadata;
-            return metadata.version;
-        });
+        return this.getMetadata().then((metadata) => metadata.version);
     }
 
     getThemes(): Promise<ThemeConfig[]> {
-        if(this.metadata) {
-            return Promise.resolve(this.metadata.themes);
-        }
-
-        return this.getMetadata().then((metadata) => {
-            if(!this.metadata) this.metadata = metadata;
-            return metadata.themes;
-        });
+        return this.getMetadata().then((metadata) => metadata.themes);
     }
 }

@@ -33,7 +33,7 @@ export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
             if(this.theme !== params['theme']) {
                 this.loading.show();
                 this.theme = params['theme'];
-                this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme;
+                this.url = document.getElementsByTagName('base')[0].href + (widget ? 'preview' : 'wizard') + '/' + this.theme + '/';
                 if(this.iframe) {
                     this.iframe.nativeElement.src = this.url;
                 }

@@ -99,8 +99,10 @@
     display: flex;
 }
 
-.switcher-template .switcher-icon.editor {
+.switcher-icon.editor {
     margin-left: 11px;
+    padding: 3px;
+    height: 100%;
     display: flex;
     align-items: center;
 }

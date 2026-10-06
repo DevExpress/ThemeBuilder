@@ -17,9 +17,9 @@
           stylingMode="filled"
           [grouped]="true"
           groupTemplate="group"
-          displayExpr="text"
+          [displayExpr]="getDisplayText"
           valueExpr="themeId"
-          fieldTemplate="field"
+          [fieldAddons]="{ beforeTemplate: 'fieldIcon' }"
           [(value)]="currentThemeId"
           (onValueChanged)="themeChanged($event)"
           >
@@ -43,14 +43,10 @@
               </dx-tooltip>
             </div>
           </div>
-          <div *dxTemplate="let data of 'field'">
-            <div class="switcher-template">
+          <div *dxTemplate="let data of 'fieldIcon'">
+            @if (data) {
               <app-icon-theme-circle [theme]="data.text | lowercase" [small]="true" class="switcher-icon editor"></app-icon-theme-circle>
-              <dx-text-box
-                [value]="(data.name | titlecase) + ' ' + data.text"
-                [readOnly]="true"
-              ></dx-text-box>
-            </div>
+            }
           </div>
           <div *dxTemplate="let data of 'item'">
             <div class="switcher-template">
