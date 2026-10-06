@@ -29,6 +29,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     currentThemeId: number;
 
+    getDisplayText = (item: { name: string; text: string } | null): string => {
+        if(!item) return '';
+        const name = item.name.toLowerCase().replace(/^\w/, (c) => c.toUpperCase());
+        return `${name} ${item.text}`;
+    };
+
     constructor(private metadataService: MetadataRepositoryService, private route: Router) {}
 
     themeChanged(e): void {
