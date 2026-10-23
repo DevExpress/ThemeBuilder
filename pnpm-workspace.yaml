@@ -7,9 +7,9 @@ allowBuilds:
   msgpackr-extract: true
 
 minimumReleaseAgeExclude:
-  - devextreme-angular@26.1.5
-  - devextreme-themebuilder@26.1.5
-  - devextreme@26.1.5
+  - devextreme-angular@26.1.6
+  - devextreme-themebuilder@26.1.6
+  - devextreme@26.1.6
 
 overrides:
   vite@>=8.3.0 <=8.3.2: ~8.3.3
