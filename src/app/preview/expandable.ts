@@ -1,21 +1,17 @@
-import { EffectRef, Signal, WritableSignal, effect, untracked } from '@angular/core';
+import { AfterRenderRef, Signal, WritableSignal, afterRenderEffect, untracked } from '@angular/core';
 
 export interface ExpandableWidget {
     widgetGroup: string;
     isExpanded: WritableSignal<boolean>;
 }
 
-export function onExpandedChange(isExpanded: Signal<boolean>, callback: (expanded: boolean) => void): EffectRef {
-    let initialized = false;
-
-    return effect(() => {
+/**
+ * Applies the expanded state after render: once initially (view children are resolved by then),
+ * so collapsed options are applied on startup, and again on every change.
+ */
+export function onExpandedChange(isExpanded: Signal<boolean>, callback: (expanded: boolean) => void): AfterRenderRef {
+    return afterRenderEffect(() => {
         const expanded = isExpanded();
-
-        if(!initialized) {
-            initialized = true;
-            return;
-        }
-
         untracked(() => callback(expanded));
     });
 }
