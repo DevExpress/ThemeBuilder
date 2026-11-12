@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { Component, ElementRef, ViewChild, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, ViewChild, inject, signal } from '@angular/core';
 import { DxPivotGridComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/pivot_grid';
@@ -18,6 +18,7 @@ export class PivotgridComponent {
 
     constructor(private element: ElementRef) {
         onExpandedChange(this.isExpanded, (expanded) => this.applyExpanded(expanded));
+        inject(DestroyRef).onDestroy(() => this.flexItem?.removeEventListener('transitionend', this.fixDimensions));
     }
 
     dataSourceStore: any[] = [
@@ -412,27 +413,32 @@ export class PivotgridComponent {
         allowFiltering: true
     };
 
-    private applyExpanded(expanded: boolean): void {
-        const pivotGridInstance = this.pivotGrid.instance;
-        const flexItem = this.element.nativeElement.parentElement.parentElement;
+    // Stable reference, so the transitionend listener is registered once and can be removed
+    private readonly fixDimensions = (): void => {
         const maxWidthForFieldPanel = 970;
+        const pivotGridInstance = this.pivotGrid.instance;
+        const width = this.flexItem.getBoundingClientRect().width;
 
-        const fixDimensions = (): void => {
-            const width = flexItem.getBoundingClientRect().width;
+        if(width < maxWidthForFieldPanel) {
+            pivotGridInstance.option({ fieldPanel: { visible: false }});
+        } else {
+            pivotGridInstance.updateDimensions();
+        }
+    };
 
-            if(width < maxWidthForFieldPanel) {
-                pivotGridInstance.option({ fieldPanel: { visible: false }});
-            } else {
-                pivotGridInstance.updateDimensions();
-            }
-        };
+    private flexItem: HTMLElement | null = null;
+
+    private applyExpanded(expanded: boolean): void {
+        if(!this.flexItem) {
+            this.flexItem = this.element.nativeElement.parentElement.parentElement;
+            this.flexItem.addEventListener('transitionend', this.fixDimensions, false);
+        }
+
+        const pivotGridInstance = this.pivotGrid.instance;
 
         pivotGridInstance.beginUpdate();
         pivotGridInstance.option(expanded ? this.expandedOptions : this.collapsedOptions);
-        fixDimensions();
+        this.fixDimensions();
         pivotGridInstance.endUpdate();
-
-        flexItem.removeEventListener('transitionend', fixDimensions);
-        flexItem.addEventListener('transitionend', fixDimensions, false);
     }
 }
