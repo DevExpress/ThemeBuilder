@@ -10,7 +10,7 @@
     [title]="title"
 >
     <div class="title">{{title}}</div>
-    <div class="close-button" (click)="visible = false;">
+    <div class="close-button" (click)="visible.set(false)">
         <div class="dx-icon dx-icon-close"></div>
     </div>
     <ng-content></ng-content>

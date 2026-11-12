@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import normalize from 'devextreme-themebuilder/modules/config-normalizer';
 import { MetadataRepositoryService } from './meta-repository.service';
@@ -10,7 +10,14 @@ export class ImportService {
     constructor(private metaRepository: MetadataRepositoryService, private route: Router) {}
     private savedMetadata: BuilderConfig = {};
     private normalizedMetadata: BuilderConfig = {};
-    changed = new EventEmitter();
+    // Incremented whenever saved metadata changes
+    private readonly changedState = signal(0);
+    readonly changed = this.changedState.asReadonly();
+
+    private notifyChanged(): void {
+        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+        this.changedState.update((version) => version + 1);
+    }
 
     importBootstrapVariables(variables: string, bootstrapVersion: number, redirectView: string): Promise<void> {
         this.clearSavedMetadata();
@@ -35,7 +42,7 @@ export class ImportService {
             colorScheme: this.normalizedMetadata.colorScheme
         }, this.savedMetadata.items).then(() => {
             this.route.navigate([redirectView, this.normalizedMetadata.themeName, this.normalizedMetadata.colorScheme]);
-            this.changed.emit();
+            this.notifyChanged();
         });
     }
 
@@ -81,6 +88,6 @@ export class ImportService {
     clearSavedMetadata(): void {
         this.savedMetadata = {};
         this.normalizedMetadata = {};
-        this.changed.emit();
+        this.notifyChanged();
     }
 }

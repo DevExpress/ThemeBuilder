@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { ThemeBuilderService } from './theme-builder.service';
 import { LoadingService } from './loading.service';
 import { BuilderResult } from './types/builder-result';
@@ -16,7 +15,9 @@ export class MetadataRepositoryService {
     private metadataPromise: Promise<Metadata> | null = null;
 
     theme: Theme = { name: 'generic', colorScheme: 'light' };
-    css = new BehaviorSubject<string>('');
+    // Notifies on every build, even if the CSS text is unchanged (consumers reload metadata on each build)
+    private readonly cssState = signal<string>('', { equal: () => false });
+    readonly css = this.cssState.asReadonly();
     forceRebuild = false;
     globalBuildNumber = 0;
 
@@ -145,7 +146,7 @@ export class MetadataRepositoryService {
                     item.Value = result.compiledMetadata[item.Key];
                 });
 
-                this.css.next(result.css);
+                this.cssState.set(result.css);
                 return result;
             });
         });

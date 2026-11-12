@@ -11,7 +11,7 @@
     </div>
     <div class="schemes-container">
       <ul class="schemes">
-        @for (theme of themesList; track theme) {
+        @for (theme of themesList(); track theme) {
           <li
             routerLinkActive="active"
             [routerLink]="['/master', theme.name, theme.colorScheme]">
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="section right">
-    @if (showIframe) {
+    @if (showIframe()) {
       <app-iframe></app-iframe>
     }
   </div>

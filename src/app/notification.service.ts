@@ -1,24 +1,17 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 import { Notification } from './types/notify';
 
 @Injectable()
 export class NotificationsService {
-    private $notification: Subject<Notification>;
-
-    constructor() {
-        this.$notification = new BehaviorSubject(null);
-    }
+    // A new object per call, so repeating the same message still notifies
+    private readonly notificationState = signal<Notification | null>(null);
+    readonly notification = this.notificationState.asReadonly();
 
     error(message: string): void {
         this.notify(message, 'error');
     }
 
     private notify(message: string, type: string): void {
-        this.$notification.next({ message, type } as Notification);
-    }
-
-    get notification(): Observable<Notification> {
-        return this.$notification.asObservable();
+        this.notificationState.set({ message, type } as Notification);
     }
 }

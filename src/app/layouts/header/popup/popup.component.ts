@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
     selector: 'app-popup',
@@ -13,17 +13,17 @@ export class PopupComponent {
     @Input() height: number|string;
     @Output() popupShown = new EventEmitter();
 
-    visible = false;
+    visible = signal(false);
 
     shown(): void {
         this.popupShown.emit();
     }
 
     show(): void {
-        this.visible = true;
+        this.visible.set(true);
     }
 
     hide(): void {
-        this.visible = false;
+        this.visible.set(false);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, effect, signal, untracked } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
@@ -30,7 +30,7 @@ class TreeData {
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class ExportPopupComponent implements OnInit {
+export class ExportPopupComponent {
     @ViewChild('popup') popup: PopupComponent;
     @ViewChild('widgetsTreeView') treeView: DxTreeViewComponent;
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
@@ -66,15 +66,20 @@ export class ExportPopupComponent implements OnInit {
     makeSwatch = false;
     needMeta = false;
     outputFile: string;
-    textContent: string;
-    contentReady = true;
-    copyAreaActive = false;
+    textContent = signal<string>('');
+    contentReady = signal(true);
+    copyAreaActive = signal(false);
     removeExternalResources = false;
 
     constructor(
         private importService: ImportService,
         private analyticsEventsService: AnalyticsEventsService
-    ) { }
+    ) {
+        effect(() => {
+            this.importService.changed();
+            untracked(() => this.setParameters());
+        });
+    }
 
     changeStep(index: number): void {
         const START_PAGE_INDEX = 0;
@@ -82,7 +87,7 @@ export class ExportPopupComponent implements OnInit {
             if(!this.validate().isValid) return;
         }
 
-        this.copyAreaActive = false;
+        this.copyAreaActive.set(false);
         this.viewIndex = index;
     }
 
@@ -221,15 +226,15 @@ export class ExportPopupComponent implements OnInit {
             );
         }
 
-        this.contentReady = false;
+        this.contentReady.set(false);
         return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources)
             .then((css) => {
-                this.contentReady = true;
-                this.textContent = css;
+                this.contentReady.set(true);
+                this.textContent.set(css);
                 if(save) this.fileSave(css);
             })
             .catch((e) => {
-                this.contentReady = true;
+                this.contentReady.set(true);
                 console.log('Css export fails', e);
             });
     }
@@ -245,7 +250,7 @@ export class ExportPopupComponent implements OnInit {
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources).then((metaString) => {
-            this.textContent = metaString;
+            this.textContent.set(metaString);
             if(save) fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         });
     }
@@ -264,7 +269,7 @@ export class ExportPopupComponent implements OnInit {
             fluent: 'fluent'
         }[this.importService.getThemeName()] || '';
         const fontFilePath = `icons/dxicons${theme}`;
-        this.contentReady = false;
+        this.contentReady.set(false);
 
         fontExtension.forEach((extension) => {
             zip.file(
@@ -282,7 +287,7 @@ export class ExportPopupComponent implements OnInit {
 
         zip.generateAsync({type: 'blob'})
             .then((content) => {
-                this.contentReady = true;
+                this.contentReady.set(true);
                 saveAs(content, fileName + '.zip');
             });
     }
@@ -295,7 +300,7 @@ export class ExportPopupComponent implements OnInit {
                 this.importService.getThemeName()
             );
             this.exportMeta(false);
-            this.copyAreaActive = true;
+            this.copyAreaActive.set(true);
         } else {
             this.analyticsEventsService.trackEvent(
                 'TB: Export',
@@ -303,7 +308,7 @@ export class ExportPopupComponent implements OnInit {
                 this.importService.getThemeName()
             );
             this.exportCss(false)
-                .then(() => this.copyAreaActive = true)
+                .then(() => this.copyAreaActive.set(true))
                 .catch((e) => {
                     console.log(e);
                 });
@@ -316,10 +321,5 @@ export class ExportPopupComponent implements OnInit {
             'Tb copy ' + (this.needMeta ? 'metadata' : 'css'),
             this.importService.getThemeName()
         );
-    }
-
-    ngOnInit(): void {
-        this.setParameters();
-        this.importService.changed.subscribe(() => this.setParameters());
     }
 }

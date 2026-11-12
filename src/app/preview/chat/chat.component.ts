@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
     selector: 'app-chat',
@@ -9,8 +8,8 @@ import { BehaviorSubject } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class ChatComponent implements OnDestroy {
-    isExpanded = new BehaviorSubject<boolean>(false);
+export class ChatComponent {
+    isExpanded = signal<boolean>(false);
     widgetGroup = 'chat';
 
     showTyping = true;
@@ -69,9 +68,5 @@ export class ChatComponent implements OnDestroy {
 
     toogleErrors() {
         this.showAlert = !this.showAlert;
-    }
-
-    ngOnDestroy(): void {
-        this.isExpanded.unsubscribe();
     }
 }

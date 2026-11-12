@@ -173,7 +173,7 @@
             </div>
           </div>
           <div class="buttons-container export-buttons">
-            <button class="button" [disabled]="!contentReady" (click)="exportCss(true)">
+            <button class="button" [disabled]="!contentReady()" (click)="exportCss(true)">
               <div class="button-icon">
                 <app-button-icon name="download"></app-button-icon>
               </div>
@@ -182,7 +182,7 @@
                 CSS File
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="exportZip()">
+            <button class="button" [disabled]="!contentReady()" (click)="exportZip()">
               <div class="button-icon">
                 <app-button-icon name="zip"></app-button-icon>
               </div>
@@ -191,7 +191,7 @@
                 ZIP Archive
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="needMeta = false;copy()">
+            <button class="button" [disabled]="!contentReady()" (click)="needMeta = false;copy()">
               <div class="button-icon">
                 <app-button-icon name="copy-css"></app-button-icon>
               </div>
@@ -208,7 +208,7 @@
             </div>
           </div>
           <div class="buttons-container export-buttons">
-            <button class="button" [disabled]="!contentReady" (click)="exportMeta(true)">
+            <button class="button" [disabled]="!contentReady()" (click)="exportMeta(true)">
               <div class="button-icon">
                 <app-button-icon name="download"></app-button-icon>
               </div>
@@ -217,7 +217,7 @@
                 Metadata File
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="needMeta = true;copy()">
+            <button class="button" [disabled]="!contentReady()" (click)="needMeta = true;copy()">
               <div class="button-icon">
                 <app-button-icon name="copy-meta"></app-button-icon>
               </div>
@@ -226,7 +226,7 @@
                 Metadata
               </div>
             </button>
-            <div class="export-loading" [ngClass]="{'hidden': contentReady}">
+            <div class="export-loading" [ngClass]="{'hidden': contentReady()}">
               <app-icon-loading></app-icon-loading>
               <div>Please wait.</div>
             </div>
@@ -243,14 +243,14 @@
       }
     </div>
   </div>
-  <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive}">
+  <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive()}">
     <div class="copy-text">Copy {{ needMeta ? 'Metadata' : 'CSS' }}</div>
-    <div class="close-button" (click)="copyAreaActive = false">
+    <div class="close-button" (click)="copyAreaActive.set(false)">
       <i class="dx-icon-arrowdown"></i>
     </div>
     <dx-text-area
       [height]="256"
-      [value]="textContent"
+      [value]="textContent()"
       (onCopy)="copyFileContent()"
       [readOnly]="true"
     ></dx-text-area>

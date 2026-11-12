@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { LoadingService } from 'src/app/loading.service';
 
 @Component({
@@ -9,12 +9,6 @@ import { LoadingService } from 'src/app/loading.service';
     standalone: false
 })
 
-export class LoadingComponent implements OnInit {
-    loading = false;
-
-    constructor(private loadingService: LoadingService) { }
-
-    ngOnInit(): void {
-        this.loadingService.busy.subscribe((busy) => this.loading = busy);
-    }
+export class LoadingComponent {
+    readonly loading = inject(LoadingService).busy;
 }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnChanges, QueryList, SimpleChanges, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { DxScrollViewComponent } from 'devextreme-angular';
+import { ExpandableWidget } from '../expandable';
 
 @Component({
     selector: 'app-preview',
@@ -9,7 +10,7 @@ import { DxScrollViewComponent } from 'devextreme-angular';
     standalone: false
 })
 export class PreviewComponent implements AfterViewInit, OnChanges {
-    @ViewChildren('widget') widgetElements: QueryList<any>;
+    @ViewChildren('widget') widgetElements: QueryList<ExpandableWidget>;
     @ViewChild('scrollView') scrollView: DxScrollViewComponent;
     @Input() widgetName: string;
 
@@ -46,7 +47,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
         this.widgetElements.forEach((widgetEl) => {
             if(!previousWidget || widgetEl.widgetGroup === previousWidget) {
-                widgetEl.isExpanded.next(false);
+                widgetEl.isExpanded.set(false);
             }
         });
 
@@ -88,7 +89,7 @@ export class PreviewComponent implements AfterViewInit, OnChanges {
 
                     this.widgetElements.forEach((widgetEl) => {
                         if(widgetEl.widgetGroup === currentWidget) {
-                            widgetEl.isExpanded.next(true);
+                            widgetEl.isExpanded.set(true);
                         }
                     });
                 }, PREVIEW_AREA_SCROLL_TIMEOUT);

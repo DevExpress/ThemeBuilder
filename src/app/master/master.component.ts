@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppLayoutComponent } from '../layouts/app-layout/app-layout.component';
@@ -13,12 +13,12 @@ import { ThemeConfig } from '../types/theme';
 })
 
 export class MasterComponent implements OnInit, OnDestroy {
-    showIframe = false;
+    showIframe = signal(false);
     themeName: string;
     colorScheme: string;
     isThemeCompact: boolean;
     themeSize: string;
-    themesList: any[];
+    themesList = signal<ThemeConfig[]>([]);
     subscription: Subscription;
 
     constructor(
@@ -47,19 +47,19 @@ export class MasterComponent implements OnInit, OnDestroy {
                     !t.group.includes('Compact'));
             if(this.themeName === 'material') {
                 // getting sorted list by background color
-                this.themesList = [].concat(
-                    themesBySize.filter((t) => t.text.includes('Light')),
-                    themesBySize.filter((t) => t.text.includes('Dark'))
-                );
+                this.themesList.set([
+                    ...themesBySize.filter((t) => t.text.includes('Light')),
+                    ...themesBySize.filter((t) => t.text.includes('Dark'))
+                ]);
             } else {
-                this.themesList = themesBySize;
+                this.themesList.set(themesBySize);
             }
         });
     }
 
     ngOnInit(): void {
         this.subscription = this.appLayoutComponent.animationDone.subscribe((value) => {
-            this.showIframe = value;
+            this.showIframe.set(value);
         });
     }
 

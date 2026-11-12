@@ -1,7 +1,6 @@
 /* eslint-disable no-invalid-this */
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
 import { DxDrawerComponent } from 'devextreme-angular';
-import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-drawer',
@@ -12,7 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class DrawerComponent {
     widgetGroup = 'drawer';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('drawer') drawer: DxDrawerComponent;
 

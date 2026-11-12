@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit, Pipe, PipeTransform, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, Pipe, PipeTransform, ChangeDetectionStrategy, computed, linkedSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
-import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
+import { ThemeConfig } from '../../types/theme';
 
 @Pipe({
     name: 'includes',
@@ -23,11 +23,25 @@ export class IncludesPipe implements PipeTransform {
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
     @Input() switchEnabled: boolean;
-    switcherData: DataSource;
-    subscription: Subscription;
-    currentThemeId: number;
+
+    private readonly themes = signal<ThemeConfig[]>([]);
+
+    switcherData = computed(() => {
+        const themes = this.themes();
+        return themes.length ? new DataSource({ store: themes, key: 'themeId', group: 'group' }) : null;
+    });
+
+    // Re-synced with the current theme after each build; also written by the select box and on cancel
+    currentThemeId = linkedSignal<{ themes: ThemeConfig[]; css: string }, number>({
+        source: () => ({ themes: this.themes(), css: this.metadataService.css() }),
+        computation: ({ themes }, previous) => {
+            const { name, colorScheme } = this.metadataService.theme;
+            const currentTheme = themes.find((i) => i.name === name && i.colorScheme === colorScheme);
+            return currentTheme ? currentTheme.themeId : previous?.value;
+        }
+    });
 
     getDisplayText = (item: { name: string; text: string } | null): string => {
         if(!item) return '';
@@ -57,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     const widget = urlParts[routeWidgetPosition];
                     this.route.navigate(['advanced', theme, colorScheme, widget]);
                 } else {
-                    this.currentThemeId = e.previousValue;
+                    this.currentThemeId.set(e.previousValue);
                     e.component.canceled = true;
                 }
             });
@@ -66,24 +80,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.metadataService.getThemes().then((themes) => {
-            this.switcherData = new DataSource({
-                store: themes,
-                key: 'themeId',
-                group: 'group'
-            });
-
-            this.subscription = this.metadataService.css.subscribe(() => {
-                const currentTheme = themes.filter((i) => i.name === this.metadataService.theme.name && i.colorScheme === this.metadataService.theme.colorScheme);
-
-                if(currentTheme.length) {
-                    this.currentThemeId = currentTheme[0].themeId;
-                }
-            });
-        });
-    }
-
-    ngOnDestroy(): void {
-        if(this.subscription) this.subscription.unsubscribe();
+        this.metadataService.getThemes().then((themes) => this.themes.set(themes));
     }
 }

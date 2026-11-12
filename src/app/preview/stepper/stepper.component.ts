@@ -1,5 +1,4 @@
-import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { DxStepperTypes } from 'devextreme-angular/ui/stepper';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
@@ -11,8 +10,8 @@ import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class StepperComponent implements OnDestroy {
-    isExpanded = new BehaviorSubject<boolean>(false);
+export class StepperComponent {
+    isExpanded = signal<boolean>(false);
     widgetGroup = 'stepper';
 
     showLabel = true;
@@ -82,9 +81,5 @@ export class StepperComponent implements OnDestroy {
     toggleDisabledSteps() {
         this.disabledSteps = !this.disabledSteps;
         this.steps.forEach((item) => item.disabled = this.disabledSteps);
-    }
-
-    ngOnDestroy(): void {
-        this.isExpanded.unsubscribe();
     }
 }

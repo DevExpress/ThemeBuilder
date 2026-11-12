@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
     selector: 'app-progressbars',
@@ -10,5 +9,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProgressbarComponent {
     widgetGroup = 'progressbars';
-    isExpanded = new BehaviorSubject<boolean>(false);
+    isExpanded = signal<boolean>(false);
 }

@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
     selector: 'app-tabs',
@@ -10,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class TabsComponent {
     widgetGroup = 'tabs';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     dataSource: any[] = [
         { text: 'user', icon: 'user' },

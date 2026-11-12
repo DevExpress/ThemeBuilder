@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
     selector: 'app-scrollview',
@@ -10,5 +9,5 @@ import { Subject } from 'rxjs';
 })
 export class ScrollviewComponent {
     widgetGroup = 'scrollview';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 }

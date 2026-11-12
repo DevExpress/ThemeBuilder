@@ -1,7 +1,7 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
 import { DxSchedulerComponent } from 'devextreme-angular';
-import { Subject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/scheduler';
 
 @Component({
@@ -11,10 +11,9 @@ import { Properties } from 'devextreme/ui/scheduler';
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class SchedulerComponent implements OnInit, OnDestroy {
+export class SchedulerComponent {
     widgetGroup = 'scheduler';
-    isExpanded = new Subject<boolean>();
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('scheduler') scheduler: DxSchedulerComponent;
 
@@ -112,8 +111,8 @@ export class SchedulerComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             const expandedOptionsCopy: any = this.expandedOptions;
             expandedOptionsCopy.indicatorTime = new Date(2017, 4, 24);
 
@@ -121,9 +120,5 @@ export class SchedulerComponent implements OnInit, OnDestroy {
                 expandedOptionsCopy :
                 this.collapsedOptions);
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

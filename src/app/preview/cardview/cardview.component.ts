@@ -1,8 +1,8 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
 import { DxCardViewComponent } from 'devextreme-angular';
 import { DxCardViewTypes } from 'devextreme-angular/ui/card-view';
-import { Subject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 
 @Component({
     selector: 'app-cardview',
@@ -11,10 +11,9 @@ import { Subject, Subscription } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class CardviewComponent implements OnInit, OnDestroy {
+export class CardviewComponent {
     widgetGroup = 'cardview';
-    isExpanded = new Subject<boolean>();
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('cardView') cardView: DxCardViewComponent;
 
@@ -220,13 +219,9 @@ export class CardviewComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             this.cardView.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }
