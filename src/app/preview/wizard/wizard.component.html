@@ -11,11 +11,11 @@
             [labelMode]="this.theme === 'fluent' ? 'outside' : 'floating'">
                 <dxi-form-item dataField="FirstName" ></dxi-form-item>
                 <dxi-form-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
-                    <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
+                    <dxi-form-validation-rule type="required" message="Position is required"></dxi-form-validation-rule>
                 </dxi-form-item>
                 <dxi-form-item dataField="LastName"></dxi-form-item>
                 <dxi-form-item dataField="HireDate" editorType="dxDateBox" [editorOptions]="{ value: null, width: '100%' }">
-                    <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
+                    <dxi-form-validation-rule type="required" message="Hire date is required"></dxi-form-validation-rule>
                 </dxi-form-item>
                 <dxi-form-item dataField="Phone" ></dxi-form-item>
                 <dxi-form-item dataField="Email" ></dxi-form-item>
@@ -42,36 +42,37 @@
         keyExpr="orderId"
         height="auto"
         width="100%"
+        [scrolling]="{ mode: 'standard' }"
         [selectedRowKeys]="[10250, 10251]">
         <dxo-data-grid-selection
             selectAllMode="allPages"
             showCheckBoxesMode="onClick"
             mode="multiple"
         ></dxo-data-grid-selection>
-        <dxo-paging
+        <dxo-data-grid-paging
             [pageSize]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 14 : 9) : 5"
-        ></dxo-paging>
-        <dxi-column
+        ></dxo-data-grid-paging>
+        <dxi-data-grid-column
             dataField="orderId"
             caption="Order ID"
             [width]="90"
-        ></dxi-column>
-        <dxi-column dataField="city"></dxi-column>
-        <dxi-column
+        ></dxi-data-grid-column>
+        <dxi-data-grid-column dataField="city"></dxi-data-grid-column>
+        <dxi-data-grid-column
             dataField="country"
             [width]="180"
-        ></dxi-column>
-        <dxi-column
+        ></dxi-data-grid-column>
+        <dxi-data-grid-column
             dataField="region"
-        ></dxi-column>
-        <dxi-column
+        ></dxi-data-grid-column>
+        <dxi-data-grid-column
             dataField="date"
             dataType="date"
-        ></dxi-column>
-        <dxi-column
+        ></dxi-data-grid-column>
+        <dxi-data-grid-column
             dataField="amount"
             format="currency"
             [width]="90"
-        ></dxi-column>
+        ></dxi-data-grid-column>
     </dx-data-grid>
 </div>

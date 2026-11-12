@@ -4,7 +4,7 @@
     #popup
 >
     <dx-tab-panel class="tabs">
-        <dxi-item title="DevExtreme Metadata">
+        <dxi-tab-panel-item title="DevExtreme Metadata">
             <div class="text first-tab">
                 Upload a .json file with DevExtreme metadata
             </div>
@@ -29,8 +29,8 @@
             >
             </dx-text-area>
             <app-button class="upload-meta" [disabled]="importValue.trim() === ''" (clicked)="applyClick(textArea)">Upload Metadata</app-button>
-        </dxi-item>
-        <dxi-item title="Bootstrap Variables">
+        </dxi-tab-panel-item>
+        <dxi-tab-panel-item title="Bootstrap Variables">
             <div class="text second-tab">
                 Upload a ".scss" file with your custom Bootstrap 5 variables to apply their values to a base DevExtreme theme.
             </div>
@@ -41,6 +41,6 @@
                 [version]="radioGroupData[selectedIndex].version"
                 (imported)="imported()"
             ></app-bootstrap-uploader>
-        </dxi-item>
+        </dxi-tab-panel-item>
     </dx-tab-panel>
 </app-popup>
