@@ -1,11 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy, computed, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, computed, signal } from '@angular/core';
 import { DxLoadPanelComponent, DxToastComponent, DxTooltipComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-overlays',
     templateUrl: './overlays.component.html',
     styleUrls: ['./overlays.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class OverlaysComponent implements OnInit, OnDestroy {

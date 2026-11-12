@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 
 @Component({
     selector: 'app-buttons',
     templateUrl: './buttons.component.html',
     styleUrls: ['./buttons.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

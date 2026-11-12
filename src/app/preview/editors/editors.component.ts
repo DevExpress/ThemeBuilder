@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { onExpandedChange } from '../expandable';
 
@@ -6,7 +6,6 @@ import { onExpandedChange } from '../expandable';
     selector: 'app-editors',
     templateUrl: './editors.component.html',
     styleUrls: ['./editors.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditorsComponent {

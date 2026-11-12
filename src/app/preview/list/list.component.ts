@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxListComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/list';
@@ -7,7 +7,6 @@ import { Properties } from 'devextreme/ui/list';
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ListComponent {

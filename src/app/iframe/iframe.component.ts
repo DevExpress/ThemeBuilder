@@ -4,7 +4,6 @@ import {
     ElementRef,
     ViewChild,
     HostListener,
-    ChangeDetectionStrategy,
     effect,
     signal,
     untracked
@@ -17,7 +16,6 @@ import { MetadataRepositoryService } from '../meta-repository.service';
     selector: 'app-iframe',
     templateUrl: './iframe.component.html',
     styleUrls: ['./iframe.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class IframeComponent implements AfterViewInit {
@@ -27,7 +25,6 @@ export class IframeComponent implements AfterViewInit {
     theme: string;
     widgetName = signal<string>('');
 
-    // Set on every iframe (re)load; the WindowProxy object stays the same across reloads, so always notify
     private readonly frameWindow = signal<Window | null>(null, { equal: () => false });
 
     constructor(

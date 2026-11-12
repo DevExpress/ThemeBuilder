@@ -1,5 +1,5 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { Properties } from 'devextreme/ui/data_grid';
 import { onExpandedChange } from '../expandable';
@@ -8,7 +8,6 @@ import { onExpandedChange } from '../expandable';
     selector: 'app-datagrid',
     templateUrl: './datatgrid.component.html',
     styleUrls: ['./datatgrid.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DatagridComponent {

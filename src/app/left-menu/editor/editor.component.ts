@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -11,11 +11,13 @@ import { AnalyticsEventsService } from '../../analytics-events.service';
     selector: 'app-editor',
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditorComponent {
     @Input('item') item: MetaItem;
+
+    // Passed separately: item.Value is mutated in place by the theme build, so OnPush wouldn't see it via `item`
+    @Input() value: string;
 
     @Input() searchText = '';
 

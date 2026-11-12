@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy, computed, inject, linkedSignal } from '@angular/core';
+import { Component, computed, inject, linkedSignal } from '@angular/core';
 import { NotificationsService } from '../notification.service';
 
 @Component({
     selector: 'app-notifications',
     templateUrl: './notify-error.component.html',
     styleUrls: ['./notify-error.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

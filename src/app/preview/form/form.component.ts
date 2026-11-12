@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/form';
@@ -7,7 +7,6 @@ import { Properties } from 'devextreme/ui/form';
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FormComponent {

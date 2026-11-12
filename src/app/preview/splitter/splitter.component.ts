@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface PaneContentTemplate {
     name: string;
@@ -9,7 +9,6 @@ interface PaneContentTemplate {
     selector: 'app-splitter',
     templateUrl: './splitter.component.html',
     styleUrls: ['./splitter.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SplitterComponent {

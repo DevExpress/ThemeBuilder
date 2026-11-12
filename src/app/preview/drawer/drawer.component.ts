@@ -1,12 +1,11 @@
 /* eslint-disable no-invalid-this */
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxDrawerComponent } from 'devextreme-angular';
 
 @Component({
     selector: 'app-drawer',
     templateUrl: './drawer.component.html',
     styleUrls: ['./drawer.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DrawerComponent {

@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 
 @Component({
     selector: 'app-popup',
     templateUrl: './popup.component.html',
     styleUrls: ['./popup.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

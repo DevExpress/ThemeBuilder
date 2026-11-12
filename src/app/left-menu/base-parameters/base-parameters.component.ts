@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, effect, signal, untracked } from '@angular/core';
+import { Component, Input, effect, signal, untracked } from '@angular/core';
 import { Router } from '@angular/router';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
@@ -8,7 +8,6 @@ import { MetaItem } from '../../types/meta-item';
     selector: 'app-base-parameters',
     templateUrl: './base-parameters.component.html',
     styleUrls: ['./base-parameters.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BaseParametersComponent {

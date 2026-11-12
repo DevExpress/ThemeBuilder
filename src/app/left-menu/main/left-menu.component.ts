@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ChangeDetectionStrategy, effect, signal, untracked } from '@angular/core';
+import { Component, ElementRef, ViewChild, effect, signal, untracked } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +17,6 @@ const BASE_THEMING_NAME = 'Basic Settings';
     selector: 'app-left-menu',
     templateUrl: './left-menu.component.html',
     styleUrls: ['./left-menu.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

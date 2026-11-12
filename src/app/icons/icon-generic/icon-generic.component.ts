@@ -1,10 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-icon-generic',
     templateUrl: './icon-generic.component.html',
     styleUrls: ['./icon-generic.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class IconGenericComponent { }

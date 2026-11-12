@@ -1,5 +1,5 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxCardViewComponent } from 'devextreme-angular';
 import { DxCardViewTypes } from 'devextreme-angular/ui/card-view';
 import { onExpandedChange } from '../expandable';
@@ -8,7 +8,6 @@ import { onExpandedChange } from '../expandable';
     selector: 'app-cardview',
     templateUrl: './cardview.component.html',
     styleUrls: ['./cardview.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardviewComponent {

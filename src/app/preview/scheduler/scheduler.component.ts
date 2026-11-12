@@ -1,5 +1,5 @@
 /*eslint @typescript-eslint/no-magic-numbers: 'off'*/
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/scheduler';
@@ -8,7 +8,6 @@ import { Properties } from 'devextreme/ui/scheduler';
     selector: 'app-scheduler',
     templateUrl: './scheduler.component.html',
     styleUrls: ['./scheduler.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SchedulerComponent {

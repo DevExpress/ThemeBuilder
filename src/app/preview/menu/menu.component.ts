@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxMenuComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/menu';
@@ -7,7 +7,6 @@ import { Properties } from 'devextreme/ui/menu';
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MenuComponent {

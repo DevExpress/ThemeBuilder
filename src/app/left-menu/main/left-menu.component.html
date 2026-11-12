@@ -21,7 +21,7 @@
                       </div>
                       <div class="group-items">
                         @for (item of group.items; track item) {
-                          <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
+                          <app-editor searchText="{{searchKeyword}}" [item]="item" [value]="item.Value"></app-editor>
                         }
                       </div>
                     </div>
@@ -31,7 +31,7 @@
               @for (item of data.items; track item) {
                 <div class="work-item">
                   <div>
-                    <app-editor searchText="{{searchKeyword}}" [item]="item"></app-editor>
+                    <app-editor searchText="{{searchKeyword}}" [item]="item" [value]="item.Value"></app-editor>
                   </div>
                 </div>
               }

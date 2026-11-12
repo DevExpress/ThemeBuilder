@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="title">
-      {{themeName | titlecase}} Theme
+      {{themeName() | titlecase}} Theme
     </div>
     <div class="schemes-container">
       <ul class="schemes">
@@ -22,9 +22,9 @@
       </ul>
     </div>
     <div class="base-theming">
-      <app-base-parameters [theme]="themeName" [themeSize]="themeSize">
+      <app-base-parameters [theme]="themeName()" [themeSize]="themeSize()">
         <app-button width="195px" type="apply" (clicked)="export.popup.show();">Export</app-button>
-        <app-button width="195px" type="advanced" [routerLink]="['/advanced', themeName, colorScheme, 'base.common']">Advanced Settings</app-button>
+        <app-button width="195px" type="advanced" [routerLink]="['/advanced', themeName(), colorScheme(), 'base.common']">Advanced Settings</app-button>
       </app-base-parameters>
     </div>
   </div>

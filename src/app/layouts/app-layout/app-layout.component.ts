@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { routeAnimation } from './../../animations';
@@ -9,29 +9,28 @@ import { RouteId } from 'src/app/types/route-id';
     templateUrl: './app-layout.component.html',
     styleUrls: ['./app-layout.component.css'],
     animations: [routeAnimation],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 
 export class AppLayoutComponent {
-    animationValue: number;
+    animationValue = signal<number>(undefined);
     animationDone = new Subject<boolean>();
-    themesSwitchEnabled = false;
+    themesSwitchEnabled = signal(false);
 
     constructor(private router: Router) {
         this.router.events.subscribe((event) => {
             if(event instanceof ActivationEnd) {
                 const snapshot = event.snapshot;
                 if(snapshot.data.routeId) {
-                    this.animationValue = snapshot.data.routeId;
-                    this.themesSwitchEnabled = snapshot.data.routeId === RouteId.GROUPED_WIDGET;
+                    this.animationValue.set(snapshot.data.routeId);
+                    this.themesSwitchEnabled.set(snapshot.data.routeId === RouteId.GROUPED_WIDGET);
                 }
             }
         });
     }
 
     getRouteAnimation(): number {
-        return this.animationValue;
+        return this.animationValue();
     }
 
     routeAnimationDone(): void {

@@ -57,7 +57,7 @@
               <app-help-tooltip>
                 A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used to&nbsp;style<br>
                 portions of&nbsp;an&nbsp;application. To&nbsp;apply swatch styles, add the<br>
-                `dx-swatch-{{schemeName}}` class to&nbsp;the container<br>
+                `dx-swatch-{{schemeName()}}` class to&nbsp;the container<br>
                 that nests the elements being stylized.<br>
               </app-help-tooltip>
             </div>
@@ -99,12 +99,12 @@
           <dx-check-box
             class="select-all"
             text="All Widgets"
-            [value]="allWidgetsSelected(treeData, mainData)"
+            [value]="allWidgetsSelected(treeData(), mainData())"
             (onValueChanged)="selectAll($event)"
           ></dx-check-box>
           <div class="widgets">
             <div class="main-widgets">
-              @for (item of mainData; track item) {
+              @for (item of mainData(); track item) {
                 <dx-check-box
                   [text]="item.widget"
                   [(value)]="item.selected"
@@ -114,7 +114,7 @@
             <div class="all-widgets">
               <dx-scroll-view #scrollView showScrollbar="always" [useNative]="false">
                 <div>
-                  @for (group of treeData; track group) {
+                  @for (group of treeData(); track group) {
                     <div
                       class="group"
                       [ngClass]="{'expanded': group.expanded, 'visible': group.visible}"

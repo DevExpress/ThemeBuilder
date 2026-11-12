@@ -14,7 +14,7 @@
   </div>
   @for (item of editorsData(); track item) {
     <div class="work-item">
-      <app-editor [item]="item"></app-editor>
+      <app-editor [item]="item" [value]="item.Value"></app-editor>
     </div>
   }
   <ng-content></ng-content>

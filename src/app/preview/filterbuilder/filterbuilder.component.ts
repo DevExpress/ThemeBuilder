@@ -1,10 +1,9 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-filterbuilder',
     templateUrl: './filterbuilder.component.html',
     styleUrls: ['./filterbuilder.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FilterbuilderComponent {

@@ -1,11 +1,11 @@
 <div class="content">
-  @if (url !== '') {
+  @if (url() !== '') {
     <div class="title-link" [routerLink]="['/']">
       <img class="arrow-back" src="images/arrow-left.svg">
       Theme Builder
     </div>
   }
-  @switch (url) {
+  @switch (url()) {
     @case ('') {
       <div class="container">
         <div class="title index">

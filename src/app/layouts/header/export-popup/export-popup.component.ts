@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectionStrategy, effect, signal, untracked } from '@angular/core';
+import { Component, ViewChild, effect, signal, untracked } from '@angular/core';
 import { fileSaver } from 'devextreme/exporter';
 import validationEngine from 'devextreme/ui/validation_engine';
 import { saveAs } from 'file-saver';
@@ -27,7 +27,6 @@ class TreeData {
     selector: 'app-export-popup',
     templateUrl: './export-popup.component.html',
     styleUrls: ['./export-popup.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ExportPopupComponent {
@@ -58,18 +57,18 @@ export class ExportPopupComponent {
         widgets: ['List', 'Gallery']
     }];
 
-    treeData: TreeData[] = [];
-    mainData: WidgetData[] = [];
+    treeData = signal<TreeData[]>([]);
+    mainData = signal<WidgetData[]>([]);
     searchValue = '';
 
-    schemeName: string;
-    makeSwatch = false;
+    schemeName = signal<string>('');
+    makeSwatch = signal(false);
     needMeta = false;
     outputFile: string;
     textContent = signal<string>('');
     contentReady = signal(true);
     copyAreaActive = signal(false);
-    removeExternalResources = false;
+    removeExternalResources = signal(false);
 
     constructor(
         private importService: ImportService,
@@ -103,9 +102,9 @@ export class ExportPopupComponent {
 
         const select = (item: WidgetData, value: boolean): boolean => item.selected = value;
 
-        this.mainData.forEach((item) => select(item, e.value));
+        this.mainData().forEach((item) => select(item, e.value));
 
-        this.treeData.forEach((g) => {
+        this.treeData().forEach((g) => {
             g.items.forEach((item) => select(item, e.value));
         });
     }
@@ -136,12 +135,12 @@ export class ExportPopupComponent {
             .filter((w) => w.selected)
             .map((i) => i.widget);
 
-        let result = getSelected(this.mainData);
-        this.treeData.forEach((treeItem) => {
+        let result = getSelected(this.mainData());
+        this.treeData().forEach((treeItem) => {
             result.push(...getSelected(treeItem.items));
         });
 
-        if(this.allWidgetsSelected(this.treeData, this.mainData)) result = [];
+        if(this.allWidgetsSelected(this.treeData(), this.mainData())) result = [];
 
         return result;
     }
@@ -149,7 +148,7 @@ export class ExportPopupComponent {
     search(): void {
         const isSearchMatch = (name: string): boolean => name.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0;
 
-        this.treeData.forEach((treeItem) => {
+        this.treeData().forEach((treeItem) => {
             const groupName = treeItem.group;
             treeItem.items.forEach((item: WidgetData) => {
                 item.visible = isSearchMatch(groupName) || isSearchMatch(item.widget);
@@ -171,7 +170,7 @@ export class ExportPopupComponent {
     getFileNameWithoutExt(): string {
         return this.outputFile &&
                this.outputFile.replace(/^.*[\\/]/, '').replace(/\.(css|json|less|scss)/, '') ||
-               `dx.${this.importService.getThemeName()}.${this.schemeName}`;
+               `dx.${this.importService.getThemeName()}.${this.schemeName()}`;
     }
 
     validate(): any {
@@ -180,10 +179,10 @@ export class ExportPopupComponent {
 
     setParameters(): void {
         const savedMeta = this.importService.getSavedMetadata();
-        this.schemeName = this.importService.getColorSchemeName();
+        this.schemeName.set(this.importService.getColorSchemeName());
         this.outputFile = savedMeta.outputFile;
-        this.makeSwatch = !!savedMeta.makeSwatch;
-        this.removeExternalResources = !!savedMeta.removeExternalResources;
+        this.makeSwatch.set(!!savedMeta.makeSwatch);
+        this.removeExternalResources.set(!!savedMeta.removeExternalResources);
 
         const selectedWidgets = this.importService.getWidgets();
         const isWidgetSelected = (widget: string): boolean => {
@@ -199,18 +198,18 @@ export class ExportPopupComponent {
 
         const widgetComparer = (a: WidgetData, b: WidgetData): number => a.widget.localeCompare(b.widget);
 
-        this.treeData = this.widgetGroups.map((group) => {
+        this.treeData.set(this.widgetGroups.map((group) => {
             group.expanded = false;
             group.visible = true;
             group.items = group.widgets
                 .map(defaultWidgetConfig)
                 .sort(widgetComparer);
             return group;
-        });
+        }));
 
-        this.mainData = this.mainWidgets
+        this.mainData.set(this.mainWidgets
             .map(defaultWidgetConfig)
-            .sort(widgetComparer);
+            .sort(widgetComparer));
     }
 
     fileSave(cssContent): void {
@@ -227,7 +226,7 @@ export class ExportPopupComponent {
         }
 
         this.contentReady.set(false);
-        return this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources)
+        return this.importService.exportCss(this.schemeName(), this.makeSwatch(), this.getSelectedWidgets(), this.removeExternalResources())
             .then((css) => {
                 this.contentReady.set(true);
                 this.textContent.set(css);
@@ -249,7 +248,7 @@ export class ExportPopupComponent {
         }
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.importService.exportMetadata(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources).then((metaString) => {
+        this.importService.exportMetadata(this.schemeName(), this.makeSwatch(), this.getSelectedWidgets(), this.removeExternalResources()).then((metaString) => {
             this.textContent.set(metaString);
             if(save) fileSaver._saveBlobAs(this.getFileNameWithoutExt() + '.json', 'JSON', new Blob([metaString]));
         });
@@ -278,10 +277,10 @@ export class ExportPopupComponent {
             );
         });
 
-        const fileName = `dx.${this.importService.getThemeName()}.${this.schemeName}`;
+        const fileName = `dx.${this.importService.getThemeName()}.${this.schemeName()}`;
         zip.file(
             `${fileName}.css`,
-            this.importService.exportCss(this.schemeName, this.makeSwatch, this.getSelectedWidgets(), this.removeExternalResources),
+            this.importService.exportCss(this.schemeName(), this.makeSwatch(), this.getSelectedWidgets(), this.removeExternalResources()),
             { binary: false }
         );
 

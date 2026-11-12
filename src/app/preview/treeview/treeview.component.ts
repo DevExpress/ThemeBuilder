@@ -1,10 +1,9 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-treeview',
     templateUrl: './treeview.component.html',
     styleUrls: ['./treeview.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TreeviewComponent {

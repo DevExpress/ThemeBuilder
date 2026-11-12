@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Pipe, PipeTransform, ChangeDetectionStrategy, computed, linkedSignal, signal } from '@angular/core';
+import { Component, Input, OnInit, Pipe, PipeTransform, computed, linkedSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import DataSource from 'devextreme/data/data_source';
 import { confirm } from 'devextreme/ui/dialog';
@@ -20,7 +20,6 @@ export class IncludesPipe implements PipeTransform {
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css'],
     providers: [IncludesPipe],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HeaderComponent implements OnInit {

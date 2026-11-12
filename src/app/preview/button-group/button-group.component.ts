@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal} from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxButtonGroupTypes } from 'devextreme-angular/ui/button-group';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
@@ -13,7 +13,6 @@ type CustomButtonGroupItem = DxButtonGroupTypes.Item & {
     selector: 'app-button-group',
     templateUrl: './button-group.component.html',
     styleUrls: ['./button-group.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ButtonGroupComponent {

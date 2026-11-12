@@ -3,7 +3,7 @@
   @if (item.Type === 'select') {
     <dx-select-box
       stylingMode="filled"
-      [value]="item.Value"
+      [value]="value"
       [items]="item.TypeValuesArray"
       (onValueChanged)="valueChanged($event, item.Key)"
     ></dx-select-box>
@@ -12,7 +12,7 @@
   @if (item.Type === 'text') {
     <dx-text-box
       stylingMode="filled"
-      [value]="item.Value"
+      [value]="value"
       (onValueChanged)="valueTextChanged($event, item.Key)"
     ></dx-text-box>
   }
@@ -21,7 +21,7 @@
     <dx-color-box
       stylingMode="filled"
       [editAlphaChannel]="true"
-      [value]="item.Value"
+      [value]="value"
       (onValueChanged)="valueChanged($event, item.Key)"
     ></dx-color-box>
   }

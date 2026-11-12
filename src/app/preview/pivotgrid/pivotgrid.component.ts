@@ -1,5 +1,5 @@
 /* eslint-disable no-invalid-this */
-import { Component, ElementRef, ViewChild, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { DxPivotGridComponent } from 'devextreme-angular';
 import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/pivot_grid';
@@ -8,7 +8,6 @@ import { Properties } from 'devextreme/ui/pivot_grid';
     selector: 'app-pivotgrid',
     templateUrl: './pivotgrid.component.html',
     styleUrls: ['./pivotgrid.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PivotgridComponent {
