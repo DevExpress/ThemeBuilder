@@ -161,7 +161,7 @@
         </div>
       }
       @if (viewIndex === 2) {
-        <div class="view" [ngClass]="{'hide-content': copyAreaActive}">
+        <div class="view" [ngClass]="{'hide-content': copyAreaActive()}">
           <div class="export-label">
             <div class="export-text">Export CSS</div>
             <div class="tooltip-container export">

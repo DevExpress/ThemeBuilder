@@ -9,16 +9,16 @@
             [height]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 125 : 175) :247"   
             colCount="2"
             [labelMode]="this.theme === 'fluent' ? 'outside' : 'floating'">
-                <dxi-item dataField="FirstName" ></dxi-item>
-                <dxi-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
+                <dxi-form-item dataField="FirstName" ></dxi-form-item>
+                <dxi-form-item dataField="Position" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
                     <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
-                </dxi-item>
-                <dxi-item dataField="LastName"></dxi-item>
-                <dxi-item dataField="HireDate" editorType="dxDateBox" [editorOptions]="{ value: null, width: '100%' }">
+                </dxi-form-item>
+                <dxi-form-item dataField="LastName"></dxi-form-item>
+                <dxi-form-item dataField="HireDate" editorType="dxDateBox" [editorOptions]="{ value: null, width: '100%' }">
                     <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
-                </dxi-item>
-                <dxi-item dataField="Phone" ></dxi-item>
-                <dxi-item dataField="Email" ></dxi-item>
+                </dxi-form-item>
+                <dxi-form-item dataField="Phone" ></dxi-form-item>
+                <dxi-form-item dataField="Email" ></dxi-form-item>
             </dx-form>
             <dx-button text="Cancel" width="90"></dx-button>
             <dx-button text="Done" type="default" width="90"></dx-button>
@@ -43,11 +43,11 @@
         height="auto"
         width="100%"
         [selectedRowKeys]="[10250, 10251]">
-        <dxo-selection
+        <dxo-data-grid-selection
             selectAllMode="allPages"
             showCheckBoxesMode="onClick"
             mode="multiple"
-        ></dxo-selection>
+        ></dxo-data-grid-selection>
         <dxo-paging
             [pageSize]="this.theme === 'generic' ? (this.themeSize === 'compact' ? 14 : 9) : 5"
         ></dxo-paging>

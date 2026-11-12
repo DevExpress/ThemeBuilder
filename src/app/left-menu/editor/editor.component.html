@@ -1,28 +1,28 @@
-<div class="property-header" [innerHTML]="highlight(this.item.Name)"></div>
+<div class="property-header" [innerHTML]="highlight(this.item().Name)"></div>
 <div class="property-widget">
-  @if (item.Type === 'select') {
+  @if (item().Type === 'select') {
     <dx-select-box
       stylingMode="filled"
-      [value]="value"
-      [items]="item.TypeValuesArray"
-      (onValueChanged)="valueChanged($event, item.Key)"
+      [value]="value()"
+      [items]="item().TypeValuesArray"
+      (onValueChanged)="valueChanged($event, item().Key)"
     ></dx-select-box>
   }
 
-  @if (item.Type === 'text') {
+  @if (item().Type === 'text') {
     <dx-text-box
       stylingMode="filled"
-      [value]="value"
-      (onValueChanged)="valueTextChanged($event, item.Key)"
+      [value]="value()"
+      (onValueChanged)="valueTextChanged($event, item().Key)"
     ></dx-text-box>
   }
 
-  @if (item.Type === 'color') {
+  @if (item().Type === 'color') {
     <dx-color-box
       stylingMode="filled"
       [editAlphaChannel]="true"
-      [value]="value"
-      (onValueChanged)="valueChanged($event, item.Key)"
+      [value]="value()"
+      (onValueChanged)="valueChanged($event, item().Key)"
     ></dx-color-box>
   }
 </div>
