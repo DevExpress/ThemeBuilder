@@ -1,19 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
-import { Subject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/form';
 
 @Component({
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class FormComponent implements OnInit, OnDestroy {
+export class FormComponent {
     widgetGroup = 'form';
-    isExpanded = new Subject<boolean>();
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('form') form: DxFormComponent;
 
@@ -64,14 +62,10 @@ export class FormComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             this.form.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.form.instance.updateDimensions();
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

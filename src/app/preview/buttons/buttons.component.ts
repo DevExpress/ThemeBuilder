@@ -1,12 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 
 @Component({
     selector: 'app-buttons',
     templateUrl: './buttons.component.html',
     styleUrls: ['./buttons.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 
@@ -25,7 +23,7 @@ export class ButtonsComponent {
         event.component.element().classList.add('dx-state-focused');
     }
 
-    isExpanded = new BehaviorSubject<boolean>(false);
+    isExpanded = signal<boolean>(false);
 
     buttonModes: DxButtonTypes.ButtonStyle[] = ['contained', 'outlined', 'text'];
 

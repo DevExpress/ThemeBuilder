@@ -1,5 +1,4 @@
-import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 interface PaneContentTemplate {
     name: string;
@@ -10,11 +9,10 @@ interface PaneContentTemplate {
     selector: 'app-splitter',
     templateUrl: './splitter.component.html',
     styleUrls: ['./splitter.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class SplitterComponent implements OnDestroy {
-    isExpanded = new BehaviorSubject<boolean>(false);
+export class SplitterComponent {
+    isExpanded = signal<boolean>(false);
     widgetGroup = 'splitter';
     dimensionOptions = new Set(['size', 'minSize', 'maxSize']);
 
@@ -44,9 +42,5 @@ export class SplitterComponent implements OnDestroy {
             .reverse()
             .filter(([key]) => this.dimensionOptions.has(key))
             .map(([key, value]) => ({ key, value }));
-    }
-
-    ngOnDestroy(): void {
-        this.isExpanded.unsubscribe();
     }
 }

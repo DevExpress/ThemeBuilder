@@ -1,16 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GalleryComponent {
     widgetGroup = 'gallery';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     galleryItems: string[] = [
         'images/gallery1.jpg',

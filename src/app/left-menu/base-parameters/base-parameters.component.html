@@ -12,7 +12,7 @@
       ></dx-select-box>
     </div>
   </div>
-  @for (item of editorsData; track item) {
+  @for (item of editorsData(); track item) {
     <div class="work-item">
       <app-editor [item]="item"></app-editor>
     </div>

@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, ViewChild, effect, signal, untracked } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DxScrollViewComponent } from 'devextreme-angular';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { debounceTime } from 'rxjs/operators';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
@@ -17,11 +17,10 @@ const BASE_THEMING_NAME = 'Basic Settings';
     selector: 'app-left-menu',
     templateUrl: './left-menu.component.html',
     styleUrls: ['./left-menu.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 
-export class LeftMenuComponent implements OnDestroy, OnInit {
+export class LeftMenuComponent {
     @ViewChild('searchInput') searchInput: ElementRef;
     @ViewChild(DxScrollViewComponent) scrollView: DxScrollViewComponent;
 
@@ -29,9 +28,8 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     colorScheme: string;
     widget: string;
 
-    subscription: Subscription;
-    menuData: LeftMenuItem[];
-    filteredData: LeftMenuItem[] = [];
+    menuData = signal<LeftMenuItem[]>([]);
+    filteredData = signal<LeftMenuItem[]>([]);
     menuClosed = true;
     searchOpened = false;
     searchKeyword = '';
@@ -49,6 +47,28 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         this.route.params.subscribe((params) => {
             this.widget = params['group'];
             this.changeWidget(this.widget);
+        });
+
+        // Reload the menu on each theme build
+        effect(() => {
+            this.metaRepository.css();
+            untracked(() => {
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises
+                this.loadThemeMetadata().then(() => {
+                    if(this.searchKeyword) this.menuSearch();
+                    else this.changeWidget(this.widget);
+                });
+            });
+        });
+
+        const SEARCH_DEBOUNCE_TIMEOUT = 500;
+
+        this.formGroup.valueChanges.pipe(
+            debounceTime(SEARCH_DEBOUNCE_TIMEOUT),
+            takeUntilDestroyed()
+        ).subscribe((data) => {
+            this.searchKeyword = data.formControl;
+            this.menuSearch();
         });
     }
 
@@ -101,15 +121,14 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
         };
 
         if(!keyword.length) {
-            this.filteredData = [];
-            this.filteredData[0] = this.workArea;
+            this.filteredData.set([this.workArea]);
             return;
         }
 
-        this.filteredData = [];
+        const filteredData: LeftMenuItem[] = [];
 
-        this.menuData.forEach((menuDataItem) => {
-            addFilteredMenuItem(menuDataItem, this.filteredData);
+        this.menuData().forEach((menuDataItem) => {
+            addFilteredMenuItem(menuDataItem, filteredData);
 
             if(menuDataItem.groups) {
                 const filteredDataGroups: LeftMenuItem[] = [];
@@ -117,13 +136,15 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 menuDataItem.groups.forEach((group) => addFilteredMenuItem(group, filteredDataGroups));
 
                 if(filteredDataGroups.length) {
-                    const existingGroup = this.filteredData.filter((i) => i.name === menuDataItem.name);
+                    const existingGroup = filteredData.filter((i) => i.name === menuDataItem.name);
                     if(!existingGroup.length) {
-                        this.filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
+                        filteredData.push({ name: menuDataItem.name, groups: filteredDataGroups, route: menuDataItem.route });
                     }
                 }
             }
         });
+
+        this.filteredData.set(filteredData);
 
         this.analyticsEventsService.trackEvent(
             'TB: Settings',
@@ -133,7 +154,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
     }
 
     changeWidget(widget: string): void {
-        const item = this.menuData && this.menuData.find((value) => value.route === widget);
+        const item = this.menuData().find((value) => value.route === widget);
         if(item) {
             this.workArea = item;
             this.workAreaName = item.name || BASE_THEMING_NAME;
@@ -144,8 +165,7 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
 
         this.searchKeyword = '';
         this.searchOpened = false;
-        this.filteredData = [];
-        this.filteredData[0] = this.workArea;
+        this.filteredData.set([this.workArea]);
     }
 
     getRealName(name): string {
@@ -178,41 +198,20 @@ export class LeftMenuComponent implements OnDestroy, OnInit {
                 }
             };
 
-            this.menuData = LeftMenuAlias.getMenu();
+            const menuData = LeftMenuAlias.getMenu();
 
-            this.menuData.forEach((item) => {
+            menuData.forEach((item) => {
                 fillItems(item);
                 if(item.groups) {
                     item.groups.forEach((groupItem) => fillItems(groupItem));
                 }
             });
-        });
-    }
 
-    ngOnInit(): void {
-        this.loadThemeMetadata();
-        this.subscription = this.metaRepository.css.subscribe(() => {
-            this.loadThemeMetadata().then(() => {
-                if(this.searchKeyword) this.menuSearch();
-                else this.changeWidget(this.widget);
-            });
-        });
-
-        const SEARCH_DEBOUNCE_TIMEOUT = 500;
-
-        this.formGroup.valueChanges.pipe(
-            debounceTime(SEARCH_DEBOUNCE_TIMEOUT)
-        ).subscribe((data) => {
-            this.searchKeyword = data.formControl;
-            this.menuSearch();
+            this.menuData.set(menuData);
         });
     }
 
     fireScrollEventForClosingDropdowns() {
         document.body.dispatchEvent(new Event('scroll'));
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

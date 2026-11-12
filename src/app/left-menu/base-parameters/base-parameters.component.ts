@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, effect, signal, untracked } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { MetadataRepositoryService } from '../../meta-repository.service';
 import { NamesService } from '../../names.service';
 import { MetaItem } from '../../types/meta-item';
@@ -9,25 +8,30 @@ import { MetaItem } from '../../types/meta-item';
     selector: 'app-base-parameters',
     templateUrl: './base-parameters.component.html',
     styleUrls: ['./base-parameters.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class BaseParametersComponent implements OnDestroy, OnInit {
+export class BaseParametersComponent {
     @Input() theme: string;
     @Input() themeSize: string;
 
-    subscription: Subscription;
-    editorsData: MetaItem[];
+    editorsData = signal<MetaItem[]>([]);
 
     constructor(
         private metadataRepository: MetadataRepositoryService,
         private names: NamesService,
         private router: Router
-    ) { }
+    ) {
+        // Reload base parameters on each theme build
+        effect(() => {
+            this.metadataRepository.css();
+            untracked(() => this.updateData());
+        });
+    }
 
     updateData(): void {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         this.metadataRepository.getBaseParameters().then((baseParameters) => {
-            this.editorsData = baseParameters;
+            this.editorsData.set(baseParameters);
         });
     }
 
@@ -39,17 +43,5 @@ export class BaseParametersComponent implements OnDestroy, OnInit {
             currentColorScheme.replace('-compact', '');
 
         this.router.navigate(['master', this.theme, newColorScheme]);
-    }
-
-    ngOnInit(): void {
-        this.updateData();
-
-        this.subscription = this.metadataRepository.css.subscribe(() => {
-            this.updateData();
-        });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

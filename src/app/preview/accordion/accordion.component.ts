@@ -1,16 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-accordion',
     templateUrl: './accordion.component.html',
     styleUrls: ['./accordion.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AccordionComponent {
     widgetGroup = 'accordion';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     accordionItems: any[] = [
         {

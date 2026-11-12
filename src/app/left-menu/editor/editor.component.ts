@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input, Input, computed } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MetadataRepositoryService } from '../../meta-repository.service';
@@ -11,12 +11,10 @@ import { AnalyticsEventsService } from '../../analytics-events.service';
     selector: 'app-editor',
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditorComponent {
-    @Input('item') item: MetaItem;
-
+    item = input.required<MetaItem>();
     @Input() searchText = '';
 
     constructor(private names: NamesService,
@@ -26,10 +24,10 @@ export class EditorComponent {
     ) { }
 
     private isValueCanBePixels() {
-        return this.item.Key.endsWith('border-radius');
+        return this.item().Key.endsWith('border-radius');
     }
 
-    private isPositiveNumber(value) {
+    private isPositiveNumber(value: string) {
         return /^[1-9]\d*$/.test(value);
     }
 
@@ -41,6 +39,11 @@ export class EditorComponent {
         const routeParts = this.router.url.split('/').filter((part) => part !== '');
         return routeParts[routeParts.length - 1];
     }
+
+    value = computed(() => {
+        this.metaRepository.css();
+        return this.item().Value;
+    });
 
     valueTextChanged(e: { value: string, component: any }, key: string): void {
         this.analyticsEventsService.trackEvent(

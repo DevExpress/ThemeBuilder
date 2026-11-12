@@ -1,16 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-filterbuilder',
     templateUrl: './filterbuilder.component.html',
     styleUrls: ['./filterbuilder.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FilterbuilderComponent {
     widgetGroup = 'filterbuilder';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     filterBuilderValue: any[] = [
         ['Name', '=', 'Projector PlusHD'],

@@ -22,16 +22,13 @@
     "@angular/forms": "^22.2.0",
     "@angular/platform-browser": "^22.2.0",
     "@angular/router": "^22.2.0",
-    "core-js": "^2.6.12",
-    "devextreme": "26.1.6",
-    "devextreme-angular": "26.1.6",
-    "devextreme-themebuilder": "26.1.6",
+    "devextreme": "file:../tgz/devextreme-26.2.0.tgz",
+    "devextreme-angular": "file:../tgz/devextreme-angular-26.2.0.tgz",
+    "devextreme-themebuilder": "file:../tgz/devextreme-themebuilder-26.2.0.tgz",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "jszip-utils": "^0.1.0",
-    "rxjs": "^7.8.2",
-    "smoothscroll-polyfill": "^0.4.4",
-    "zone.js": "~0.16.2"
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@angular/build": "^22.2.0",

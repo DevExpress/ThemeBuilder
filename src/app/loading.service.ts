@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable()
 
 export class LoadingService {
-    busy = new BehaviorSubject<boolean>(false);
+    private readonly busyState = signal<boolean>(false);
+    readonly busy = this.busyState.asReadonly();
     stack = [];
 
     toggle(show: boolean): void {
         if(show) this.stack.push(true);
         else this.stack.pop();
-        this.busy.next(!!this.stack.length);
+        this.busyState.set(!!this.stack.length);
     }
 
     show(): void {

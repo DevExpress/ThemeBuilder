@@ -18,9 +18,6 @@
                           "browser": ""
                         },
                         "index": "src/index.html",
-                        "polyfills": [
-                          "src/polyfills.ts"
-                        ],
                         "tsConfig": "src/tsconfig.app.json",
                         "allowedCommonJsDependencies": [
                             "devexpress-diagram",

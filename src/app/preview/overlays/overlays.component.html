@@ -1,4 +1,4 @@
-@if (isExpanded.getValue()) {
+@if (isExpanded()) {
   <div class="buttons-container">
     <dx-button text="Popup" type="normal" width="135" (onClick)="popup.visible = true"></dx-button>
     <dx-button text="ActionSheet" width="135" type="normal" (onClick)="actionSheet.visible = true"></dx-button>
@@ -23,7 +23,7 @@
     [shading]="false"
     (onHiding)="hiding($event)"
     container="#target-block"
-    [position]="{ of: ofValue, at: 'center', my: 'center' }">
+    [position]="{ of: ofValue(), at: 'center', my: 'center' }">
   </dx-load-panel>
   <dx-action-sheet #actionSheet [dataSource]="actionSheetData" [visible]="false"></dx-action-sheet>
   <dx-tooltip #tooltip  target="#tooltip-button" position="top" [visible]="false">

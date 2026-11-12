@@ -35,15 +35,15 @@
               stylingMode="outlined"
               >
               <dx-validator>
-                <dxi-validation-rule
+                <dxi-validator-validation-rule
                   type="pattern"
                   pattern="^[\w-_]*$"
                   message="Only alphabetic and numeric characters, underscores and hyphens are allowed.">
-                </dxi-validation-rule>
-                <dxi-validation-rule
+                </dxi-validator-validation-rule>
+                <dxi-validator-validation-rule
                   type="required"
                   message="Color scheme name is required.">
-                </dxi-validation-rule>
+                </dxi-validator-validation-rule>
               </dx-validator>
             </dx-text-box>
           </div>
@@ -57,7 +57,7 @@
               <app-help-tooltip>
                 A&nbsp;color swatch is&nbsp;a&nbsp;secondary color scheme used to&nbsp;style<br>
                 portions of&nbsp;an&nbsp;application. To&nbsp;apply swatch styles, add the<br>
-                `dx-swatch-{{schemeName}}` class to&nbsp;the container<br>
+                `dx-swatch-{{schemeName()}}` class to&nbsp;the container<br>
                 that nests the elements being stylized.<br>
               </app-help-tooltip>
             </div>
@@ -99,12 +99,12 @@
           <dx-check-box
             class="select-all"
             text="All Widgets"
-            [value]="allWidgetsSelected(treeData, mainData)"
+            [value]="allWidgetsSelected(treeData(), mainData())"
             (onValueChanged)="selectAll($event)"
           ></dx-check-box>
           <div class="widgets">
             <div class="main-widgets">
-              @for (item of mainData; track item) {
+              @for (item of mainData(); track item) {
                 <dx-check-box
                   [text]="item.widget"
                   [(value)]="item.selected"
@@ -114,7 +114,7 @@
             <div class="all-widgets">
               <dx-scroll-view #scrollView showScrollbar="always" [useNative]="false">
                 <div>
-                  @for (group of treeData; track group) {
+                  @for (group of treeData(); track group) {
                     <div
                       class="group"
                       [ngClass]="{'expanded': group.expanded, 'visible': group.visible}"
@@ -161,7 +161,7 @@
         </div>
       }
       @if (viewIndex === 2) {
-        <div class="view" [ngClass]="{'hide-content': copyAreaActive}">
+        <div class="view" [ngClass]="{'hide-content': copyAreaActive()}">
           <div class="export-label">
             <div class="export-text">Export CSS</div>
             <div class="tooltip-container export">
@@ -173,7 +173,7 @@
             </div>
           </div>
           <div class="buttons-container export-buttons">
-            <button class="button" [disabled]="!contentReady" (click)="exportCss(true)">
+            <button class="button" [disabled]="!contentReady()" (click)="exportCss(true)">
               <div class="button-icon">
                 <app-button-icon name="download"></app-button-icon>
               </div>
@@ -182,7 +182,7 @@
                 CSS File
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="exportZip()">
+            <button class="button" [disabled]="!contentReady()" (click)="exportZip()">
               <div class="button-icon">
                 <app-button-icon name="zip"></app-button-icon>
               </div>
@@ -191,7 +191,7 @@
                 ZIP Archive
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="needMeta = false;copy()">
+            <button class="button" [disabled]="!contentReady()" (click)="needMeta = false;copy()">
               <div class="button-icon">
                 <app-button-icon name="copy-css"></app-button-icon>
               </div>
@@ -208,7 +208,7 @@
             </div>
           </div>
           <div class="buttons-container export-buttons">
-            <button class="button" [disabled]="!contentReady" (click)="exportMeta(true)">
+            <button class="button" [disabled]="!contentReady()" (click)="exportMeta(true)">
               <div class="button-icon">
                 <app-button-icon name="download"></app-button-icon>
               </div>
@@ -217,7 +217,7 @@
                 Metadata File
               </div>
             </button>
-            <button class="button" [disabled]="!contentReady" (click)="needMeta = true;copy()">
+            <button class="button" [disabled]="!contentReady()" (click)="needMeta = true;copy()">
               <div class="button-icon">
                 <app-button-icon name="copy-meta"></app-button-icon>
               </div>
@@ -226,7 +226,7 @@
                 Metadata
               </div>
             </button>
-            <div class="export-loading" [ngClass]="{'hidden': contentReady}">
+            <div class="export-loading" [ngClass]="{'hidden': contentReady()}">
               <app-icon-loading></app-icon-loading>
               <div>Please wait.</div>
             </div>
@@ -243,14 +243,14 @@
       }
     </div>
   </div>
-  <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive}">
+  <div class="copy-area" [ngClass]="{'hidden': !copyAreaActive()}">
     <div class="copy-text">Copy {{ needMeta ? 'Metadata' : 'CSS' }}</div>
-    <div class="close-button" (click)="copyAreaActive = false">
+    <div class="close-button" (click)="copyAreaActive.set(false)">
       <i class="dx-icon-arrowdown"></i>
     </div>
     <dx-text-area
       [height]="256"
-      [value]="textContent"
+      [value]="textContent()"
       (onCopy)="copyFileContent()"
       [readOnly]="true"
     ></dx-text-area>

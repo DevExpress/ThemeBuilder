@@ -1,11 +1,10 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AnalyticsEventsService } from '../../../app/analytics-events.service';
 
 @Component({
     selector: 'app-button-detailed',
     templateUrl: './button-detailed.component.html',
     styleUrls: ['./button-detailed.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

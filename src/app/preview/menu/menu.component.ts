@@ -1,19 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxMenuComponent } from 'devextreme-angular';
-import { Subject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/menu';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class MenuComponent implements OnInit, OnDestroy {
+export class MenuComponent {
     widgetGroup = 'menu';
-    isExpanded = new Subject<boolean>();
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('menu') menu: DxMenuComponent;
 
@@ -182,13 +180,9 @@ export class MenuComponent implements OnInit, OnDestroy {
         ]
     };
 
-    ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             this.menu.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

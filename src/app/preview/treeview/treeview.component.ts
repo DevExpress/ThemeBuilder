@@ -1,16 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-treeview',
     templateUrl: './treeview.component.html',
     styleUrls: ['./treeview.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TreeviewComponent {
     widgetGroup = 'treeview';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     treeViewItems: any[] = [
         {

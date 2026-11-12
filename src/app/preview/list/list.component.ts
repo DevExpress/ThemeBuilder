@@ -1,19 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { DxListComponent } from 'devextreme-angular';
-import { Subject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 import { Properties } from 'devextreme/ui/list';
 
 @Component({
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class ListComponent implements OnInit, OnDestroy {
+export class ListComponent {
     widgetGroup = 'list';
-    isExpanded = new Subject<boolean>();
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
 
     @ViewChild('list') list: DxListComponent;
 
@@ -106,14 +104,10 @@ export class ListComponent implements OnInit, OnDestroy {
         }]
     };
 
-    ngOnInit(): void {
-        this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             this.list.instance.option(expanded ? this.expandedOptions : this.collapsedOptions);
             this.list.instance.updateDimensions();
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }

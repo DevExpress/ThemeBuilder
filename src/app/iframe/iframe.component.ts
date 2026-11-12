@@ -1,6 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    ViewChild,
+    HostListener,
+    effect,
+    signal,
+    untracked
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoadingService } from '../loading.service';
 import { MetadataRepositoryService } from '../meta-repository.service';
 
@@ -8,17 +16,16 @@ import { MetadataRepositoryService } from '../meta-repository.service';
     selector: 'app-iframe',
     templateUrl: './iframe.component.html',
     styleUrls: ['./iframe.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
+export class IframeComponent implements AfterViewInit {
     @ViewChild('iframe') iframe: ElementRef;
 
     url: string;
-    cssSubscription: Subscription;
-    widgetSubscription: Subscription;
     theme: string;
-    widgetName = new BehaviorSubject<string>('');
+    widgetName = signal<string>('');
+
+    private readonly frameWindow = signal<Window | null>(null, { equal: () => false });
 
     constructor(
         private route: ActivatedRoute,
@@ -27,9 +34,7 @@ export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
         private loading: LoadingService) {
         this.route.params.subscribe((params) => {
             const widget = params['widget'] || params['group'];
-            if(this.widgetName.getValue() !== widget) {
-                this.widgetName.next(widget);
-            }
+            this.widgetName.set(widget);
             if(this.theme !== params['theme']) {
                 this.loading.show();
                 this.theme = params['theme'];
@@ -39,6 +44,30 @@ export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
                 }
             }
         });
+
+        effect(() => {
+            const css = this.metadataService.css();
+            const frameWindow = this.frameWindow();
+            if(!frameWindow) return;
+
+            untracked(() => {
+                const theme = this.metadataService.theme;
+                const themeSize = theme.colorScheme.includes('compact') ? 'compact' : 'normal';
+                frameWindow.postMessage({
+                    css,
+                    themeSize,
+                    widget: this.widgetName()
+                }, this.url);
+            });
+        });
+
+        effect(() => {
+            const widget = this.widgetName();
+            const frameWindow = this.frameWindow();
+            if(!frameWindow) return;
+
+            untracked(() => frameWindow.postMessage({ widget }, this.url));
+        });
     }
 
     ngAfterViewInit(): void {
@@ -47,6 +76,7 @@ export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
         }
     }
 
+    @HostListener('window:message', ['$event'])
     receiveMessage(e: MessageEvent): void {
         if(e.data.widget) {
             this.router.navigate(['/advanced', this.metadataService.theme.name, this.metadataService.theme.colorScheme, e.data.widget]);
@@ -64,29 +94,6 @@ export class IframeComponent implements AfterViewInit, OnDestroy, OnInit {
         // frameWindow can be null if iframe reloaded (wizard -> preview navigation)
         if(frameWindow === null) return;
 
-        if(this.cssSubscription) this.cssSubscription.unsubscribe();
-        this.cssSubscription = this.metadataService.css.subscribe((css) => {
-            const theme = this.metadataService.theme;
-            const themeSize = theme.colorScheme.includes('compact') ? 'compact' : 'normal';
-            frameWindow.postMessage({
-                css,
-                themeSize,
-                widget: this.widgetName.getValue()
-            }, this.url);
-        });
-
-        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
-        this.widgetSubscription = this.widgetName.subscribe((widget) => {
-            frameWindow.postMessage({ widget }, this.url);
-        });
-    }
-
-    ngOnDestroy(): void {
-        if(this.cssSubscription) this.cssSubscription.unsubscribe();
-        if(this.widgetSubscription) this.widgetSubscription.unsubscribe();
-    }
-
-    ngOnInit(): void {
-        window.addEventListener('message', this.receiveMessage.bind(this), false);
+        this.frameWindow.set(frameWindow);
     }
 }

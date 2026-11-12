@@ -3,7 +3,7 @@
     @if (workArea) {
       <div class="scroll-container">
         <dx-scroll-view (onScroll)="fireScrollEventForClosingDropdowns()">
-          @for (data of filteredData; track data) {
+          @for (data of filteredData(); track data) {
             <div>
               @if (searchOpened) {
                 <div class="name top search-active">
@@ -37,7 +37,7 @@
               }
             </div>
           }
-          @if (!filteredData.length) {
+          @if (!filteredData().length) {
             <div class="no-data">Your search did not match any results.</div>
           }
         </dx-scroll-view>
@@ -65,7 +65,7 @@
     <div class="separator"></div>
     <div class="scroll-container">
       <dx-scroll-view>
-        @for (menuItem of menuData; track menuItem) {
+        @for (menuItem of menuData(); track menuItem) {
           <div
             class="menu-item"
             [routerLink]="['/advanced', theme, colorScheme, menuItem.route]"

@@ -9,11 +9,11 @@
   </div>
   @if (switchEnabled) {
     <div class="first"></div>
-    @if (switcherData) {
+    @if (switcherData()) {
       <div class="switcher">
         <dx-select-box
           class="switcher-editor"
-          [dataSource]="switcherData"
+          [dataSource]="switcherData()"
           stylingMode="filled"
           [grouped]="true"
           groupTemplate="group"

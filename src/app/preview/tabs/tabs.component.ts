@@ -1,16 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabsComponent {
     widgetGroup = 'tabs';
-    isExpanded = new Subject<boolean>();
+    isExpanded = signal<boolean>(false);
 
     dataSource: any[] = [
         { text: 'user', icon: 'user' },

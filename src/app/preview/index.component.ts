@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-preview-index',
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PreviewIndexComponent {
@@ -25,6 +24,7 @@ export class PreviewIndexComponent {
         this.typographyClass = 'dx-theme-' + this.themeName + '-typography';
     }
 
+    @HostListener('window:message', ['$event'])
     receiveMessage(e: any): void {
         if(e.data.css) {
             this.addHeadStyles(e.data.css);
@@ -61,9 +61,9 @@ export class PreviewIndexComponent {
     }
 
     ngAfterViewInit(): void {
-        const messageListener = this.receiveMessage.bind(this);
-        window.removeEventListener('message', messageListener);
-        window.addEventListener('message', messageListener, false);
-        window.parent.postMessage({ hideLoading: true }, window.parent.location.href);
+        window.parent.postMessage(
+            { hideLoading: true },
+            window.parent.location.href
+        );
     }
 }

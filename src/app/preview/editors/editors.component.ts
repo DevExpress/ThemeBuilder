@@ -1,29 +1,23 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import validationEngine from 'devextreme/ui/validation_engine';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { onExpandedChange } from '../expandable';
 
 @Component({
     selector: 'app-editors',
     templateUrl: './editors.component.html',
     styleUrls: ['./editors.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class EditorsComponent implements OnInit, OnDestroy {
+export class EditorsComponent {
     widgetGroup = 'editors';
-    isExpanded = new BehaviorSubject<boolean>(false);
-    subscription: Subscription;
+    isExpanded = signal<boolean>(false);
     dropDownOptions = {hideOnParentScroll: true};
     labelMode = 'floating';
     stylingModeValue = 'outlined';
 
-    ngOnInit(): void {
-        this.subscription = this.isExpanded.subscribe((expanded) => {
+    constructor() {
+        onExpandedChange(this.isExpanded, (expanded) => {
             if(expanded) setTimeout(() => validationEngine.validateGroup());
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }
